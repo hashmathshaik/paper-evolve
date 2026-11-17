@@ -1,0 +1,1022 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Molecular and Protein Design with AI",
+  "area": "Graph Neural Networks & Molecular AI",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-9f8035bca3dc9f5845a55ae9",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-d316d872447ca64785235813",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Motif-based Graph Self-Supervised Learning for Molecular Property Prediction",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Predicting molecular properties with data-driven methods has drawn much attention in recent years. Particularly, Graph Neural Networks (GNNs) have demonstrated remarkable success in various molecular generation and prediction tasks. In cases where labeled data is scarce, GNNs can be pre-trained on unlabeled molecular data to first learn the general semantic and structural information before being finetuned for specific tasks. However, most existing self-supervised pretraining frameworks for GNNs only focus on node-level or graph-level tasks. These approaches cannot capture the rich information in subgraphs or graph motifs. For example, functional groups (frequently-occurred subgraphs in molecular graphs) often carry indicative information about the molecular properties. To bridge this gap, we propose Motif-based Graph Self-supervised Learning (MGSSL) by introducing a novel self-supervised motif generation framework for GNNs. First, for motif extraction from molecular graphs, we design a molecule fragmentation method that leverages a retrosynthesis-based algorithm BRICS and additional rules for controlling the size of motif vocabulary. Second, we design a general motif-based generative pretraining framework in which GNNs are asked to make topological and label predictions. This generative framework can be implemented in two different ways, i.e., breadth-first or depth-first. Finally, to take the multi-scale information in molecular graphs into consideration, we introduce a multi-level self-supervised pre-training. Extensive experiments on various downstream benchmark tasks show that our methods outperform all state-of-the-art baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The past decade has witnessed the remarkable success of deep learning in natural language processing (NLP) [5], computer vision (CV) [13], and graph analysis [19].\nRecent advances in NLP and CV address them by self-supervised learning (SSL) where a model is first pre-trained on a large unlabeled dataset and then transferred to downstream tasks with limited labels [13, 2, 5].\nFor example, the pre-trained BERT language model [5] is able to learn expressive contextualized word representations through reconstructing the input text-next sentence and masked language predictions so that it can significantly improve the performance of downstream tasks.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-d316d872447ca64785235813",
+          "input_sha256": "8ead921cebf0b467c1cd1adaff986cfd4b2abfa8e565bfa0e21d3543596693b1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/85267d349a5e647ff0a9edcb5ffd1e02-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/85267d349a5e647ff0a9edcb5ffd1e02-Paper.pdf",
+              "sha256": "cdebef943152472c0b520fc5461545a276efee37e79a967ed56aff5f3ad9bed6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "enormous chemical space since they can only be obtained from wet-lab experiments or quantum chemistry calculations, which are time-consuming and expensive. Moreover, directly training GNNs on small labeled molecule datasets in a supervised fashion is prone to over-fitting and the trained GNNs can hardly generalize to out-of-distribution data. Similar issues have also been encountered in natural language processing and computer vision. Recent advances in NLP and CV address them by self-supervised learning (SSL) where a model is first pre-trained on a large unlabeled dataset and then transferred to downstream tasks with limited labels [13, 2, 5]. For example, the pre-trained BERT language model [5] is able to learn expressive contextualized word representations through reconstructing the input text-next sentence and masked language predictions so that it can significantly improve the performance of downstream tasks. Inspired by these developments, various self-supervised pre-training methods of GNNs have been proposed [14, 15, 52, 51, 32, 10, 30]. Based on how the self-supervised tasks are constructed, these methods can be classified into two categories, contrastive methods and predictive methods. Contrastive methods force views from the same graph (e.g., sampling nodes and edges from graphs) to become closer and push views from different graphs apart. On the other hand, the predictive methods construct prediction tasks by exploiting the intrinsic properties of data. For example, Hu et.al. [14] designed node-level pre-training tasks such as predicting the context of atoms and the attributes of masked atoms and bonds. [15] introduced an attributed graph reconstruction task where the generative model predicts the node attributes and edges to be generated at each step.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/85267d349a5e647ff0a9edcb5ffd1e02-Paper.pdf",
+              "document_sha256": "cdebef943152472c0b520fc5461545a276efee37e79a967ed56aff5f3ad9bed6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "The past decade has witnessed the remarkable success of deep learning in natural language processing (NLP) [5], computer vision (CV) [13], and graph analysis [19]. Inspired by these developments, researchers in the chemistry domain have also tried to exploit deep learning methods for moleculebased tasks such as retrosynthesis [47] and drug discovery [8]. To preserve the internal structural information, molecules can be naturally modeled as graphs where nodes represent atoms and edges denote the chemical bonds. Recently, some works applied Graph Neural Network (GNN) and some of its variants for molecular property prediction and obtained promising results [8, 25]. Though GNNs have achieved remarkable accuracy on molecular property prediction, they are usually data-hungry, i.e. a large amount of labeled data (i.e., molecules with known property data) is required for training [8, 12]. However, labeled molecules only occupy an extremely small portion of the ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/85267d349a5e647ff0a9edcb5ffd1e02-Paper.pdf",
+              "document_sha256": "cdebef943152472c0b520fc5461545a276efee37e79a967ed56aff5f3ad9bed6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Predicting molecular properties with data-driven methods has drawn much attention in recent years. Particularly, Graph Neural Networks (GNNs) have demonstrated remarkable success in various molecular generation and prediction tasks. In cases where labeled data is scarce, GNNs can be pre-trained on unlabeled molecular data to first learn the general semantic and structural information before being finetuned for specific tasks. However, most existing self-supervised pre-training frameworks for GNNs only focus on node-level or graph-level tasks. These approaches cannot capture the rich information in subgraphs or graph motifs. For example, functional groups (frequently-occurred subgraphs in molecular graphs) often carry indicative information about the molecular properties. To bridge this gap, we propose Motifbased Graph Self-supervised Learning (MGSSL) by introducing a novel selfsupervised motif generation framework for GNNs. First, for motif extraction from molecular graphs, we design a molecule fragmentation method that leverages a retrosynthesis-based algorithm BRICS and additional rules for controlling the size of motif vocabulary. Second, we design a general motif-based generative pre-training framework in which GNNs are asked to make topological and label predictions. This generative framework can be implemented in two different ways, i.e., breadth-first or depth-first. Finally, to take the multi-scale information in molecular graphs into consideration, we introduce a multi-level self-supervised pre-training. Extensive experiments on various downstream benchmark tasks show that our methods outperform all state-of-the-art baselines.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/85267d349a5e647ff0a9edcb5ffd1e02-Paper.pdf",
+              "document_sha256": "cdebef943152472c0b520fc5461545a276efee37e79a967ed56aff5f3ad9bed6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this section, we introduce the framework of motif-based graph self-supervised learning (Figure 1). Generally, the framework consists of three parts: chemistry-inspired molecule fragmentation, motif generation and multi-level self-supervised pre-training for GNNs. 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/85267d349a5e647ff0a9edcb5ffd1e02-Paper.pdf",
+              "document_sha256": "cdebef943152472c0b520fc5461545a276efee37e79a967ed56aff5f3ad9bed6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-d316d872447ca64785235813",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/85267d349a5e647ff0a9edcb5ffd1e02-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "8b70a2a8e4887d380360ee4d4a1701b4850a22d56dcaa0c0d8e8490c476bf8ca"
+    },
+    {
+      "id": "edge-5d55c05135f99d1561972728",
+      "a": "paper-012d74ad21447cbcce807bdb",
+      "b": "paper-da01ad17f953e94f97c83536",
+      "state": {
+        "paper_a": {
+          "title": "Score-based Generative Modeling in Latent Space",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset."
+        },
+        "paper_b": {
+          "title": "Geometric Latent Diffusion Models for 3D Molecule Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Generative models, especially diffusion models (DMs), have achieved promising results for generating feature-rich geometries and advancing foundational science problems such as molecule design. Inspired by the recent huge success of Stable (latent) Diffusion models, we propose a novel and principled method for 3D molecule generation named Geometric Latent Diffusion Models (GeoLDM). GeoLDM is the first latent DM model for the molecular geometry domain, composed of autoencoders encoding structures into continuous latent codes and DMs operating in the latent space. Our key innovation is that for modeling the 3D molecular geometries, we capture its critical roto-translational equivariance constraints by building a point-structured latent space with both invariant scalars and equivariant tensors. Extensive experiments demonstrate that GeoLDM can consistently achieve better performance on multiple molecule generation benchmarks, with up to 7% improvement for the valid percentage of large biomolecules. Results also demonstrate GeoLDM’s higher capacity for controllable generation thanks to the latent modeling. Code is provided at https://github.com/MinkaiXu/GeoLDM."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Most recently, several works successfully developed latent DMs with promising results on various applications, ranging from image (Vahdat et al., 2021), point clouds (Zeng et al.\nMost recently, several works successfully developed latent DMs with promising results on various applications, ranging from image (Vahdat et al., 2021), point clouds (Zeng et al., 2022), to text (Li et al., 2022) generation.\nExisting latent generative models for images (Vahdat et al., 2021; Esser et al., 2021) and texts (Li et al., 2022) usually rely on typical autoregressive or diffusion models to model the scalar-valued latent space.\nExisting latent generative models for images (Vahdat et al., 2021; Esser et al., 2021) and texts (Li et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-012d74ad21447cbcce807bdb",
+          "b": "paper-da01ad17f953e94f97c83536",
+          "input_sha256": "4171737b9ed2a56b9b1495afe098adb97044ca4034e71394cc8eaf343488d345",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/xu23n.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/xu23n/xu23n.pdf",
+              "sha256": "24b183e6699d853c67c61a853609980ca64d8a81b1bc11e0fe74345a63b89dfd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset. Our implementation is available at https://github.com/NVlabs/LSGM.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "increased easily without sacrifices. Moreover, SDE-based generative models are currently defined for continuous data and cannot be applied effortlessly to binary, categorical, or graph-structured data. Here, we propose the Latent Score-based Generative Model (LSGM), a new approach for learning SGMs in latent space, leveraging a variational autoencoder (VAE) framework [14, 15]. We map the input data to latent space and apply the score-based generative model there. The score-based model is then tasked with modeling the distribution over the embeddings of the data set. Novel data synthesis is achieved by first generating embeddings via drawing from a simple base distribution followed by iterative denoising, and then transforming this embedding via a decoder to data space (see Fig. 1). We can consider this model a VAE with an SGM prior. Our approach has several key advantages: Synthesis Speed: By pretraining the VAE with a Normal prior first, we can bring the marginal distribution over encodings (the aggregate posterior) close to the Normal prior, which is also the SGM’s base distribution. Consequently, the SGM only needs to model the remaining mismatch, resulting in a less complex model from which sampling becomes easier. Furthermore, we can tailor the latent space according to our needs. For example, we can use hierarchical latent variables and apply the diffusion model only over a subset of them, further improving synthesis speed. Expressivity: Training a regular SGM can be considered as training a neural ODE directly on the data [2]. However, previous works found that augmenting neural ODEs [16, 17] and more generally generative models [18, 19, 20, 21] with latent variables improves their expressivity. Consequently, we expect similar performance gains from combining",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "2. Related Work Latent Generative Models. To improve the generative modeling capacity, a lot of research (Dai & Wipf, 2019; Yu et al., 2022) has been conducted to learn more expressive generative models over the latent space. VQ-VAEs (Razavi et al., 2019) proposed to discretize latent variables and use autoregressive models to learn an expressive prior there. Ma et al. (2019) instead employed flow-based models as the latent prior, with applications on non-autoregressive text generation. Another line of research is inspired by variational autoencoder’s (VAE’s) problem that the simple Gaussian priors cannot accurately match the encoding posteriors and therefore generate poor samples, and Dai & Wipf (2019); Aneja et al. (2021) therefore proposed to use VAEs and energy-based models respectively to learn the latent distribution. Most recently, several works successfully developed latent DMs with promising results on various applications, ranging from image (Vahdat et al., 2021), point clouds (Zeng et al., 2022), to text (Li et al., 2022) generation. Among them, the most impressive success is Stable Diffusion models (Rombach et al., 2022), which show surprisingly realistic text-guided image generation results. Despite the considerable progress we have achieved, existing latent generative methods mainly work on latent space only filled with typical scalars, without any consideration for equivariance. By contrast, we study the novel and challenging task that latent",
+              "url": "https://proceedings.mlr.press/v202/xu23n/xu23n.pdf",
+              "document_sha256": "24b183e6699d853c67c61a853609980ca64d8a81b1bc11e0fe74345a63b89dfd"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "latent embeddings from arbitrarily high variance and is thus more suitable for learning the latent DMs (LDMs). 4.2. Geometric Latent Diffusion Models With the equivariant autoencoding functions Eφ and Dξ , now we can represent structures G using lower-dimensional latent variables z while still keeping geometric properties. Compared with the original atomic features which are highdimensional with complicated data types and scales, the encoded latent space significantly benefits likelihood-based generative models since: (i) as described in Section 4.1, our proposed AEs can be viewed as regularized autoencoders (Ghosh et al., 2020), where the latent space is more compact and smoothed, thereby improving DM’s training; (ii) latent codes also enjoy lower dimensionality and benefit the generative modeling complexity, since DMs typically operate in the full dimension of inputs. Existing latent generative models for images (Vahdat et al., 2021; Esser et al., 2021) and texts (Li et al., 2022) usually rely on typical autoregressive or diffusion models to model the scalar-valued latent space. By contrast, a fundamental challenge for our method is that the latent space z contains not only scalars (i.e,, invariant features) zh but also tensors (i.e,, equivariant features) zx . This requires the distribution of latent DMs to satisfy the critical invariance: pθ (zx , zh ) = pθ (Rzx , zh ), ∀ R.",
+              "url": "https://proceedings.mlr.press/v202/xu23n/xu23n.pdf",
+              "document_sha256": "24b183e6699d853c67c61a853609980ca64d8a81b1bc11e0fe74345a63b89dfd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Generative models, especially diffusion models (DMs), have achieved promising results for generating feature-rich geometries and advancing foundational science problems such as molecule design. Inspired by the recent huge success of Stable (latent) Diffusion models, we propose a novel and principled method for 3D molecule generation named Geometric Latent Diffusion Models (G EO LDM). G EO LDM is the first latent DM model for the molecular geometry domain, composed of autoencoders encoding structures into continuous latent codes and DMs operating in the latent space. Our key innovation is that for modeling the 3D molecular geometries, we capture its critical roto-translational equivariance constraints by building a point-structured latent space with both invariant scalars and equivariant tensors. Extensive experiments demonstrate that G EO LDM can consistently achieve better performance on multiple molecule generation benchmarks, with up to 7% improvement for the valid percentage of large biomolecules. Results also demonstrate G EO LDM’s higher capacity for controllable generation thanks to the latent modeling. Code is provided at https: //github.com/MinkaiXu/GeoLDM.",
+              "url": "https://proceedings.mlr.press/v202/xu23n/xu23n.pdf",
+              "document_sha256": "24b183e6699d853c67c61a853609980ca64d8a81b1bc11e0fe74345a63b89dfd"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "A unique advantage of G EO LDM is that unlike previous DM methods operating in the feature domain, we explicitly incorporate a latent space to capture the complex structures. This unified formulation enjoys several strengths. First, by mapping raw features into regularized latent space, the latent DMs learn to model a much smoother distribution. This alleviates the difficulty of directly modeling complex structures’ likelihood, and is therefore more expressive. Besides, the latent space enables G EO LDM to conduct training and sampling with a lower dimensionality, which can also benefit the generative modeling complexity. Furthermore, the use of latent variables also allows for better control over the generation process, which has shown promising results in text-guided image generation (Rombach et al., 2022). This enables the user to generate specific types of molecules with desired properties. Finally, our framework is very general and can be extended to various downstream molecular problems where DMs have shown promising results, i.e., target drug design (Lin et al., 2022) and antigen-specific antibody generation (Luo et al., 2022). 1",
+              "url": "https://proceedings.mlr.press/v202/xu23n/xu23n.pdf",
+              "document_sha256": "24b183e6699d853c67c61a853609980ca64d8a81b1bc11e0fe74345a63b89dfd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-012d74ad21447cbcce807bdb",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-da01ad17f953e94f97c83536",
+          "url": "https://proceedings.mlr.press/v202/xu23n.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "d531cd0d9fe6d5ee10a2ad55607ae17e5e3ca737eb0728b908cfd815ce76bb47"
+    },
+    {
+      "id": "edge-898a82bd6f4190f76e4b047a",
+      "a": "paper-012d74ad21447cbcce807bdb",
+      "b": "paper-ede3f8af2899121d28da8a7c",
+      "state": {
+        "paper_a": {
+          "title": "Score-based Generative Modeling in Latent Space",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset."
+        },
+        "paper_b": {
+          "title": "LDMol: A Text-to-Molecule Diffusion Model with Structurally Informative Latent Space Surpasses AR Models",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "With the emergence of diffusion models as a frontline generative model, many researchers have proposed molecule generation techniques with conditional diffusion models. However, the unavoidable discreteness of a molecule makes it difficult for a diffusion model to connect raw data with highly complex conditions like natural language. To address this, here we present a novel latent diffusion model dubbed LDMol for text-conditioned molecule generation. By recognizing that the suitable latent space design is the key to the diffusion model performance, we employ a contrastive learning strategy to extract novel feature space from text data that embeds the unique characteristics of the molecule structure. Experiments show that LDMol outperforms the existing autoregressive baselines on the text-to-molecule generation benchmark, being one of the first diffusion models that outperforms autoregressive models in textual data generation with a better choice of the latent domain. Furthermore, we show that LDMol can be applied to downstream tasks such as molecule-to-text retrieval and text-guided molecule editing, demonstrating its versatility as a diffusion model."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The primary goal of introducing autoencoders for image latent diffusion models is to map raw images into a low-dimensional space, which reduces the computation cost (Vahdat et al., 2021; Rombach et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-012d74ad21447cbcce807bdb",
+          "b": "paper-ede3f8af2899121d28da8a7c",
+          "input_sha256": "0f3ba82bf3be52916d50ed4a7a895ad18aedf92b166b144ccc8d7f16c4bc1229",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/chang25d.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chang25d/chang25d.pdf",
+              "sha256": "cf585a341b47eab4388e226260e90a31b7433af3dd3fc96fdf8bd3bc37b4379e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset. Our implementation is available at https://github.com/NVlabs/LSGM.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "increased easily without sacrifices. Moreover, SDE-based generative models are currently defined for continuous data and cannot be applied effortlessly to binary, categorical, or graph-structured data. Here, we propose the Latent Score-based Generative Model (LSGM), a new approach for learning SGMs in latent space, leveraging a variational autoencoder (VAE) framework [14, 15]. We map the input data to latent space and apply the score-based generative model there. The score-based model is then tasked with modeling the distribution over the embeddings of the data set. Novel data synthesis is achieved by first generating embeddings via drawing from a simple base distribution followed by iterative denoising, and then transforming this embedding via a decoder to data space (see Fig. 1). We can consider this model a VAE with an SGM prior. Our approach has several key advantages: Synthesis Speed: By pretraining the VAE with a Normal prior first, we can bring the marginal distribution over encodings (the aggregate posterior) close to the Normal prior, which is also the SGM’s base distribution. Consequently, the SGM only needs to model the remaining mismatch, resulting in a less complex model from which sampling becomes easier. Furthermore, we can tailor the latent space according to our needs. For example, we can use hierarchical latent variables and apply the diffusion model only over a subset of them, further improving synthesis speed. Expressivity: Training a regular SGM can be considered as training a neural ODE directly on the data [2]. However, previous works found that augmenting neural ODEs [16, 17] and more generally generative models [18, 19, 20, 21] with latent variables improves their expressivity. Consequently, we expect similar performance gains from combining",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "The primary goal of introducing autoencoders for image latent diffusion models is to map raw images into a low-dimensional space, which reduces the computation cost (Vahdat et al., 2021; Rombach et al., 2022). This is plausible because a high-resolution image has an enormous dimension in the pixel domain, yet each pixel contains little information.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chang25d/chang25d.pdf",
+              "document_sha256": "cf585a341b47eab4388e226260e90a31b7433af3dd3fc96fdf8bd3bc37b4379e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose a latent diffusion model LDMol for textconditioned molecule generation to generate valid molecules that are better aligned to the text condition. This approach demonstrates the potential of generative models for chemical entities in a latent space.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chang25d/chang25d.pdf",
+              "document_sha256": "cf585a341b47eab4388e226260e90a31b7433af3dd3fc96fdf8bd3bc37b4379e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Accordingly, here we propose three conditions that our SMILES autoencoder’s latent space has to satisfy: enable reconstruction of the input, have as small dimensions as possible, and embed molecular structural information that can be readily learned by diffusion models. Encoder design. In this respect, we train our SMILES encoder with contrastive learning (Figure 2-(a)), which aims to learn better representation by assimilating features con4",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chang25d/chang25d.pdf",
+              "document_sha256": "cf585a341b47eab4388e226260e90a31b7433af3dd3fc96fdf8bd3bc37b4379e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-012d74ad21447cbcce807bdb",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-ede3f8af2899121d28da8a7c",
+          "url": "https://proceedings.mlr.press/v267/chang25d.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "f51cbf213b00b3744bbfc4e19bedafd69d146aaeeb8ad200733557c0c2e09e5d"
+    },
+    {
+      "id": "edge-cb877915432959665b39bd9b",
+      "a": "paper-015ee47547c4188f32a95ff9",
+      "b": "paper-79edf7d9b7bc4075033af4bb",
+      "state": {
+        "paper_a": {
+          "title": "Equivariant Manifold Flows",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Tractably modelling distributions over manifolds has long been an important goal in the natural sciences. Recent work has focused on developing general machine learning models to learn such distributions. However, for many applications these distributions must respect manifold symmetries—a trait which most previous models disregard. In this paper, we lay the theoretical foundations for learning symmetry-invariant distributions on arbitrary manifolds via equivariant manifold flows. We demonstrate the utility of our approach by learning quantum field theory-motivated invariant SU(n) densities and by correcting meteor impact dataset bias."
+        },
+        "paper_b": {
+          "title": "Space Group Equivariant Crystal Diffusion",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Accelerating inverse design of crystalline materials with generative models has significant implications for a range of technologies. Unlike other atomic systems, 3D crystals are invariant to discrete groups of isometries called the space groups. Crucially, these space group symmetries are known to heavily influence materials properties. We propose SGEquiDiff, a crystal generative model which naturally handles space group constraints with space group invariant likelihoods. SGEquiDiff consists of an SE(3)-invariant, telescoping discrete sampler of crystal lattices; permutation-invariant, transformer-based autoregressive sampling of Wyckoff positions, elements, and numbers of symmetrically unique atoms; and space group equivariant diffusion of atomic coordinates. We show that space group equivariant vector fields automatically live in the tangent spaces of the Wyckoff positions. SGEquiDiff achieves state-of-the-art performance on standard benchmark datasets as assessed by quantitative proxy metrics and quantum mechanical calculations. Our code is available at https://github.com/rees-c/sgequidiff."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Conversely, the gradient of a G ′ -invariant function is equivariant [44].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-015ee47547c4188f32a95ff9",
+          "b": "paper-79edf7d9b7bc4075033af4bb",
+          "input_sha256": "8392d106445c11d24cb7ab6e84c3c67ab8d56dbee510fe0c27345c0e46d6b1dc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/581b41df0cd50ace849e061ef74827fc-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/581b41df0cd50ace849e061ef74827fc-Paper.pdf",
+              "sha256": "5a9a1bcb426af8793dfe2deff20568a2cd3f01fc6554c3ca34f3061afd97faf0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/697b2f31f99fb79f8a0a16e923b2471d-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/697b2f31f99fb79f8a0a16e923b2471d-Paper-Conference.pdf",
+              "sha256": "6f4211b2341ecf88e9eda4e50229b245d8672b486041b36620b9aaa2f23d89a1"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Tractably modelling distributions over manifolds has long been an important goal in the natural sciences. Recent work has focused on developing general machine learning models to learn such distributions. However, for many applications these distributions must respect manifold symmetries—a trait which most previous models disregard. In this paper, we lay the theoretical foundations for learning symmetry-invariant distributions on arbitrary manifolds via equivariant manifold flows. We demonstrate the utility of our approach by learning quantum field theorymotivated invariant SU (n) densities and by correcting meteor impact dataset bias.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/581b41df0cd50ace849e061ef74827fc-Paper.pdf",
+              "document_sha256": "5a9a1bcb426af8793dfe2deff20568a2cd3f01fc6554c3ca34f3061afd97faf0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "For example, consider the task of learning a density on the sphere that is invariant to rotation around an axis; this is an example of learning an isometry subgroup invariant2 density. For a less trivial example, note that when learning a flow-based sampler for SU (n) in the context of lattice QFT [3], the learned density must be invariant to conjugation by SU (n) (see Figure 1 for a density on SU (3) that exhibits the requisite symmetry). One might naturally attempt to work with the quotient of the manifold by the relevant isometry subgroup in order to model the invariance. First, note that this structure is not always a manifold, and additional restrictions are needed on the action to ensure the quotient will have a manifold structure3 . Assuming the quotient is in fact a manifold, one then asks whether an invariant density may be modelled by learning over this quotient with a general manifold density learning method such as NMODE [29]? Though this seems plausible, it is a problematic approach for several reasons: 1. First, it is often difficult to realize necessary constructs (charts, exponential maps, tangent spaces) on the quotient manifold (e.g. this is the case for RPn , a quotient of Sn [28]). 2. Second, even if the above constructs can be realized, the quotient manifold often has a boundary, which precludes the use of a manifold CNF. To illustrate this point, consider the simple case of the sphere invariant to rotation about an axis; the quotient manifold is a closed interval, and a CNF would “flow out\" on the boundary. 3. Third, even if the quotient is a manifold without boundary for which we have a clear characterization, it may have a discrete structure that induces artifacts in the learned distribution. This is the case for Boyda et al. [3]: the flow",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/581b41df0cd50ace849e061ef74827fc-Paper.pdf",
+              "document_sha256": "5a9a1bcb426af8793dfe2deff20568a2cd3f01fc6554c3ca34f3061afd97faf0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "where w̄ is another standard Wiener process. The generative model aims to learn the score of the marginal distribution ∇x log pt (x), and then simulate Eq. 2 to sample from p0 . In our model, we have f (x, t) = 0. Space group equivariant functions For a group of isometries G′ , Rezende et al. [76] and Köhler et al. [52] showed that equivariant flows preserve invariant probability densities. Conversely, the gradient of a G′ -invariant function is equivariant [44]. We are interested in using this result for the space groups. A function f : R3 → R3 is space group equivariant if it satisfies Rg f (x) = f (gx) for all g ≡ (Rg , vg ) ∈ G, where Rg ∈ O(3) is a point group element and vg ∈ R3 is a translation. Symmetrization via summing over group elements has become a popular method to build invariant and equivariant neural networks in the last few years [105, 74]. Recently, Mirramezani et al. [63] 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/697b2f31f99fb79f8a0a16e923b2471d-Paper-Conference.pdf",
+              "document_sha256": "6f4211b2341ecf88e9eda4e50229b245d8672b486041b36620b9aaa2f23d89a1"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Accelerating inverse design of crystalline materials with generative models has significant implications for a range of technologies. Unlike other atomic systems, 3D crystals are invariant to discrete groups of isometries called the space groups. Crucially, these space group symmetries are known to heavily influence materials properties. We propose SGEquiDiff, a crystal generative model which naturally handles space group constraints with space group invariant likelihoods. SGEquiDiff consists of an SE(3)-invariant, telescoping discrete sampler of crystal lattices; permutation-invariant, transformer-based autoregressive sampling of Wyckoff positions, elements, and numbers of symmetrically unique atoms; and space group equivariant diffusion of atomic coordinates. We show that space group equivariant vector fields automatically live in the tangent spaces of the Wyckoff positions. SGEquiDiff achieves state-of-the-art performance on standard benchmark datasets as assessed by quantitative proxy metrics and quantum mechanical calculations. Our code is available at https://github.com/rees-c/sgequidiff.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/697b2f31f99fb79f8a0a16e923b2471d-Paper-Conference.pdf",
+              "document_sha256": "6f4211b2341ecf88e9eda4e50229b245d8672b486041b36620b9aaa2f23d89a1"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: (a) The asymmetric unit (Π) and special Wyckoff positions labeled by letter in the conventional unit cell of space group 10. (b-c) Histograms of occupied space groups and Wyckoff dimensionalities by crystals in the MP20 [100, 39, 7] training dataset. Space groups and Wyckoff positions were determined by the SpaceGroupAnalyzer module in pymatgen [70, 91] using tolerances of 0.1 Å and 5◦ . These tolerances help account for the moderate convergence criteria of the Materials Project DFT relaxations. show empirically in Figure 1 that known materials are usually invariant to high symmetry space groups with atoms in zero-volume Wyckoff positions. An intuitive explanation for this phenomenon is that atoms of the same species in a given crystal are most stable in a specific neighboring environment, and the tendency to attain this environment naturally leads to symmetry [32]. Yet, most existing crystal generative models learn continuous distributions over all three spatial dimensions of atom positions, assigning zero probability measure to placing atoms in special Wyckoff positions. One might argue that crystals from these models can be relaxed into high symmetry positions with DFT or machine learned force fields. However, besides the apparent difficulty of generating atoms sufficiently close to high symmetry positions for relaxation [107, 31, 42], such a framework assigns different model probabilities to crystals that relax into the same structure, obfuscating training and evaluation. In this paper, we propose SGEquiDiff, which enforces space group constraints during generation and yields explicit space group invariant model likelihoods. SGEquiDiff combines SE(3)-invariant, discretized lattice sampling; permutation-invariant, transformer-based generation of occupied",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/697b2f31f99fb79f8a0a16e923b2471d-Paper-Conference.pdf",
+              "document_sha256": "6f4211b2341ecf88e9eda4e50229b245d8672b486041b36620b9aaa2f23d89a1"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-015ee47547c4188f32a95ff9",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/581b41df0cd50ace849e061ef74827fc-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-79edf7d9b7bc4075033af4bb",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/697b2f31f99fb79f8a0a16e923b2471d-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "50cd920520f9db20ac21619e126f671811ed2c89f712f8cd1073ecdd0c26b469"
+    },
+    {
+      "id": "edge-bcb957c232132046415e2777",
+      "a": "paper-033ba0139863eebd8e000689",
+      "b": "paper-d42013dbe8584d5f0aa9d0d7",
+      "state": {
+        "paper_a": {
+          "title": "Drug Discovery with Dynamic Goal-aware Fragments",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Fragment-based drug discovery is an effective strategy for discovering drug candidates in the vast chemical space, and has been widely employed in molecular generative models. However, many existing fragment extraction methods in such models do not take the target chemical properties into account or rely on heuristic rules. Additionally, the existing fragment-based generative models cannot update the fragment vocabulary with goal-aware fragments newly discovered during the generation. To this end, we propose a molecular generative framework for drug discovery, named Goal-aware fragment Extraction, Assembly, and Modification (GEAM). GEAM consists of three modules, each responsible for goal-aware fragment extraction, fragment assembly, and fragment modification. The fragment extraction module identifies important fragments contributing to the desired target properties with the information bottleneck principle, thereby constructing an effective goal-aware fragment vocabulary. Moreover, GEAM can explore beyond the initial vocabulary with the fragment modification module, and the exploration is further enhanced through the dynamic goal-aware vocabulary update. We experimentally demonstrate that GEAM effectively discovers drug candidates through the generative cycle of the three modules in various drug discovery tasks. Our code is available at https://github.com/SeulLee05/GEAM."
+        },
+        "paper_b": {
+          "title": "CombiMOTS: Combinatorial Multi-Objective Tree Search for Dual-Target Molecule Generation",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Dual-target molecule generation, which focuses on discovering compounds capable of interacting with two target proteins, has garnered significant attention due to its potential for improving therapeutic efficiency, safety and resistance mitigation. Existing approaches face two critical challenges. First, by simplifying the complex dual-target optimization problem to scalarized combinations of individual objectives, they fail to capture important trade-offs between target engagement and molecular properties. Second, they typically do not integrate synthetic planning into the generative process. This highlights a need for more appropriate objective function design and synthesis-aware methodologies tailored to the dual-target molecule generation task. In this work, we propose CombiMOTS, a Pareto Monte Carlo Tree Search (PMCTS) framework that generates dual-target molecules. CombiMOTS is designed to explore a synthesizable fragment space while employing vectorized optimization constraints to encapsulate target affinity and physicochemical properties. Extensive experiments on real-world databases demonstrate that CombiMOTS produces novel dual-target molecules with high docking scores, enhanced diversity, and balanced pharmacological characteristics, showcasing its potential as a powerful tool for dual-target drug discovery. The code and data is accessible through https://github.com/Tibogoss/CombiMOTS."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "FGIB extends BRICS by breaking molecules into retrosyn-thetically interesting fragments, which is preferred over rule/frequency-based methods when combined with Enam-ine REAL Space.\nTable 4 shows that (i) the threshold greatly affects the search space size due to the small nature of FGIB fragments and Enamine blocks.\n(Lee et al., 2023).\nTo further justify our choice, we report results from 10k roll-outs on the GSK3 β -JNK3 task when replacing FGIB with naive BRICS and MiCaM (Geng et al., 2023), a connection-aware motif-mining approach to decompose known active compounds.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-033ba0139863eebd8e000689",
+          "b": "paper-d42013dbe8584d5f0aa9d0d7",
+          "input_sha256": "0422efcce84243786fc9577fea9730a26b738cae980b2c7cd53e57d86edb7bbc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/lee24o.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lee24o/lee24o.pdf",
+              "sha256": "28eb1725a4da550fe157cb1e48f7c0354ba235f7b4c8b913ca53eb0700a344f5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/southiratn25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/southiratn25a/southiratn25a.pdf",
+              "sha256": "415a482795d275901bd4a3f8fc4829df8adf62445c69954f25e3ec817abade51"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fragment-based drug discovery is an effective strategy for discovering drug candidates in the vast chemical space, and has been widely employed in molecular generative models. However, many existing fragment extraction methods in such models do not take the target chemical properties into account or rely on heuristic rules. Additionally, the existing fragment-based generative models cannot update the fragment vocabulary with goal-aware fragments newly discovered during the generation. To this end, we propose a molecular generative framework for drug discovery, named Goal-aware fragment Extraction, Assembly, and Modification (GEAM). GEAM consists of three modules, each responsible for goalaware fragment extraction, fragment assembly, and fragment modification. The fragment extraction module identifies important fragments contributing to the desired target properties with the information bottleneck principle, thereby constructing an effective goal-aware fragment vocabulary. Moreover, GEAM can explore beyond the initial vocabulary with the fragment modification module, and the exploration is further enhanced through the dynamic goal-aware vocabulary update. We experimentally demonstrate that GEAM effectively discovers drug candidates through the generative cycle of the three modules in various drug discovery tasks. Our code is available at https://github.com/ SeulLee05/GEAM.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lee24o/lee24o.pdf",
+              "document_sha256": "28eb1725a4da550fe157cb1e48f7c0354ba235f7b4c8b913ca53eb0700a344f5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose FGIB, a novel goal-aware fragment extraction method using the GIB theory to construct a fragment vocabulary for target chemical properties. • We propose leveraging SAC and GA jointly as a generative model to effectively utilize the extracted fragments while enabling exploration beyond the vocabulary. • We propose GEAM, a generative framework combining FGIB, SAC, and GA to dynamically update the fragment vocabulary by extracting goal-aware fragments on-thefly to further improve diversity and novelty. • We theoretically analyze how FGIB helps in identifying high-quality and novel graphs and motivates the necessity of dynamic vocabulary update. • We experimentally demonstrate that GEAM is highly effective in discovering drug candidates, outperforming existing molecular optimization methods.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lee24o/lee24o.pdf",
+              "document_sha256": "28eb1725a4da550fe157cb1e48f7c0354ba235f7b4c8b913ca53eb0700a344f5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "5.7.1. D UAL -TARGET-AWARE F RAGMENT E XTRACTION FGIB extends BRICS by breaking molecules into retrosynthetically interesting fragments, which is preferred over rule/frequency-based methods when combined with Enamine REAL Space. Some works adapt BRICS to needs with a fixed goal e.g. pBRICS (Vangala et al., 2023) for ADMET explanability, thus not suited for the dual-inhibition task where target proteins are user-defined. Our goal is to capture high-property fragments for any target property. To further justify our choice, we report results from 10k rollouts on the GSK3β-JNK3 task when replacing FGIB with naive BRICS and MiCaM (Geng et al., 2023), a connectionaware motif-mining approach to decompose known active compounds. Table 3 shows that FGIB successfully identified goal-specific fragments, resulting in a significantly higher rate of dual-active compounds. For other metrics (Appendix B), all methods exhibit similar performance, which is sound as FGIB only impacts the search space through the selection of initial blocks: MCTS objectives and convergence are “as good” but the attainable space contains more compounds likely exhibiting dual-activity potential.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/southiratn25a/southiratn25a.pdf",
+              "document_sha256": "415a482795d275901bd4a3f8fc4829df8adf62445c69954f25e3ec817abade51"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "We investigate the use of various thresholds and report results from 10k rollouts on the GSK3β-JNK3 task for lower and higher values of 0.3, 0.5 & 0.6. Table 4 shows that (i) the threshold greatly affects the search space size due to the small nature of FGIB fragments and Enamine blocks. Tani-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/southiratn25a/southiratn25a.pdf",
+              "document_sha256": "415a482795d275901bd4a3f8fc4829df8adf62445c69954f25e3ec817abade51"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "We proposed CombiMOTS, a novel approach to combinatorial multi-objective drug design by integrating PMCTS with fragment-based molecule generation. By leveraging dualtarget-aware fragments available in industry and extending PMCTS to a combinatorial framework, our method effectively navigates the complex design space of dual-target drug discovery while ensuring synthesizability. Through comprehensive evaluations on multiple dual-target inhibitor tasks, we demonstrate that CombiMOTS consistently outperforms existing methods by generating diverse and interpretable molecules that achieve favorable trade-offs across key objectives. Our results highlight the potential of CombiMOTS as a valuable tool in rational drug design, paving the way for further advancements in multi-objective optimization for molecular generation.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/southiratn25a/southiratn25a.pdf",
+              "document_sha256": "415a482795d275901bd4a3f8fc4829df8adf62445c69954f25e3ec817abade51"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Dual-target molecule generation, which focuses on discovering compounds capable of interacting with two target proteins, has garnered significant attention due to its potential for improving therapeutic efficiency, safety and resistance mitigation. Existing approaches face two critical challenges. First, by simplifying the complex dual-target optimization problem to scalarized combinations of individual objectives, they fail to capture important trade-offs between target engagement and molecular properties. Second, they typically do not integrate synthetic planning into the generative process. This highlights a need for more appropriate objective function design and synthesis-aware methodologies tailored to the dual-target molecule generation task. In this work, we propose CombiMOTS, a Pareto Monte Carlo Tree Search (PMCTS) framework that generates dual-target molecules. CombiMOTS is designed to explore a synthesizable fragment space while employing vectorized optimization constraints to encapsulate target affinity and physicochemical properties. Extensive experiments on real-world databases demonstrate that CombiMOTS produces novel dual-target molecules with high docking scores, enhanced diversity, and balanced pharmacological characteristics, showcasing its potential as a powerful tool for dual-target drug discovery. The code and data is accessible through https: //github.com/Tibogoss/CombiMOTS.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/southiratn25a/southiratn25a.pdf",
+              "document_sha256": "415a482795d275901bd4a3f8fc4829df8adf62445c69954f25e3ec817abade51"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-033ba0139863eebd8e000689",
+          "url": "https://proceedings.mlr.press/v235/lee24o.html"
+        },
+        "b": {
+          "paper_id": "paper-d42013dbe8584d5f0aa9d0d7",
+          "url": "https://proceedings.mlr.press/v267/southiratn25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "5428317ce09579fc07d306e8c920b0fc5a9dfcd7638c43b9e297fd56a8222c5c"
+    },
+    {
+      "id": "edge-c8a061252a8aa35c0aeec79d",
+      "a": "paper-04bb8a5358cd6df4328c4732",
+      "b": "paper-854a0c3075c5aa5c4aaef638",
+      "state": {
+        "paper_a": {
+          "title": "Sample-efficient Multi-objective Molecular Optimization with GFlowNets",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Many crucial scientific problems involve designing novel molecules with desired properties, which can be formulated as a black-box optimization problem over the discrete chemical space. In practice, multiple conflicting objectives and costly evaluations (e.g., wet-lab experiments) make the diversity of candidates paramount. Computational methods have achieved initial success but still struggle with considering diversity in both objective and search space. To fill this gap, we propose a multi-objective Bayesian optimization (MOBO) algorithm leveraging the hypernetwork-based GFlowNets (HN-GFN) as an acquisition function optimizer, with the purpose of sampling a diverse batch of candidate molecular graphs from an approximate Pareto front. Using a single preference-conditioned hypernetwork, HN-GFN learns to explore various trade-offs between objectives. We further propose a hindsight-like off-policy strategy to share high-performing molecules among different preferences in order to speed up learning for HN-GFN. We empirically illustrate that HN-GFN has adequate capacity to generalize over preferences. Moreover, experiments in various real-world MOBO settings demonstrate that our framework predominantly outperforms existing methods in terms of candidate quality and sample efficiency. The code is available at https://github.com/violet-sto/HN-GFN."
+        },
+        "paper_b": {
+          "title": "Graph Diffusion Transformers for Multi-Conditional Molecular Generation",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Inverse molecular design with diffusion models holds great potential for advancements in material and drug discovery. Despite success in unconditional molecule generation, integrating multiple properties such as synthetic score and gas permeability as condition constraints into diffusion models remains unexplored. We present the Graph Diffusion Transformer (Graph DiT) for multi-conditional molecular generation. Graph DiT has a condition encoder to learn the representation of numerical and categorical properties and utilizes a Transformer-based graph denoiser to achieve molecular graph denoising under conditions. Unlike previous graph diffusion models that add noise separately on the atoms and bonds in the forward diffusion process, we propose a graph-dependent noise model for training Graph DiT, designed to accurately estimate graph-related noise in molecules. We extensively validate the Graph DiT for multi-conditional polymer and small molecule generation. Results demonstrate our superiority across metrics from distribution learning to condition control for molecular properties. A polymer inverse design task for gas separation with feedback from domain experts further demonstrates its practical utility. The code is available at https://github.com/liugangcode/Graph-DiT."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Molecular Optimization: Optimization algorithms could optimize molecules towards property constraints, including genetic algorithms [20], Bayesian optimization [39, 50], REINFORCE [45], and reinforcement learning [30].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04bb8a5358cd6df4328c4732",
+          "b": "paper-854a0c3075c5aa5c4aaef638",
+          "input_sha256": "a5f557d11c0237dbc7a356039cb26fde1cc4ced8bc09686cbd457104a8844504",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/fbc9981dd6316378aee7fd5975250f21-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/0f6931a9e339a012a9909306d7c758b4-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/0f6931a9e339a012a9909306d7c758b4-Paper-Conference.pdf",
+              "sha256": "9b1615143f81aabc768a2d2fa8d2585383de4874d1a1a5d5950d1c60a434db07"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "optimal solution, but rather a set of Pareto optimal solutions defined with various trade-offs [18, 45]. (ii) Realistic oracles (e.g., wet-lab experiments and high-fidelity simulations) require substantial costs to synthesize and evaluate molecules [22]. Hence, the number of oracle evaluations is notoriously limited. In such scenarios, the diversity of candidates is a critical consideration. Bayesian optimization (BO) [34, 54] provides a sample-efficient framework for globally optimizing expensive black-box functions. The core idea is to construct a cheap-to-evaluate surrogate model approximating the true objective function (also known as the oracle) on the observed dataset and optimize an acquisition function (built upon the surrogate model) to obtain informative candidates with high utility for the next round of evaluations. Due to the common large-batch and low-round settings in biochemical experiments [3], batch BO is prioritized to shorten the entire cycle of optimization [25]. MOBO also received broad attention and achieved promising performance in continuous problems by effectively optimizing differentiable acquisition functions [12, 13]. Nevertheless, it is less prominent in discrete problems, where no gradients can be leveraged to navigate the search space. Although existing discrete molecular optimization methods can be adopted as the acquisition function optimizer to alleviate this issue, they can hardly consider diversity in both search and objective space: 1) many neglect the diversity of proposed candidates in search space [30, 33]; 2) many multi-objective methods simply rely on a predefined scalarization function (e.g., mean) to turn the multi-objective optimization (MOO) problem into a single-objective one [61, 20]. As the surrogate model cannot exactly",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "document_sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Many crucial scientific problems involve designing novel molecules with desired properties, which can be formulated as a black-box optimization problem over the discrete chemical space. In practice, multiple conflicting objectives and costly evaluations (e.g., wet-lab experiments) make the diversity of candidates paramount. Computational methods have achieved initial success but still struggle with considering diversity in both objective and search space. To fill this gap, we propose a multi-objective Bayesian optimization (MOBO) algorithm leveraging the hypernetwork-based GFlowNets (HN-GFN) as an acquisition function optimizer, with the purpose of sampling a diverse batch of candidate molecular graphs from an approximate Pareto front. Using a single preference-conditioned hypernetwork, HN-GFN learns to explore various trade-offs between objectives. We further propose a hindsight-like off-policy strategy to share high-performing molecules among different preferences in order to speed up learning for HNGFN. We empirically illustrate that HN-GFN has adequate capacity to generalize over preferences. Moreover, experiments in various real-world MOBO settings demonstrate that our framework predominantly outperforms existing methods in terms of candidate quality and sample efficiency. The code is available at https://github.com/violet-sto/HN-GFN.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "document_sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Diffusion Models for Molecules: Score-based diffusion models applied noise and denoising in continuous space [33, 22]. DiGress [43] used discrete noise as transition matrices based on marginal distributions of atom and bond types. Extra predictor models are studied to guide the generation process in DiGress and GDSS [25]. Diffusion models could also be used for molecular property prediction [27], for conformation [48] and molecule generation with 3D atomic coordinates [18, 49, 3]. We focus on molecular graph generation, considering the high computational cost of accurate 3D coordinates for larger molecules like polymers [23]. We explore predictor-free diffusion guidance, instead of the classifier guidance [9, 44], for generating molecules under categorical and numerical conditions. It can be integrated with diffusion models for atomic coordinates in future research. Molecular Optimization: Optimization algorithms could optimize molecules towards property constraints, including genetic algorithms [20], Bayesian optimization [39, 50], REINFORCE [45], and reinforcement learning [30]. Both sequential and graph-based generative models [6, 21, 30], along with diverse sampling methods [47, 13], are used in conjunction with these algorithms to produce desirable molecules. These methods have been applied to both single-objective and multi-objective optimization, the latter by manually integrating multiple property conditions into a single one [5, 25]. Several challenges in molecular optimization methods remain underexplored, including the inadequate or unclear definition of multi-property relations when integration into a single objective [5], and the inaccessibility of the oracle function for property-oriented optimization during the training phase [14].",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/0f6931a9e339a012a9909306d7c758b4-Paper-Conference.pdf",
+              "document_sha256": "9b1615143f81aabc768a2d2fa8d2585383de4874d1a1a5d5950d1c60a434db07"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "30, indicating that the multiple properties were not met on over half of the test polymers despite generating a large number of graphs. To address these challenges, we project multi-properties into representations by learning, thereby guiding the diffusion process for molecule generation. We propose the Graph Diffusion Transformer (Graph DiT) for graph denoising under conditions. Graph DiT has a condition encoder for property representation learning and a graph denoiser. The condition encoder utilizes a novel clustering-based method for numerical properties and one-hot encoding for categorical ones to learn multi-property representations. The graph denoiser first integrates node and edge features into graph tokens, then denoise these tokens with adaptive layer normalization (AdaLN) in Transformer layers [19, 34]. AdaLN replaces the molecular statistics (mean and variance) in each hidden layer with those from the condition representation, effectively outperforming other predictor-based and predictor-free conditioning methods [22, 43, 34], as shown in Section 4.4. We observe that existing forward diffusion processes [43, 22] apply noise separately to atoms and bonds, which may compromise the accuracy of Graph DiT in noise estimation. Hence, we propose a novel graph-dependent noise model that effectively applies noise tailored to the dependencies between atoms and bonds within the graph. Results in Figure 1(b) show that the polymers generated by Graph DiT closely align with multiproperty constraints. For each test case, we have one graph generated from Graph DiT conditional on three properties. The Oracle determines the rank of this graph among 30 single-conditionally generated graphs for each condition. We find the median ranks are 4, 9, and 11, for Synth., O2 Perm, and",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/0f6931a9e339a012a9909306d7c758b4-Paper-Conference.pdf",
+              "document_sha256": "9b1615143f81aabc768a2d2fa8d2585383de4874d1a1a5d5950d1c60a434db07"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "The transition probability of a node or an edge should rely on the joint distribution of nodes and edges in the prior state. However, as an example shown in Eq. (1), current diffusion models [22, 43, 25] treat node and edge state transitions as independent, misaligning with the denoising process in Eq. (3). This difference between the sampling distributions of noise in the diffusion and reverse processes introduces unnecessary challenges to multi-conditional molecular generations. To address this, we use a single matrix XG ∈ RN ×FG to represent graph tokens for G, with FG = FV + N · FE . Token representations are created by concatenating the node feature matrix XV and the flattened edge connection matrix from XE . Each row vector in XG contains features for both nodes and edges, representing all connections and non-connections. Hence, we could design a transition matrix QG considering the joint distribution of nodes and edges. QG ∈ RFG ×FG is constructed from four matrices QV , QEV ∈ RFE ×FV , QE , QV E ∈ RFV ×FE , denoting the transition probability (“dependent old state” → “target new state”) node → node; edge → node; edge → edge; node → edge, respectively. \u0014 \u0015 QV 1′N ⊗ QV E QG = , (5) 1N ⊗ QEV 1N ×N ⊗ QE where ⊗ denotes the Kronecker product, 1N , 1′N , and 1N ×N represent the column vector, row vector, and matrix with all 1 elements, respectively. According to Eq. (5), the first FV columns in QG determine the node feature transitions based on both node features (first FV rows) and edge features (remaining N · FE rows). Conversely, the remaining N · FE columns determine the edge feature transitions, depending on the entire graph. We introduce a new diffusion noise model: \u0001 g XtG ; p̃ = Xt−1 QtG , q(XtG | Xt−1 ) = Cat (6) G",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/0f6931a9e339a012a9909306d7c758b4-Paper-Conference.pdf",
+              "document_sha256": "9b1615143f81aabc768a2d2fa8d2585383de4874d1a1a5d5950d1c60a434db07"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04bb8a5358cd6df4328c4732",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/fbc9981dd6316378aee7fd5975250f21-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-854a0c3075c5aa5c4aaef638",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/0f6931a9e339a012a9909306d7c758b4-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "8bb3408c51aaf8140ed6a79ce2d97a8de5d33696860a309018d787c9dd00e4d4"
+    },
+    {
+      "id": "edge-ab55673fe5e2fc7a8ea32f85",
+      "a": "paper-04bb8a5358cd6df4328c4732",
+      "b": "paper-c9ce69cadd8064a1e356f013",
+      "state": {
+        "paper_a": {
+          "title": "Sample-efficient Multi-objective Molecular Optimization with GFlowNets",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Many crucial scientific problems involve designing novel molecules with desired properties, which can be formulated as a black-box optimization problem over the discrete chemical space. In practice, multiple conflicting objectives and costly evaluations (e.g., wet-lab experiments) make the diversity of candidates paramount. Computational methods have achieved initial success but still struggle with considering diversity in both objective and search space. To fill this gap, we propose a multi-objective Bayesian optimization (MOBO) algorithm leveraging the hypernetwork-based GFlowNets (HN-GFN) as an acquisition function optimizer, with the purpose of sampling a diverse batch of candidate molecular graphs from an approximate Pareto front. Using a single preference-conditioned hypernetwork, HN-GFN learns to explore various trade-offs between objectives. We further propose a hindsight-like off-policy strategy to share high-performing molecules among different preferences in order to speed up learning for HN-GFN. We empirically illustrate that HN-GFN has adequate capacity to generalize over preferences. Moreover, experiments in various real-world MOBO settings demonstrate that our framework predominantly outperforms existing methods in terms of candidate quality and sample efficiency. The code is available at https://github.com/violet-sto/HN-GFN."
+        },
+        "paper_b": {
+          "title": "Pretraining Generative Flow Networks with Inexpensive Rewards for Molecular Graph Generation",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Generative Flow Networks (GFlowNets) have recently emerged as a suitable framework for generating diverse and high-quality molecular structures by learning from rewards treated as unnormalized distributions. Previous works in this framework often restrict exploration by using predefined molecular fragments as building blocks, limiting the chemical space that can be accessed. In this work, we introduce Atomic GFlowNets (A-GFNs), a foundational generative model leveraging individual atoms as building blocks to explore drug-like chemical space more comprehensively. We propose an unsupervised pre-training approach using drug-like molecule datasets, which teaches A-GFNs about inexpensive yet informative molecular descriptors such as drug-likeliness, topological polar surface area, and synthetic accessibility scores. These properties serve as proxy rewards, guiding A-GFNs towards regions of chemical space that exhibit desirable pharmacological properties. We further implement a goal-conditioned finetuning process, which adapts A-GFNs to optimize for specific target properties. In this work, we pretrain A-GFN on a subset of ZINC dataset, and by employing robust evaluation metrics we show the effectiveness of our approach when compared to other relevant baseline methods for a wide range of drug design tasks. The code is accessible at https://github.com/diamondspark/AGFN."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "While producing diverse candidates, fragment-based approaches limit the pockets of accessible chemical space (Zhu et al., 2024; Bengio et al., 2021; Jain et al., 2023; Shen et al., 2024).\nExisting extensions of GFlowNets that handle multiple, potentially conflicting objectives (Jain et al., 2023; Zhu et al., 2024), along with the benefits of scalability to large action spaces and credit assignment makes them well-suited for molecular generation tasks; the primary focus of our work.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04bb8a5358cd6df4328c4732",
+          "b": "paper-c9ce69cadd8064a1e356f013",
+          "input_sha256": "4656ad918a4075e440300814f3dcbe87d3b47fbbaca8418e0b22f750ec7a394a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/fbc9981dd6316378aee7fd5975250f21-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/pandey25b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/pandey25b/pandey25b.pdf",
+              "sha256": "f33d7a318bc90927ce1a1d47d956dfa47a1ccf70f78b80b83f3fcfba716295d4"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "optimal solution, but rather a set of Pareto optimal solutions defined with various trade-offs [18, 45]. (ii) Realistic oracles (e.g., wet-lab experiments and high-fidelity simulations) require substantial costs to synthesize and evaluate molecules [22]. Hence, the number of oracle evaluations is notoriously limited. In such scenarios, the diversity of candidates is a critical consideration. Bayesian optimization (BO) [34, 54] provides a sample-efficient framework for globally optimizing expensive black-box functions. The core idea is to construct a cheap-to-evaluate surrogate model approximating the true objective function (also known as the oracle) on the observed dataset and optimize an acquisition function (built upon the surrogate model) to obtain informative candidates with high utility for the next round of evaluations. Due to the common large-batch and low-round settings in biochemical experiments [3], batch BO is prioritized to shorten the entire cycle of optimization [25]. MOBO also received broad attention and achieved promising performance in continuous problems by effectively optimizing differentiable acquisition functions [12, 13]. Nevertheless, it is less prominent in discrete problems, where no gradients can be leveraged to navigate the search space. Although existing discrete molecular optimization methods can be adopted as the acquisition function optimizer to alleviate this issue, they can hardly consider diversity in both search and objective space: 1) many neglect the diversity of proposed candidates in search space [30, 33]; 2) many multi-objective methods simply rely on a predefined scalarization function (e.g., mean) to turn the multi-objective optimization (MOO) problem into a single-objective one [61, 20]. As the surrogate model cannot exactly",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "document_sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Many crucial scientific problems involve designing novel molecules with desired properties, which can be formulated as a black-box optimization problem over the discrete chemical space. In practice, multiple conflicting objectives and costly evaluations (e.g., wet-lab experiments) make the diversity of candidates paramount. Computational methods have achieved initial success but still struggle with considering diversity in both objective and search space. To fill this gap, we propose a multi-objective Bayesian optimization (MOBO) algorithm leveraging the hypernetwork-based GFlowNets (HN-GFN) as an acquisition function optimizer, with the purpose of sampling a diverse batch of candidate molecular graphs from an approximate Pareto front. Using a single preference-conditioned hypernetwork, HN-GFN learns to explore various trade-offs between objectives. We further propose a hindsight-like off-policy strategy to share high-performing molecules among different preferences in order to speed up learning for HNGFN. We empirically illustrate that HN-GFN has adequate capacity to generalize over preferences. Moreover, experiments in various real-world MOBO settings demonstrate that our framework predominantly outperforms existing methods in terms of candidate quality and sample efficiency. The code is available at https://github.com/violet-sto/HN-GFN.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fbc9981dd6316378aee7fd5975250f21-Paper-Conference.pdf",
+              "document_sha256": "fdfaf1d62cf5c13a454a0844f8586cb8a14a533467d5184ee221ef2b7445d0e6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "GFlowNets are amortized samplers that learn stochastic policies to sequentially generate compositional objects from a given unnormalized distribution, i.e. a reward signal. They can generate diverse sets of high-reward objects, which has a demonstrated utility in small molecules drug-discovery tasks (Bengio et al., 2021). Traditionally, GFlowNets used for molecule generation have focused on fragment-based drug discovery, i.e. their action space comprises of some predetermined fragments as building blocks for molecules. While producing diverse candidates, fragment-based approaches limit the pockets of accessible chemical space (Zhu et al., 2024; Bengio et al., 2021; Jain et al., 2023; Shen et al., 2024). A truly explorative generative policy, tapping into the full potential of GFlowNet would be realizable when using atoms instead of fragments as the action space (Mouchlis et al., 2021; Meyers et al., 2021; Nishibata & Itai, 1991). On the other hand, the vastness of this accessible state space makes training atom-based GFlowNets susceptible to collapse. Earlier atom-based GFlowNets attempt to overcome this issue by limiting models to small trajectories (Jain et al., 2023). However, since most commercially available drugs have molecular weights ranging from 200 to 600 daltons(Bos & Meinardi, 2000; Bickerton et al., 2012), the molecules generated from these small trajectories are unlikely to possess the drug-like characteristics necessary for therapeutic efficacy. In this work, we propose to scale the trajectory length of atom-based GFNs by pretraining them with expert demonstrations, coming in the form of offline trajectories generated from a dataset of drug-like molecules. Our main contributions in this paper are as follow:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/pandey25b/pandey25b.pdf",
+              "document_sha256": "f33d7a318bc90927ce1a1d47d956dfa47a1ccf70f78b80b83f3fcfba716295d4"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Generative Flow Networks (GFlowNets) have recently emerged as a suitable framework for generating diverse and high-quality molecular structures by learning from rewards treated as unnormalized distributions. Previous works in this framework often restrict exploration by using predefined molecular fragments as building blocks, limiting the chemical space that can be accessed. In this work, we introduce Atomic GFlowNets (A-GFNs), a foundational generative model leveraging individual atoms as building blocks to explore drug-like chemical space more comprehensively. We propose an unsupervised pre-training approach using drug-like molecule datasets, which teaches A-GFNs about inexpensive yet informative molecular descriptors such as drug-likeliness, topological polar surface area, and synthetic accessibility scores. These properties serve as proxy rewards, guiding A-GFNs towards regions of chemical space that exhibit desirable pharmacological properties. We further implement a goal-conditioned finetuning process, which adapts A-GFNs to optimize for specific target properties. In this work, we pretrain A-GFN on a subset of ZINC dataset, and by employing robust evaluation metrics we show the effectiveness of our approach when compared to other relevant baseline methods for a wide range of drug design tasks. The code is accessible at https: //github.com/diamondspark/AGFN.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/pandey25b/pandey25b.pdf",
+              "document_sha256": "f33d7a318bc90927ce1a1d47d956dfa47a1ccf70f78b80b83f3fcfba716295d4"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Bengio et al. (2021) employ replay buffer-based off-policy training for GFlowNets to generate novel molecules. However, such online off-policy methods can suffer from high variance (Fedus et al., 2020; Vemgal et al., 2023) and a lock-in of suboptimal trajectories. This risk is high in sparse reward settings where the agent struggles to adequately explore rare, high-reward regions of the state space, resulting in slow convergence and suboptimal performance. To mitigate these challenges, we propose leveraging the vast amounts of readily available inexpensive and unlabelled molecular data to perform a hybrid online-offline off-policy pretraining of A-GFN. In this work we use the ZINC dataset (Sterling & Irwin, 2015) containing over 200M molecules from which we derive expert trajectories.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/pandey25b/pandey25b.pdf",
+              "document_sha256": "f33d7a318bc90927ce1a1d47d956dfa47a1ccf70f78b80b83f3fcfba716295d4"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04bb8a5358cd6df4328c4732",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/fbc9981dd6316378aee7fd5975250f21-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-c9ce69cadd8064a1e356f013",
+          "url": "https://proceedings.mlr.press/v267/pandey25b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "40ba12aef53ffbef40eb882a1a77a2994a2af9d421f2ab3223723f92fb2616da"
+    },
+    {
+      "id": "edge-4a2a03d79be22a05c58c4d89",
+      "a": "paper-05f5a326825d99248f57fee4",
+      "b": "paper-315191dd1eda33d34fd6da2a",
+      "state": {
+        "paper_a": {
+          "title": "Generative Flows on Discrete State-Spaces: Enabling Multimodal Flows with Applications to Protein Co-Design",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Combining discrete and continuous data is an important capability for generative models. We present Discrete Flow Models (DFMs), a new flow-based model of discrete data that provides the missing link in enabling flow-based generative models to be applied to multimodal continuous and discrete data problems. Our key insight is that the discrete equivalent of continuous space flow matching can be realized using Continuous Time Markov Chains. DFMs benefit from a simple derivation that includes discrete diffusion models as a specific instance while allowing improved performance over existing diffusion-based approaches. We utilize our DFMs method to build a multimodal flow-based modeling framework. We apply this capability to the task of protein co-design, wherein we learn a model for jointly generating protein structure and sequence. Our approach achieves state-of-the-art co-design performance while allowing the same multimodal model to be used for flexible generation of the sequence or structure."
+        },
+        "paper_b": {
+          "title": "Compositional Flows for 3D Molecule and Synthesis Pathway Co-design",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Many generative applications, such as synthesis-based 3D molecular design, involve constructing compositional objects with continuous features. Here, we introduce Compositional Generative Flows (CGFlow), a novel framework that extends flow matching to generate objects in compositional steps while modeling continuous states. Our key insight is that modeling compositional state transitions can be formulated as a straightforward extension of the flow matching interpolation process. We further build upon the theoretical foundations of generative flow networks (GFlowNets), enabling reward-guided sampling of compositional structures. We apply CGFlow to synthesizable drug design by jointly designing the molecule’s synthetic pathway with its 3D binding pose. Our approach achieves state-of-the-art binding affinity and synthesizability on all 15 targets from the LIT-PCBA benchmark, and 4.2x improvement in sampling efficiency compared to 2D synthesis-based baseline. To our best knowledge, our method is also the first to achieve state of-art-performance in both Vina Dock (-9.42) and AiZynth success rate (36.1%) on the CrossDocked2020 benchmark."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "…Ho et al., 2020; Song et al., 2021) and flow matching models (Lip-man et al., 2023) have achieved state-of-the-art performance in high-dimensional modeling tasks such as 3D molecule generation and protein structure design (Hoogeboom et al., 2022; Campbell et al., 2024; Schneuing et al., 2024a).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-05f5a326825d99248f57fee4",
+          "b": "paper-315191dd1eda33d34fd6da2a",
+          "input_sha256": "09cadb95af9fc1d181078836966376ae49fc077f7d72d5be82eda611603d7426",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/campbell24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/campbell24a/campbell24a.pdf",
+              "sha256": "a4c5fee310fbd5b5f8c65c765fce6aa88d857d4add33d7632edfefcbe1b3331f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/shen25b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/shen25b/shen25b.pdf",
+              "sha256": "b6a74cf1afb6f2266a6f33342a300732e6110e4f8f1fcf5e604cab19342c4f26"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Combining discrete and continuous data is an important capability for generative models. We present Discrete Flow Models (DFMs), a new flow-based model of discrete data that provides the missing link in enabling flow-based generative models to be applied to multimodal continuous and discrete data problems. Our key insight is that the discrete equivalent of continuous space flow matching can be realized using Continuous Time Markov Chains. DFMs benefit from a simple derivation that includes discrete diffusion models as a specific instance while allowing improved performance over existing diffusion-based approaches. We utilize our DFMs method to build a multimodal flow-based modeling framework. We apply this capability to the task of protein co-design, wherein we learn a model for jointly generating protein structure and sequence. Our approach achieves state-of-the-art co-design performance while allowing the same multimodal model to be used for flexible generation of the sequence or structure.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/campbell24a/campbell24a.pdf",
+              "document_sha256": "a4c5fee310fbd5b5f8c65c765fce6aa88d857d4add33d7632edfefcbe1b3331f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "4. Multimodal Protein Generative Model Using our flow formulation on discrete state spaces, we can now combine a DFM with a flow on a continuous space to define a multimodal generative flow. We use this to perform protein joint structure-sequence generation. A protein can be modeled as a linear chain of residues, each with an assigned amino acid and 3D atomic coordinates. Protein codesign aims to jointly generate the amino acids (sequence) and coordinates (structure). Prior works have used a generative model on one modality (sequence or structure) with a separate model to predict the other (see Sec. 5). Instead, our approach uses a single generative model to jointly sample both modalities: a DFM for the sequence and a flow model, FrameFlow (Yim et al., 2023a), for the structure. We refer to our multimodal flow model as Multiflow.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/campbell24a/campbell24a.pdf",
+              "document_sha256": "a4c5fee310fbd5b5f8c65c765fce6aa88d857d4add33d7632edfefcbe1b3331f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Diffusion models (Sohl-Dickstein et al., 2015; Ho et al., 2020; Song et al., 2021) and flow matching models (Lipman et al., 2023) have achieved state-of-the-art performance in high-dimensional modeling tasks such as 3D molecule generation and protein structure design (Hoogeboom et al., 2022; Campbell et al., 2024; Schneuing et al., 2024a). However, standard diffusion and flow matching are restricted to modeling all the dimensions of the object at once (Chen et al., 2024). This results in an inability to model the compositional structure of objects through sequential construction steps. As a consequence, two main limitation arise: (1) the validity of compositional objects cannot be ensured, as invalid generative actions cannot be masked, and (2) the potential for efficient reward credit assignment in the compositional space is restricted (Bengio et al., 2021; Hansen et al., 2022; Yao et al., 2023). In drug design, where synthesizability is crucial for wet-lab validation, molecules can be naturally viewed as compositional objects constructed through sequential synthesis steps. Unfortunately, existing diffusion and flow matching models lack the ability to effectively model and respect the compositional nature of synthesis constraints when generating molecules. Sequential models are a natural fit for generating composite objects. For instance, autoregressive models have been applied for 3D molecular design (Peng et al., 2023; Gebauer et al., 2020). However, current autoregressive models lack mechanisms to correct errors from earlier steps, causing slight errors in early position predictions to cascade (Jin et al., 2022). Generative flow networks (GFlowNets; Bengio et al., 2021) have recently shown success in sampling compositional structure for synthesis-based molecule",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/shen25b/shen25b.pdf",
+              "document_sha256": "b6a74cf1afb6f2266a6f33342a300732e6110e4f8f1fcf5e604cab19342c4f26"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Many generative applications, such as synthesisbased 3D molecular design, involve constructing compositional objects with continuous features. Here, we introduce Compositional Generative Flows (CGFlow), a novel framework that extends flow matching to generate objects in compositional steps while modeling continuous states. Our key insight is that modeling compositional state transitions can be formulated as a straightforward extension of the flow matching interpolation process. We further build upon the theoretical foundations of generative flow networks (GFlowNets), enabling reward-guided sampling of compositional structures. We apply CGFlow to synthesizable drug design by jointly designing the molecule’s synthetic pathway with its 3D binding pose. Our approach achieves state-ofthe-art binding affinity and synthesizability on all 15 targets from the LIT-PCBA benchmark, and 4.2× improvement in sampling efficiency compared to 2D synthesis-based baseline. To our best knowledge, our method is also the first to achieve state of-art-performance in both Vina Dock (-9.42) and AiZynth success rate (36.1%) on the CrossDocked2020 benchmark.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/shen25b/shen25b.pdf",
+              "document_sha256": "b6a74cf1afb6f2266a6f33342a300732e6110e4f8f1fcf5e604cab19342c4f26"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "To address this limitation, we introduce 3DSynthFlow, a generative method based on CGFlow, enabling the co-design of synthesis pathways and 3D molecular conformations. This approach facilitates effective modeling of protein-ligand interactions and synthesizability, which are both essential for target-based drug discovery. State flow model predicts the docking pose of a molecule within a target protein pocket. Unlike typical docking, where the full 2D molecule is provided at t = 0, the state flow model must predict the pose for the ligand that is sequentially constructed at discrete time intervals. Molecules for training the state flow model x are first decomposed into their compositional structure C, which represents the sequentially composed synthesis pathway using Enamine reaction rules, and their continuous state S, which represents the 3D coordinates refined over time. To ensure atoms not present in the molecule do not appear during decomposition (i.e., leaving group for reactions), we adopt a synthon-based representation rather than a reactant-based representation as Fig. 4. We discuss the motivation behind this formulation in Sec. E.1.2.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/shen25b/shen25b.pdf",
+              "document_sha256": "b6a74cf1afb6f2266a6f33342a300732e6110e4f8f1fcf5e604cab19342c4f26"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-05f5a326825d99248f57fee4",
+          "url": "https://proceedings.mlr.press/v235/campbell24a.html"
+        },
+        "b": {
+          "paper_id": "paper-315191dd1eda33d34fd6da2a",
+          "url": "https://proceedings.mlr.press/v267/shen25b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "808cbc23f5cd9deb5c374de311cd6ae337b7b24f7c0565e6715eeff2d0cca0d0"
+    },
+    {
+      "id": "edge-9e88df401505e5fa2482c24a",
+      "a": "paper-065b62b1491330f5c927c6bb",
+      "b": "paper-1a46babfb26d8e2dea6ca34f",
+      "state": {
+        "paper_a": {
+          "title": "Unifying Molecular and Textual Representations via Multi-task Language Modelling",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The recent advances in neural language models have also been successfully applied to the field of chemistry, offering generative solutions for classical problems in molecular design and synthesis planning. These new methods have the potential to fuel a new era of data-driven automation in scientific discovery. However, specialized models are still typically required for each task, leading to the need for problem-specific fine-tuning and neglecting task interrelations. The main obstacle in this field is the lack of a unified representation between natural language and chemical representations, complicating and limiting human-machine interaction. Here, we propose the first multi-domain, multi-task language model that can solve a wide range of tasks in both the chemical and natural language domains. Our model can handle chemical and natural language concurrently, without requiring expensive pre-training on single domains or task-specific models. Interestingly, sharing weights across domains remarkably improves our model when benchmarked against state-of-the-art baselines on single-domain and cross-domain tasks. In particular, sharing information across domains and tasks gives rise to large improvements in cross-domain tasks, the magnitude of which increase with scale, as measured by more than a dozen of relevant metrics. Our work suggests that such models can robustly and efficiently accelerate discovery in physical sciences by superseding problem-specific fine-tuning and enhancing human-model interactions."
+        },
+        "paper_b": {
+          "title": "Hierarchical Graph Tokenization for Molecule-Language Alignment",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Recently, there has been a surge of interest in extending the success of large language models (LLMs) from texts to molecules. Most existing approaches adopt a graph neural network to represent a molecule as a series of node tokens for molecule-language alignment, which, however, have overlooked the inherent hierarchical structures in molecules. Notably, higher-order molecular structures contain rich semantics of functional groups, which encode crucial biochemical functionalities of the molecules. We show that neglecting the hierarchical information in tokenization will lead to subpar molecule-language alignment and severe hallucination. To address this limitation, we propose HIerarchical GrapH Tokenization (HIGHT). HIGHT employs a hierarchical graph tokenizer that encodes the hierarchy of atom, motif, and molecular levels of informative tokens to improve the molecular perception of LLMs. HIGHT also adopts an augmented instruction tuning dataset, enriched with the hierarchical graph information, to further enhance the molecule-language alignment. Extensive experiments on 14 real-world benchmarks verify the effectiveness of HIGHT in reducing hallucination by 40%, and significant improvements in various molecule-language downstream tasks. The project is available at https: //higraphllm.github.io/."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…3D geometric conformations (Liu et al., 2022; Zhou et al., 2023), to scientific text (Beltagy et al., 2019) and multimodal molecule-text data (Liu et al., 2023b; Luo et al., 2023a; Christofidellis et al., 2023; Liu et al., 2024c; Su et al., 2022; Zeng et al., 2022; Srinivas & Runkana, 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-065b62b1491330f5c927c6bb",
+          "b": "paper-1a46babfb26d8e2dea6ca34f",
+          "input_sha256": "6933bac0302d6743c171fc7d8d1a2075ed9dde3d2a89ec2c21c1517d8f7989c8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/christofidellis23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/chen25cf.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chen25cf/chen25cf.pdf",
+              "sha256": "6316283023bf26dcde73f5cffa47753a83f2a42f8cf8f2e2d5212058fd592e5e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The recent advances in neural language models have also been successfully applied to the field of chemistry, offering generative solutions for classical problems in molecular design and synthesis planning. These new methods have the potential to fuel a new era of data-driven automation in scientific discovery. However, specialized models are still typically required for each task, leading to the need for problem-specific fine-tuning and neglecting task interrelations. The main obstacle in this field is the lack of a unified representation between natural language and chemical representations, complicating and limiting human-machine interaction. Here, we propose the first multidomain, multi-task language model that can solve a wide range of tasks in both the chemical and natural language domains. Our model can handle chemical and natural language concurrently, without requiring expensive pre-training on single domains or task-specific models. Interestingly, sharing weights across domains remarkably improves our model when benchmarked against state-of-the-art baselines on single-domain and cross-domain tasks. In particular, sharing information across domains and tasks gives rise to large improvements in cross-domain tasks, the magnitude of which increase with scale, as measured by more than a dozen of relevant metrics. Our work suggests that such models can robustly and efficiently accelerate discovery in physical sciences by superseding problem-specific fine-tuning and enhancing human-model interactions.",
+              "url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "document_sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this work, we propose a multi-task transformer for natural language and chemical translation, Multitask Text and Chemistry T5 (Text+Chem T5 for brevity). We focus on transfer learning in the chemical domain, with a specific emphasis on cross-domain tasks, tasks that involve chemistry and natural language concurrently. The performance comparisons of Text+Chem T5 to previous models in Figure 1 and Figure 2 show the consistent superiority of our approach for cross-domain tasks across various NLP-based evaluation metrics, like BLEU (Papineni et al., 2002), Rouge (Lin, 2004) and Meteor (Banerjee and Lavie, 2005). Text+Chem T5 does not rely on expensive mono-domain pre-training, task-specific fine-tuning, or separate heads for each task. Our model can be directly used on a variety of chemical and natural language-based tasks in a mono-domain and cross-domain setup (cf. Figure 3 for a graphical abstract). Notably, Text+Chem T5 enables the execution of complex molecular discovery workflows with a single model, a previously unreported ability, that, as we demonstrate, is even beyond the capability of foundation models like ChatGPT or Galactica (Taylor et al., 2022).",
+              "url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "document_sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Molecular Foundation Models. There is a separate line of works aiming to develop language models for molecules and proteins – the language of lives, from 1D sequences such as SMILES (Irwin et al., 2022), 2D molecular graphs (Rong et al., 2020; Wang et al., 2022; Zhang et al., 2024a), 3D geometric conformations (Liu et al., 2022; Zhou et al., 2023), to scientific text (Beltagy et al., 2019) and multimodal molecule-text data (Liu et al., 2023b; Luo et al., 2023a; Christofidellis et al., 2023; Liu et al., 2024c; Su et al., 2022; Zeng et al., 2022; Srinivas & Runkana, 2024). The adopted backbones range from encoder-decoder architectures such as MolT5 (Edwards et al., 2022) and Galactica (Taylor et al., 2022), to auto-regressive language modeling (Luo et al., 2023b; Liu et al., 2023e). Inspired by the success of large vision-language models (Li et al., 2023a; Zhu et al., 2023; Liu et al., 2023a), the community further seeks to develop molecular foundation models built upon existing molecular",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chen25cf/chen25cf.pdf",
+              "document_sha256": "6316283023bf26dcde73f5cffa47753a83f2a42f8cf8f2e2d5212058fd592e5e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Recently, there has been a surge of interest in extending the success of large language models (LLMs) from texts to molecules. Most existing approaches adopt a graph neural network to represent a molecule as a series of node tokens for molecule-language alignment, which, however, have overlooked the inherent hierarchical structures in molecules. Notably, higherorder molecular structures contain rich semantics of functional groups, which encode crucial biochemical functionalities of the molecules. We show that neglecting the hierarchical information in tokenization will lead to subpar moleculelanguage alignment and severe hallucination. To address this limitation, we propose HIerarchical GrapH Tokenization (HIGHT). HIGHT employs a hierarchical graph tokenizer that encodes the hierarchy of atom, motif, and molecular levels of informative tokens to improve the molecular perception of LLMs. HIGHT also adopts an augmented instruction tuning dataset, enriched with the hierarchical graph information, to further enhance the molecule-language alignment. Extensive experiments on 14 real-world benchmarks verify the effectiveness of HIGHT in reducing hallucination by 40%, and significant improvements in various molecule-language downstream tasks. The project is available at https: //higraphllm.github.io/.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chen25cf/chen25cf.pdf",
+              "document_sha256": "6316283023bf26dcde73f5cffa47753a83f2a42f8cf8f2e2d5212058fd592e5e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Despite recent progress, the tokenization in existing LGLMs neglects the essential hierarchical structures inherent in molecular graphs. In particular, in molecular graphs, the high-order substructures, such as motifs or functional groups, encode rich semantics of the biochemical functionalities of the molecules (Milo et al., 2002; Bohacek et al., 1996; Sterling & Irwin, 2015). For example, the presence of a hydroxide functional group (“-OH”) often indicates a higher water solubility. Therefore, such substructural cues are essential for enabling LLMs to reason about the molecules in a chemically meaningful way. However, existing LGLMs mostly tokenize molecules solely at the atom (node) level, and feed LLMs with only node-level tokens. Consequently, it requires LLMs to implicitly infer the underlying substructures during the instruction tuning stage. The absence of the critical substructures not only increases the unnecessary burdern on the LLMs, but also leads to misaligned representations and a higher likelihood of hallucinations in downstream tasks. To quantify the issue, we introduce a diagnostic benchmark, called MotifHallu, which evaluates the perception ability of LGLMs about the existence of common functional groups. Surprisingly, we find that existing LGLMs often produce false-positive predictions (i.e., keep answering “Yes” for any functional groups), highlighting a critical limitation in current graph to-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/chen25cf/chen25cf.pdf",
+              "document_sha256": "6316283023bf26dcde73f5cffa47753a83f2a42f8cf8f2e2d5212058fd592e5e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-065b62b1491330f5c927c6bb",
+          "url": "https://proceedings.mlr.press/v202/christofidellis23a.html"
+        },
+        "b": {
+          "paper_id": "paper-1a46babfb26d8e2dea6ca34f",
+          "url": "https://proceedings.mlr.press/v267/chen25cf.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "6a92933a57c8604efa8bf4c3036e98abec42397e2fd6a60137999ab8b512597d"
+    },
+    {
+      "id": "edge-2a3680f5b42265a3d6ad45a7",
+      "a": "paper-065b62b1491330f5c927c6bb",
+      "b": "paper-ac49377cd731b3cee99eb8f3",
+      "state": {
+        "paper_a": {
+          "title": "Unifying Molecular and Textual Representations via Multi-task Language Modelling",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The recent advances in neural language models have also been successfully applied to the field of chemistry, offering generative solutions for classical problems in molecular design and synthesis planning. These new methods have the potential to fuel a new era of data-driven automation in scientific discovery. However, specialized models are still typically required for each task, leading to the need for problem-specific fine-tuning and neglecting task interrelations. The main obstacle in this field is the lack of a unified representation between natural language and chemical representations, complicating and limiting human-machine interaction. Here, we propose the first multi-domain, multi-task language model that can solve a wide range of tasks in both the chemical and natural language domains. Our model can handle chemical and natural language concurrently, without requiring expensive pre-training on single domains or task-specific models. Interestingly, sharing weights across domains remarkably improves our model when benchmarked against state-of-the-art baselines on single-domain and cross-domain tasks. In particular, sharing information across domains and tasks gives rise to large improvements in cross-domain tasks, the magnitude of which increase with scale, as measured by more than a dozen of relevant metrics. Our work suggests that such models can robustly and efficiently accelerate discovery in physical sciences by superseding problem-specific fine-tuning and enhancing human-model interactions."
+        },
+        "paper_b": {
+          "title": "Data-Efficient Molecular Generation with Hierarchical Textual Inversion",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Developing an effective molecular generation framework even with a limited number of molecules is often important for its practical deployment, e.g., drug discovery, since acquiring task-related molecular data requires expensive and time-consuming experimental costs. To tackle this issue, we introduce Hierarchical Textual Inversion for Molecular Generation (HI-Mol), a novel data-efficient molecular generation method. HI-Mol is inspired by the importance of hierarchical information, e.g., both coarse- and fine-grained features, in understanding the molecule distribution. We propose to use multi-level embeddings to reflect such hierarchical features based on the adoption of the recent textual inversion technique in the visual domain, which achieves data-efficient image generation. Compared to the conventional textual inversion method in the image domain using a single-level token embedding, our multi-level token embeddings allow the model to effectively learn the underlying low-shot molecule distribution. We then generate molecules based on the interpolation of the multi-level token embeddings. Extensive experiments demonstrate the superiority of HI-Mol with notable data-efficiency. For instance, on QM9, HI-Mol outperforms the prior state-of-the-art method with 50x less training data. We also show the effectiveness of molecules generated by HI-Mol in low-shot molecular property prediction. Code is available at https://github.com/Seojin-Kim/HI-Mol."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…models, e.g., text-to-text (Raf-fel et al., 2020; Touvron et al., 2023) and text-to-image (Ramesh et al., 2021; Rombach et al., 2022), there exist several attempts to train text-to-molecule models, i.e., molecular language models (Bagal et al., 2021; Christofidellis et al., 2023; Liu et al., 2023).\nWe utilize Large-Caption2Smiles (MolT5, Edwards et al., 2022), Text+Chem T5-augm (ChemT5, Christofidellis et al., 2023), and BioT5 (BioT5, Pei et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-065b62b1491330f5c927c6bb",
+          "b": "paper-ac49377cd731b3cee99eb8f3",
+          "input_sha256": "a08205e83545e29617e0fe6099190ff38353914e2820f9ce7097b9299a30fce3",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/christofidellis23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/kim24z.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kim24z/kim24z.pdf",
+              "sha256": "6c05015d2e43dd68903adec33db718dbebc6c9f75ea0023f3dcf066c31fb99ab"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The recent advances in neural language models have also been successfully applied to the field of chemistry, offering generative solutions for classical problems in molecular design and synthesis planning. These new methods have the potential to fuel a new era of data-driven automation in scientific discovery. However, specialized models are still typically required for each task, leading to the need for problem-specific fine-tuning and neglecting task interrelations. The main obstacle in this field is the lack of a unified representation between natural language and chemical representations, complicating and limiting human-machine interaction. Here, we propose the first multidomain, multi-task language model that can solve a wide range of tasks in both the chemical and natural language domains. Our model can handle chemical and natural language concurrently, without requiring expensive pre-training on single domains or task-specific models. Interestingly, sharing weights across domains remarkably improves our model when benchmarked against state-of-the-art baselines on single-domain and cross-domain tasks. In particular, sharing information across domains and tasks gives rise to large improvements in cross-domain tasks, the magnitude of which increase with scale, as measured by more than a dozen of relevant metrics. Our work suggests that such models can robustly and efficiently accelerate discovery in physical sciences by superseding problem-specific fine-tuning and enhancing human-model interactions.",
+              "url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "document_sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this work, we propose a multi-task transformer for natural language and chemical translation, Multitask Text and Chemistry T5 (Text+Chem T5 for brevity). We focus on transfer learning in the chemical domain, with a specific emphasis on cross-domain tasks, tasks that involve chemistry and natural language concurrently. The performance comparisons of Text+Chem T5 to previous models in Figure 1 and Figure 2 show the consistent superiority of our approach for cross-domain tasks across various NLP-based evaluation metrics, like BLEU (Papineni et al., 2002), Rouge (Lin, 2004) and Meteor (Banerjee and Lavie, 2005). Text+Chem T5 does not rely on expensive mono-domain pre-training, task-specific fine-tuning, or separate heads for each task. Our model can be directly used on a variety of chemical and natural language-based tasks in a mono-domain and cross-domain setup (cf. Figure 3 for a graphical abstract). Notably, Text+Chem T5 enables the execution of complex molecular discovery workflows with a single model, a previously unreported ability, that, as we demonstrate, is even beyond the capability of foundation models like ChatGPT or Galactica (Taylor et al., 2022).",
+              "url": "https://proceedings.mlr.press/v202/christofidellis23a/christofidellis23a.pdf",
+              "document_sha256": "23ffc33d7811ac799003c140e3f1d8e080eddac881a8a2abb15b556bb834cd71"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Molecular language model. Following the recent progress in text-conditional generative models, e.g., text-to-text (Raffel et al., 2020; Touvron et al., 2023) and text-to-image (Ramesh et al., 2021; Rombach et al., 2022), there exist several attempts to train text-to-molecule models, i.e., molecular language models (Bagal et al., 2021; Christofidellis et al., 2023; Liu et al., 2023). Specifically, these works exploit popular language model architectures to have pre-trained models for molecules, based on the SMILES (Weininger, 1988) representation that interprets a given molecule as a string. For instance, MolT5 (Edwards et al., 2022) proposes to fine-tune a large text-to-text language model, T5 (Raffel et al., 2020), with SMILES representations of large-scale molecular data and description-SMILES pair data to have a text-to-molecule model. Notably, it results in a highly effective pre-trained model for molecules, demonstrating superior performance across several text-to-molecule generation tasks. Building on its success, we mainly utilize the Large-Caption2Smiles model trained with this MolT5 approach for our goal of data-efficient molecular generation.1",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kim24z/kim24z.pdf",
+              "document_sha256": "6c05015d2e43dd68903adec33db718dbebc6c9f75ea0023f3dcf066c31fb99ab"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Developing an effective molecular generation framework even with a limited number of molecules is often important for its practical deployment, e.g., drug discovery, since acquiring task-related molecular data requires expensive and time-consuming experimental costs. To tackle this issue, we introduce Hierarchical textual Inversion for Molecular generation (HIMol), a novel data-efficient molecular generation method. HI-Mol is inspired by the importance of hierarchical information, e.g., both coarseand fine-grained features, in understanding the molecule distribution. We propose to use multilevel embeddings to reflect such hierarchical features based on the adoption of the recent textual inversion technique in the visual domain, which achieves data-efficient image generation. Compared to the conventional textual inversion method in the image domain using a single-level token embedding, our multi-level token embeddings allow the model to effectively learn the underlying low-shot molecule distribution. We then generate molecules based on the interpolation of the multi-level token embeddings. Extensive experiments demonstrate the superiority of HIMol with notable data-efficiency. For instance, on QM9, HI-Mol outperforms the prior state-ofthe-art method with 50× less training data. We also show the effectiveness of molecules generated by HI-Mol in low-shot molecular property prediction. Code is available at https: //github.com/Seojin-Kim/HI-Mol.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kim24z/kim24z.pdf",
+              "document_sha256": "6c05015d2e43dd68903adec33db718dbebc6c9f75ea0023f3dcf066c31fb99ab"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We learn this hierarchical embedding in the token space of the recent text-to-molecule model (Edwards et al., 2022). Specifically, we adopt textual inversion (Gal et al., 2022)— which learns low-shot image distribution by introducing a new single token within a text-to-image model. A key difference here is that the consideration of “multi-level” tokens (see Figure 1) are essential in learning the low-shot molecule distribution due to the complicatedly structured nature of molecules compared to images (see Table 1). Contribution. We introduce a novel data-efficient molecular generation method, coined Hierarchical textual Inversion for Molecular generation (HI-Mol). Specifically, HI-Mol is composed of the following components:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kim24z/kim24z.pdf",
+              "document_sha256": "6c05015d2e43dd68903adec33db718dbebc6c9f75ea0023f3dcf066c31fb99ab"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-065b62b1491330f5c927c6bb",
+          "url": "https://proceedings.mlr.press/v202/christofidellis23a.html"
+        },
+        "b": {
+          "paper_id": "paper-ac49377cd731b3cee99eb8f3",
+          "url": "https://proceedings.mlr.press/v235/kim24z.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Molecular and Protein Design with AI"
+      },
+      "sha256": "92b904b9bd58787c755305607dccef01f8d42ad24097193ebc4b02ec3a0b14a4"
+    }
+  ]
+}

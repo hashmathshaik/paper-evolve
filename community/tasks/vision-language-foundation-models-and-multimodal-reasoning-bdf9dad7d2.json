@@ -1,0 +1,1014 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Vision-Language Foundation Models and Multimodal Reasoning",
+  "area": "Multimodal Understanding & Reasoning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-bf24bce7b94fb3abd9e4243a",
+      "a": "paper-a29003426865cc118bd54bfb",
+      "b": "paper-5a3b2502621e67285a4fa5fd",
+      "state": {
+        "paper_a": {
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "While large-scale unsupervised language models (LMs) learn broad world knowledge and some reasoning skills, achieving precise control of their behavior is difficult due to the completely unsupervised nature of their training. Existing methods for gaining such steerability collect human labels of the relative quality of model generations and fine-tune the unsupervised LM to align with these preferences, often with reinforcement learning from human feedback (RLHF). However, RLHF is a complex and often unstable procedure, first fitting a reward model that reflects the human preferences, and then fine-tuning the large unsupervised LM using reinforcement learning to maximize this estimated reward without drifting too far from the original model. In this paper, we leverage a mapping between reward functions and optimal policies to show that this constrained reward maximization problem can be optimized exactly with a single stage of policy training, essentially solving a classification problem on the human preference data. The resulting algorithm, which we call Direct Preference Optimization (DPO), is stable, performant, and computationally lightweight, eliminating the need for fitting a reward model, sampling from the LM during fine-tuning, or performing significant hyperparameter tuning. Our experiments show that DPO can fine-tune LMs to align with human preferences as well as or better than existing methods. Notably, fine-tuning with DPO exceeds RLHF's ability to control sentiment of generations and improves response quality in summarization and single-turn dialogue while being substantially simpler to implement and train."
+        },
+        "paper_b": {
+          "title": "Systematic Reward Gap Optimization for Mitigating VLM Hallucinations",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "The success of Direct Preference Optimization (DPO) in mitigating hallucinations in Vision Language Models (VLMs) critically hinges on the true reward gaps within preference pairs. However, current methods, typically relying on ranking or rewriting strategies, often struggle to optimize these reward gaps in a systematic way during data curation. A core difficulty lies in precisely characterizing and strategically manipulating the overall reward gap configuration, that is, the deliberate design of how to shape these reward gaps within each preference pair across the data. To address this, we introduce Topic-level Preference Rewriting (TPR), a novel framework designed for the systematic optimization of reward gap configuration. Through selectively replacing semantic topics within VLM responses with model’s own resampled candidates for targeted rewriting, TPR can provide topic-level control over fine-grained semantic details. This precise control enables advanced data curation strategies, such as progressively adjusting the difficulty of rejected responses, thereby sculpting an effective reward gap configuration that guides the model to overcome challenging hallucinations. Comprehensive experiments demonstrate TPR achieves state-of-the-art performance on multiple hallucination benchmarks, outperforming previous methods by an average of $\\sim$20%. Notably, it significantly reduces hallucinations by up to 93% on ObjectHal-Bench, and also exhibits superior data efficiency towards robust and cost-effective VLM alignment."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Recent efforts to mitigate visual hallucinations [12, 15, 16, 17, 18, 19] increasingly leverage preference learning through alignment techniques such as Direct Preference Optimization (DPO) [20].\nThe target policy model π θ , often initialized from π ref , is subsequently fine-tuned on D using Direct Preference Optimization (DPO) [20].\nIt then applies DPO [20] to train Qwen-VL-Chat [4] over 80k GPT-4V preferences.\nWe apply Direct Preference Optimization (DPO) [20] for preference learning, aligning the policy model with the preference data curated by TPR and its variants.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a29003426865cc118bd54bfb",
+          "b": "paper-5a3b2502621e67285a4fa5fd",
+          "input_sha256": "50c41789f6c947aa882a4bd002f6ead276d149cdc46a4ce013e5661a5256b326",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/a63ce8e6867a1bf4b4ca62e5077814d9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/a63ce8e6867a1bf4b4ca62e5077814d9-Paper-Conference.pdf",
+              "sha256": "0bd9be38a37e5d5afcd7b6676a50f32bf038f1360e40420c51744df8fc9a8b7f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "we will show that the RL-based objective used by existing methods can be optimized exactly with a simple binary cross-entropy objective, greatly simplifying the preference learning pipeline. At a high level, existing methods instill the desired behaviors into a language model using curated sets of human preferences representing the types of behaviors that humans find safe and helpful. This preference learning stage occurs after an initial stage of large-scale unsupervised pre-training on a large text dataset. While the most straightforward approach to preference learning is supervised fine-tuning on human demonstrations of high quality responses, the most successful class of methods is reinforcement learning from human (or AI) feedback (RLHF/RLAIF; [12, 2]). RLHF methods fit a reward model to a dataset of human preferences and then use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model. While RLHF produces models with impressive conversational and coding abilities, the RLHF pipeline is considerably more complex than supervised learning, involving training multiple LMs and sampling from the LM policy in the loop of training, incurring significant computational costs. In this paper, we show how to directly optimize a language model to adhere to human preferences, without explicit reward modeling or reinforcement learning. We propose Direct Preference Optimization (DPO), an algorithm that implicitly optimizes the same objective as existing RLHF algorithms (reward maximization with a KL-divergence constraint) but is simple to implement and straightforward to train. Intuitively, the DPO update increases the relative log probability of preferred to dispreferred responses, but it",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "document_sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Motivated by the challenges of applying reinforcement learning algorithms on large-scale problems such as fine-tuning language models, our goal is to derive a simple approach for policy optimization using preferences directly. Unlike prior RLHF methods, which learn a reward and then optimize it via RL, our approach bypasses the reward modeling step and directly optimizes a language model using preference data. As we will describe next in detail, our key insight is to leverage an analytical mapping from reward functions to optimal policies, which enables us to transform a loss function over reward functions into a loss function over policies. This change-of-variables approach allows us to skip the explicit reward modeling step, while still optimizing under existing models of human preferences, such as the Bradley-Terry model. In essence, the policy network represents both the language model and the reward. Deriving the DPO objective. We start with the same RL objective as prior work, Eq. 3, under a general reward function r. Following prior work [29, 28, 17, 15], it is straightforward to show that the optimal solution to the KL-constrained reward maximization objective in Eq. 3 takes the form: ✓ ◆ 1 1 ⇡r (y | x) = ⇡ref (y | x) exp r(x, y) , (4) Z(x) ⇣ ⌘ P where Z(x) = y ⇡ref (y | x) exp 1 r(x, y) is the partition function. See Appendix A.1 for a complete derivation. Even if we use the MLE estimate r of the ground-truth reward function r⇤ , it is still expensive to estimate the partition function Z(x) [17, 15], which makes this representation hard to utilize in practice. However, we can rearrange Eq. 4 to express the reward function in terms of its corresponding optimal policy ⇡r , the reference policy ⇡ref , and the unknown partition function Z(·). Specifically, we",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "document_sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Vision language models (VLMs) [1, 2, 3, 4, 5] have achieved remarkable success across a spectrum of multimodal tasks, from visual question answering [4, 6] to image captioning [7, 8], becoming foundational components in modern AI systems. Despite these advancements, even leading models like GPT-4V [1] suffer from a critical limitation: visual hallucinations [9, 10, 11, 12]. Specifically, they might confidently describe non-existent objects, misrepresent attributes, or misjudge spatial relationships, contradicting visual inputs. This poses significant risks, especially in safety-critical scenarios such as autonomous driving [13] and medicine applications [14]. Recent efforts to mitigate visual hallucinations [12, 15, 16, 17, 18, 19] increasingly leverage preference learning through alignment techniques such as Direct Preference Optimization (DPO) [20]. These methods aim to steer VLM behaviors towards desired outcomes by learning from meticulously curated preference data. This data typically consists of preference pairs (yw , yl ) for a given input x, where response yw is preferred over yl . By aligning with these preference data, the policy learned by DPO implicitly defines a reward function r(y; x) that reflects a probabilistic model like Bradley-Terry p(yw ≻ yl |x) [21]. The quality of this learned reward function, as highlighted by ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/a63ce8e6867a1bf4b4ca62e5077814d9-Paper-Conference.pdf",
+              "document_sha256": "0bd9be38a37e5d5afcd7b6676a50f32bf038f1360e40420c51744df8fc9a8b7f"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "x, these methods employ a base reference model πref to generate candidate responses. Human experts or proxy AI labelers πlabel then evaluate these responses or rewrite them to form preference pairs (yw , yl ), where yw is preferred over yl . The target policy model πθ , often initialized from πref , is subsequently fine-tuned on D using Direct Preference Optimization (DPO) [20]. The core idea of DPO is to optimize the policy πθ to satisfy the preferences in D, which are assumed to follow a latent reward model that reflects the preference probability p(yw ≻ yl |x), while simultaneously being constrained by a KL-divergence penalty to not stray too far from the initial reference policy πref . The DPO loss function is formulated as: \u0014 \u0012 \u0013\u0015 πθ (yw |x) πθ (yl |x) LDPO (πθ ; πref ) = −E(x,yw ,yl )∼D log σ β log − β log (1) πref (yw |x) πref (yl |x) where β is a hyperparameter that controls the strength of the preference modeling versus the KL constraint. As highlighted by recent studies [19, 22, 23], the effectiveness of such alignment critically depends on the true reward gaps, formally defined as the difference r(yw ; x) − r(yl ; x) within each preference pair. The strategic configuration of reward gaps across the curated preference data provides substantial training signals that not only reinforce desired behaviors but also accurately expose the model’s genuine and harder-to-discern deficiencies. Therefore, to sculpt effective reward gaps, two key principles should guide data curation: (1) The process must enable fine-grained control over data characteristics in yw and yl to deliberately shape reward gaps. (2) The preference pairs should accurately reflect desired behaviors while exposing model’s intrinsic failure modes. Guided by these principles, we propose Topic-level",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/a63ce8e6867a1bf4b4ca62e5077814d9-Paper-Conference.pdf",
+              "document_sha256": "0bd9be38a37e5d5afcd7b6676a50f32bf038f1360e40420c51744df8fc9a8b7f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The success of Direct Preference Optimization (DPO) in mitigating hallucinations in Vision Language Models (VLMs) critically hinges on the true reward gaps within preference pairs. However, current methods, typically relying on ranking or rewriting strategies, often struggle to optimize these reward gaps in a systematic way during data curation. A core difficulty lies in precisely characterizing and strategically manipulating the overall reward gap configuration, that is, the deliberate design of how to shape these reward gaps within each preference pair across the data. To address this, we introduce Topic-level Preference Rewriting (TPR), a novel framework designed for the systematic optimization of reward gap configuration. Through selectively replacing semantic topics within VLM responses with model’s own resampled candidates for targeted rewriting, TPR can provide topic-level control over fine-grained semantic details. This precise control enables advanced data curation strategies, such as progressively adjusting the difficulty of rejected responses, thereby sculpting an effective reward gap configuration that guides the model to overcome challenging hallucinations. Comprehensive experiments demonstrate TPR achieves state-of-the-art performance on multiple hallucination benchmarks, outperforming previous methods by an average of ∼20%. Notably, it significantly reduces hallucinations by up to 93% on ObjectHal-Bench, and also exhibits superior data efficiency towards robust and cost-effective VLM alignment.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/a63ce8e6867a1bf4b4ca62e5077814d9-Paper-Conference.pdf",
+              "document_sha256": "0bd9be38a37e5d5afcd7b6676a50f32bf038f1360e40420c51744df8fc9a8b7f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: (a) Topic-level Preference Rewriting. Based on varying chosen strategies, TPR selectively replaces each topic using model’s internally resampled candidates. Here, “Greedy” denotes selecting the highest- and worst-scored alternatives for a high-divergence reward gap, while “Curriculum” gradually introduces harder-to-discern hallucinations in yl , thereby adjusting the reward gap to master challenging and subtle hallucinations. (b) Data Efficiency. Apart from manual annotation (RLHF-V [12]), TPR achieves the best data efficiency on visual hallucination reduction. recent studies [19, 22, 23], hinges on the fidelity and magnitude of true reward gaps instantiated by each preference pair in the curated data. Thus, during data curation, strategically designing the reward gaps within each preference pair to shape an effective learning trajectory for the target reward functions, is crucial for robust VLM alignment against hallucinations. We refer to this deliberate process as the systematic optimization of overall reward gap configuration. Given that these reward gaps are inherently shaped by the intrinsic data characteristics of yw and yl (such as informativeness, trustworthiness, and explicit differences), optimizing reward gap configuration necessitates more than mere preference collections, but carefully controlling the underlying data characteristics, thereby sculpting an optimal reward function tailored for minimizing hallucinatory outputs. However, existing methods for preference data curation often lack mechanisms for such deliberate reward gap optimization. For example, ranking-based methods [15, 17, 19, 24] directly select yw and yl from potentially flawed model outputs without correcting underlying hallucinations. This may lead to low informativeness or",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/a63ce8e6867a1bf4b4ca62e5077814d9-Paper-Conference.pdf",
+              "document_sha256": "0bd9be38a37e5d5afcd7b6676a50f32bf038f1360e40420c51744df8fc9a8b7f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a29003426865cc118bd54bfb",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-5a3b2502621e67285a4fa5fd",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/a63ce8e6867a1bf4b4ca62e5077814d9-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "4afe458a2f11b31203bfd321c5a45121e15e7f922265e21e95fee0d2b47ca501"
+    },
+    {
+      "id": "edge-c0e65cc6d9eaa8da66ff9162",
+      "a": "paper-0470f2faf485d3740375e6ca",
+      "b": "paper-bd412fdbba41bdc5a2ff1b5b",
+      "state": {
+        "paper_a": {
+          "title": "JuICe: A Large Scale Distantly Supervised Dataset for Open Domain Context-based Code Generation",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Interactive programming with interleaved code snippet cells and natural language markdown is recently gaining popularity in the form of Jupyter notebooks, which accelerate prototyping and collaboration. To study code generation conditioned on a long context history, we present JuICe, a corpus of 1.5 million examples with a curated test set of 3.7K instances based on online programming assignments. Compared with existing contextual code generation datasets, JuICe provides refined human-curated data, open-domain code, and an order of magnitude more training data. Using JuICe, we train models for two tasks: (1) generation of the API call sequence in a code cell, and (2) full code cell generation, both conditioned on the NL-Code history up to a particular code cell. Experiments using current baseline code generation models show that both context and distant supervision aid in generation, and that the dataset is challenging for current systems."
+        },
+        "paper_b": {
+          "title": "PlotCoder: Hierarchical Decoding for Synthesizing Visualization Code in Programmatic Context",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Creating effective visualization is an important part of data analytics. While there are many libraries for creating visualization, writing such code remains difficult given the myriad of parameters that users need to provide. In this paper, we propose the new task of synthesizing visualization programs from a combination of natural language utterances and code context. To tackle the learning problem, we introduce PlotCoder, a new hierarchical encoder-decoder architecture that models both the code context and the input utterance. We use PlotCoder to first determine the template of the visualization code, followed by predicting the data to be plotted. We use Jupyter notebooks containing visualization programs crawled from GitHub to train PlotCoder. On a comprehensive set of test samples from those notebooks, we show that PlotCoder correctly predicts the plot type of about 70% samples, and synthesizes the correct programs for 35% samples, performing 3-4.5% better than the baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0470f2faf485d3740375e6ca",
+          "b": "paper-bd412fdbba41bdc5a2ff1b5b",
+          "input_sha256": "ba7595cd546fb3a93b66ad1e8030b577cdb922a4b59481d5cfa7e8620b94b302",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1546/",
+              "pdf_url": "https://aclanthology.org/D19-1546.pdf",
+              "sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.169/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.169.pdf",
+              "sha256": "9fc4367ba8ec8a9ef33a365b80a6d7d13b2d897a2cec19e9876faaf761be1f2b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "uated. We collect and release 13,905 nbgrader notebooks to evaluate models for code generation tasks, which, together with the training set, forms the first dataset for general purpose code generation in an interactive setting. We define two code generation related tasks using JuICe: (1) generating API sequences, and (2) full code generation. The first task is more relaxed and aims to assist users by generating a sequence of all function calls (Gu et al., 2016b) needed to achieve the goal of the cell. The second task measures the ability of models to learn to generate fully functioning complete code snippets. For both tasks, we investigate strong neural baselines and study performance improvements obtained by varying the size of prior NL and code context considered, as well as varying training data size. In summary, we introduce the task of code generation under the paradigm of IC. We collect and release a new large-scale dataset together with a manually curated test set based on nbgrader. Finally, we evaluate strong neural baselines on two code generation tasks, which achieve reasonable performance, with significant room for improvement.",
+              "url": "https://aclanthology.org/D19-1546.pdf",
+              "document_sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "There is significant existing research on mapping single NL utterances directly to executable programs in the form of logical forms (Zettlemoyer and Collins, 2005), λ-DCS (Liang et al., 2013), regular expressions (Kushman and Barzilay, 2013; Locascio et al., 2016), database queries (Iyer et al., 2017; Zhong et al., 2017) and general purpose programs (Balog et al., 2016; Allamanis et al., 2015). Ling et al. (2016) generate Java and Python source code from NL for card games, conditioned on categorical card attributes. Iyer et al. (2018) generate Java class methods using a single NL instruction and conditioned on a list of class environment variables and methods. Yin et al. (2018) mine a large NL-code dataset from Stackoverflow to train models to map a NL programming question into a short example solution snippet. Gu et al. (2016c) use neural models to map Java documentation strings to a sequence of API calls. In this work, we introduce a new task of mapping NL to source code under an interactive programming paradigm i.e., conditioned on a sequence of past NL and code cells representing past exploratory interactions. Models for mapping NL to code have been evaluated on datasets containing templated code for",
+              "url": "https://aclanthology.org/D19-1546.pdf",
+              "document_sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "arrays (e.g., the list of colors for each collection of the plotted data, where each color is specified as a string or another array of RGB values). Looking up each parameter’s meaning and its valid values remains tedious and error-prone, and the multitude of libraries available further compounds the difficulty for developers to create effective visualizations. In this paper, we propose to automatically synthesize visualization programs using a combination of natural language utterances and the programmatic context that the visualization program will reside (e.g., code written in the same file as the visualization program to load the plotted data), focusing on programs that create static visualizations (e.g., line charts, scatter plots, etc). While there has been prior work on synthesizing code from natural language (Zettlemoyer and Collins, 2012; Oda et al., 2015; Wang et al., 2015; Yin et al., 2018), and with addition information such as database schemas (Zhong et al., 2017; Yu et al., 2018, 2019b,a) or input-output examples (Polosukhin and Skidanov, 2018; Zavershynskyi et al., 2018), synthesizing general-purpose code from natural language remains highly difficult due to the ambiguity in the natural language input and complexity of the target. Our key insight in synthesizing visualization programs is to leverage their properties: they tend to be short, do not use complex programmatic control structures (typically a few lines of method calls without any control flow or loop constructs), with each method call restricted to a single plotting command (e.g., scatter, pie) along with its parameters (e.g., the plotted data). This influences our model architecture design as we will explain. To study the visualization code synthesis problem, we use the Python Jupyter",
+              "url": "https://aclanthology.org/2021.acl-long.169.pdf",
+              "document_sha256": "9fc4367ba8ec8a9ef33a365b80a6d7d13b2d897a2cec19e9876faaf761be1f2b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "We observe that while data to be plotted is usually stored in pandas dataframes (Pandas, 2020), they are not explicitly annotated in JuiCe. Hence, unlike prior work, we augment the programmatic context with dataframe names and their schema when available in predicting the plotted data. We next utilize our insight above and design 002 a hierarchical deep neural network code generation model called P LOT C ODER that decomposes synthesis into two subtasks: generating the plot command, then the parameters to pass in given the command. P LOT C ODER uses a pointer network architecture (Vinyals et al., 2015), which allows the model to directly select code tokens in the previous code cells in the same notebook as the plotted data. Meanwhile, inspired by the schema linking techniques proposed for semantic parsing with structured inputs, such as text to SQL tasks 003 (Iyer et al., 2017; Wang et al., 2019a; Guo et al., 2019), P LOT C ODER’s encoder connects the embedding of the natural language descriptions with their corresponding code fragments in previous code cells within each notebook. Although the constructed links can be noisy because the code context is less structured than the database tables in text-to-SQL problems, we observe that our approach results in substantial performance gain. We evaluate P LOT C ODER’s ability to synthesize visualization programs using Jupyter notebooks of homework assignments or exam solutions. On the gold test set where the notebooks are official solutions, our best model correctly predicts the plot types for over 80% of samples, and precisely predicts both the plot types and the plotted data for over 50% of the samples. On the more noisy test splits with notebooks written by students, which may include work-in-progress code, our model still",
+              "url": "https://aclanthology.org/2021.acl-long.169.pdf",
+              "document_sha256": "9fc4367ba8ec8a9ef33a365b80a6d7d13b2d897a2cec19e9876faaf761be1f2b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Creating effective visualization is an important part of data analytics. While there are many libraries for creating visualizations, writing such code remains difficult given the myriad of parameters that users need to provide. In this paper, we propose the new task of synthesizing visualization programs from a combination of natural language utterances and code context. To tackle the learning problem, we introduce P LOT C ODER, a new hierarchical encoder-decoder architecture that models both the code context and the input utterance. We use P LOT C ODER to first determine the template of the visualization code, followed by predicting the data to be plotted. We use Jupyter notebooks containing visualization programs crawled from GitHub to train P LOT C ODER. On a comprehensive set of test samples from those notebooks, we show that P LOT C ODER correctly predicts the plot type of about 70% samples, and synthesizes the correct programs for 35% samples, performing 34.5% better than the baselines.1",
+              "url": "https://aclanthology.org/2021.acl-long.169.pdf",
+              "document_sha256": "9fc4367ba8ec8a9ef33a365b80a6d7d13b2d897a2cec19e9876faaf761be1f2b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0470f2faf485d3740375e6ca",
+          "url": "https://aclanthology.org/D19-1546/"
+        },
+        "b": {
+          "paper_id": "paper-bd412fdbba41bdc5a2ff1b5b",
+          "url": "https://aclanthology.org/2021.acl-long.169/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "caf988cb4770f1df9e7cd61005b279e810a50c05de650068bc46e8af41ccabec"
+    },
+    {
+      "id": "edge-d1c40bf9775c3f4b7a5dfc6a",
+      "a": "paper-a17210f6b493186c6a3427a2",
+      "b": "paper-fd345d5c6c1c53416faf3f9c",
+      "state": {
+        "paper_a": {
+          "title": "TinyTL: Reduce Memory, Not Parameters for Efficient On-Device Learning",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Efficient on-device learning requires a small memory footprint at training time to fit the tight memory constraint. Existing work solves this problem by reducing the number of trainable parameters. However, this doesn't directly translate to memory saving since the major bottleneck is the activations, not parameters. In this work, we present Tiny-Transfer-Learning (TinyTL) for memory-efficient on-device learning. TinyTL freezes the weights while only learns the memory-efficient bias modules, thus no need to store the intermediate activations. To maintain the adaptation capacity, we introduce a new memory-efficient bias module, the lite residual module, to refine the feature extractor by learning small residual feature maps adding only 3.8% memory overhead. Extensive experiments show that TinyTL significantly saves the memory (up to 6.5x) with little accuracy loss compared to fine-tuning the full network. Compared to fine-tuning the last layer, TinyTL provides significant accuracy improvements (up to 33.8%) with little memory overhead. Furthermore, combined with feature extractor adaptation, TinyTL provides 7.5-12.9x memory saving without sacrificing accuracy compared to fine-tuning the full Inception-V3. Code is released at https://github.com/mit-han-lab/tinyML/tree/master/tinyTL."
+        },
+        "paper_b": {
+          "title": "Token Coordinated Prompt Attention is Needed for Visual Prompting",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Visual prompting techniques are widely used to efficiently fine-tune pretrained Vision Transformers (ViT) by learning a small set of shared prompts for all tokens. However, existing methods overlook the unique roles of different tokens in conveying discriminative information and interact with all tokens using the same prompts, thereby limiting the representational capacity of ViT. This often leads to indistinguishable and biased prompt-extracted features, hindering performance. To address this issue, we propose a plug-and-play Token Coordinated Prompt Attention (TCPA) module, which assigns specific coordinated prompts to different tokens for attention-based interactions. Firstly, recognizing the distinct functions of CLS and image tokens-global information aggregation and local feature extraction, we disentangle the prompts into CLS Prompts and Image Prompts, which interact exclusively with CLS tokens and image tokens through attention mechanisms. This enhances their respective discriminative abilities. Furthermore, as different image tokens correspond to distinct image patches and contain diverse information, we employ a matching function to automatically assign coordinated prompts to individual tokens. This enables more precise attention interactions, improving the diversity and representational capacity of the extracted features. Extensive experiments across various benchmarks demonstrate that TCPA significantly enhances the diversity and discriminative power of the extracted features."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "On the other hand, extra module-based approaches (Rebuffi et al., 2017; Zhang et al., 2020; Cai et al., 2020; Pfeiffer et al., 2020; Zaken et al., 2021) introduce additional learnable plug-in architectures to fine-tune the pretrained model.\n…methods include the partial tuning-6 based models (Linear (Iofinova et al., 2022), Partial (Yosin-ski et al., 2014), MLP (He et al., 2020)) and the extra module-based ones (Sidetune (Rebuffi et al., 2017), Bias (Zhang et al., 2020), Adapter (Cai et al., 2020), Adapt-Former (Chen et al., 2022)).\nAddressing this, recent research (He et al., 2020; Cai et al., 2020; Zhang et al., 2020; Han et al., 2023) has focused on efficiently adapting pretrained models to specific downstream tasks.\nSpecifically, the parameter-efficient fine-tuning methods include the partial tuning-6 based models (Linear (Iofinova et al., 2022), Partial (Yosin-ski et al., 2014), MLP (He et al., 2020)) and the extra module-based ones (Sidetune (Rebuffi et al., 2017), Bias (Zhang et al., 2020), Adapter (Cai et al., 2020), Adapt-Former (Chen et al., 2022)).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a17210f6b493186c6a3427a2",
+          "b": "paper-fd345d5c6c1c53416faf3f9c",
+          "input_sha256": "89594ddeb17cf851d63fc2690fadbd936d4968e2e3a4ceb29ef9282da65c9911",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/81f7acabd411274fcf65ce2070ed568a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/81f7acabd411274fcf65ce2070ed568a-Paper.pdf",
+              "sha256": "4d3bef20b03deec0e5efaeca1882a0999d59efb7da3782bf4c423873a9c71272"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/liu25cv.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cv/liu25cv.pdf",
+              "sha256": "57d457d66985df09f1df530aef83f96e5aea1339f6c5d35083e396a742dde7d5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract On-device learning enables edge devices to continually adapt the AI models to new data, which requires a small memory footprint to fit the tight memory constraint of edge devices. Existing work solves this problem by reducing the number of trainable parameters. However, this doesn’t directly translate to memory saving since the major bottleneck is the activations, not parameters. In this work, we present Tiny-Transfer-Learning (TinyTL) for memory-efficient on-device learning. TinyTL freezes the weights while only learns the bias modules, thus no need to store the intermediate activations. To maintain the adaptation capacity, we introduce a new memory-efficient bias module, the lite residual module, to refine the feature extractor by learning small residual feature maps adding only 3.8% memory overhead. Extensive experiments show that TinyTL significantly saves the memory (up to 6.5×) with little accuracy loss compared to fine-tuning the full network. Compared to fine-tuning the last layer, TinyTL provides significant accuracy improvements (up to 34.1%) with little memory overhead. Furthermore, combined with feature extractor adaptation, TinyTL provides 7.3-12.9× memory saving without sacrificing accuracy compared to fine-tuning the full Inception-V3.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/81f7acabd411274fcf65ce2070ed568a-Paper.pdf",
+              "document_sha256": "4d3bef20b03deec0e5efaeca1882a0999d59efb7da3782bf4c423873a9c71272"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we propose Tiny-Transfer-Learning (TinyTL) to address these challenges. By analyzing the memory footprint during the backward pass, we notice that the intermediate activations (the main bottleneck) are only needed when updating the weights, not the biases (Eq. 2). Inspired by this finding, we propose to freeze the weights of the pre-trained feature extractor and only update the biases to reduce the memory footprint (Figure 2b). To compensate for the capacity loss, we introduce a memory-efficient bias module, called lite residual module, which improves the model capacity by refining the intermediate feature maps of the feature extractor (Figure 2c). Meanwhile, we aggressively shrink the resolution and width of the lite residual module to have a small memory overhead (only 3.8%). Extensive experiments on 9 image classification datasets with the same pre-trained model (ProxylessNAS-Mobile [11]) demonstrate the effectiveness of TinyTL compared to previous transfer learning methods. Further, combined with a pre-trained once-for-all network [10], TinyTL can select a specialized sub-network as the feature extractor for each transfer dataset (i.e., feature extractor adaptation): given a more difficult dataset, a larger sub-network is selected, and vice versa. TinyTL achieves the same level of (or even higher) accuracy compared to fine-tuning the full Inception-V3 while reducing the training memory footprint by up to 12.9×. Our contributions can be summarized as follows: • We propose TinyTL, a novel transfer learning method to reduce the training memory footprint by an order of magnitude for efficient on-device learning. We systematically analyze the memory of training and find the bottleneck comes from updating the weights, not biases (assume ReLU activation). •",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/81f7acabd411274fcf65ce2070ed568a-Paper.pdf",
+              "document_sha256": "4d3bef20b03deec0e5efaeca1882a0999d59efb7da3782bf4c423873a9c71272"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction In recent years, the pretraining-finetuning strategy has become a foundational paradigm in the deep learning field, significantly advancing the progress of various multi-media technologies (Jang et al., 2019; Guo et al., 2019; Iofinova et al., 2022; Xu et al., 2025; Li & Zhou, 2025; Yao et al., 2025). However, as the sizes of models and datasets have rapidly exploded, such a popular paradigm has faced critical challenges due to its high storage and computational costs (Jia et al., 2022). Addressing this, recent research (He et al., 2020; Cai et al., 2020; Zhang et al., 2020; Han et al., 2023) has focused on efficiently adapting pretrained models to specific downstream tasks. Among them, visual prompt-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cv/liu25cv.pdf",
+              "document_sha256": "57d457d66985df09f1df530aef83f96e5aea1339f6c5d35083e396a742dde7d5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Partial tuning-based methods (Yosinski et al., 2014; He et al., 2020; Noroozi & Favaro, 2016; Zhang et al., 2016) aim to retain most of the pretrained backbone while fine-tuning a smaller subset of parameters. Although straightforward and easy to implement, these methods often exhibit a noticeable performance gap compared to full fine-tuning (Chen et al., 2021b). On the other hand, extra module-based approaches (Rebuffi et al., 2017; Zhang et al., 2020; Cai et al., 2020; Pfeiffer et al., 2020; Zaken et al., 2021) introduce additional learnable plug-in architectures to fine-tune the pretrained model. However, these approaches are often tailored to specific architectures, limiting their applicability to other models. Moreover, the introduction of additional learnable parameters poses practical challenges, making them less feasible in real-world scenarios (Jia et al., 2022; Han et al., 2023). 2.2. Prompt Learning Prompt learning techniques initially emerged in the realm of natural language processing (NLP), involving the incorporation of a small set of learnable soft prompts into input texts to customize language models for specific downstream tasks (Li & Liang, 2021; Liu et al., 2021a). Recent research has extended prompt learning to visual tasks, known as visual prompt tuning or visual prompting (Bahng et al., 2022; Jia et al., 2022; Han et al., 2023; Liu et al., 2024c;a;b). Compared to partial tuning-based and extra module-based methods, visual prompting-based approaches introduce sig-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cv/liu25cv.pdf",
+              "document_sha256": "57d457d66985df09f1df530aef83f96e5aea1339f6c5d35083e396a742dde7d5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "5.3. Implementation Details To fully validate the effectiveness of our proposed TCPA, we implement TCPA based on several representative visual prompting methods from recent years. For the token-level methods VPT (Jia et al., 2022) and VFPT (Zeng et al., 2024), we replace their learnable prompt tokens with our TCPA. For the input-level prompting methods VP (Bahng et al., 2022), DAMVP (Huang et al., 2023), and AutoVP (Tsao et al., 2024), while retaining their prompts added to the input images, we introduce our TCPA at the token level. The ViTB/16 (Dosovitskiy et al., 2020) supervised by ImageNet21k (Deng et al., 2009) is used as the backbone. Following DAMVP (Huang et al., 2023), we train for 100 epochs on all datasets. The AdamW (Loshchilov & Hutter, 2017) optimizer and cosine annealing are used for optimization. The weighting parameters λi and λc are set to 0.5. The length of the size of CLS prompt pool Nc and size of image prompt pool Ni are set to 10 and 20 respectively.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cv/liu25cv.pdf",
+              "document_sha256": "57d457d66985df09f1df530aef83f96e5aea1339f6c5d35083e396a742dde7d5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Visual prompting techniques are widely used to efficiently fine-tune pretrained Vision Transformers (ViT) by learning a small set of shared prompts for all tokens. However, existing methods overlook the unique roles of different tokens in conveying discriminative information and interact with all tokens using the same prompts, thereby limiting the representational capacity of ViT. This often leads to indistinguishable and biased prompt-extracted features, hindering performance. To address this issue, we propose a plug-and-play Token Coordinated Prompt Attention (TCPA) module, which assigns specific coordinated prompts to different tokens for attention-based interactions. Firstly, recognizing the distinct functions of CLS and image tokensglobal information aggregation and local feature extraction, we disentangle the prompts into CLS Prompts and Image Prompts, which interact exclusively with CLS tokens and image tokens through attention mechanisms. This enhances their respective discriminative abilities. Furthermore, as different image tokens correspond to distinct image patches and contain diverse information, we employ a matching function to automatically assign coordinated prompts to individual tokens. This enables more precise attention interactions, improving the diversity and representational capacity of the extracted features. Extensive experiments across various benchmarks demonstrate that TCPA significantly enhances the diversity and discriminative power of the extracted features. The code is available at https://github.com/zhoujiahuan1991/ICML2025TCPA.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cv/liu25cv.pdf",
+              "document_sha256": "57d457d66985df09f1df530aef83f96e5aea1339f6c5d35083e396a742dde7d5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a17210f6b493186c6a3427a2",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/81f7acabd411274fcf65ce2070ed568a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-fd345d5c6c1c53416faf3f9c",
+          "url": "https://proceedings.mlr.press/v267/liu25cv.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "fb8ac472d1b5dec75030800c6f45c78069c404ae457f1b7bae21df5c4fe1f55d"
+    },
+    {
+      "id": "edge-f6bd65e0f241f2194c17f3b1",
+      "a": "paper-052a50ecf5f8d61a294d2912",
+      "b": "paper-46080fa8212cc23d6ac3e68a",
+      "state": {
+        "paper_a": {
+          "title": "Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Pre-trained vision-language models (e.g., CLIP) have shown promising zero-shot generalization in many downstream tasks with properly designed text prompts. Instead of relying on hand-engineered prompts, recent works learn prompts using the training data from downstream tasks. While effective, training on domain-specific data reduces a model's generalization capability to unseen new domains. In this work, we propose test-time prompt tuning (TPT), a method that can learn adaptive prompts on the fly with a single test sample. TPT optimizes the prompt by minimizing the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample. In evaluating generalization to natural distribution shifts, TPT improves the zero-shot top-1 accuracy of CLIP by 3.6\\% on average, surpassing previous prompt tuning approaches that require additional task-specific training data. In evaluating cross-dataset generalization with unseen categories, TPTperforms on par with the state-of-the-art approaches that use additional training data."
+        },
+        "paper_b": {
+          "title": "Boosting Vision-Language Models with Transduction",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Transduction is a powerful paradigm that leverages the structure of unlabeled data to boost predictive accuracy. We present TransCLIP, a novel and computationally efficient transductive approach designed for Vision-Language Models (VLMs). TransCLIP is applicable as a plug-and-play module on top of popular inductive zero- and few-shot models, consistently improving their performances. Our new objective function can be viewed as a regularized maximum-likelihood estimation, constrained by a KL divergence penalty that integrates the text-encoder knowledge and guides the transductive learning process. We further derive an iterative Block Majorize-Minimize (BMM) procedure for optimizing our objective, with guaranteed convergence and decoupled sample-assignment updates, yielding computationally efficient transduction for large-scale datasets. We report comprehensive evaluations, comparisons, and ablation studies that demonstrate: (i) Transduction can greatly enhance the generalization capabilities of inductive pretrained zero- and few-shot VLMs; (ii) TransCLIP substantially outperforms standard transductive few-shot learning methods relying solely on vision features, notably due to the KL-based language constraint."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-052a50ecf5f8d61a294d2912",
+          "b": "paper-46080fa8212cc23d6ac3e68a",
+          "input_sha256": "36b3d40e4109dbedfc1570a916ec47f50ab1793bb574c74831895a75daa21782",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/5bf2b802e24106064dc547ae9283bb0c-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/5bf2b802e24106064dc547ae9283bb0c-Paper-Conference.pdf",
+              "sha256": "ebc07e9ad4f73cc66d79bac417aa9ac8e4ed0ab6d49b32fae408d7039a91a55a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/71d7dbe2652bd4662d29fa269f059db4-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/71d7dbe2652bd4662d29fa269f059db4-Paper-Conference.pdf",
+              "sha256": "1c04c079b8d217f854c304475e196941410cb733c3119f90078f4f905782dbd5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Pre-trained vision-language models (e.g., CLIP) have shown promising zero-shot generalization in many downstream tasks with properly designed text prompts. Instead of relying on hand-engineered prompts, recent works learn prompts using the training data from downstream tasks. While effective, training on domainspecific data reduces a model’s generalization capability to unseen new domains. In this work, we propose test-time prompt tuning (TPT), a method that can learn adaptive prompts on the fly with a single test sample. For image classification, TPT optimizes the prompt by minimizing the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample. In evaluating generalization to natural distribution shifts, TPT improves the zero-shot top-1 accuracy of CLIP by 3.6% on average, surpassing previous prompt tuning approaches that require additional task-specific training data. In evaluating cross-dataset generalization with unseen categories, TPT performs on par with the state-of-the-art approaches that use additional training data. Project page: https://azshue.github.io/TPT/.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5bf2b802e24106064dc547ae9283bb0c-Paper-Conference.pdf",
+              "document_sha256": "ebc07e9ad4f73cc66d79bac417aa9ac8e4ed0ab6d49b32fae408d7039a91a55a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Test-time Prompt Tuning (TPT) for image classification. We tune adaptive prompts on the fly with a single test sample, without the need for additional training data or annotations. TPT optimizes the prompt to encourage consistent predictions across augmented views by minimizing the marginal entropy. We introduce confidence selection to filter out noisy augmentations. Our Approach. To address the aforementioned challenges, we propose test-time prompt tuning (TPT) that tunes the prompt on the fly using only the given test sample. The tuned prompt is adapted to each task, making it suitable for zero-shot generalization without requiring any task-specific training data or annotations. TPT retains the zero-shot generalization setting since no additional training data or annotations are used. We explore TPT on two different downstream tasks: image classification and context-dependent visual reasoning. For each downstream task, we design a customized test-time tuning strategy that fits the nature of the task. Without loss of generality, we consider CLIP [1] as our vision-language foundation model, for its simplicity in design and its wide applicability [13]. For image classification, a test sample is an input image. Given a single sample at test time, we perform prompt tuning by generating multiple randomly augmented views, and optimizing the text prompt so that the model has consistent predictions across different augmented views. This is done by minimizing the marginal entropy among the outputs of the augmented views. In addition, since some augmentations may lead to misleading model predictions, we propose confidence selection to filter out those “noisy” augmented views. We discard augmented views with a high prediction entropy (i.e., low confidence), and only",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5bf2b802e24106064dc547ae9283bb0c-Paper-Conference.pdf",
+              "document_sha256": "ebc07e9ad4f73cc66d79bac417aa9ac8e4ed0ab6d49b32fae408d7039a91a55a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Transduction for vision-only classifiers. The use of unlabeled test data at inference time has received attention lately in rapidly emerging subjects, such as few-shot learning and unsupervised testtime adaptation. Examples include adjusting batch normalization layer statistics [46] and minimizing the entropy of predictions [60], which can be supplemented by pseudo-labeling strategies [36]. In the few-shot literature solely based on vision models, transduction leverages both the few labeled samples and unlabeled test data, outperforming inductive methods [76, 5, 24, 37, 75]. One of the first works introducing transduction in vision-based few-shot learning proposes propagating the labels from the support (labeled) to the query (unlabeled) set with a meta-learned graph [39]. Building on this idea, another work proposes to iteratively augment the support set to improve label propagation [34]. LaplacianShot [76] also exploits the inherent structure of the data through a graphLaplacian clustering, which discourages disparate class predictions for samples with close features, while matching each query set point to the nearest support prototype. Alternative approaches propose directly learning the class prototypes. For instance, Transductive Fine-Tuning (TF) [13] uses the prediction entropy on the query samples as a regularization term, while TIM and its variants [5, 59] employ the mutual information between the query samples and their predictions. BD-CSPN [37] refines the class prototypes by reducing the feature biases between the support set and the most confident query samples. An additional group of methods performs clustering in the feature space, for instance, by solving an optimal transport problem like PT-MAP [24], by projecting features into sub-spaces to facilitate",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/71d7dbe2652bd4662d29fa269f059db4-Paper-Conference.pdf",
+              "document_sha256": "1c04c079b8d217f854c304475e196941410cb733c3119f90078f4f905782dbd5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Combining vision and language modalities can greatly enhance expressiveness and reduce ambiguities in the understanding and interpretation of our environment. This principle is central in the development of Vision-Language Models (VLMs), such as CLIP [50], which learns visual representations through natural-language supervision. In the pre-training phase, an input image x and associated text description c are encoded by separate vision and text encoders. This yields feature representations f = θv (x) and t = θt (c), which can be aligned by contrastive learning. Such a joint embedding space for the visual and textual modalities facilitates zero-shot recognition and yields powerful adaptation capabilities for a large variety of tasks. The recent literature on adapting VLMs has grown substantially, in both the zero-shot and few-shot learning settings [73, 72, 16, 70, 74, 25, 43]. However, so far, these techniques predominantly align with induction, i.e., inference for each test sample is performed independently from the other samples within the target dataset. In contrast, transduction performs joint inference on all the test samples of a task, leveraging the statistics of the target unlabeled data [58, 27, 71]. In the context of standard vision-based classifiers, this has enabled transductive methods to outperform inductive-inference approaches as evidenced by benchmarks over large-scale datasets such as ImageNet [2]. Within the scope of deep learning, transduction has mainly been explored for few-shot learning to address the inherent challenges of training under limited supervision. This recent and quite abundant few-shot literature, e.g., [5, 13, 34, 37, 44, 76, 24, 75], among others, has focused on adopting standard vision-based pre-training models (such as ImageNet",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/71d7dbe2652bd4662d29fa269f059db4-Paper-Conference.pdf",
+              "document_sha256": "1c04c079b8d217f854c304475e196941410cb733c3119f90078f4f905782dbd5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "• GMM-based clustering: This unsupervised-learning term is akin to the GMM-based maximum-likelihood estimation objective in the standard EM algorithm [3]. By taking the negative logarithm, its minimization corresponds to maximizing the likelihood of the data. It can also be viewed as a probabilistic generalization of the K-means clustering objective [28]. Indeed, assuming Σ is the identity matrix reduces the first term in (2) to the K-means objective. • Laplacian regularization: The second term in (2) is the Laplacian regularizer, widely used in the context of graph/spectral clustering [56] and semi-supervised learning [7]. This term encourages nearby samples in the visual-embedding space (i.e., pairs of samples with high affinity wi,j ) to have similar z assignments. In our case, we propose to build a positive semidefinite (PSD) affinity matrix based on the cosine similarities as wij = fi⊤ fj (Gram matrix). As we see below, this PSD condition is important to obtain a convergent Majorize-Minimize optimizer with decoupled (parallel) sample-wise updates for the z-assignments, yielding a highly efficient transduction for large-scale target datasets (such as ImageNet). • Text-guided KL divergence: This term is dedicated to vision-language models and, as we will see in our experiments (ablation studies in Tables 4 and 6), has a substantial effect on performance. It encourages the prediction not to deviate significantly from the zero-shot predictions, thereby providing text supervision to the other two unsupervised-learning terms. Furthermore, being convex over zi , i ∈ Q, this term facilitates the optimization of the objective w.r.t the assignment variables. 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/71d7dbe2652bd4662d29fa269f059db4-Paper-Conference.pdf",
+              "document_sha256": "1c04c079b8d217f854c304475e196941410cb733c3119f90078f4f905782dbd5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-052a50ecf5f8d61a294d2912",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/5bf2b802e24106064dc547ae9283bb0c-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-46080fa8212cc23d6ac3e68a",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/71d7dbe2652bd4662d29fa269f059db4-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "b740b53c6f2e0af04a0a6f7426b75f12ce8c3fa8c78c7990ce22060f41e7b310"
+    },
+    {
+      "id": "edge-f7a14e4c0ed71a148d3f0311",
+      "a": "paper-045fe8a3ba76a24156453301",
+      "b": "paper-3efbc76e41849081539346a7",
+      "state": {
+        "paper_a": {
+          "title": "LEEP: A New Measure to Evaluate Transferability of Learned Representations",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We introduce a new measure to evaluate the transferability of representations learned by classifiers. Our measure, the Log Expected Empirical Prediction (LEEP), is simple and easy to compute: when given a classifier trained on a source data set, it only requires running the target data set through this classifier once. We analyze the properties of LEEP theoretically and demonstrate its effectiveness empirically. Our analysis shows that LEEP can predict the performance and convergence speed of both transfer and meta-transfer learning methods, even for small or imbalanced data. Moreover, LEEP outperforms recently proposed transferability measures such as negative conditional entropy and H scores. Notably, when transferring from ImageNet to CIFAR100, LEEP can achieve up to 30% improvement compared to the best competing method in terms of the correlations with actual transfer accuracy."
+        },
+        "paper_b": {
+          "title": "Wings: Learning Multimodal LLMs without Text-only Forgetting",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Multimodal large language models (MLLMs), initiated with a trained LLM, first align images with text and then fine-tune on multimodal mixed inputs. However, during the continued training, the MLLM catastrophically forgets the text-only instructions that the initial LLM masters. In this paper, we present Wings, a novel MLLM that excels in both text-only and multimodal instructions. By examining attention across layers of MLLM, we find that text-only forgetting is related to the attention shifts from pre-image to post-image text. From that, we construct an additional Low-Rank Residual Attention (LoRRA) block that acts as the \"modality learner\" to expand the learnable space and compensate for the attention shift. The complementary learners, like \"wings\" on either side, are connected in parallel to each layer's attention block. The LoRRA mirrors the structure of attention but utilizes low-rank connections to ensure efficiency. Initially, image and text inputs are aligned with visual learners operating alongside the main attention, balancing focus on visual elements. Later, textual learners are integrated with token-wise routing, blending the outputs of both modality learners collaboratively. Our experimental results demonstrate that Wings outperforms equally-scaled MLLMs in both text-only and visual question-answering tasks. Wings with compensation of learners addresses text-only forgetting during visual modality expansion in general MLLMs."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-045fe8a3ba76a24156453301",
+          "b": "paper-3efbc76e41849081539346a7",
+          "input_sha256": "90385378548dfc24c082df862d9b5db820e6b1fe03eefe680c7d7186ba96730a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/nguyen20b.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/3852f6d247ba7deb46e4e4be9e702601-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/3852f6d247ba7deb46e4e4be9e702601-Paper-Conference.pdf",
+              "sha256": "c1206fd5723a4d27e3cde68463b78580959d69001086ecf64b93b87c7f8909c2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new measure to evaluate the transferability of representations learned by classifiers. Our measure, the Log Expected Empirical Prediction (LEEP), is simple and easy to compute: when given a classifier trained on a source data set, it only requires running the target data set through this classifier once. We analyze the properties of LEEP theoretically and demonstrate its effectiveness empirically. Our analysis shows that LEEP can predict the performance and convergence speed of both transfer and meta-transfer learning methods, even for small or imbalanced data. Moreover, LEEP outperforms recently proposed transferability measures such as negative conditional entropy and H scores. Notably, when transferring from ImageNet to CIFAR100, LEEP can achieve up to 30% improvement compared to the best competing method in terms of the correlations with actual transfer accuracy.",
+              "url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "document_sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "choose good source models for a given target task (Achille et al., 2019; Bao et al., 2019; Bhattacharjee et al., 2019). Previous approaches to transferability estimation often require running a transfer learning algorithm that involves expensive parameter optimization (Zamir et al., 2018; Achille et al., 2019), do not have a simple interpretation (Bao et al., 2019), or make strong assumptions about the data sets that limit their applicability (Zamir et al., 2018; Tran et al., 2019). We propose a novel measure called the Log Expected Empirical Prediction (LEEP) for transferability estimation of deep networks that overcomes all the shortcomings above. In contrast to previous approaches, LEEP scores are obtained without training on the target task, thus avoiding the expensive parameter optimization step. Additionally, they have a simple interpretation and can be applied in general settings to a wide range of modern deep networks. In particular, LEEP scores are obtained from a source model and a target data set by making a single forward pass of the model through the target data. This is a simpler process than previous methods, such as Taskonomy (Zamir et al., 2018) and Task2Vec (Achille et al., 2019), where one has to re-train at least part of the source model on the target data set. Furthermore, LEEP has a simple interpretation: it is the average log-likelihood of the expected empirical predictor, a simple classifier that makes prediction based on the expected empirical conditional distribution between source and target labels. Finally, LEEP does not make any assumption on the source and target input samples, except that they have the same size. This is more general and applicable than previous work (Zamir et al., 2018; Tran et al., 2019) where source and target data",
+              "url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "document_sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "where token index set V∗ can be Vitself , Vbefore , or Vafter as mentioned above, and for simplicity, we omit hl−1 in alV∗ (·) of L AWS V∗ . In practice, L AWS V∗ characterizes the MLLM’s attention on the current sequence Vitself , Vbefore , or Vafter regarding the dynamic curve over all MLLM-layers. As shown in Figure 2 (b), the attention to the textual part initially increases and then decreases as the layers progress, while the trend for the visual one is often the opposite. We find that when the MLLM forgets the text-only instructions, the L AWS of the textual sequence after the visual ones show a deviation from the initial trend of rising and then declining. This implies a shift of layer-level attention in the text following the image Vafter compared to that preceding the image Vbefore . The dynamics labeled as 3 ⃝ in Figure 2 (b) show the red curve for better text-only performance towards the worse blue one. To quantify this, we compute the Pearson Correlation Coefficient [92] between L AWS before and after the visual sequence. Formally, Attention Shift = Ex [−ρ (L AWS Vbefore , L AWS Vafter )] + 1 . Studying the attention shift of over 100 diverse MLLMs, we find a positive correlation between the shift and the text-only performance degradation. In Figure 2 (c), each point represents a trained 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3852f6d247ba7deb46e4e4be9e702601-Paper-Conference.pdf",
+              "document_sha256": "c1206fd5723a4d27e3cde68463b78580959d69001086ecf64b93b87c7f8909c2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "In this section, we first introduce the benchmarks for evaluating W INGS, including Table 1: text-only forgetting on the same multimodal training data, Table 2: comparison with general MLLMs, and Figure 5: analysis on the Interleaved Image-Text (IIT) benchmark with varying levels of vision-related conversation. Following that, we outline the training details and configurations of the W INGS, and delve into experimental analysis across each benchmark. Following that, we perform an ablation study on various learning rates with different training parts. Finally, we provide supplementary descriptions regarding W INGS’ overhead compared to general MLLMs and how its innovative compensatory learners help effectively mitigate attention issues. Evaluation Setups. We aim to assess through MLLM how much visual information is required for evaluation. For example, generic multimodal instructions require MLLMs to strongly capture image aspects, whereas text-only instructions focus on the text. We introduce three types of benchmarks: • Standard text-only benchmarks. We are particularly interested in the text-only performance improvement of W INGS under the same training data and resource conditions. Different datasets including interdisciplinary exams like MMLU [43], CMMLU [65], ARC-Easy, ARCChallenge [27], language understanding and knowledge such as WinoGrande [103], OpenbookQA [8], Race-Middle, Race-High [60], WSC [129], CHID [144], reasoning such as HellaSwag [139], SIQA [105], PIQA [9], OCNLI [48], and math and code-related tasks such as GSM8K [28] and MBPP [4] are comprehensively evaluated. • General multimodal benchmarks. We evaluate on MMMU [138], MME [37], MMBench [84] (MMB) in English (EN) and Chinese (CN), ScienceQA [87] for test (SciQA), SEED-Bench [64] for image part",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3852f6d247ba7deb46e4e4be9e702601-Paper-Conference.pdf",
+              "document_sha256": "c1206fd5723a4d27e3cde68463b78580959d69001086ecf64b93b87c7f8909c2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In practical applications, MLLMs also require engaging in text-only or interleaved conversations. As demonstrated in Figure 1, users often start with text-only inquiries and then, if not fully satisfied with the response, proceed to supplement questions with visual content. For multimodal instructions, MLLMs still rely on text to capture critical elements, as images may offer redundant information [15, 17, 85]. The first existing approaches replay extensive text-only or interleaved [61, 151] training data to mitigate catastrophic forgetting in MLLMs [72, 86, 90]. However, increasing training data incurs additional computational overhead and data collection challenges. Secondly, some applications [40] switch between LLM and MLLM based on whether images are included. This intuitive solution inevitably demands more deployment memory [1, 2] and is less cache-friendly in long vision-andlanguage interleaved conversations [42, 76, 101]. Therefore, it is crucial to train MLLM while preserving the text-only performance efficiently. Given that the visual input tokens can be inserted at any position within the text sequence, we begin by examining the text before and after the inserted position to mark the impact of the visual part. Considering that MLLM’s attention weights reflect the focus on tokens and influence the decisionmaking process, we first analyze the attention weights across each layer of the MLLM. Specifically, for each layer, we compute the attention weight proportion on all text tokens before and after the inserted image, termed as Layer-level Attention Weights (L AWS) of the before and after image text. From this, we examine the dynamic of attention across all layers as MLLM-Laws. Through training and sampling over 100 diverse MLLMs, we find that a well-trained",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3852f6d247ba7deb46e4e4be9e702601-Paper-Conference.pdf",
+              "document_sha256": "c1206fd5723a4d27e3cde68463b78580959d69001086ecf64b93b87c7f8909c2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-045fe8a3ba76a24156453301",
+          "url": "https://proceedings.mlr.press/v119/nguyen20b.html"
+        },
+        "b": {
+          "paper_id": "paper-3efbc76e41849081539346a7",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/3852f6d247ba7deb46e4e4be9e702601-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "37dc327e34bfbb707b622f37d0cbce2bb3f832dcebef7860e78d9b2f6b51246e"
+    },
+    {
+      "id": "edge-cad112162612078a21662da4",
+      "a": "paper-002f98f1c2cb3b269a396082",
+      "b": "paper-0acf098cd3dc8fe8247e88a8",
+      "state": {
+        "paper_a": {
+          "title": "Self-Supervised Learning with Kernel Dependence Maximization",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "We approach self-supervised learning of image representations from a statistical dependence perspective, proposing Self-Supervised Learning with the Hilbert-Schmidt Independence Criterion (SSL-HSIC). SSL-HSIC maximizes dependence between representations of transformations of an image and the image identity, while minimizing the kernelized variance of those representations. This framework yields a new understanding of InfoNCE, a variational lower bound on the mutual information (MI) between different transformations. While the MI itself is known to have pathologies which can result in learning meaningless representations, its bound is much better behaved: we show that it implicitly approximates SSL-HSIC (with a slightly different regularizer).Our approach also gives us insight into BYOL, a negative-free SSL method, since SSL-HSIC similarly learns local neighborhoods of samples. SSL-HSIC allows us to directly optimize statistical dependence in time linear in the batch size, without restrictive data assumptions or indirect mutual information estimators. Trained with or without a target network, SSL-HSIC matches the current state-of-the-art for standard linear evaluation on ImageNet, semi-supervised learning and transfer to other classification and vision tasks such as semantic segmentation, depth estimation and object recognition. Code is available at https://github.com/deepmind/ssl_hsic."
+        },
+        "paper_b": {
+          "title": "Multi-modal contrastive learning adapts to intrinsic dimensions of shared latent variables",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Multi-modal contrastive learning as a self-supervised representation learning technique has achieved great success in foundation model training, such as CLIP~\\citep{radford2021learning}. In this paper, we study the theoretical properties of the learned representations from multi-modal contrastive learning beyond linear representations and specific data distributions. Our analysis reveals that, enabled by temperature optimization, multi-modal contrastive learning not only maximizes mutual information between modalities but also adapts to intrinsic dimensions of data, which can be much lower than user-specified dimensions for representation vectors. Experiments on both synthetic and real-world datasets demonstrate the ability of contrastive learning to learn low-dimensional and informative representations, bridging theoretical insights and practical performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…information maximization Since the infoNCE loss can be viewed as a variational upper bound of the negative mutual information [53, 59] (see also Lemma 8 below), another line of research understands the global minimizer of infoNCE loss as the mutual information maximizer [76, 24, 75, 73, 84, 41].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-002f98f1c2cb3b269a396082",
+          "b": "paper-0acf098cd3dc8fe8247e88a8",
+          "input_sha256": "524701de38a1d779cbb2c58b62bf236c67c5e1f63ac703cb0e6f388f0657b762",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/83004190b1793d7aa15f8d0d49a13eba-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/83004190b1793d7aa15f8d0d49a13eba-Paper.pdf",
+              "sha256": "658718c7b6012ea7f578d997d4359ab56db0e37e956a0eacd4d045de288ee3f8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/b0e7cfb911095d0319bffde0a8df4de0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/b0e7cfb911095d0319bffde0a8df4de0-Paper-Conference.pdf",
+              "sha256": "c2b3ff4122f3111d0076b2e66a9e421a2f80c020a9ebcacdfcd2f77e7bed9a1c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "source image, and push apart those of “negative” pairs (from different images). These methods are either understood from an information theoretic perspective as estimating the mutual information between the “positives” [15], or explained as aligning features subject to a uniformity constraint [23]. Another line of research [24, 25] attempts to learn representation without the “negative” pairs, but requires either a target network or stop-gradient operation to avoid collapsing. We examine the contrastive framework from a statistical dependence point of view: feature representations for a given transformed image should be highly dependent on the image identity (Figure 2). To measure dependence, we turn to the Hilbert-Schmidt Independence Criterion (HSIC) [26], and propose a new loss for self-supervised learning which we call SSL-HSIC. Our loss is inspired by HSIC Bottleneck [27, 28], an alternative to Information Bottleneck [29], where we use the image identity as the label, but change the regularization term. Through the dependence maximization perspective, we present a unified view of various selfsupervised losses. Previous work [30] has shown that the success of InfoNCE cannot be solely attributed to properties of mutual information, in particular because mutual information (unlike kernel measures of dependence) has no notion of geometry in feature space: for instance, all invertible encoders achieve maximal mutual information, but they can output dramatically different representations with very different downstream performance [30]. Variational bounds on mutual information do impart notions of locality that allow them to succeed in practice, departing from the mutual information quantity that they try to estimate. We prove that InfoNCE, a popular such bound, in fact",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/83004190b1793d7aa15f8d0d49a13eba-Paper.pdf",
+              "document_sha256": "658718c7b6012ea7f578d997d4359ab56db0e37e956a0eacd4d045de288ee3f8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Our method builds on the self-supervised learning framework used by most of the recent selfsupervised learning approaches [16–19, 22, 24, 25]. For a dataset with N points xi , each point goes through a random transformation tp (xi ) (e.g. random crop), and then forms a feature representation zip = fθ (tp (xi )) with an encoder network fθ . We associate each image xi with its identity yi , which works as a one-hot encoded label: yi ∈ RN and (yi )d = 1 iff d = i (and zero otherwise). To match the transformations and image identities, we maximize the dependence between zi and yi such that zi is predictive of its original image. To build representations suitable for downstream tasks, we also need to penalize high-variance representations. These ideas come together in our HSIC-based objective for self-supervised learning, which we term SSL-HSIC: p LSSL−HSIC (θ) = −HSIC (Z, Y ) + γ HSIC (Z, Z) . (4) Unlike contrastive losses, which make the zip from the same xi closer and those from different xj more distant, we propose an alternative way to match different transformations of the same image with its abstract identity (e.g. position in the dataset). Our objective also resembles the HSIC bottleneck for supervised learning [27] (in particular, the version of [28]), but ours uses a square root for HSIC(Z, Z). Thepsquare root makes the two terms on the same scale: HSIC(Z, Y ) is effectively a dot product, and HSIC(Z, Z) a norm, so that e.g. scaling the kernel by a constant does not change the relative amount of regularization;2 this also gives better performance in practice. Due to the one-hot encoded labels, we can re-write HSIC (Z, Y ) as (see Appendix A) HSIC(Z, Y ) ∝ Ez1 ,z2 ∼pos [k(z1 , z2 )] − Ez1 Ez2 [k(z1 , z2 )] ,",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/83004190b1793d7aa15f8d0d49a13eba-Paper.pdf",
+              "document_sha256": "658718c7b6012ea7f578d997d4359ab56db0e37e956a0eacd4d045de288ee3f8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Existing work explains the representations learned by contrastive learning from two different perspectives. Here, we elaborate on why neither can fully explain the phenomena observed in Section 1.1. Perspective from alignment and uniformity [79] decomposes the population infoNCE loss L into alignment and uniformity terms such that L(f, g, τ ) = Lalign (f, g, τ ) + Lunif (f, g, τ ). The first term Lalign favors alignment as it is minimized when f (X) = g(Y ) almost surely. In addition, the result in [79] implies that among all aligned representations, the second term Lunif favors uniformity as it is minimized when f (X) is uniformly distributed over the entire output space, which is restricted to be the unit hypersphere with a user-specified dimension in [79]. A crucial limitation of this result is that one needs the correct specification of a true dimension of data. In other words, if the aligned representation has a smaller dimension compared to the ambient output dimension (which arguably is always the case in practice) or the function class is not expressive enough to produce uniform representations on the entire output space, the theory established in [79] is not applicable. Perspective from mutual information maximization Since the infoNCE loss can be viewed as a variational upper bound of the negative mutual information [53, 59] (see also Lemma 8 below), another line of research understands the global minimizer of infoNCE loss as the mutual information maximizer [76, 24, 75, 73, 84, 41]. Although existing works connect infoNCE loss to its mutual information bound, as is pointed out in [75], solely maximizing the mutual information may result in undesirable representations. For instance, in the example in Section 1.1, as long as f (X) ≈ g(Y ) almost surely,2 the",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b0e7cfb911095d0319bffde0a8df4de0-Paper-Conference.pdf",
+              "document_sha256": "c2b3ff4122f3111d0076b2e66a9e421a2f80c020a9ebcacdfcd2f77e7bed9a1c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Alignment and similarity maximization. Inspired by the seminal work [79] in single-modality contrastive learning, we propose the following notion of alignment for learning representations from multiple modalities.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b0e7cfb911095d0319bffde0a8df4de0-Paper-Conference.pdf",
+              "document_sha256": "c2b3ff4122f3111d0076b2e66a9e421a2f80c020a9ebcacdfcd2f77e7bed9a1c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-002f98f1c2cb3b269a396082",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/83004190b1793d7aa15f8d0d49a13eba-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-0acf098cd3dc8fe8247e88a8",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/b0e7cfb911095d0319bffde0a8df4de0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "eeb081f286c9f750d99a6c8e9824a7a63d3a665ff8982c615074d5f35abb9782"
+    },
+    {
+      "id": "edge-6eb93a33c00bf6dc0ed43864",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-0ed7ff33c93cacfc943553bf",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "K-LITE: Learning Transferable Visual Models with External Knowledge",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "The new generation of state-of-the-art computer vision systems are trained from natural language supervision, ranging from simple object category names to descriptive captions. This form of supervision ensures high generality and usability of the learned visual models, based on the broad concept coverage achieved through large-scale data collection process. Alternatively, we argue that learning with external knowledge about images is a promising way which leverages a much more structured source of supervision and offers sample efficiency. In this paper, we propose K-LITE (Knowledge-augmented Language-Image Training and Evaluation), a simple strategy to leverage external knowledge for building transferable visual systems: In training, it enriches entities in natural language with WordNet and Wiktionary knowledge, leading to an efficient and scalable approach to learning image representations that uses knowledge about the visual concepts; In evaluation, the natural language is also augmented with external knowledge and then used to reference learned visual concepts (or describe new ones) to enable zero-shot and few-shot transfer of the pre-trained models. We study the performance of K-LITE on two important computer vision problems, image classification and object detection, benchmarking on 20 and 13 different existing datasets, respectively. The proposed knowledge-augmented models show significant improvement in transfer learning performance over existing methods. Our code is released at https://github.com/microsoft/klite."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To address this, a large number of language models augmented with external knowledge sources have been proposed [68, 29, 45, 56, 100, 7], achieving strong performance on a variety of NLP tasks [69, 42].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-0ed7ff33c93cacfc943553bf",
+          "input_sha256": "901c633d521df6ae49103cacd367156ddd81e4c19cc4ab3aa5bb3991e8e1cf5d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/63fef0802863f47775c3563e18cbba17-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/63fef0802863f47775c3563e18cbba17-Paper-Conference.pdf",
+              "sha256": "c804cd439d7a91e7e2dc21d89aeba2fea33901659dd5254db25a0f1ee5edfaf7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "35], text [18, 19, 72, 70], knowledge graphs [91, 74], or rules and ontologies [23]. Please, refer to the recent survey on knowledge-aware zero-shot learning for a more detailed review [12]. Recently, it has been suggested to move away from the restricted nature of standard zero-shot evaluation and make the task more practical by including training classes at test time, i.e., generalized zero-shot learning setting [94]. Despite the progress in this area, the traditional setting is typically limited to studying zero-shot transfer across classes in a single domain with manually defined splits, such as Animal with Attributes (AwA) [44], Birds-200 [89], SUN attributes [67], and ZS-ImageNet [73, 26]. Concurrently, [85] explore leveraging external knowledge to improve long-tailed visual recognition within individual domains, which falls into the category of class-level transfer. Task-level Transfer. Another line of work focuses on task-level zero-shot transfer [52, 46, 64, 71, 36, 97]. They pre-train visual models on hundreds of millions of web-crawled image-caption or image-tags pairs, and evaluate their transfer ability by directly performing inference in a wide range of downstream datasets, without tuning the model weights. We argue that the task-level transfer is more practical and attractive than class-level transfer, as it is more relevant to real-world scenarios, where we may want to develop models that can serve many visual recognition applications. Our work bridges the gap between the two lines of works above: it borrows the spirit of exploring knowledge in class-level transfer, and generalizes it for task-level transfer, leveraging the best of both worlds. To summarize, our work is different in two major aspects: (i) Settings. We focus on the task-level transfer",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/63fef0802863f47775c3563e18cbba17-Paper-Conference.pdf",
+              "document_sha256": "c804cd439d7a91e7e2dc21d89aeba2fea33901659dd5254db25a0f1ee5edfaf7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The new generation of state-of-the-art computer vision systems are trained from natural language supervision, ranging from simple object category names to descriptive captions. This form of supervision ensures high generality and usability of the learned visual models, due to the broad concept coverage achieved via largescale data collection process. Alternatively, we argue that learning with external knowledge is a promising way which leverages a much more structured source of supervision and offers sample efficiency. We propose K-L ITE 1 , a simple strategy to leverage external knowledge for building transferable visual systems: In training, it enriches entities in text with WordNet and Wiktionary knowledge, leading to an efficient and scalable approach to learning image representations that uses knowledge about the visual concepts. In evaluation, the text is also augmented with external knowledge and then used to reference learned visual concepts (or describe new ones) to enable zero-shot and few-shot transfer of the pre-trained models. We study the performance of K-L ITE on two important computer vision problems, image classification and object detection, benchmarking on 20 and 13 different existing datasets, respectively. The proposed knowledge-augmented models show significant improvement in transfer learning performance over existing methods. 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/63fef0802863f47775c3563e18cbba17-Paper-Conference.pdf",
+              "document_sha256": "c804cd439d7a91e7e2dc21d89aeba2fea33901659dd5254db25a0f1ee5edfaf7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Object detection (OD) typically involves two tasks: LOD = Lcls + Lloc , where the localization task Lloc aims to locate the presence of objects in an image with a bounding box, and classification task Lcls determines what object categories are present in that box. Similar to the IC task above, we improve the categorization task of individual boxes Lcls in OD with external knowledge, and keep Lloc the same. Specifically, we leverage GLIP [50] to reformulate OD as a phrase grounding task, by grounding each region proposed by Lloc [53] to phrases in a text sequence. For language encoding, we first augment a category name t into its knowledge-augmented form tk = [q, s]; this is different from IC in that p is excluded, as no prompt engineering is used in OD, as in [50]. In the original GLIP, a sequential text encoding scheme is used: a concatenated long sequence [q 1 , · · · , q K ] over category names is considered as the text encoder input. In our case, simple concatenation [q 1 , s1 · · · , q K , sK ] will quickly break the max length requirement of the language encoder. To resolve the issue, we propose a parallel text encoding scheme: each tk is passed through language encoder independently, we use the top-layer feature of [CLS] token as the contextual vector representation ũ 2 RP ⇥1 of tk : ũ = f (tk ). Given K categories, they can be encoded in parallel in a batch; the encoded phrase feature sequence is the concatenation U 2 RP ⇥K : U = [ũ1 , · · · , ũK ]. The region encoding is the same as in GLIP. The feature pyramid is V 2 RM ⇥P : V = f✓ (x), where M is the number of box features. The alignment scores Sground are computed: Sground = VU, Lcls = M(Sground ; T),",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/63fef0802863f47775c3563e18cbba17-Paper-Conference.pdf",
+              "document_sha256": "c804cd439d7a91e7e2dc21d89aeba2fea33901659dd5254db25a0f1ee5edfaf7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-0ed7ff33c93cacfc943553bf",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/63fef0802863f47775c3563e18cbba17-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "be6d512e894bddc6c37a51edaa6ba725ac7ad46f54eff656bf9dd40a49dfd8c2"
+    },
+    {
+      "id": "edge-76b79f39bc7b0685f45e9791",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-1d2eff20ac3b85f3c296e284",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Revisit What You See: Revealing Visual Semantics in Vision Tokens to Guide LVLM Decoding",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "Large Vision–Language Models (LVLMs) achieve strong performance across multimodal tasks by integrating visual perception with language understanding. However, how vision information contributes to the model’s decoding process remains under-explored, as reflected in frequent hallucinations. Through a series of analyses, we found that (i) vision tokens provide meaningful visual information even when hallucinations occur, and (ii) their semantics are encoded in the textual space and become explicit under appropriate vocabulary constraints. Building on these observations, we propose ReVisiT, a simple training-free decoding method that guides text generation in LVLMs by Referencing Vision Tokens. Our approach leverages the semantic information embedded within vision tokens by projecting them into the text token distribution. Specifically, ReVisiT dynamically selects the most relevant vision token at each decoding step via context-aware constrained divergence minimization. Then, ReVisiT uses its constrained projection to refine the output distribution to better incorporate visual semantics. Across five benchmarks on recent LVLMs, ReVisiT consistently enhances visual grounding with minimal computational overhead, and achieves competitive or superior results to state-of-the-art decoding baselines while reducing computational cost by up to 2\\times."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This way of treating vision tokens as static auxiliary contexts, similar to retrieval-augmented generation (Lewis et al., 2020; Gao et al., 2023) in LLMs, enables the construction of complex multimodal systems in a relatively simple manner.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-1d2eff20ac3b85f3c296e284",
+          "input_sha256": "6610e912658098a2a5da1a6d5d82e5cb5daaf81fe4a06a2405491c26f11e4ad9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.262/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "processed alongside text tokens during decoding. This way of treating vision tokens as static auxiliary contexts, similar to retrieval-augmented generation (Lewis et al., 2020; Gao et al., 2023) in LLMs, enables the construction of complex multimodal systems in a relatively simple manner. However, this approach is often insufficient to capture the unique characteristic and role of vision tokens as sole carriers of visual information, as denoted by hallucinations frequently observed in LVLM’s text outputs (Leng et al., 2024; Favero et al., 2024; Huo et al., 2025; Rohrbach et al., 2018; Li et al., 2023b; Guan et al., 2024). To mitigate this, research has begun to expand the understanding of vision tokens along with their additional utilization (Jiang et al., 2025a,b). Yet, it is still under-explored how vision tokens influence the decoding process of LVLMs and what kinds of textual semantics they encode. To investigate this direction, we conduct a series of analyses on vision tokens, leading to two key insights. First, by examining the output distributions of LVLMs particularly at hallucinated steps, we find that ground-truth objects often remain among the model’s high-probability candidates and this visual grounding signal in the output distribution comes from vision tokens. Second, we observe that the textual semantics of vision to-",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "Limitations A potential limitation of our method is its strong reliance on the semantics encoded in vision tokens, which may lead to overfitting to visually salient cues. While this behavior improves visual grounding in most cases, it can result in an overemphasis on perceptually grounded elements at the expense of implicit, commonsense, or non-visual contextual information. Although we compare fixed interpolation schemes in Appendix E.5, more adaptive interpolation or confidence-calibration strategies between the reference and vanilla logits remain worth exploring, as a context-dependent fusion rule may better balance visual grounding against nonvisual reasoning demands. Another limitation is its exclusive reliance on the model’s internal representations without access to external knowledge sources. As a result, it cannot correct factual errors or hallucinations originating from pretraining data, particularly in cases where visual evidence alone is insufficient for disambiguation or grounding. While our method improves the alignment between visual inputs and generated text, it does not incorporate retrieval mechanisms that could supplement the model with up-to-date or context-specific information. Nevertheless, due to its modular and decoding-time nature, our method is compatible with retrieval-augmented generation (RAG) pipelines and could be integrated with external knowledge modules in future work. Finally, our empirical analysis and experiments are conducted on a limited set of open-source LVLMs in the 7–32B parameter range. Due to computational resource constraints, we did not evaluate our method on 70B-scale or larger models, and we therefore do not claim that the observed gains directly transfer to substantially larger or proprietary LVLMs.",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large Vision Language Models (LVLMs) achieve strong performance across multimodal tasks by integrating visual perception with language understanding. However, how vision information contributes to the model’s decoding process remains under-explored, as reflected in frequent hallucinations. Through a series of analyses, we found that (i) vision tokens provide meaningful visual information even when hallucinations occur, and (ii) their semantics are encoded in the textual space and become explicit under appropriate vocabulary constraints. Building on these observations, we propose ReVisiT, a simple training-free decoding method that guides text generation in LVLMs by Referencing Vision Tokens. Our approach leverages the semantic information embedded within vision tokens by projecting them into the text token distribution. Specifically, ReVisiT dynamically selects the most relevant vision token at each decoding step via context-aware constrained divergence minimization. Then, ReVisiT uses its constrained projection to refine the output distribution to better incorporate visual semantics. Across five benchmarks on recent LVLMs, ReVisiT achieves competitive or superior results to stateof-the-art decoding baselines while reducing computational cost by up to 2×.1",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-1d2eff20ac3b85f3c296e284",
+          "url": "https://aclanthology.org/2026.acl-long.262/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "5c7223b89e36f0181facaff32a46b43832618296d05fef4b5653423380c223df"
+    },
+    {
+      "id": "edge-c43258361787b46cf3831065",
+      "a": "paper-02ba5120af24e3b0accc424e",
+      "b": "paper-1d2eff20ac3b85f3c296e284",
+      "state": {
+        "paper_a": {
+          "title": "Contrastive Decoding: Open-ended Text Generation as Optimization",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, inco- herence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains."
+        },
+        "paper_b": {
+          "title": "Revisit What You See: Revealing Visual Semantics in Vision Tokens to Guide LVLM Decoding",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "Large Vision–Language Models (LVLMs) achieve strong performance across multimodal tasks by integrating visual perception with language understanding. However, how vision information contributes to the model’s decoding process remains under-explored, as reflected in frequent hallucinations. Through a series of analyses, we found that (i) vision tokens provide meaningful visual information even when hallucinations occur, and (ii) their semantics are encoded in the textual space and become explicit under appropriate vocabulary constraints. Building on these observations, we propose ReVisiT, a simple training-free decoding method that guides text generation in LVLMs by Referencing Vision Tokens. Our approach leverages the semantic information embedded within vision tokens by projecting them into the text token distribution. Specifically, ReVisiT dynamically selects the most relevant vision token at each decoding step via context-aware constrained divergence minimization. Then, ReVisiT uses its constrained projection to refine the output distribution to better incorporate visual semantics. Across five benchmarks on recent LVLMs, ReVisiT consistently enhances visual grounding with minimal computational overhead, and achieves competitive or superior results to state-of-the-art decoding baselines while reducing computational cost by up to 2\\times."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02ba5120af24e3b0accc424e",
+          "b": "paper-1d2eff20ac3b85f3c296e284",
+          "input_sha256": "82b1c6ac88e71e9f1c72f7be42265d1d51b9c312710d5a6d2a3db208b0285814",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.687/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.262/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Contrastive Decoding: Open-ended Text Generation as Optimization Xiang Lisa Li1 , Ari Holtzman2 , Daniel Fried3 , Percy Liang1 , Jason Eisner4 , Tatsunori Hashimoto1 , Luke Zettlemoyer2,5 , Mike Lewis5 Stanford University1 , University of Washington2 , Carnegie Mellon University3 , Johns Hopkins University4 , FAIR5 xlisali@stanford.edu, ahai@cs.washington.edu, dfried@cs.cmu.edu, pliang@stanford.edu, jason@cs.jhu.edu, thashim@stanford.edu, lsz@cs.washington.edu, mikelewis@meta.com Abstract Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, incoherence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains.1",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose contrastive decoding, a search-based decoding approach that contrasts LMs of different scales. We evaluate our approach on open-ended text generation, and find that it improves over the prevalent methods like nucleus sampling in both fluency and coherence. As future work, the idea of contrasting an expert (larger LM) and an amateur (smaller LM) can be expanded to myriad setups, for instance, contrasting an early checkpoint of an LM and a later checkpoint of the LM. We hope that this paper can encourage more exploration of how to use contrasting language models.",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "7B (Liu et al., 2024a) as a widely adopted conventional baseline, Qwen2.5-VL-7B (Bai et al., 2025), and InternVL3-8B (Zhu et al., 2025). As baselines, we adopt various intra-alignment decoding strategies to compare the effectiveness of our method in enhancing visual grounding. (a) Greedy decoding is a standard decoding baseline, and (b) DoLa (Chuang et al., 2024) improves factuality by contrasting output logits from earlier and later decoder layers at each timestep, and has been widely adopted for hallucination mitigation in LVLMs despite being originally proposed for LLMs. For intraalignment baselines, (c) VCD (Leng et al., 2024) mitigates hallucination by perturbing visual inputs with Gaussian noise and enforcing consistency between the original and perturbed outputs; (d) M3ID (Favero et al., 2024) contrasts outputs with and without visual input to alleviate language prior bias and enhance visual grounding; (e) CODE (Kim et al., 2024) leverages the model’s self-generated image description as a contrasting reference to alleviate hallucination; (f) SID (Huo et al., 2025) applies contrastive decoding on low-attention vision patches to refine visual grounding. Implementation details. In entire experiments, we apply deterministic greedy decoding (i.e., temperature = 0) with a maximum output length of 512 tokens for all decoding methods. Regarding baselines, we follow the default hyperparameters provided by their original implementations.",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large Vision Language Models (LVLMs) achieve strong performance across multimodal tasks by integrating visual perception with language understanding. However, how vision information contributes to the model’s decoding process remains under-explored, as reflected in frequent hallucinations. Through a series of analyses, we found that (i) vision tokens provide meaningful visual information even when hallucinations occur, and (ii) their semantics are encoded in the textual space and become explicit under appropriate vocabulary constraints. Building on these observations, we propose ReVisiT, a simple training-free decoding method that guides text generation in LVLMs by Referencing Vision Tokens. Our approach leverages the semantic information embedded within vision tokens by projecting them into the text token distribution. Specifically, ReVisiT dynamically selects the most relevant vision token at each decoding step via context-aware constrained divergence minimization. Then, ReVisiT uses its constrained projection to refine the output distribution to better incorporate visual semantics. Across five benchmarks on recent LVLMs, ReVisiT achieves competitive or superior results to stateof-the-art decoding baselines while reducing computational cost by up to 2×.1",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "kens is initially obscured, but the interpretable and well-aligned semantics could be discovered with the proper constraints to focus on specific subset. Here, we interpret the semantics of vision tokens by projecting them into the text token distribution using the LLM decoder’s language modeling head, as both are embedded in the same space. Overall, these findings suggest that vision tokens intrinsically encode object-level semantics, though such signals typically remain latent under conventional unconstrained decoding. Building on this observation, we propose ReVisiT, a simple yet effective decoding strategy that guides text generation in LVLMs by Referencing Vision Tokens. At each step, ReVisiT selects the most relevant vision token based on context-aware constrained divergence from the current output distribution. Then, ReVisiT uses its constrained projection as reference to refine token-level logits. This activates the intrinsic semantics of vision tokens without training, architectural modifications, external modules, or multi-pass inference. As highlighted in Fig. 1, ReVisiT consistently improves performance across six model sizes spanning three architectures, demonstrating scalability and broad applicability across LVLM families. To be specific, on three hallucination benchmarks: HallusionBench (Guan et al., 2024), CHAIR (Rohrbach et al., 2018), and POPE (Li et al., 2023b), ReVisiT reduces hallucinations robustly on three representative model architectures: LLaVA-1.5 (Liu et al., 2024a), Qwen2.5-VL (Bai et al., 2025), and InternVL3-8B (Zhu et al., 2025). Beyond hallucination, we further validate its effectiveness on general-purpose benchmarks, including VQAv2 (Antol et al., 2015) and MMMU (Yue et al., 2024), indicating that the semantics surfaced by our",
+              "url": "https://aclanthology.org/2026.acl-long.262.pdf",
+              "document_sha256": "4dd568a3dae7e6c1338e69dc7072aed134ddd60b53d2417560124c0c5a875793"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02ba5120af24e3b0accc424e",
+          "url": "https://aclanthology.org/2023.acl-long.687/"
+        },
+        "b": {
+          "paper_id": "paper-1d2eff20ac3b85f3c296e284",
+          "url": "https://aclanthology.org/2026.acl-long.262/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "eabd2b25c3238e7a5dd2cdbe060a9a7a3df150efb97ec9337f8c3c92edee9afd"
+    },
+    {
+      "id": "edge-eb560a2a0ad966a4a1c61f2c",
+      "a": "paper-02ba5120af24e3b0accc424e",
+      "b": "paper-6f3a29cf2bc056ed5eebda8d",
+      "state": {
+        "paper_a": {
+          "title": "Contrastive Decoding: Open-ended Text Generation as Optimization",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, inco- herence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains."
+        },
+        "paper_b": {
+          "title": "SECOND: Mitigating Perceptual Hallucination in Vision-Language Models via Selective and Contrastive Decoding",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Despite significant advancements in Vision-Language Models (VLMs), the performance of existing VLMs remains hindered by object hallucination, a critical challenge to achieving accurate visual understanding. To address this issue, we propose SECOND: Selective and Contrastive Decoding, a novel approach that enables VLMs to effectively leverage multi-scale visual information with an object-centric manner, closely aligning with human visual perception. SECOND progressively selects and integrates multi-scale visual information, facilitating a more precise interpretation of images. By contrasting these visual information iteratively, SECOND significantly reduces perceptual hallucinations and outperforms a wide range of benchmarks. Our theoretical analysis and experiments highlight the largely unexplored potential of multi-scale application in VLMs, showing that prioritizing and contrasting across scales outperforms existing methods."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Contrastive Decoding (CD) (Li et al., 2022), which contrasts the outputs of strong expert models with those of weak amateur models has emerged as a fundamental approach in LLMs, enhancing generation quality while ensuring factual consistency.\nContrastive Decoding (CD) (Li et al., 2022) builds upon the perspective that when a powerful expert model fails to perform optimally, a weaker amateur model is likely to encounter even more pronounced failures.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02ba5120af24e3b0accc424e",
+          "b": "paper-6f3a29cf2bc056ed5eebda8d",
+          "input_sha256": "e19c80fff3b2410a84847c6cccc5750f4fc9f623d0a0f8920608f56d872043ec",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.687/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/park25c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/park25c/park25c.pdf",
+              "sha256": "5f2fd0bee714ccad6c0fe00dec2fe7b681e22c12f714caac71ff005e5f195da5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Contrastive Decoding: Open-ended Text Generation as Optimization Xiang Lisa Li1 , Ari Holtzman2 , Daniel Fried3 , Percy Liang1 , Jason Eisner4 , Tatsunori Hashimoto1 , Luke Zettlemoyer2,5 , Mike Lewis5 Stanford University1 , University of Washington2 , Carnegie Mellon University3 , Johns Hopkins University4 , FAIR5 xlisali@stanford.edu, ahai@cs.washington.edu, dfried@cs.cmu.edu, pliang@stanford.edu, jason@cs.jhu.edu, thashim@stanford.edu, lsz@cs.washington.edu, mikelewis@meta.com Abstract Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, incoherence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains.1",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose contrastive decoding, a search-based decoding approach that contrasts LMs of different scales. We evaluate our approach on open-ended text generation, and find that it improves over the prevalent methods like nucleus sampling in both fluency and coherence. As future work, the idea of contrasting an expert (larger LM) and an amateur (smaller LM) can be expanded to myriad setups, for instance, contrasting an early checkpoint of an LM and a later checkpoint of the LM. We hope that this paper can encourage more exploration of how to use contrasting language models.",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "2.2. Contrastive Decoding Contrastive Decoding (CD) (Li et al., 2022), which contrasts the outputs of strong expert models with those of weak amateur models has emerged as a fundamental approach in LLMs, enhancing generation quality while ensuring factual consistency. Building on the success of contrastive decoding in LLMs, this framework has been extended to VLMs, with a primary focus on enhancing factual grounding in multi-modal generation tasks. VCD (Leng et al., 2024) utilizes noised images to distort visual inputs for contrastive output distributions, reducing biases and improving alignment with visual inputs. CODE (Kim et al., 2024a) employs self-generated visual descriptions as contrasting references to align textual outputs with visual content. While these approaches primarily focus on suppressing the prior knowledge of LLMs, HALC (Chen et al., 2024b) contrasts the specific cropped focal of image to enhance visual representation. Recent works further expand the singlestep contrastive decoding paradigm through adaptive visual augmentations (Kim et al., 2024b; Park et al., 2025), diverse contrastive sampling and fusion strategies (Lee et al.,",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/park25c/park25c.pdf",
+              "document_sha256": "5f2fd0bee714ccad6c0fe00dec2fe7b681e22c12f714caac71ff005e5f195da5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "Contrastive Decoding (CD) (Li et al., 2022) builds upon the perspective that when a powerful expert model fails to perform optimally, a weaker amateur model is likely to encounter even more pronounced failures. By contrasting the output logits of these two models with hyperparameter α, single-stage CD amplifies the output quality of expert model as following:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/park25c/park25c.pdf",
+              "document_sha256": "5f2fd0bee714ccad6c0fe00dec2fe7b681e22c12f714caac71ff005e5f195da5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Despite significant advancements in VisionLanguage Models (VLMs), the performance of existing VLMs remains hindered by object hallucination, a critical challenge to achieving accurate visual understanding. To address this issue, we propose S ECOND: Selective and Contrastive Decoding, a novel approach that enables VLMs to effectively leverage multi-scale visual information with an object-centric manner, closely aligning with human visual perception. S ECOND progressively selects and integrates multi-scale visual information, facilitating a more precise interpretation of images. By contrasting these visual information iteratively, S ECOND significantly reduces perceptual hallucinations and outperforms a wide range of benchmarks. Our theoretical analysis and experiments highlight the largely unexplored potential of multi-scale application in VLMs, showing that prioritizing and contrasting across scales outperforms existing methods. Code is available at https://github.com/ AIDASLab/SECOND.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/park25c/park25c.pdf",
+              "document_sha256": "5f2fd0bee714ccad6c0fe00dec2fe7b681e22c12f714caac71ff005e5f195da5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To address these limitations, we propose S ECOND (Selective and Contrastive Decoding), a novel, training-free framework designed to address object hallucination by leveraging multiscale visual information with human-inspired selectivity and contrast (Purves et al., 2001). S ECOND dynamically prioritizes object-relevant patches and refines visual representations through an iterative, multi-stage decoding process. By selectively incorporating coarse-to-fine-grained visual information and focusing on high-resolution relevant patches, S ECOND enhances both visual fidelity and interpretability, effectively mitigating hallucination. As illustrated in Fig. 1, this process systematically filters out irrelevant patches, enabling the model to transition from broad-level scanning to fine-grained examination. In addition, the multi-stage process of S ECOND fosters a synergistic interaction between amateur and expert outputs, thereby introducing multi-stage Contrastive Decoding. The initial stage acts as an amateur, performing coarse image processing, while the final stage serves as an expert, delivering detailed and comprehensive analysis. This approach enhances step-by-step progression of S ECOND by contrasting the expert, which utilizes fine-grained and relevant information from the image, with several amateurs across multiple stages. Unlike prior works on Contrastive Decoding in VLMs, which primarily focus on suppressing language priors (Leng et al., 2024; Kim et al., 2024a; Wang et al., 2024b), S ECOND leverages selective contrast between sparse and dense visual information to effectively mitigate perceptual hallucinations. As a result, the expert output in the final stage of S ECOND outperforms several baselines independently, and moreover, incorporating contrastive decoding",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/park25c/park25c.pdf",
+              "document_sha256": "5f2fd0bee714ccad6c0fe00dec2fe7b681e22c12f714caac71ff005e5f195da5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02ba5120af24e3b0accc424e",
+          "url": "https://aclanthology.org/2023.acl-long.687/"
+        },
+        "b": {
+          "paper_id": "paper-6f3a29cf2bc056ed5eebda8d",
+          "url": "https://proceedings.mlr.press/v267/park25c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Vision-Language Foundation Models and Multimodal Reasoning"
+      },
+      "sha256": "ae21ef04ded78fc2b6046f4d90eb1147155a3a1b83d18a0319f9bf4f61eb03ec"
+    }
+  ]
+}

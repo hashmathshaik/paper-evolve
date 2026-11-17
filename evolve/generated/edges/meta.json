@@ -1,0 +1,37 @@
+{
+  "shard_size": 500,
+  "papers": 70861,
+  "embedding_model": "voyage-4-large",
+  "classifier": [
+    "claude-haiku-5-5",
+    "deepseek-v4.1-flash",
+    "deepseek-v4.1-flash-1017",
+    "glm-5.3",
+    "kimi-k3",
+    "kimi-k3.1-pro",
+    "qwen3.7-flash",
+    "qwen3.7-plus",
+    "qwen3.8-27b",
+    "qwen3.8-flash",
+    "qwen3.8-max-0902"
+  ],
+  "edges": 3733,
+  "fulltext_supported_predictions": 2579,
+  "abstract_only_predictions": 1154,
+  "withheld_after_assistant_review": 4,
+  "human_verified": false,
+  "relation_counts": {
+    "Extends": 2759,
+    "Challenges": 824,
+    "Combines": 97,
+    "Transfers": 344,
+    "Revives": 0
+  },
+  "classified_pairs": 29872,
+  "classified_papers": 22452,
+  "papers_with_similarity": 70861,
+  "generated_at": "2026-11-16T05:50:51.289197+00:00",
+  "type_threshold_shown": 0.85,
+  "score_description": "Model self-assessment; not calibrated accuracy",
+  "current_prompt_version": "contribution-evidence-v4"
+}

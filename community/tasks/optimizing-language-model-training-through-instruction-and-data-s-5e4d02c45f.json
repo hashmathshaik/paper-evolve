@@ -1,0 +1,950 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Optimizing Language Model Training Through Instruction and Data Selection",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-0592cc0a9d36316608f3571f",
+      "a": "paper-06b68f431142791678935853",
+      "b": "paper-28d5e6ff4d2afbfb216f9f47",
+      "state": {
+        "paper_a": {
+          "title": "Data and Parameter Scaling Laws for Neural Machine Translation",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "We observe that the development cross-entropy loss of supervised neural machine translation models scales like a power law with the amount of training data and the number of non-embedding parameters in the model. We discuss some practical implications of these results, such as predicting BLEU achieved by large scale models and predicting the ROI of labeling data in low-resource language pairs."
+        },
+        "paper_b": {
+          "title": "Beyond neural scaling laws: beating power law scaling via data pruning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Widely observed neural scaling laws, in which error falls off as a power of the training set size, model size, or both, have driven substantial performance improvements in deep learning. However, these improvements through scaling alone require considerable costs in compute and energy. Here we focus on the scaling of error with dataset size and show how in theory we can break beyond power law scaling and potentially even reduce it to exponential scaling instead if we have access to a high-quality data pruning metric that ranks the order in which training examples should be discarded to achieve any pruned dataset size. We then test this improved scaling prediction with pruned dataset size empirically, and indeed observe better than power law scaling in practice on ResNets trained on CIFAR-10, SVHN, and ImageNet. Next, given the importance of finding high-quality pruning metrics, we perform the first large-scale benchmarking study of ten different data pruning metrics on ImageNet. We find most existing high performing metrics scale poorly to ImageNet, while the best are computationally intensive and require labels for every image. We therefore developed a new simple, cheap and scalable self-supervised pruning metric that demonstrates comparable performance to the best supervised metrics. Overall, our work suggests that the discovery of good data-pruning metrics may provide a viable path forward to substantially improved neural scaling laws, thereby reducing the resource costs of modern deep learning."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06b68f431142791678935853",
+          "b": "paper-28d5e6ff4d2afbfb216f9f47",
+          "input_sha256": "d1ff26c6879fda1f9dbbc88c6adcc9dc7e1e9b72dc973e6b723017cb7bb76278",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.478/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.478.pdf",
+              "sha256": "fb8288588761f42bf137b9e82ab7c7781fd01e998684f222d1c9875e7d7a7f89"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/7b75da9b61eda40fa35453ee5d077df6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Some extremely low-resource MT datasets (which we examine in Section 3) can have less than 5 MB of data (∼40k sentence pairs). Figure 3 shows that when we extend our previous experiments to datasets smaller than this size, using 0.05% 0.0125% of the data, the data scaling power law seems to break down, casting doubt on our ability to extrapolate extremely low-resource results to medium and high-resource data regimes. However, the results are not simply noisy but predictably plateau to an apparent ceiling of 7.8 nats. For reference, a unigram language model trained on only the English part of the training data (with a 30k BPE vocab) achieves a per-token crossentropy of ∼7 nats. This leads us to suspect that models in this data regime are learning to rely on simple unigram statistics that do not change much as we decrease the data size. Using a much smaller BPE vocabulary of 2k tokens rectifies this plateau and returns to power law scaling, even with datasets <5 MB. We believe this is because the smaller vocabulary makes it difficult to exploit unigram statistics for rare words. While this is not conclusive evidence, we recommend that cross-entropies near or above unigram LM performance should not be relied upon to extrapolate performance. Dataset subsets which contain less than half of the BPE vocabulary should similarly be avoided.8 8 In ∼5 MB datasets, around half of the 30k BPE vocabulary is never seen during training. In contrast, ∼10 MB datasets contain almost every vocab token. See Appendix Figure 6.",
+              "url": "https://aclanthology.org/2021.emnlp-main.478.pdf",
+              "document_sha256": "fb8288588761f42bf137b9e82ab7c7781fd01e998684f222d1c9875e7d7a7f89"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Recent work [1, 2, 3, 4, 5, 6, 7, 8] has demonstrated that test loss L often falls off as a power law with different resources like model parameters (N ), number of training examples (P ), and amount of compute (C). However, the exponents ν of these power laws are often close to 0, suggesting potentially inefficient use of resources. For example, for large models with lots of compute, so that the amount of training data constitutes a performance bottleneck, the loss scales as L ≈ P −ν . Specifically for a large transformer based language model, ν = 0.095, which implies an order of magnitude increase in training data drops cross-entropy loss by only about 0.6 nats (Fig. 1 in [2]). In neural machine translation experiments ν varies across language pairs from 0.35 to 0.48 (Table 1 in [5]). Interestingly, [8] explored a fixed computation budget C and optimized jointly over model size N and training set size P , revealing that scaling both N and P commensurately as C increases is compute optimal, and can yield smaller high performing models (trained on more data) than previous work. Nevertheless, for a transformer based language model, a 100× increase in compute, corresponding to 10× increases in both model size and training set size, leads to a drop in cross-entropy loss of only about 0.5 nats (Fig. 2 in [8]). Similar slow scaling holds for large vision transformers where adding 2 billion pre-training images reduces ImageNet performance by a few percentage points (Fig. 1 in [7]). While all of these results constitute significant improvements in performance, they do come at a substantial resource cost whose fundamental origin arises from power law scaling with small exponents. Recent theoretical works [22, 23, 24] have argued that the power law exponent is governed by the",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "document_sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "scores for data pruning as their computation is expensive. We note since memorization explicitly approximates the increase in test loss due to removing each individual example, it is likely to be a good pruning metric (though it does not consider interactions). Ensemble active learning. Active learning iterates between training a model and selecting new inputs to be labeled [14, 15, 16, 17, 18]. In contrast, we focus on data pruning: one-shot selection of a data subset sufficient to train to high accuracy from scratch. A variety of coreset algorithms (e.g. [19]) have been proposed for this, but their computation is expensive, and so data-pruning has been less explored at scale on ImageNet. An early clustering approach [20] allowed training on 90% of ImageNet without sacrificing accuracy. Notably [11] reduced this to 80% by training a large ensemble of networks on ImageNet and using ensemble uncertainty to define the difficulty of each example, with low (high) uncertainty corresponding to easy (hard) examples. We will show how to achieve similar pruning performance without labels or the need to train a large ensemble. Diverse ensembles (DDD). [21] assigned a score to every ImageNet image, given by the number of models in a diverse ensemble (10 models) that misclassified the image. Intuitively, low (high) scores correspond to easy (hard) examples. The pruning performance of this metric remains unexplored. Summary. We note: (1) only one of these metrics has tested well for its efficacy in data pruning at scale on ImageNet; (2) all of these metrics require label information; (3) there is no theory of when and why data pruning is possible for any of these metrics; and (4) none of these works suggest the possibility of exponential scaling. We thus go beyond this prior work",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "document_sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "We note that the majority of data pruning experiments have been performed on small-scale datasets (i.e. variants of MNIST and CIFAR), while the few pruning metrics proposed for ImageNet have rarely been compared against baselines designed on smaller datasets. Therefore, it is currently unclear how most pruning methods scale to ImageNet and which method is best. Motivated by how strongly the quality of a pruning metric can impact performance in theory (Fig. 2), we decided to fill this knowledge gap by performing a systematic evaluation of 8 different supervised pruning metrics on ImageNet: two variants of influence scores [13], two variants of EL2N [10], DDD [21], memorization [13], ensemble active learning [11], and forgetting [9]. See Section 2 for a review of these metrics. Additionally, we include two new prototypicality metrics that we introduce in the next section. We first asked how consistent the rankings induced by different metrics are by computing the Spearman rank correlation between each pair of metrics (Fig. 5A). Interestingly, we found substantial diversity across metrics, though some (EL2N, DDD, and memorization) were fairly similar with rank correlations above 0.7. However, we observed marked performance differences between metrics: Fig 5BC shows test performance when a fraction f of the hardest examples under each metric are kept in the training set. Despite the success of many of these metrics on smaller datasets, only a 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "document_sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06b68f431142791678935853",
+          "url": "https://aclanthology.org/2021.emnlp-main.478/"
+        },
+        "b": {
+          "paper_id": "paper-28d5e6ff4d2afbfb216f9f47",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/7b75da9b61eda40fa35453ee5d077df6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "50408462617d93ebfa3ac088717de27d7e1ed7402bbbea68a3d3f2691288eb8b"
+    },
+    {
+      "id": "edge-32702c4489aa8f333bdfd8db",
+      "a": "paper-025f52db723c8092c91b8462",
+      "b": "paper-9634e227a35176597f130da2",
+      "state": {
+        "paper_a": {
+          "title": "Language-Conditioned Imitation Learning for Robot Manipulation Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Imitation learning is a popular approach for teaching motor skills to robots. However, most approaches focus on extracting policy parameters from execution traces alone (i.e., motion trajectories and perceptual data). No adequate communication channel exists between the human expert and the robot to describe critical aspects of the task, such as the properties of the target object or the intended shape of the motion. Motivated by insights into the human teaching process, we introduce a method for incorporating unstructured natural language into imitation learning. At training time, the expert can provide demonstrations along with verbal descriptions in order to describe the underlying intent (e.g., \"go to the large green bowl\"). The training process then interrelates these two modalities to encode the correlations between language, perception, and motion. The resulting language-conditioned visuomotor policies can be conditioned at runtime on new human commands and instructions, which allows for more fine-grained control over the trained policies while also reducing situational ambiguity. We demonstrate in a set of simulation experiments how our approach can learn language-conditioned manipulation policies for a seven-degree-of-freedom robot arm and compare the results to a variety of alternative methods."
+        },
+        "paper_b": {
+          "title": "Super-NaturalInstructions: Generalization via Declarative Instructions on 1600+ NLP Tasks",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "How well can NLP models generalize to a variety of unseen tasks when provided with task instructions? To address this question, we first introduce Super-NaturalInstructions, a benchmark of 1,616 diverse NLP tasks and their expert-written instructions. Our collection covers 76 distinct task types, including but not limited to classification, extraction, infilling, sequence tagging, text rewriting, and text composition. This large and diverse collection of tasks enables rigorous benchmarking of cross-task generalization under instructions—training models to follow instructions on a subset of tasks and evaluating them on the remaining unseen ones.Furthermore, we build Tk-Instruct, a transformer model trained to follow a variety of in-context instructions (plain language task definitions or k-shot examples). Our experiments show that Tk-Instruct outperforms existing instruction-following models such as InstructGPT by over 9% on our benchmark despite being an order of magnitude smaller. We further analyze generalization as a function of various scaling parameters, such as the number of observed tasks, the number of instances per task, and model sizes. We hope our dataset and model facilitate future progress towards more general-purpose NLP models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…are a versatile way of deﬁn-ing goals, which is why they have been studied in the context of a variety of applications, such as instructions in grounded environments (Shrid-har et al., 2020; Stepputtis et al., 2020; Min et al., 2022b; Weir et al., 2022) and database commands (Kim et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-025f52db723c8092c91b8462",
+          "b": "paper-9634e227a35176597f130da2",
+          "input_sha256": "95e4369016ef4bdf7c770c92f734d1592c1be2bf10bac869b0c80d69286c1285",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9909794d52985cbc5d95c26e31125d1a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9909794d52985cbc5d95c26e31125d1a-Paper.pdf",
+              "sha256": "6295199a9467a87bc0a06dd9458019cbdb885697dc9d45d3897b85ff5979fb79"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.340/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.340.pdf",
+              "sha256": "539ed07d3497a070063879fb657209c7dee6053c846e9f90e23267a9702f6e4f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Imitation learning is a popular approach for teaching motor skills to robots. However, most approaches focus on extracting policy parameters from execution traces alone (i.e., motion trajectories and perceptual data). No adequate communication channel exists between the human expert and the robot to describe critical aspects of the task, such as the properties of the target object or the intended shape of the motion. Motivated by insights into the human teaching process, we introduce a method for incorporating unstructured natural language into imitation learning. At training time, the expert can provide demonstrations along with verbal descriptions in order to describe the underlying intent (e.g., “go to the large green bowl”). The training process then interrelates these two modalities to encode the correlations between language, perception, and motion. The resulting language-conditioned visuomotor policies can be conditioned at runtime on new human commands and instructions, which allows for more fine-grained control over the trained policies while also reducing situational ambiguity. We demonstrate in a set of simulation experiments how our approach can learn language-conditioned manipulation policies for a seven-degree-of-freedom robot arm and compare the results to a variety of alternative methods.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9909794d52985cbc5d95c26e31125d1a-Paper.pdf",
+              "document_sha256": "6295199a9467a87bc0a06dd9458019cbdb885697dc9d45d3897b85ff5979fb79"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We present an approach for end-to-end imitation learning of robot manipulation policies that combines language, vision, and control. The extracted language-conditioned policies provided a simple and intuitive interface to a human user for providing unstructured commands. This represents a significant departure from existing work on imitation learning and enables a tight coupling of semantic knowledge extraction and control signal generation. Empirically, we showed that our approach significantly outperformed alternative methods, while also generalizing across a variety of experimental setups and achieving credible results on free-form, unconstrained natural-language instructions from previously unseen users. While we use FRCNN for perception and GloVe for language embeddings, our approach is independent of these choices and more recent models for vision and language, such as BERT [13], can easily be used as a replacement. 9",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9909794d52985cbc5d95c26e31125d1a-Paper.pdf",
+              "document_sha256": "6295199a9467a87bc0a06dd9458019cbdb885697dc9d45d3897b85ff5979fb79"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Language instructions are a versatile way of defining goals, which is why they have been studied in the context of a variety of applications, such as instructions in grounded environments (Shridhar et al., 2020; Stepputtis et al., 2020; Min et al., 2022b; Weir et al., 2022) and database commands (Kim et al., 2020). Here, we focus on applications of instructions for general NLP tasks. Recent literature has been motivated by building models that are generalizable across a variety of NLP tasks, when prompted with either a few examples (Ye and Ren, 2021; Bragg et al., 2021) or language definitions (Efrat and Levy, 2020; Weller et al., 2020; Zhong et al., 2021; Mishra et al., 2022b,a; Parmar et al., 2022). Our work is related to the existing benchmarks in this line of work, as delineated in Table 1 along various dimensions. Our benchmark extends NAT I NST (Mishra et al., 2022b) with 26× more tasks and greater variety of task types (Fig. 2). While C ROSS F IT (Ye et al., 2021) focuses on benchmarking with a few in-context examples, our benchmark also offers task instructions. Concurrent to our work, P ROMPT S OURCE (Bach et al., 2022) is another benchmark of tasks and their language instructions (prompts). An important distinction between this benchmark and",
+              "url": "https://aclanthology.org/2022.emnlp-main.340.pdf",
+              "document_sha256": "539ed07d3497a070063879fb657209c7dee6053c846e9f90e23267a9702f6e4f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Defining Generalization to Unseen Tasks. Each task t is defined via its natural language instruction It , and each task has a set of input/output instances (Xt , Yt ). A model M is expected to produce the output y, given the input x and the task instruction It : M (It , x) = y, for (x, y) ∈ (Xt , Yt ). In particular, we would like to evaluate model M on tasks that are not observed (i.e., their instances were not used for training M ). The only source of signal for learning the task at inference time is in-context instructions It that contain a definition and demonstration examples of the task. Tk-I NSTRUCT. We introduce Tk-I NSTRUCT, a model that is meta-trained on S UP -NAT I NST for solving tasks given their in-context instructions. Previous work has shown the effectiveness of such meta-training in improving model’s ability to do incontext learning with either prompts (Zhong et al., 2021; Sanh et al., 2022) or demonstration examples (Min et al., 2022a). Because of the large variety of tasks in S UP -NAT I NST, we are able to do this multi-task meta-training at a larger scale than before. We conduct our experiments and analysis based on the T5 model (Raffel et al., 2020). Since each instruction It consists of multiple elements as described in our instruction schema (§3), we map these elements to textual format and append them before the input instance. Fig. 8 in the appendix shows how we encode the full instructions. We study different combinations of these instruction elements in §7.2. By default, we will use our most effective instruction elements (i.e., task definition and two positive examples) unless otherwise specified. In the same manner, we train the multilingual variant mTk-I NSTRUCT based on the mT5 model (Xue et al., 2021).",
+              "url": "https://aclanthology.org/2022.emnlp-main.340.pdf",
+              "document_sha256": "539ed07d3497a070063879fb657209c7dee6053c846e9f90e23267a9702f6e4f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-025f52db723c8092c91b8462",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9909794d52985cbc5d95c26e31125d1a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-9634e227a35176597f130da2",
+          "url": "https://aclanthology.org/2022.emnlp-main.340/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "f381691cfc27f2390a9c81d83ec47678607d4dddb4eeddf287711ca81b3de635"
+    },
+    {
+      "id": "edge-8531b8d3512b3013e99027a8",
+      "a": "paper-02e37beb2bfabaf0d86862d8",
+      "b": "paper-35481ba008566a80d119fa84",
+      "state": {
+        "paper_a": {
+          "title": "4+3 Phases of Compute-Optimal Neural Scaling Laws",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We consider the solvable neural scaling model with three parameters: data complexity, target complexity, and model-parameter-count. We use this neural scaling model to derive new predictions about the compute-limited, infinite-data scaling law regime. To train the neural scaling model, we run one-pass stochastic gradient descent on a mean-squared loss. We derive a representation of the loss curves which holds over all iteration counts and improves in accuracy as the model parameter count grows. We then analyze the compute-optimal model-parameter-count, and identify 4 phases (+3 subphases) in the data-complexity/target-complexity phase-plane. The phase boundaries are determined by the relative importance of model capacity, optimizer noise, and embedding of the features. We furthermore derive, with mathematical proof and extensive numerical evidence, the scaling-law exponents in all of these phases, in particular computing the optimal model-parameter-count as a function of floating point operation budget. We include a colab notebook https://tinyurl.com/2saj6bkj, nanoChinchilla, that reproduces some key results of the paper."
+        },
+        "paper_b": {
+          "title": "AlphaZero Neural Scaling and Zipf's Law: a Tale of Board Games and Power Laws",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Neural scaling laws are observed in a range of domains, to date with no universal understanding of why they occur. Recent theories suggest that loss power laws arise from Zipf's law, a power law observed in domains like natural language. One theory suggests that language scaling laws emerge when Zipf-distributed task quanta are learned in descending order of frequency. In this paper we examine power-law scaling in AlphaZero, a reinforcement learning algorithm, using a model of language-model scaling. We find that game states in training and inference data scale with Zipf's law, which is known to arise from the tree structure of the environment, and examine the correlation between scaling-law and Zipf's-law exponents. In agreement with the quanta scaling model, we find that agents optimize state loss in descending order of frequency, even though this order scales inversely with modelling complexity. We also find that inverse scaling, the failure of models to improve with size, is correlated with unusual Zipf curves where end-game states are among the most frequent states. We show evidence that larger models shift their focus to these less-important states, sacrificing their understanding of important early-game states."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The robustness of these power laws and their usefulness in training large models, especially large language models (LLMs) [6], prompted a range of attempts to ﬁnd a model explaining the mechanism behind neural power-law scaling [7, 8, 9, 10, 11].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02e37beb2bfabaf0d86862d8",
+          "b": "paper-35481ba008566a80d119fa84",
+          "input_sha256": "be6b539925843d18e845b6b9f126ff8e4ba9c3c1407390b9a1cb8a892c2b333f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/1dccfc3ee01871d05e33457c61037d59-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/1dccfc3ee01871d05e33457c61037d59-Paper-Conference.pdf",
+              "sha256": "68b4e438b2a7a8ae04c4f612fb0754e6f14b1c3e9173fb6e60b4a29f7b946b50"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/54c15a3033686e7999aecd2740c5a7c4-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/54c15a3033686e7999aecd2740c5a7c4-Paper-Conference.pdf",
+              "sha256": "4d1a83079f5823073ed6c544249c5116845e7cde85a9f206ac510a7a8fefa2cc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "To simplify the computations for compute-optimal curves, we introduce the following curve \b def 1 P̃(r) = max Fpp (r), Fac (r), F0 (r), γB Kpp (r) .",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/1dccfc3ee01871d05e33457c61037d59-Paper-Conference.pdf",
+              "document_sha256": "68b4e438b2a7a8ae04c4f612fb0754e6f14b1c3e9173fb6e60b4a29f7b946b50"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Neural scaling laws, describing the scaling of model performance with training resources, have been documented across many architectures and use cases [1, 2, 3, 4, 5]. The performance of these models, typically measured by test loss, follows a power law in either compute, model size or training data. The robustness of these power laws and their usefulness in training large models, especially large language models (LLMs) [6], prompted a range of attempts to find a model explaining the mechanism behind neural power-law scaling [7, 8, 9, 10, 11]. Several models connect performance power laws to Zipf’s law, a universal power law appearing in natural language [12, 9, 13, 14, 15, 16]. Scaling laws in reinforcement learning (RL) are so far relatively rare compared to supervised learning [17, 18, 19]. AlphaZero, a multi-agent RL algorithm that beat human champions in games like chess and Go [20], exhibits power laws of Elo score with training resources, as well as a power law relation between compute and optimal model size [5, 21, 22]. In this paper, we explore the mechanism behind known RL scaling laws, comparing this mechanism to the quantization model of LLM scaling [12]. Our main findings are: 1. We find that AlphaZero agents that exhibit scaling laws, such as those trained in Neumann & Gros (2022) [5], produce train and test data that follows Zipf’s law, suggesting that learned tasks also scale with Zipf’s law. 2. We show how these smooth Zipf laws form when agent policies are combined with the tree-structure of board games, which is known to create a Zipf-like state distribution [23]. 39th Conference on Neural Information Processing Systems (NeurIPS 2025).",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/54c15a3033686e7999aecd2740c5a7c4-Paper-Conference.pdf",
+              "document_sha256": "4d1a83079f5823073ed6c544249c5116845e7cde85a9f206ac510a7a8fefa2cc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "We find a correlation between the Zipf curve and scaling exponents, exposed by modulating policy temperature at inference. 3. In agreement with the quanta scaling model, we show that agents minimize loss on game states in descending order of frequency, counter-intuitively achieving better performance on harder tasks. 4. Inverse scaling, the abrupt failure of scaling laws at large sizes, coincides with an unusual state-frequency distribution. We show that large models scale negatively on games with an unusual tree structure that increases the frequency of strategically-unimportant late-game states. Larger agents achieve better loss on these late-game states, sacrificing performance on more important early-game states. We propose an explanation of inverse scaling in AlphaZero using a combination of the quantization model and the selective non-stationarity of training targets. All code and data required to reproduce our results is publicly available1 .",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/54c15a3033686e7999aecd2740c5a7c4-Paper-Conference.pdf",
+              "document_sha256": "4d1a83079f5823073ed6c544249c5116845e7cde85a9f206ac510a7a8fefa2cc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02e37beb2bfabaf0d86862d8",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/1dccfc3ee01871d05e33457c61037d59-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-35481ba008566a80d119fa84",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/54c15a3033686e7999aecd2740c5a7c4-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "64f461ab7657331c470889a085af655244e2c24e9c16a97b1ef907edfc797e6c"
+    },
+    {
+      "id": "edge-98e6994baf57c042d52591b7",
+      "a": "paper-03a8d28f64c0b1d05183e6f8",
+      "b": "paper-16d99e3d2bf7b1e67558d828",
+      "state": {
+        "paper_a": {
+          "title": "Dynamics of Finite Width Kernel and Prediction Fluctuations in Mean Field Neural Networks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We analyze the dynamics of finite width effects in wide but finite feature learning neural networks. Starting from a dynamical mean field theory description of infinite width deep neural network kernel and prediction dynamics, we provide a characterization of the $\\mathcal{O}(1/\\sqrt{\\text{width}})$ fluctuations of the DMFT order parameters over random initializations of the network weights. Our results, while perturbative in width, unlike prior analyses, are non-perturbative in the strength of feature learning. In the lazy limit of network training, all kernels are random but static in time and the prediction variance has a universal form. However, in the rich, feature learning regime, the fluctuations of the kernels and predictions are dynamically coupled with a variance that can be computed self-consistently. In two layer networks, we show how feature learning can dynamically reduce the variance of the final tangent kernel and final network predictions. We also show how initialization variance can slow down online learning in wide but finite networks. In deeper networks, kernel variance can dramatically accumulate through subsequent layers at large feature learning strengths, but feature learning continues to improve the signal-to-noise ratio of the feature kernels. In discrete time, we demonstrate that large learning rate phenomena such as edge of stability effects can be well captured by infinite width dynamics and that initialization variance can decrease dynamically. For CNNs trained on CIFAR-10, we empirically find significant corrections to both the bias and variance of network dynamics due to finite width."
+        },
+        "paper_b": {
+          "title": "A Dynamical Model of Neural Scaling Laws",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "On a variety of tasks, the performance of neural networks predictably improves with training time, dataset size and model size across many orders of magnitude. This phenomenon is known as a neural scaling law. Of fundamental importance is the compute-optimal scaling law, which reports the performance as a function of units of compute when choosing model sizes optimally. We analyze a random feature model trained with gradient descent as a solvable model of network training and generalization. This reproduces many observations about neural scaling laws. First, our model makes a prediction about why the scaling of performance with training time and with model size have different power law exponents. Consequently, the theory predicts an asymmetric compute-optimal scaling rule where the number of training steps are increased faster than model parameters, consistent with recent empirical observations. Second, it has been observed that early in training, networks converge to their infinite-width dynamics at a rate $1/\\text{width}$ but at late time exhibit a rate $\\text{width}^{-c}$, where $c$ depends on the structure of the architecture and task. We show that our model exhibits this behavior. Lastly, our theory shows how the gap between training and test loss can gradually build up over time due to repeated reuse of data."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "This observation has been found to hold both in overparameterized and underparameterized regimes (Bordelon & Pehlevan, 2023; Vyas et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03a8d28f64c0b1d05183e6f8",
+          "b": "paper-16d99e3d2bf7b1e67558d828",
+          "input_sha256": "f1ce6fea99147b2a71c0b7a5aabc6390211dfefda0eb8eab572d6b123cd0c588",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/1ec69275e9f002ee068f5d68380f3290-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/1ec69275e9f002ee068f5d68380f3290-Paper-Conference.pdf",
+              "sha256": "679e1d7ffecfbb10dd54c06d1bdfd6dd984f990122c1ae23c26eeca7b1694602"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/bordelon24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/bordelon24a/bordelon24a.pdf",
+              "sha256": "44e0908c4231e279992a1663de444c1c1f3ff6c97183fc3143cdcc6745565fa2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "feature kernels Φ` at initialization t = 0 in deep MLPs or RNNs [53]. We extend these prior studies to the dynamics of training and to probe how feature learning alters finite size corrections.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/1ec69275e9f002ee068f5d68380f3290-Paper-Conference.pdf",
+              "document_sha256": "679e1d7ffecfbb10dd54c06d1bdfd6dd984f990122c1ae23c26eeca7b1694602"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "then the wider models will also obtain lower test loss at an equal number of iterations. This observation has been found to hold both in overparameterized and underparameterized regimes (Bordelon & Pehlevan, 2023; Vyas et al., 2023).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/bordelon24a/bordelon24a.pdf",
+              "document_sha256": "44e0908c4231e279992a1663de444c1c1f3ff6c97183fc3143cdcc6745565fa2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "To understand the convergence of the learned function f along each eigenfunction of the kernel, we introduce the ∂ transfer function2 for mode k, Hk (t) ≡ ∂w vk0 (t) . Our ⋆ k key result is that the Fourier transform of Hk can be simply expressed in terms of the Fourier transforms of R1 , R3 : Hk (ω) =",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/bordelon24a/bordelon24a.pdf",
+              "document_sha256": "44e0908c4231e279992a1663de444c1c1f3ff6c97183fc3143cdcc6745565fa2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Neural scaling laws play a central role in modern deep learning practice, and have substantial implications for the optimal trade-off between model size and training time (Hoffmann et al., 2022), as well as architecture selection (Alabdulmohsin et al., 2023). Understanding the origin of such scaling laws, as well as their exponents, has the potential to offer insight into better architectures, the design of better datasets (Sorscher et al., 2022), and the failure modes and limitations of deep learning systems. Yet, many questions about neural scaling laws remain open. In this paper, we introduce and analyze a solvable model which captures many important aspects of neural scaling laws. In particular, we are interested in understanding the following empirically observed phenomena: Test Loss Scales as a Power-law in Training Time and Model Size and Compute. In many domains of deep learning, the test loss of a model with N trainable parameters trained for t iterations has been found to scale as L(t, N ) ≈ L0 + at t−rt + aN N −rN (Kaplan et al., 2020; Hoffmann et al., 2022). These scaling law exponents rt , rN generally depend on the dataset and architecture. We demonstrate scaling laws on simple vision and language tasks in Figure 1. The compute is proportional to the number of steps of gradient descent times the model size C ∝ N t. Setting N and t optimally gives that test loss scales as a power law in C. This is the compute optimal scaling law. Compute-Optimal Training Time and Model Size Scaling Exponents Are Different. A discrepancy in exponents rt and rN is usually observed to some degree depdending on the data distribution and architecture Hoffmann et al. (2022); Bachmann et al. (2024). The gap between exponents would lead to asymmetric compute-optimal scaling of",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/bordelon24a/bordelon24a.pdf",
+              "document_sha256": "44e0908c4231e279992a1663de444c1c1f3ff6c97183fc3143cdcc6745565fa2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03a8d28f64c0b1d05183e6f8",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/1ec69275e9f002ee068f5d68380f3290-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-16d99e3d2bf7b1e67558d828",
+          "url": "https://proceedings.mlr.press/v235/bordelon24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "f2652a92c8ad6acb66f1e620dcf76e6cd3b1ff6022c40584b91c875d0c3d87de"
+    },
+    {
+      "id": "edge-f041abeb26ce8c796c627bae",
+      "a": "paper-06b68f431142791678935853",
+      "b": "paper-f5f461f27580c3924abf4af5",
+      "state": {
+        "paper_a": {
+          "title": "Data and Parameter Scaling Laws for Neural Machine Translation",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "We observe that the development cross-entropy loss of supervised neural machine translation models scales like a power law with the amount of training data and the number of non-embedding parameters in the model. We discuss some practical implications of these results, such as predicting BLEU achieved by large scale models and predicting the ROI of labeling data in low-resource language pairs."
+        },
+        "paper_b": {
+          "title": "Bayesian Neural Scaling Law Extrapolation with Prior-Data Fitted Networks",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Scaling has been a major driver of recent advancements in deep learning. Numerous empirical studies have found that scaling laws often follow the power-law and proposed several variants of power-law functions to predict the scaling behavior at larger scales. However, existing methods mostly rely on point estimation and do not quantify uncertainty, which is crucial for real-world applications involving decision-making problems such as determining the expected performance improvements achievable by investing additional computational resources. In this work, we explore a Bayesian framework based on Prior-data Fitted Networks (PFNs) for neural scaling law extrapolation. Specifically, we design a prior distribution that enables the sampling of infinitely many synthetic functions resembling real-world neural scaling laws, allowing our PFN to meta-learn the extrapolation. We validate the effectiveness of our approach on real-world neural scaling laws, comparing it against both the existing point estimation methods and Bayesian approaches. Our method demonstrates superior performance, particularly in data-limited scenarios such as Bayesian active learning, underscoring its potential for reliable, uncertainty-aware extrapolation in practical applications."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "…M 2 , which adds a bias term to the power law function, to capture saturating performance for large x (Mukherjee et al., 2003; Figueroa et al., 2012; Domhan et al., 2015; Hestness et al., 2017; Johnson et al., 2018; Rosenfeld et al., 2019; Abnar et al., 2021; Gordon et al., 2021; Rosenfeld, 2021).\n…data, model size, or training time), where it has been used in various domains, such as healthcase (Cho et al., 2015), neural machine translation (NMT; Gordon et al., 2021), and language models (Kaplan et al., 2020), among others (Hestness et al., 2017; Johnson et al., 2018; Sharma & Kaplan, 2022).\nThe only difference between M 1 and M 2 is whether there is a bias c or not for capturing saturating performance (Mukher-jee et al., 2003; Figueroa et al., 2012; Domhan et al., 2015; Hestness et al., 2017; Johnson et al., 2018; Rosenfeld et al., 2019; Gordon et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06b68f431142791678935853",
+          "b": "paper-f5f461f27580c3924abf4af5",
+          "input_sha256": "b60a30ac481fb0d053ca9e0988c5ab6ed85a9610df626b923ee93c18998a9aa7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.478/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.478.pdf",
+              "sha256": "fb8288588761f42bf137b9e82ab7c7781fd01e998684f222d1c9875e7d7a7f89"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/lee25q.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25q/lee25q.pdf",
+              "sha256": "fbbbac6b528d75352db977993387f3329ce4958f366bb96f1afe8c8b6f137a98"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Some extremely low-resource MT datasets (which we examine in Section 3) can have less than 5 MB of data (∼40k sentence pairs). Figure 3 shows that when we extend our previous experiments to datasets smaller than this size, using 0.05% 0.0125% of the data, the data scaling power law seems to break down, casting doubt on our ability to extrapolate extremely low-resource results to medium and high-resource data regimes. However, the results are not simply noisy but predictably plateau to an apparent ceiling of 7.8 nats. For reference, a unigram language model trained on only the English part of the training data (with a 30k BPE vocab) achieves a per-token crossentropy of ∼7 nats. This leads us to suspect that models in this data regime are learning to rely on simple unigram statistics that do not change much as we decrease the data size. Using a much smaller BPE vocabulary of 2k tokens rectifies this plateau and returns to power law scaling, even with datasets <5 MB. We believe this is because the smaller vocabulary makes it difficult to exploit unigram statistics for rare words. While this is not conclusive evidence, we recommend that cross-entropies near or above unigram LM performance should not be relied upon to extrapolate performance. Dataset subsets which contain less than half of the BPE vocabulary should similarly be avoided.8 8 In ∼5 MB datasets, around half of the 30k BPE vocabulary is never seen during training. In contrast, ∼10 MB datasets contain almost every vocab token. See Appendix Figure 6.",
+              "url": "https://aclanthology.org/2021.emnlp-main.478.pdf",
+              "document_sha256": "fb8288588761f42bf137b9e82ab7c7781fd01e998684f222d1c9875e7d7a7f89"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "where a, b, c ≥ 0 are the coefficients we want to estimate. The only difference between M1 and M2 is whether there is a bias c or not for capturing saturating performance (Mukherjee et al., 2003; Figueroa et al., 2012; Domhan et al., 2015; Hestness et al., 2017; Johnson et al., 2018; Rosenfeld et al., 2019; Gordon et al., 2021). For neural machine translation, Bansal et al. (2022) propose a slightly more expressive form by adding a shifting term d ≥ 0 to M1 :",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25q/lee25q.pdf",
+              "document_sha256": "fbbbac6b528d75352db977993387f3329ce4958f366bb96f1afe8c8b6f137a98"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Scaling has been a major driver of recent advancements in deep learning. Numerous empirical studies have found that scaling laws often follow the power-law and proposed several variants of power-law functions to predict the scaling behavior at larger scales. However, existing methods mostly rely on point estimation and do not quantify uncertainty, which is crucial for real-world applications involving decision-making problems such as determining the expected performance improvements achievable by investing additional computational resources. In this work, we explore a Bayesian framework based on Prior-data Fitted Networks (PFNs) for neural scaling law extrapolation. Specifically, we design a prior distribution that enables the sampling of infinitely many synthetic functions resembling real-world neural scaling laws, allowing our PFN to metalearn the extrapolation. We validate the effectiveness of our approach on real-world neural scaling laws, comparing it against both the existing point estimation methods and Bayesian approaches. Our method demonstrates superior performance, particularly in data-limited scenarios such as Bayesian active learning, underscoring its potential for reliable, uncertainty-aware extrapolation in practical applications. The code and models are available at https://github. com/DongWooLee-Eli/nslpfn.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25q/lee25q.pdf",
+              "document_sha256": "fbbbac6b528d75352db977993387f3329ce4958f366bb96f1afe8c8b6f137a98"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To overcome this challenge, we investigate the potentials of Prior-data Fitted Networks (PFNs; Müller et al., 2021) for neural scaling law extrapolation. PFNs are an in-context approximate Bayesian inference method, which is metalearned with the training data sampled from the prior distribution. PFNs provide several benefits over MCMC. Specifically, it is very flexible in defining any complex prior distributions as long as we can efficiently sample from them. Further, the speed of inference is faster by multiple orders of magnitudes since PFN is an in-context inference method. We empirically validate the efficacy and efficiency of our approach, which we name as Neural Scaling Law PFN (NSL-PFN), on an extensive set of datasets by comparing it not only with the recent point estimation methods but also their MCMC variants. We also show that our NSL-PFN reliably predicts chaotic behaviors of real-world neural scaling laws even with a few observations at a small scale.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25q/lee25q.pdf",
+              "document_sha256": "fbbbac6b528d75352db977993387f3329ce4958f366bb96f1afe8c8b6f137a98"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06b68f431142791678935853",
+          "url": "https://aclanthology.org/2021.emnlp-main.478/"
+        },
+        "b": {
+          "paper_id": "paper-f5f461f27580c3924abf4af5",
+          "url": "https://proceedings.mlr.press/v267/lee25q.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "b0cc9473122b3021e2b05f639ca8b54ae65e4812a06c46ca00838640d2567928"
+    },
+    {
+      "id": "edge-f21bc5e9828abe216d102392",
+      "a": "paper-07febddb66b85fda9f7a223e",
+      "b": "paper-7315fa4e5e7bec74c148a5d9",
+      "state": {
+        "paper_a": {
+          "title": "Cross-Task Generalization via Natural Language Crowdsourcing Instructions",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the human-readable instructions that define it. To study this, we introduce NATURAL INSTRUCTIONS, a dataset of 61 distinct tasks, their human-authored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound indicating significant room for more progress in this direction."
+        },
+        "paper_b": {
+          "title": "The Flan Collection: Designing Data and Methods for Effective Instruction Tuning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We study the design decision of publicly available instruction tuning methods, by reproducing and breaking down the development of Flan 2022 (Chung et al., 2022). Through careful ablation studies on the Flan Collection of tasks and methods, we tease apart the effect of design decisions which enable Flan-T5 to outperform prior work by 3-17% across evaluation settings. We find task balancing and enrichment techniques are overlooked but critical to effective instruction tuning, and in particular, training with mixed prompt settings (zero-shot, few-shot, chain-of-thought) actually yields equivalent or stronger (2%) performance in all settings. In further experiments we show Flan-T5 requires less finetuning to converge higher and faster than T5 on single downstream tasks – motivating instruction-tuned models as more computationally-efficient starting checkpoints for new tasks. Finally, to accelerate research on instruction tuning, we make the Flan 2022 collection of datasets, templates, and methods publicly available."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The Second Wave A second wave of instruction tuning collections expanded prior resources: combining more datasets and tasks into one resource, like SuperNatural Instructions (Wang et al., 2022c) or OPT-IML (Iyer et al., 2022), adding multilingual instruction tuning in xP3 (Muennighoff et al., 2022), and Chain-of-Thought training prompts in Flan 2022 (Chung et al., 2022).\nNotably, Chain-of-thought finetuning appears beneficial across all our evaluation settings, especially considering they contain far fewer tasks than Flan 2021, T0-SF or Natural Instructions.\nNatural Instructions (Mishra et al., 2021), Flan 2021 (Wei et al., 2021), PromptSource (a.k.a. P3, Public Pool of Prompts, Bach et al., 2022) aggregated large NLP task collections and templatized them with instructions (zero-shot prompting), specifically for finetuning models to generalize to unseen instructions.\nAs shown in Table 2, Flan 2021 and T0-SF are among the most beneficial mixtures, followed by Super-Natural Instructions and Chain-of-Thought, with Dialog and Program Synthesis last.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07febddb66b85fda9f7a223e",
+          "b": "paper-7315fa4e5e7bec74c148a5d9",
+          "input_sha256": "88517f77d90cb47b13874797688e3cd06cd20814860c7dd62bdbcf23b38a91f6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.244/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/longpre23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/longpre23a/longpre23a.pdf",
+              "sha256": "b6e3522a9e8e386e3eada99253b7aee81d44ade07067131d952198a7603ea73b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the humanreadable instructions that define it. To study this, we introduce NATURAL I NSTRUCTIONS, a dataset of 61 distinct tasks, their humanauthored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound, indicating significant room for more progress in this direction.1",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Importantly, LMs can generalize better to unseen tasks if they observe more tasks in training (Fig.2b). This upward trajectory suggests the potential for stronger cross-task generalizable models upon scaling up the diversity of tasks represented in a metadataset of task instructions. Despite the benefits of instructions, we observe a sizable gap between models’ generalization and their estimated upperbounds (6.4), encouraging the community to work on this challenging problem. Contributions: In summary, the contributions of this work are as follows: (a) we introduce NATURAL I NSTRUCTIONS, a dataset of humanauthored instructions curated from existing wellknown datasets mapped to a unified schema, providing training and evaluation data for learning from instructions; (b) we build models that can encode instructions and show: (b.1) the benefit of crosstask generalization by leveraging instructions; (b.2) the importance of different elements of instructions in the performance; (b.3) noteworthy headroom for improvement on our benchmark, which hopefully will motivate further work in this direction.",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "In Table 2 we sample from each of the 6 submixtures equally for “All (Equal)”, then remove submixtures individually. We ran these experiment prior to other ablations, so it is trained only with zero-shot training templates. As shown in Table 2, Flan 2021 and T0-SF are among the most beneficial mixtures, followed by Super-Natural Instructions and Chain-of-Thought, with Dialog and Program Synthesis last. These findings are corroborated by Iyer et al. (2022) who extensively test data mixing proportions, and also determine their Flan 2021, T0-SF, and T5 mixtures are the most broadly beneficial. Additionally, they find Super-Natural Instructions has limited scaling benefits on Held-Out task performance, which they relate to its unique input format and instruction design. Notably, Chain-of-thought finetuning appears beneficial across all our evaluation settings, especially considering they contain far fewer tasks than Flan 2021, T0-SF or Natural Instructions. For the final mixture we follow Chung et al. (2022), which seems to mirror our findings in Table 2.",
+              "url": "https://proceedings.mlr.press/v202/longpre23a/longpre23a.pdf",
+              "document_sha256": "b6e3522a9e8e386e3eada99253b7aee81d44ade07067131d952198a7603ea73b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "The First Wave Since 2020, several instruction tuning task collections have been released in rapid succession, outlined in Figure 2. Natural Instructions (Mishra et al., 2021), Flan 2021 (Wei et al., 2021), PromptSource (a.k.a. P3, Public Pool of Prompts, Bach et al., 2022) aggregated large NLP task collections and templatized them with instructions (zero-shot prompting), specifically for finetuning models to generalize to unseen instructions. MetaICL (Min et al., 2022) also consolidated other task collections (Ye et al., 2021; Khashabi et al., 2020) to train models to learn tasks “in-context” – from several input-output examples, known as few-shot prompting, but in this case without instructions. Each of these works affirmed the scaling benefits of task and template diversity, and some reported strong benefits from inverting the inputs and outputs in templates to produce new tasks (“noisy channel” in Min et al., 2022).",
+              "url": "https://proceedings.mlr.press/v202/longpre23a/longpre23a.pdf",
+              "document_sha256": "b6e3522a9e8e386e3eada99253b7aee81d44ade07067131d952198a7603ea73b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07febddb66b85fda9f7a223e",
+          "url": "https://aclanthology.org/2022.acl-long.244/"
+        },
+        "b": {
+          "paper_id": "paper-7315fa4e5e7bec74c148a5d9",
+          "url": "https://proceedings.mlr.press/v202/longpre23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "d83f46e7582cca04485f3c6db4b920db0f4278a8536522123c67241f4380b0aa"
+    },
+    {
+      "id": "edge-97f0664642bc1f28e89e231f",
+      "a": "paper-07febddb66b85fda9f7a223e",
+      "b": "paper-a35618293c04f480c31b8020",
+      "state": {
+        "paper_a": {
+          "title": "Cross-Task Generalization via Natural Language Crowdsourcing Instructions",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the human-readable instructions that define it. To study this, we introduce NATURAL INSTRUCTIONS, a dataset of 61 distinct tasks, their human-authored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound indicating significant room for more progress in this direction."
+        },
+        "paper_b": {
+          "title": "Do Models Really Learn to Follow Instructions? An Empirical Study of Instruction Tuning",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Recent works on instruction tuning (IT) have achieved great performance with zero-shot generalizability to unseen tasks. With additional context (e.g., task definition, examples) provided to models for fine-tuning, they achieved much higher performance than untuned models. Despite impressive performance gains, what models learn from IT remains understudied. In this work, we analyze how models utilize instructions during IT by comparing model training with altered vs. original instructions. Specifically, we create simplified task definitions by removing all semantic components and only leaving the output space information, and delusive examples that contain incorrect input-output mapping. Our experiments show that models trained on simplified task definition or delusive examples can achieve comparable performance to the ones trained on the original instructions and examples. Furthermore, we introduce a random baseline to perform zeroshot classification tasks, and find it achieves similar performance (42.6% exact-match) as IT does (43% exact-match) in low resource setting, while both methods outperform naive T5 significantly (30% per exact-match). Our analysis provides evidence that the impressive performance gain of current IT models can come from picking up superficial patterns, such as learning the output format and guessing. Our study highlights the urgent need for more reliable IT methods and evaluation."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We also observe that instruction-tuned models are sensitive to input-output mapping during the testing ICL stage, but not during the instruction-tuning (training) stage, especially in low resource settings (i.e., ≤ 50 training instance per task).\n…tuning(IT) has drawn much attention in the NLP communities, with the rapid growth of new models (Sanh et al., 2021; Wei et al., 2021; Ouyang et al., 2022) and datasets (Wang et al., 2022; Gupta et al., 2022; Finlayson et al., 2022; Mishra et al., 2021; Ye et al., 2021; Bach et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07febddb66b85fda9f7a223e",
+          "b": "paper-a35618293c04f480c31b8020",
+          "input_sha256": "fe1044255bc9e55ed74df43a7154b65202a93f036abc438ce4bca9299c61c4d1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.244/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-short.113/",
+              "pdf_url": "https://aclanthology.org/2023.acl-short.113.pdf",
+              "sha256": "ceda3bf15883538e8c87d60cb8b545452996acfdf7e5a68a9dd75c050a2020cd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the humanreadable instructions that define it. To study this, we introduce NATURAL I NSTRUCTIONS, a dataset of 61 distinct tasks, their humanauthored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound, indicating significant room for more progress in this direction.1",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Importantly, LMs can generalize better to unseen tasks if they observe more tasks in training (Fig.2b). This upward trajectory suggests the potential for stronger cross-task generalizable models upon scaling up the diversity of tasks represented in a metadataset of task instructions. Despite the benefits of instructions, we observe a sizable gap between models’ generalization and their estimated upperbounds (6.4), encouraging the community to work on this challenging problem. Contributions: In summary, the contributions of this work are as follows: (a) we introduce NATURAL I NSTRUCTIONS, a dataset of humanauthored instructions curated from existing wellknown datasets mapped to a unified schema, providing training and evaluation data for learning from instructions; (b) we build models that can encode instructions and show: (b.1) the benefit of crosstask generalization by leveraging instructions; (b.2) the importance of different elements of instructions in the performance; (b.3) noteworthy headroom for improvement on our benchmark, which hopefully will motivate further work in this direction.",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recently, instruction tuning(IT) has drawn much attention in the NLP communities, with the rapid growth of new models (Sanh et al., 2021; Wei et al., 2021; Ouyang et al., 2022) and datasets (Wang et al., 2022; Gupta et al., 2022; Finlayson et al., 2022; Mishra et al., 2021; Ye et al., 2021; Bach et al., 2022). Models trained with task instructions demonstrate impressive zero-shot cross-task generalization ability. Despite the remarkable results,",
+              "url": "https://aclanthology.org/2023.acl-short.113.pdf",
+              "document_sha256": "ceda3bf15883538e8c87d60cb8b545452996acfdf7e5a68a9dd75c050a2020cd"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "major camps: generalize to unseen tasks and generalize to unseen instructions, based on their objectives. Table 1 shows the comparison. Our analysis focuses on the former with more background and justifications provided in section 2. We strategically alter the instructions and compare them with original instructions for IT. Specifically, for task definition, we create simplified versions by removing all semantic components in the instructions and only leaving the output space information. For task examples, we create delusive examples with incorrect input-output mapping, where the examples’ input and output spaces are correct, but the inputoutput mappings are wrong. Figure 1 demonstrates specific examples of these altered instructions. Our experiments show that models trained with simplified task definitions achieve performances on par with the original IT models with different numbers of training examples ranging from 10 to 800 per task. We also observe that instructiontuned models are sensitive to input-output mapping during the testing ICL stage, but not during the instruction-tuning (training) stage, especially in low resource settings (i.e., ≤ 50 training instance per task). To further understand why instruction tuning improves performance for zero-shot test tasks, we establish a random baseline that only knows the correct output format (label space) for classification and multi-choice tasks. We discover that the random baseline can get 30% absolute exact-match score improvement over an untuned model, almost comparable to some IT models in low resource settings. Our results suggest that the impressive performance gains of IT may just come from models",
+              "url": "https://aclanthology.org/2023.acl-short.113.pdf",
+              "document_sha256": "ceda3bf15883538e8c87d60cb8b545452996acfdf7e5a68a9dd75c050a2020cd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Recent works on instruction tuning (IT) have achieved great performance with zero-shot generalizability to unseen tasks. With additional context (e.g., task definition, examples) provided to models for fine-tuning, they achieved much higher performance than untuned models. Despite impressive performance gains, what models learn from IT remains understudied. In this work, we analyze how models utilize instructions during IT by comparing model training with altered vs. original instructions. Specifically, we create simplified task definitions by removing all semantic components and only leaving the output space information, and delusive examples that contain incorrect input-output mapping. Our experiments show that models trained on simplified task definition or delusive examples can achieve comparable performance to the ones trained on the original instructions and examples. Furthermore, we introduce a random baseline to perform zeroshot classification tasks, and find it achieves similar performance (42.6% exact-match) as IT does (43% exact-match) in low resource setting, while both methods outperform naive T5 significantly (30% per exact-match). Our analysis provides evidence that the impressive performance gain of current IT models can come from picking up superficial patterns, such as learning the output format and guessing. Our study highlights the urgent need for more reliable IT methods and evaluation.",
+              "url": "https://aclanthology.org/2023.acl-short.113.pdf",
+              "document_sha256": "ceda3bf15883538e8c87d60cb8b545452996acfdf7e5a68a9dd75c050a2020cd"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Random baseline. While our experiments suggest that models do not utilize most information in the instructions, we still observe huge performance gains via instruction tuning. To understand where the gains come from, we introduce a Random baseline that simply guesses within the cor-",
+              "url": "https://aclanthology.org/2023.acl-short.113.pdf",
+              "document_sha256": "ceda3bf15883538e8c87d60cb8b545452996acfdf7e5a68a9dd75c050a2020cd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07febddb66b85fda9f7a223e",
+          "url": "https://aclanthology.org/2022.acl-long.244/"
+        },
+        "b": {
+          "paper_id": "paper-a35618293c04f480c31b8020",
+          "url": "https://aclanthology.org/2023.acl-short.113/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "edb87312e2b7bcc554840d4aa88a30ee9e47872203d4d14d070ad6f80a3a0b8d"
+    },
+    {
+      "id": "edge-5c3ebb97edafc4ead493f79f",
+      "a": "paper-07febddb66b85fda9f7a223e",
+      "b": "paper-f99a5ca7f54304b276628974",
+      "state": {
+        "paper_a": {
+          "title": "Cross-Task Generalization via Natural Language Crowdsourcing Instructions",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the human-readable instructions that define it. To study this, we introduce NATURAL INSTRUCTIONS, a dataset of 61 distinct tasks, their human-authored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound indicating significant room for more progress in this direction."
+        },
+        "paper_b": {
+          "title": "DoG-Instruct: Towards Premium Instruction-Tuning Data via Text-Grounded Instruction Wrapping",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "The improvement of LLMs’ instruction-following capabilities relies heavily on the availability of high-quality instruction-response pairs. Unfortunately, the current methods used to collect the pairs suffer from either unaffordable labor costs or severe hallucinations in the self-generation of LLM.To tackle these challenges, this paper proposes a scalable solution.It involves training LLMs to generate instruction-response pairs based on human-written documents, rather than relying solely on self-generation without context.Our proposed method not only exploits the advantages of human-written documents in reducing hallucinations but also utilizes an LLM to wrap the expression of documents, which enables us to bridge the gap between various document styles and the standard AI response.Experiments demonstrate that our method outperforms existing typical methods on multiple benchmarks.In particular, compared to the best-performing baseline, the LLM trained using our generated dataset exhibits a 10% relative improvement in performance on AlpacaEval, despite utilizing only 1/5 of its training data.Furthermore, a comprehensive manual evaluation validates the quality of the data we generated."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Recent efforts in the NLP community have focused on instruction-tuning (Sanh et al., 2022; Mishra et al., 2022; Wei et al., 2022), i.e., improving large language models’ (LLMs) capacity to understand and follow instructions (Brown et al., 2020; Chowd-hery et al., 2022; Touvron et al., 2023a).\nInstruction tuning serves as a promising method, involving the fine-tuning of LLMs using training data and instructions from a collection of upstream tasks(Sanh et al., 2022; Mishra et al., 2022; Wei et al., 2022; Chung et al., 2022; Longpre et al., 2023; Peng et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07febddb66b85fda9f7a223e",
+          "b": "paper-f99a5ca7f54304b276628974",
+          "input_sha256": "ee850d753768caf1a31e0277f0ab8052879934aea5ae949e8bcf2ac20af06e53",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.244/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.naacl-long.230/",
+              "pdf_url": "https://aclanthology.org/2024.naacl-long.230.pdf",
+              "sha256": "152bc5aa424eab1a68d86682803fe0ed04fbdf87a1e3d6c0308de3837d77437f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Humans (e.g., crowdworkers) have a remarkable ability in solving different tasks, by simply reading textual instructions that define them and looking at a few examples. Despite the success of the conventional supervised learning on individual datasets, such models often struggle with generalization across tasks (e.g., a question-answering system cannot solve classification tasks). A long-standing challenge in AI is to build a model that learns a new task by understanding the humanreadable instructions that define it. To study this, we introduce NATURAL I NSTRUCTIONS, a dataset of 61 distinct tasks, their humanauthored instructions, and 193k task instances (input-output pairs). The instructions are obtained from crowdsourcing instructions used to create existing NLP datasets and mapped to a unified schema. Using this meta-dataset, we measure cross-task generalization by training models on seen tasks and measuring generalization to the remaining unseen ones. We adopt generative pre-trained language models to encode task-specific instructions along with input and generate task output. Our results indicate that models benefit from instructions when evaluated in terms of generalization to unseen tasks (19% better for models utilizing instructions). These models, however, are far behind an estimated performance upperbound, indicating significant room for more progress in this direction.1",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Importantly, LMs can generalize better to unseen tasks if they observe more tasks in training (Fig.2b). This upward trajectory suggests the potential for stronger cross-task generalizable models upon scaling up the diversity of tasks represented in a metadataset of task instructions. Despite the benefits of instructions, we observe a sizable gap between models’ generalization and their estimated upperbounds (6.4), encouraging the community to work on this challenging problem. Contributions: In summary, the contributions of this work are as follows: (a) we introduce NATURAL I NSTRUCTIONS, a dataset of humanauthored instructions curated from existing wellknown datasets mapped to a unified schema, providing training and evaluation data for learning from instructions; (b) we build models that can encode instructions and show: (b.1) the benefit of crosstask generalization by leveraging instructions; (b.2) the importance of different elements of instructions in the performance; (b.3) noteworthy headroom for improvement on our benchmark, which hopefully will motivate further work in this direction.",
+              "url": "https://aclanthology.org/2022.acl-long.244.pdf",
+              "document_sha256": "bc6930715d992f352610764dca6b031fa1d8d0775907717174596d919734bdbc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recent efforts in the NLP community have focused on instruction-tuning (Sanh et al., 2022; Mishra et al., 2022; Wei et al., 2022), i.e., improving large language models’ (LLMs) capacity to understand and follow instructions (Brown et al., 2020; Chowdhery et al., 2022; Touvron et al., 2023a). Advanced LLMs have been trained to be capable of generating customized outputs when provided with specific ∗",
+              "url": "https://aclanthology.org/2024.naacl-long.230.pdf",
+              "document_sha256": "152bc5aa424eab1a68d86682803fe0ed04fbdf87a1e3d6c0308de3837d77437f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Yongrui Chen1,2 , Haiyun Jiang3, , Xinting Huang3 , Shuming Shi3 & Guilin Qi1,2 1 Southeast University 2 Key Laboratory of New Generation Artificial Intelligence Technology and Its Interdisciplinary Applications (Southeast University), Ministry of Education {yrchen,gqi}@seu.edu.cn 3 Tencent AI Lab {haiyunjiang,jeffjhhuang,shumingshi}@tencent.com instructions (with inputs), enabling them to adapt Abstract The improvement of LLMs’ instructionfollowing capabilities relies heavily on the availability of high-quality instruction-response pairs. Unfortunately, the current methods used to collect the pairs suffer from either unaffordable labor costs or severe hallucinations in the self-generation of LLM. To tackle these challenges, this paper proposes a scalable solution. It involves training LLMs to generate instruction-response pairs based on humanwritten documents, rather than relying solely on self-generation without context. Our proposed method not only exploits the advantages of human-written documents in reducing hallucinations but also utilizes an LLM to wrap the expression of documents, which enables us to bridge the gap between various document styles and the standard AI response. Experiments demonstrate that our method outperforms existing typical methods on multiple benchmarks. In particular, compared to the best-performing baseline, the LLM trained using our generated dataset exhibits a 10% relative improvement in performance on AlpacaEval, despite utilizing only 1/5 of its training data. Furthermore, a comprehensive manual evaluation validates the quality of the data we generated. Our trained wrapper is publicly available1 .",
+              "url": "https://aclanthology.org/2024.naacl-long.230.pdf",
+              "document_sha256": "152bc5aa424eab1a68d86682803fe0ed04fbdf87a1e3d6c0308de3837d77437f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "which serves as our instruction wrapper. In stage b), human-written documents from multiple domains are fed into our trained wrapper to generate instruction-response pairs. Then, a simple but efficient post-processing strategy is adopted to filter invalid examples based on the literal similarity. Eventually, we name the resulting dataset DOcumentGrounded Instructions ( D O G-I NSTRUCT), containing 12.4K instruction-response pairs. The LLM trained using D O G-I NSTRUCT achieves a remarkable 4.8% improvement in performance on AlpacaEval compared to the bestperforming baseline, while using only 1/5 of the training data. Furthermore, it achieves state-of-theart results on the other three widely-used benchmarks. Through further manual evaluation, we illustrate that our D O G-I NSTRUCT method effectively mitigates the issue of hallucination while aligning the raw document with the desired response in terms of style. In summary, the contributions of this paper include: • We propose a novel paradigm that trains LLMs to generate instruction-response pairs based on human-written documents. It not only leverages the document to reduce the hallucinations of responses, but also aligns the style of the raw document with the ideal response using LLM. • We release a well-trained L LAMA-based instruction wrapper capable of consistently generating",
+              "url": "https://aclanthology.org/2024.naacl-long.230.pdf",
+              "document_sha256": "152bc5aa424eab1a68d86682803fe0ed04fbdf87a1e3d6c0308de3837d77437f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07febddb66b85fda9f7a223e",
+          "url": "https://aclanthology.org/2022.acl-long.244/"
+        },
+        "b": {
+          "paper_id": "paper-f99a5ca7f54304b276628974",
+          "url": "https://aclanthology.org/2024.naacl-long.230/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "d6d5cbf6c793b56c630138935c28463a26bc9be7c865810ef8ce3b410a2eb59f"
+    },
+    {
+      "id": "edge-2a6e919af30610687288e5bf",
+      "a": "paper-0a3e1738c6363faf22ab41b1",
+      "b": "paper-1c0906c7edd1a33a9a798e23",
+      "state": {
+        "paper_a": {
+          "title": "GLaM: Efficient Scaling of Language Models with Mixture-of-Experts",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named \\glam (\\textbf{G}eneralist \\textbf{La}nguage \\textbf{M}odel), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest \\glam has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall fewshot performance across 29 NLP tasks."
+        },
+        "paper_b": {
+          "title": "Efficient Data Selection at Scale via Influence Distillation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Effective data selection is critical for efficient training of modern Large Language Models (LLMs). This paper introduces Influence Distillation, a novel, mathematically-justified framework for data selection that employs second-order information to optimally weight training samples. By distilling each sample's influence on a target distribution, our method assigns model-specific weights that are used to select training data for LLM fine-tuning, guiding it toward strong performance on the target domain. We derive these optimal weights for both Gradient Descent and Adam optimizers. To ensure scalability and reduce computational cost, we propose a $\\textit{landmark-based approximation}$: influence is precisely computed for a small subset of \"landmark\" samples and then efficiently propagated to all other samples to determine their weights. We validate Influence Distillation by applying it to instruction tuning on the Tulu V2 dataset, targeting a range of tasks including GSM8k, SQuAD, and MMLU, across several models from the Llama and Qwen families. Experiments show that Influence Distillation matches or outperforms state-of-the-art performance while achieving up to $3.5\\times$ faster selection."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Another approach, so-called Classifier, was introduced by Brown et al. [2020] and has been employed in subsequent work (Gao et al. [2020], Chowdhery et al. [2023], Du et al. [2022].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0a3e1738c6363faf22ab41b1",
+          "b": "paper-1c0906c7edd1a33a9a798e23",
+          "input_sha256": "d624731922091c9b72597d09eb98926c5d4c3b3384cef73c0f2562f9a39bec44",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/du22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/d2d4f6858cc2d21fd0230244fcb34f1d-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/d2d4f6858cc2d21fd0230244fcb34f1d-Paper-Conference.pdf",
+              "sha256": "4247ca681da502995642314e234326c80fa7eca4cf5e94fa56bc37f8241c6006"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "9. Conclusions We propose and develop a family of generalist language models called GLaM, which use a sparsely activated mixture-of-experts architecture to achieve better average scores than not only their dense counterparts of similar effective FLOPs, but also the GPT-3 models on 1/1 29 representative NLP tasks in zero, one and few-shot learning. In particular, GLaM (64B/64E), our largest 1.2 trillion parameter MoE language model, achieves better average performance with only one third of energy consumption compared to training GPT-3. We hope that our work will encourage more research into methods for obtaining high-quality data, and using MoE for more efficient scaling of giant language models.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named GLaM (Generalist Language Model), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest GLaM has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall zero, one and few-shot performance across 29 NLP tasks.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Data selection (‘pruning’) and weighting methods have become increasingly important in the context of efficient LLM training. In a celebrated paper, Sorscher et al. [2022] et al. showed that (modelagnostic) data pruning, and in particular deduplication, helps go beyond scaling laws for LLMs. This was later further improved by Abbas et al. [2023]. Early work on model-dependent data pruning focused on heuristics like perplexity-based filtering and confidence-based selection: Marion et al. [2023] found that selecting examples with moderate perplexity scores often outperforms training on the full dataset or examples selected by other metrics. Do and Gaspers [2019] introduced DSIR, which uses importance resampling based on n-gram features to select relevant training examples, with promising results on mathematical reasoning and clinical text summarization. Similarly, Xie et al. [2023b] proposed clustering loss trajectories to identify representative training examples, though their approach focused more on general domain adaptation rather than specific target distributions. Another approach, so-called Classifier, was introduced by Brown et al. [2020] and has been employed in subsequent work (Gao et al. [2020], Chowdhery et al. [2023], Du et al. [2022]. Other strategies include selecting examples that maximize the loss difference between LMs trained on candidate and reference datasets (Moore and Lewis 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d2d4f6858cc2d21fd0230244fcb34f1d-Paper-Conference.pdf",
+              "document_sha256": "4247ca681da502995642314e234326c80fa7eca4cf5e94fa56bc37f8241c6006"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Effective data selection is critical for efficient training of modern Large Language Models (LLMs). This paper introduces Influence Distillation, a novel, mathematically-justified framework for data selection that employs second-order information to optimally weight training samples. By distilling each sample’s influence on a target distribution, our method assigns model-specific weights that are used to select training data for LLM fine-tuning, guiding it toward strong performance on the target domain. We derive these optimal weights for both Gradient Descent and Adam optimizers. To ensure scalability and reduce computational cost, we propose a landmark-based approximation: influence is precisely computed for a small subset of “landmark” samples and then efficiently propagated to all other samples to determine their weights. We validate Influence Distillation by applying it to instruction tuning on the Tulu V2 dataset, targeting a range of tasks including GSM8k, SQuAD, and MMLU, across several models from the Llama and Qwen families. Experiments show that Influence Distillation matches or outperforms state-of-the-art performance while achieving up to 3.5× faster selection.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d2d4f6858cc2d21fd0230244fcb34f1d-Paper-Conference.pdf",
+              "document_sha256": "4247ca681da502995642314e234326c80fa7eca4cf5e94fa56bc37f8241c6006"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "[2010], Axelrod [2017], Feng et al. [2022]). Another direction is employing large, well-trained language models to select informative samples [Chen et al., 2023a, Pang et al., 2024]. Simpler, yet common, techniques involve filtering documents based on length or the presence of excessive special characters (Raffel et al. [2020], Xie et al. [2023b]). A related, though distinct, task in the LM domain is optimizing the weights for sampling from mixed data sources (Chen et al. [2024], Albalak et al. [2023]). Recently, Ivison et al. [2025] proposed RDS+, which uses similarity between model-dependent embeddings computed by a position-weighted mean pool of the last hidden layer states. Recent work has also highlighted the importance of considering the training dynamics when selecting data. Zhou et al. [2023a] proposed measuring “learnability” based on loss changes during training, while Swayamdipta et al. [2020] introduced “dataset cartography” to analyze training dynamics across examples. These methods provide useful signals about which examples are most valuable for training; at the same time, they require training reference models which can be computationally expensive. For large-scale applications, Bhatt et al. [2024] evaluated various data selection approaches for LLM fine-tuning, and found that facility-location selection based on hidden representations was particularly effective. However, Tirumala et al. [2023] observed that generating these representations for large datasets remains computationally challenging. More recently, Engstrom et al. [2024b] framed the data selection problem as an optimization problem: Given the learning algorithm, find the subset of the data that maximizes the performance of the trained model. To obtain an efficient solution, they design a",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d2d4f6858cc2d21fd0230244fcb34f1d-Paper-Conference.pdf",
+              "document_sha256": "4247ca681da502995642314e234326c80fa7eca4cf5e94fa56bc37f8241c6006"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0a3e1738c6363faf22ab41b1",
+          "url": "https://proceedings.mlr.press/v162/du22c.html"
+        },
+        "b": {
+          "paper_id": "paper-1c0906c7edd1a33a9a798e23",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/d2d4f6858cc2d21fd0230244fcb34f1d-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "8fae18b5eef20ed7805b601abb98fe5f4ee851acdbbb0a3bf69b5a22b3d6d1b3"
+    },
+    {
+      "id": "edge-ccddd1c1bc4ae4b1999ec53b",
+      "a": "paper-0a3e1738c6363faf22ab41b1",
+      "b": "paper-899034b596dbc5a94d7cb6a5",
+      "state": {
+        "paper_a": {
+          "title": "GLaM: Efficient Scaling of Language Models with Mixture-of-Experts",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named \\glam (\\textbf{G}eneralist \\textbf{La}nguage \\textbf{M}odel), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest \\glam has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall fewshot performance across 29 NLP tasks."
+        },
+        "paper_b": {
+          "title": "DOGE: Domain Reweighting with Generalization Estimation",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The coverage and composition of the pretraining data significantly impacts the generalization ability of Large Language Models (LLMs). Despite its importance, recent LLMs still rely on heuristics and trial and error to increase or reduce the influence of data-domains. We propose DOmain reweighting with Generalization Estimation (DoGE), which optimizes the probability of sampling from each domain (domain weights) in a principled way. Our approach is a two stage process consisting (i) training a proxy model to obtain domain weights using a bi-level optimization algorithm; (ii) training a larger base model by sampling training domains according to the learnt domain weights. In our experiments, we extensively show how DoGE improves the generalization of the base model to any target data mixture. On the SlimPajama dataset, our base model gets a better perplexity and few-shot reasoning accuracies across 6 tasks compared to baseline methods. Moreover, aiming to generalize to out-of-domain target tasks, which is unseen in the pretraining corpus (OOD domain), DoGE can effectively identify inter-domain dependencies, consistently achieves better test perplexity on the target domain."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Recently, Xie et al. (2023a) proposed a learnability-based domain reweighting framework D O R E M I , which settles domain weights using two small-scale auxiliary models: first, a reference model is \"well-trained\" using uniform domain weights; next, a second auxiliary model—referred to as proxy…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0a3e1738c6363faf22ab41b1",
+          "b": "paper-899034b596dbc5a94d7cb6a5",
+          "input_sha256": "dc9e930ce78c0c87c4cc5bfc0e93713698351cc324e0a44473c162e883a43ec7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/du22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/fan24e.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/fan24e/fan24e.pdf",
+              "sha256": "b7a4908767450adfdb7f92cad3836d5cc42ba7cfeb0cd0ff6a8a18bacb978d21"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "9. Conclusions We propose and develop a family of generalist language models called GLaM, which use a sparsely activated mixture-of-experts architecture to achieve better average scores than not only their dense counterparts of similar effective FLOPs, but also the GPT-3 models on 1/1 29 representative NLP tasks in zero, one and few-shot learning. In particular, GLaM (64B/64E), our largest 1.2 trillion parameter MoE language model, achieves better average performance with only one third of energy consumption compared to training GPT-3. We hope that our work will encourage more research into methods for obtaining high-quality data, and using MoE for more efficient scaling of giant language models.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named GLaM (Generalist Language Model), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest GLaM has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall zero, one and few-shot performance across 29 NLP tasks.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recently, Xie et al. (2023a) proposed a learnability-based domain reweighting framework D O R E M I, which settles domain weights using two small-scale auxiliary models: first, a reference model is \"well-trained\" using uniform domain weights; next, a second auxiliary model—referred to as proxy model—is trained from scratch with the objective to find domain weights that minimize the worst-case excess loss, i.e. the per-domain loss gap between the proxy model and the well-trained reference model. The excess loss is interpreted as an estimation for the remaining learnability of a given domain at each training step—a large gap indicating the proxy model can further learn to model the associated domain. Despite the encouraging empirical results of D O R E M I, minimizing the worst-case loss gap (i) creates a strong dependency on the well-trained model whose capacity can strongly influence the overall accuracy and requires appropriate tuning, and (ii) creates a dissonance between the ideal goal of minimizing the average validation loss across domains and the employed objective which seeks to simply mimic the well-trained model. Moreover, this approach cannot be used when the target domains are different from the training domains.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/fan24e/fan24e.pdf",
+              "document_sha256": "b7a4908767450adfdb7f92cad3836d5cc42ba7cfeb0cd0ff6a8a18bacb978d21"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The coverage and composition of the pretraining data significantly impacts the generalization ability of Large Language Models (LLMs). Despite its importance, recent LLMs still rely on heuristics and trial and error to increase or reduce the influence of data-domains. We propose DOmain reweighting with Generalization Estimation (D O GE), which optimizes the probability of sampling from each domain (domain weights) in a principled way. Our approach is a two-stage process consisting of (i) training a proxy model to obtain domain weights using a bi-level optimization algorithm; (ii) training a larger base model by sampling training domains according to the learned domain weights. In our experiments, we extensively show how D O GE improves the generalization of the base model to any target data mixture. On the SlimPajama dataset, our base model gets better perplexity and few-shot reasoning accuracies across 6 tasks compared to baseline methods. Moreover, aiming to generalize to out-of-domain target tasks, which is unseen in the pretraining corpus (OOD domain), D O GE can effectively identify inter-domain dependencies, and consistently achieves better test perplexity on the target domain. We provide the codebase at https: //github.com/Olivia-fsm/doge.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/fan24e/fan24e.pdf",
+              "document_sha256": "b7a4908767450adfdb7f92cad3836d5cc42ba7cfeb0cd0ff6a8a18bacb978d21"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Contributions. We summarize our contributions as follows: • We introduce and rigorously derive D O GE, an efficient and effective domain reweighting framework, which explicitly aims to generalize to a specific set of target domains (§ 2);",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/fan24e/fan24e.pdf",
+              "document_sha256": "b7a4908767450adfdb7f92cad3836d5cc42ba7cfeb0cd0ff6a8a18bacb978d21"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0a3e1738c6363faf22ab41b1",
+          "url": "https://proceedings.mlr.press/v162/du22c.html"
+        },
+        "b": {
+          "paper_id": "paper-899034b596dbc5a94d7cb6a5",
+          "url": "https://proceedings.mlr.press/v235/fan24e.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Optimizing Language Model Training Through Instruction and Data Selection"
+      },
+      "sha256": "8f2826841384128547e5720f8e16fb0da8b382d9005d1c3da638852bc5fa9fc6"
+    }
+  ]
+}

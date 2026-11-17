@@ -1,0 +1,233 @@
+{
+  "pack": "attention-and-context-in-large-language-models-a2351ddd00",
+  "submission": {
+    "version": "paper-evolve-review-v1",
+    "contributor": {
+      "name": "Paper Evolve fresh-agent trial",
+      "tool": "Codex assistant; exact model version unavailable in this session",
+      "method": "assistant"
+    },
+    "decisions": [
+      {
+        "task_id": "edge-6f23dea0f636e8be100031a1",
+        "task_sha256": "5a9cca714faccdbc352220f6f31d7f77756e6fae10749673e81505a2e656c89d",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A analyzes initialization gradients and Pre-LN training without warm-up. B's citation describes the class of normalized Transformer architectures it studies, while its contribution concerns final-token representation collapse. The frozen passages do not show B retaining or disputing A's gradient/warm-up result, applying that result elsewhere, or combining its method. A passage explicitly linking B's analysis to A's particular contribution would be needed.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "This motivates us to remove the warm-up stage for the training of Pre-LN Transformers."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "In this work, we study a class of Transformers which we believe forms the basis for a large number of current LLMs."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-811ed4e0ae23c49cf2c17f1a",
+        "task_sha256": "8cae08aea7ec638a924feb0cff5950a828083f769cd787f95a9cc3edb33e279c",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A introduces expectation-maximization bases for compact video-language representations. B introduces mixture-of-head routing for attention. The supplied citation paragraph reports a shared-head-ratio ablation and discusses Soft MoE; it does not link MoH to A's EMCL bases or modality-gap method. Shared representation-learning context is insufficient; a frozen passage demonstrating actual EMCL inheritance or a specific dispute is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "Specifically, we use the Expectation-Maximization algorithm to find a compact set of bases for the latent space, where the features could be concisely represented as the linear combinations of these bases."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "We find that model performance remains relatively consistent across a wide range of shared heads ratios (from 13.9% to 74.0%)."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-92f83d79fb51130b02f34d4d",
+        "task_sha256": "637c263eb16ea0146fad984ff6e3b3db6d513ec286cf0db1463282abd6128395",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A's specific contribution is bidirectional language-model pretraining and task fine-tuning. B designs linear-complexity long/short attention and cites Transformer success as background. Applicability to bidirectional models does not show reuse of BERT's particular pretraining contribution, and vision experiments do not by themselves transfer BERT. The packet needs an explicit BERT-specific inheritance or dispute passage to support a relation.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Transformer-based models [1] have achieved great success in the domains of natural language processing (NLP) [2, 3] and computer vision [4–6]."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-21184c162a18324bc5089bb1",
+        "task_sha256": "4351312d8745318f43ab7b134863e38076001eb76df5a17e9f51e76fdd49c51e",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A constructs RA and LARA via query-specific importance sampling. B lists theoretical softmax approximations as prior work, then develops a blockwise causal linear-attention implementation and a TransNormer-derived architecture. The packet does not say Lightning Attention uses A's randomized estimator or contradicts its approximation results. A shared kernel-attention family and generic cumsum limitation do not establish one of the precise contribution links.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "RA constructs positive random features via query-specific distributions and enjoys greatly improved approximation fidelity, albeit exhibiting quadratic complexity."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Choromanski et al. (2021); Zheng et al. (2022; 2023) approximate softmax through theoretical approaches."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-2fce06456e476a934d115f13",
+        "task_sha256": "21a0e1ed49fbd1ec58af633729588cc8752f2c5eb9933eabbed7ece8941aba91",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A identifies knowledge neurons and edits relational facts without fine-tuning. B contrasts in-context learning with knowledge editing and derives conversion of context prompts into bias terms. Presenting an alternative update mechanism does not demonstrate inheritance, combination, transfer, revival, or a dispute of A's neuron-attribution findings. A diagnostic passage directly linking ICLCA to A's specific contribution is absent.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "In-context learning is an attractive proposition compared to traditional parameter-based model update methods such as fine-tuning (Wei et al., 2021; Ouyang et al., 2022) or knowledge editing (Dai et al., 2021; Meng et al., 2022a;b)."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-f591edd739a65cd945506aef",
+        "task_sha256": "58dc345121e93056f24f3e0b5b129f529716e5ecd3552182809cc2df6e752f1b",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A studies MLP knowledge neurons; B attributes functions to attention heads. B explicitly leaves their interaction with knowledge neurons as an open question. Similar attribution terminology does not establish reuse of A's algorithm, and the packet gives no specific challenge to A. An explicit methodological link would be needed; the cited future-work question is not such a link.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "However, how they interact with components in MLP modules e.g., knowledge neurons [19] to induce functions remains an open question."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-d00c00c046556c0b1f0ce54a",
+        "task_sha256": "702092175140bc817ef4a99bc5b24647e1035aaf6ce837cda6d846ca622c8cf3",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A proves universal approximation under sparse-attention conditions. B studies rank-collapse dynamics for masked attention and LayerNorm, citing sparse architectures and A's universality result as context. Its stated generalization concerns a different rank-collapse result, and its refuted LayerNorm hypothesis is attributed to other work. The packet does not show an extension of A's universality theorem or a contradiction of its assumptions/results.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function."
+            },
+            {
+              "source": "b_citation_2",
+              "quote": "In particular, it generalizes the main result in [12] from G being a complete graph to a much more general class of attention patterns"
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-15da37ac2a380305b928778c",
+        "task_sha256": "ca91817f1318fae962be03ce5d42eba4ce98752a0212cb6778ad396ee839f38a",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A's contribution is a universality framework and sufficient conditions for sparse Transformers. B cites local attention concentration to motivate selective KV fetching at inference. This motivates a different engineering method but does not show adoption/generalization of A's theorem or its prescribed sparsity construction. The packet needs a precise inheritance or dispute passage rather than the general observation that attention is sparse.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Despite this expensive cache-fetch at each step, tokens generally only attend to a small part of the sequence at a time (Vig, 2019; Yun et al., 2020)."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-d12eb60c8b95536e4eae2dac",
+        "task_sha256": "4b46b4acf1cccec45e49e685536f441a334220c9ce81a9f0dc0e86a3528ddba2",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A proves universality for sparse Transformers satisfying specified conditions. B proves limitations of RPE-based models and develops URPE; its citation follows prior analyses in omitting normalization layers. That shared analytical simplification does not show extension of A's sparsity theorem, nor does a nonuniversality result for a different RPE architecture refute A's conditional theorem. A passage explicitly connecting the particular contributions is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Following Yun et al. [69] and many other previous theoretical works [44, 24, 70], we study the expressiveness of a simplified version of Transformer in which normalization layers are omitted"
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-ae064cd2cf6274d331907b35",
+        "task_sha256": "1d40a0ab9a487242e6094c21f722d7eae26aeaae5e4f12acbb2577ce8bdd7179",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A introduces jointly trained retrieval-augmented seq2seq generation with latent-document marginalization. B cites retrieval augmentation generally and analyzes attention-head behavior in in-context retrieval augmentation. Providing provenance addresses a related open problem but the frozen material does not show use or extension of A's particular retriever-generator training/marginalization recipe. General RAG terminology and a background citation are insufficient for the requested contribution edge.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_passage_2",
+              "quote": "We combine these components in a probabilistic model trained end-to-end (Fig. 1)."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Retrieval-augmented language models (RALMs) [40, 45] address inherent limitations of LMs by providing external knowledge sources."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

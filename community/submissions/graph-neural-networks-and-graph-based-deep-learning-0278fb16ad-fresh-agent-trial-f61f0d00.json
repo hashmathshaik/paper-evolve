@@ -1,0 +1,271 @@
+{
+  "pack": "graph-neural-networks-and-graph-based-deep-learning-0278fb16ad",
+  "submission": {
+    "version": "paper-evolve-review-v1",
+    "contributor": {
+      "name": "Paper Evolve fresh-agent trial",
+      "tool": "Codex assistant; exact model version unavailable in this session",
+      "method": "assistant"
+    },
+    "decisions": [
+      {
+        "task_id": "edge-9db91bee587472a7e39cc0da",
+        "task_sha256": "f17b6f0e8ff6800aef92d651366da9842a264cecb23b63d240744bf348362114",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A's particular contribution uses reversible connections and related mechanisms to train deep memory-efficient GNNs. B motivates a separate model-soup approach by discussing generic scaling difficulties and naming works with up to 1000 layers. It does not specifically refute A's memory-efficiency or performance results, and replacing deepening with parallel soups is not itself a challenge or extension. A passage isolating a disputed A-specific claim or actual reuse of its reversible method is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "In this work, we study reversible connections, group convolutions, weight tying, and equilibrium models to advance the memory and parameter efficiency of GNNs."
+            },
+            {
+              "source": "b_passage_1",
+              "quote": "It suggests that linear scaling of GNNs either by deepening or widening is not necessarily the right approach towards building high-quality generalizable GNNs, and model soups can be an alternative."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-cb9e77232cc5a73f547d33f1",
+        "task_sha256": "95b164a4296b95a9f59b929aa8ef9782de798b84ffe7cebe338ae67c9f1ae35e",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A links diffusion objectives to weighted ELBO integrals and monotonic-weighting data augmentation. B cites the broad VAE interpretation of diffusion and builds discrete-state continuous-time graph generation. No supplied passage applies A's monotonic-weighting result or its augmentation interpretation, so a new graph domain alone does not demonstrate transfer of A's contribution. A specific objective-level inheritance passage is needed.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "Under the condition of monotonic weighting, the connection is even closer: the diffusion objective then equals the ELBO, combined with simple data augmentation, namely Gaussian noise perturbation."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Diffusion models [80] can be interpreted from both the score-matching [69, 70] or the variational autoencoder perspective [23, 35, 34]."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-3ac43bd670faaba0361450a5",
+        "task_sha256": "dc05d8ff3b8f9de0a48b46a1278578f4441e4279b14e59cda9fdfddc83704ced",
+        "decision": {
+          "related": true,
+          "basis": "explicit_statement",
+          "relations": [
+            {
+              "type": "Challenges",
+              "confidence": 0.9
+            }
+          ],
+          "reason": "B explicitly includes A among methods that remedy representation information loss by enforcing distance-preservation constraints during training. A's own abstract identifies its gradient penalty as the mechanism enforcing input-change detectability. B diagnoses the information discarded by deep representations and addresses the resulting density-estimation limitation with a post-hoc density estimator over joint node embeddings, avoiding reliance on that constrained-training remedy. This is a challenge to the method's need for distance-preserving training, not a claim that A's original non-graph OOD results are false; it does not establish reuse or transfer of DUQ.",
+          "inherited": "The method under critique is A's deterministic uncertainty estimation that enforces input-change detectability through a training-time gradient penalty.",
+          "changed": "B uses an information-theoretic analysis of layer-wise node representations and estimates uncertainty post hoc on their joint embedding space, addressing information loss without requiring A's distance-preserving training remedy.",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Because of the DPI, deep representations discard crucial information about both input and target."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "One remedy to this problem is enforcing distance preservation constraints on the NN (Mukhoti et al., 2021a; Liu et al., 2020a; Van Amersfoort et al., 2020)."
+            },
+            {
+              "source": "b_abstract",
+              "quote": "This reveals that considering all node representations simultaneously is a key design principle for epistemic uncertainty estimation on graphs beyond homophily."
+            },
+            {
+              "source": "b_abstract",
+              "quote": "We empirically confirm this with a simple post-hoc density estimator on the joint node embedding space that provides state-of-the-art uncertainty on heterophilic graphs."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "However, this is restrictive regarding the model architecture, prevents post-hoc uncertainty estimation, and often comes at decreased performance (Benkert et al., 2024)."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-247503bcf5268083a41bd703",
+        "task_sha256": "c9f9fd3207e58bd71689a1a78fd10952457366db9a14ddded646fbc5fa47f84b",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A constructs matched counterfactual links with causal treatment variables and uses them for link-prediction augmentation. B surveys task-specific graph augmentation and proposes a cross-domain diffusion augmentor. The packet does not show that UniAug retains A's causal matching construction or specifically disputes its link-prediction claims. Generalizing the broad goal of augmentation across domains is insufficient to establish extension or transfer of CFLP itself.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "To create these links, we employ causal models that consider the information (i.e., learned representations) of node pairs as context, global graph structural properties as treatment, and link existence as outcome."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "These GDA methods have been generally designed for specific tasks or particular aspects of graph data."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-0c05703808c3482bdbcaf5bf",
+        "task_sha256": "3c204f3cd48573592dafd36abcfb04148bba508dab613e381be8782d64587c03",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A's contribution is compressive HaarPooling that reduces node count through cascading cluster-based pooling. B mentions invertibility of Haar-basis transforms among examples covered by an expressivity bound and develops simplicial message passing. An invertible full transform is not the same contribution as A's compressive pooling, and the frozen passages do not show reuse or generalization of that pooling method. A precise HaarPooling-specific link is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "A HaarPooling layer transforms a given input graph to an output graph with a smaller node number and the same feature dimension; the compressive Haar transform filters out fine detail information in the Haar wavelet domain."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "iii) For the transform Φ by graph wavelet basis, Haar wavelet basis or graph framelets, Φ is invertible in all cases"
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-186521ca878bd80b211c259d",
+        "task_sha256": "ad96c420588abc4d26e214fe5ac025dd4b731be2b064c2d6827eed37899fbc59",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A analyzes last-token information collapse in decoder-only Transformers. B cites over-squashing literature and develops a recurrent/state-space perspective for GNN gradients. Although both study sensitivity and collapse, the frozen citation does not establish that B imports A's Transformer-specific proof or solution into GNNs, and solving over-squashing is not a challenge to A. A passage identifying the inherited A result and its new use is absent.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "We rely on a theoretical signal propagation analysis---specifically, we analyse the representations of the last token in the final layer of the Transformer, as this is the representation used for next-token prediction."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Over-squashing [1, 100, 30, 7] was originally introduced as a bottleneck resulting from ‘squashing’ into node representations amounts of information that are growing potentially exponentially quickly due to the topology of the graph."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-d1cd63e88e56c78c2b9a28c3",
+        "task_sha256": "23bf816b434f582b4a0b96b5d7e113a49035bd9b8e0bf2fb76e86f0e5e8b098e",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A explains posterior collapse through linear VAEs/pPCA and shows the ELBO introduces no additional spurious local maxima. B motivates autoregressive diffusion with limitations of VAEs and describes collapse in related work. This does not dispute A's qualified optimization result or apply its linear-VAE analysis; adopting another generative family is insufficient. The packet needs a passage connecting GraphARM's construction to A's specific theorem or method.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_abstract",
+              "quote": "Unexpectedly, we prove that the ELBO objective for the linear VAE does not introduce additional spurious local maxima relative to log marginal likelihood."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "This independence assumption can hurt the quality of the generated graphs."
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-295df6fe0c74974198761954",
+        "task_sha256": "261fe0b169a9f487ab4fddc07d17ea9cd9e9ae214b324be6273befb2463ea3ac",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A trains CLIP image/text encoders with paired natural-language supervision for zero-shot classification. B cites Transformer successes as background and adds a regularized attention functional, with supplied combination experiments using DeiT. The packet does not say B retains or combines CLIP's paired-encoder training contribution, and generic self-attention regularization is not a CLIP-specific challenge. An explicit CLIP inheritance or dispute passage is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_passage_1",
+              "quote": "CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples."
+            },
+            {
+              "source": "b_passage_1",
+              "quote": "we incorporate NeuTRENO with pre-trained DeiT and fine-tune on the ImageNet dataset"
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-6d06a9f2f7422343bca4547f",
+        "task_sha256": "6ea292e6239823ca6886b2be20fe735a6f3dd2040a4d0e650277fb70b8ab38db",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "A's contribution is contrastive image-text pretraining and zero-shot use of language-defined classes. B invokes foundation-model data scaling as motivation for graph diffusion pretraining. It does not reuse CLIP's paired encoders, contrastive objective, or text-defined classifier in a new graph task. A cross-domain analogy about more pretraining data is insufficient for Transfers or Extends; a specific methodological link is missing.",
+          "inherited": "",
+          "changed": "",
+          "evidence": [
+            {
+              "source": "a_passage_1",
+              "quote": "At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "The effectiveness of existing foundation models [1, 2, 3] heavily relies on the availability of substantial amounts of data"
+            }
+          ]
+        }
+      },
+      {
+        "task_id": "edge-cbc5b9c920d5b5209004e687",
+        "task_sha256": "f64307a33ec7f54239a402645899a428833bc48cbe5fd2769e27ee4deec1c8b7",
+        "decision": {
+          "related": true,
+          "basis": "explicit_statement",
+          "relations": [
+            {
+              "type": "Challenges",
+              "confidence": 0.9
+            }
+          ],
+          "reason": "B explicitly cites A while identifying exponential time and space complexity in the order k as a reason the universal higher-order networks are impractical. A's abstract places its universality contribution in this higher-order tensorization line. B addresses this concrete expressivity-versus-scalability limitation with a loopy WL/message-passing hierarchy that counts cycles and cactus-graph homomorphisms and demonstrates scalability, particularly on sparse graphs. This challenges practical feasibility of the A-associated method family; it neither refutes A's universality theorem nor claims B preserves full universality.",
+          "inherited": "The target of the critique is A's universal invariant/equivariant GNN construction in the higher-order tensor-network line, whose universality B acknowledges.",
+          "changed": "B replaces the impractical higher-order route with r-loopy WL and its message-passing framework, providing specified cycle and homomorphism-counting power with demonstrated scalability rather than asserting the same universal approximation guarantee.",
+          "evidence": [
+            {
+              "source": "a_passage_1",
+              "quote": "Recently, Maron et al. (2019b) showed that by allowing higherorder tensorization inside the network, universal invariant GNNs can be obtained."
+            },
+            {
+              "source": "a_passage_1",
+              "quote": "Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view."
+            },
+            {
+              "source": "b_citation_1",
+              "quote": "Although these networks are universal (Maron et al., 2019b; Keriven et al., 2019), their exponential time and space complexity in k renders them impractical."
+            },
+            {
+              "source": "b_passage_1",
+              "quote": "For instance, higher-order GNNs can count a large class of substructures as homomorphisms (B. Zhang et al., 2024), but they suffer from scalability issues."
+            },
+            {
+              "source": "b_abstract",
+              "quote": "We empirically validate the expressive and counting power of $r$-$\\ell$MPNN on several synthetic datasets and demonstrate the scalability and strong performance on various real-world datasets, particularly on sparse graphs."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

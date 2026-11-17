@@ -1,0 +1,958 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Uncertainty Quantification and Calibration in Deep Learning",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-48c85dfb2c4c0b9a2afb86d2",
+      "a": "paper-06a1293c095a2a7a16225f49",
+      "b": "paper-3dda7054a00b753288cdb13f",
+      "state": {
+        "paper_a": {
+          "title": "EfficientNetV2: Smaller Models and Faster Training",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "This paper introduces EfficientNetV2, a new family of convolutional networks that have faster training speed and better parameter efficiency than previous models. To develop these models, we use a combination of training-aware neural architecture search and scaling, to jointly optimize training speed and parameter efficiency. The models were searched from the search space enriched with new ops such as Fused-MBConv. Our experiments show that EfficientNetV2 models train much faster than state-of-the-art models while being up to 6.8x smaller. Our training can be further sped up by progressively increasing the image size during training, but it often causes a drop in accuracy. To compensate for this accuracy drop, we propose an improved method of progressive learning, which adaptively adjusts regularization (e.g. data augmentation) along with image size. With progressive learning, our EfficientNetV2 significantly outperforms previous models on ImageNet and CIFAR/Cars/Flowers datasets. By pretraining on the same ImageNet21k, our EfficientNetV2 achieves 87.3% top-1 accuracy on ImageNet ILSVRC2012, outperforming the recent ViT by 2.0% accuracy while training 5x-11x faster using the same computing resources."
+        },
+        "paper_b": {
+          "title": "Asymmetric Duos: Sidekicks Improve Uncertainty",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "The go-to strategy to apply deep networks in settings where uncertainty informs decisions—ensembling multiple training runs with random initializations—is ill-suited for the extremely large-scale models and practical fine-tuning workflows of today. We introduce a new cost-effective strategy for improving the uncertainty quantification and downstream decisions of a large model (e.g. a fine-tuned ViT-B): coupling it with a less accurate but much smaller \"sidekick\" (e.g. a fine-tuned ResNet-34) with a fraction of the computational cost. We propose aggregating the predictions of this *Asymmetric Duo* by simple learned weighted averaging. Surprisingly, despite their inherent asymmetry, the sidekick model almost never harms the performance of the larger model. In fact, across five image classification benchmarks, and a variety of model architectures and training schemes (including soups), Asymmetric Duos significantly improve accuracy, uncertainty quantification, and selective classification metrics with only ${\\sim}10-20$% more computation. Code is available at: https://github.com/timgzhou/asymmetric-duos"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06a1293c095a2a7a16225f49",
+          "b": "paper-3dda7054a00b753288cdb13f",
+          "input_sha256": "6d84f5b24e3aeb637be735e5e809acce6dcedb619526a02b57d858cba931558d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/tan21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/tan21a/tan21a.pdf",
+              "sha256": "2e6a1873cbd039dac943638c418a21f8a4a3e7ca25db9cdd0362be735c484b88"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/5927edd18c5dd83aa8936a4610c72029-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/5927edd18c5dd83aa8936a4610c72029-Paper-Conference.pdf",
+              "sha256": "3f0b868135d92ab7209fc8533e3c3b84e52020d2b5fd2e51fe815426b77317d7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "ter efficiency of EfficientNets (Tan & Le, 2019a), we start by systematically studying the training bottlenecks in EfficientNets. Our study shows in EfficientNets: (1) training with very large image sizes is slow; (2) depthwise convolutions are slow in early layers. (3) equally scaling up every stage is sub-optimal. Based on these observations, we design a search space enriched with additional ops such as Fused-MBConv, and apply training-aware NAS and scaling to jointly optimize model accuracy, training speed, and parameter size. Our found networks, named EfficientNetV2, train up to 4x faster than prior models (Figure 3), while being up to 6.8x smaller in parameter size. Our training can be further sped up by progressively increasing image size during training. Many previous works, such as progressive resizing (Howard, 2018), FixRes (Touvron et al., 2019), and Mix&Match (Hoffer et al., 2019), have used smaller image sizes in training; however, they usually keep the same regularization for all image sizes, causing a drop in accuracy. We argue that keeping the same regularization for different image sizes is not ideal: for the same network, small image size leads to small network capacity and thus requires weak regularization; vice versa, large image size requires stronger regularization to combat overfitting (see Section 4.1). Based on this insight, we propose an improved method of progressive learning: in the early training epochs, we train the network with small image size and weak regularization (e.g., dropout and data augmentation), then we gradually increase image size and add stronger regularization. Built upon progressive resizing (Howard, 2018), but by dynamically adjusting regularization, our approach can speed up the training without causing accuracy drop.",
+              "url": "https://proceedings.mlr.press/v139/tan21a/tan21a.pdf",
+              "document_sha256": "2e6a1873cbd039dac943638c418a21f8a4a3e7ca25db9cdd0362be735c484b88"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "This paper presents EfficientNetV2, a new family of smaller and faster neural networks for image recognition. Optimized with training-aware NAS and model scaling, our EfficientNetV2 significantly outperforms previous models, while being much faster and more efficient in parameters. To further speed up the training, we propose an improved method of progressive learning, that jointly increases image size and regularization during training. Extensive experiments show our EfficientNetV2 achieves strong results on ImageNet, and CIFAR/Flowers/Cars. Compared to EfficientNet and more recent works, our EfficientNetV2 trains up to 11x faster while being up to 6.8x smaller.",
+              "url": "https://proceedings.mlr.press/v139/tan21a/tan21a.pdf",
+              "document_sha256": "2e6a1873cbd039dac943638c418a21f8a4a3e7ca25db9cdd0362be735c484b88"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "We evaluate Asymmetric Duos in the context of image classification, measuring their effects on accuracy, uncertainty quantification, and downstream decision-making. To demonstrate their “out-ofthe-box” nature, we focus on Duos that combine models from popular pre-trained models available from the torchvision [37, 43] and timm [59] “model zoos.” Datasets. We benchmark ImageNet [8] for large-scale evaluation, and Caltech 256 [20] and iWildCam [3] for measuring transfer to new domains. As accuracy and uncertainty quantification tend to degrade under distribution shifts [42], we further evaluate with ImageNet V2 [48] and iWildCam-OOD [27] to test robustness under such shifts. Models. For flarge architecture and parameters, we consider pre-trained models that 1. consistently achieve high performance on fine-tuning benchmarks [e.g. 18] and 2. are commonly used in practice for various computer vision tasks. We therefore experiment with four strong flarge that cover convolution and attention architectures: a ConvNeXt-Base [35] pre-trained on ImageNet, a SwinV2-Base [34] pre-trained on ImageNet, an EfficientNet-V2-L [53] pre-trained on the largerscale ImageNet21K, and a CLIP ViT-B [10, 45] pre-trained on the larger still LAION-2B [50]. These span standard scale (ImageNet) to extremely large scale (LAION). For fsmall models, we consider smaller architectures from torchvision and timm [24, 33, 46, 52, 54, 61, 62] (see Appendix A for a complete list). Within a given model family (e.g. ResNet), we choose models of varying size (e.g. ResNet-34, ResNet-50, ResNet-101, etc.) to produce Duos with various levels of asymmetry. Fine-Tuning and Evaluation. For our downstream datasets evaluations, we fine-tune our models following the LP-FT recipe [28] with standard unweighted Cross-Entropy",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5927edd18c5dd83aa8936a4610c72029-Paper-Conference.pdf",
+              "document_sha256": "3f0b868135d92ab7209fc8533e3c3b84e52020d2b5fd2e51fe815426b77317d7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The go-to strategy to apply deep networks in settings where uncertainty informs decisions—ensembling multiple training runs with random initializations—is illsuited for the extremely large-scale models and practical fine-tuning workflows of today. We introduce a new cost-effective strategy for improving the uncertainty quantification and downstream decisions of a large model (e.g. a fine-tuned ViTB): coupling it with a less accurate but much smaller “sidekick” (e.g. a fine-tuned ResNet-34) with a fraction of the computational cost. We propose aggregating the predictions of this Asymmetric Duo by simple learned weighted averaging. Surprisingly, despite their inherent asymmetry, the sidekick model almost never harms the performance of the larger model. In fact, across five image classification benchmarks and a variety of model architectures and training schemes (including soups), Asymmetric Duos significantly improve accuracy, uncertainty quantification, and selective classification metrics with only ∼10 − 20% more computation. Code is available at: https://github.com/timgzhou/asymmetric-duos.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5927edd18c5dd83aa8936a4610c72029-Paper-Conference.pdf",
+              "document_sha256": "3f0b868135d92ab7209fc8533e3c3b84e52020d2b5fd2e51fe815426b77317d7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce Asymmetric Duos to augment a large base model flarge with a small sidekick model fsmall , which are both independently pre-trained and fine-tuned, for improving inference at little computational cost. Duos allow many choices of base flarge and sidekick fsmall . It is practical to choose a base that could be deployed by itself for adequate predictive performance and aggregate it with a much smaller sidekick, even if the sidekick cannot satisfactorily address the task on its own. We contrast our pairing of asymmetric models with deep ensembles. Even the smallest deep ensemble with m = 2 models doubles the training and inference cost. To sidestep this cost, we instead look to combining models of different sizes. At first glance, this strategy may appear to have limits; too much imbalance may produce worse predictions than the base model alone. However, through a carefully designed aggregation strategy, we show that our Asymmetric Duos can improve performance even when the fsmall uses an order of magnitude less computation than flarge . The Asymmetric Duo framework is architecture-agnostic and compatible with current transferlearning and regularization techniques. This flexibility offers two key advantages. First, Duos can 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5927edd18c5dd83aa8936a4610c72029-Paper-Conference.pdf",
+              "document_sha256": "3f0b868135d92ab7209fc8533e3c3b84e52020d2b5fd2e51fe815426b77317d7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06a1293c095a2a7a16225f49",
+          "url": "https://proceedings.mlr.press/v139/tan21a.html"
+        },
+        "b": {
+          "paper_id": "paper-3dda7054a00b753288cdb13f",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/5927edd18c5dd83aa8936a4610c72029-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "d1b3485c1fd46177fb0a80ba1fefe17231434b0b479a3621ebf2287af0a7aada"
+    },
+    {
+      "id": "edge-cc1c580887c17dd67117139a",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-c97283cc5b98bc0d0106a66d",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "Hyperparameter Ensembles for Robustness and Uncertainty Quantification",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Ensembles over neural network weights trained from different random initialization, known as deep ensembles, achieve state-of-the-art accuracy and calibration. The recently introduced batch ensembles provide a drop-in replacement that is more parameter efficient. In this paper, we design ensembles not only over weights, but over hyperparameters to improve the state of the art in both settings. For best performance independent of budget, we propose hyper-deep ensembles, a simple procedure that involves a random search over different hyperparameters, themselves stratified across multiple random initializations. Its strong performance highlights the benefit of combining models with both weight and hyperparameter diversity. We further propose a parameter efficient version, hyper-batch ensembles, which builds on the layer structure of batch ensembles and self-tuning networks. The computational and memory costs of our method are notably lower than typical ensembles. On image classification tasks, with MLP, LeNet, ResNet 20 and Wide ResNet 28-10 architectures, we improve upon both deep and batch ensembles."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-c97283cc5b98bc0d0106a66d",
+          "input_sha256": "0b0b7e515f29ebdbad86fa3cc20c53a394869fd4bfb0ade742637f66f555f263",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/481fbfa59da2581098e841b7afc122f1-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/481fbfa59da2581098e841b7afc122f1-Paper.pdf",
+              "sha256": "4c770c77a978a8d888171f402c5381db77b94a42c854ac66fe69d053dede37db"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "The results are reported in Table 2. 0.8 On CIFAR-100, hyper-batch ens improves, or matches, batch ens 0.6 across all metrics. For instance, hyper-deep ens. in terms of NLL, it improves upon deep ens. 0.4 hyper-batch ens. batch ens by about 7% and 2% batch ens. for ResNet-20 and Wide ResNet single 0.2 28-10 respectively. Moreover, the 1 2 3 4 5 Shift intensity members of hyper-batch ens make more diverse predictions than those Figure 3: CIFAR-10 corruptions. Each box shows the quarof batch ens. On CIFAR-10 tiles summarizing the results across all types of shifts while hyper-batch ens also achieves a the error bars give the min/max across different shift types. consistent improvement, though less pronounced (see Table 2). On the same Wide ResNet 28-10 benchmark, with identical training and evaluation pipelines (see https://github.com/google/uncertainty-baselines), variational inference [70] leads to (NLL, ACC, ECE)=(0.211, 0.947, 0.029) and (NLL, ACC, ECE)=(0.944, 0.778, 0.097) for CIFAR-10 and CIFAR-100 respectively, while Monte Carlo dropout [23] gets (NLL, ACC, ECE)=(0.160, 0.959, 0.024) and (NLL, ACC, ECE)=(0.830, 0.776, 0.050) for CIFAR-10 and CIFAR-100 respectively. We can finally look at how the joint training in hyper-batch ens leads to complementary ensemble members. For instance, for Wide ResNet 28-10 on CIFAR-100, while the ensemble performance are (NLL, ACC)=(0.678, 0.820) (see Table 2), the individual members obtain substantially poorer performance, as measured by the average ensemble-member metrics (NLL, ACC)=(0.904, 0.788). Training time and memory cost. Both in terms of the number of parameters and training time, hyper-batch ens is about twice as costly as batch ens. For CIFAR-100, hyper-batch ens takes 2.16 minutes/epoch and batch ens 1.10 minute/epoch.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/481fbfa59da2581098e841b7afc122f1-Paper.pdf",
+              "document_sha256": "4c770c77a978a8d888171f402c5381db77b94a42c854ac66fe69d053dede37db"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Ensembles over neural network weights. Combining the outputs of several neural networks to improve their single performance has a long history, e.g., [47, 30, 25, 41, 58, 15]. Since the quality of an ensemble hinges on the diversity of its members [30], many mechanisms were developed to generate diverse ensemble members. For instance, cyclical learning-rate schedules can explore several local minima [36, 76] where ensemble members can be snapshot. Other examples are MC dropout [23] or the random initialization itself, possibly combined with the bootstrap [45, 43]. More generally, Bayesian neural networks can be seen as ensembles with members being weighted by the (approximated) posterior distribution over the parameters [34, 51, 56, 7, 71, 72]. Hyperparameter ensembles. Hyperparameter-tuning methods [20] typically produce a pool of models from which ensembles can be constructed post hoc, e.g., [65]. This idea has been made systematic as part of auto-sklearn [21] and successfully exploited in several other contexts, e.g., [19] and specifically for neural networks [53] as well as in computer vision [60] and genetics [35]. In particular, the greedy ensemble construction from [13] (and later variations thereof [12]) was shown to work best among other algorithms, either more expensive or more prone to overfitting. To the best of our knowledge, such ensembles based on hyperparameters have not been studied in the light of predictive uncertainty. Moreover, we are not aware of existing methods to efficiently build such ensembles, similarly to what batch ensembles do for deep ensembles. Finally, recent research in Bayesian optimization has also focused on directly optimizing the performance of the ensemble while tuning the hyperparameters [46]. Hyperparameter ensembles also",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/481fbfa59da2581098e841b7afc122f1-Paper.pdf",
+              "document_sha256": "4c770c77a978a8d888171f402c5381db77b94a42c854ac66fe69d053dede37db"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "Broader Impact Our work belongs to a broader research effort that tries to quantify the predictive uncertainty for deep neural networks. Those models are known to generalize poorly to small changes to the data while maintaining high confidence in their predictions. Who may benefit from this research? The broader topic of our work is becoming increasingly important in a context where machine learning systems are being deployed in safety-critical fields, e.g., medical diagnosis [54, 49] and self-driving cars [48]. Those examples would benefit from the general technology we contribute to. In those cases, it is essential to be able to reliably trust the uncertainty output by the models before any decision-making process, to possibly escalate uncertain decisions to appropriate human operators. Who may be put at disadvantage from this research? We are not aware of a group of people that may be put at disadvantage as a result of this direct research. What are the consequences of failure of the system? By definition, our research could contribute to aspects of machine-learning systems used in high-risk domains (e.g., we mentioned earlier medical fields and self-driving cars) which involves complex data-driven decision-making processes. Depending on the nature of the application at hand, a failure of the system could lead to extremely negative consequences. A case in point is the recent screening system used by one third of UK government councils to allocate welfare budget. 1 Do the task/method leverage biases in the data? The method we develop in this work is domainagnostic and does not rely on specific data assumptions. Our method also does not contain components that would prevent its combination with existing fairness or privacy-preserving technologies [4].",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/481fbfa59da2581098e841b7afc122f1-Paper.pdf",
+              "document_sha256": "4c770c77a978a8d888171f402c5381db77b94a42c854ac66fe69d053dede37db"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c97283cc5b98bc0d0106a66d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/481fbfa59da2581098e841b7afc122f1-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "a13bea47c1775b43f07a7b4d4ab7b80f58cc508b144ab0e159f42fa4cf4c160c"
+    },
+    {
+      "id": "edge-ec1985ae84f7f915168eceb5",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-826ee15b69f1f4dd5c619efc",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "Learning Sample Difficulty from Pre-trained Models for Reliable Prediction",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale pre-trained models have achieved remarkable success in many applications, but how to leverage them to improve the prediction reliability of downstream models is undesirably under-explored. Moreover, modern neural networks have been found to be poorly calibrated and make overconfident predictions regardless of inherent sample difficulty and data uncertainty. To address this issue, we propose to utilize large-scale pre-trained models to guide downstream model training with sample difficulty-aware entropy regularization. Pre-trained models that have been exposed to large-scale datasets and do not overfit the downstream training classes enable us to measure each training sample’s difficulty via feature-space Gaussian modeling and relative Mahalanobis distance computation. Importantly, by adaptively penalizing overconfident prediction based on the sample difficulty, we simultaneously improve accuracy and uncertainty calibration across challenging benchmarks (e.g., +0.55% ACC and −3.7% ECE on ImageNet1k using ResNet34), consistently surpassing competitive baselines for reliable prediction. The improved uncertainty estimate further improves selective classification (abstaining from erroneous predictions) and out-of-distribution detection."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-826ee15b69f1f4dd5c619efc",
+          "input_sha256": "6e7df7379d781efb384a7de92dc72c308d0b2a20d5daa81112e4cdb0fcb00d17",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/50251f54848a433f3e47ae3b7cbded53-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/50251f54848a433f3e47ae3b7cbded53-Paper-Conference.pdf",
+              "sha256": "76c99cee5e1ce67f476a2d7602eed07524f8bdfbe51dee44adf786ada18a04a0"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Improvements across classification models. If our sample difficulty measure carries useful information about the dataset, it should lead to consistent gains across different classifier architectures (e.g., ResNet, Wide-ResNet and DenseNet). Table 9 in Appendix positively confirms that it benefits the training of small and large models. Under distributional shift. [39] has shown that the quality of predictive uncertainty degrades under distribution shifts, which however are often inevitable in real-world applications. We further evaluate the calibration performance achieved by the ImageNet1k classifier on ImageNet-C [17]. Specifically, Fig. 3 plots the ECE of each method across 16 different types of corruptions at five severity levels, which ranges from the lowest level one to the highest level five. It is prominent that the proposed method surpasses other methods for ECE at various levels of skew. In particular, the gain becomes even larger as the shift intensity increases. 5.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/50251f54848a433f3e47ae3b7cbded53-Paper-Conference.pdf",
+              "document_sha256": "76c99cee5e1ce67f476a2d7602eed07524f8bdfbe51dee44adf786ada18a04a0"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Visualization of training samples with low (high) sample difficulty that is scored by CLIP-ViT-B [44] using the derived relative Mahalanobis distance (RMD). pre-trained models to measure the difficulty of each sample in the downstream training set and use this extra data annotation to modify the training loss. Although sample difficulty has been shown to be beneficial to improve training efficiency [33] and neural scaling laws [49], its effectiveness for ameliorating model reliability is largely under-explored. Pre-trained models aid in scoring sample difficulty by shifting the problem from the raw data space to a task- and model-agnostic feature space, where simple distance measures suffice to represent similarities. Besides, large-scale multi-modal datasets and self-supervised learning principles enable the pre-trained models (see those in Table 1) to generate features that sufficiently preserve highlevel concepts behind the data and avoid overfitting to specific data or classes. In light of this, we perform sample difficulty estimation in the feature space of pre-trained models and cast it as a density estimation problem since samples with typical discriminative features are easier to learn and typical features shall reappear. We advocate using Gaussian models to represent the training data distribution in the feature space of pre-trained models and derive the relative Mahalanobis distance (RMD) as a sample difficulty score. As shown in Fig. 1, there is a high-level agreement on sample difficulty between RMD and human cognition. Equipped with the knowledge of sample difficulty, we further propose to use it for regularizing the prediction confidence. The standard cross entropy loss with a single ground truth label would encourage the model to predict all",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/50251f54848a433f3e47ae3b7cbded53-Paper-Conference.pdf",
+              "document_sha256": "76c99cee5e1ce67f476a2d7602eed07524f8bdfbe51dee44adf786ada18a04a0"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale pre-trained models have achieved remarkable success in many applications, but how to leverage them to improve the prediction reliability of downstream models is undesirably under-explored. Moreover, modern neural networks have been found to be poorly calibrated and make overconfident predictions regardless of inherent sample difficulty and data uncertainty. To address this issue, we propose to utilize large-scale pre-trained models to guide downstream model training with sample difficulty-aware entropy regularization. Pre-trained models that have been exposed to large-scale datasets and do not overfit the downstream training classes enable us to measure each training sample’s difficulty via feature-space Gaussian modeling and relative Mahalanobis distance computation. Importantly, by adaptively penalizing overconfident prediction based on the sample difficulty, we simultaneously improve accuracy and uncertainty calibration across challenging benchmarks (e.g., +0.55% ACC and −3.7% ECE on ImageNet1k using ResNet34), consistently surpassing competitive baselines for reliable prediction. The improved uncertainty estimate further improves selective classification (abstaining from erroneous predictions) and out-of-distribution detection.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/50251f54848a433f3e47ae3b7cbded53-Paper-Conference.pdf",
+              "document_sha256": "76c99cee5e1ce67f476a2d7602eed07524f8bdfbe51dee44adf786ada18a04a0"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-826ee15b69f1f4dd5c619efc",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/50251f54848a433f3e47ae3b7cbded53-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "b295f6b706487d75d1addb0d0c7a9bb89e3843fcb481d3c005f7e465fb2e90c0"
+    },
+    {
+      "id": "edge-26f45c2276c009d60fa3659c",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-30f6dc83c3786ba1c8abc298",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Stochastic Online Conformal Prediction with Semi-Bandit Feedback",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Conformal prediction has emerged as an effective strategy for uncertainty quantification by modifying a model to output sets of labels instead of a single label. These prediction sets come with the guarantee that they contain the true label with high probability. However, conformal prediction typically requires a large calibration dataset of i.i.d. examples. We consider the online learning setting, where examples arrive over time, and the goal is to construct prediction sets dynamically. Departing from existing work, we assume semi-bandit feedback, where we only observe the true label if it is contained in the prediction set . For instance, consider calibrating a document retrieval model to a new domain; in this setting, a user would only be able to provide the true label if the target document is in the prediction set of retrieved documents. We propose a novel conformal prediction algorithm targeted at this setting, and prove that it obtains sublinear regret compared to the optimal conformal predictor. We evaluate our algorithm on a retrieval task, an image classification task, and an auction price-setting task, and demonstrate that it empirically achieves good performance compared to several baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…be a question and the goal is to retrieve a passage y from a knowledge base such as Wikipedia that can be used to answer x ; this strategy is known as retrieval-augmented question answering, and can mitigate issues such as hallucinations (Lewis et al., 2020; Shuster et al., 2021; Ji et al., 2023).\nOur algorithm constructs compact prediction sets, ensuring high coverage probability.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-30f6dc83c3786ba1c8abc298",
+          "input_sha256": "b93af1ed476a26b1ccb436a114b60bc1040156f6a35417e4ddba9231f8ad2fcc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/ge25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/ge25a/ge25a.pdf",
+              "sha256": "de72d03e5e0db007a3767f5875884b8f1be2070659bab6c3b068732e4cab9861"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "P[y ∗ ∈ C(x)] ≥ α, where α is the desired coverage rate, and the probability is taken over the random sample (x, y ∗ ) ∼ D and the calibration dataset Z = {(xi , yi )}ni=1 ∼ Dn . Traditional conformal prediction require the calibration set to consist of i.i.d. or exchangeable samples from the target distribution; furthermore, the calibration set may need to be large to obtain good performance. In many settings, such labeled data may not be easy to obtain. As a motivating setting, we consider a document retrieval problem, where the input x might be a question and the goal is to retrieve a passage y from a knowledge base such as Wikipedia that can be used to answer x; this strategy is known as retrievalaugmented question answering, and can mitigate issues such as hallucinations (Lewis et al., 2020; Shuster et al., 2021; Ji et al., 2023). A common practice is to use a retrieval model trained on a large dataset in a different domain in a zero-shot manner; for instance, a user might use the dense passage retrieval (DPR) model (Karpukhin et al., 2020) directly on their own dataset without finetuning. Thus, labeled data from the target domain may not be available.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/ge25a/ge25a.pdf",
+              "document_sha256": "de72d03e5e0db007a3767f5875884b8f1be2070659bab6c3b068732e4cab9861"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Contributions. We formalize and solve the problem of online conformal prediction with semi-bandit feedback. Our algorithm constructs compact prediction sets, ensuring high coverage probability. The algorithm also provides an efficient method for collecting large datasets that are expensive to label. Instead of asking the user to select the ground truth label from the set of all candidate labels, our approach only requires the user to select from a subset. This efficiency gain can be substantial when the label space is large. We assess our algorithm’s performance on image classification, document retrieval and reservation price-setting in auctions, showcasing its effectiveness in a wide variety of real world applications, which highlights its practical utility.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/ge25a/ge25a.pdf",
+              "document_sha256": "de72d03e5e0db007a3767f5875884b8f1be2070659bab6c3b068732e4cab9861"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Conformal prediction has emerged as an effective strategy for uncertainty quantification by modifying a model to output sets of labels instead of a single label. These prediction sets come with the guarantee that they contain the true label with high probability. However, conformal prediction typically requires a large calibration dataset of i.i.d. examples. We consider the online learning setting, where examples arrive over time, and the goal is to construct prediction sets dynamically. Departing from existing work, we assume semibandit feedback, where we only observe the true label if it is contained in the prediction set. For instance, consider calibrating a document retrieval model to a new domain; in this setting, a user would only be able to provide the true label if the target document is in the prediction set of retrieved documents. We propose a novel conformal prediction algorithm targeted at this setting, and prove that it obtains sublinear regret compared to the optimal conformal predictor. We evaluate our algorithm on a retrieval task, an image classification task, and an auction price-setting task, and demonstrate that it empirically achieves good performance compared to several baselines.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/ge25a/ge25a.pdf",
+              "document_sha256": "de72d03e5e0db007a3767f5875884b8f1be2070659bab6c3b068732e4cab9861"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We propose an online conformal prediction algorithm that sequentially constructs prediction sets Ct as inputs xt are given. We consider semi-bandit feedback, where we only observe the true label yt∗ if it is included in our prediction set (i.e., yt∗ ∈ Ct ). Otherwise, we observe an indicator that yt∗ ̸∈ Ct , but do not observe yt∗ . In the document retrieval example, users might sequentially provide queries xt to the DPR model, and our algorithm responds with a prediction set Ct of potentially relevant documents. Then, the user selects the ground truth document yt∗ if it appears in this set, and indicates that their query was unsuccessful otherwise.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/ge25a/ge25a.pdf",
+              "document_sha256": "de72d03e5e0db007a3767f5875884b8f1be2070659bab6c3b068732e4cab9861"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-30f6dc83c3786ba1c8abc298",
+          "url": "https://proceedings.mlr.press/v267/ge25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "f8e56162d04bf6a500d2299837dec71b2169f7fb55b0ddb030b3eb176f5b04ca"
+    },
+    {
+      "id": "edge-02fccdfc06162572d4df5a11",
+      "a": "paper-02678819c708f5e4ea88fd14",
+      "b": "paper-37334d5d55bd8d33f34d9164",
+      "state": {
+        "paper_a": {
+          "title": "Uncertainty Estimation Using a Single Deep Deterministic Neural Network",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN."
+        },
+        "paper_b": {
+          "title": "Uncertainty Estimation of Transformer Predictions for Misclassification Detection",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Uncertainty estimation (UE) of model predictions is a crucial step for a variety of tasks such as active learning, misclassification detection, adversarial attack detection, out-of-distribution detection, etc. Most of the works on modeling the uncertainty of deep neural networks evaluate these methods on image classification tasks. Little attention has been paid to UE in natural language processing. To fill this gap, we perform a vast empirical investigation of state-of-the-art UE methods for Transformer models on misclassification detection in named entity recognition and text classification tasks and propose two computationally efficient modifications, one of which approaches or even outperforms computationally intensive methods."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Recently, many works have investigated the approximate Bayesian inference for neural networks using deterministic approaches: Lee et al. (2018); Liu et al. (2020); Van Amersfoort et al. (2020); Mukhoti et al. (2021); Shen et al. (2021), etc.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02678819c708f5e4ea88fd14",
+          "b": "paper-37334d5d55bd8d33f34d9164",
+          "input_sha256": "c1a6895be1d1b634d7f54bd9ff1b3b52720c1d61218d06e880d67096719c4441",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.566/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.566.pdf",
+              "sha256": "0440db8f329c9c7379948045048306878f44a7a3f3701b88beaff54c8eeb7b33"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "5. Conclusion We introduced DUQ, Deterministic Uncertainty Quantification, a simple method for obtaining uncertainty using a deep neural network in a single forward pass. Evaluations show that our method is better in some scenarios and competitive in others with the more computationally expensive Deep Ensembles. Interesting future work would be to place DUQ in a probabilistic framework, enabling a calibrated notion of uncertainty and a rigorous way of separating out epistemic and aleatoric uncertainty.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "training, introduces no additional parameters, and thus does not require any additional memory. The main disadvantage of this method is that it usually requires many forward-pass samplings for approximating predictive posterior, which makes it also computationally expensive. Recently, many works have investigated the approximate Bayesian inference for neural networks using deterministic approaches: Lee et al. (2018); Liu et al. (2020); Van Amersfoort et al. (2020); Mukhoti et al. (2021); Shen et al. (2021), etc. These methods do not introduce notable overhead for inference, storing weights, and usually require compatible training time. However, most of the research in this area is accomplished for computer vision tasks. For text classification, a series of works investigates UE methods for the OOD detection task (Liu et al., 2020; Podolskiy et al., 2021; Zeng et al., 2021; Hu and Khan, 2021). In this work, we focus on a more challenging task – misclassification detection. While OOD detection requires to model only the epistemic uncertainty inherent to the model and caused by a lack of training data, misclassification detection also requires to model aleatoric uncertainty caused by noise and ambiguity in data (Mukhoti et al., 2021). We consider recently proposed methods in this area that are evaluated in text processing. Three recent works propose techniques for misclassification detection based on an additive regularization of a training loss function. Zhang et al. (2019) suggest adding a penalty that reduces the Euclidean distance between training instances of the same class and increases the distance between instances of different classes. He et al. (2020) suggest using two components in the loss function that reduce the difference between outputs from two versions",
+              "url": "https://aclanthology.org/2022.acl-long.566.pdf",
+              "document_sha256": "0440db8f329c9c7379948045048306878f44a7a3f3701b88beaff54c8eeb7b33"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "where hi is a hidden representation of a i-th instance, µc is a centroid of a class c, and Σ is a covariance matrix for hidden representations of training instances. Recently, the Mahalanobis distance has been adopted for out-of-distribution detection with Transformer networks by Podolskiy et al. (2021). Mahalanobis Distance with Spectralnormalized Network (MD SN) (Ours) Since the UE method based on the Mahalanobis distance utilizes the idea of a proximity of a tested instance hidden representation to the training distribution, we expect this method to benefit from distance-preserving representations. Therefore, we propose the modification of the method of Lee et al. (2018) and Podolskiy et al. (2021) that enforces the bi-Lipschitz constraints on transformation implemented by the network. We perform spectral normalization of the weight matrix of the linear layer in the classification head of Transformer as it is suggested in SNGP (Liu et al., 2020). At each training step, a spectral norm ν is estimated using the power iteration method ν = kW k2 , and a normalized weight matrix is obtained: W̃ = W ν . At the inference step, hidden representations are calculated using the normalized",
+              "url": "https://aclanthology.org/2022.acl-long.566.pdf",
+              "document_sha256": "0440db8f329c9c7379948045048306878f44a7a3f3701b88beaff54c8eeb7b33"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "objects and help in misclassification detection. Besides misclassification detection, UE is a crucial component for active learning (Settles, 2009), adversarial attack detection (Lee et al., 2018), detection of out-of-distribution (OOD) instances (Van Amersfoort et al., 2020), etc. Some classical machine learning models, e.g. Gaussian processes (Rasmussen, 2003), have built-in UE capabilities. Modern deep neural networks (DNNs) usually take advantage of a softmax layer, which output can be considered as a prediction probability and be used for UE. However, the softmax probabilities are usually unreliable and produce overconfident predictions (Guo et al., 2017). Some previously proposed techniques such as deep ensemble (Lakshminarayanan et al., 2017) are known for producing good UE scores but require a large additional memory footprint for storing several versions of weights and multiply an amount of computation for conducting several forward passes. Reliable UE of DNN predictions that does not introduce high computational overhead is an open research question (Van Amersfoort et al., 2020). In this work, we investigate methods for UE of DNNs based on the Transformer architecture (Vaswani et al., 2017) in misclassification detection. We consider two of the most common NLP tasks: text classification and named entity recognition (NER). The latter has been overlooked in the literature on UE. To our knowledge, this work is the first to consider UE for NER. We propose two novel computationally cheap methods for UE of Transformer predictions. The first method is the modification of the Monte Carlo dropout with determinantal point process sampling of dropout masks (Shelmanov et al., 2021). We introduce an additional step for making masks more diverse, which helps to",
+              "url": "https://aclanthology.org/2022.acl-long.566.pdf",
+              "document_sha256": "0440db8f329c9c7379948045048306878f44a7a3f3701b88beaff54c8eeb7b33"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02678819c708f5e4ea88fd14",
+          "url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html"
+        },
+        "b": {
+          "paper_id": "paper-37334d5d55bd8d33f34d9164",
+          "url": "https://aclanthology.org/2022.acl-long.566/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "90cdd722e5e55262c24019582b0c17f48fcc138ee36b65c863e3ff774bb8aeaf"
+    },
+    {
+      "id": "edge-7cb931b67dda1e0e03ebe9c7",
+      "a": "paper-02678819c708f5e4ea88fd14",
+      "b": "paper-5a8b67ccb8cd6c5ac386c7c0",
+      "state": {
+        "paper_a": {
+          "title": "Uncertainty Estimation Using a Single Deep Deterministic Neural Network",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN."
+        },
+        "paper_b": {
+          "title": "Enhancing Diversity in Bayesian Deep Learning via Hyperspherical Energy Minimization of CKA",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Particle-based Bayesian deep learning often requires a similarity metric to compare two networks. However, naive similarity metrics lack permutation invariance and are inappropriate for comparing networks. Centered Kernel Alignment (CKA) on feature kernels has been proposed to compare deep networks but has not been used as an optimization objective in Bayesian deep learning. In this paper, we explore the use of CKA in Bayesian deep learning to generate diverse ensembles and hypernetworks that output a network posterior. Noting that CKA projects kernels onto a unit hypersphere and that directly optimizing the CKA objective leads to diminishing gradients when two networks are very similar. We propose adopting the approach of hyperspherical energy (HE) on top of CKA kernels to address this drawback and improve training stability. Additionally, by leveraging CKA-based feature kernels, we derive feature repulsive terms applied to synthetically generated outlier examples. Experiments on both diverse ensembles and hypernetworks show that our approach significantly outperforms baselines in terms of uncertainty quantification in both synthetic and realistic outlier detection tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Most approaches typically evaluate the separation or distance within the feature space of a model between inliers and outliers (Mukhoti et al., 2023; Van Amersfoort et al., 2020; D' Angelo & Fortuin, 2021; Ovadia et al., 2019b; Lakshminarayanan et al., 2017a; Liu et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02678819c708f5e4ea88fd14",
+          "b": "paper-5a8b67ccb8cd6c5ac386c7c0",
+          "input_sha256": "89f7b51c8f6ebf2c07b541db6daf2dca00fe32bced943170c9ffc2dd9a18cd73",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/f9e72ee379bb781f3005775c870a3871-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/f9e72ee379bb781f3005775c870a3871-Paper-Conference.pdf",
+              "sha256": "a31f0b2fc076a9fc8a5b19f51d3a1e2c45bc7de44e7be914c44a38d474f71197"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "5. Conclusion We introduced DUQ, Deterministic Uncertainty Quantification, a simple method for obtaining uncertainty using a deep neural network in a single forward pass. Evaluations show that our method is better in some scenarios and competitive in others with the more computationally expensive Deep Ensembles. Interesting future work would be to place DUQ in a probabilistic framework, enabling a calibrated notion of uncertainty and a rigorous way of separating out epistemic and aleatoric uncertainty.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Nazaret & Blei, 2022) approximate a posterior distribution over the model parameters and therefore estimate the epistemic uncertainty of the predictions. Non-Bayesian approaches, on the other hand, rely on bootstrap (Osband et al., 2016), ensemble (Lakshminarayanan et al., 2017b; Wen et al., 2020; Park & Kim, 2022), and conformal prediction (Bhatnagar et al., 2023) to generate multiple neural networks of the same structure. Our approach is most closely related to ensemble methods for estimating predictive uncertainty. We follow the common practice of evaluating uncertainty by distinguishing between inlier and outlier images for datasets like CIFAR/SVHN and MNIST/FMNIST. Most approaches typically evaluate the separation or distance within the feature space of a model between inliers and outliers (Mukhoti et al., 2023; Van Amersfoort et al., 2020; D' Angelo & Fortuin, 2021; Ovadia et al., 2019b; Lakshminarayanan et al., 2017a; Liu et al., 2020). Deep deterministic uncertainty (DDU) utilizes a single deterministic network with a Gaussian mixture model (GMM) fitted on the observed inlier features before the last layer and calculates separation of inliers and outliers using feature log density. We refer the reader to Mukhoti et al. (2023) for more information. For a more comprehensive survey and benchmarking of different uncertainty estimation approaches, refer to Ovadia et al. (2019a); Gawlikowski et al. (2022). ParVI. Particle-based variational inference methods (ParVI), such as Stein Variational Gradient Descent (SVGD) (Liu & Wang, 2016; Chen et al., 2018; Liu & Zhu, 2018), use particles to approximate the Bayes posterior. Our work most closely resembles work done by D' Angelo & Fortuin (2021), which explores adapting kernelized repulsive terms in both the weight and",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f9e72ee379bb781f3005775c870a3871-Paper-Conference.pdf",
+              "document_sha256": "a31f0b2fc076a9fc8a5b19f51d3a1e2c45bc7de44e7be914c44a38d474f71197"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of feature repulsive loss construction: Starting with a batch of examples (left), optionally including synthetic outliers, ensemble features at each layer l are used to construct centered Gram matrices projected onto the unit hypersphere (middle). The hyperspherical energy is then calculated between models, weighted by layer, and incorporated into the loss function (right). of dimensionality due to the excessive number of parameters in modern deep networks. Moreover, there is the peculiar permutation invariance, where one can randomly permute the different channels of each layer and result in a network that has vastly different parameters and activations, yet represents the same function. The popular RBF kernel lacks this permutation invariance inhibiting methods like Stein Variational Gradient Descent (SVGD) from working effectively on larger networks (D' Angelo & Fortuin, 2021). Therefore, a proper kernel for comparing network functions should address these critical issues by being effective in high-dimensional spaces and invariant to permutations of neural network channels. Kornblith et al. (2019) proposed an interesting approach for performing this comparison based on Centered Kernel Alignment (CKA). The idea is, instead of directly comparing activations or parameters, comparison is made between the Gram matrices of the same dataset fed into two different networks. Each example will generate a feature vector at each layer of the network, and a kernel matrix can be constructed based on the similarity between all example pairs in the dataset. Then, a CKA metric measures the similarity of these two Gram matrices as the similarity of the two networks. This idea addresses the permutation invariance issue and generates meaningful comparisons between",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f9e72ee379bb781f3005775c870a3871-Paper-Conference.pdf",
+              "document_sha256": "a31f0b2fc076a9fc8a5b19f51d3a1e2c45bc7de44e7be914c44a38d474f71197"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Particle-based Bayesian deep learning often requires a similarity metric to compare two networks. However, naive similarity metrics lack permutation invariance and are inappropriate for comparing networks. Centered Kernel Alignment (CKA) on feature kernels has been proposed to compare deep networks but has not been used as an optimization objective in Bayesian deep learning. In this paper, we explore the use of CKA in Bayesian deep learning to generate diverse ensembles and hypernetworks that output a network posterior. Noting that CKA projects kernels onto a unit hypersphere and that directly optimizing the CKA objective leads to diminishing gradients when two networks are very similar. We propose adopting the approach of hyperspherical energy (HE) on top of CKA kernels to address this drawback and improve training stability. Additionally, by leveraging CKA-based feature kernels, we derive feature repulsive terms applied to synthetically generated outlier examples. Experiments on both diverse ensembles and hypernetworks show that our approach significantly outperforms baselines in terms of uncertainty quantification in both synthetic and realistic outlier detection tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f9e72ee379bb781f3005775c870a3871-Paper-Conference.pdf",
+              "document_sha256": "a31f0b2fc076a9fc8a5b19f51d3a1e2c45bc7de44e7be914c44a38d474f71197"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02678819c708f5e4ea88fd14",
+          "url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html"
+        },
+        "b": {
+          "paper_id": "paper-5a8b67ccb8cd6c5ac386c7c0",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/f9e72ee379bb781f3005775c870a3871-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "c2bc9661b05910df27735ce9323e83c0cac9aad498793895268e711a28d7cdd7"
+    },
+    {
+      "id": "edge-d6d4aea5350c40c4d6be2103",
+      "a": "paper-0283dfa247cb7ba7b5eff53f",
+      "b": "paper-0e14c19af86066ee89f1a1c2",
+      "state": {
+        "paper_a": {
+          "title": "The Art of Abstention: Selective Prediction and Error Regularization for Natural Language Processing",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "In selective prediction, a classifier is allowed to abstain from making predictions on low-confidence examples. Though this setting is interesting and important, selective prediction has rarely been examined in natural language processing (NLP) tasks. To fill this void in the literature, we study in this paper selective prediction for NLP, comparing different models and confidence estimators. We further propose a simple error regularization trick that improves confidence estimation without substantially increasing the computation budget. We show that recent pre-trained transformer models simultaneously improve both model accuracy and confidence estimation effectiveness. We also find that our proposed regularization improves confidence estimation and can be applied to other relevant scenarios, such as using classifier cascades for accuracy–efficiency trade-offs. Source code for this paper can be found at https://github.com/castorini/transformers-selective."
+        },
+        "paper_b": {
+          "title": "Hybrid Uncertainty Quantification for Selective Text Classification in Ambiguous Tasks",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Many text classification tasks are inherently ambiguous, which results in automatic systems having a high risk of making mistakes, in spite of using advanced machine learning models. For example, toxicity detection in user-generated content is a subjective task, and notions of toxicity can be annotated according to a variety of definitions that can be in conflict with one another. Instead of relying solely on automatic solutions, moderation of the most difficult and ambiguous cases can be delegated to human workers. Potential mistakes in automated classification can be identified by using uncertainty estimation (UE) techniques. Although UE is a rapidly growing field within natural language processing, we find that state-of-the-art UE methods estimate only epistemic uncertainty and show poor performance, or under-perform trivial methods for ambiguous tasks such as toxicity detection. We argue that in order to create robust uncertainty estimation methods for ambiguous tasks it is necessary to account also for aleatoric uncertainty. In this paper, we propose a new uncertainty estimation method that combines epistemic and aleatoric UE methods. We show that by using our hybrid method, we can outperform state-of-the-art UE methods for toxicity detection and other ambiguous text classification tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Xin et al. (2021) introduces a penalty term for confident instances with a high loss value.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0283dfa247cb7ba7b5eff53f",
+          "b": "paper-0e14c19af86066ee89f1a1c2",
+          "input_sha256": "5527d6f23663aa2954e1d01c7cfdffcf790949ecee88bbd9b22b3dedeca548b5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.84/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.84.pdf",
+              "sha256": "b4f91651ed0417552996dbf1bcb88ea87a276369a01967ea6232676b67c0946b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.652/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.652.pdf",
+              "sha256": "185f44e5ea53566fbcd3e887f04c63214d0ed0bb089487c7813245005df467a9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "In this paper, we introduce the problem of selective prediction for NLP. We provide theoretical background and evaluation metrics for the problem, and also propose a simple error regularization method that improves selective prediction performance for NLP models. We conduct experiments to compare different models under the selective prediction setting, demonstrate the effectiveness of the proposed regularization trick, and study two scenarios where selective prediction and the error regularization method can be helpful. We summarize interesting experimental observations as follows: 1. Recent sophisticated NLP models not only improve accuracy over simple models, but also provide better selective prediction results (better confidence estimation). 2. MC-dropout, despite having a solid theoretical foundation, has difficulties matching the effectiveness of simple SR in practice. 3. The simple error regularization helps models lower their AUC and RPP, i.e., models trained with it produce better confidence estimators. 4. Selective prediction can be applied to scenarios where estimating example difficulties is necessary. In these cases, our proposed error regularization trick can also be helpful, such as providing better accuracy–efficiency trade-offs. Future Work (1) Despite the effectiveness of the proposed error regularization trick, we are not certain on the best way for computing the error",
+              "url": "https://aclanthology.org/2021.acl-long.84.pdf",
+              "document_sha256": "b4f91651ed0417552996dbf1bcb88ea87a276369a01967ea6232676b67c0946b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We introduce relevant concepts about selective prediction and confidence estimators, using multiclass classification as an example. 3.1",
+              "url": "https://aclanthology.org/2021.acl-long.84.pdf",
+              "document_sha256": "b4f91651ed0417552996dbf1bcb88ea87a276369a01967ea6232676b67c0946b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "space density for epistemic uncertainty and the softmax predictive distribution for aleatoric uncertainty. They advocate for the usage of different methods for quantifying uncertainty, depending on whether a considered instance is ID or OOD. However, they overlook using a linear combination of uncertainty scores, relying solely on feature-space density for instances considered OOD. We note that these instances can also be borderline (instances from middle to low-density areas), for which using aleatoric uncertainty measures may also be appropriate. Besides, Mukhoti et al. (2023) do not provide results for selective classification and mostly experiment with image classification tasks. Recently, selective classification (or misclassification detection) has been studied for NLP tasks.One line of such work has proposed adding a regularization term to the training loss. Xin et al. (2021) introduces a penalty term for confident instances with a high loss value. Another approach proposed by Zhang et al. (2019) uses a metric regularization that minimizes the inter-class distance in the latent feature space while maximizing the margin between classes. He et al. (2020) propose a regularization technique based on self-ensembling that aims to minimize the difference between predictions of the two versions of the model. They also combine this approach with mix-up (Thulasidasan et al., 2019) and a distinctiveness score based on the MD. Some work has also considered approximations of deep ensembles based on Monte-Carlo dropout (e.g., Shelmanov et al., 2021; Vazhentsev et al., 2022). Vazhentsev et al. (2022) conduct a vast empirical investigation and suggest several promising combinations of regularizers and featuredensity-based methods. They also highlight the importance of spectral",
+              "url": "https://aclanthology.org/2023.acl-long.652.pdf",
+              "document_sha256": "185f44e5ea53566fbcd3e887f04c63214d0ed0bb089487c7813245005df467a9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Hybrid Uncertainty Quantification for Selective Text Classification in Ambiguous Tasks Artem Vazhentsev1,2 , Gleb Kuzmin1,4 , Akim Tsvigun5,8 , Alexander Panchenko2,1 , Maxim Panov6 , Mikhail Burtsev7 , and Artem Shelmanov3 1 AIRI, 2 Skoltech, 3 MBZUAI, 4 FRC CSC RAS, 5 AI Center NUST MISiS, 6 TII, 7 London Institute for Mathematical Sciences, 8 Semrush {vazhentsev, kuzmin, panchenko}@airi.net maxim.panov@tii.ae artem.shelmanov@mbzuai.ac.ae Abstract Many text classification tasks are inherently ambiguous, which results in automatic systems having a high risk of making mistakes, in spite of using advanced machine learning models. For example, toxicity detection in usergenerated content is a subjective task, and notions of toxicity can be annotated according to a variety of definitions that can be in conflict with one another. Instead of relying solely on automatic solutions, moderation of the most difficult and ambiguous cases can be delegated to human workers. Potential mistakes in automated classification can be identified by using uncertainty estimation (UE) techniques. Although UE is a rapidly growing field within natural language processing, we find that stateof-the-art UE methods estimate only epistemic uncertainty and show poor performance, or under-perform trivial methods for ambiguous tasks such as toxicity detection. We argue that in order to create robust uncertainty estimation methods for ambiguous tasks it is necessary to account also for aleatoric uncertainty. In this paper, we propose a new uncertainty estimation method that combines epistemic and aleatoric UE methods. We show that by using our hybrid method, we can outperform state-of-the-art UE methods for toxicity detection and other ambiguous text classification tasks1 .",
+              "url": "https://aclanthology.org/2023.acl-long.652.pdf",
+              "document_sha256": "185f44e5ea53566fbcd3e887f04c63214d0ed0bb089487c7813245005df467a9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "types of uncertainty. Instances that carry a high risk of classification mistakes come from two sources: a) OOD areas, which can be detected with epistemic UE methods; and b) in-distribution ambiguous areas, for detection of which, aleatoric UE methods are appropriate (for illustration see Figure 1). Therefore, we propose a Hybrid Uncertainty Quantification (HUQ) method that switches between epistemic and aleatoric uncertainties or linearly combines them. It produces better scores of total uncertainty, which subsequently leads to better selective classification. The experiments on various ambiguous tasks show that HUQ in a majority of cases significantly outperforms other state-of-theart UE techniques. To summarize, the contributions of this work are the following. • In Section 4, we propose a new uncertainty estimation method HUQ that combines epistemic and aleatoric UE techniques in a special way that allows to improve the quality of selective classification in ambiguous tasks. • To the best of our knowledge, this work is the first to conduct an empirical investigation of state-of-the-art UE methods for ambiguous text classification tasks such as toxicity detection. Our analysis shows that the proposed HUQ approach outperforms state-of-the-art methods in selective text classification on ambiguous tasks; see Sections 5 and 6. • We analyze the limitations of the proposed method and suggest conditions to be met for",
+              "url": "https://aclanthology.org/2023.acl-long.652.pdf",
+              "document_sha256": "185f44e5ea53566fbcd3e887f04c63214d0ed0bb089487c7813245005df467a9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0283dfa247cb7ba7b5eff53f",
+          "url": "https://aclanthology.org/2021.acl-long.84/"
+        },
+        "b": {
+          "paper_id": "paper-0e14c19af86066ee89f1a1c2",
+          "url": "https://aclanthology.org/2023.acl-long.652/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "36fc559c9efa4728987e257ef498716f8f42eb0a030f665292f60876b81172d7"
+    },
+    {
+      "id": "edge-34a820a7a8b6fb550720fceb",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-25affddd09639b76f88d62e3",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "Calibrating Deep Neural Networks using Focal Loss",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Miscalibration -- a mismatch between a model's confidence and its correctness -- of Deep Neural Networks (DNNs) makes their predictions hard to rely on. Ideally, we want networks to be accurate, calibrated and confident. We show that, as opposed to the standard cross-entropy loss, focal loss (Lin et al., 2017) allows us to learn models that are already very well calibrated. When combined with temperature scaling, whilst preserving accuracy, it yields state-of-the-art calibrated models. We provide a thorough analysis of the factors causing miscalibration, and use the insights we glean from this to justify the empirically excellent performance of focal loss. To facilitate the use of focal loss in practice, we also provide a principled approach to automatically select the hyperparameter involved in the loss function. We perform extensive experiments on a variety of computer vision and NLP datasets, and with a wide variety of network architectures, and show that our approach achieves state-of-the-art calibration without compromising on accuracy in almost all cases. Code is available at https://github.com/torrvision/focal_calibration."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-25affddd09639b76f88d62e3",
+          "input_sha256": "8d37f38e9e3cb4896e6b26091b2a8049878c6de38bc9e254b62dfbc123a27bf4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/aeb7b30ef1d024a76f21a1d40e30c302-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/aeb7b30ef1d024a76f21a1d40e30c302-Paper.pdf",
+              "sha256": "9f8f0f3036b352b86c88b2d4dc406f53c083c8e724d5d34c73579d2275fb1732"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "have made it a popular network calibration method, it does have downsides. For example, whilst it scales the logits to reduce the network’s confidence in incorrect predictions, this also slightly reduces the network’s confidence in predictions that were correct [16]. Moreover, it is known that temperature scaling does not calibrate a model under data distribution shift [27]. By contrast, [16] initially eschew temperature scaling in favour of minimising a differentiable proxy for calibration error at training time, called Maximum Mean Calibration Error (MMCE), although they do later also use temperature scaling as a post-processing step to obtain better results than cross-entropy followed by temperature scaling [7]. Separately, [20] propose training models on cross-entropy loss with label smoothing instead of one-hot labels, and show that label smoothing has a very favourable effect on model calibration. In this paper, we propose a technique for improving network calibration that works by replacing the cross-entropy loss conventionally used when training classification networks with the focal loss proposed by [19]. We observe that unlike cross-entropy, which minimises the KL divergence between the predicted (softmax) distribution and the target distribution (one-hot encoding in classification tasks) over classes, focal loss minimises a regularised KL divergence between these two distributions, which ensures minimisation of the KL divergence whilst increasing the entropy of the predicted distribution, thereby preventing the model from becoming overconfident. Since focal loss, as shown in §4, is dependent on a hyperparameter, γ, that needs to be cross-validated, we also provide a method for choosing γ automatically for each sample, and show that it outperforms all the",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/aeb7b30ef1d024a76f21a1d40e30c302-Paper.pdf",
+              "document_sha256": "9f8f0f3036b352b86c88b2d4dc406f53c083c8e724d5d34c73579d2275fb1732"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Table 3: AUROC (%) computed for models trained on CIFAR-10 (in-distribution), and using SVHN and CIFAR-10-C (Gaussian Noise corruption with severity level 5) respectively as the OoD datasets. tures between 0 and 10, with a step of 0.1, and finding the one that minimises val set ECE. We find the second approach to produce stronger baselines and report results obtained using this approach. Performance Gains: We report ECE% (computed using 15 bins) along with optimal temperatures in Table 1, and test set error in Table 2. We report the other calibration scores (AdaECE, Classwise-ECE, MCE and NLL) in Appendix F. Firstly, for all dataset-network pairs, we obtain very competitive classification accuracies (shown in Table 2). Secondly, it is clear from Table 1, and Tables F.1 and F.2 in the appendix, that focal loss with sample-dependent γ and with γ = 3 outperform all the baselines: cross-entropy, label smoothing, Brier loss and MMCE. They broadly produce the lowest calibration errors both before and after temperature scaling. This observation is particularly encouraging, as it also indicates that a principled method of obtaining values of γ for focal loss can produce a very calibrated model, with no need to use validation set for tuning γ. As shown in Figure 4, we also compute 90% confidence intervals for ECE, AdaECE and Classwise-ECE using 1000 bootstrap samples following [15], and using ResNet-50/110 trained on CIFAR-10 (see Appendix G for more results). Note that FLSD-53 produces the lowest calibration errors in general, and the difference in the metric values between FLSD-53 and other approaches (except Brier loss) is mostly statistically significant (i.e., confidence intervals don’t overlap), especially before temperature scaling. In addition to the lower calibration",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/aeb7b30ef1d024a76f21a1d40e30c302-Paper.pdf",
+              "document_sha256": "9f8f0f3036b352b86c88b2d4dc406f53c083c8e724d5d34c73579d2275fb1732"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Miscalibration – a mismatch between a model’s confidence and its correctness – of Deep Neural Networks (DNNs) makes their predictions hard to rely on. Ideally, we want networks to be accurate, calibrated and confident. We show that, as opposed to the standard cross-entropy loss, focal loss [19] allows us to learn models that are already very well calibrated. When combined with temperature scaling, whilst preserving accuracy, it yields state-of-the-art calibrated models. We provide a thorough analysis of the factors causing miscalibration, and use the insights we glean from this to justify the empirically excellent performance of focal loss. To facilitate the use of focal loss in practice, we also provide a principled approach to automatically select the hyperparameter involved in the loss function. We perform extensive experiments on a variety of computer vision and NLP datasets, and with a wide variety of network architectures, and show that our approach achieves state-of-the-art calibration without compromising on accuracy in almost all cases. Code is available at https://github.com/torrvision/ focal_calibration.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/aeb7b30ef1d024a76f21a1d40e30c302-Paper.pdf",
+              "document_sha256": "9f8f0f3036b352b86c88b2d4dc406f53c083c8e724d5d34c73579d2275fb1732"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "We conduct image and document classification experiments to test the performance of focal loss. For the former, we use CIFAR-10/100 [13] and Tiny-ImageNet [6] , and train ResNet-50, ResNet-110 [8], Wide-ResNet-26-10 [42] and DenseNet-121 [10] models, and for the latter, we use 20 Newsgroups [17] and Stanford Sentiment Treebank (SST) [32] datasets and train Global Pooling CNN [18] and Tree-LSTM [33] models. Further details on the datasets and training can be found in Appendix E. Baselines Along with cross-entropy loss, we compare our method against the following baselines: a) MMCE (Maximum Mean Calibration Error) [16], a continuous and differentiable proxy for calibration error that is normally used as a regulariser alongside cross-entropy, b) Brier loss [1], the squared error between the predicted softmax vector and the one-hot ground truth encoding (Brier loss is an important baseline as it can be decomposed into calibration and refinement [5]), and c) Label smoothing [20] (LS): given a one-hot ground-truth distribution q and a smoothing factor α (hyperparameter), the smoothed vector s is obtained as si = (1 − α)qi + α(1 − qi )/(K − 1), where si and qi denote the ith elements of s and q respectively, and K is the number of classes. Instead of q, s is treated as the ground truth. We train models using α = 0.05 and α = 0.1, but find α = 0.05 to perform better. We thus report the results obtained from LS-0.05 with α = 0.05. Focal Loss: As mentioned in §4, our proposed approach is the sample-dependent schedule FLSD-53 (γ = 5 for p̂y ∈ [0, 0.2), and γ = 3 for p̂y ∈ [0.2, 1]), which we find to perform well across most classification datasets and network architectures. In addition, we also train other focal loss baselines, including ones with γ fixed to 1, 2 and 3, and also",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/aeb7b30ef1d024a76f21a1d40e30c302-Paper.pdf",
+              "document_sha256": "9f8f0f3036b352b86c88b2d4dc406f53c083c8e724d5d34c73579d2275fb1732"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-25affddd09639b76f88d62e3",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/aeb7b30ef1d024a76f21a1d40e30c302-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "1034aa29969aead3d892ea7f3d4072a5242071ba3ee6824a75890eb2b99fd619"
+    },
+    {
+      "id": "edge-02464da5a2dd0c6b13cf48a8",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-2975abc6c64b26183104aed3",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "A Rigorous Link between Deep Ensembles and (Variational) Bayesian Methods",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We establish the first mathematically rigorous link between Bayesian, variational Bayesian, and ensemble methods. A key step towards this it to reformulate the non-convex optimisation problem typically encountered in deep learning as a convex optimisation in the space of probability measures. On a technical level, our contribution amounts to studying generalised variational inference through the lense of Wasserstein gradient flows. The result is a unified theory of various seemingly disconnected approaches that are commonly used for uncertainty quantification in deep learning---including deep ensembles and (variational) Bayesian methods. This offers a fresh perspective on the reasons behind the success of deep ensembles over procedures based on parameterised variational inference, and allows the derivation of new ensembling schemes with convergence guarantees. We showcase this by proposing a family of interacting deep ensembles with direct parallels to the interactions of particle systems in thermodynamics, and use our theory to prove the convergence of these algorithms to a well-defined global minimiser on the space of probability measures."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "However, despite these theoretical shortcomings, DEs remain highly competitive in practice and typically beat FD-GVI methods like standard VI (Ovadia et al., 2019; Fort et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-2975abc6c64b26183104aed3",
+          "input_sha256": "b90ce8df7d42edf49be5d627f772e99e97210203c73d4b9968ee17b20984c32e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/7d25b1db211d99d5750ec45d65fd6e4e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/7d25b1db211d99d5750ec45d65fd6e4e-Paper-Conference.pdf",
+              "sha256": "0a5171f9db118c8eb2f9f41ec59ab23d0375f1bd52960adeb1752b7e309f5476"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "for t → ∞. Here −→ denotes convergence in distribution and Θi = {θ ∈ RJ : limt→∞ θ∗ (t) = mi and θ∗ (0) = θ} denotes the domain of attraction for mi with respect to the gradient flow θ∗ . A proof with technical assumptions—most importantly a version of the famous Lojasiewicz inequality—is in Appendix C. Theorem 1 derives the limiting distribution for θ1 (T ), . . . , θNE (T ), which shows that—unless all local minima are global minima—the WGF does not generate samples from a global minimum of Q 7→ L(Q) for the unregularised case λ = 0. Note that the conditions of this result simplify the situation encountered in deep learning, where the set of minimisers would typically be uncountable (Liu et al., 2022). While one could derive a very similar result for the case of uncountable minimisers, this becomes notationally cumbersome and would obscure the main point of the Theorem—that Q∞ strongly depends on the initialisation Q0 . Importantly, the dependence of Q∞ on Q0 remains true for all losses constructed via deep learning architectures. However, despite these theoretical shortcomings, DEs remain highly competitive in practice and typically beat FD-GVI methods like standard VI (Ovadia et al., 2019; Fort et al., 2019). This is perhaps not surprising: DEs implement an infinite-dimensional gradient descent, while FD-GVI methods are parametrically constrained. Perhaps more surprisingly, we observe in Section 5 that DEs can even easily compete with the more theoretically sound and regularised ID-GVI methods that will be discussed in Section 4.2 and 4.3. We study this phenomenon in Section 5, and find that it is a consequence of the fact that in deep learning, NE is small compared to the number of local minima (cf. Figure 4). 4.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7d25b1db211d99d5750ec45d65fd6e4e-Paper-Conference.pdf",
+              "document_sha256": "0a5171f9db118c8eb2f9f41ec59ab23d0375f1bd52960adeb1752b7e309f5476"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "choose Q and P to be simple distributions such as Gaussians to ensure that L(Qν ) is a tractable function of ν. This often results in a Q that is unlikely to contain a good approximation to Q∗ ; raising doubt if Qν ∗ can approximate Q∗ in any meaningful sense. Secondly, even if Q 7→ L(Q) is strictly convex on P(RJ ), the parameterised objective ν ∈ Γ 7→ L(Qν ) is usually not. Hence, there is no guarantee that gradient descent leads us to Qν ∗ . This point also applies to very expressive variational families (Rezende and Mohamed, 2015; Mescheder et al., 2017) which may be sufficiently rich that Q∗ ∈ Q, but whose optimisation problem ν ∈ Γ 7→ L(Qν ) is typically non-convex and hard to solve, so that no guarantee for finding Q∗ can be provided. While this does not necessarily make FD-GVI impractical, it does make it exceedingly difficult to provide a rigorous theoretical analysis outside of narrowly defined settings. FD-GVI in function space: A collection of approaches formulated as infinite-dimensional problems are GVI methods on an infinite-dimensional function space (Ma et al., 2019; Sun et al., 2018; Ma and Hernández-Lobato, 2021; Rodriguez-Santana et al., 2022; Wild et al., 2022). Here, the loss is often convex in function space. In practice however, the variational stochastic process still requires parameterization to be computationally feasible—and in this sense, function space methods are FD-GVI approaches. The resulting objectives require a good approximation of the functional KL-divergence (which is often challenging), and lead to a typically highly non-convex variational optimization problem in the parameterised space. Infinite-dimensional GVI: Instead of minimising the (non-convex) problem ν 7→ L(Qν ), we want to exploit the convex structure of Q 7→ L(Q). Of",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7d25b1db211d99d5750ec45d65fd6e4e-Paper-Conference.pdf",
+              "document_sha256": "0a5171f9db118c8eb2f9f41ec59ab23d0375f1bd52960adeb1752b7e309f5476"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "One of the most technically challenging aspects of contemporary machine learning theory is that the losses ℓ : RJ → R we wish to minimise are often highly non-convex. For instance, one could wish \u00012 PN to minimise ℓ(θ) := N1 n=1 yn − fθ (xn ) where {(xn , yn )}N n=1 is a set of paired observations and fθ a neural network with parameters θ. While deep learning has shown that non-convexity is often a negligible practical concern, it makes it near-impossible to prove many basic theoretical results that a good learning theory is concerned with, as ℓ has many local (or global) minima (Fort et al., 2019; Wilson and Izmailov, 2020). We reintroduce convexity by lifting the problem onto a computationally more challenging space. In this sense, the price we pay for the convenience of convexity is the transformation of a finite-dimensional problem into an infinite-dimensional one, which is numerically more difficult to tackle. Figure 1 illustrates our approach:",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7d25b1db211d99d5750ec45d65fd6e4e-Paper-Conference.pdf",
+              "document_sha256": "0a5171f9db118c8eb2f9f41ec59ab23d0375f1bd52960adeb1752b7e309f5476"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-2975abc6c64b26183104aed3",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/7d25b1db211d99d5750ec45d65fd6e4e-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "b7742b208b51d09022dc910399fcfef1ae53b7776736cd22515c2c7f50969038"
+    },
+    {
+      "id": "edge-9b7594f09e364980797cac4f",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-41a5640c6ad98f814a8957bf",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "Conformal Inference is (almost) Free for Neural Networks Trained with Early Stopping",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Early stopping based on hold-out data is a popular regularization technique designed to mitigate overfitting and increase the predictive accuracy of neural networks. Models trained with early stopping often provide relatively accurate predictions, but they generally still lack precise statistical guarantees unless they are further calibrated using independent hold-out data. This paper addresses the above limitation with conformalized early stopping: a novel method that combines early stopping with conformal calibration while efficiently recycling the same hold-out data. This leads to models that are both accurate and able to provide exact predictive inferences without multiple data splits nor overly conservative adjustments. Practical implementations are developed for different learning tasks—outlier detection, multi-class classification, regression—and their competitive performance is demonstrated on real data."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": ", 2017), partly due to overfitting (Thulasidasan et al., 2019; Ovadia et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-41a5640c6ad98f814a8957bf",
+          "input_sha256": "4b9f950f27a81e2649af5b75f0e715352d066fb93695fe9bdffb9ea180ffef7d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/liang23i.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/liang23i/liang23i.pdf",
+              "sha256": "649689e5f2880e3a1c2e0c4ec737de6565d466c780b0ab41423a9e6931d24a91"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction Deep neural networks can detect complex data patterns and leverage them to make accurate predictions in many applications, including computer vision, natural language processing, and speech recognition, to name a few examples. These models can sometimes even outperform skilled humans (Silver et al., 2016), but they still make mistakes. Unfortunately, the severity of these mistakes is compounded by the fact that the predictions computed by neural networks are often overconfident (Guo et al., 2017), partly due to overfitting (Thulasidasan et al., 2019; Ovadia et al., 2019). Several training strategies have been developed to *",
+              "url": "https://proceedings.mlr.press/v202/liang23i/liang23i.pdf",
+              "document_sha256": "649689e5f2880e3a1c2e0c4ec737de6565d466c780b0ab41423a9e6931d24a91"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-41a5640c6ad98f814a8957bf",
+          "url": "https://proceedings.mlr.press/v202/liang23i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Uncertainty Quantification and Calibration in Deep Learning"
+      },
+      "sha256": "e234a69af64e0ac133d0b6180da962df44498d00a88a65540d8ffae680acf169"
+    }
+  ]
+}

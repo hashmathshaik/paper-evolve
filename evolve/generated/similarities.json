@@ -1,0 +1,119 @@
+{
+  "model": {
+    "model": "voyage-4-large",
+    "output_dimension": 2048,
+    "input_type": null
+  },
+  "input_fingerprint": "b74b8ea5bff08e2b7c3db68d92088835e3c73d1873b411b3e8f408c8002d4763",
+  "text_hashes": {
+    "cachegen": "6f73413c3a86ef16d82ad61b09c38c23c66b742e81e98f21eb3be7e71ed8b6e3",
+    "prompt": "cb6d867461a7f883dbbe6f72dd63a4e49cb09f3ecceb0c0f8819ebb58b00788d",
+    "sglang": "7ef24ffad5b9d75039149bfb60c1d23f04406263110debf87c2aa3ac2447570e",
+    "hydragen": "66e41d1643963364c4d93398796829007377230579baccee9ea8c44ae4ab7264",
+    "blend": "e15f9df6e0d4c7e68eccb06e6e7f1c228f4c657e3bb8596c6876001771e78af6",
+    "preble": "8d52699b83082cfe65d2cefba6fdbd639f6640df0f0eb21377c43bfe05227a3b",
+    "kvlink": "a2f9799da1ebf32dfe27022428c121e32f2f42922ee652cc97e7c5007946779b"
+  },
+  "similarities": [
+    {
+      "id": "sim-155ca3a3301276330dec",
+      "a": "blend",
+      "b": "kvlink",
+      "score": 0.890581,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-d167dbd2a50fcc582c3d",
+      "a": "kvlink",
+      "b": "prompt",
+      "score": 0.85779,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-7c7d8af2e0a2160d7621",
+      "a": "hydragen",
+      "b": "prompt",
+      "score": 0.849114,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-5b36e0b817041f131681",
+      "a": "cachegen",
+      "b": "kvlink",
+      "score": 0.848161,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-a9f57c611df601e518b6",
+      "a": "blend",
+      "b": "cachegen",
+      "score": 0.846319,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-6a9b57e76a506386b812",
+      "a": "hydragen",
+      "b": "kvlink",
+      "score": 0.820329,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-bbcdf38300db88ff757f",
+      "a": "preble",
+      "b": "prompt",
+      "score": 0.817048,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-9027c69d5fc410393d24",
+      "a": "hydragen",
+      "b": "preble",
+      "score": 0.804701,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-03e284a5266c0efc4255",
+      "a": "hydragen",
+      "b": "sglang",
+      "score": 0.751905,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    },
+    {
+      "id": "sim-d11e8ffb3ec9b4334906",
+      "a": "preble",
+      "b": "sglang",
+      "score": 0.735921,
+      "method": "voyage-4-large-cosine",
+      "search": "exact",
+      "evidence_status": "unverified",
+      "kind": "conceptual_similarity"
+    }
+  ]
+}

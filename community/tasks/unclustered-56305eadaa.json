@@ -1,0 +1,966 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Unclustered",
+  "area": "Reinforcement Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-0182de55a7934fdeb18a96f6",
+      "a": "paper-03952e9894ddd5e106f4d8a9",
+      "b": "paper-be83881501b37d7b16e4e11b",
+      "state": {
+        "paper_a": {
+          "title": "On Learning Intrinsic Rewards for Policy Gradient Methods",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "In many sequential decision making tasks, it is challenging to design reward functions that help an RL agent efficiently learn behavior that is considered good by the agent designer. A number of different formulations of the reward-design problem, or close variants thereof, have been proposed in the literature. In this paper we build on the Optimal Rewards Framework of Singh et al. that defines the optimal intrinsic reward function as one that when used by an RL agent achieves behavior that optimizes the task-specifying or extrinsic reward function. Previous work in this framework has shown how good intrinsic reward functions can be learned for lookahead search based planning agents. Whether it is possible to learn intrinsic reward functions for learning agents remains an open problem. In this paper we derive a novel algorithm for learning intrinsic rewards for policy-gradient based learning agents. We compare the performance of an augmented agent that uses our algorithm to provide additive intrinsic rewards to an A2C-based policy learner (for Atari games) and a PPO-based policy learner (for Mujoco domains) with a baseline agent that uses the same policy learners but with only extrinsic rewards. Our results show improved performance on most but not all of the domains."
+        },
+        "paper_b": {
+          "title": "Online Meta-Critic Learning for Off-Policy Actor-Critic Methods",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Off-Policy Actor-Critic (OffP-AC) methods have proven successful in a variety of continuous control tasks. Normally, the critic's action-value function is updated using temporal-difference, and the critic in turn provides a loss for the actor that trains it to take actions with higher expected return. In this paper, we introduce a flexible and augmented meta-critic that observes the learning process and meta-learns an additional loss for the actor that accelerates and improves actor-critic learning. Compared to existing meta-learning algorithms, meta-critic is rapidly learned online for a single task, rather than slowly over a family of tasks. Crucially, our meta-critic is designed for off-policy based learners, which currently provide state-of-the-art reinforcement learning sample efficiency. We demonstrate that online meta-critic learning benefits to a variety of continuous control tasks when combined with contemporary OffP-AC methods DDPG, TD3 and SAC."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03952e9894ddd5e106f4d8a9",
+          "b": "paper-be83881501b37d7b16e4e11b",
+          "input_sha256": "b22b90134c675109b5bb59a1a3dfb474af4e86ea2714b5801aaab6e3e3cae78f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/51de85ddd068f0bc787691d356176df9-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/51de85ddd068f0bc787691d356176df9-Paper.pdf",
+              "sha256": "1f1d295660eb09a1e3b79345d238f5211a5a821067ba4ca6c78f689503ac7509"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/cceff8faa855336ad53b3325914caea2-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/cceff8faa855336ad53b3325914caea2-Paper.pdf",
+              "sha256": "c597351acb01191a2240e4fd1d8abb5e791eb1cbe49cc3f129c0409ad9e0b003"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Yet another aspect to the challenge of reward-design stems from the observation that in many complex real-world tasks an RL agent is simply not going to learn an optimal policy because of various bounds (or limitations) on the agent-environment interaction (e.g., inadequate memory, representational capacity, computation, training data, etc.). Thus, in addressing the reward-design problem one may want to consider transformations of the task-specifying reward function that change the optimal policy. This is because it could result in the bounded-agent achieving a more desirable (to the agent designer) policy than otherwise. This is often done in the form of shaping reward functions that are less sparse than an original reward function and so lead to faster learning of a good policy even if it in principle changes what the theoretically optimal policy might be [Rajeswaran et al., 2017]. Other examples of transforming the reward function to aid learning in RL agents is the use of exploration bonuses, e.g., count-based reward bonuses for agents that encourage experiencing infrequently visited states [Bellemare et al., 2016, Ostrovski et al., 2017, Tang et al., 2017]. The above challenges make reward-design difficult, error-prone, and typically an iterative process. Reward functions that seem to capture the designer’s objective can sometimes lead to unexpected and undesired behaviors. Phenomena such as reward-hacking [Amodei et al., 2016] illustrate this vividly. There are many formulations and resulting approaches to the problem of reward-design including preference elicitation, inverse RL, intrinsically motivated RL, optimal rewards, potentialbased shaping rewards, more general reward shaping, and mechanism design; often the details of the formulation depends on the class",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/51de85ddd068f0bc787691d356176df9-Paper.pdf",
+              "document_sha256": "1f1d295660eb09a1e3b79345d238f5211a5a821067ba4ca6c78f689503ac7509"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In many sequential decision making tasks, it is challenging to design reward functions that help an RL agent efficiently learn behavior that is considered good by the agent designer. A number of different formulations of the reward-design problem have been proposed in the literature. In this paper we build on the Optimal Rewards Framework of Singh et al. [2010] that defines the optimal intrinsic reward function as one that when used by an RL agent achieves behavior that optimizes the task-specifying or extrinsic reward function. Previous work in this framework has shown how good intrinsic reward functions can be learned for lookahead search based planning agents. Whether it is possible to learn intrinsic reward functions for learning agents remains an open problem. In this paper we derive a novel algorithm for learning intrinsic rewards for policy-gradient based learning agents. We compare the performance of an augmented agent that uses our algorithm to provide additive intrinsic rewards to an A2C-based policy learner (for Atari games) and a PPO-based policy learner (for Mujoco domains) with a baseline agent that uses the same policy learners but with only extrinsic rewards. We also compare our method with using a constant “live bonus” and with using a count-based exploration bonus (i.e., pixel-SimHash). Our results show improved performance on most but not all of the domains.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/51de85ddd068f0bc787691d356176df9-Paper.pdf",
+              "document_sha256": "1f1d295660eb09a1e3b79345d238f5211a5a821067ba4ca6c78f689503ac7509"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Off-policy Actor-Critic (OffP-AC) methods are currently central in deep reinforcement learning (RL) research due to their greater sample efficiency compared to on-policy alternatives. On-policy learning requires new trajectories to be collected for each update to the policy, and is expensive as the number of gradient steps and samples per step increases with task-complexity even for contemporary TRPO [33], PPO [34] and A3C [27] algorithms. Off-policy methods, such as DDPG [20], TD3 [9] and SAC [13] achieve greater sample efficiency as they can learn from randomly sampled historical transitions without a time sequence requirement, making better use of past experience. The critic estimates action-value (Q-value) function using a differentiable function approximator, and the actor updates its policy parameters in the direction of the approximate action-value gradient. Briefly, the critic provides a loss to guide the actor, and is trained in turn to estimate the environmental action-value under the current policy via temporal-difference learning [38]. In all these cases the learning objective function is hand-crafted and fixed. Recently, meta-learning [14] has become topical as a paradigm to accelerate RL by learning aspects of the learning strategy, for example, learning fast adaptation strategies [7, 30, 31], losses [3, 15, 17, 36], optimisation strategies [6], exploration strategies [11], hyperparameters [40, 42], and intrinsic rewards [44]. However, most of these works perform meta-learning on a family of tasks or environments and amortize this huge cost by deploying the trained strategy for fast learning on a new task. ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cceff8faa855336ad53b3325914caea2-Paper.pdf",
+              "document_sha256": "c597351acb01191a2240e4fd1d8abb5e791eb1cbe49cc3f129c0409ad9e0b003"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "In this paper we introduce a meta-critic network to enhance OffP-AC learning methods. The metacritic augments the vanilla critic to provide an additional loss to guide the actor’s learning. However, compared to the vanilla critic, the meta-critic is explicitly (meta)-trained to accelerate the learning process rather than merely estimate the action-value function. Overall, the actor is trained by both critic and meta-critic provided losses, the critic is trained by temporal-difference as usual, and crucially the meta-critic is trained to generate maximum learning progress in the actor. Both the critic and meta-critic use randomly sampled transitions for effective OffP-AC learning, providing superior sample efficiency compared to existing on-policy meta-learners. We emphasize that meta-critic can be successfully learned online within a single task. This is in contrast to the currently widely used meta-learning paradigm – where entire task families are required to provide enough data for meta-learning, and to provide new tasks to amortize the huge cost of meta-learning. Our framework augments vanilla AC learning with an additional meta-learned critic, which can be seen as providing intrinsic motivation towards optimum actor learning progress [28]. As analogously observed in recent meta-learning studies [8], our loss-learning can be formalized as bi-level optimisation with the upper level being meta-critic learning, and lower level being conventional learning. We solve this joint optimisation by iteratively updating the meta-critic and base learner online in a single task. Our strategy is related to the meta-loss learning in EPG [15], but learned online rather than offline, and integrated with OffP-AC rather than their on-policy policy-gradient learning. The most related",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cceff8faa855336ad53b3325914caea2-Paper.pdf",
+              "document_sha256": "c597351acb01191a2240e4fd1d8abb5e791eb1cbe49cc3f129c0409ad9e0b003"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Off-Policy Actor-Critic (OffP-AC) methods have proven successful in a variety of continuous control tasks. Normally, the critic’s action-value function is updated using temporal-difference, and the critic in turn provides a loss for the actor that trains it to take actions with higher expected return. In this paper, we introduce a flexible meta-critic framework based on observing the learning process and metalearning an additional loss for the actor that accelerates and improves actor-critic learning. Compared to existing meta-learning algorithms, meta-critic is rapidly learned online for a single task, rather than slowly over a family of tasks. Crucially, our meta-critic is designed for off-policy based learners, which currently provide state-of-the-art reinforcement learning sample efficiency. We demonstrate that online meta-critic learning benefits to a variety of continuous control tasks when combined with contemporary OffP-AC methods DDPG, TD3 and SAC.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cceff8faa855336ad53b3325914caea2-Paper.pdf",
+              "document_sha256": "c597351acb01191a2240e4fd1d8abb5e791eb1cbe49cc3f129c0409ad9e0b003"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "Discussion. We introduce an auxiliary meta-critic that goes beyond the information available to vanilla critic to leverage measured actor learning progress (Eq. (9)). This is a generic module that can potentially improve any off-policy actor-critic derivative-based RL method for a minor overhead at train time, and no overhead at test time; and can be applied directly to single tasks without requiring task-families as per most other meta-RL methods [3, 7, 15, 30]. Our method is myopic, in that it uses a single inner (base) step per outer (meta) step. A longer horizon look-ahead may ultimately lead to superior performance. However, this incurs the cost of additional higher-order gradients and associated memory use, and risk of unstable high-variance gradients [21, 29]. New meta-optimizers [24] may ultimately enable these issues to be solved, but we leave this to future work.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cceff8faa855336ad53b3325914caea2-Paper.pdf",
+              "document_sha256": "c597351acb01191a2240e4fd1d8abb5e791eb1cbe49cc3f129c0409ad9e0b003"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03952e9894ddd5e106f4d8a9",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/51de85ddd068f0bc787691d356176df9-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-be83881501b37d7b16e4e11b",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/cceff8faa855336ad53b3325914caea2-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "6e6062c26dd9543f974d84b7efe0c09f6c4b88560b23aba94670825bd2aece35"
+    },
+    {
+      "id": "edge-41b14d20ceaa0679166ce73c",
+      "a": "paper-03ec6447f64dd38c98f38f89",
+      "b": "paper-59864a5778bf7e2d3737d7a4",
+      "state": {
+        "paper_a": {
+          "title": "Learning Attentional Communication for Multi-Agent Cooperation",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Communication could potentially be an effective way for multi-agent cooperation. However, information sharing among all agents or in predefined communication architectures that existing methods adopt can be problematic. When there is a large number of agents, agents cannot differentiate valuable information that helps cooperative decision making from globally shared information. Therefore, communication barely helps, and could even impair the learning of multi-agent cooperation. Predefined communication architectures, on the other hand, restrict communication among agents and thus restrain potential cooperation. To tackle these difficulties, in this paper, we propose an attentional communication model that learns when communication is needed and how to integrate shared information for cooperative decision making. Our model leads to efficient and effective communication for large-scale multi-agent cooperation. Empirically, we show the strength of our model in a variety of cooperative scenarios, where agents are able to develop more coordinated and sophisticated strategies than existing methods."
+        },
+        "paper_b": {
+          "title": "Learning Fairness in Multi-Agent Systems",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Fairness is essential for human society, contributing to stability and productivity. Similarly, fairness is also the key for many multi-agent systems. Taking fairness into multi-agent learning could help multi-agent systems become both efficient and stable. However, learning efficiency and fairness simultaneously is a complex, multi-objective, joint-policy optimization. To tackle these difficulties, we propose FEN, a novel hierarchical reinforcement learning model. We first decompose fairness for each agent and propose fair-efficient reward that each agent learns its own policy to optimize. To avoid multi-objective conflict, we design a hierarchy consisting of a controller and several sub-policies, where the controller maximizes the fair-efficient reward by switching among the sub-policies that provides diverse behaviors to interact with the environment. FEN can be trained in a fully decentralized way, making it easy to be deployed in real-world applications. Empirically, we show that FEN easily learns both fairness and efficiency and significantly outperforms baselines in a variety of multi-agent scenarios."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03ec6447f64dd38c98f38f89",
+          "b": "paper-59864a5778bf7e2d3737d7a4",
+          "input_sha256": "5f4780c83e2d351b08571a2dffd809f47a55e50269081ab1ea50d6cc956b3149",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/6a8018b3a00b69c008601b8becae392b-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/10493aa88605cad5ab4752b04a63d172-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/10493aa88605cad5ab4752b04a63d172-Paper.pdf",
+              "sha256": "cb2a02296f5b6168a339b3f87e4580869ad5431f45483b5bc92b4dfe3440c17b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Communication could potentially be an effective way for multi-agent cooperation. However, information sharing among all agents or in predefined communication architectures that existing methods adopt can be problematic. When there is a large number of agents, agents cannot differentiate valuable information that helps cooperative decision making from globally shared information. Therefore, communication barely helps, and could even impair the learning of multi-agent cooperation. Predefined communication architectures, on the other hand, restrict communication among agents and thus restrain potential cooperation. To tackle these difficulties, in this paper, we propose an attentional communication model that learns when communication is needed and how to integrate shared information for cooperative decision making. Our model leads to efficient and effective communication for large-scale multi-agent cooperation. Empirically, we show the strength of our model in a variety of cooperative scenarios, where agents are able to develop more coordinated and sophisticated strategies than existing methods.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "document_sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "agents communicate with each other, since receiving a large amount of information requires high bandwidth and incurs long delay and high computational complexity. Predefined communication architectures, e.g., Master-Slave [8], might help, but they restrict communication among specific agents and thus restrain potential cooperation. To tackle these difficulties, we propose an attentional communication model, called ATOC, to enable agents to learn effective and efficient communication under partially observable distributed environment for large-scale MARL. Inspired by recurrent models of visual attention, we design an attention unit that receives encoded local observation and action intention of an agent and determines whether the agent should communicate with other agents to cooperate in its observable field. If so, the agent, called initiator, selects collaborators to form a communication group for coordinated strategies. The communication group dynamically changes and retains only when necessary. We exploit a bidirectional LSTM unit as the communication channel to connect each agent within a communication group. The LSTM unit takes as input internal states (i.e., encoding of local observation and action intention) and returns thoughts that guide agents for coordinated strategies. Unlike CommNet and BiCNet that perform arithmetic mean and weighted mean of internal states, respectively, our LSTM unit selectively outputs important information for cooperative decision making, which makes it possible for agents to learn coordinated strategies in dynamic communication environments. We implement ATOC as an extension of actor-critic model, which is trained end-to-end by backpropagation. Since all agents share the parameters of the policy network, Q-network, attention unit,",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "document_sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Fairness. There are many existing works on fair division in multi-agent systems. Most of them focus on static settings [4, 5, 6], where the information of entire resources and agents are known and fixed, while some of them work on dynamic settings [7, 8, 9], where resource availability and agents are changing. For multi-agent sequential decision-making, a regularized maximin fairness policy is proposed [8] to maximize the worst performance of agents while considering the overall performance, and the policy is computed by linear programming or game-theoretic approach. However, none of these works are learning approach. Some multi-agent RL methods [17, 18, 19] have been proposed and handcrafted for resource allocation in specific applications, such as resource allocation on multicore systems[17], sharing network resources among UAVs[18], and balancing various resources in complex logistics networks[19]. However, all these methods require domain-specific knowledge and thus cannot be generalized. Some methods [20, 21, 22] are proposed to improve cooperation in social dilemmas. In [20], the reward is shaped for two-player Stag Hunt games, which could be agents’ average reward in its multi-player version. In [20], one agent’s reward is set to be the weighted average reward of two agents in two-player Stag Hunt games to induce prosociality. By extending the inequity aversion model, a shaped reward is designed in [21] to model agent’s envy and guilt. A reward network is proposed in [22] to generate intrinsic reward for each agent, which is evolved based on the group’s collective reward. Although cooperation in social dilemmas helps improve agents’ sum reward, it does not necessarily mean the fairness is guaranteed. The Matthew effect, summarized as the rich get richer and the",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/10493aa88605cad5ab4752b04a63d172-Paper.pdf",
+              "document_sha256": "cb2a02296f5b6168a339b3f87e4580869ad5431f45483b5bc92b4dfe3440c17b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fairness is essential for human society, contributing to stability and productivity. Similarly, fairness is also the key for many multi-agent systems, e.g., routing [1], traffic light control [2], and cloud computing [3]. More specifically, in routing, link bandwidth needs to be fairly allocated to packets to achieve load balance; in traffic light control, resources provided by infrastructure needs to be fairly shared by vehicles; in cloud computing, resource allocation of virtual machines has to be fair to optimize profit. Many game-theoretic methods [4, 5, 6] have been proposed for fair division in multi-agent systems, which mainly focus on proportional fairness and envy-freeness. Most of them are in static settings, while some [7, 8, 9] consider the dynamic environment. Recently, multi-agent reinforcement learning (RL) has been successfully applied to multi-agent sequential decision-making, such as [10, 11, 12, 13, 14, 15, 16]. However, most of them try to maximize the reward of each individual agent or the shared reward among agents, without taking fairness into account. Only a few methods consider fairness, but are handcrafted for different applications [17, 18, 19], which all require domain-specific knowledge and cannot be generalized. Some methods [20, 21, 22] aim to encourage cooperation in social dilemmas but cannot guarantee fairness. Taking fairness into multi-agent learning could help multi-agent systems become both efficient and stable. However, learning efficiency (system performance) and fairness simultaneously is a complex, multi-objective, joint-policy optimization. To tackle these difficulties, we propose a novel hierarchical RL model, FEN, to enable agents to easily and effectively learn both efficiency and fairness. First, we decompose fairness for",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/10493aa88605cad5ab4752b04a63d172-Paper.pdf",
+              "document_sha256": "cb2a02296f5b6168a339b3f87e4580869ad5431f45483b5bc92b4dfe3440c17b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Fairness is essential for human society, contributing to stability and productivity. Similarly, fairness is also the key for many multi-agent systems. Taking fairness into multi-agent learning could help multi-agent systems become both efficient and stable. However, learning efficiency and fairness simultaneously is a complex, multi-objective, joint-policy optimization. To tackle these difficulties, we propose FEN, a novel hierarchical reinforcement learning model. We first decompose fairness for each agent and propose fair-efficient reward that each agent learns its own policy to optimize. To avoid multi-objective conflict, we design a hierarchy consisting of a controller and several sub-policies, where the controller maximizes the fair-efficient reward by switching among the sub-policies that provides diverse behaviors to interact with the environment. FEN can be trained in a fully decentralized way, making it easy to be deployed in real-world applications. Empirically, we show that FEN easily learns both fairness and efficiency and significantly outperforms baselines in a variety of multi-agent scenarios.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/10493aa88605cad5ab4752b04a63d172-Paper.pdf",
+              "document_sha256": "cb2a02296f5b6168a339b3f87e4580869ad5431f45483b5bc92b4dfe3440c17b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03ec6447f64dd38c98f38f89",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/6a8018b3a00b69c008601b8becae392b-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-59864a5778bf7e2d3737d7a4",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/10493aa88605cad5ab4752b04a63d172-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "a3a0807343c3c947584902ce23273b2701f4d9946d315c77f16727778a844978"
+    },
+    {
+      "id": "edge-4d220cb84e9097e44e9e5f91",
+      "a": "paper-06d6ad625094dd6e134e0ff1",
+      "b": "paper-a45bfd9d04e8c486f0a8e01a",
+      "state": {
+        "paper_a": {
+          "title": "DuoRC: Towards Complex Language Understanding with Paraphrased Reading Comprehension",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique question-answer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset, even when coupled with traditional NLP techniques to address the challenges presented in DuoRC exhibit very poor performance (F1 score of 37.42% on DuoRC v/s 86% on SQuAD dataset). This opens up several interesting research avenues wherein DuoRC could complement other RC datasets to explore novel neural approaches for studying language understanding."
+        },
+        "paper_b": {
+          "title": "On the Efficacy of Adversarial Data Collection for Question Answering: Results from a Large-Scale Randomized Study",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "In adversarial data collection (ADC), a human workforce interacts with a model in real time, attempting to produce examples that elicit incorrect predictions. Researchers hope that models trained on these more challenging datasets will rely less on superficial patterns, and thus be less brittle. However, despite ADC’s intuitive appeal, it remains unclear when training on adversarial datasets produces more robust models. In this paper, we conduct a large-scale controlled study focused on question answering, assigning workers at random to compose questions either (i) adversarially (with a model in the loop); or (ii) in the standard fashion (without a model). Across a variety of models and datasets, we find that models trained on adversarial data usually perform better on other adversarial datasets but worse on a diverse collection of out-of-domain evaluation sets. Finally, we provide a qualitative analysis of adversarial (vs standard) data, identifying key differences and offering guidance for future research."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06d6ad625094dd6e134e0ff1",
+          "b": "paper-a45bfd9d04e8c486f0a8e01a",
+          "input_sha256": "172f2f06b75ee4498dc646430a6d7e4b78fdfbefdd92ebcb1321c25db87905e9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P18-1156/",
+              "pdf_url": "https://aclanthology.org/P18-1156.pdf",
+              "sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.517/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.517.pdf",
+              "sha256": "826c0cb2bf4c0f88218cd7909e4670008aab761684a5f2165befeb963135cadf"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique questionanswer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset (Rajpurkar et al., 2016b), even when coupled with tra-",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "a small dataset of 15K QA pairs, all other largescale RC datasets deal only with factual descriptive passages and not narratives (involving events with causality linkages that require reasoning and background knowledge) which is the case with a lot of real-world content such as story books, movies, news reports, etc. (ii) their questions possess a large lexical overlap with segments of the passage, or have a high noise level in QA pairs themselves. As demonstrated by recent work, this makes it easy for even simple keyword matching algorithms to achieve high accuracy (Weissenborn et al., 2017). In fact, these models have been shown to perform poorly in the presence of adversarially inserted sentences which have a high word overlap with the question but do not contain the answer (Jia and Liang, 2017). While this problem does not exist in TriviaQA it is admittedly noisy because of the use of distant supervision. Similarly, for cloze-style datasets, due to the automatic question generation process, it is very easy for current models to reach near human performance (Cui, 2017). This therefore limits the complexity in language understanding that a machine is required to demonstrate to do well on the RC task. Motivated by these shortcomings and to push the state-of-the-art in language understanding in RC, in this paper we propose DuoRC, which specifically presents the following challenges beyond the existing datasets: 1. DuoRC is especially designed to contain a large number of questions with low lexical overlap between questions and their corresponding passages. 2. It requires the use of background and commonsense knowledge to arrive at the answer and go beyond the content of the passage itself. 3. It contains narrative passages from movie plots that require complex",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "after original data is augmented to these datasets. ELECTRA models fine-tuned on ADC data with ELECTRA in the loop perform no better than those trained on SDC. Fine-tuning ELECTRA on SDC augmented to original data leads to an ≈ 1 pt improvement on both metrics compared to augmenting ADC. Overall, we find that models fine-tuned on ADC data typically generalize better to out-ofdomain adversarial test sets than models fine-tuned on SDC data, confirming the findings by Dinan et al. (2019). Out-of-domain generalization to MRQA We further evaluate these models on 12 out-of-domain datasets used in the 2019 MRQA shared task4 (Table 4 and Appendix Table 7).5 Notably, for BERT, fine-tuning on SDC data leads to significantly better performance (as compared to fine-tuning on 4 The MRQA 2019 shared task includes HotpotQA (Yang et al., 2018a), Natural Questions (Kwiatkowski et al., 2019), SearchQA (Dunn et al., 2017), SQuAD (Rajpurkar et al., 2016), TriviaQA (Joshi et al., 2017), BioASQ (Tsatsaronis et al., 2015), DROP (Dua et al., 2019), DuoRC (Saha et al., 2018), RelationExtraction (Levy et al., 2017), RACE (Lai et al., 2017), and TextbookQA (Kembhavi et al., 2017). 5 Interestingly, RoBERTa appears to perform better compared to BERT and ELECTRA. Prior works have hypothesized that the bigger size and increased diversity of the pretraining corpus of RoBERTa (compared to those of BERT and ELECTRA) might somehow be responsible for RoBERTa’s better out-of-domain generalization, (Baevski et al., 2019; Hendrycks et al., 2020; Tu et al., 2020).",
+              "url": "https://aclanthology.org/2021.acl-long.517.pdf",
+              "document_sha256": "826c0cb2bf4c0f88218cd7909e4670008aab761684a5f2165befeb963135cadf"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06d6ad625094dd6e134e0ff1",
+          "url": "https://aclanthology.org/P18-1156/"
+        },
+        "b": {
+          "paper_id": "paper-a45bfd9d04e8c486f0a8e01a",
+          "url": "https://aclanthology.org/2021.acl-long.517/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "9fbe275b66e81c6a70e06fc8b69ce7d86f8e12fcdc180215c606fa05b30852f9"
+    },
+    {
+      "id": "edge-81f1e20ef4d276252ee011cb",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-f7cc28b449385bb289e8d8f0",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "USSA: A Unified Table Filling Scheme for Structured Sentiment Analysis",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Most previous studies on Structured Sentiment Analysis (SSA) have cast it as a problem of bi-lexical dependency parsing, which cannot address issues of overlap and discontinuity simultaneously. In this paper, we propose a niche-targeting and effective solution. Our approach involves creating a novel bi-lexical dependency parsing graph, which is then converted to a unified 2D table-filling scheme, namely USSA. The proposed scheme resolves the kernel bottleneck of previous SSA methods by utilizing 13 different types of relations. In addition, to closely collaborate with the USSA scheme, we have developed a model that includes a proposed bi-axial attention module to effectively capture the correlations among relations in the rows and columns of the table. Extensive experimental results on benchmark datasets demonstrate the effectiveness and robustness of our proposed framework, outperforming state-of-the-art methods consistently."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "} Following previous work, we further enhance the token representations with a pre-trained contextualized embeddings from frozen multilingual BERT (Devlin et al., 2019).\nPrevious studies have explored different methods to tackle this task, like a BiLSTM-CRF model (Katiyar and Cardie, 2016) that predicts the word-wise opinion role label and identifies the relations, an end-to-end BERT-based model (Quan et al., 2019), a transition-based approach (Zhang et al., 2020a) using pre-defined actions, and a unified span-based model (Xia et al., 2021) that addresses overlap issues.\nFirst, multilingual BERT and bi-directional LSTM (BiLSTM) are used to provide contextualized word representations, based on which we construct a 2-Dimensional (2D) table for word pairs.\nRACL-BERT (Chen and Qian, 2020) is a relation aware collaborative learning framework which allows the subtasks of ABSA to work coordinately.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-f7cc28b449385bb289e8d8f0",
+          "input_sha256": "a5d3508efc634e41ccb4b8c1fcba605edf7f4ee93b9bae6e46277a1d4c553df6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.802/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.802.pdf",
+              "sha256": "066f5535b4bdddaa163b58185cf59599755abbe1b7b05517ecfb4e0b9a133af9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "a model for SSA. First, multilingual BERT and bi-directional LSTM (BiLSTM) are used to provide contextualized word representations, based on which we construct a 2-Dimensional (2D) table for word pairs. Then, we observe that the relations have a strong correlation in the abscissa and ordinate of the table as shown in Figure 2. we propose a bi-axial attention module to effectively capture these correlations. Finally, a predictor is employed to determine the relations between word pairs. We conduct extensive experiments on five benchmarks, including NoReCFine (Øvrelid et al., 2020), MultiBEU , MultiBCA (Barnes et al., 2018), MPQA (Wiebe et al., 2005) and DSUnis (Toprak et al., 2010). Our model demonstrates superior performance on all datasets, establishing a new SOTA method for SSA task. Our contributions are highlighted as follows: • We propose a bi-lexical dependency parsing graph and convert it to a unified 2D table filling scheme, USSA, which solves the kernel challenge issues of overlap and discontinuity in SSA. • We present an effective model to well collaborate with USSA scheme, which utilizes proposed bi-axial attention module to better capture the correlations of relations in the table. • We conduct extensive experiments on five benchmark datasets and the results demonstrate the effectiveness of our model. The source code is released for knowledge sharing.",
+              "url": "https://aclanthology.org/2023.acl-long.802.pdf",
+              "document_sha256": "066f5535b4bdddaa163b58185cf59599755abbe1b7b05517ecfb4e0b9a133af9"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Structured Sentiment Analysis (SSA) can be divided into several sub-tasks, including extracting entities, determining the relationship between the entities, and assigning polarity. Some previous research in Opinion Mining (OM) has focused on extracting holders, targets, and expressions and identifying their relations, mainly utilizing the MPQA dataset (Esuli et al., 2008). Previous studies have explored different methods to tackle this task, like a BiLSTM-CRF model (Katiyar and Cardie, 2016) that predicts the word-wise opinion role label and identifies the relations, an end-to-end BERT-based model (Quan et al., 2019), a transition-based approach (Zhang et al., 2020a) using pre-defined actions, and a unified span-based model (Xia et al., 2021) that addresses overlap issues. All of these approaches, however, ignore the sentiment polarity classification subtask. In Aspect Based Sentiment Analysis (ABSA), several studies have attempted to unify multiple subtasks. Some examples include Aspect and Opinion Term Co-Extraction (AOTE) (Wang et al., 2016, 2017; Dai and Song, 2019; Wang and Pan, 2019; Chen et al., 2020; Wu et al., 2020) which combines target and expression extraction tasks, AspectSentiment Pair Extraction (ASPE) (Ma et al., 2018; Li et al., 2019a,b; He et al., 2019) which combines target extraction and sentiment classification, and most recent Aspect Sentiment Triplet Extraction (ASTE) (Peng et al., 2020) which further integrates multiple subtasks. These methods can generally be categorized into three groups: Pipeline (Peng et al., 2020; Fan et al., 2019), End-to-End (Zhang et al., 2020b; Xu et al., 2020; Wu et al., 2020; Chen et al., 2021b; Yan et al., 2021; Xu et al., 2021; Chen et al., 2022) and MRC-based (Mao et al., 2021; Chen et al., 2021a; Zhai et al.,",
+              "url": "https://aclanthology.org/2023.acl-long.802.pdf",
+              "document_sha256": "066f5535b4bdddaa163b58185cf59599755abbe1b7b05517ecfb4e0b9a133af9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Most previous studies on Structured Sentiment Analysis (SSA) have cast it as a problem of bi-lexical dependency parsing, which cannot address issues of overlap and discontinuity simultaneously. In this paper, we propose a nichetargeting and effective solution. Our approach involves creating a novel bi-lexical dependency parsing graph, which is then converted to a unified 2D table-filling scheme, namely USSA. The proposed scheme resolves the kernel bottleneck of previous SSA methods by utilizing 13 different types of relations. In addition, to closely collaborate with the USSA scheme, we have developed a model that includes a proposed bi-axial attention module to effectively capture the correlations among relations in the rows and columns of the table. Extensive experimental results on benchmark datasets demonstrate the effectiveness and robustness of our proposed framework, outperforming state-ofthe-art methods consistently1 .",
+              "url": "https://aclanthology.org/2023.acl-long.802.pdf",
+              "document_sha256": "066f5535b4bdddaa163b58185cf59599755abbe1b7b05517ecfb4e0b9a133af9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this section, we introduce the problem formulation of the SSA task, explain the table filling scheme USSA, and show how to decode opinion tuples from the USSA tagging results. 3.1",
+              "url": "https://aclanthology.org/2023.acl-long.802.pdf",
+              "document_sha256": "066f5535b4bdddaa163b58185cf59599755abbe1b7b05517ecfb4e0b9a133af9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-f7cc28b449385bb289e8d8f0",
+          "url": "https://aclanthology.org/2023.acl-long.802/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "c23ae6ada12f309be02bdcba9809a1a7da5b0e91987b500fcf9cb257a177d577"
+    },
+    {
+      "id": "edge-8860902b1f9ed2bfbc257b55",
+      "a": "paper-06d6ad625094dd6e134e0ff1",
+      "b": "paper-32f0f692ae895b85fb89bae7",
+      "state": {
+        "paper_a": {
+          "title": "DuoRC: Towards Complex Language Understanding with Paraphrased Reading Comprehension",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique question-answer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset, even when coupled with traditional NLP techniques to address the challenges presented in DuoRC exhibit very poor performance (F1 score of 37.42% on DuoRC v/s 86% on SQuAD dataset). This opens up several interesting research avenues wherein DuoRC could complement other RC datasets to explore novel neural approaches for studying language understanding."
+        },
+        "paper_b": {
+          "title": "Exploring the Benefits of Training Expert Language Models over Instruction Tuning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Recently, Language Models (LMs) instruction-tuned on multiple tasks, also known as multitask-prompted fine-tuning (MT), have shown capabilities to generalize to unseen tasks. Previous work has shown that scaling the number of finetuning datasets and instructions is the key component in making stronger MT LMs. In this work, we report surprising findings that show an expert LM trained on just a single task can outperform an MT LM trained with 300+ different tasks on 11 different unseen datasets and on 13 datasets of the BIG-bench benchmark by an average of 3.20% and 1.29%, respectively. This finding casts doubt on the previously held belief that simply scaling the number of tasks makes stronger MT LMs. Leveraging this finding, we further show that this distributed approach of training multiple expert LMs instead of a single MT LM for zero-shot inference possesses many benefits including (1) avoiding negative task transfer that often occurs during instruction tuning, (2) being able to continually learn new tasks without having to re-train on previous tasks to avoid catastrophic forgetting, and (3) showing compositional capabilities when merging individual experts together."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06d6ad625094dd6e134e0ff1",
+          "b": "paper-32f0f692ae895b85fb89bae7",
+          "input_sha256": "7141adc46ff827d13604420c3932c2f555c2142a71ae4001b7609f1f197fcb73",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P18-1156/",
+              "pdf_url": "https://aclanthology.org/P18-1156.pdf",
+              "sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/jang23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/jang23a/jang23a.pdf",
+              "sha256": "28120e4a373ef8f2b085c14835cf48959a23dcea654433510b0aea54c7ebb1ff"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique questionanswer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset (Rajpurkar et al., 2016b), even when coupled with tra-",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "a small dataset of 15K QA pairs, all other largescale RC datasets deal only with factual descriptive passages and not narratives (involving events with causality linkages that require reasoning and background knowledge) which is the case with a lot of real-world content such as story books, movies, news reports, etc. (ii) their questions possess a large lexical overlap with segments of the passage, or have a high noise level in QA pairs themselves. As demonstrated by recent work, this makes it easy for even simple keyword matching algorithms to achieve high accuracy (Weissenborn et al., 2017). In fact, these models have been shown to perform poorly in the presence of adversarially inserted sentences which have a high word overlap with the question but do not contain the answer (Jia and Liang, 2017). While this problem does not exist in TriviaQA it is admittedly noisy because of the use of distant supervision. Similarly, for cloze-style datasets, due to the automatic question generation process, it is very easy for current models to reach near human performance (Cui, 2017). This therefore limits the complexity in language understanding that a machine is required to demonstrate to do well on the RC task. Motivated by these shortcomings and to push the state-of-the-art in language understanding in RC, in this paper we propose DuoRC, which specifically presents the following challenges beyond the existing datasets: 1. DuoRC is especially designed to contain a large number of questions with low lexical overlap between questions and their corresponding passages. 2. It requires the use of background and commonsense knowledge to arrive at the answer and go beyond the content of the passage itself. 3. It contains narrative passages from movie plots that require complex",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "The original T0 (Sanh et al., 2021) paper includes 38 training datasets. However, we could not load 4 datasets from the Huggingface Dataset library: adversarial qa/dbidaf, adversarial qa/dbert, adversarial qa/droberta, and duorc/SelfRC. Instead, we utilize the adversarial qa/adversarialQA dataset and also additionally train on commonsense qa dataset which is a variant of the cos e dataset, resulting in a total of 36 training datasets.",
+              "url": "https://proceedings.mlr.press/v202/jang23a/jang23a.pdf",
+              "document_sha256": "28120e4a373ef8f2b085c14835cf48959a23dcea654433510b0aea54c7ebb1ff"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Part 2 (Section 6) Leveraging the finding of expert LMs showing improved unseen task generalization capability, we highlight three other advantages of training multiple expert LMs for each task and retrieving the relevant expert during inference (shown in Figure 2) compared to training MT LMs. #1. MT LMs do not show the optimal performance for seen tasks because of negative task transfer, where learning multiple tasks at once hinders the learning of some specific tasks (Aghajanyan et al., 2021; Asai et al., 2022a; Zhang et al., 2022). Expert LMs, on the other hand, are not subject to negative task transfer (Levine et al., 2022) since each task is learned independently; We show our approach of selecting relevant experts during inference results in a +10.4% mean accuracy improvement on validation datasets of the 36 training tasks compared to T0-3B.",
+              "url": "https://proceedings.mlr.press/v202/jang23a/jang23a.pdf",
+              "document_sha256": "28120e4a373ef8f2b085c14835cf48959a23dcea654433510b0aea54c7ebb1ff"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "While previous literature has mostly asserted that the primary key component of MT LMs is scaling the total number of training tasks, in this paper, we propose an alternative per-",
+              "url": "https://proceedings.mlr.press/v202/jang23a/jang23a.pdf",
+              "document_sha256": "28120e4a373ef8f2b085c14835cf48959a23dcea654433510b0aea54c7ebb1ff"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06d6ad625094dd6e134e0ff1",
+          "url": "https://aclanthology.org/P18-1156/"
+        },
+        "b": {
+          "paper_id": "paper-32f0f692ae895b85fb89bae7",
+          "url": "https://proceedings.mlr.press/v202/jang23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "1991dbba0132947d78bb5be9b126b57f8c1e0328f2441dfb76e4b3387c5b724d"
+    },
+    {
+      "id": "edge-b9df6ffd75222d2432be880a",
+      "a": "paper-02ec5b3c598ae7532cba0566",
+      "b": "paper-2b3c7b83d9ede5143f22e2da",
+      "state": {
+        "paper_a": {
+          "title": "Insights on representational similarity in neural networks with canonical correlation",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Comparing different neural network representations and determining how representations evolve over time remain challenging open questions in our understanding of the function of neural networks. Comparing representations in neural networks is fundamentally difficult as the structure of representations varies greatly, even across groups of networks trained on identical tasks, and over the course of training. Here, we develop projection weighted CCA (Canonical Correlation Analysis) as a tool for understanding neural networks, building off of SVCCA, a recently proposed method (Raghu et al, 2017). We first improve the core method, showing how to differentiate between signal and noise, and then apply this technique to compare across a group of CNNs, demonstrating that networks which generalize converge to more similar representations than networks which memorize, that wider networks converge to more similar solutions than narrow networks, and that trained networks with identical topology but different learning rates converge to distinct clusters with diverse representations. We also investigate the representational dynamics of RNNs, across both training and sequential timesteps, finding that RNNs converge in a bottom-up pattern over the course of training and that the hidden state is highly variable over the course of a sequence, even when accounting for linear transforms. Together, these results provide new insights into the function of CNNs and RNNs, and demonstrate the utility of using CCA to understand representations."
+        },
+        "paper_b": {
+          "title": "Intrinsic dimension of data representations in deep neural networks",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Deep neural networks progressively transform their inputs across multiple processing layers. What are the geometrical properties of the representations learned by these networks? Here we study the intrinsic dimensionality (ID) of data representations, i.e. the minimal number of parameters needed to describe a representation. We find that, in a trained network, the ID is orders of magnitude smaller than the number of units in each layer. Across layers, the ID first increases and then progressively decreases in the final layers. Remarkably, the ID of the last hidden layer predicts classification accuracy on the test set. These results can neither be found by linear dimensionality estimates (e.g., with principal component analysis), nor in representations that had been artificially linearized. They are neither found in untrained networks, nor in networks that are trained on randomized labels. This suggests that neural networks that can generalize are those that transform the data into low-dimensional, but not necessarily flat manifolds."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02ec5b3c598ae7532cba0566",
+          "b": "paper-2b3c7b83d9ede5143f22e2da",
+          "input_sha256": "9dd387337da23b8c7829c85699f55e888324b333ee9e1e0e212642c7a0aa3159",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/a7a3d70c6d17a73140918996d03c014f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/a7a3d70c6d17a73140918996d03c014f-Paper.pdf",
+              "sha256": "9a6c4dccffef1aa8e487b8cdb59ae36ca7d06593fbef99351a6d416ef210f1dc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/cfcce0621b49c983991ead4c3d4d3b6b-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/cfcce0621b49c983991ead4c3d4d3b6b-Paper.pdf",
+              "sha256": "9c7d360824ea8ddec73bac07fe4885812403c469a2a3b0ede47f905e34e8da1b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "not rely on the full dimensionality of a layer to represent high performance solutions [12, 6, 1, 20, 15, 21, 14]. As a result, the mean correlation coefficient will typically underestimate the degree of similarity. To investigate this further, we first asked whether, over the course of training, all CCA vectors converge to their final representations before the network’s performance converges. To test this, we computed the CCA similarity between layer L at times t throughout training with layer L at the final timestep T . Viewing the sorted CCA coefficients ρ, we can see that many of the coefficients continue to change well after the network’s performance has converged (Figure 1a-c, Figure A1). This result suggests that the unconverged coefficients and their corresponding vectors may represent “noise” which is unnecessary for high network performance. We next asked whether the CCA vectors which stabilize early in training remain stable. To test this, we computed the CCA vectors between layer L at timestep tearly in training and timestep T /2. We then computed the similarity between the top 100 vectors (those which stabilized early) and the bottom 100 vectors (those which had not stabilized) with the representation at all other training times. Consistent with our intuition, we found that those vectors which stabilized early remained stable, while the unstable vectors continued to vary, and therefore likely represent noise. These results suggest that task-critical representations are learned by midway through training, while the noise only approaches its final value towards the end. We therefore suggest a simple and easy to compute variation that takes this into account. We also discuss an alternate approach in Section A.2. Projection Weighting One way to address this",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/a7a3d70c6d17a73140918996d03c014f-Paper.pdf",
+              "document_sha256": "9a6c4dccffef1aa8e487b8cdb59ae36ca7d06593fbef99351a6d416ef210f1dc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "Acknowledgments We thank Eis Annavini for providing the custom dataset described in A.1.1; Artur Speiser and JanMatthis Lückmann for a careful proofreading of the manuscript. We warmly thank Elena Facco for her valuable help in the early phases of this project. We also thank Naftali Tishby, Riccardo Zecchina, Matteo Marsili, Tim Kietzmann, Florent Krzkala, Lenka Zdeborova, Fabio Anselmi, Luca Bortolussi, Jim DiCarlo and SueYeon Chung for useful discussions and suggestions, and the anonymous referees for their useful and constructive comments. This work was supported by a European Research Council (ERC) Consolidator Grant, 616803LEARN2SEE (D.Z.). JHM is funded by the German Research Foundation (DFG) through SFB 1233 (276693517), SFB 1089 and SPP 2041, the German Federal Ministry of Education and Research (BMBF, project ‘ADMIMEM’, FKZ 01IS18052 A-D), and the Human Frontier Science Program (RGY0076/2018). References [1] C. Zhang, S. Bengio, M. Hardt, B. Recht, and O. Vinyals, “Understanding deep learning requires rethinking generalization,” CoRR, vol. abs/1611.03530, 2016. [2] B. Neyshabur, Z. Li, S. Bhojanapalli, Y. LeCun, and N. Srebro, “Towards understanding the role of over-parametrization in generalization of neural networks,” arXiv preprint arXiv:1805.12076, 2018. [3] A. K. Lampinen and S. Ganguli, “An analytic theory of generalization dynamics and transfer learning in deep linear networks,” arXiv preprint arXiv:1809.10374, 2018. [4] M. Denil, B. Shakibi, L. Dinh, M. Ranzato, and N. De Freitas, “Predicting parameters in deep learning,” in Advances in Neural Information Processing Systems, pp. 2148–2156, 2013. [5] Y. LeCun, J. S. Denker, and S. A. Solla, “Optimal brain damage,” in Advances in neural information processing systems, pp. 598–605, 1990. [6] H. Huang,",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/cfcce0621b49c983991ead4c3d4d3b6b-Paper.pdf",
+              "document_sha256": "9c7d360824ea8ddec73bac07fe4885812403c469a2a3b0ede47f905e34e8da1b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02ec5b3c598ae7532cba0566",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/a7a3d70c6d17a73140918996d03c014f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-2b3c7b83d9ede5143f22e2da",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/cfcce0621b49c983991ead4c3d4d3b6b-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "bd96d98305ae808b88971bad7baae98fed6e9edeb95abef9ac8a1aa3a2d9ff48"
+    },
+    {
+      "id": "edge-bc2dfd668c6b53d9b6cf017a",
+      "a": "paper-092a9a1c5b6930b5e8baa40d",
+      "b": "paper-abc15825deda026578907db4",
+      "state": {
+        "paper_a": {
+          "title": "Residual Force Control for Agile Human Behavior Imitation and Extended Motion Synthesis",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Reinforcement learning has shown great promise for synthesizing realistic human behaviors by learning humanoid control policies from motion capture data. However, it is still very challenging to reproduce sophisticated human skills like ballet dance, or to stably imitate long-term human behaviors with complex transitions. The main difficulty lies in the dynamics mismatch between the humanoid model and real humans. That is, motions of real humans may not be physically possible for the humanoid model. To overcome the dynamics mismatch, we propose a novel approach, residual force control (RFC), that augments a humanoid control policy by adding external residual forces into the action space. During training, the RFC-based policy learns to apply residual forces to the humanoid to compensate for the dynamics mismatch and better imitate the reference motion. Experiments on a wide range of dynamic motions demonstrate that our approach outperforms state-of-the-art methods in terms of convergence speed and the quality of learned motions. Notably, we showcase a physics-based virtual character empowered by RFC that can perform highly agile ballet dance moves such as pirouette, arabesque and jeté. Furthermore, we propose a dual-policy control framework, where a kinematic policy and an RFC-based policy work in tandem to synthesize multi-modal infinite-horizon human motions without any task guidance or user input. Our approach is the first humanoid control method that successfully learns from a large-scale human motion dataset (Human3.6M) and generates diverse long-term motions. Code and videos are available at https://www.ye-yuan.com/rfc."
+        },
+        "paper_b": {
+          "title": "Dynamics-regulated kinematic policy for egocentric pose estimation",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "We propose a method for object-aware 3D egocentric pose estimation that tightly integrates kinematics modeling, dynamics modeling, and scene object information. Unlike prior kinematics or dynamics-based approaches where the two components are used disjointly, we synergize the two approaches via dynamics-regulated training. At each timestep, a kinematic model is used to provide a target pose using video evidence and simulation state. Then, a prelearned dynamics model attempts to mimic the kinematic pose in a physics simulator. By comparing the pose instructed by the kinematic model against the pose generated by the dynamics model, we can use their misalignment to further improve the kinematic model. By factoring in the 6DoF pose of objects (e.g., chairs, boxes) in the scene, we demonstrate for the first time, the ability to estimate physically-plausible 3D human-object interactions using a single wearable camera. We evaluate our egocentric pose estimation method in both controlled laboratory settings and real-world scenarios."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-092a9a1c5b6930b5e8baa40d",
+          "b": "paper-abc15825deda026578907db4",
+          "input_sha256": "048088dc46aec3f281693cf20faaad20ec66137140f1b5265d65e99c6ba45f2a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/f76a89f0cb91bc419542ce9fa43902dc-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/f76a89f0cb91bc419542ce9fa43902dc-Paper.pdf",
+              "sha256": "4439ad51a23b08485d06bf61a0748d470f805e6b3dfdd7c072ff02322e879651"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/d1fe173d08e959397adf34b1d77e88d7-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/d1fe173d08e959397adf34b1d77e88d7-Paper.pdf",
+              "sha256": "be91aeb6a346b69caff2bd362ca49619209c7339df2a3a18b68904702d38c69e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Top: A ballet dancer performing highly agile moves like jeté, arabesque and pirouette. Bottom: A humanoid agent controlled by a policy augmented with the proposed residual forces (blue arrows) is able to dance like the performer. The motion is best viewed in our supplementary video. creatures with hundreds of bones and muscles. Although prior work has tried to improve the fidelity of the humanoid model [21, 52], it is nonetheless safe to say that these models are not exact replicas of real humans and the dynamics mismatch still exists. The problem is further complicated when motion capture data comprises a variety of individuals with diverse body types. Due to the dynamics mismatch, motions produced by real humans may not be admissible by the humanoid model, which means no control policy of the humanoid is able to generate those motions. To overcome the dynamics mismatch, we propose an approach termed Residual Force Control (RFC) which can be seamlessly integrated into existing RL-based humanoid control frameworks. Specifically, RFC augments a control policy by introducing external residual forces into the action space. During RL training, the RFC-based policy learns to apply residual forces onto the humanoid to compensate for the dynamics mismatch and achieve better motion imitation. Intuitively, the residual forces can be interpreted as invisible forces that enhance the humanoid’s abilities to go beyond the physical limits imposed by the humanoid model. RFC generates a more expressive dynamics that admits a wider range of human motions since the residual forces serve as a learnable time-varying correction to the dynamics of the humanoid model. To validate our approach, we perform motion imitation experiments on a wide range of dynamic human motions",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f76a89f0cb91bc419542ce9fa43902dc-Paper.pdf",
+              "document_sha256": "4439ad51a23b08485d06bf61a0748d470f805e6b3dfdd7c072ff02322e879651"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "As demonstrated in prior work [41, 57], we can apply the motion imitation framework described in Sec. 3 to successfully learn control policies that imitate human locomotions (e.g., walking, running, crouching) or acrobatics (e.g, backflips, cartwheels, jump kicks). However, the motion imitation framework has its limit on the range of motions that the agent is able to imitate. In our experiments, we often find the framework unable to learn more complex motions that require sophisticated foot interaction with the ground (e.g., ballet dance) or long-term motions that involve swift transitions between different modes of locomotion. We posit that the difficulty in learning such highly agile motions can be attributed to the dynamics mismatch between the humanoid model and real humans, i.e., the humanoid transition dynamics T (st+1 |st , at ) is different from the real human dynamics. b 0:T generated by a real human may not be Thus, due to the dynamics mismatch, a reference motion x b 0:T . admissible by the transition dynamics T , which means no policy under T can generate x To overcome the dynamics mismatch, our goal is to come up with a new transition dynamics T 0 that admits a wider range of motions. The new transition dynamics T 0 should ideally satisfy two properties: (1) T 0 needs to be expressive and overcome the limitations of the current dynamics T ; (2) T 0 needs to be physically-valid and respect physical constraints (e.g., contacts), which implies that kinematics-based approaches such as directly manipulating the resulting state st+1 by adding some residual δs are not viable as they may violate physical constraints. Based on the above considerations, we propose residual force control (RFC), that considers a more general form of dynamics Te (st+1 |st , at , e at )",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f76a89f0cb91bc419542ce9fa43902dc-Paper.pdf",
+              "document_sha256": "4439ad51a23b08485d06bf61a0748d470f805e6b3dfdd7c072ff02322e879651"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "bt+1 ) is represented by a Gaussian distribution with a fixed diagonal Policy. The policy ⇡ UHC (at |st , q covariance matrix ⌃. We first use a feature extraction layer Ddiff (b q t+1 , q t ) to compute the root and joint offset between the simulated pose and target pose. All features are then translated to a root-relative coordinate system using an agent-centic transform T AC to make our policy orientationinvariant. We use a Multi-layer Perceptron (MLP) as our policy network to map the augmented state bt+1 , Ddiff (b T AC q t , q̇ t , q q t+1 , q t ) to the predicted action at . Reward function. For UHC, the reward function is designed to encourage the simulated pose q t bt+1 . Since we share a similar objective (mimic target motion), our to better match the target pose q reward is similar to Residual Force Control [57].",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/d1fe173d08e959397adf34b1d77e88d7-Paper.pdf",
+              "document_sha256": "be91aeb6a346b69caff2bd362ca49619209c7339df2a3a18b68904702d38c69e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "body motion needs to be inferred solely based on the videos captured by the front-facing camera. Furthermore, egocentric videos usually capture the camera wearer interacting with objects in the scene, which adds additional complexity in recovering a pose sequence that agrees with the scene context. Despite these challenges, we show that it is possible to infer accurate human motion and human-object interaction from a single head-worn front-facing camera. Egocentric pose estimation can be solved using two different paradigms: (1) a kinematics perspective and (2) a dynamics perspective. Kinematics-based approaches study motion without regard to the underlying forces (e.g., gravity, joint torque) and cannot faithfully emulate human-object interaction without modeling proper contact and forces. They can achieve accurate pose estimates by directly outputting joint angles but can also produce results that violate physical constraints (e.g. foot skating and ground penetration). Dynamics-based approaches, or physics-based approaches, study motions that result from forces. They map directly from visual input to control signals of a human proxy (humanoid) inside a physics simulator and recover 3D poses through simulation. These approaches have the crucial advantage that they output physically-plausible human motion and human-object interaction (i.e., pushing an object will move it according to the rules of physics). However, since no joint torque is captured in human motion datasets, physics-based humanoid controllers are hard to learn, generalize poorly, and are actively being researched [36, 57, 51, 52]. In this work, we argue that a hybrid approach merging the kinematics and dynamics perspectives is needed. Leveraging a large human motion database [29], we learn a",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/d1fe173d08e959397adf34b1d77e88d7-Paper.pdf",
+              "document_sha256": "be91aeb6a346b69caff2bd362ca49619209c7339df2a3a18b68904702d38c69e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "use in physics simulation is created from the kinematic structure and mean body shape defined by SMPL. Our framework first learns a Universal Humanoid Controller (UHC) from a large MoCap dataset (Sec. 3.1). The learned UHC can be viewed as providing the lower level muscle skills of a real human, trained by mimicking thousands of human motion sequences. Using the trained UHC, we learn our kinematic policy (Sec. 3.2) through dynamics-regulated training (Sec. 3.3). At the test time, the kinematic policy provides per-step target motion to the UHC, forming a closed-loop system that operates inside the physics simulation to control a humanoid. The result of the UHC and physics simulation is then used as input to the kinematic policy to produce the next-frame target motion, as depicted in Fig. 2. As a notation convention, we use ·e to denote kinematic quantities (obtained without using physics simulation), ·b to denote ground truth quantities, and normal symbols without accents to denote quantities from the physics simulation. 3.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/d1fe173d08e959397adf34b1d77e88d7-Paper.pdf",
+              "document_sha256": "be91aeb6a346b69caff2bd362ca49619209c7339df2a3a18b68904702d38c69e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-092a9a1c5b6930b5e8baa40d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/f76a89f0cb91bc419542ce9fa43902dc-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-abc15825deda026578907db4",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/d1fe173d08e959397adf34b1d77e88d7-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "e558f1a5215e5c0bb492d9dc973bd9c9ab34f920ef8019e04234bf62a043f375"
+    },
+    {
+      "id": "edge-d3bc334cef70c09c4390c3f0",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-38bac6b6d1e1d89e808290ae",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Visual Concepts Tokenization",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Obtaining the human-like perception ability of abstracting visual concepts from concrete pixels has always been a fundamental and important target in machine learning research fields such as disentangled representation learning and scene decomposition. Towards this goal, we propose an unsupervised transformer-based Visual Concepts Tokenization framework, dubbed VCT, to perceive an image into a set of disentangled visual concept tokens, with each concept token responding to one type of independent visual concept. Particularly, to obtain these concept tokens, we only use cross-attention to extract visual information from the image tokens layer by layer without self-attention between concept tokens, preventing information leakage across concept tokens. We further propose a Concept Disentangling Loss to facilitate that different concept tokens represent independent visual concepts. The cross-attention and disentangling loss play the role of induction and mutual exclusion for the concept tokens, respectively. Extensive experiments on several popular datasets verify the effectiveness of VCT on the tasks of disentangled representation learning and scene decomposition. VCT achieves the state of the art results by a large margin."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-38bac6b6d1e1d89e808290ae",
+          "input_sha256": "17547e00fb616ec58b03123668cbc6ff5f4a6a5952b6db7c5358deb730b00860",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/cd062f8003e38f55dcb93df55b2683d6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/cd062f8003e38f55dcb93df55b2683d6-Paper-Conference.pdf",
+              "sha256": "52f6452c1b5400a8d161b5c5bab8af6469d7d4a27b2188ec7c8a4ecbf19c285e"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Despite the remarkable success of deep learning in various vision tasks, such as classification [21, 11], detection [35, 7], segmentation [32, 40], it still suffers from the requirement of a tremendous amount of training data [44], low robustness and generalization [43, 19], and lack of interpretability [1]. Those traditional vision tasks learn the visual concepts, such as semantics and object localization, from artificially predefined guidance. On the contrary, human is capable of extracting abstract concepts from concrete visual signals, then using those visual concepts to understand and depict the world comprehensively. Towards learning visual concepts from observations, Bengio et al. [4] propose disentangled representation learning to discover the visual concepts as the explanatory factors hidden in the observed data. To achieve disentangled representation, the following works, based on VAE [22, 5, 28, 27, 8] or GAN [9], rely on probabilistic-based regularization of the latent space. However, it has been fundamentally proved to be impossible if only relying on probability constrains [30]. Introducing inductive bias is necessary to solve the identifiability issue. Besides, those methods often fail in complex scenes with multiple objects. To address those complex scenes, another branch of learning visual concepts aims to spatially decompose a scene image into different object regions represented as different segmentation masks [18, 6]. Typically, these methods rely on explicit spatial decomposition and can not learn global visual concepts. In this paper, we are particularly interested ∗ †",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cd062f8003e38f55dcb93df55b2683d6-Paper-Conference.pdf",
+              "document_sha256": "52f6452c1b5400a8d161b5c5bab8af6469d7d4a27b2188ec7c8a4ecbf19c285e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Image Tokenization For visual inputs, the previous methods to get image tokens can be divided into region-based, grid-based and patch-based. For region-based, each token responds to an object region predicted by a detector [2]. For grid-based, each token is a spatially 1 × 1 vector taking from the extracted feature of a CNN backbone [23]. For the patch-based, the image is first divided into patches, and each token corresponds to the feature extracted from one patch [11]. Our visual concept tokenization is different from the previous works due to it is the process of extracting high-level visual concepts from the image tokens produced by previous image tokenization methods. We can adopt the grid-based or patch-based image tokenization as the module before concept tokenization. The region-based one needs an extra detector to get object-level semantics, which is redundant and not desired in our framework. We refer to the reverse process of image tokenization and concept tokenization as image detokenization and concept detokenization, respectively. Disentangled Representation Learning Disentangled representation learning is introduced in Bengio et al. [4], which aims to discover the hidden explanatory factors hidden in the observed data. Each dimension of the disentangled representation corresponds to one independent factor. Following that, there are some VAE-based works that achieve disentanglement [22, 5, 28, 27, 8] by relying on probability-based regularizations on the latent space. Locatello et al. [30] prove that only these regularizations are not enough for disentanglement, and extra conductive bias on model and data is required. Following works explore an alternative way for disentangled representation, including leveraging pretrained generative model [36] or",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cd062f8003e38f55dcb93df55b2683d6-Paper-Conference.pdf",
+              "document_sha256": "52f6452c1b5400a8d161b5c5bab8af6469d7d4a27b2188ec7c8a4ecbf19c285e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "in finding a general way to learn visual concepts from pixels, which covers the aforementioned two branches, disentangled representation learning and scene decomposition. Originated from Natural Language Processing (NLP), tokenization means the process of demarcating a string of input characters into sections named tokens. For the visual signal, we propose an unsupervised transformer-based approach, Visual Concept Tokenization (VCT), to extract the visual concept inside a given image as a set of tokens, serving as a general solution for visual concept learning. For example, given an image of a 3D scene [27], our VCT can represent it into the object shape token, object color token, object scale token, background color token, floor color token and pose token. Before introducing the details of VCT, we would like first to discuss the requirements of the tokens to achieve a good representation of the visual concepts contained in an image. Those tokens should satisfy the following three conditions: (i) completeness, one can reconstruct the image with those tokens; (ii) disentanglement, different tokens should represent independent visual concepts, and each token should only reflect one kind of visual concept variation; (iii) disorder, considering the disordered nature of concepts, the ranking order of tokens should not carry any information. We refer to the tokens as concept tokens if they satisfy the above three conditions. Note that the concept tokens are different from image tokens, i.e., the input of vision transformers, which are simply the grid feature obtained by a CNN backbone [23] or patch features from a linear projection layer [11]. Those image tokens are typically entangled in terms of abstract information and positionally sensitive. To obtain concept tokens from",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cd062f8003e38f55dcb93df55b2683d6-Paper-Conference.pdf",
+              "document_sha256": "52f6452c1b5400a8d161b5c5bab8af6469d7d4a27b2188ec7c8a4ecbf19c285e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Obtaining the human-like perception ability of abstracting visual concepts from concrete pixels has always been a fundamental and important target in machine learning research fields such as disentangled representation learning and scene decomposition. Towards this goal, we propose an unsupervised transformer-based Visual Concepts Tokenization framework, dubbed VCT, to perceive an image into a set of disentangled visual concept tokens, with each concept token responding to one type of independent visual concept. Particularly, to obtain these concept tokens, we only use cross-attention to extract visual information from the image tokens layer by layer without self-attention between concept tokens, preventing information leakage across concept tokens. We further propose a Concept Disentangling Loss to facilitate that different concept tokens represent independent visual concepts. The cross-attention and disentangling loss play the role of induction and mutual exclusion for the concept tokens, respectively. Extensive experiments on several popular datasets verify the effectiveness of VCT on the tasks of disentangled representation learning and scene decomposition. VCT achieves the state of the art results by a large margin.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cd062f8003e38f55dcb93df55b2683d6-Paper-Conference.pdf",
+              "document_sha256": "52f6452c1b5400a8d161b5c5bab8af6469d7d4a27b2188ec7c8a4ecbf19c285e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-38bac6b6d1e1d89e808290ae",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/cd062f8003e38f55dcb93df55b2683d6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "409ef387ef910a7c730ceae75905bd8404797a404e9503f6a9377536a38aae90"
+    },
+    {
+      "id": "edge-d7f4b7be3bb6df70dc1af38d",
+      "a": "paper-07bee6f9a76ec42a5bbdc5b7",
+      "b": "paper-18182ba8d75686c8d3b15b73",
+      "state": {
+        "paper_a": {
+          "title": "Robust Federated Learning: The Case of Affine Distribution Shifts",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Federated learning is a distributed paradigm that aims at training models using samples distributed across multiple users in a network while keeping the samples on users’ devices with the aim of efficiency and protecting users privacy. In such settings, the training data is often statistically heterogeneous and manifests various distribution shifts across users, which degrades the performance of the learnt model. The primary goal of this paper is to develop a robust federated learning algorithm that achieves satisfactory performance against distribution shifts in users' samples. To achieve this goal, we first consider a structured affine distribution shift in users' data that captures the device-dependent data heterogeneity in federated settings. This perturbation model is applicable to various federated learning problems such as image classification where the images undergo device-dependent imperfections, e.g. different intensity, contrast, and brightness. To address affine distribution shifts across users, we propose a Federated Learning framework Robust to Affine distribution shifts (FLRA) that is provably robust against affine Wasserstein shifts to the distribution of observed samples. To solve the FLRA's distributed minimax optimization problem, we propose a fast and efficient optimization method and provide convergence and performance guarantees via a gradient Descent Ascent (GDA) method. We further prove generalization error bounds for the learnt classifier to show proper generalization from empirical distribution of samples to the true underlying distribution. We perform several numerical experiments to empirically support FLRA. We show that an affine distribution shift indeed suffices to significantly decrease the performance of the learnt classifier in a new test user, and our proposed algorithm achieves a significant gain in comparison to standard federated learning and adversarial training methods."
+        },
+        "paper_b": {
+          "title": "Adaptive Test-Time Personalization for Federated Learning",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Personalized federated learning algorithms have shown promising results in adapting models to various distribution shifts. However, most of these methods require labeled data on testing clients for personalization, which is usually unavailable in real-world scenarios. In this paper, we introduce a novel setting called test-time personalized federated learning (TTPFL), where clients locally adapt a global model in an unsupervised way without relying on any labeled data during test-time. While traditional test-time adaptation (TTA) can be used in this scenario, most of them inherently assume training data come from a single domain, while they come from multiple clients (source domains) with different distributions. Overlooking these domain interrelationships can result in suboptimal generalization. Moreover, most TTA algorithms are designed for a specific kind of distribution shift and lack the flexibility to handle multiple kinds of distribution shifts in FL. In this paper, we find that this lack of flexibility partially results from their pre-defining which modules to adapt in the model. To tackle this challenge, we propose a novel algorithm called ATP to adaptively learns the adaptation rates for each module in the model from distribution shifts among source domains. Theoretical analysis proves the strong generalization of ATP. Extensive experiments demonstrate its superiority in handling various distribution shifts including label shift, image corruptions, and domain shift, outperforming existing TTA methods across multiple datasets and model architectures. Our code is available at https://github.com/baowenxuan/ATP."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07bee6f9a76ec42a5bbdc5b7",
+          "b": "paper-18182ba8d75686c8d3b15b73",
+          "input_sha256": "d42321d08dfe6dd9c2c4ce924b52829bf3c49156d4fb91a0a2fcf8741aa9dcd1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/f5e536083a438cec5b64a4954abc17f1-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f555b62384279b98732204cb1a670a23-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f555b62384279b98732204cb1a670a23-Paper-Conference.pdf",
+              "sha256": "cfc4de5b5529c2395625a52895b38c60d43fea71b711347eab273b695cae5a9b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated learning is a distributed paradigm for training models using samples distributed across multiple users in a network, while keeping the samples on users’ devices with the aim of efficiency and protecting users privacy. In such settings, the training data is often statistically heterogeneous and manifests various distribution shifts across users, which degrades the performance of the learnt model. The primary goal of this paper is to develop a robust federated learning algorithm that achieves satisfactory performance against distribution shifts in users’ samples. To achieve this goal, we first consider a structured affine distribution shift in users’ data that captures the device-dependent data heterogeneity in federated settings. This perturbation model is applicable to various federated learning problems such as image classification where the images undergo device-dependent imperfections, e.g. different intensity, contrast, and brightness. To address affine distribution shifts across users, we propose a Federated Learning framework Robust to Affine distribution shifts (FLRA) that is robust against affine distribution shifts to the distribution of observed samples. To solve the FLRA’s distributed minimax optimization problem, we propose a fast and efficient optimization method and provide convergence and performance guarantees via a gradient Descent Ascent (GDA) method. We further prove generalization error bounds for the learnt classifier to show proper generalization from empirical distribution of samples to the true underlying distribution. We perform several numerical experiments to empirically support FLRA. We show that an affine distribution shift indeed suffices to significantly decrease the performance of the learnt classifier in a new test",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "document_sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "learning, one needs to depart from the classical setting of distributed learning in which updated local models are communicated to the central server at each iteration, and communicate less frequently. Another major challenge in federated learning is the statistical heterogeneity of training data [1, 2]. As mentioned above, a federated setting involves many devices, each generating or storing personal data such as images, text messages or emails. Each user’s data samples can have a (slightly) different underlying distribution which is another key distinction between federated learning and classical learning problems. Indeed, it has been shown that standard federated methods such as FedAvg [3] which are designed for i.i.d. data significantly suffer in statistical accuracy or even diverge if deployed over non-i.i.d. samples [4]. Device-dependency of local data along with privacy concerns in federated tasks does not allow learning the distribution of individual users and necessitates novel algorithmic approaches to learn a classifier robust to distribution shifts across users. Specifically, statistical heterogeneity of training samples in federated learning can be problematic for generalizing to the distribution of a test node unseen in training time. We show through various numerical experiments that even a simple linear filter applied to the test samples will suffice to significantly degrade the performance of a model learned by FedAvg in standard image recognition tasks. To address the aforementioned challenges, we propose a new federated learning scheme called FLRA, a Federated Learning framework with Robustness to Affine distribution shifts. FLRA has a small communication overhead and a low computation complexity. The key insight in FLRA is model the heterogeneity of",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "document_sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Federated learning (FL) is a distributed learning system where multiple clients collaborate to train a machine learning model under the orchestration of the central server, while keeping their data decentralized [31, 18]. However, clients in FL typically exhibit distinct data distributions. For example, in the context of animal image classification, users tend to capture pictures of various animals prevalent in their respective regions, introducing label shift [51] to the local image dataset. Meanwhile, even when capturing images of the same species, the visual appearance can be influenced by the environment and camera settings, introducing feature shift [34]. It is crucial that each client can adapt the model to align with its unique data distribution [44]. Previous personalized federated learning (PFL) works have mainly focused on improving the performance on clients participating in training [41, 37, 25, 4] or generalization to new clients [8, 7, 6], assuming the availability of labeled data. However, in many real-world scenarios, clients do not have labeled data for personalization, which limits the application of PFL algorithms. For example, when employing an animal image classifier to mobile phones, their users may capture images of various animals, but without any accompanying labels indicating the species of the animal. * Equal contribution.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f555b62384279b98732204cb1a670a23-Paper-Conference.pdf",
+              "document_sha256": "cfc4de5b5529c2395625a52895b38c60d43fea71b711347eab273b695cae5a9b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we introduce a novel setting named test-time personalized federated learning (TTPFL). During the training phase, a global model is trained using source clients. During the testing phase, each target client downloads the global model and locally personalizes the model with its unlabeled data during test-time. This setting is particularly well-suited for cross-device FL, especially when generalizing to a large number of target clients that have not participated in the training phase and lack labeled data for supervised personalization. Compared to global FL, which trains a shared global model for all clients, TTPFL enables model adaptation to individual target clients facing complex distribution shifts. Compared to standard PFL, TTPFL does not necessitate additional labeled data from target clients for adaptation. Test-time adaptation (TTA), which adapts a pretrained model from the source domain to an unlabeled target domain, could be a solution for TTPFL. However, applying current TTA methods to FL poses two challenges. First, most TTA methods assume training data are sampled from a single domain [16, 52]. In FL, where source data are distributed across multiple clients, this simplification neglects interrelationships among source domains, impacting generalization. Furthermore, the current TTA methods are usually customized for specific distribution shifts and lack the flexibility to address diverse types of distribution shifts in FL. The inflexibility of existing TTA algorithms largely results from their predefined selection of modules to adapt (e.g., feature extractor [28, 43], final linear layer [16, 36], batch normalization layers [38, 45]). However, different modules encode varying semantic information levels, and adapting specific modules may be",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f555b62384279b98732204cb1a670a23-Paper-Conference.pdf",
+              "document_sha256": "cfc4de5b5529c2395625a52895b38c60d43fea71b711347eab273b695cae5a9b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Personalized federated learning algorithms have shown promising results in adapting models to various distribution shifts. However, most of these methods require labeled data on testing clients for personalization, which is usually unavailable in real-world scenarios. In this paper, we introduce a novel setting called test-time personalized federated learning (TTPFL), where clients locally adapt a global model in an unsupervised way without relying on any labeled data during test-time. While traditional test-time adaptation (TTA) can be used in this scenario, most of them inherently assume training data come from a single domain, while they come from multiple clients (source domains) with different distributions. Overlooking these domain interrelationships can result in suboptimal generalization. Moreover, most TTA algorithms are designed for a specific kind of distribution shift and lack the flexibility to handle multiple kinds of distribution shifts in FL. In this paper, we find that this lack of flexibility partially results from their pre-defining which modules to adapt in the model. To tackle this challenge, we propose a novel algorithm called ATP to adaptively learns the adaptation rates for each module in the model from distribution shifts among source domains. Theoretical analysis proves the strong generalization of ATP. Extensive experiments demonstrate its superiority in handling various distribution shifts including label shift, image corruptions, and domain shift, outperforming existing TTA methods across multiple datasets and model architectures. Our code is available at https://github.com/baowenxuan/ATP.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f555b62384279b98732204cb1a670a23-Paper-Conference.pdf",
+              "document_sha256": "cfc4de5b5529c2395625a52895b38c60d43fea71b711347eab273b695cae5a9b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07bee6f9a76ec42a5bbdc5b7",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/f5e536083a438cec5b64a4954abc17f1-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-18182ba8d75686c8d3b15b73",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f555b62384279b98732204cb1a670a23-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "fae60ad6d4f6e3b11c8fc17b1371148dbfe43d4e882c8a8024f7118df3aa7fe1"
+    },
+    {
+      "id": "edge-39b3d0543682b1d027efeab5",
+      "a": "paper-00a7da2e6ec9a42f864e2dd2",
+      "b": "paper-97a0baf3f823bb1c916502ea",
+      "state": {
+        "paper_a": {
+          "title": "Knowledge Neurons in Pretrained Transformers",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus. In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers."
+        },
+        "paper_b": {
+          "title": "DisentQA: Disentangling Parametric and Contextual Knowledge with Counterfactual Question Answering",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Question answering models commonly have access to two sources of “knowledge” during inference time: (1) parametric knowledge - the factual knowledge encoded in the model weights, and (2) contextual knowledge - external knowledge (e.g., a Wikipedia passage) given to the model to generate a grounded answer. Having these two sources of knowledge entangled together is a core issue for generative QA models as it is unclear whether the answer stems from the given non-parametric knowledge or not. This unclarity has implications on issues of trust, interpretability and factuality. In this work, we propose a new paradigm in which QA models are trained to disentangle the two sources of knowledge. Using counterfactual data augmentation, we introduce a model that predicts two answers for a given question: one based on given contextual knowledge and one based on parametric knowledge. Our experiments on the Natural Questions dataset show that this approach improves the performance of QA models by making them more robust to knowledge conflicts between the two knowledge sources, while generating useful disentangled answers."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "(2020) tried to make transformers forget specific old facts and explicitly memorize new ones, while Dai et al. (2022); Meng et al. (2022) and Hernandez et al. (2023) studied neurons and neuron activations that are associated with specific facts and incorporated knowledge directly into the model.\n(2020) tried to make transformers forget specific old facts and explicitly memorize new ones, while Dai et al. (2022); Meng et al. (2022) and Hernandez et al.\n(2020) tried to make transformers forget specific old facts and explicitly memorize new ones, while Dai et al. (2022); Meng et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00a7da2e6ec9a42f864e2dd2",
+          "b": "paper-97a0baf3f823bb1c916502ea",
+          "input_sha256": "11781e814ceca467606b4c413705b47cec3c8f8941ad79a13614de630a00821c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.581/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.559/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.559.pdf",
+              "sha256": "8e84c4c185f7f7d9010119d4f3f306f3ae4bb636fc74161f63a3067ed74ac4d9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus (Petroni et al., 2019; Jiang et al., 2020b). In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers. The code is available at https://github.com/ Hunter-DDM/knowledge-neurons.",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "text-form knowledge prediction. In this paper, we attempt to look deeper into pretrained Transformers and investigate how factual knowledge is stored. As shown in Figure 1, we propose a knowledge attribution method to identify the neurons that express a relational fact, where such neurons are named knowledge neurons. Specifically, we view feed-forward network (i.e., two-layer perceptron) modules in Transformer as key-value memories (Geva et al., 2020). For the example in Figure 1, the hidden state is fed into the first linear layer and activates knowledge neurons; then, the second linear layer integrates the corresponding memory vectors. The key-value-memory nature (Geva et al., 2020) inspires us to propose the knowledge attribution method, which identifies knowledge neurons in feed-forward networks by computing the contribution of each neuron to the knowledge prediction. Extensive analysis shows that the activation of the identified knowledge neurons is positively correlated to the knowledge expression, which shows",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "during pretraining. Petroni et al. (2019) used “fillin-the-blank” cloze statements to recover internal factual knowledge. Roberts et al. (2020) trained QA models in a closed-book manner, without access to any external context. Lewis et al. (2021) studied the overlap between the training and development sets of open domain benchmarks, including NQ, and showed that all models suffer from this issue, and perform worse on questions that do not overlap in their answers with the training data. Dhingra et al. (2022) proposed to improve the memorization of versions of knowledge across time in language models, by adding a timestamp prefix in the pretraining input. They experimented with closed-book QA to evaluate the model memorization. Akyürek et al. (2022) focused on tracing the training examples that provided evidence for recalled facts from LMs, Zhu et al. (2020) tried to make transformers forget specific old facts and explicitly memorize new ones, while Dai et al. (2022); Meng et al. (2022) and Hernandez et al. (2023) studied neurons and neuron activations that are associated with specific facts and incorporated knowledge directly into the model. Knowledge Conflicts. Longpre et al. (2021) defined knowledge conflicts as cases where the contextual information contradicts the memorized information. To simulate this, they substitute entities in the gold context with another entity, showing over-reliance on the memorized knowledge. They suggested mitigating these conflicts by augmenting the training data with substituted instances. Other works addressed outdated facts or incorrectly induced pieces of information. For example, Verga et al. (2021) and De Cao et al. (2021) created methods for modifying unexpected parametric knowledge or incorporating newly injected facts without",
+              "url": "https://aclanthology.org/2023.acl-long.559.pdf",
+              "document_sha256": "8e84c4c185f7f7d9010119d4f3f306f3ae4bb636fc74161f63a3067ed74ac4d9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Question answering models commonly have access to two sources of “knowledge” during inference time: (1) parametric knowledge – the factual knowledge encoded in the model weights, and (2) contextual knowledge – external knowledge (e.g., a Wikipedia passage) given to the model to generate a grounded answer. Having these two sources of knowledge entangled together is a core issue for generative QA models as it is unclear whether the answer stems from the given non-parametric knowledge or not. This unclarity has implications on issues of trust, interpretability and factuality. In this work, we propose a new paradigm in which QA models are trained to disentangle the two sources of knowledge. Using counterfactual data augmentation, we introduce a model that predicts two answers for a given question: one based on given contextual knowledge and one based on parametric knowledge. Our experiments on the Natural Questions dataset show that this approach improves the performance of QA models by making them more robust to knowledge conflicts between the two knowledge sources, while generating useful disentangled answers.",
+              "url": "https://aclanthology.org/2023.acl-long.559.pdf",
+              "document_sha256": "8e84c4c185f7f7d9010119d4f3f306f3ae4bb636fc74161f63a3067ed74ac4d9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2021), i.e., answers that are not attributable to the given source (Rashkin et al., 2021). All the above issues and the inability to know whether an answer was generated based on contextual knowledge or the parametric knowledge, give rise to issues of user trust – especially as models are prone to mimicking human falsehoods (Lin et al., 2022). In this work, we propose a new paradigm for generative QA models that alleviates the above issues by encouraging disentanglement of parametric knowledge from contextual knowledge. Specifically, we propose a single model that generates two answers to a given question – a parametric answer and a contextual answer, in one-fell-swoop. Figure 1 exemplifies this. To achieve this, we use two training data augmentation methods: (1) Counterfactual Data Augmentation (Longpre et al., 2021), obtained by automatically altering facts in a given QA corpus to decrease reliance on parametric knowledge, and (2) Answerability Augmentation, where we train the model to abstain from answering when no answer is present in the contextual knowledge. We perform a thorough analysis of our proposed approach while controlling for different training conditions and model size. Our experiments on the Natural Questions dataset (Kwiatkowski et al., 2019) show that disentangled models are able to provide different answers to the same question – contextual answers based on the external contextual knowledge, but also different-but-useful parametric answers based on their vast parametric knowledge acquired during pre-training. In addition, we found disentangled models to have better performance w.r.t. knowledge conflicts than vanilla models. We report limitations of the work in App. A. We hope this work will encourage more progress on disentangling knowledge sources",
+              "url": "https://aclanthology.org/2023.acl-long.559.pdf",
+              "document_sha256": "8e84c4c185f7f7d9010119d4f3f306f3ae4bb636fc74161f63a3067ed74ac4d9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00a7da2e6ec9a42f864e2dd2",
+          "url": "https://aclanthology.org/2022.acl-long.581/"
+        },
+        "b": {
+          "paper_id": "paper-97a0baf3f823bb1c916502ea",
+          "url": "https://aclanthology.org/2023.acl-long.559/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Unclustered"
+      },
+      "sha256": "cac7af12921606941dd43879ba1e7f436dd216f200a4b1834887667972e099bc"
+    }
+  ]
+}

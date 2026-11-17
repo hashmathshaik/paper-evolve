@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Learning Physical Dynamics with Neural Differential Equations",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-09b4bf805a765306510c3854",
+      "a": "paper-97c7e1fb793ad18be298564e",
+      "b": "paper-d764b697546bb9f586051b3e",
+      "state": {
+        "paper_a": {
+          "title": "Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Solving large complex partial differential equations (PDEs), such as those that arise in computational fluid dynamics (CFD), is a computationally expensive process. This has motivated the use of deep learning approaches to approximate the PDE solutions, yet the simulation results predicted from these approaches typically do not generalize well to truly novel scenarios. In this work, we develop a hybrid (graph) neural network that combines a traditional graph convolutional network with an embedded differentiable fluid dynamics simulator inside the network itself. By combining an actual CFD simulator (run on a much coarser resolution representation of the problem) with the graph network, we show that we can both generalize well to new situations and benefit from the substantial speedup of neural network CFD predictions, while also substantially outperforming the coarse CFD simulation alone."
+        },
+        "paper_b": {
+          "title": "Efficient Learning of Mesh-Based Physical Simulation with Bi-Stride Multi-Scale Graph Neural Network",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Learning the long-range interactions on large-scale mesh-based physical systems with flat Graph Neural Networks (GNNs) and stacking Message Passings (MPs) is challenging due to the scaling complexity w.r.t. the number of nodes and over-smoothing. Therefore, there has been growing interest in the community to introduce multi-scale structures to GNNs for physics simulation. However, current state-of-the-art methods are limited by their reliance on the labor-heavy drawing of coarser meshes or building coarser levels based on spatial proximity, which can introduce wrong edges across geometry boundaries. Inspired by the bipartite graph determination, we propose a novel pooling strategy, bi-stride to tackle the aforementioned limitations. Bi-stride pools nodes on every other frontier of the Breadth-First-Search (BFS), without the need for the manual drawing of coarser meshes and, avoid wrong edges introduced by spatial proximity. Additionally, it enables a reduced number of MP times on each level and the non-parametrized pooling and unpooling by interpolations, similar to convolutional Neural Networks (CNNs), which significantly reduces computational requirements. Experiments show that the proposed framework, BSMS-GNN , significantly outperforms existing methods in terms of both accuracy and computational efficiency in representative physics-based simulation scenarios."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "…the GraphAutoEncoder (GAE) and Transformer (Han et al., 2022), directly predicting the steady-states through the multi-layer readouts (Harsch & Riedelbauch, 2021), and accelerating the finer-level simulation by feeding the up-sampled coarser results inferred by GNN (Belbute-Peres et al., 2020).\n…networks (GNNs) in physics-based simulations on unstructured meshes has gained significant attention in recent years (Battaglia et al., 2018; Sanchez-Gonzalez et al., 2018; Belbute-Peres et al., 2020; Pfaff et al., 2020; Sanchez-Gonzalez et al., 2020; Harsch & Riedelbauch, 2021; Gao et al., 2022).\nAs a result, the use of graph neural networks (GNNs) in physics-based simulations on unstructured meshes has gained significant attention in recent years (Battaglia et al., 2018; Sanchez-Gonzalez et al., 2018; Belbute-Peres et al., 2020; Pfaff et al., 2020; Sanchez-Gonzalez et al., 2020; Harsch & Riedelbauch, 2021; Gao et al., 2022).\n, 2022), directly predicting the steady-states through the multi-layer readouts (Harsch & Riedelbauch, 2021), and accelerating the finer-level simulation by feeding the upsampled coarser results inferred by GNN (Belbute-Peres et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-97c7e1fb793ad18be298564e",
+          "b": "paper-d764b697546bb9f586051b3e",
+          "input_sha256": "bf78e1797952e84e802f02fd9a7f0d0db56cc4e021fc6e711e4dd36dc9397224",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/de-avila-belbute-peres20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/de-avila-belbute-peres20a/de-avila-belbute-peres20a.pdf",
+              "sha256": "6b3abe4070931139093be7938f80b309e101df8f497233fd87d32eb2021d5e29"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/cao23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/cao23a/cao23a.pdf",
+              "sha256": "17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Related Work This paper relates to previous work in many different areas at the interface of machine learning and ﬂuid dynamics. We explore these diverse connections below. Machine learning and CFD. Many recent works have explored the interface between machine learning and CFD. In many cases, the approach has been model-free, aiming to directly learn to predict physical processes using solely deep learning methods (Afshar et al., 2019; Guo et al., 2016). In work similar to the one presented here, Afshar et al. (2019) applied an encoder-decoder convolutional architecture to the task of predicting ﬂow ﬁelds around an airfoil. This paper, however, worked on ﬁelds represented as small images, instead of actual meshes. Moreover, generalization was not demonstrated at a range of parameters that would generate behavior signiﬁcantly different from the ones seen during training. Others have looked at employing deep learning models as function approximators that substitute certain terms in equations of interest, such as the turbulence terms in turbulence modeling (Duraisamy et al., 2019; King et al., 2018; Singh et al., 2017). In contrast to these approaches, which embed deep learning models as a component in larger physical models, our approach aims to embed a full physical simulation into a deep learning system. Machine learning and graphics. Though our method relates more closely to CFD, many papers have also explored applications of machine learning to ﬂuid simulations for graphics. Unlike in CFD, ﬂuid animations have the main goal of looking realistic, not necessarily aiming to model physical laws or conform perfectly to reality. Graphics applications are frequently more naturally suited to deep learning methods, as in many such applications the simulations are natively",
+              "url": "https://proceedings.mlr.press/v119/de-avila-belbute-peres20a/de-avila-belbute-peres20a.pdf",
+              "document_sha256": "6b3abe4070931139093be7938f80b309e101df8f497233fd87d32eb2021d5e29"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "Training pairs are then sampled uniformly from AoAtrain × Machtrain , and test pairs from AoAtest × Machtest . Here we can see that even though the train and test set are different, the parameters come from similar ranges, and the two sets contain examples with a similar range of qualitative behaviors. This experiment therefore tests the ability of our model to interpolate from parameters seen in training to unseen, yet similar ones at test time. Even though this procedure does not present a strong test of the learning ability of the model, it is a common form of evaluation in many works that apply deep learning methods to CFD (e.g., Afshar et al. (2019); Guo et al. (2016)). We present a stronger test of generalization to new scenarios in our next experiment (Section 4.2). The model takes in as input the pairs and, using the coarse mesh, predicts the three components of the output ﬁeld, as described in Section 3. These predictions are compared against ground truth simulations performed on the ﬁne mesh. Results are summarized in Table 1. A sample prediction is presented in Figure 6. We can see from the results that our method outperforms the upsample coarse mesh baseline. This superiority to the upsample coarse mesh baseline demonstrates that the model is not simply upsampling the coarse prediction. The processing done by the GCNs is in fact improving its predictions. We can also observe that the CFD-GCN performs worse than the GCN baseline. The fact that the CFD-GCN underperforms the GCN baseline on the test set is a consequence of the similarity of the settings between training and testing, as we will see in the next experiment. The GCN is capable of overﬁtting the training set better (as we can see in Figure 7) therefore it also performs well on the very similar test",
+              "url": "https://proceedings.mlr.press/v119/de-avila-belbute-peres20a/de-avila-belbute-peres20a.pdf",
+              "document_sha256": "6b3abe4070931139093be7938f80b309e101df8f497233fd87d32eb2021d5e29"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "As a result, the use of graph neural networks (GNNs) in physics-based simulations on unstructured meshes has gained significant attention in recent years (Battaglia et al., 2018; Sanchez-Gonzalez et al., 2018; Belbute-Peres et al., 2020; Pfaff et al., 2020; Sanchez-Gonzalez et al., 2020; Harsch & Riedelbauch, 2021; Gao et al., 2022). The naive GNN approach stacks multiple MPs to model information propagation throughout space. However, as the graph size increases, this approach faces two major challenges: (1) Complexity: as both the number of nodes to be processed and the MP iterations increase linearly, a quadratic complexity becomes inevitable for both the running time and memory usage of the computational graph (Fortunato et al., 2022). (2) Oversmoothing: the graph convolution can be seen as a low-pass filter that suppresses the higher-frequency signals (Chen et al., 2020; Li et al., 2020c). Then the stacked MPs iteratively project the information onto the eigenspace of the graph while all higher-frequency signals are smoothed out, making the training more difficult.",
+              "url": "https://proceedings.mlr.press/v202/cao23a/cao23a.pdf",
+              "document_sha256": "17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "5. Related Works GNNs for Physics-Based Simulation The application of GNNs to physics-based simulation has first been applied to deformable solids and fluids (both represented by particles) (Sanchez-Gonzalez et al., 2018). A notable milestone in this field is M ESH G RAPH N ETS (Pfaff et al., 2020), which enables the general scheme for learning mesh-based simulations. Subsequently, several variants of M ESH G RAPH N ETS have been proposed: such as combining GNNs with Physics-Informed Neural Networks (PINNs) (Gao et al., 2022), making long-term predictions by combining the GraphAutoEncoder (GAE) and Transformer (Han et al., 2022), directly predicting the steady-states through the multi-layer readouts (Harsch & Riedelbauch, 2021), and accelerating the finer-level simulation by feeding the upsampled coarser results inferred by GNN (Belbute-Peres et al., 2020).",
+              "url": "https://proceedings.mlr.press/v202/cao23a/cao23a.pdf",
+              "document_sha256": "17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Learning the physical simulation on large-scale meshes with flat Graph Neural Networks (GNNs) and stacking Message Passings (MPs) is challenging due to the scaling complexity w.r.t. the number of nodes and over-smoothing. There has been growing interest in the community to introduce multi-scale structures to GNNs for physical simulation. However, current state-of-the-art methods are limited by their reliance on the labor-intensive drawing of coarser meshes or building coarser levels based on spatial proximity, which can introduce wrong edges across geometry boundaries. Inspired by the bipartite graph determination, we propose a novel pooling strategy, bi-stride to tackle the aforementioned limitations. Bi-stride pools nodes on every other frontier of the breadthfirst search (BFS), without the need for the manual drawing of coarser meshes and avoiding the wrong edges by spatial proximity. Additionally, it enables a one-MP scheme per level and nonparametrized pooling and unpooling by interpolations, resembling U-Nets, which significantly reduces computational costs. Experiments show that the proposed framework, BSMS-GNN, significantly outperforms existing methods in terms of both accuracy and computational efficiency in representative physical simulations.",
+              "url": "https://proceedings.mlr.press/v202/cao23a/cao23a.pdf",
+              "document_sha256": "17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We tackle these challenges with two progressive contributions: • First, we introduce a novel yet simple pooling strategy, bi-stride. Bi-stride is inspired by the bi-partition deter-",
+              "url": "https://proceedings.mlr.press/v202/cao23a/cao23a.pdf",
+              "document_sha256": "17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-97c7e1fb793ad18be298564e",
+          "url": "https://proceedings.mlr.press/v119/de-avila-belbute-peres20a.html"
+        },
+        "b": {
+          "paper_id": "paper-d764b697546bb9f586051b3e",
+          "url": "https://proceedings.mlr.press/v202/cao23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "945c080b5d9a399ec3e329c43ee1b382de3ed260cdfb4163392b77a1f583fd83"
+    },
+    {
+      "id": "edge-6df86ed07c55d1d042b5a0bd",
+      "a": "paper-006dfd765a6b53b23cd796bd",
+      "b": "paper-7b3eed53d53bca6d318f0b16",
+      "state": {
+        "paper_a": {
+          "title": "Improved Operator Learning by Orthogonal Attention",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This work presents orthogonal attention for constructing neural operators to serve as surrogates to model the solutions of a family of Partial Differential Equations (PDEs). The motivation is that the kernel integral operator, which is usually at the core of neural operators, can be reformulated with orthonormal eigenfunctions. Inspired by the success of the neural approximation of eigenfunctions (Deng et al., 2022), we opt to directly parameterize the involved eigenfunctions with flexible neural networks (NNs), based on which the input function is then transformed by the rule of kernel integral. Surprisingly, the resulting NN module bears a striking resemblance to regular attention mechanisms, albeit without softmax. Instead, it incorporates an orthogonalization operation that provides regularization during model training and helps mitigate overfitting, particularly in scenarios with limited data availability. In practice, the orthogonalization operation can be implemented with minimal additional overheads. Experiments on six standard neural operator benchmark datasets comprising both regular and irregular geometries show that our method can outperform competing baselines with decent margins."
+        },
+        "paper_b": {
+          "title": "Accelerating PDE-Constrained Optimization by the Derivative of Neural Operators",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "PDE-Constrained Optimization (PDECO) problems can be accelerated significantly by employing gradient-based methods with surrogate models like neural operators compared to traditional numerical solvers. However, this approach faces two key challenges: (1) Data inefficiency : Lack of efficient data sampling and effective training for neural operators, particularly for optimization purpose. (2) Instability : High risk of optimization derailment due to inaccurate neural operator predictions and gradients. To address these challenges, we propose a novel framework: (1) Optimization-oriented training : we leverage data from full steps of traditional optimization algorithms and employ a specialized training method for neural operators. (2) Enhanced derivative learning : We introduce a Virtual-Fourier layer to enhance derivative learning within the neural operator, a crucial aspect for gradient-based optimization. (3) Hybrid optimization : We implement a hybrid approach that integrates neural operators with numerical solvers, providing robust regularization for the optimization process. Our extensive experimental results demonstrate the effectiveness of our model in accurately learning operators and their derivatives. Furthermore, our hybrid optimization approach exhibits robust convergence."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "Two prominent architectures have emerged: Fourier-based neural operator (FNO) (Li et al., 2020; Tran et al., 2021; Liu-Schiaffini et al., 2024), and transformer-based neural operators (Li et al., 2022; Cao, 2021; Hao et al., 2023; Wu et al., 2024; Xiao et al., 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-006dfd765a6b53b23cd796bd",
+          "b": "paper-7b3eed53d53bca6d318f0b16",
+          "input_sha256": "f8f3fef05d6f88feb201882e957cdf73f7331a929e575d0de9d74772b898ad47",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/xiao24c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xiao24c/xiao24c.pdf",
+              "sha256": "c3753de72e1cd6ff57c49947c50a92a6bf9ddf3e44e0f89c51708a5a603534a6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/cheng25f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cheng25f/cheng25f.pdf",
+              "sha256": "4c995c45d8d1bcd68d961699fcc62028d256d432ebf2561d206bf33b6e2421b6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This work presents orthogonal attention for constructing neural operators to serve as surrogates to model the solutions of a family of Partial Differential Equations (PDEs). The motivation is that the kernel integral operator, which is usually at the core of neural operators, can be reformulated with orthonormal eigenfunctions. Inspired by the success of the neural approximation of eigenfunctions (Deng et al., 2022b), we opt to directly parameterize the involved eigenfunctions with flexible neural networks (NNs), based on which the input function is then transformed by the rule of kernel integral. Surprisingly, the resulting NN module bears a striking resemblance to regular attention mechanisms, albeit without softmax. Instead, it incorporates an orthogonalization operation that provides regularization during model training and helps mitigate overfitting, particularly in scenarios with limited data availability. In practice, the orthogonalization operation can be implemented with minimal additional overheads. Experiments on six standard neural operator benchmark datasets comprising both regular and irregular geometries show that our method can outperform competing baselines with decent margins.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xiao24c/xiao24c.pdf",
+              "document_sha256": "c3753de72e1cd6ff57c49947c50a92a6bf9ddf3e44e0f89c51708a5a603534a6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We introduce ONO, a neural operator built upon orthogonal attention. ONO employs two disentangled pathways for approximating the eigenfunctions and PDE solutions separately. • We conduct comprehensive experiments on six challenging operator learning benchmarks and achieve satisfactory results: ONO reduces prediction errors by up to 30% compared to baselines and achieves 80% reduction of test error for zero-shot super-resolution on Darcy.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xiao24c/xiao24c.pdf",
+              "document_sha256": "c3753de72e1cd6ff57c49947c50a92a6bf9ddf3e44e0f89c51708a5a603534a6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Neural Operators, particularly instantiated by integral operators (Kovachki et al., 2023), provide a flexible and powerful framework for modeling operators. Two prominent architectures have emerged: Fourier-based neural operator (FNO) (Li et al., 2020; Tran et al., 2021; Liu-Schiaffini et al., 2024), and transformer-based neural operators (Li et al., 2022; Cao, 2021; Hao et al., 2023; Wu et al., 2024; Xiao et al., 2024). FNOs excel on data with fixed, uniform grids by leveraging the Fast Fourier Transform. Geo-FNO (Li et al., 2023) can predict on meshes deformed from uniform grids. In contrast, transformer-based neural operators effectively handle arbitrary meshes. To enhance scalability, researchers have introduced linear transformers (Cao, 2021; Hao et al., 2023), reducing computational complexity to O(N ) where N is the number of mesh points. Projection strategy (Wu et al., 2024) has also been proposed to decouple the complexity of attention from the number of mesh points.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cheng25f/cheng25f.pdf",
+              "document_sha256": "4c995c45d8d1bcd68d961699fcc62028d256d432ebf2561d206bf33b6e2421b6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "The influence of neural operator architecture on derivative learning has received comparatively less attention in the literature. We find that traditional transformer-based architectures have limited expressiveness for this task. Here, we introduce a novel operator layer that exploits the simple derivative properties of Fourier layers. Notably, our layer also generalizes Fourier layers to arbitrary grids, a technical contribution that may be valuable in its own right.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cheng25f/cheng25f.pdf",
+              "document_sha256": "4c995c45d8d1bcd68d961699fcc62028d256d432ebf2561d206bf33b6e2421b6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract PDE-Constrained Optimization (PDECO) problems can be accelerated significantly by employing gradient-based methods with surrogate models like neural operators compared to traditional numerical solvers. However, this approach faces two key challenges: (1) Data inefficiency: Lack of efficient data sampling and effective training for neural operators, particularly for optimization purpose. (2) Instability: High risk of optimization derailment due to inaccurate neural operator predictions and gradients. To address these challenges, we propose a novel framework: (1) Optimization-oriented training: we leverage data from full steps of traditional optimization algorithms and employ a specialized training method for neural operators. (2) Enhanced derivative learning: We introduce a Virtual-Fourier layer to enhance derivative learning within the neural operator, a crucial aspect for gradient-based optimization. (3) Hybrid optimization: We implement a hybrid approach that integrates neural operators with numerical solvers, providing robust regularization for the optimization process. Our extensive experimental results demonstrate the effectiveness of our model in accurately learning operators and their derivatives. Furthermore, our hybrid optimization approach exhibits robust convergence.1",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cheng25f/cheng25f.pdf",
+              "document_sha256": "4c995c45d8d1bcd68d961699fcc62028d256d432ebf2561d206bf33b6e2421b6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-006dfd765a6b53b23cd796bd",
+          "url": "https://proceedings.mlr.press/v235/xiao24c.html"
+        },
+        "b": {
+          "paper_id": "paper-7b3eed53d53bca6d318f0b16",
+          "url": "https://proceedings.mlr.press/v267/cheng25f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "e770629b4a3dc5bf74d6960c2944896bdc521f3e60257e165e07c21cea5d8131"
+    },
+    {
+      "id": "edge-4700faec44d3713ae5710025",
+      "a": "paper-018d18314999e0ffbb3df5c3",
+      "b": "paper-f15f8f94e17e32d7e729fa1a",
+      "state": {
+        "paper_a": {
+          "title": "Unsupervised Learning of Object Keypoints for Perception and Control",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "The study of object representations in computer vision has primarily focused on developing representations that are useful for image classification, object detection, or semantic segmentation as downstream tasks. In this work we aim to learn object representations that are useful for control and reinforcement learning (RL). To this end, we introduce Transporter, a neural network architecture for discovering concise geometric object representations in terms of keypoints or image-space coordinates. Our method learns from raw video frames in a fully unsupervised manner, by transporting learnt image features between video frames using a keypoint bottleneck. The discovered keypoints track objects and object parts across long time-horizons more accurately than recent similar methods. Furthermore, consistent long-term tracking enables two notable results in control domains -- (1) using the keypoint co-ordinates and corresponding image features as inputs enables highly sample-efficient reinforcement learning; (2) learning to explore by controlling keypoint locations drastically reduces the search space, enabling deep exploration (leading to states unreachable through random action exploration) without any extrinsic rewards."
+        },
+        "paper_b": {
+          "title": "Unsupervised Learning of Lagrangian Dynamics from Images for Prediction and Control",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recent approaches for modelling dynamics of physical systems with neural networks enforce Lagrangian or Hamiltonian structure to improve prediction and generalization. However, when coordinates are embedded in high-dimensional data such as images, these approaches either lose interpretability or can only be applied to one particular example. We introduce a new unsupervised neural network model that learns Lagrangian dynamics from images, with interpretability that benefits prediction and control. The model infers Lagrangian dynamics on generalized coordinates that are simultaneously learned with a coordinate-aware variational autoencoder (VAE). The VAE is designed to account for the geometry of physical systems composed of multiple rigid bodies in the plane. By inferring interpretable Lagrangian dynamics, the model learns physical system properties, such as kinetic and potential energy, which enables long-term prediction of dynamics in the image space and synthesis of energy-based controllers."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Another class of approaches learn physical models from images, by either learning the map from images to coordinates with supervision on coordinate data [7] or learning the coordinates in an unsupervised way but only with translational coordinates [8, 9].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-018d18314999e0ffbb3df5c3",
+          "b": "paper-f15f8f94e17e32d7e729fa1a",
+          "input_sha256": "48947ad99e76a17ec9e5cfee0d9d16f46e486b3053cc9fb613498466314c3f09",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/dae3312c4c6c7000a37ecfb7b0aeb0e4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/dae3312c4c6c7000a37ecfb7b0aeb0e4-Paper.pdf",
+              "sha256": "cf36d1d1ec08bdbb045c6fbc994f72a45c106f94ef7dacf2d248ff9d6f95779d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/79f56e5e3e0e999b3c139f225838d41f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/79f56e5e3e0e999b3c139f225838d41f-Paper.pdf",
+              "sha256": "2dd8133d746980de05f7f62e80b59be91ac51a6beac9a46a052ca781b6939045"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The study of object representations in computer vision has primarily focused on developing representations that are useful for image classification, object detection, or semantic segmentation as downstream tasks. In this work we aim to learn object representations that are useful for control and reinforcement learning (RL). To this end, we introduce Transporter, a neural network architecture for discovering concise geometric object representations in terms of keypoints or image-space coordinates. Our method learns from raw video frames in a fully unsupervised manner, by transporting learnt image features between video frames using a keypoint bottleneck. The discovered keypoints track objects and object parts across long time-horizons more accurately than recent similar methods. Furthermore, consistent long-term tracking enables two notable results in control domains – (1) using the keypoint co-ordinates and corresponding image features as inputs enables highly sample-efficient reinforcement learning; (2) learning to explore by controlling keypoint locations drastically reduces the search space, enabling deep exploration (leading to states unreachable through random action exploration) without any extrinsic rewards. Code for the model is available at: https://github. com/deepmind/deepmind-research/tree/master/transporter.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/dae3312c4c6c7000a37ecfb7b0aeb0e4-Paper.pdf",
+              "document_sha256": "cf36d1d1ec08bdbb045c6fbc994f72a45c106f94ef7dacf2d248ff9d6f95779d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Our work is related to the recently proposed literature on unsupervised object keypoint discovery [40, 16]. Most notably, Jakab and Gupta et al. [16] proposed an encoder-decoder architecture with a differentiable keypoint bottleneck. We reuse their bottleneck architecture but add a crucial new inductive bias – the feature transport mechanism – to constrain the representation to be more spatially aligned compared to all baselines. The approach in Zhang et al. [40] discovers keypoints using single images and requires privileged information about temporal transformations between frames in form of optical flow. This approach also requires multiple loss and regularization terms to converge. In contrast, our approach does not require access to these transformations and learns keypoints with a simple pixel-wise L2 loss function. Other works similarly either require known transformations or output dense correspondences instead of discrete landmarks [36, 30, 34, 38]. Deep generative models with structured bottlenecks have recently seen a lot of advances [4, 20, 37, 39, 13] but they do not explicitly reason about geometry. Unsupervised learning of object keypoints has not been widely explored in the control literature, with the notable exception of [6]. However, this model uses a full-connected layer for reconstruction and therefore can learn non-spatial latent embeddings similar to a baseline we consider [16]. Moreover, similar to [40] their auto-encoder reconstructs single frames and hence does not learn to factorize geometry. Object-centric representations have also been studied in the context of intrinsic motivation, hierarchical reinforcement learning and exploration. However, existing approaches either require hand-crafted object representations [21] or have not been shown",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/dae3312c4c6c7000a37ecfb7b0aeb0e4-Paper.pdf",
+              "document_sha256": "cf36d1d1ec08bdbb045c6fbc994f72a45c106f94ef7dacf2d248ff9d6f95779d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Humans can learn to predict the trajectories of mechanical systems, e.g., a basketball or a drone, from high-dimensional visual input, and learn to control the system, e.g., catch a ball or maneuver a drone, after a small number of interactions with those systems. We hypothesize that humans use domainspecific knowledge, e.g., physics laws, to achieve efficient learning. Motivated by this hypothesis, in this work, we propose incorporation of physics priors to learn and control dynamics from image data, aiming to gain interpretability and data efficiency. Specifically, we incorporate Lagrangian dynamics as the physic prior, which enables us to represent a broad class of physical systems. Recently, an increasing number of works [1, 2, 3, 4, 5] have incorporated Lagrangian/Hamiltonian dynamics into learning dynamical systems from coordinate data, to improve prediction and generalization. These approaches, however, require coordinate data, which are not always available in real-world applications. Hamiltonian Neural Network (HNN) [3] provides a single experiment with image observations, which requires a modification in the model. This modification is hard to generalize to systems with multiple rigid bodies. Hamiltonian Generative Network (HGN) [6] learns Hamiltonian dynamics from image sequences. However, the dimension of latent generalized coordinates is 4 × 4 × 16 = 256, making interpretation difficult. Moreover, both HNN and HGN focus on prediction and have no design of control. Another class of approaches learn physical models from images, by either learning the map from images to coordinates with supervision on coordinate data [7] or learning the coordinates in an unsupervised way but only with translational coordinates [8, 9]. The unsupervised learning of rotational",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/79f56e5e3e0e999b3c139f225838d41f-Paper.pdf",
+              "document_sha256": "2dd8133d746980de05f7f62e80b59be91ac51a6beac9a46a052ca781b6939045"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent approaches for modelling dynamics of physical systems with neural networks enforce Lagrangian or Hamiltonian structure to improve prediction and generalization. However, when coordinates are embedded in high-dimensional data such as images, these approaches either lose interpretability or can only be applied to one particular example. We introduce a new unsupervised neural network model that learns Lagrangian dynamics from images, with interpretability that benefits prediction and control. The model infers Lagrangian dynamics on generalized coordinates that are simultaneously learned with a coordinate-aware variational autoencoder (VAE). The VAE is designed to account for the geometry of physical systems composed of multiple rigid bodies in the plane. By inferring interpretable Lagrangian dynamics, the model learns physical system properties, such as kinetic and potential energy, which enables long-term prediction of dynamics in the image space and synthesis of energy-based controllers.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/79f56e5e3e0e999b3c139f225838d41f-Paper.pdf",
+              "document_sha256": "2dd8133d746980de05f7f62e80b59be91ac51a6beac9a46a052ca781b6939045"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "The main contribution of this work is two-fold. First, we introduce an unsupervised learning framework to learn Lagrangian dynamics from image data for prediction. The Lagrangian prior conserves energy with no control applied; this helps learn more accurate dynamics as compared to a MLP dynamical model. Moreover, the coordinate-aware VAE in the proposed learning framework infers interpretable latent rigid body coordinates in the sense that a coordinate encoded from an image of a system in a position with high potential energy has a high learned potential energy, and vice versa. This interpretability enables us to design energy-based controllers to control physical systems to target positions. We implement this work with PyTorch [24] and refactor our code into PyTorch Lightning format [25], which makes our code easy to read and our results easy to reproduce. The code for all experiments is available at https://github.com/DesmondZhong/Lagrangian_caVAE.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/79f56e5e3e0e999b3c139f225838d41f-Paper.pdf",
+              "document_sha256": "2dd8133d746980de05f7f62e80b59be91ac51a6beac9a46a052ca781b6939045"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-018d18314999e0ffbb3df5c3",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/dae3312c4c6c7000a37ecfb7b0aeb0e4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-f15f8f94e17e32d7e729fa1a",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/79f56e5e3e0e999b3c139f225838d41f-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "d68446706d68a594c30cfe65f9b376eb5255c3bef2dd29438d0b81afdfb1fdd9"
+    },
+    {
+      "id": "edge-44e35bcf850e599f750083f7",
+      "a": "paper-0435fbe6221027490017bafe",
+      "b": "paper-38659eaea89dd5d2b0d3349b",
+      "state": {
+        "paper_a": {
+          "title": "Deep Signature Transforms",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "The signature is an infinite graded sequence of statistics known to characterise a stream of data up to a negligible equivalence class. It is a transform which has previously been treated as a fixed feature transformation, on top of which a model may be built. We propose a novel approach which combines the advantages of the signature transform with modern deep learning frameworks. By learning an augmentation of the stream prior to the signature transform, the terms of the signature may be selected in a data-dependent way. More generally, we describe how the signature transform may be used as a layer anywhere within a neural network. In this context it may be interpreted as a pooling operation. We present the results of empirical experiments to back up the theoretical justification. Code available at \\texttt{github.com/patrick-kidger/Deep-Signature-Transforms}."
+        },
+        "paper_b": {
+          "title": "Neural Controlled Differential Equations for Irregular Time Series",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Neural ordinary differential equations are an attractive option for modelling temporal dynamics. However, a fundamental issue is that the solution to an ordinary differential equation is determined by its initial condition, and there is no mechanism for adjusting the trajectory based on subsequent observations. Here, we demonstrate how this may be resolved through the well-understood mathematics of \\emph{controlled differential equations}. The resulting \\emph{neural controlled differential equation} model is directly applicable to the general setting of partially-observed irregularly-sampled multivariate time series, and (unlike previous work on this problem) it may utilise memory-efficient adjoint-based backpropagation even across observations. We demonstrate that our model achieves state-of-the-art performance against similar (ODE or RNN based) models in empirical studies on a range of datasets. Finally we provide theoretical results demonstrating universal approximation, and that our model subsumes alternative ODE models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "It is a famous theorem in CDEs that in some sense they represent general functions on streams [22, Theorem 4.2], [23, Proposition A.6].\nAmongst others, [45, 46, 47, 48, 49, 23] discuss applications of the signature transform to time series problems, and [50] investigate the related logsignature transform.\nWithout it, then the reparameterisation invariance property of CDEs [18], [23, Proposition A.7] will restrict the possible functions that CDEs can represent.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0435fbe6221027490017bafe",
+          "b": "paper-38659eaea89dd5d2b0d3349b",
+          "input_sha256": "30ad97b5d72a26629f4198854f7eec5becbc6d4d7c24603055bf3a0f96052188",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/d2cdf047a6674cef251d56544a3cf029-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/d2cdf047a6674cef251d56544a3cf029-Paper.pdf",
+              "sha256": "2739f2e30575ac6c0ac8add69a4158aa77f97608be8f52b46c2c9b8ce3e7febd"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/4a5876b450b45371f6cfe5047ac8cd45-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/4a5876b450b45371f6cfe5047ac8cd45-Paper.pdf",
+              "sha256": "a381ae615fc8e4fcbf935b822117706fa3276221c33db5648e98c01f98a140ff"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The signature is an infinite graded sequence of statistics known to characterise a stream of data up to a negligible equivalence class. It is a transform which has previously been treated as a fixed feature transformation, on top of which a model may be built. We propose a novel approach which combines the advantages of the signature transform with modern deep learning frameworks. By learning an augmentation of the stream prior to the signature transform, the terms of the signature may be selected in a data-dependent way. More generally, we describe how the signature transform may be used as a layer anywhere within a neural network. In this context it may be interpreted as a pooling operation. We present the results of empirical experiments to back up the theoretical justification. Code available at github.com/patrick-kidger/Deep-Signature-Transforms.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/d2cdf047a6674cef251d56544a3cf029-Paper.pdf",
+              "document_sha256": "2739f2e30575ac6c0ac8add69a4158aa77f97608be8f52b46c2c9b8ce3e7febd"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "However, there is not always a clear candidate for the feature map Φ and a good choice is likely to be data-dependent. Thus we propose to make Φ learnable by taking Φ = Φθ to be a neural network with trainable parameters θ. In this case, we again obtain the neural network shown in Figure 1b, except that Φ is now also learnable. The signature has now become a layer within a neural network. It consumes a tensor of shape (b, d, n) – corresponding to a batch of size b of paths in Rd that have been sampled n times – and returns a tensor of shape (b, (dN +1 − 1)/(d − 1)), where N is the number of terms used in the truncated signature. Despite being formed of integrals, the signature is in fact straightforward and efficient to compute exactly, see Section A.3 in Appendix A. More than that, the computation may in fact be described in terms of standard tensor operations. As such it may be backpropagated through without difficulty. 3.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/d2cdf047a6674cef251d56544a3cf029-Paper.pdf",
+              "document_sha256": "2739f2e30575ac6c0ac8add69a4158aa77f97608be8f52b46c2c9b8ce3e7febd"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "It is a famous theorem in CDEs that in some sense they represent general functions on streams [22, Theorem 4.2], [23, Proposition A.6]. This may be applied to show that Neural CDEs are universal approximators, which we summarise in the following informal statement. Theorem (Informal). The action of a linear map on the terminal value of a Neural CDE is a universal approximator from {sequences in Rv } to R. Theorem B.14 in Appendix B gives a formal statement and a proof, which is somewhat technical. The essential idea is that CDEs may be used to approximate bases of functions on path space. 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/4a5876b450b45371f6cfe5047ac8cd45-Paper.pdf",
+              "document_sha256": "a381ae615fc8e4fcbf935b822117706fa3276221c33db5648e98c01f98a140ff"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0435fbe6221027490017bafe",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/d2cdf047a6674cef251d56544a3cf029-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-38659eaea89dd5d2b0d3349b",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/4a5876b450b45371f6cfe5047ac8cd45-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "e6a0e3754771d44f410c1eea6f1b4a59d1fde4cfbe87afa3c93508d859c82862"
+    },
+    {
+      "id": "edge-16cf133c7e568acc9ed7c532",
+      "a": "paper-0782ca6a524645c65ce3d3d7",
+      "b": "paper-38659eaea89dd5d2b0d3349b",
+      "state": {
+        "paper_a": {
+          "title": "BRITS: Bidirectional Recurrent Imputation for Time Series",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation. BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data. We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies."
+        },
+        "paper_b": {
+          "title": "Neural Controlled Differential Equations for Irregular Time Series",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Neural ordinary differential equations are an attractive option for modelling temporal dynamics. However, a fundamental issue is that the solution to an ordinary differential equation is determined by its initial condition, and there is no mechanism for adjusting the trajectory based on subsequent observations. Here, we demonstrate how this may be resolved through the well-understood mathematics of \\emph{controlled differential equations}. The resulting \\emph{neural controlled differential equation} model is directly applicable to the general setting of partially-observed irregularly-sampled multivariate time series, and (unlike previous work on this problem) it may utilise memory-efficient adjoint-based backpropagation even across observations. We demonstrate that our model achieves state-of-the-art performance against similar (ODE or RNN based) models in empirical studies on a range of datasets. Finally we provide theoretical results demonstrating universal approximation, and that our model subsumes alternative ODE models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example [6, 7, 8, 9] incorporate exponential decay between observations, [10, 11] hybridise a Gaussian process with traditional neural network models, [12] approximate the underlying continuous-time process, and [13, 14] adapt recurrent neural networks by allowing some hidden state to evolve as…\nEarlier work [6, 7, 8, 9] use intra-observation exponential decays, which are a special case.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0782ca6a524645c65ce3d3d7",
+          "b": "paper-38659eaea89dd5d2b0d3349b",
+          "input_sha256": "2366033075e8a3f7ce23d3c15a24dd210b10f61e02a4284c65bbc8408ddc9dc2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/4a5876b450b45371f6cfe5047ac8cd45-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/4a5876b450b45371f6cfe5047ac8cd45-Paper.pdf",
+              "sha256": "a381ae615fc8e4fcbf935b822117706fa3276221c33db5648e98c01f98a140ff"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Time series are ubiquitous in many classification/regression applications. However, the time series data in real applications may contain many missing values. Hence, given multiple (possibly correlated) time series data, it is important to fill in missing values and at the same time to predict their class labels. Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose a novel method, called BRITS, based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during backpropagation. BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data. We evaluate our model on three real-world datasets, including an air quality dataset, a healthcare dataset, and a localization dataset for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "document_sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "values can be done by smoothing over nearby values. Matrix completion has also been used to address missing value problems (e.g., [30, 34]). But it typically applies to only static data and requires strong assumptions such as low-rankness. We can also predict missing values by fitting a parametric data-generating model with the observations [14, 2], which assumes that data of time series follow the distribution of hypothetical models. These assumptions make corresponding imputation algorithms less general, and the performance less desirable when the assumptions do not hold. In this paper, we propose BRITS, a novel method for filling the missing values for multiple correlated time series. Internally, BRITS adapts recurrent neural networks (RNN) [16, 11] for imputing missing values, without any specific assumption over the data. Much prior work uses non-linear dynamical systems for time series prediction [9, 24, 3]. In our method, we instantiate the dynamical system as a bidirectional RNN, i.e., imputing missing values with bidirectional recurrent dynamics. In particular, we make the following technical contributions: • We design a bidirectional RNN model for imputing missing values. We directly use RNN for predicting missing values, instead of tuning weights for smoothing as in [10]. Our method does not impose specific assumption, hence works more generally than previous methods. • We regard missing values as variables of the bidirectional RNN graph, which are involved in the backpropagation process. In such case, missing values get delayed gradients in both forward and backward directions with consistency constraints, which makes the estimation of missing values more accurate. • We simultaneously perform missing value imputation and classification/regression of",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "document_sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recurrent neural networks (RNN) are a popular choice of model for sequential data, such as a time series. The data itself is often assumed to be a sequence of observations from an underlying process, and the RNN may be interpreted as a discrete approximation to some function of this process. Indeed the connection between RNNs and dynamical systems is well-known [1, 2, 3, 4]. However this discretisation typically breaks down if the data is irregularly sampled or partially observed, and the issue is often papered over by binning or imputing data [5]. A more elegant approach is to appreciate that because the underlying process develops in continuous time, so should our models. For example [6, 7, 8, 9] incorporate exponential decay between observations, [10, 11] hybridise a Gaussian process with traditional neural network models, [12] approximate the underlying continuous-time process, and [13, 14] adapt recurrent neural networks by allowing some hidden state to evolve as an ODE. It is this last one that is of most interest to us here. 1.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/4a5876b450b45371f6cfe5047ac8cd45-Paper.pdf",
+              "document_sha256": "a381ae615fc8e4fcbf935b822117706fa3276221c33db5648e98c01f98a140ff"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "In [13, 14] the authors consider interrupting a Neural ODE with updates from a recurrent cell at each observation, and were in fact the inspiration for this paper. Earlier work [6, 7, 8, 9] use intra-observation exponential decays, which are a special case. [35] consider something similar by interrupting a Neural ODE with stochastic events. SDEs and CDEs are closely related, and several authors have introduced Neural SDEs. [36, 37, 38] treat them as generative models for time series and seek to model the data distribution. [39, 40] investigate using stochasticity as a regularizer, and demonstrate better performance by doing so. [41] use random vector fields so as to promote simpler trajectories, but do not use the ‘SDE’ terminology. Adjoint backpropagation needs some work to apply to SDEs, and so [42, 43, 44] all propose methods for training Neural SDEs. We would particularly like to highlight the elegant approach of [44], who use the pathwise treatment given by rough analysis to approximate Brownian noise, and thus produce a random Neural ODE which may be trained in the usual way; such approaches may also avoid the poor convergence rates of SDE solvers as compared to ODE solvers. Other elements of the theory of rough analysis and CDEs have also found machine learning applications. Amongst others, [23, 45, 46, 47, 48, 49, 50, 51] discuss applications of the signature transform to time series problems, and [52] investigate the related logsignature transform. [53] develop a kernel for time series using this methodology, and [54] apply this kernel to Gaussian processes. [55] develop software for these approaches tailored for machine learning. There has been a range of work seeking to improve Neural ODEs. [56, 57] investigate speedups to the training proecedure, [58]",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/4a5876b450b45371f6cfe5047ac8cd45-Paper.pdf",
+              "document_sha256": "a381ae615fc8e4fcbf935b822117706fa3276221c33db5648e98c01f98a140ff"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0782ca6a524645c65ce3d3d7",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-38659eaea89dd5d2b0d3349b",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/4a5876b450b45371f6cfe5047ac8cd45-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "99b3d877c6ce1e20631dfd6492e0cf4f6b7252346cf73d51b02ce88fc904ff37"
+    },
+    {
+      "id": "edge-aa158864bcd04f9fdf8a4b47",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-a2a9cf4821755020cfd36d44",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Koopman Kernel Regression",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Many machine learning approaches for decision making, such as reinforcement learning, rely on simulators or predictive models to forecast the time-evolution of quantities of interest, e.g., the state of an agent or the reward of a policy. Forecasts of such complex phenomena are commonly described by highly nonlinear dynamical systems, making their use in optimization-based decision-making challenging.Koopman operator theory offers a beneficial paradigm for addressing this problem by characterizing forecasts via linear time-invariant (LTI) ODEs, turning multi-step forecasts into sparse matrix multiplication.Though there exists a variety of learning approaches, they usually lack crucial learning-theoretic guarantees, making the behavior of the obtained models with increasing data and dimensionality unclear.We address the aforementioned by deriving a universal Koopman-invariant reproducing kernel Hilbert space (RKHS) that solely spans transformations into LTI dynamical systems. The resulting Koopman Kernel Regression (KKR) framework enables the use of statistical learning tools from function approximation for novel convergence results and generalization error bounds under weaker assumptions than existing work. Our experiments demonstrate superior forecasting performance compared to Koopman operator and sequential data predictors in RKHS."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In this regard, machine learning methods, which have shown immense potential in tackling complex tasks in domains such as language models [5] and computer vision [6], are coming to the fore.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-a2a9cf4821755020cfd36d44",
+          "input_sha256": "35159698407c1f3343f1a33da8a48f59aabc959256caddad79ff3cc7b80c1390",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/34678d08b36076de986df95c5bbba92f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/34678d08b36076de986df95c5bbba92f-Paper-Conference.pdf",
+              "sha256": "1f9f13e063188e564d2ac2bf22d4c3103ed3e0b844605e28a190109746d9eb0c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Dynamical systems theory is a fundamental paradigm for understanding and modeling the time evolution of a phenomenon governed by certain underlying laws. Such a perspective has been successful in describing countless real-world phenomena, ranging from engineering mechanics [1] and human movement modeling [2] to molecular and quantum systems [3, 4]. However, as the laws governing dynamical systems are often unknown, modeling and understanding the underlying phenomena may have to rely on data rather than first principles. In this regard, machine learning methods, which have shown immense potential in tackling complex tasks in domains such as language models [5] and computer vision [6], are coming to the fore. Though powerful, state-of-the-art neural vector fields [7] or flows [8] commonly compose highly nonlinear maps for forecast, i.e. computing Z t x (t) = x(0) + f (x(t))dt (1) 0",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/34678d08b36076de986df95c5bbba92f-Paper-Conference.pdf",
+              "document_sha256": "1f9f13e063188e564d2ac2bf22d4c3103ed3e0b844605e28a190109746d9eb0c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Motivated by the restrictions of existing Koopman-based predictors, we propose a function approximation approach that exploits exploits time-series data and Koopman operator theory to provably learn LTI predictors. Through a novel invariance transform we can satisfy (KI) by construction and directly minimize the forecasting risk over an entire time-interval (OR). In simple terms: Koopman operator regression fixes g(·) and regresses A and c in (5), whereas our KKR approach selects A to jointly regress c and g(·). Similar in spirit to generalized Laplace analysis [21, 49], our approach allows the construction of eigenmodes from data without inferring the operator itself. Crucially, we demonstrate that selecting A requires no prior knowledge as confirmed by our theoretical results and experiments. To facilitate learning LTI predictors, we derive universal RKHSs that are guaranteed to satisfy (KI) over trajectories — a first in the literature. The resulting equivalences to function regression in RKHS allow for more general and complete learning guarantees in terms of consistency and risk bounds that are free of restrictive operator-theoretic assumptions.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/34678d08b36076de986df95c5bbba92f-Paper-Conference.pdf",
+              "document_sha256": "1f9f13e063188e564d2ac2bf22d4c3103ed3e0b844605e28a190109746d9eb0c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "satisfies the properties (i)–(iii) from Theorem 1 over H, so that it defines an RKHS Hµj , is universal (1) (N ) (i) per Definition 1 over H with span{K µ (·, xH ), . . . , K µ (·, xH )} (KI) over {xH }N i=1 . Given a µj D̄ µj collection of kernels {K }j=0 , the matrix Koopman kernel K : XH ×XH 7→ B(YH ) PD̄ K(xH , xH ′ ) = j=1 K µj (xH , xH ′ ), (17) satisfies the properties (i)–(ii) from Proposition 1 over H, defining RKHS H∆t:= S(Hµ1 ⊕ · · · ⊕HµD̄ ). Now, we are fully equipped to obtain the time-discrete solution to our initial problem (5) provided a dataset of trajectories. Before presenting the solution to Koopman Kernel Regression, we introduce some helpful shorthand notation. We use the following kernel matrix abbreviations: kXX = (b) N (a) [k(x(a) , x(b) )]N , x(b) )]N a,b=1 , k(x, X) = [k(x, x )]b=1 , KXX = [K(x a,b=1 and K(x, X) = [K(x, x(b) )]N . b=1 (i)",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/34678d08b36076de986df95c5bbba92f-Paper-Conference.pdf",
+              "document_sha256": "1f9f13e063188e564d2ac2bf22d4c3103ed3e0b844605e28a190109746d9eb0c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-a2a9cf4821755020cfd36d44",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/34678d08b36076de986df95c5bbba92f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "f8c428c555d859ee999ed322741dd98e6d63d31dc67b643bf32526b86aca53d9"
+    },
+    {
+      "id": "edge-879817aba4c63f77c06fbae1",
+      "a": "paper-0a3e1738c6363faf22ab41b1",
+      "b": "paper-7dbcfd445d195d1bf3040f66",
+      "state": {
+        "paper_a": {
+          "title": "GLaM: Efficient Scaling of Language Models with Mixture-of-Experts",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named \\glam (\\textbf{G}eneralist \\textbf{La}nguage \\textbf{M}odel), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest \\glam has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall fewshot performance across 29 NLP tasks."
+        },
+        "paper_b": {
+          "title": "PGODE: Towards High-quality System Dynamics Modeling",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This paper studies the problem of modeling multi-agent dynamical systems, where agents could interact mutually to influence their behaviors. Recent research predominantly uses geometric graphs to depict these mutual interactions, which are then captured by powerful graph neural networks (GNNs). However, predicting interacting dynamics in challenging scenarios such as out-of-distribution shift and complicated underlying rules remains unsolved. In this paper, we propose a new approach named Prototypical Graph ODE (PGODE) to address the problem. The core of PGODE is to incorporate prototype decomposition from contextual knowledge into a continuous graph ODE framework. Specifically, PGODE employs representation disentanglement and system parameters to extract both object-level and system-level contexts from historical trajectories, which allows us to explicitly model their independent influence and thus enhances the generalization capability under system changes. Then, we integrate these disentangled latent representations into a graph ODE model, which determines a combination of various interacting prototypes for enhanced model expressivity. The entire model is optimized using an end-to-end variational inference framework to maximize the likelihood. Extensive experiments in both in-distribution and out-of-distribution settings validate the superiority of PGODE compared to various baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We demonstrate that our graph ODE model can be interpreted through the lens of the mixture of experts (MoE) (Du et al., 2022; Wang et al., 2024; Liu et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0a3e1738c6363faf22ab41b1",
+          "b": "paper-7dbcfd445d195d1bf3040f66",
+          "input_sha256": "3aaf751ff788e4f61c327c2758a4453b3e43224768c0b4ee1b0a7ca53b7c71b4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/du22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/luo24b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/luo24b/luo24b.pdf",
+              "sha256": "aa84b33892d566939e06ddbb11d893add9baba23b23c3b97afab5a1e50948520"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "9. Conclusions We propose and develop a family of generalist language models called GLaM, which use a sparsely activated mixture-of-experts architecture to achieve better average scores than not only their dense counterparts of similar effective FLOPs, but also the GPT-3 models on 1/1 29 representative NLP tasks in zero, one and few-shot learning. In particular, GLaM (64B/64E), our largest 1.2 trillion parameter MoE language model, achieves better average performance with only one third of energy consumption compared to training GPT-3. We hope that our work will encourage more research into methods for obtaining high-quality data, and using MoE for more efficient scaling of giant language models.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Scaling language models with more data, compute and parameters has driven significant progress in natural language processing. For example, thanks to scaling, GPT-3 was able to achieve strong results on in-context learning tasks. However, training these large dense models requires significant amounts of computing resources. In this paper, we propose and develop a family of language models named GLaM (Generalist Language Model), which uses a sparsely activated mixture-of-experts architecture to scale the model capacity while also incurring substantially less training cost compared to dense variants. The largest GLaM has 1.2 trillion parameters, which is approximately 7x larger than GPT-3. It consumes only 1/3 of the energy used to train GPT-3 and requires half of the computation flops for inference, while still achieving better overall zero, one and few-shot performance across 29 NLP tasks.",
+              "url": "https://proceedings.mlr.press/v162/du22c/du22c.pdf",
+              "document_sha256": "11ffc165fe01327493d7dfc43e25fcc3e2f189aa37b916983a7b7ece4f7a6746"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "A Mixture-of-Experts Perspective. We demonstrate that our graph ODE model can be interpreted through the lens of the mixture of experts (MoE) (Du et al., 2022; Wang et al., 2024; Liu et al., 2023). Specifically, each prototype serves as an ODE expert, while wi acts as the gating weights that control the contribution of each expert. Through this, we are the first to get the graph ODE married with MoE, enhancing",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/luo24b/luo24b.pdf",
+              "document_sha256": "aa84b33892d566939e06ddbb11d893add9baba23b23c3b97afab5a1e50948520"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we propose a novel approach named Prototypical Graph ODE (PGODE) for complicated interacting dynamics modeling. The core of PGODE lies in exploring disentangled contexts, i.e., object states and system states, inferred from historical trajectories for graph ODE with high expressivity and generalization. To begin, we extract both object-level and system-level contexts via message passing and attention mechanisms for subsequent dynamics modeling. Object-level contexts refer to individual attributes such as initial states and local heterophily (Luan et al., 2022), while system-level contexts refer to shared parameters such as temperature and viscosity. To improve generalization under system changes, we focus on two strategies. First, we enhance the invariance of object-level contexts under system changes through representation disentanglement. Second, we establish a connection between known system parameters and system-level latent representations. Furthermore, we incorporate this contextual information into a graph ODE framework to capture long-term dynamics through continuous evolution instead of discrete rollouts. More importantly, we introduce a set of learnable GNN prototypes that can be trained to represent different interaction patterns. The weights for each object are then derived from its hierarchical representations to provide individualized dynamics. Our framework can be illustrated from a mixtureof-experts perspective, which boosts the expressivity of the model. Finally, we integrate our method into an end-to-end variational inference framework to optimize the evidence lower bound (ELBO) of the likelihood. Comprehensive experiments in different settings validate the superiority of PGODE in comparison to state-of-the-art approaches.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/luo24b/luo24b.pdf",
+              "document_sha256": "aa84b33892d566939e06ddbb11d893add9baba23b23c3b97afab5a1e50948520"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "This paper studies the problem of modeling multiagent dynamical systems, where agents could interact mutually to influence their behaviors. Recent research predominantly uses geometric graphs to depict these mutual interactions, which are then captured by powerful graph neural networks (GNNs). However, predicting interacting dynamics in challenging scenarios such as outof-distribution shift and complicated underlying rules remains unsolved. In this paper, we propose a new approach named Prototypical Graph ODE (PGODE) to address the problem. The core of PGODE is to incorporate prototype decomposition from contextual knowledge into a continuous graph ODE framework. Specifically, PGODE employs representation disentanglement and system parameters to extract both object-level and systemlevel contexts from historical trajectories, which allows us to explicitly model their independent influence and thus enhances the generalization capability under system changes. Then, we integrate these disentangled latent representations into a graph ODE model, which determines a combination of various interacting prototypes for enhanced model expressivity. The entire model is optimized using an end-to-end variational inference framework to maximize the likelihood. Extensive experiments in both in-distribution and out-of-distribution settings validate the superiority of PGODE compared to various baselines.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/luo24b/luo24b.pdf",
+              "document_sha256": "aa84b33892d566939e06ddbb11d893add9baba23b23c3b97afab5a1e50948520"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0a3e1738c6363faf22ab41b1",
+          "url": "https://proceedings.mlr.press/v162/du22c.html"
+        },
+        "b": {
+          "paper_id": "paper-7dbcfd445d195d1bf3040f66",
+          "url": "https://proceedings.mlr.press/v235/luo24b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "ccec5d0b4dea58f2ad3918f2c2c7170bd62ab91f9adc75831e7eb966c52f626d"
+    },
+    {
+      "id": "edge-52c01c196811f74071884088",
+      "a": "paper-0b44e8ec7db3e6c13658de0b",
+      "b": "paper-422b8ee43d4121d9b2ad45b0",
+      "state": {
+        "paper_a": {
+          "title": "Mitigating Propagation Failures in Physics-informed Neural Networks using Retain-Resample-Release (R3) Sampling",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Despite the success of physics-informed neural networks (PINNs) in approximating partial differential equations (PDEs), PINNs can sometimes fail to converge to the correct solution in problems involving complicated PDEs. This is reflected in several recent studies on characterizing the \"failure modes\" of PINNs, although a thorough understanding of the connection between PINN failure modes and sampling strategies is missing. In this paper, we provide a novel perspective of failure modes of PINNs by hypothesizing that training PINNs relies on successful \"propagation\" of solution from initial and/or boundary condition points to interior points. We show that PINNs with poor sampling strategies can get stuck at trivial solutions if there are propagation failures, characterized by highly imbalanced PDE residual fields. To mitigate propagation failures, we propose a novel Retain-Resample-Release sampling (R3) algorithm that can incrementally accumulate collocation points in regions of high PDE residuals with little to no computational overhead. We provide an extension of R3 sampling to respect the principle of causality while solving time-dependent PDEs. We theoretically analyze the behavior of R3 sampling and empirically demonstrate its efficacy and efficiency in comparison with baselines on a variety of PDE problems."
+        },
+        "paper_b": {
+          "title": "FP64 is All You Need: Rethinking Failure Modes in Physics-Informed Neural Networks",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Physics‑Informed Neural Networks (PINNs) often exhibit “failure modes” in which the PDE residual loss converges while the solution error stays large, a phenomenon traditionally blamed on local optima separated from the true solution by steep loss barriers. We challenge this understanding by demonstrate that the real culprit is insufficient arithmetic precision: with standard FP32, the L‑BFGS optimizer prematurely satisfies its convergence test, freezing the network in a spurious failure phase. Simply upgrading to FP64 rescues optimization, enabling vanilla PINNs to solve PDEs without any failure modes. These results reframe PINN failure modes as precision‑induced stalls rather than inescapable local minima and expose a three‑stage training dynamic—un‑converged, failure, success—whose boundaries shift with numerical precision. Our findings emphasize that rigorous arithmetic precision is the key to dependable PDE solving with neural networks. Our code is available at Supplementary Material."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To mitigate these failure modes, various methods based on optimization [29, 28], regional gradient [33, 34], sampling [12, 32, 9], and model architectures [35, 36, 7, 23] have been proposed.\nSubsequently, R3 [9] tries to address this issue with resampling on the failure area.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b44e8ec7db3e6c13658de0b",
+          "b": "paper-422b8ee43d4121d9b2ad45b0",
+          "input_sha256": "4574300af3ada9c177781dc4dbe46531d4c6412607baf46c181d261c25cee493",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/daw23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/daw23a/daw23a.pdf",
+              "sha256": "e29ae168448f13e3cb37760f32fad27d99e7babc205263370e2de017b039638a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/d274ea8b3c7f526f79ac9ce75ee3c8df-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/d274ea8b3c7f526f79ac9ce75ee3c8df-Paper-Conference.pdf",
+              "sha256": "6ffdeef54ce1d4100cb09456b497f4e16c013daa0185545c7374bc35ba19cd82"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Despite the success of physics-informed neural networks (PINNs) in approximating partial differential equations (PDEs), PINNs can sometimes fail to converge to the correct solution in problems involving complicated PDEs. This is reflected in several recent studies on characterizing the “failure modes” of PINNs, although a thorough understanding of the connection between PINN failure modes and sampling strategies is missing. In this paper, we provide a novel perspective of failure modes of PINNs by hypothesizing that training PINNs relies on successful “propagation” of solution from initial and/or boundary condition points to interior points. We show that PINNs with poor sampling strategies can get stuck at trivial solutions if there are propagation failures, characterized by highly imbalanced PDE residual fields. To mitigate propagation failures, we propose a novel Retain-Resample-Release sampling (R3) algorithm that can incrementally accumulate collocation points in regions of high PDE residuals with little to no computational overhead. We provide an extension of R3 sampling to respect the principle of causality while solving timedependent PDEs. We theoretically analyze the behavior of R3 sampling and empirically demonstrate its efficacy and efficiency in comparison with baselines on a variety of PDE problems.",
+              "url": "https://proceedings.mlr.press/v202/daw23a/daw23a.pdf",
+              "document_sha256": "e29ae168448f13e3cb37760f32fad27d99e7babc205263370e2de017b039638a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We show that propagation failures in PINNs are characterized by highly imbalanced PDE residual fields, making it difficult to adequately represent the high residual regions in the set of collocation points at every iteration. This motivates us to develop sampling strategies that dynamically focus on collocation points from high residual regions during PINN training. This is related to the idea of local-adaptive mesh refinement used in FEM (Zienkiewicz et al., 2005) to refine the computational mesh in regions with high errors. We propose a novel Retain-Resample-Release sampling (R3) strategy that can accumulate collocation points in high PDE residual regions, thereby dynamically emphasizing on these skewed regions as we progress in training iterations. We theoretically show that R3 retains points from high residual regions if they persist over iterations (Retain Property) and releases points if they have been resolved by PINN training (Release Property), while maintaining non-zero representation of points resampled from a uniform distribution over the entire domain (Resample Property). We also provide a causal extension of our proposed R3 sampling algorithm (Causal R3) that can explicitly encode the strong inductive bias of causality in propagating the solution from initial points to interior points over training iterations, when solving time-dependent PDEs. We empirically evaluate the performance of R3 in multiple benchmark PDE problems. We show the R3 and Causal R3 are able to mitigate propagation failure modes and converge to the correct solution with significantly smaller sample sizes as compared to baseline methods, while incurring negligible computational overhead.",
+              "url": "https://proceedings.mlr.press/v202/daw23a/daw23a.pdf",
+              "document_sha256": "e29ae168448f13e3cb37760f32fad27d99e7babc205263370e2de017b039638a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Physics-Informed Neural Networks (PINNs) [27] have gained wide attention and applications in recent years as a novel numerical solver for partial differential equations (PDEs). PINNs can find a numerical solution by optimizing the residual loss defined by the PDE, leveraging the nature of the universal approximation [16] of neural networks and the automatic differentiation [4] provided by the deep learning framework such PyTorch [26]. Although theoretically it is capable of providing exact numerical solutions for PDEs, the researchers have identified several failure modes for PINNs [20]. In these cases presenting a failure mode, the PDE residual loss is optimized to a very small value, but the numerical solution provided by PINN is over trivial and has a huge error with the true solution. To mitigate these failure modes, various methods based on optimization [29, 28], regional gradient [33, 34], sampling [12, 32, 9], and model architectures [35, 36, 7, 23] have been proposed. These methods are based on a consensual understanding of the PINN’s loss landscape: such failure modes occur when the model becomes trapped in a local optimum located within an extremely sharply descending loss basin [2, 20]. The optimizer typically has difficulty climbing out of this loss basin, resulting in a model that eventually converges to a totally wrong solution. Based on this hypothesis, there should be a significant loss barrier [11] between the failure modes and the true solution of the PDE. However, our empirical results show that there is no such a loss barrier between the failure mode and the true solution that can block the optimizer from surmounting. As shown in Fig. 1 (a)&(b), we find that the model that eventually converges to an ideal numerical solution also has experienced a",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d274ea8b3c7f526f79ac9ce75ee3c8df-Paper-Conference.pdf",
+              "document_sha256": "6ffdeef54ce1d4100cb09456b497f4e16c013daa0185545c7374bc35ba19cd82"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "where (x, t) ∈ Ω is the spatial-temporal coordinate, ∂Ω is the boundary of Ω. The F, and B denote the operators defined by PDE equations, initial conditions, and boundary conditions, respectively. The training of PINNs leverages automatic differentiation techniques [25] available within contemporary deep learning frameworks, such as PyTorch [26], to perform numerical differentiation and thereby construct the residual loss at selected collection points. Recent studies have demonstrated that second-order optimization methods, noteably quasi-Newton methods such as SSBFGS [24], Broyden [5], and L-BFGS [21], can significantly enhance the stability and fitting accuracy of PINN training [18, 15, 33, 20], compared to relying exclusively on first-order optimizers such as Adam [17]. Failure Modes in Physics-Informed Neural Networks. Despite the promising performance and broad applicability, PINNs are susceptible to several failure modes that hinder their effectiveness in practice [20]. The failure modes of PINN refer to a phenomenon in which the PDE residual loss of a model is optimized to a very low level (close to 0), but its resulting solution is still far from the expected true solution. As in Fig. 2, 1-d convection and reaction equations are optimized to close-zero level, but their approximations to the equation’s true solutions present the over-simplified patterns. In response to this phenomenon, researchers have come up with a very wide range of conjectures. Early attempts involve curriculum regularization and sequence-to-sequence learning [20], which breaks down complex PINN problems into simple ones and conquers them one at a time. Subsequently, R3 [9] tries to address this issue with resampling on the failure area. Then, several model architectures like PINNsFormer",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d274ea8b3c7f526f79ac9ce75ee3c8df-Paper-Conference.pdf",
+              "document_sha256": "6ffdeef54ce1d4100cb09456b497f4e16c013daa0185545c7374bc35ba19cd82"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "We first state two hypotheses for failure modes of PINNs: (1) the Loss-Barrier Hypothesis, which is widely accepted by the PINN researchers, and (2) the Same-Basin Hypothesis, which we propose. Loss-Barrier Hypothesis. PINN failures are initially attributed to that “the optimizer has gotten stuck in a local minima with a very high loss function” [20]. This assertion is then been overthrown because the observation of near-zero empirical residual loss in failure modes experiment cases [33, 34, 35, 36]. This hints that the cause of PINN failure modes is not that PDE residual loss cannot be optimized. Instead, as shown in Fig. 3 (a), it seems that the failure modes are because the optimizer is trapped in a local minimum of the loss landscape, which is nearly as low as the true solution’s empirical residual loss on collection points. Under this hypothesis, the optimizer is not able to distinguish the failure modes and the true solution minimum. Therefore, models cannot find the true solution, because there is a loss barrier between the failure mode local minimal and the true solution minimal. The model’s loss faces a huge penalty if its parameters are optimized to cross such a loss barrier. Same-Basin Hypothesis. Based on the intuition that the loss basins are generally connected with a simple perturbation [1], we propose an alternative same-basin hypothesis. It says that the failure modes parameters are in the same loss basin as the true solution, as shown in Fig. 3 (b). There is a large flat plain at the bottom of this loss basin, and the loss of the true solution is only slightly lower than that of the failure modes. Due to some reasons, the optimizer early stops when it reaches the flat plain in the iterated optimization process. In this hypothesis, there should not be",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d274ea8b3c7f526f79ac9ce75ee3c8df-Paper-Conference.pdf",
+              "document_sha256": "6ffdeef54ce1d4100cb09456b497f4e16c013daa0185545c7374bc35ba19cd82"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b44e8ec7db3e6c13658de0b",
+          "url": "https://proceedings.mlr.press/v202/daw23a.html"
+        },
+        "b": {
+          "paper_id": "paper-422b8ee43d4121d9b2ad45b0",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/d274ea8b3c7f526f79ac9ce75ee3c8df-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "a9891820d580139ad1095ac4de4b83af9ed590eafc0bb0330f8b66bde4f011ea"
+    },
+    {
+      "id": "edge-5ba7bb98bc1e9480ef7ee051",
+      "a": "paper-1062fb2e6e4dacf2e23b4a20",
+      "b": "paper-3d2de7ceffcd97ef68d92650",
+      "state": {
+        "paper_a": {
+          "title": "PDE-Net: Learning PDEs from Data",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Partial differential equations (PDEs) play a prominent role in many disciplines of science and engineering. PDEs are commonly derived based on empirical observations. However, with the rapid development of sensors, computational power, and data storage in the past decade, huge quantities of data can be easily collected and efficiently stored. Such vast quantity of data offers new opportunities for data-driven discovery of physical laws. Inspired by the latest development of neural network designs in deep learning, we propose a new feed-forward deep network, called PDE-Net, to fulfill two objectives at the same time: to accurately predict dynamics of complex systems and to uncover the underlying hidden PDE models. Comparing with existing approaches, our approach has the most flexibility by learning both differential operators and the nonlinear response function of the underlying PDE model. A special feature of the proposed PDE-Net is that all filters are properly constrained, which enables us to easily identify the governing PDE models while still maintaining the expressive and predictive power of the network. These constrains are carefully designed by fully exploiting the relation between the orders of differential operators and the orders of sum rules of filters (an important concept originated from wavelet theory). Numerical experiments show that the PDE-Net has the potential to uncover the hidden PDE of the observed dynamics, and predict the dynamical behavior for a relatively long time, even in a noisy environment."
+        },
+        "paper_b": {
+          "title": "Learning Neural PDE Solvers with Parameter-Guided Channel Attention",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Scientific Machine Learning (SciML) is concerned with the development of learned emulators of physical systems governed by partial differential equations (PDE). In application domains such as weather forecasting, molecular dynamics, and inverse design, ML-based surrogate models are increasingly used to augment or replace inefficient and often non-differentiable numerical simulation algorithms. While a number of ML-based methods for approximating the solutions of PDEs have been proposed in recent years, they typically do not adapt to the parameters of the PDEs, making it difficult to generalize to PDE parameters not seen during training. We propose a Channel Attention guided by PDE Parameter Embeddings (CAPE) component for neural surrogate models and a simple yet effective curriculum learning strategy. The CAPE module can be combined with any neural PDE solvers allowing them to adapt to unseen PDE parameters. The curriculum learning strategy provides a seamless transition between teacher-forcing and fully auto-regressive training. We compare CAPE in conjunction with the curriculum learning strategy using a PDE benchmark and obtain consistent and significant improvements over the baseline models. The experiments also show several advantages of CAPE, such as its increased ability to generalize to unseen PDE parameters without large increases inference time and parameter count. An implementation of the method and experiments are available at https://anonymous.4open.science/r/CAPE-ML4Sci-145B."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "After several pioneering work (Long et al., 2018; 2019; Wang et al., 2020; Belbute-Peres et al., 2020), Neural Operators (Li et al., 2021b), as FNO (Li et al., 2021a) or Graph NO (Li et al., 2020), was proposed to model the continuous operators over an inﬁnite space and have shown the ability to…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1062fb2e6e4dacf2e23b4a20",
+          "b": "paper-3d2de7ceffcd97ef68d92650",
+          "input_sha256": "7fe4c2bf08a42f8a7e19b6d2432e5b694ba864582d9b499900fe624778ccc341",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/long18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/takamoto23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/takamoto23a/takamoto23a.pdf",
+              "sha256": "078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Partial differential equations (PDEs) play a prominent role in many disciplines of science and engineering. PDEs are commonly derived based on empirical observations. However, with the rapid development of sensors, computational power, and data storage in the past decade, huge quantities of data can be easily collected and efficiently stored. Such vast quantity of data offers new opportunities for data-driven discovery of physical laws. Inspired by the latest development of neural network designs in deep learning, we propose a new feed-forward deep network, called PDENet, to fulfill two objectives at the same time: to accurately predict dynamics of complex systems and to uncover the underlying hidden PDE models. Comparing with existing approaches, our approach has the most flexibility by learning both differential operators and the nonlinear response function of the underlying PDE model. A special feature of the proposed PDE-Net is that all filters are properly constrained, which enables us to easily identify the governing PDE models while still maintaining the expressive and predictive power of the network. These constrains are carefully designed by fully exploiting the relation between the orders of differential operators and the orders of sum rules of filters (an important concept originated from wavelet theory). Numerical experiments show that the PDE-Net has the potential to uncover the hidden PDE of the observed dynamics, and predict the dynamical behavior for a relatively long time, even in a noisy environment. *",
+              "url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "document_sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "temperature prediction (SSTP). They assumed that the underlying physical model is an advection-diffusion equation. They designed a special neural network according to the general solution of advection-diffusion equations. Comparing with traditional numerical methods, their approach showed improvements in accuracy and decrease in computational time. These recent work greatly advanced the progress of the problem. However, symbolic regression is computationally expensive and does not scale very well to large systems. The sparse regression method requires to fix certain numerical approximations of the spatial differentiations in the dictionary beforehand, which limits the expressive and predictive power of the dictionary. Although the framework presented by Raissi & Karniadakis (2017); Raissi et al. (2017) is able to learn hidden physical laws using less data than the approach of sparse regression, the explicit form of the PDEs is assumed to be known except for a few scalar learnable parameters. The approach of de Bezenac et al. (2017) is specifically designed for advection-diffusion equations, and cannot be readily extended to other types of equations. Therefore, extracting governing equations from data in a less restrictive setting remains a great challenge. The main objective of this paper is to accurately predict the dynamics of complex systems and to uncover the underlying hidden PDE models (should they exist) at the same time, with minimal prior knowledge on the systems. Our inspiration comes from the latest development of deep learning techniques in computer vision. An interesting fact is that some popular networks in computer vision, such as ResNet(He et al., 2016a;b), have close relationship with PDEs (Chen et al., 2015; E, 2017; Haber & Ruthotto, 2017; Sonoda &",
+              "url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "document_sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "4. Related Work Scientific Machine Learning Models Scientific Machine Learning aims at data-driven modeling of physical systems. A notable example is Physics Informed Neural Networks (Raissi et al., 2019; Cai et al., 2022) (PINNs) that, having access to the PDE of a system, learns a neural network over the domain X → Rd by enforcing small residual, i.e. the error when the solution is evaluated by the PDE or the boundary conditions, over a set of sampled points. While PINNs have the capacity to model various physical systems, they need to be trained for each new condition or parameter. After several pioneering work (Long et al., 2018; 2019; Wang et al., 2020; Belbute-Peres et al., 2020), Neural Operators (Li et al., 2021b), as FNO (Li et al., 2021a) or Graph NO (Li et al., 2020), was proposed to model the continuous operators over an infinite space and have shown the ability to generalization at multiple scales. Also, more traditional image-to-image neural networks such as the UNet (Ronneberger et al., 2015) can be adopted to model NOs. Physics-Informed Neural Operators (PINO) (Li et al., 2021b) improve the representational power of PINNs by pre-training a NO but having similar limitations to NOs. Message passing neural PDE solver (Brandstetter et al., 2022) extends the message passing principle to solve PDEs. In signal processing, for the artificial bandwidth extension (ABE) task, the Time-Frequency Network(Dong et al., 2020)",
+              "url": "https://proceedings.mlr.press/v202/takamoto23a/takamoto23a.pdf",
+              "document_sha256": "078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Scientific Machine Learning (SciML) is concerned with the development of learned emulators of physical systems governed by partial differential equations (PDE). In application domains such as weather forecasting, molecular dynamics, and inverse design, ML-based surrogate models are increasingly used to augment or replace inefficient and often non-differentiable numerical simulation algorithms. While a number of MLbased methods for approximating the solutions of PDEs have been proposed in recent years, they typically do not adapt to the parameters of the PDEs, making it difficult to generalize to PDE parameters not seen during training. We propose a Channel Attention mechanism guided by PDE Parameter Embeddings (C APE) component for neural surrogate models and a simple yet effective curriculum learning strategy. The C APE module can be combined with neural PDE solvers allowing them to adapt to unseen PDE parameters. The curriculum learning strategy provides a seamless transition between teacher-forcing and fully autoregressive training. We compare C APE in conjunction with the curriculum learning strategy using a popular PDE benchmark and obtain consistent and significant improvements over the baseline models. The experiments also show several advantages of C APE, such as its increased ability to generalize to unseen PDE parameters without large increases inference time and parameter count. An implementation of the method and experiments are available at https://github. com/nec-research/CAPE-ML4Sci.",
+              "url": "https://proceedings.mlr.press/v202/takamoto23a/takamoto23a.pdf",
+              "document_sha256": "078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We propose a new and effective parameter embedding module by utilizing the channel-attention method inspired by classical numerical solvers using the implicit discretization method (see Sec. 2.3 and Sec. 2.4). The crucial idea is that a neural network generates intermediate (approximated) field data for future time steps which are then interpolated by a BASE model such as the FNO (Li et al., 2021a) to predict the field data for the next time step. C APE can be combined with any existing autoregressive neural PDE solvers. Fig. 1 illustrates the proposed C APE framework. We make the following contributions. First, we propose a C APE module which can be combined with any existing neural PDE solvers and can effectively transfer the PDE parameter information to the base network (BASE). Second, we propose a simple but effective curriculum learning strategy that seamlessly bridges the teacher-forcing and auto-regressive methods. Third, we perform extensive experiments using various PDEs with a large number of different parameters evaluating the effectiveness and efficiency of the proposed method in comparison with state-of-the-art methods.",
+              "url": "https://proceedings.mlr.press/v202/takamoto23a/takamoto23a.pdf",
+              "document_sha256": "078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1062fb2e6e4dacf2e23b4a20",
+          "url": "https://proceedings.mlr.press/v80/long18a.html"
+        },
+        "b": {
+          "paper_id": "paper-3d2de7ceffcd97ef68d92650",
+          "url": "https://proceedings.mlr.press/v202/takamoto23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "d508a11f75bfb3fc71ba28a190603753dddf33b46873525bca2a7353edb200e5"
+    },
+    {
+      "id": "edge-bb91ffca1c18e1576aba06bf",
+      "a": "paper-1062fb2e6e4dacf2e23b4a20",
+      "b": "paper-dfb38a2871cad6361dafcf1b",
+      "state": {
+        "paper_a": {
+          "title": "PDE-Net: Learning PDEs from Data",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Partial differential equations (PDEs) play a prominent role in many disciplines of science and engineering. PDEs are commonly derived based on empirical observations. However, with the rapid development of sensors, computational power, and data storage in the past decade, huge quantities of data can be easily collected and efficiently stored. Such vast quantity of data offers new opportunities for data-driven discovery of physical laws. Inspired by the latest development of neural network designs in deep learning, we propose a new feed-forward deep network, called PDE-Net, to fulfill two objectives at the same time: to accurately predict dynamics of complex systems and to uncover the underlying hidden PDE models. Comparing with existing approaches, our approach has the most flexibility by learning both differential operators and the nonlinear response function of the underlying PDE model. A special feature of the proposed PDE-Net is that all filters are properly constrained, which enables us to easily identify the governing PDE models while still maintaining the expressive and predictive power of the network. These constrains are carefully designed by fully exploiting the relation between the orders of differential operators and the orders of sum rules of filters (an important concept originated from wavelet theory). Numerical experiments show that the PDE-Net has the potential to uncover the hidden PDE of the observed dynamics, and predict the dynamical behavior for a relatively long time, even in a noisy environment."
+        },
+        "paper_b": {
+          "title": "Solver-in-the-Loop: Learning from Differentiable Physics to Interact with Iterative PDE-Solvers",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Finding accurate solutions to partial differential equations (PDEs) is a crucial task in all scientific and engineering disciplines. It has recently been shown that machine learning methods can improve the solution accuracy by correcting for effects not captured by the discretized PDE. We target the problem of reducing numerical errors of iterative PDE solvers and compare different learning approaches for finding complex correction functions. We find that previously used learning approaches are significantly outperformed by methods that integrate the solver into the training loop and thereby allow the model to interact with the PDE during training. This provides the model with realistic input distributions that take previous corrections into account, yielding improvements in accuracy with stable rollouts of several hundred recurrent evaluation steps and surpassing even tailored supervised variants. We highlight the performance of the differentiable physics networks for a wide variety of PDEs, from non-linear advection-diffusion systems to three-dimensional Navier-Stokes flows."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "More recently, deep-learning-based methods were successfully applied to infer stencils of advection-diffusion problems [4], to discover PDE formulations [35, 42, 52], and to analyze families of Poisson equations [36].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1062fb2e6e4dacf2e23b4a20",
+          "b": "paper-dfb38a2871cad6361dafcf1b",
+          "input_sha256": "2b11d293cc34e95670ab33a577f1134f3a60abbb5c5478619a56b7645abe0777",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/long18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/43e4e6a6f341e00671e123714de019a8-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/43e4e6a6f341e00671e123714de019a8-Paper.pdf",
+              "sha256": "6e16774649d96faec3b2b4df21551130a489f70a2e5c2f45015c52218591dfe8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Partial differential equations (PDEs) play a prominent role in many disciplines of science and engineering. PDEs are commonly derived based on empirical observations. However, with the rapid development of sensors, computational power, and data storage in the past decade, huge quantities of data can be easily collected and efficiently stored. Such vast quantity of data offers new opportunities for data-driven discovery of physical laws. Inspired by the latest development of neural network designs in deep learning, we propose a new feed-forward deep network, called PDENet, to fulfill two objectives at the same time: to accurately predict dynamics of complex systems and to uncover the underlying hidden PDE models. Comparing with existing approaches, our approach has the most flexibility by learning both differential operators and the nonlinear response function of the underlying PDE model. A special feature of the proposed PDE-Net is that all filters are properly constrained, which enables us to easily identify the governing PDE models while still maintaining the expressive and predictive power of the network. These constrains are carefully designed by fully exploiting the relation between the orders of differential operators and the orders of sum rules of filters (an important concept originated from wavelet theory). Numerical experiments show that the PDE-Net has the potential to uncover the hidden PDE of the observed dynamics, and predict the dynamical behavior for a relatively long time, even in a noisy environment. *",
+              "url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "document_sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "temperature prediction (SSTP). They assumed that the underlying physical model is an advection-diffusion equation. They designed a special neural network according to the general solution of advection-diffusion equations. Comparing with traditional numerical methods, their approach showed improvements in accuracy and decrease in computational time. These recent work greatly advanced the progress of the problem. However, symbolic regression is computationally expensive and does not scale very well to large systems. The sparse regression method requires to fix certain numerical approximations of the spatial differentiations in the dictionary beforehand, which limits the expressive and predictive power of the dictionary. Although the framework presented by Raissi & Karniadakis (2017); Raissi et al. (2017) is able to learn hidden physical laws using less data than the approach of sparse regression, the explicit form of the PDEs is assumed to be known except for a few scalar learnable parameters. The approach of de Bezenac et al. (2017) is specifically designed for advection-diffusion equations, and cannot be readily extended to other types of equations. Therefore, extracting governing equations from data in a less restrictive setting remains a great challenge. The main objective of this paper is to accurately predict the dynamics of complex systems and to uncover the underlying hidden PDE models (should they exist) at the same time, with minimal prior knowledge on the systems. Our inspiration comes from the latest development of deep learning techniques in computer vision. An interesting fact is that some popular networks in computer vision, such as ResNet(He et al., 2016a;b), have close relationship with PDEs (Chen et al., 2015; E, 2017; Haber & Ruthotto, 2017; Sonoda &",
+              "url": "https://proceedings.mlr.press/v80/long18a/long18a.pdf",
+              "document_sha256": "c07e5a10fd72619fd2b9658a9e3de2dde8e18cf2d2279b5add6d4d1cb976d54c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "to the fine spatial and temporal resolutions required in real-world scenarios. In this context, deep learning methods are receiving strongly growing attention [40, 4, 18] and show promise to account for those components of the solutions that are difficult to resolve or are not well captured by our physical models. Physical models typically come in the form of PDEs and are discretized in order to be processed by computers. This step inevitably introduces numerical errors. Despite a vast amount of work [15, 2] and experimental evaluations [7, 41], analytic descriptions of these errors remain elusive for most real-world applications of simulations. In our work, we specifically target the numerical errors that arise in the discretization of PDEs. We show that, despite the lack of closed-form descriptions, discretization errors can be seen as functions with regular and repeating structures and, thus, can be learned by neural networks. Once trained, such a network can be evaluated locally to improve the solution of a PDE-solver, i.e., to reduce its numerical error. The core of most numerical methods contains some form of iterative process – either in the form of repeated updates over time for explicit solvers or even within a single update step for implicit solvers. Hence, we focus on iterative PDE solving algorithms [17]. We show that neural networks can achieve excellent performance if they take the reaction of the solver into account. This interaction is not possible with supervised learning on pre-computed data alone. Even small inference errors of a supervised model can quickly accumulate over time [57, 29], leading to a data distribution that differs from the distribution of the pre-computed data. For supervised learning methods, this causes deteriorated inference at",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/43e4e6a6f341e00671e123714de019a8-Paper.pdf",
+              "document_sha256": "6e16774649d96faec3b2b4df21551130a489f70a2e5c2f45015c52218591dfe8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Identical networks yield significantly better results purely by having the solver in the learning loop. This indicates that the numerical errors have regular structures that can be learned and corrected via learned representations. The resulting networks likewise improve generalization for out-ofdistribution samples and provide stable, long-term recurrent predictions. Our results have the potential to enhance learning physical priors for a variety of deep learning tasks. Beyond engineering applications and medical simulations, a particularly interesting application of our approach is weather prediction [45], where a simple differentiable solver could be augmented with a learned correction function to recover the costly predictions of operational forecasting systems. Overall, we hope that the demonstrated gains in accuracy will help to establish trained neural networks as components in the numerical toolbox of computational science.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/43e4e6a6f341e00671e123714de019a8-Paper.pdf",
+              "document_sha256": "6e16774649d96faec3b2b4df21551130a489f70a2e5c2f45015c52218591dfe8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "Broader Impact PDE-based models are very commonly used and can be applied to a wide range of applications, including weather and climate, epidemics, civil engineering, manufacturing processes, and medical applications. Our work has the potential to improve how these PDEs are solved. As PDE-solvers have a long history, there is a wide range of established tools, some of which still use COBOL and FORTRAN. Hence, it will not be easy to integrate deep learning methods into the existing solving pipelines, but in the long run, our method could yield solvers that compute more accurate solutions with a given amount of computational resources. Due to the wide range of applications of PDEs, our methods could also be used in the development of military equipment (machines and weapons) or other harmful systems. However, our method shares this danger with all numerical methods. For the discipline of computational science as a whole, we see more positive aspects when computer simulations become more powerful. Nonetheless, we will encourage users of our method likewise to consider ethical implications when employing PDE-solvers with learning via differentiable physics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/43e4e6a6f341e00671e123714de019a8-Paper.pdf",
+              "document_sha256": "6e16774649d96faec3b2b4df21551130a489f70a2e5c2f45015c52218591dfe8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1062fb2e6e4dacf2e23b4a20",
+          "url": "https://proceedings.mlr.press/v80/long18a.html"
+        },
+        "b": {
+          "paper_id": "paper-dfb38a2871cad6361dafcf1b",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/43e4e6a6f341e00671e123714de019a8-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning Physical Dynamics with Neural Differential Equations"
+      },
+      "sha256": "d645bd9c28540a4dffcd42151227a14154575b86608e7bbae594a59e6ff712a2"
+    }
+  ]
+}

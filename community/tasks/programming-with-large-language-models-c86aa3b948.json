@@ -1,0 +1,1030 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Programming with Large Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-cf56e27f3dc788e7a9f27649",
+      "a": "paper-9596fee1e50821e1af4904fe",
+      "b": "paper-7c3335e46edb7be4700fc54d",
+      "state": {
+        "paper_a": {
+          "title": "Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "We marry two powerful ideas: deep representation learning for visual recognition and language understanding, and symbolic program execution for reasoning. Our neural-symbolic visual question answering (NS-VQA) system first recovers a structural scene representation from the image and a program trace from the question. It then executes the program on the scene representation to obtain an answer. Incorporating symbolic structure as prior knowledge offers three unique advantages. First, executing programs on a symbolic space is more robust to long program traces; our model can solve complex reasoning tasks better, achieving an accuracy of 99.8% on the CLEVR dataset. Second, the model is more data- and memory-efficient: it performs well after learning on a small number of training data; it can also encode an image into a compact representation, requiring less storage than existing methods for offline question answering. Third, symbolic program execution offers full transparency to the reasoning process; we are thus able to interpret and diagnose each execution step."
+        },
+        "paper_b": {
+          "title": "Leveraging Language to Learn Program Abstractions and Search Heuristics",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Inductive program synthesis, or inferring programs from examples of desired behavior, offers a general paradigm for building interpretable, robust, andgeneralizable machine learning systems. Effective program synthesis depends on two key ingredients: a strong library of functions from which to build programs, and an efficient search strategy for finding programs that solve a given task. We introduce LAPS (Language for Abstraction and Program Search), a technique for using natural language annotations to guide joint learning of libraries and neurally-guided search models for synthesis. When integrated into a state-of-the-art library learning system (DreamCoder), LAPS produces higher-quality libraries and improves search efficiency and generalization on three domains {–} string editing, image composition, and abstract reasoning about scenes {–} even when no natural language hints are available at test time."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We see work in inverse graphics (such as (Yi et al., 2018)) which outputs a structured scene graph based on pixel images as the ﬁrst step in a symbolic processing and reasoning pipeline as analogous; we are interested in the structured manipulation of these scene representations.\n, 2017), semantic parsing (Artzi & Zettlemoyer, 2013; Liang, 2016), structured visual understanding (Johnson et al., 2017b; Yi et al., 2018), image generation (Ellis et al.\n…al., 2015; Gulwani et al., 2017), semantic parsing (Artzi & Zettlemoyer, 2013; Liang, 2016), structured visual understanding (Johnson et al., 2017b; Yi et al., 2018), image generation (Ellis et al., 2017; Ganin et al., 2018), and policy learning (Fikes & Nilsson, 1971; Cropper & Muggleton, 2015;…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9596fee1e50821e1af4904fe",
+          "b": "paper-7c3335e46edb7be4700fc54d",
+          "input_sha256": "90029593c3243cbff7b664b1c6242bd1b0a2d1054c16e502981daba29701a7b5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/5e388103a391daabe3de1d76a6739ccd-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5e388103a391daabe3de1d76a6739ccd-Paper.pdf",
+              "sha256": "f54ebc801381f0662ae195b79419b70ae977f2053075f91d2d7445e1a6be7c2d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/wong21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/wong21a/wong21a.pdf",
+              "sha256": "26d8df3432da75224245a313022444f4c57901ec4d1368880c28c3bd0c25419d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "dataset, and generalizes reasonably well to CLEVR-Humans, a dataset that contains the same images as CLEVR but now paired with human-generated questions. However, their model still suffers from two limitations: first, training the program generator requires many annotated examples; second, the behaviors of the attention-based neural executor are hard to explain. In contrast, we humans can reason on CLEVR and CLEVR-Humans even with a few labeled instances, and we can also clearly explain how we do it. In this paper, we move one step further along the spectrum of learning vs. modeling, proposing a neural-symbolic approach for visual question answering (NS-VQA) that fully disentangles vision and language understanding from reasoning. We use neural networks as powerful tools for parsing— inferring structural, object-based scene representation from images, and generating programs from questions. We then incorporate a symbolic program executor that, complementary to the neural parser, runs the program on the scene representation to obtain an answer. The combination of deep recognition modules and a symbolic program executor offers three unique advantages. First, the use of symbolic representation offers robustness to long, complex program traces. It also reduces the need of training data. On the CLEVR dataset, our method is trained on questions with 270 program annotations plus 4K images, and is able to achieve a near-perfect accuracy of 99.8%. Second, both our reasoning module and visual scene representation are light-weighted, requiring minimal computational and memory cost. In particular, our compact structural image representation requires much less storage during reasoning, reducing the memory cost by 99% compared with other state-of-the-art algorithms. Third, the use",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/5e388103a391daabe3de1d76a6739ccd-Paper.pdf",
+              "document_sha256": "f54ebc801381f0662ae195b79419b70ae977f2053075f91d2d7445e1a6be7c2d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Setup. We evaluate our NS-VQA on CLEVR [Johnson et al., 2017a]. The dataset includes synthetic images of 3D primitives with multiple attributes—shape, color, material, size, and 3D coordinates. Each image has a set of questions, each of which associates with a program (a set of symbolic modules) generated by machines based on 90 logic templates. Our structural scene representation for a CLEVR image characterizes the objects in it, each labeled with its shape, size, color, material, and 3D coordinates (see Figure 2c). We evaluate our model’s performance on the validation set under various supervise signal for training, including the numbers of ground-truth programs used for pretraining and question-answer pairs for REINFORCE. Results are compared with other state-of-the-art methods including the IEP baseline [Johnson et al., 2017b]. We not only assess the correctness of the answer obtained by our model, but also how well it recovers the underlying program. An interpretable model should be able to output the correct program in addition to the correct answer. Results. Quantitative results on the CLEVR dataset are summarized in Table 1. Our NS-VQA achieves near-perfect accuracy and outperforms other methods on all five question types. We first pretrain the question parser on 270 annotated programs sampled across the 90 question templates (3 questions per template), a number below the weakly supervised limit suggested by Johnson et al. [2017b] (9K), and then run REINFORCE on all the question-answer pairs. Repeated experiments starting from different sets of programs show a standard deviation of less than 0.1 percent on the results for 270 pretraining programs (and beyond). The variances are larger when we train our model with fewer programs (90 and 180). The reported",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/5e388103a391daabe3de1d76a6739ccd-Paper.pdf",
+              "document_sha256": "f54ebc801381f0662ae195b79419b70ae977f2053075f91d2d7445e1a6be7c2d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction Machine learning approaches based on program synthesis– the automatic inference of symbolic programs–can offer robustness, interpretability, verifiability, and strong generalization in few-shot learning settings (Appel et al., 2017; Lake et al., 2017). Many machine learning tasks can be formulated as program synthesis problems, including data manipulation (Delaware et al., 2015; Gulwani et al., 2017), semantic parsing (Artzi & Zettlemoyer, 2013; Liang, 2016), structured visual understanding (Johnson et al., 2017b; Yi et al., 2018), image generation (Ellis et al., 2017; Ganin et al., 2018), and policy learning (Fikes & Nilsson, 1971; Cropper & Muggleton, 2015; Silver et al., 2020). This paper introduces Language for Abstraction and Program Search (LAPS), a framework for improving the efficiency and generalizability of learned program synthesis 1 MIT 2 Cornell University 3 Center for Brains, Minds and Machines (CBMM) - MIT. Correspondence to: Catherine Wong <catwong@mit.edu>.",
+              "url": "https://proceedings.mlr.press/v139/wong21a/wong21a.pdf",
+              "document_sha256": "26d8df3432da75224245a313022444f4c57901ec4d1368880c28c3bd0c25419d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "String editing: structured string transformation problems taken from (Andreas et al., 2017) (n=1000 train; n=500 test). Tasks consist of input dictionary strings transformed using randomly sampled regular expression transducer (30 I/O examples per task). We choose this domain to demonstrate LAPS on an important classic synthesis domain (Lau & Weld, 1998). The dataset of Andreas et al. (2017) contains human annotations; synthetic language annotations are generated over the ground-truth regexes using templates based on the original human annotations. We initialize synthesizers with functional programming primitives (map, fold, cons, car, cdr, length, index) and character constants (following the simpler text editing domain in the baseline paper (Ellis et al., 2021)). The neural search model encodes the I/O task examples as character arrays with a bidirectional GRU. Compositional graphics: inverse graphics problems (n=200 train; n=111 test) where each task is specified by an image and solved by synthesizing a program in LOGO Turtle graphics (Abelson & DiSessa, 1986). This is inspired by the graphics domain in (Ellis et al., 2021) but re-designed to be more challenging (ground-truth programs are much longer on average in the base programming language) and explicitly compositional. Synthetic language annotations are generated with high-level templates over the objects and relations in each task; human annotations are sourced as image descriptions from MTurk. We initialize synthesizers with the graphics primitives in (Ellis et al., 2021). The neural model encodes image examples with a CNN. Structured scene reasoning: inductive scene reasoning tasks (n= 212 train; n=115 test) where each synthesis problem is specified by a structured input scene, and outputs can be a number",
+              "url": "https://proceedings.mlr.press/v139/wong21a/wong21a.pdf",
+              "document_sha256": "26d8df3432da75224245a313022444f4c57901ec4d1368880c28c3bd0c25419d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Inductive program synthesis, or inferring programs from examples of desired behavior, offers a general paradigm for building interpretable, robust, and generalizable machine learning systems. Effective program synthesis depends on two key ingredients: a strong library of functions from which to build programs, and an efficient search strategy for finding programs that solve a given task. We introduce LAPS (Language for Abstraction and Program Search), a technique for using natural language annotations to guide joint learning of libraries and neurally-guided search models for synthesis. When integrated into a state-of-theart library learning system (DreamCoder), LAPS produces higher-quality libraries and improves search efficiency and generalization on three domains – string editing, image composition, and abstract reasoning about scenes – even when no natural language hints are available at test time.",
+              "url": "https://proceedings.mlr.press/v139/wong21a/wong21a.pdf",
+              "document_sha256": "26d8df3432da75224245a313022444f4c57901ec4d1368880c28c3bd0c25419d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9596fee1e50821e1af4904fe",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5e388103a391daabe3de1d76a6739ccd-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-7c3335e46edb7be4700fc54d",
+          "url": "https://proceedings.mlr.press/v139/wong21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "5aa02e1980e96268092005e2f3dae385b1a2760ee0868c88577c32e7ca57a7ba"
+    },
+    {
+      "id": "edge-616f3882be0d12d228a1c0f4",
+      "a": "paper-03b288548331ed0a45db4c0d",
+      "b": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+      "state": {
+        "paper_a": {
+          "title": "Phrase-Based & Neural Unsupervised Machine Translation",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Machine translation systems achieve near human-level performance on some languages, yet their effectiveness strongly relies on the availability of large amounts of parallel sentences, which hinders their applicability to the majority of language pairs. This work investigates how to learn to translate when having access to only large monolingual corpora in each language. We propose two model variants, a neural and a phrase-based model. Both versions leverage a careful initialization of the parameters, the denoising effect of language models and automatic generation of parallel data by iterative back-translation. These models are significantly better than methods from the literature, while being simpler and having fewer hyper-parameters. On the widely used WMT’14 English-French and WMT’16 German-English benchmarks, our models respectively obtain 28.1 and 25.2 BLEU points without using a single parallel sentence, outperforming the state of the art by more than 11 BLEU points. On low-resource languages like English-Urdu and English-Romanian, our methods achieve even better results than semi-supervised and supervised approaches leveraging the paucity of available bitexts. Our code for NMT and PBSMT is publicly available."
+        },
+        "paper_b": {
+          "title": "Unsupervised Translation of Programming Languages",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "A transcompiler, also known as source-to-source translator, is a system that converts source code from a high-level programming language (such as C++ or Python) to another. Transcompilers are primarily used for interoperability, and to port codebases written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a modern one. They typically rely on handcrafted rewrite rules, applied to the source code abstract syntax tree. Unfortunately, the resulting translations often lack readability, fail to respect the target language conventions, and require manual modifications in order to work properly. The overall translation process is time-consuming and requires expertise in both the source and target languages, making code-translation projects expensive. Although neural models significantly outperform their rule-based counterparts in the context of natural language translation, their applications to transcompilation have been limited due to the scarcity of parallel data in this domain. In this paper, we propose to leverage recent approaches in unsupervised machine translation to train a fully unsupervised neural transcompiler. We train our model on source code from open source GitHub projects, and show that it can translate functions between C++, Java, and Python with high accuracy. Our method relies exclusively on monolingual source code, requires no expertise in the source or target languages, and can easily be generalized to other programming languages. We also build and release a test set composed of 852 parallel functions, along with unit tests to check the correctness of translations. We show that our model outperforms rule-based commercial baselines by a significant margin."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "[32], namely initialization, language modeling, and back-translation.\nMore recently, several methods were proposed to train a machine translation system exclusively from monolingual corpora, using either neural models [30, 8] and statistical models [32, 7].\nInitially introduced to improve the performance of machine translation in the supervised setting [41], back-translation turned out to be an important component of unsupervised machine translation [30, 32, 8].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03b288548331ed0a45db4c0d",
+          "b": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+          "input_sha256": "a0e91021a633798d815a2a79a9a096d2f3df60c0003f92494e8ec94d3be9a81b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D18-1549/",
+              "pdf_url": "https://aclanthology.org/D18-1549.pdf",
+              "sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Machine translation systems achieve near human-level performance on some languages, yet their effectiveness strongly relies on the availability of large amounts of parallel sentences, which hinders their applicability to the majority of language pairs. This work investigates how to learn to translate when having access to only large monolingual corpora in each language. We propose two model variants, a neural and a phrase-based model. Both versions leverage a careful initialization of the parameters, the denoising effect of language models and automatic generation of parallel data by iterative back-translation. These models are significantly better than methods from the literature, while being simpler and having fewer hyper-parameters. On the widely used WMT’14 English-French and WMT’16 German-English benchmarks, our models respectively obtain 28.1 and 25.2 BLEU points without using a single parallel sentence, outperforming the state of the art by more than 11 BLEU points. On low-resource languages like English-Urdu and English-Romanian, our methods achieve even better results than semisupervised and supervised approaches leveraging the paucity of available bitexts. Our code for NMT and PBSMT is publicly available.1",
+              "url": "https://aclanthology.org/D18-1549.pdf",
+              "document_sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Equipped with the three principles detailed in Section 2, we now discuss how to effectively combine them in the context of a NMT model (Section 3.1) and PBSMT model (Section 3.2). In the reminder of the paper, we denote the space of source and target sentences by S and T , respectively, and the language models trained on source and target monolingual datasets by Ps and Pt , respectively. Finally, we denote by Ps→t and Pt→s the translation models from source to target and vice versa. An overview of our approach is given in Algorithm 1. 3.1 Unsupervised NMT We now introduce a new unsupervised NMT method, which is derived from earlier work by Artetxe et al. (2018) and Lample et al. (2018). We first discuss how the previously mentioned",
+              "url": "https://aclanthology.org/D18-1549.pdf",
+              "document_sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "They also use a transcompiler to create a parallel dataset CoffeeScript-Javascript. Unfortunately, all these approaches are supervised, and rely either on the existence of open source projects available in multiple languages, or on existing transcompilers, to create parallel data. Moreover, they essentially rely on BLEU score [38] to evaluate their translations [1, 10, 22, 36], which is not a reliable metric, as a generation can be a valid translation while being very different from the reference. Translating from source code. Other studies have investigated the use of machine translation from source code. For instance, Oda et al. [37] trained a PBSMT model to generate pseudo-code. To create a training set, they hired programmers to write the pseudo-code of existing Python functions. Barone and Sennrich [10] built a corpus of Python functions with their docstrings from open source GitHub repositories. They showed that a neural machine translation model could be used to map functions to their associated docstrings, and vice versa. Similarly, Hu et al. [21] proposed a neural approach, DeepCom, to automatically generate code comments for Java methods. Other applications. Another line of work studied the applications of neural networks to code suggestion [2, 11, 34], or error detection [13, 18, 47]. Recent approaches have also investigated the use of neural approaches for code decompilation [16, 24]. For instance, Katz et al. [23] propose a sequence-to-sequence model to predict the C code of binary programs. A common issue with standard seq2seq models, is that the generated functions are not guaranteed to compile, and even to be syntactically correct. To address this issue, several approaches proposed to use additional constraints on the decoder, to ensure that the",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "For TransCoder, we consider a sequence-to-sequence (seq2seq) model with attention [44, 9], composed of an encoder and a decoder with a transformer architecture [45]. We use a single shared model for all programming languages. We train it using the three principles of unsupervised machine translation identified in Lample et al. [32], namely initialization, language modeling, and back-translation. In this section, we summarize these principles and detail how we instantiate them to translate programming languages. An illustration of our approach is given in Figure 1. 3.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A transcompiler, also known as source-to-source translator, is a system that converts source code from a high-level programming language (such as C++ or Python) to another. Transcompilers are primarily used for interoperability, and to port codebases written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a modern one. They typically rely on handcrafted rewrite rules, applied to the source code abstract syntax tree. Unfortunately, the resulting translations often lack readability, fail to respect the target language conventions, and require manual modifications in order to work properly. The overall translation process is timeconsuming and requires expertise in both the source and target languages, making code-translation projects expensive. Although neural models significantly outperform their rule-based counterparts in the context of natural language translation, their applications to transcompilation have been limited due to the scarcity of parallel data in this domain. In this paper, we propose to leverage recent approaches in unsupervised machine translation to train a fully unsupervised neural transcompiler. We train our model on source code from open source GitHub projects, and show that it can translate functions between C++, Java, and Python with high accuracy. Our method relies exclusively on monolingual source code, requires no expertise in the source or target languages, and can easily be generalized to other programming languages. We also build and release a test set composed of 852 parallel functions, along with unit tests to check the correctness of translations. We show that our model outperforms rule-based commercial baselines by a significant margin.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "designed to be translated with a perfect accuracy (i.e. the compiled language does not require manual adjustments to work properly). In this paper, we are more interested in the traditional type of transcompilers, where typical use cases are to translate an existing codebase written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a recent one, or to integrate code written in a different language to an existing codebase. Migrating an existing codebase to a modern or more efficient language like Java or C++ requires expertise in both the source and target languages, and is often costly. For instance, the Commonwealth Bank of Australia spent around $750 million and 5 years of work to convert its platform from COBOL to Java. Using a transcompiler and manually adjusting the output source code may be a faster and cheaper solution than rewriting the entire codebase from scratch. In natural language, recent advances in neural machine translation have been widely accepted, even among professional translators, who rely more and more on automated machine translation systems. A similar phenomenon could be observed in programming language translation in the future. Translating source code from one Turing-complete language to another is always possible in theory. Unfortunately, building a translator is difficult in practice: different languages can have a different syntax and rely on different platform APIs and standard-library functions. Currently, the majority of transcompilation tools are rule-based; they essentially tokenize the input source code and convert it into an Abstract Syntax Tree (AST) on which they apply handcrafted rewrite rules. Creating them requires a lot of time, and advanced knowledge in both the source and target languages. Moreover, translating",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03b288548331ed0a45db4c0d",
+          "url": "https://aclanthology.org/D18-1549/"
+        },
+        "b": {
+          "paper_id": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "2e6475e72d320dbe138d51d9fb7eb0f9fab6abfa55cb612cab83a2ab6c133600"
+    },
+    {
+      "id": "edge-65563bd52dae8c9e9034ee70",
+      "a": "paper-03b288548331ed0a45db4c0d",
+      "b": "paper-fcfaa9919a06592b3bcdd52b",
+      "state": {
+        "paper_a": {
+          "title": "Phrase-Based & Neural Unsupervised Machine Translation",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Machine translation systems achieve near human-level performance on some languages, yet their effectiveness strongly relies on the availability of large amounts of parallel sentences, which hinders their applicability to the majority of language pairs. This work investigates how to learn to translate when having access to only large monolingual corpora in each language. We propose two model variants, a neural and a phrase-based model. Both versions leverage a careful initialization of the parameters, the denoising effect of language models and automatic generation of parallel data by iterative back-translation. These models are significantly better than methods from the literature, while being simpler and having fewer hyper-parameters. On the widely used WMT’14 English-French and WMT’16 German-English benchmarks, our models respectively obtain 28.1 and 25.2 BLEU points without using a single parallel sentence, outperforming the state of the art by more than 11 BLEU points. On low-resource languages like English-Urdu and English-Romanian, our methods achieve even better results than semi-supervised and supervised approaches leveraging the paucity of available bitexts. Our code for NMT and PBSMT is publicly available."
+        },
+        "paper_b": {
+          "title": "Break-It-Fix-It: Unsupervised Learning for Program Repair",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "We consider repair tasks: given a critic (e.g., compiler) that assesses the quality of an input, the goal is to train a fixer that converts a bad example (e.g., code with syntax errors) into a good one (e.g., code with no errors). Existing works create training data consisting of (bad, good) pairs by corrupting good examples using heuristics (e.g., dropping tokens). However, fixers trained on this synthetically-generated data do not extrapolate well to the real distribution of bad inputs. To bridge this gap, we propose a new training approach, Break-It-Fix-It (BIFI), which has two key ideas: (i) we use the critic to check a fixer’s output on real bad inputs and add good (fixed) outputs to the training data, and (ii) we train a breaker to generate realistic bad code from good code. Based on these ideas, we iteratively update the breaker and the fixer while using them in conjunction to generate more paired data. We evaluate BIFI on two code repair datasets: GitHub-Python, a new dataset we introduce where the goal is to repair Python code with AST parse errors; and DeepFix, where the goal is to repair C code with compiler errors. BIFI outperforms existing methods, obtaining 90.5% repair accuracy on GitHub-Python (+28.5%) and 71.7% on DeepFix (+5.6%). Notably, BIFI does not require any labeled data; we hope it will be a strong starting point for unsupervised learning of various repair tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The BIFI algorithm is related to backtranslation (Lample et al., 2018b) in unsupervised machine translation.\nThe BIFI algorithm is related to backtranslation in unsupervised machine translation (Lample et al., 2018a), which uses a target-to-source model to generate noisy sources and trains\na source-to-target model to reconstruct the targets (e.g., the bad-side and good-side in our repair task can be…\nBacktranslation (Sennrich et al., 2016; Lample et al., 2018a;b) is a common approach that uses the target-to-source model to generate noisy sources and then trains the source-to-target model to reconstruct the targets (also related to cycle-consistency (Zhu et al., 2017; Hoffman et al., 2018) and…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03b288548331ed0a45db4c0d",
+          "b": "paper-fcfaa9919a06592b3bcdd52b",
+          "input_sha256": "26659567aee2e3ca308b7dba74fe0cc05a0fe181971beb324e98a584581d93d1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D18-1549/",
+              "pdf_url": "https://aclanthology.org/D18-1549.pdf",
+              "sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/yasunaga21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Machine translation systems achieve near human-level performance on some languages, yet their effectiveness strongly relies on the availability of large amounts of parallel sentences, which hinders their applicability to the majority of language pairs. This work investigates how to learn to translate when having access to only large monolingual corpora in each language. We propose two model variants, a neural and a phrase-based model. Both versions leverage a careful initialization of the parameters, the denoising effect of language models and automatic generation of parallel data by iterative back-translation. These models are significantly better than methods from the literature, while being simpler and having fewer hyper-parameters. On the widely used WMT’14 English-French and WMT’16 German-English benchmarks, our models respectively obtain 28.1 and 25.2 BLEU points without using a single parallel sentence, outperforming the state of the art by more than 11 BLEU points. On low-resource languages like English-Urdu and English-Romanian, our methods achieve even better results than semisupervised and supervised approaches leveraging the paucity of available bitexts. Our code for NMT and PBSMT is publicly available.1",
+              "url": "https://aclanthology.org/D18-1549.pdf",
+              "document_sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Equipped with the three principles detailed in Section 2, we now discuss how to effectively combine them in the context of a NMT model (Section 3.1) and PBSMT model (Section 3.2). In the reminder of the paper, we denote the space of source and target sentences by S and T , respectively, and the language models trained on source and target monolingual datasets by Ps and Pt , respectively. Finally, we denote by Ps→t and Pt→s the translation models from source to target and vice versa. An overview of our approach is given in Algorithm 1. 3.1 Unsupervised NMT We now introduce a new unsupervised NMT method, which is derived from earlier work by Artetxe et al. (2018) and Lample et al. (2018). We first discuss how the previously mentioned",
+              "url": "https://aclanthology.org/D18-1549.pdf",
+              "document_sha256": "1f4c4ef9c7b87ad34a5d8feac3dfc68cfe490a4629c1add575c743b343f976d8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "distribution of real bad examples. For instance, as shown in Figure 2, synthetic perturbations may drop parentheses arbitrarily from code, generating errors that rarely happen in real programming (Figure 2 top right; synthetic errors); in contrast, real human-written code misses parentheses more often in a nested context (Figure 2 top center; human errors). As we will show in §4, this distribution mismatch between synthetic data and real data results in low performance. To bridge this gap, we propose Break-It-Fix-It (BIFI), a new method to learn a fixer from unlabeled data and a critic (Figure 3). BIFI is based on two core insights: (i) we can use the critic to check a fixer’s output on real bad examples and add good outputs to the training data, and (ii) we train a breaker to generate realistic bad examples from good examples. Specifically, given an initial fixer trained on synthetic paired data hsynthetic bad, goodi, BIFI improves the fixer and breaker simultaneously through rounds of data generation and training: (1) apply the fixer to real bad examples and keep fixed outputs to obtain real paired data, (2) use the resulting data to train the breaker, (3) use the learned breaker to generate code errors and obtain more paired data, and (4) train the fixer on the newly-generated paired data in (1) and (3). Intuitively, this cycle trains the fixer on increasingly more real or realistically generated bad code, adapting the fixer from the initial synthetic distributions towards real distributions of code errors. The BIFI algorithm is related to backtranslation in unsupervised machine translation (Lample et al., 2018a), which uses a target-to-source model to generate noisy sources and trains",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "For convenience, we call the original examples in Dbad real bad examples. Here Eq 6 applies the current fixer fk−1 to the real bad examples in Dbad , and keeps outputs that are actually fixed (verified by the critic c; red part). This way, we can ob(f ) tain new paired data Pk that is based on real bad examples. Eq 7 then trains the breaker bk (fine-tunes from the previous (f ) breaker bk−1 ) on this new paired data Pk so that intuitively it can learn to generate realistic bad examples. Next, Eq 8 applies the breaker bk to the good examples in Dgood , and keeps outputs that are actually broken (verified by the critic c; red (b) part). This provides an extra paired data Pk that is based on bad examples generated by the learned breaker. Finally, Eq 9 trains the fixer fk (fine-tunes from the previous fixer fk−1 ) (f ) (b) on both Pk and Pk , so that the fixer sees real and breakergenerated bad examples. Over time, this cycle adapts the fixer and breaker towards the distribution of real examples. Figure 3 (bottom right) provides an illustration of BIFI. 3.3. Comparison with Backtranslation The BIFI algorithm is related to backtranslation (Lample et al., 2018b) in unsupervised machine translation. One may view the bad-side and good-side in our setup as two source/target languages in machine translation. Backtranslation uses a target-to-source model to generate noisy sources and trains a source-to-target model to reconstruct the targets. Specifically,",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We consider repair tasks: given a critic (e.g., compiler) that assesses the quality of an input, the goal is to train a fixer that converts a bad example (e.g., code with syntax errors) into a good one (e.g., code with no syntax errors). Existing works create training data consisting of (bad, good) pairs by corrupting good examples using heuristics (e.g., dropping tokens). However, fixers trained on this synthetically-generated data do not extrapolate well to the real distribution of bad inputs. To bridge this gap, we propose a new training approach, Break-It-Fix-It (BIFI), which has two key ideas: (i) we use the critic to check a fixer’s output on real bad inputs and add good (fixed) outputs to the training data, and (ii) we train a breaker to generate realistic bad code from good code. Based on these ideas, we iteratively update the breaker and the fixer while using them in conjunction to generate more paired data. We evaluate BIFI on two code repair datasets: GitHub-Python, a new dataset we introduce where the goal is to repair Python code with AST parse errors; and DeepFix, where the goal is to repair C code with compiler errors. BIFI outperforms state-of-the-art methods, obtaining 90.5% repair accuracy on GitHubPython (+28.5%) and 71.7% on DeepFix (+5.6%). Notably, BIFI does not require any labeled data; we hope it will be a strong starting point for unsupervised learning of various repair tasks.",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We evaluate our proposed approach on two datasets: • GitHub-Python: We collected a new dataset of 3M Python code snippets from github.com. The task is to repair errors caught by the Python AST parser. We set the initial fixer to be an encoder-decoder Transformer (Vaswani et al., 2017) trained on random perturbations. • DeepFix (Gupta et al., 2017): The task is to repair compiler errors in C code submitted by students in an introductory programming course. We set the initial fixer to be the existing best system, DrRepair (Yasunaga & Liang, 2020), which was trained on manually-designed heuristic perturbations. Our approach (BIFI) outperforms the initial fixers, obtaining 90.5% repair accuracy on GitHub-Python (+28.5% absolute) and 71.7% repair accuracy on DeepFix (+5.6% absolute), attaining a new state-of-the-art. BIFI also improves on backtranslation by 10%. Further, we qualitatively show how the fixer and breaker adapt towards more realistic distributions of code through the BIFI algorithm (§4.3).",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03b288548331ed0a45db4c0d",
+          "url": "https://aclanthology.org/D18-1549/"
+        },
+        "b": {
+          "paper_id": "paper-fcfaa9919a06592b3bcdd52b",
+          "url": "https://proceedings.mlr.press/v139/yasunaga21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "f04889988c60feee5af56d6e76397dc33023ed2e8494c2740e0fb210d6b15e80"
+    },
+    {
+      "id": "edge-d2d0f76f59dcb7a221b93292",
+      "a": "paper-0470f2faf485d3740375e6ca",
+      "b": "paper-89b69af6657ec8b62db35caa",
+      "state": {
+        "paper_a": {
+          "title": "JuICe: A Large Scale Distantly Supervised Dataset for Open Domain Context-based Code Generation",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Interactive programming with interleaved code snippet cells and natural language markdown is recently gaining popularity in the form of Jupyter notebooks, which accelerate prototyping and collaboration. To study code generation conditioned on a long context history, we present JuICe, a corpus of 1.5 million examples with a curated test set of 3.7K instances based on online programming assignments. Compared with existing contextual code generation datasets, JuICe provides refined human-curated data, open-domain code, and an order of magnitude more training data. Using JuICe, we train models for two tasks: (1) generation of the API call sequence in a code cell, and (2) full code cell generation, both conditioned on the NL-Code history up to a particular code cell. Experiments using current baseline code generation models show that both context and distant supervision aid in generation, and that the dataset is challenging for current systems."
+        },
+        "paper_b": {
+          "title": "XCodeEval: An Execution-based Large Scale Multilingual Multitask Benchmark for Code Understanding, Generation, Translation and Retrieval",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, pre-trained large language models (LLMs) have shown impressive abilities in generating codes from natural language descriptions, repairing buggy codes, translating codes between languages, and retrieving relevant code segments. However, the evaluation of these models has often been performed in a scattered way on only one or two specific tasks, in a few languages, at a partial granularity (e.g., function) level, and in many cases without proper training data. Even more concerning is that in most cases the evaluation of generated codes has been done in terms of mere lexical overlap with a reference code rather than actual execution. We introduce xCodeEval, the largest executable multilingual multitask benchmark to date consisting of 25 M document-level coding examples (16.5 B tokens) from about 7.5 K unique problems covering up to 11 programming languages with execution-level parallelism. It features a total of 7 tasks involving code understanding, generation, translation and retrieval. xCodeEval adopts an execution-based evaluation and offers a multilingual code execution engine, ExecEval that supports unit test based execution in all the 11 languages. To address the challenge of balancing the distributions of text-code samples over multiple attributes in validation/test sets, we propose a novel data splitting and a data selection schema based on the geometric mean and graph-theoretic principle. Our experiments with OpenAI’s LLMs (zero-shot) and open-LLMs (zero-shot and fine-tuned) on the tasks and languages demonstrate to be quite challenging as per the current advancements in language models."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "We hope that by utilizing the extensive metadata and execution-based evaluation, there is potential for the discovery of new scaling laws and emergent capabilities.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0470f2faf485d3740375e6ca",
+          "b": "paper-89b69af6657ec8b62db35caa",
+          "input_sha256": "735539bf141dfb7001f82d51306c7bf5d3f04544f3154a5651be42f2385942af",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1546/",
+              "pdf_url": "https://aclanthology.org/D19-1546.pdf",
+              "sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.acl-long.367/",
+              "pdf_url": "https://aclanthology.org/2024.acl-long.367.pdf",
+              "sha256": "450a5226e54554835138b059e647926f3087b17b926aac5fa0418f0fded6eab4"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "uated. We collect and release 13,905 nbgrader notebooks to evaluate models for code generation tasks, which, together with the training set, forms the first dataset for general purpose code generation in an interactive setting. We define two code generation related tasks using JuICe: (1) generating API sequences, and (2) full code generation. The first task is more relaxed and aims to assist users by generating a sequence of all function calls (Gu et al., 2016b) needed to achieve the goal of the cell. The second task measures the ability of models to learn to generate fully functioning complete code snippets. For both tasks, we investigate strong neural baselines and study performance improvements obtained by varying the size of prior NL and code context considered, as well as varying training data size. In summary, we introduce the task of code generation under the paradigm of IC. We collect and release a new large-scale dataset together with a manually curated test set based on nbgrader. Finally, we evaluate strong neural baselines on two code generation tasks, which achieve reasonable performance, with significant room for improvement.",
+              "url": "https://aclanthology.org/D19-1546.pdf",
+              "document_sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "There is significant existing research on mapping single NL utterances directly to executable programs in the form of logical forms (Zettlemoyer and Collins, 2005), λ-DCS (Liang et al., 2013), regular expressions (Kushman and Barzilay, 2013; Locascio et al., 2016), database queries (Iyer et al., 2017; Zhong et al., 2017) and general purpose programs (Balog et al., 2016; Allamanis et al., 2015). Ling et al. (2016) generate Java and Python source code from NL for card games, conditioned on categorical card attributes. Iyer et al. (2018) generate Java class methods using a single NL instruction and conditioned on a list of class environment variables and methods. Yin et al. (2018) mine a large NL-code dataset from Stackoverflow to train models to map a NL programming question into a short example solution snippet. Gu et al. (2016c) use neural models to map Java documentation strings to a sequence of API calls. In this work, we introduce a new task of mapping NL to source code under an interactive programming paradigm i.e., conditioned on a sequence of past NL and code cells representing past exploratory interactions. Models for mapping NL to code have been evaluated on datasets containing templated code for",
+              "url": "https://aclanthology.org/D19-1546.pdf",
+              "document_sha256": "b27cfa5abc48a4ca2941c9c43fe9b0cc7c1812161eea959a880187171ab5947f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "We have introduced X C ODE E VAL , a large-scale multilingual multitask benchmark for code-based large language models. X C ODE E VAL features seven different tasks involving code understanding, generation, translation and retrieval in up to 17 programming languages, and it employs an executionbased evaluation protocol. We have also presented ExecEval, a multilingual code execution engine that supports all the programming languages in X C ODE E VAL . In summary, the combination of X C ODE E VAL and ExecEval presents a novel framework that offers a fresh perspective for examining and analyzing large language models, facilitating comprehensive and to some extent highly interpretable investigations. We hope that by utilizing the extensive metadata and execution-based evaluation, there is potential for the discovery of new scaling laws and emergent capabilities.",
+              "url": "https://aclanthology.org/2024.acl-long.367.pdf",
+              "document_sha256": "450a5226e54554835138b059e647926f3087b17b926aac5fa0418f0fded6eab4"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "years, specifically with the growth of large language models (LLMs), we have witnessed tremendous progress in synthesizing code that is not just relevant but also fully functional with no further human modification needed (Chen et al., 2021). The progress made in related tasks such as program synthesis (Chowdhery et al., 2022; Li et al., 2022), program repair (Berabi et al., 2021), code translation (Roziere et al., 2020, 2021), and code retrieval (Wan et al., 2019; Parvez et al., 2021) are having a profound impact on increasing developer productivity (Ziegler et al., 2022; Tan et al., 2023) and aiding educators (Finnie-Ansley et al., 2022). Despite the fact that advancements are expected to be general with benchmarks, their evaluation has been performed in a scattered way on a limited number of languages like Python and Java, on a partial granularity level such as at the level of a statement (Huang et al., 2022) or function (Husain et al., 2019), focusing on only one or two specific tasks like program synthesis and translation, and in many cases without fine-tuning data (Austin et al., 2021) or in terms of lexical n-gram based relevance (Iyer et al., 2018) rather than execution. We present a summary of the characteristics of existing program evaluation test-beds in Tables 1 and 6. To address these limitations, and drive further advancements in the creation of more general-purpose LLMs for problem solving, we introduce X C ODE EVAL , the largest executable multilingual multitask benchmark to date consisting of 20M coding examples from about 7.5K unique algorithmic problems. It covers up to 17 programming languages with the parallelism of multilingual data. It features a total of 7 tasks involving code understanding, generation, translation and retrieval, and wherever",
+              "url": "https://aclanthology.org/2024.acl-long.367.pdf",
+              "document_sha256": "450a5226e54554835138b059e647926f3087b17b926aac5fa0418f0fded6eab4"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "the idea of the global meaning representation of a program, which requires models to comprehend different interpretable code segments and connect both local and modular knowledge into a global representation. We propose execution-based evaluation with unit tests at the global level. While there are many benchmarks covering the local understanding of a code segment, there are only a few that work at a global level as shown in Table 6. We consider a pair of codes to be equivalent if they generate the same output for a given input regardless of syntax/languages (Sajnani, 2016). To support this, we have developed ExecEval, a standardized and distributed execution environment that supports 44 compilers/interpreters in all the languages in X C ODE E VAL . We also provide a large number of necessary unit tests (average of 50 per problem) for the relevant tasks (Table 1). In this context, it is noteworthy that 44 out of 165 problems in the CodeContest’s test split have no private unit tests. Additionally, it contains 104 problems without a complete collection of unit tests (as available in the source), thus being inadequate in assessing a solution’s correctness. We identified this issue and excluded such problems from our evaluation sets. Task difficulty and trainability. We wish to focus on problems of different difficulty levels (from 800 to 3500 rating points, following codeforces.com) such that models with different capabilities can be benchmarked against difficulty levels. We also aim to provide sufficient training data for each task so that pre-trained LMs can be fine-tuned or small-scale models can be trained from scratch. Data split. Balancing test distributions of textcode instances over multiple attributes such as problems, tags, and execution outcome (e.g., correct",
+              "url": "https://aclanthology.org/2024.acl-long.367.pdf",
+              "document_sha256": "450a5226e54554835138b059e647926f3087b17b926aac5fa0418f0fded6eab4"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0470f2faf485d3740375e6ca",
+          "url": "https://aclanthology.org/D19-1546/"
+        },
+        "b": {
+          "paper_id": "paper-89b69af6657ec8b62db35caa",
+          "url": "https://aclanthology.org/2024.acl-long.367/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "38ab1394a672447d35a7dd280d15583656e0ef23a9cc86bc5cc821455323de4d"
+    },
+    {
+      "id": "edge-0f3807ad123b64b796db81bb",
+      "a": "paper-04eda0bb06541ce8b0550844",
+      "b": "paper-fcfaa9919a06592b3bcdd52b",
+      "state": {
+        "paper_a": {
+          "title": "CyCADA: Cycle-Consistent Adversarial Domain Adaptation",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains."
+        },
+        "paper_b": {
+          "title": "Break-It-Fix-It: Unsupervised Learning for Program Repair",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "We consider repair tasks: given a critic (e.g., compiler) that assesses the quality of an input, the goal is to train a fixer that converts a bad example (e.g., code with syntax errors) into a good one (e.g., code with no errors). Existing works create training data consisting of (bad, good) pairs by corrupting good examples using heuristics (e.g., dropping tokens). However, fixers trained on this synthetically-generated data do not extrapolate well to the real distribution of bad inputs. To bridge this gap, we propose a new training approach, Break-It-Fix-It (BIFI), which has two key ideas: (i) we use the critic to check a fixer’s output on real bad inputs and add good (fixed) outputs to the training data, and (ii) we train a breaker to generate realistic bad code from good code. Based on these ideas, we iteratively update the breaker and the fixer while using them in conjunction to generate more paired data. We evaluate BIFI on two code repair datasets: GitHub-Python, a new dataset we introduce where the goal is to repair Python code with AST parse errors; and DeepFix, where the goal is to repair C code with compiler errors. BIFI outperforms existing methods, obtaining 90.5% repair accuracy on GitHub-Python (+28.5%) and 71.7% on DeepFix (+5.6%). Notably, BIFI does not require any labeled data; we hope it will be a strong starting point for unsupervised learning of various repair tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": ", 2018a;b) is a common approach that uses the target-to-source model to generate noisy sources and then trains the source-to-target model to reconstruct the targets (also related to cycle-consistency (Zhu et al., 2017; Hoffman et al., 2018) and style transfer (Shen et al.\nWithin domain adaptation, our task is also related to the setting where unlabeled data in the test domain is available (Sun & Saenko, 2016; Hoffman et al., 2018; Sun et al., 2020) (in our case, real bad code).\n…approach that uses the target-to-source model to generate noisy sources and then trains the source-to-target model to reconstruct the targets (also related to cycle-consistency (Zhu et al., 2017; Hoffman et al., 2018) and style transfer (Shen et al., 2017; Yang et al., 2018; Zhang et al., 2019)).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04eda0bb06541ce8b0550844",
+          "b": "paper-fcfaa9919a06592b3bcdd52b",
+          "input_sha256": "e1ff049d9779981f5f99a9c80c3e3b878e3fb2d25ef8583abcf6d2fb43d646d3",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/hoffman18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/yasunaga21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains.",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Liu et al., 2017). Such image-space models have only been shown to work for small image sizes and limited domain shifts. A more recent approach (Bousmalis et al., 2017a) was applied to larger images, but in a controlled environment with visually simple images for robotic applications. Image to Image translation techniques, such as CycleGAN (Zhu et al., 2017), have produced visually appealing results which preserve local content in natural scenes, but are not designed with an end task in mind and so may not always preserve semantics. For example, a model adapting from digits taken from Google Street View to handwritten digits can learn to make a printed 8 look like a hand-written 1. We propose Cycle-Consistent Adversarial Domain Adaptation (CyCADA), which adapts representations at both the pixel-level and feature-level while enforcing semantic consistency. We enforce both structural and semantic consistency during adaptation using a cycle-consistency loss (ie. the source should match the source mapped to target mapped back to source) and semantics losses based on a particular visual recognition task. The semantics losses both guide the overall representation to be discriminative and enforce semantic consistency before and after mapping between domains. Our approach offers a unified domain adversarial learning model which combines the interpretability and low level structural consistency of prior image-level approaches (Liu & Tuzel, 2016a; Bousmalis et al., 2017b; Shrivastava et al., 2017; Zhu et al., 2017; Liu et al., 2017) together with the regularization and strong empirical performance of prior feature-level approaches (Ganin & Lempitsky, 2015; Tzeng et al., 2017), as illustrated in Table 1. We apply our CyCADA model to the task of digit recognition across domains",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "than real data. In our repair task, unpaired real data (code snippets on GitHub) is available but paired real data is costly to obtain. Hence we considered adaptation from synthetic paired data to real paired data. Within domain adaptation, our task is also related to the setting where unlabeled data in the test domain is available (Sun & Saenko, 2016; Hoffman et al., 2018; Sun et al., 2020) (in our case, real bad code). The difference is that as our outputs are structured, we have a critic to check if the fixer’s output on the unlabeled data is correct. Leveraging this property, BIFI takes the correct outputs to create training data in the test domain (Eq 6); and trains a breaker to generate more data that simulates the test domain (Eq 8). Data augmentation. Data augmentation aims to generate extra training data. A common approach is to increase the source side data, for instance by adding modifications or sampling from generative models (Hannun et al., 2014; Jia & Liang, 2016; Krizhevsky et al., 2017; Antoniou et al., 2017; Yasunaga et al., 2018; Yu et al., 2018a; Lee et al., 2019; Berthelot et al., 2019; Xie et al., 2020). Several works also study target side augmentation, which keeps multiple (valid) target predictions made by a model and adds to training. This is commonly used in structured generation problems such as semantic parsing, program synthesis and molecule generation (Liang et al., 2013; Berant et al., 2013; Guu et al., 2017; Min et al., 2019; Zhong et al., 2020; Yang et al., 2020). While our method also augments training data, it differs in two aspects: 1) we use the fixer and breaker to augment both the source and target sides; 2) our goal is not only to increase the amount of training data, but also to adapt to the distribution of interest (real bad",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "5. Related work and discussion Learning to repair code. Several works learn to repair code from labeled datasets of source code edits made by programmers, e.g., error resolution records (Just et al., 2014; Chen et al., 2019; Mesbah et al., 2019; Bader et al., 2019; Tarlow et al., 2020; Ding et al., 2020). As labeled data is costly to prepare, various works study learning code fixers from unlabeled or synthetic data (Pu et al., 2016; Parihar et al., 2017; Ahmed et al., 2018; Pradel & Sen, 2018; Wang et al., 2018; Vasic et al., 2019; Gupta et al., 2019; Hajipour et al., 2019; Hellendoorn et al., 2020). In particular, Gupta et al. (2017) is an early work that randomly perturbs good code to prepare a synthetic paired data and trains a seq2seq neural network model as a fixer. Yasunaga & Liang (2020) improve on it by designing heuristic perturbations that mimic common errors made by programmers. Different from the above work, our method (BIFI) adapts a naive fixer trained with synthetic errors towards real errors without manual, domain-specific effort. For a more comprehensive review of automatic code repair, we refer readers to Monperrus (2020). Denoising autoencoding. Denoising autoencoding (Vincent et al., 2008) trains a model that recovers original data from randomly corrupted versions, and is widely used as an effective self-supervised representation learning and pretraining strategy, e.g., in computer vision (Erhan et al., 2010) and natural language processing (NLP) (Lewis et al. (2020), which randomly drops / replaces tokens in a sentence and learns to recover). Our initial fixer trained with random perturbations is a denoising autoencoder. Crucially, instead of using it purely for representation learning, we show that through the BIFI algorithm, one can turn the",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "distribution of real bad examples. For instance, as shown in Figure 2, synthetic perturbations may drop parentheses arbitrarily from code, generating errors that rarely happen in real programming (Figure 2 top right; synthetic errors); in contrast, real human-written code misses parentheses more often in a nested context (Figure 2 top center; human errors). As we will show in §4, this distribution mismatch between synthetic data and real data results in low performance. To bridge this gap, we propose Break-It-Fix-It (BIFI), a new method to learn a fixer from unlabeled data and a critic (Figure 3). BIFI is based on two core insights: (i) we can use the critic to check a fixer’s output on real bad examples and add good outputs to the training data, and (ii) we train a breaker to generate realistic bad examples from good examples. Specifically, given an initial fixer trained on synthetic paired data hsynthetic bad, goodi, BIFI improves the fixer and breaker simultaneously through rounds of data generation and training: (1) apply the fixer to real bad examples and keep fixed outputs to obtain real paired data, (2) use the resulting data to train the breaker, (3) use the learned breaker to generate code errors and obtain more paired data, and (4) train the fixer on the newly-generated paired data in (1) and (3). Intuitively, this cycle trains the fixer on increasingly more real or realistically generated bad code, adapting the fixer from the initial synthetic distributions towards real distributions of code errors. The BIFI algorithm is related to backtranslation in unsupervised machine translation (Lample et al., 2018a), which uses a target-to-source model to generate noisy sources and trains",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04eda0bb06541ce8b0550844",
+          "url": "https://proceedings.mlr.press/v80/hoffman18a.html"
+        },
+        "b": {
+          "paper_id": "paper-fcfaa9919a06592b3bcdd52b",
+          "url": "https://proceedings.mlr.press/v139/yasunaga21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "aa881b5b51d5407958c5f51d1caf0c64524106b3bc61224dca7bfa904d0136a4"
+    },
+    {
+      "id": "edge-a0d30ef09e2126efbc6eb64d",
+      "a": "paper-05eca28346f92e17e982df67",
+      "b": "paper-544bfe2023088b9e3b39387d",
+      "state": {
+        "paper_a": {
+          "title": "Quantifying Generalization in Reinforcement Learning",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "In this paper, we investigate the problem of overfitting in deep reinforcement learning. Among the most common benchmarks in RL, it is customary to use the same environments for both training and testing. This practice offers relatively little insight into an agent’s ability to generalize. We address this issue by using procedurally generated environments to construct distinct training and test sets. Most notably, we introduce a new environment called CoinRun, designed as a benchmark for generalization in RL. Using CoinRun, we find that agents overfit to surprisingly large training sets. We then show that deeper convolutional architectures improve generalization, as do methods traditionally found in supervised learning, including L2 regularization, dropout, data augmentation and batch normalization."
+        },
+        "paper_b": {
+          "title": "Hierarchical Programmatic Reinforcement Learning via Learning to Compose Programs",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Aiming to produce reinforcement learning (RL) policies that are human-interpretable and can generalize better to novel scenarios, Trivedi et al. (2021) present a method (LEAPS) that first learns a program embedding space to continuously parameterize diverse programs from a pre-generated program dataset, and then searches for a task-solving program in the learned program embedding space when given a task. Despite the encouraging results, the program policies that LEAPS can produce are limited by the distribution of the program dataset. Furthermore, during searching, LEAPS evaluates each candidate program solely based on its return, failing to precisely reward correct parts of programs and penalize incorrect parts. To address these issues, we propose to learn a meta-policy that composes a series of programs sampled from the learned program embedding space. By learning to compose programs, our proposed hierarchical programmatic reinforcement learning (HPRL) framework can produce program policies that describe out-of-distributionally complex behaviors and directly assign credits to programs that induce desired behaviors. The experimental results in the Karel domain show that our proposed framework outperforms baselines. The ablation studies confirm the limitations of LEAPS and justify our design choices."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Moreover, policies learned by DRL methods tend to overfit and often fail to generalize (Zhang et al., 2018; Cobbe et al., 2019; Sun et al., 2020a; Liu et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-05eca28346f92e17e982df67",
+          "b": "paper-544bfe2023088b9e3b39387d",
+          "input_sha256": "191c342ac7b91ae93c7ed78fd7fdbd3aafc956251795338c931eb649ce0c78dc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/cobbe19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/liu23p.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/liu23p/liu23p.pdf",
+              "sha256": "3dafe5e06ba732315d80e71c9186a6fd61f5306b6640d24372c90b4a33abcec3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we investigate the problem of overfitting in deep reinforcement learning. Among the most common benchmarks in RL, it is customary to use the same environments for both training and testing. This practice offers relatively little insight into an agent’s ability to generalize. We address this issue by using procedurally generated environments to construct distinct training and test sets. Most notably, we introduce a new environment called CoinRun, designed as a benchmark for generalization in RL. Using CoinRun, we find that agents overfit to surprisingly large training sets. We then show that deeper convolutional architectures improve generalization, as do methods traditionally found in supervised learning, including L2 regularization, dropout, data augmentation and batch normalization.",
+              "url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "document_sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "3. Quantifying Generalization 3.1. The CoinRun Environment We propose the CoinRun environment to evaluate the generalization performance of trained agents. The goal of each CoinRun level is simple: collect the single coin that lies at the end of the level. The agent controls a character that spawns on the far left, and the coin spawns on the far right. Several obstacles, both stationary and non-stationary, lie between the agent and the coin. A collision with an obstacle results in the agent’s immediate death. The only reward in the environment is obtained by collecting the coin, and this reward is a fixed positive constant. The level terminates when the agent dies, the coin is collected, or after 1000 time steps. We designed the game CoinRun to be tractable for existing algorithms. That is, given a sufficient number of training levels and sufficient training time, our algorithms learn a near optimal policy for all CoinRun levels. Each level is generated deterministically from a given seed, providing agents access to an arbitrarily large and easily quantifiable supply of training data. CoinRun mimics the style of platformer games like Sonic, but it is much simpler. For the purpose of evaluating generalization, this simplicity can be highly advantageous. Levels vary widely in difficulty, so the distribution of levels naturally forms a curriculum for the agent. Two different levels are shown in Figure 1. See Appendix A for more details about the environment and Appendix B for additional screenshots. Videos of a trained agent playing can be found here, and environment code can be found here. 3.2. CoinRun Generalization Curves Using the CoinRun environment, we can measure how successfully agents generalize from a given set of training lev-",
+              "url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "document_sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "has achieved tremendous success in various domains, including controlling robots (Gu et al., 2017; Ibarz et al., 2021; Lee et al., 2019; 2021), playing board games (Silver et al., 2016; 2017), and strategy games (Vinyals et al., 2019; Wurman et al., 2022). Yet, the black-box nature of neural network-based policies makes it difficult for the DRL-based systems to be interpreted and therefore trusted by human users (Lipton, 2016; Puiutta & Veith, 2020). Moreover, policies learned by DRL methods tend to overfit and often fail to generalize (Zhang et al., 2018; Cobbe et al., 2019; Sun et al., 2020a; Liu et al., 2022).",
+              "url": "https://proceedings.mlr.press/v202/liu23p/liu23p.pdf",
+              "document_sha256": "3dafe5e06ba732315d80e71c9186a6fd61f5306b6640d24372c90b4a33abcec3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Aiming to produce reinforcement learning (RL) policies that are human-interpretable and can generalize better to novel scenarios, Trivedi et al. (2021) present a method (LEAPS) that first learns a program embedding space to continuously parameterize diverse programs from a pre-generated program dataset, and then searches for a tasksolving program in the learned program embedding space when given a task. Despite the encouraging results, the program policies that LEAPS can produce are limited by the distribution of the program dataset. Furthermore, during searching, LEAPS evaluates each candidate program solely based on its return, failing to precisely reward correct parts of programs and penalize incorrect parts. To address these issues, we propose to learn a meta-policy that composes a series of programs sampled from the learned program embedding space. By learning to compose programs, our proposed hierarchical programmatic reinforcement learning (HPRL) framework can produce program policies that describe out-of-distributionally complex behaviors and directly assign credits to programs that induce desired behaviors. The experimental results in the Karel domain show that our proposed framework outperforms baselines. The ablation studies confirm the limitations of LEAPS and justify our design choices.",
+              "url": "https://proceedings.mlr.press/v202/liu23p/liu23p.pdf",
+              "document_sha256": "3dafe5e06ba732315d80e71c9186a6fd61f5306b6640d24372c90b4a33abcec3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "This work aims to address the issues of limited program distribution and poor credit assignment. To this end, we propose a hierarchical programmatic reinforcement learning (HPRL) framework. Instead of searching for a program from a program embedding space, we propose to learn a meta-policy, whose action space is the learned program embedding space, to produce a series of programs (i.e., predict a sequence of actions) to yield a composed task-solving program. By re-formulating synthesizing a program as predicting a sequence of programs, HPRL can produce out-ofdistributionally long or complex programs. Also, rewards obtained from the environment by executing each program from the composed program can be accurately attributed to each program, leading to more efficient learning.",
+              "url": "https://proceedings.mlr.press/v202/liu23p/liu23p.pdf",
+              "document_sha256": "3dafe5e06ba732315d80e71c9186a6fd61f5306b6640d24372c90b4a33abcec3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-05eca28346f92e17e982df67",
+          "url": "https://proceedings.mlr.press/v97/cobbe19a.html"
+        },
+        "b": {
+          "paper_id": "paper-544bfe2023088b9e3b39387d",
+          "url": "https://proceedings.mlr.press/v202/liu23p.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "8f112508c257fb8bd938d27997296a06f1a4ce8229a203b04763eead4ddd8225"
+    },
+    {
+      "id": "edge-33b15759fa1e3df6344039dd",
+      "a": "paper-063a4300e6a5e7a8df5060c8",
+      "b": "paper-89888d5dd12b6c5549ce2730",
+      "state": {
+        "paper_a": {
+          "title": "Coda: An End-to-End Neural Program Decompiler",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1, the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior with performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by a margin of 70% program accuracy. Our work reveals the vulnerability of binary executables and imposes a new threat to the protection of Intellectual Property (IP) for software development."
+        },
+        "paper_b": {
+          "title": "Synthesize, Execute and Debug: Learning to Repair for Neural Program Synthesis",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The use of deep learning techniques has achieved significant progress for program synthesis from input-output examples. However, when the program semantics become more complex, it still remains a challenge to synthesize programs that are consistent with the specification. In this work, we propose SED, a neural program generation framework that incorporates synthesis, execution, and debugging stages. Instead of purely relying on the neural program synthesizer to generate the final program, SED first produces initial programs using the neural program synthesizer component, then utilizes a neural program debugger to iteratively repair the generated programs. The integration of the debugger component enables SED to modify the programs based on the execution results and specification, which resembles the coding process of human programmers. On Karel, a challenging input-output program synthesis benchmark, SED reduces the error rate of the neural program synthesizer itself by a considerable margin, and outperforms the standard beam search for decoding."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-063a4300e6a5e7a8df5060c8",
+          "b": "paper-89888d5dd12b6c5549ce2730",
+          "input_sha256": "c5c5b868ef3c59e26f0469178b6ab4f36e8dab777e31ba400ece3283d42af962",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/cd0f74b5955dc87fd0605745c4b49ee8-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/cd0f74b5955dc87fd0605745c4b49ee8-Paper.pdf",
+              "sha256": "1abf8e79d472341c950590ea0111c3744672359d5dfa3fb1b06a919eaba0fde2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "the state-of-the-art performance on program translation [4, 5]. We identify three main subroutines in code decompilation: (i) learning control dependency from the connections between basic blocks in the low-level code; (ii) learning data dependency from the register usage and memory access; (iii) learning the grammar of the target PL. A straightforward neural-based solution is to use an autoencoder-decoder for translating the low-level program to the high-level code. Katz et al. [6] present a Recurrent Neural Network (RNN)-based method for decompilation. However, we observe that the naive Seq2Seq models are not suitable for decompilation due to the following reasons. First, the inputs to the decompiler are structured low-level statements2 that have different construction formats (e.g., number and type of operands). Processing the program as sequence inputs ignores the statement boundaries, thus breaks the modular property of the input program. Second, the output program of the Seq2Seq model has a lower probability of capturing the grammar of the target PL since the output is sequentially generated without explicit boundaries. Third, the three subroutines mentioned above are entangled together in the Seq2Seq model, making the learning process hard. In this work, we propose Coda, a neural program decompilation framework that resolves the above limitations. The requirement to yield a perfect program recovery is very hard to fulfill using a single autoencoder, especially for long programs. As such, Coda decomposes decompilation into two sequential phases: code sketch generation and iterative error correction. By finding a good approximate program and then iteratively updating it towards the perfect solution using dynamic information, Coda engenders superior performance",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1 , the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Program synthesis from input-output examples. Program synthesis from input-output speciﬁcation is a long-standing challenge with many applications [16, 10, 19], and recent years have witnessed signiﬁcant progress achieved by deep learning approaches [1, 20, 5, 2]. Different domainspeciﬁc languages (DSLs) have been investigated, such as AlgoLISP [12, 31] for array manipulation, FlashFill [20, 5, 29] for string transformation, and Karel [2, 23, 3] studied in this work. While most existing work only uses the execution results to post-select among a set of candidate programs predicted by a synthesizer, some recent work leverage more ﬁne-grained semantic information such as the intermediate execution states to improve the synthesizer performance [27, 31, 3, 7]. In our evaluation, we demonstrate that SED further provides performance gain by leveraging execution results to repair the synthesized programs. Besides neural network approaches, several generate-and-test techniques have been presented for program synthesis, mostly based on the symbolic search [22, 26]. Speciﬁcally, STOKE uses MCMC sampling to explore the space of program edits for superoptimization [22], while we demonstrate that with our neural network design, SED achieves good performance even with a simple heuristic search. CEGIS-based approaches utilize a symbolic solver for generating counterexamples to guide the program synthesis process [26, 13], which typically require a more complete and formal speciﬁcation than a few input-output examples as provided in the Karel domain. We consider developing more advanced search techniques to improve the model performance as future work. Program repair. There has been a line of work on program repair, including search-based techniques [15, 14, 18] and neural network",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cd0f74b5955dc87fd0605745c4b49ee8-Paper.pdf",
+              "document_sha256": "1abf8e79d472341c950590ea0111c3744672359d5dfa3fb1b06a919eaba0fde2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The use of deep learning techniques has achieved signiﬁcant progress for program synthesis from input-output examples. However, when the program semantics become more complex, it still remains a challenge to synthesize programs that are consistent with the speciﬁcation. In this work, we propose SED, a neural program generation framework that incorporates synthesis, execution, and debugging stages. Instead of purely relying on the neural program synthesizer to generate the ﬁnal program, SED ﬁrst produces initial programs using the neural program synthesizer component, then utilizes a neural program debugger to iteratively repair the generated programs. The integration of the debugger component enables SED to modify the programs based on the execution results and speciﬁcation, which resembles the coding process of human programmers. On Karel, a challenging input-output program synthesis benchmark, SED reduces the error rate of the neural program synthesizer itself by a considerable margin, and outperforms the standard beam search for decoding.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cd0f74b5955dc87fd0605745c4b49ee8-Paper.pdf",
+              "document_sha256": "1abf8e79d472341c950590ea0111c3744672359d5dfa3fb1b06a919eaba0fde2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "human programmers would go through the written code and attempt to ﬁx the program fragments that cause the issue. Inspired by the trial-and-error human coding procedure, we propose SED, which augments existing neural program synthesizers with a neural debugger component to repair the generated programs. Given the input-output speciﬁcation, SED ﬁrst synthesizes candidate programs with a neural program generation model. Next, SED executes the predicted programs and see if any of them satisﬁes the input-output examples. If none of them does, SED proceeds into the debugging stage, where it selects the most promising program from the candidates, then generates editing operations with a neural network component acting as the debugger. The neural program debugger iteratively modiﬁes the program until it passes the speciﬁcation or reaches the maximal number of editing iterations. Besides the syntactic information of candidate programs as token sequences, our debugger also leverages the semantic information provided by their execution traces, which facilitates it to ﬁx the semantic errors. We evaluate SED on Karel benchmark [2, 4], where the programs satisfying input-output examples could include control ﬂow constructs such as conditionals and loops. With different choices of the neural program synthesis model, SED consistently improves the performance of the synthesizer itself by a considerable margin. Meanwhile, when the synthesizer performs the greedy decoding and only provides a single program for editing, SED outperforms the standard beam search applied to the synthesizer, which further demonstrates the effectiveness of our SED framework.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/cd0f74b5955dc87fd0605745c4b49ee8-Paper.pdf",
+              "document_sha256": "1abf8e79d472341c950590ea0111c3744672359d5dfa3fb1b06a919eaba0fde2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-063a4300e6a5e7a8df5060c8",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-89888d5dd12b6c5549ce2730",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/cd0f74b5955dc87fd0605745c4b49ee8-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "58dfb6af16ae308fd5dfa6aa8c0675abfe39e03d29bc3beea4b89f5aa46f6107"
+    },
+    {
+      "id": "edge-3b1472827c5fcdabf4db333a",
+      "a": "paper-063a4300e6a5e7a8df5060c8",
+      "b": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+      "state": {
+        "paper_a": {
+          "title": "Coda: An End-to-End Neural Program Decompiler",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1, the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior with performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by a margin of 70% program accuracy. Our work reveals the vulnerability of binary executables and imposes a new threat to the protection of Intellectual Property (IP) for software development."
+        },
+        "paper_b": {
+          "title": "Unsupervised Translation of Programming Languages",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "A transcompiler, also known as source-to-source translator, is a system that converts source code from a high-level programming language (such as C++ or Python) to another. Transcompilers are primarily used for interoperability, and to port codebases written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a modern one. They typically rely on handcrafted rewrite rules, applied to the source code abstract syntax tree. Unfortunately, the resulting translations often lack readability, fail to respect the target language conventions, and require manual modifications in order to work properly. The overall translation process is time-consuming and requires expertise in both the source and target languages, making code-translation projects expensive. Although neural models significantly outperform their rule-based counterparts in the context of natural language translation, their applications to transcompilation have been limited due to the scarcity of parallel data in this domain. In this paper, we propose to leverage recent approaches in unsupervised machine translation to train a fully unsupervised neural transcompiler. We train our model on source code from open source GitHub projects, and show that it can translate functions between C++, Java, and Python with high accuracy. Our method relies exclusively on monolingual source code, requires no expertise in the source or target languages, and can easily be generalized to other programming languages. We also build and release a test set composed of 852 parallel functions, along with unit tests to check the correctness of translations. We show that our model outperforms rule-based commercial baselines by a significant margin."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Leveraging the compiler output or other approaches such as iterative error correction [16] could also boost the performance.\nRecent approaches have also investigated the use of neural approaches for code decompilation [16, 24].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-063a4300e6a5e7a8df5060c8",
+          "b": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+          "input_sha256": "53cccfbdf8bdc40405b165badd5e4dd577df34f176ec0e5f65f6587bb81e93dd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "the state-of-the-art performance on program translation [4, 5]. We identify three main subroutines in code decompilation: (i) learning control dependency from the connections between basic blocks in the low-level code; (ii) learning data dependency from the register usage and memory access; (iii) learning the grammar of the target PL. A straightforward neural-based solution is to use an autoencoder-decoder for translating the low-level program to the high-level code. Katz et al. [6] present a Recurrent Neural Network (RNN)-based method for decompilation. However, we observe that the naive Seq2Seq models are not suitable for decompilation due to the following reasons. First, the inputs to the decompiler are structured low-level statements2 that have different construction formats (e.g., number and type of operands). Processing the program as sequence inputs ignores the statement boundaries, thus breaks the modular property of the input program. Second, the output program of the Seq2Seq model has a lower probability of capturing the grammar of the target PL since the output is sequentially generated without explicit boundaries. Third, the three subroutines mentioned above are entangled together in the Seq2Seq model, making the learning process hard. In this work, we propose Coda, a neural program decompilation framework that resolves the above limitations. The requirement to yield a perfect program recovery is very hard to fulfill using a single autoencoder, especially for long programs. As such, Coda decomposes decompilation into two sequential phases: code sketch generation and iterative error correction. By finding a good approximate program and then iteratively updating it towards the perfect solution using dynamic information, Coda engenders superior performance",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1 , the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "They also use a transcompiler to create a parallel dataset CoffeeScript-Javascript. Unfortunately, all these approaches are supervised, and rely either on the existence of open source projects available in multiple languages, or on existing transcompilers, to create parallel data. Moreover, they essentially rely on BLEU score [38] to evaluate their translations [1, 10, 22, 36], which is not a reliable metric, as a generation can be a valid translation while being very different from the reference. Translating from source code. Other studies have investigated the use of machine translation from source code. For instance, Oda et al. [37] trained a PBSMT model to generate pseudo-code. To create a training set, they hired programmers to write the pseudo-code of existing Python functions. Barone and Sennrich [10] built a corpus of Python functions with their docstrings from open source GitHub repositories. They showed that a neural machine translation model could be used to map functions to their associated docstrings, and vice versa. Similarly, Hu et al. [21] proposed a neural approach, DeepCom, to automatically generate code comments for Java methods. Other applications. Another line of work studied the applications of neural networks to code suggestion [2, 11, 34], or error detection [13, 18, 47]. Recent approaches have also investigated the use of neural approaches for code decompilation [16, 24]. For instance, Katz et al. [23] propose a sequence-to-sequence model to predict the C code of binary programs. A common issue with standard seq2seq models, is that the generated functions are not guaranteed to compile, and even to be syntactically correct. To address this issue, several approaches proposed to use additional constraints on the decoder, to ensure that the",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "In this paper, we show that approaches of unsupervised machine translation can be applied to source code to create a transcompiler in a fully unsupervised way. TransCoder can easily be generalized to any programming language, does not require any expert knowledge, and outperforms commercial solutions by a large margin. Our results suggest that a lot of mistakes made by the model could easily be fixed by adding simple constraints to the decoder to ensure that the generated functions are syntactically correct, or by using dedicated architectures [12]. Leveraging the compiler output or other approaches such as iterative error correction [16] could also boost the performance. 10 11",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A transcompiler, also known as source-to-source translator, is a system that converts source code from a high-level programming language (such as C++ or Python) to another. Transcompilers are primarily used for interoperability, and to port codebases written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a modern one. They typically rely on handcrafted rewrite rules, applied to the source code abstract syntax tree. Unfortunately, the resulting translations often lack readability, fail to respect the target language conventions, and require manual modifications in order to work properly. The overall translation process is timeconsuming and requires expertise in both the source and target languages, making code-translation projects expensive. Although neural models significantly outperform their rule-based counterparts in the context of natural language translation, their applications to transcompilation have been limited due to the scarcity of parallel data in this domain. In this paper, we propose to leverage recent approaches in unsupervised machine translation to train a fully unsupervised neural transcompiler. We train our model on source code from open source GitHub projects, and show that it can translate functions between C++, Java, and Python with high accuracy. Our method relies exclusively on monolingual source code, requires no expertise in the source or target languages, and can easily be generalized to other programming languages. We also build and release a test set composed of 852 parallel functions, along with unit tests to check the correctness of translations. We show that our model outperforms rule-based commercial baselines by a significant margin.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "designed to be translated with a perfect accuracy (i.e. the compiled language does not require manual adjustments to work properly). In this paper, we are more interested in the traditional type of transcompilers, where typical use cases are to translate an existing codebase written in an obsolete or deprecated language (e.g. COBOL, Python 2) to a recent one, or to integrate code written in a different language to an existing codebase. Migrating an existing codebase to a modern or more efficient language like Java or C++ requires expertise in both the source and target languages, and is often costly. For instance, the Commonwealth Bank of Australia spent around $750 million and 5 years of work to convert its platform from COBOL to Java. Using a transcompiler and manually adjusting the output source code may be a faster and cheaper solution than rewriting the entire codebase from scratch. In natural language, recent advances in neural machine translation have been widely accepted, even among professional translators, who rely more and more on automated machine translation systems. A similar phenomenon could be observed in programming language translation in the future. Translating source code from one Turing-complete language to another is always possible in theory. Unfortunately, building a translator is difficult in practice: different languages can have a different syntax and rely on different platform APIs and standard-library functions. Currently, the majority of transcompilation tools are rule-based; they essentially tokenize the input source code and convert it into an Abstract Syntax Tree (AST) on which they apply handcrafted rewrite rules. Creating them requires a lot of time, and advanced knowledge in both the source and target languages. Moreover, translating",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ed23fbf18c2cd35f8c7f8de44f85c08d-Paper.pdf",
+              "document_sha256": "51b391703c8e6c40a07448ca9100d1b13f72fc74a5c5459cd67be2c369f1a36b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-063a4300e6a5e7a8df5060c8",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-ae3f4f0aecb6a0acc7cbb3a0",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "87e95d5ebdcc380416b55953d439c432f58ce70b160504a4dbf5ebae27285b09"
+    },
+    {
+      "id": "edge-e063c350f8afe0a995c3c004",
+      "a": "paper-063a4300e6a5e7a8df5060c8",
+      "b": "paper-e093637c81b486c8c2ada64a",
+      "state": {
+        "paper_a": {
+          "title": "Coda: An End-to-End Neural Program Decompiler",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1, the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior with performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by a margin of 70% program accuracy. Our work reveals the vulnerability of binary executables and imposes a new threat to the protection of Intellectual Property (IP) for software development."
+        },
+        "paper_b": {
+          "title": "DOBF: A Deobfuscation Pre-Training Objective for Programming Languages",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Recent advances in self-supervised learning have dramatically improved the state of the art on a wide variety of tasks. However, research in language model pre-training has mostly focused on natural languages, and it is unclear whether models like BERT and its variants provide the best pre-training when applied to other modalities, such as source code. In this paper, we introduce a new pre-training objective, DOBF, that leverages the structural aspect of programming languages and pre-trains a model to recover the original version of obfuscated source code. We show that models pre-trained with DOBF significantly outperform existing approaches on multiple downstream tasks, providing relative improvements of up to 12.2% in unsupervised code translation, and 5.3% in natural language code search. Incidentally, we found that our pre-trained model is able to deobfuscate fully obfuscated source files, and to suggest descriptive variable names."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Moreover, C compilers discard variable names, and current rule-based and neural-based decompilers generate obfuscated C code with uninformative variable names (Fu et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-063a4300e6a5e7a8df5060c8",
+          "b": "paper-e093637c81b486c8c2ada64a",
+          "input_sha256": "ba7b292eec3633702d3b693d829ed0f209c125e8c5d7d3bcb581364bdc462966",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/7d6548bdc0082aacc950ed35e91fcccb-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/7d6548bdc0082aacc950ed35e91fcccb-Paper.pdf",
+              "sha256": "5a8b9e84dc0b3d1d9c5f8df97ae6173c9c18dc35f338c8970c462b133a5deffc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "the state-of-the-art performance on program translation [4, 5]. We identify three main subroutines in code decompilation: (i) learning control dependency from the connections between basic blocks in the low-level code; (ii) learning data dependency from the register usage and memory access; (iii) learning the grammar of the target PL. A straightforward neural-based solution is to use an autoencoder-decoder for translating the low-level program to the high-level code. Katz et al. [6] present a Recurrent Neural Network (RNN)-based method for decompilation. However, we observe that the naive Seq2Seq models are not suitable for decompilation due to the following reasons. First, the inputs to the decompiler are structured low-level statements2 that have different construction formats (e.g., number and type of operands). Processing the program as sequence inputs ignores the statement boundaries, thus breaks the modular property of the input program. Second, the output program of the Seq2Seq model has a lower probability of capturing the grammar of the target PL since the output is sequentially generated without explicit boundaries. Third, the three subroutines mentioned above are entangled together in the Seq2Seq model, making the learning process hard. In this work, we propose Coda, a neural program decompilation framework that resolves the above limitations. The requirement to yield a perfect program recovery is very hard to fulfill using a single autoencoder, especially for long programs. As such, Coda decomposes decompilation into two sequential phases: code sketch generation and iterative error correction. By finding a good approximate program and then iteratively updating it towards the perfect solution using dynamic information, Coda engenders superior performance",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Reverse engineering of binary executables is a critical problem in the computer security domain. On the one hand, malicious parties may recover interpretable source codes from the software products to gain commercial advantages. On the other hand, binary decompilation can be leveraged for code vulnerability analysis and malware detection. However, efficient binary decompilation is challenging. Conventional decompilers have the following major limitations: (i) they are only applicable to specific source-target language pair, hence incurs undesired development cost for new language tasks; (ii) their output high-level code cannot effectively preserve the correct functionality of the input binary; (iii) their output program does not capture the semantics of the input and the reversed program is hard to interpret. To address the above problems, we propose Coda1 , the first end-to-end neural-based framework for code decompilation. Coda decomposes the decompilation task into of two key phases: First, Coda employs an instruction type-aware encoder and a tree decoder for generating an abstract syntax tree (AST) with attention feeding during the code sketch generation stage. Second, Coda then updates the code sketch using an iterative error correction machine guided by an ensembled neural error predictor. By finding a good approximate candidate and then fixing it towards perfect, Coda achieves superior performance compared to baseline approaches. We assess Coda’s performance with extensive experiments on various benchmarks. Evaluation results show that Coda achieves an average of 82% program recovery accuracy on unseen binary samples, where the state-of-the-art decompilers yield 0% accuracy. Furthermore, Coda outperforms the sequence-to-sequence model with attention by",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/093b60fd0557804c8ba0cbf1453da22f-Paper.pdf",
+              "document_sha256": "45034d63fd512d98fc7cc7f077d73ca30c44848d5ac5c1515485470bcb779b39"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "is actually suboptimal in the context of programming languages, and propose a new objective based on deobfuscation of identifier names in source code. Code obfuscation consists in modifying source code in order to make it harder for humans to understand, or smaller while keeping its behaviour unchanged. In some ancient interpreted languages, name minimization could also reduce the memory usage of the program. Today, it is used to protect intellectual property by preventing people from understanding and modifying the code, to prevent malware detection, and to compress programs (e.g. Javascript code) to reduce network payload sizes. Moreover, C compilers discard variable names, and current rule-based and neural-based decompilers generate obfuscated C code with uninformative variable names Fu et al. [2019]. Obfuscators typically apply several transformations to the code. While some operations can be reversed (e.g. dead code injection), the obfuscation of identifier names—renaming every variable, method and class with uninformative names—is irreversible and has a substantial impact on code comprehension Gellenbeck and Cook [1991], Takang et al. [1996], Lawrie et al. [2006]. By analyzing the overall structure of an obfuscated file, an experienced programmer can always, with time, understand the meaning of the obfuscated code. For instance, in the obfuscated example in Figure 1, one can recognize the function and guess that it implements a breadth-first search algorithm. We also expect neural networks, that excel in pattern recognition, to perform well on this task. We propose to pre-train a model to revert the obfuscation function, by training a sequence-to-sequence (seq2seq) model to convert obfuscated functions, where names of functions and variables have been replaced by",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/7d6548bdc0082aacc950ed35e91fcccb-Paper.pdf",
+              "document_sha256": "5a8b9e84dc0b3d1d9c5f8df97ae6173c9c18dc35f338c8970c462b133a5deffc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "model understand the structure of the code. In Jain et al. [2020], a model is trained on javascript code using a contrastive loss ensuring that the representations are robust to some semantic-preserving transformations. They showed that their model performs well on downstream code generation tasks and outperforms previous pre-training approaches. Kanade et al. [2020] applied MLM and the next sentence prediction objectives to pre-train models on Python code. More recently, Roziere et al. [2020] applied the unsupervised machine translation principles of Lample et al. [2018a,b] to monolingual source code from GitHub. They showed that the resulting model, TransCoder, was able to translate source code between Python, Java, and C++, in a fully unsupervised way. In this paper, we propose to use a code-specific objective to better pre-train models designed to be fine-tuned on code generation tasks: code deobfuscation. Machine learning is frequently used on tasks involving programming languages, including code completion Li et al. [2018], Liu et al. [2020], Kim et al. [2020], Svyatkovskoy et al. [2020], bug detection and code repair Allamanis et al. [2018], Wang et al. [2017], Chen et al. [2019], Murali et al. [2020], Tufano et al. [2019], Tarlow et al. [2020], code summarization Alon et al. [2019a], Hu et al. [2018], Xie et al. [2021], clone detection Wei and Li [2017], Ain et al. [2019], Wang et al. [2020], code search Gu et al. [2018], Cambronero et al. [2019] and code translation Chen et al. [2018], Roziere et al. [2020]. Most of these tasks can benefit from pre-trained models that capture the semantics of the code. Code deobfuscation. Empirical studies show that naming conventions and the use of informative identifier names make code more understandable, easier to maintain",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/7d6548bdc0082aacc950ed35e91fcccb-Paper.pdf",
+              "document_sha256": "5a8b9e84dc0b3d1d9c5f8df97ae6173c9c18dc35f338c8970c462b133a5deffc"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent advances in self-supervised learning have dramatically improved the state of the art on a wide variety of tasks. However, research in language model pretraining has mostly focused on natural languages, and it is unclear whether models like BERT and its variants provide the best pre-training when applied to other modalities, such as source code. In this paper, we introduce a new pre-training objective, DOBF, that leverages the structural aspect of programming languages and pre-trains a model to recover the original version of obfuscated source code. We show that models pre-trained with DOBF significantly outperform existing approaches on multiple downstream tasks, providing relative improvements of up to 12.2% in unsupervised code translation, and 5.3% in natural language code search. Incidentally, we found that our pre-trained model is able to deobfuscate fully obfuscated source files, and to suggest descriptive variable names.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/7d6548bdc0082aacc950ed35e91fcccb-Paper.pdf",
+              "document_sha256": "5a8b9e84dc0b3d1d9c5f8df97ae6173c9c18dc35f338c8970c462b133a5deffc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-063a4300e6a5e7a8df5060c8",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/093b60fd0557804c8ba0cbf1453da22f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-e093637c81b486c8c2ada64a",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/7d6548bdc0082aacc950ed35e91fcccb-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "e5406814c9a599b750c79722709263819ff96b1f3948d4979c9ec5fd12e57659"
+    },
+    {
+      "id": "edge-cc326ae4c1103928164ab9d2",
+      "a": "paper-08becc68a598a22e26394aec",
+      "b": "paper-fcfaa9919a06592b3bcdd52b",
+      "state": {
+        "paper_a": {
+          "title": "SyntaxSQLNet: Syntax Tree Networks for Complex and Cross-Domain Text-to-SQL Task",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Most existing studies in text-to-SQL tasks do not require generating complex SQL queries with multiple clauses or sub-queries, and generalizing to new, unseen databases. In this paper we propose SyntaxSQLNet, a syntax tree network to address the complex and cross-domain text-to-SQL generation task. SyntaxSQLNet employs a SQL specific syntax tree-based decoder with SQL generation path history and table-aware column attention encoders. We evaluate SyntaxSQLNet on a new large-scale text-to-SQL corpus containing databases with multiple tables and complex SQL queries containing multiple SQL clauses and nested queries. We use a database split setting where databases in the test set are unseen during training. Experimental results show that SyntaxSQLNet can handle a significantly greater number of complex SQL examples than prior work, outperforming the previous state-of-the-art model by 9.5% in exact matching accuracy. To our knowledge, we are the first to study this complex text-to-SQL task. Our task and models with the latest updates are available at https://yale-lily.github.io/seq2sql/spider."
+        },
+        "paper_b": {
+          "title": "Break-It-Fix-It: Unsupervised Learning for Program Repair",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "We consider repair tasks: given a critic (e.g., compiler) that assesses the quality of an input, the goal is to train a fixer that converts a bad example (e.g., code with syntax errors) into a good one (e.g., code with no errors). Existing works create training data consisting of (bad, good) pairs by corrupting good examples using heuristics (e.g., dropping tokens). However, fixers trained on this synthetically-generated data do not extrapolate well to the real distribution of bad inputs. To bridge this gap, we propose a new training approach, Break-It-Fix-It (BIFI), which has two key ideas: (i) we use the critic to check a fixer’s output on real bad inputs and add good (fixed) outputs to the training data, and (ii) we train a breaker to generate realistic bad code from good code. Based on these ideas, we iteratively update the breaker and the fixer while using them in conjunction to generate more paired data. We evaluate BIFI on two code repair datasets: GitHub-Python, a new dataset we introduce where the goal is to repair Python code with AST parse errors; and DeepFix, where the goal is to repair C code with compiler errors. BIFI outperforms existing methods, obtaining 90.5% repair accuracy on GitHub-Python (+28.5%) and 71.7% on DeepFix (+5.6%). Notably, BIFI does not require any labeled data; we hope it will be a strong starting point for unsupervised learning of various repair tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Such domain shifts typically occur across related but different datasets (Torralba & Efros, 2011; Fang et al., 2013; Venkateswara et al., 2017; Yu et al., 2018b; 2019; Peng et al., 2019; Kamath et al., 2020), as well as from synthetic data to real data (including sim2real) (Wang et al., 2015; Ganin…\n…is to increase the source side data, for instance by adding modifications or sampling from generative models (Hannun et al., 2014; Jia & Liang, 2016; Krizhevsky et al., 2017; Antoniou et al., 2017; Yasunaga et al., 2018; Yu et al., 2018a; Lee et al., 2019; Berthelot et al., 2019; Xie et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08becc68a598a22e26394aec",
+          "b": "paper-fcfaa9919a06592b3bcdd52b",
+          "input_sha256": "66c68a4cc71399b8a46461619103aad2a941c3a47a71963e771874654801df49",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D18-1193/",
+              "pdf_url": "https://aclanthology.org/D18-1193.pdf",
+              "sha256": "39ce75aa7c82f328a17b7b386b9da322f5edb4b9cb1b56a3ecaa87e4215a0c5b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/yasunaga21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "database schemas. To address those issues in the current semantic parsing datasets, Yu et al. (2018b) have developed a large-scale human labeled text-to-SQL dataset consisting of about 6,000 complex SQL queries and 200 databases with multiple tables. This dataset defines a new complex and cross-domain text-to-SQL task that requires models to generalize well to both new SQL queries and databases. The task cannot be solved easily without truly understanding the semantic meanings of the input questions. In this paper, we propose SyntaxSQLNet, a SQL specific syntax tree network to address the aforementioned task. Specifically, to generate complex SQL queries with multiple clauses, selections and sub-queries, we develop a syntax treebased decoder with SQL generation path history. To make our model learn to generalize to new databases with new tables and columns, we also develop a table-aware column encoder. Our contributions are as follows: • We propose SQL specific syntax tree networks for the complex and cross-domain text-to-SQL task, which is even able to solve nested queries on new, unseen databases. We are the first to develop a methodology for this challenging semantic parsing task. • We introduce a SQL specific syntax tree-based decoder with SQL path history and table-aware column attention encoders. Even with no hyperparameter tuning, our model can significantly outperform the previous best models, with 4.8% boost in exact matching accuracy. Error analysis shows that our model is able to generalize, and solve much more complex (e.g., nested) queries in unseen databases than prior work. • We also develop a cross-domain data augmentation method to generate more diverse training examples across databases, which further improves the exact matching accuracy by 7.5%. As a",
+              "url": "https://aclanthology.org/D18-1193.pdf",
+              "document_sha256": "39ce75aa7c82f328a17b7b386b9da322f5edb4b9cb1b56a3ecaa87e4215a0c5b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Most existing studies in text-to-SQL tasks do not require generating complex SQL queries with multiple clauses or sub-queries, and generalizing to new, unseen databases. In this paper we propose SyntaxSQLNet, a syntax tree network to address the complex and crossdomain text-to-SQL generation task. SyntaxSQLNet employs a SQL specific syntax tree-based decoder with SQL generation path history and table-aware column attention encoders. We evaluate SyntaxSQLNet on a new large-scale text-to-SQL corpus containing databases with multiple tables and complex SQL queries containing multiple SQL clauses and nested queries. We use a database split setting where databases in the test set are unseen during training. Experimental results show that SyntaxSQLNet can handle a significantly greater number of complex SQL examples than prior work, outperforming the previous state-of-the-art model by 9.5% in exact matching accuracy. To our knowledge, we are the first to study this complex text-to-SQL task. Our task and models with the latest updates are available at https://yale-lily. github.io/seq2sql/spider.",
+              "url": "https://aclanthology.org/D18-1193.pdf",
+              "document_sha256": "39ce75aa7c82f328a17b7b386b9da322f5edb4b9cb1b56a3ecaa87e4215a0c5b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "5. Related work and discussion Learning to repair code. Several works learn to repair code from labeled datasets of source code edits made by programmers, e.g., error resolution records (Just et al., 2014; Chen et al., 2019; Mesbah et al., 2019; Bader et al., 2019; Tarlow et al., 2020; Ding et al., 2020). As labeled data is costly to prepare, various works study learning code fixers from unlabeled or synthetic data (Pu et al., 2016; Parihar et al., 2017; Ahmed et al., 2018; Pradel & Sen, 2018; Wang et al., 2018; Vasic et al., 2019; Gupta et al., 2019; Hajipour et al., 2019; Hellendoorn et al., 2020). In particular, Gupta et al. (2017) is an early work that randomly perturbs good code to prepare a synthetic paired data and trains a seq2seq neural network model as a fixer. Yasunaga & Liang (2020) improve on it by designing heuristic perturbations that mimic common errors made by programmers. Different from the above work, our method (BIFI) adapts a naive fixer trained with synthetic errors towards real errors without manual, domain-specific effort. For a more comprehensive review of automatic code repair, we refer readers to Monperrus (2020). Denoising autoencoding. Denoising autoencoding (Vincent et al., 2008) trains a model that recovers original data from randomly corrupted versions, and is widely used as an effective self-supervised representation learning and pretraining strategy, e.g., in computer vision (Erhan et al., 2010) and natural language processing (NLP) (Lewis et al. (2020), which randomly drops / replaces tokens in a sentence and learns to recover). Our initial fixer trained with random perturbations is a denoising autoencoder. Crucially, instead of using it purely for representation learning, we show that through the BIFI algorithm, one can turn the",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "than real data. In our repair task, unpaired real data (code snippets on GitHub) is available but paired real data is costly to obtain. Hence we considered adaptation from synthetic paired data to real paired data. Within domain adaptation, our task is also related to the setting where unlabeled data in the test domain is available (Sun & Saenko, 2016; Hoffman et al., 2018; Sun et al., 2020) (in our case, real bad code). The difference is that as our outputs are structured, we have a critic to check if the fixer’s output on the unlabeled data is correct. Leveraging this property, BIFI takes the correct outputs to create training data in the test domain (Eq 6); and trains a breaker to generate more data that simulates the test domain (Eq 8). Data augmentation. Data augmentation aims to generate extra training data. A common approach is to increase the source side data, for instance by adding modifications or sampling from generative models (Hannun et al., 2014; Jia & Liang, 2016; Krizhevsky et al., 2017; Antoniou et al., 2017; Yasunaga et al., 2018; Yu et al., 2018a; Lee et al., 2019; Berthelot et al., 2019; Xie et al., 2020). Several works also study target side augmentation, which keeps multiple (valid) target predictions made by a model and adds to training. This is commonly used in structured generation problems such as semantic parsing, program synthesis and molecule generation (Liang et al., 2013; Berant et al., 2013; Guu et al., 2017; Min et al., 2019; Zhong et al., 2020; Yang et al., 2020). While our method also augments training data, it differs in two aspects: 1) we use the fixer and breaker to augment both the source and target sides; 2) our goal is not only to increase the amount of training data, but also to adapt to the distribution of interest (real bad",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We consider repair tasks: given a critic (e.g., compiler) that assesses the quality of an input, the goal is to train a fixer that converts a bad example (e.g., code with syntax errors) into a good one (e.g., code with no syntax errors). Existing works create training data consisting of (bad, good) pairs by corrupting good examples using heuristics (e.g., dropping tokens). However, fixers trained on this synthetically-generated data do not extrapolate well to the real distribution of bad inputs. To bridge this gap, we propose a new training approach, Break-It-Fix-It (BIFI), which has two key ideas: (i) we use the critic to check a fixer’s output on real bad inputs and add good (fixed) outputs to the training data, and (ii) we train a breaker to generate realistic bad code from good code. Based on these ideas, we iteratively update the breaker and the fixer while using them in conjunction to generate more paired data. We evaluate BIFI on two code repair datasets: GitHub-Python, a new dataset we introduce where the goal is to repair Python code with AST parse errors; and DeepFix, where the goal is to repair C code with compiler errors. BIFI outperforms state-of-the-art methods, obtaining 90.5% repair accuracy on GitHubPython (+28.5%) and 71.7% on DeepFix (+5.6%). Notably, BIFI does not require any labeled data; we hope it will be a strong starting point for unsupervised learning of various repair tasks.",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "distribution of real bad examples. For instance, as shown in Figure 2, synthetic perturbations may drop parentheses arbitrarily from code, generating errors that rarely happen in real programming (Figure 2 top right; synthetic errors); in contrast, real human-written code misses parentheses more often in a nested context (Figure 2 top center; human errors). As we will show in §4, this distribution mismatch between synthetic data and real data results in low performance. To bridge this gap, we propose Break-It-Fix-It (BIFI), a new method to learn a fixer from unlabeled data and a critic (Figure 3). BIFI is based on two core insights: (i) we can use the critic to check a fixer’s output on real bad examples and add good outputs to the training data, and (ii) we train a breaker to generate realistic bad examples from good examples. Specifically, given an initial fixer trained on synthetic paired data hsynthetic bad, goodi, BIFI improves the fixer and breaker simultaneously through rounds of data generation and training: (1) apply the fixer to real bad examples and keep fixed outputs to obtain real paired data, (2) use the resulting data to train the breaker, (3) use the learned breaker to generate code errors and obtain more paired data, and (4) train the fixer on the newly-generated paired data in (1) and (3). Intuitively, this cycle trains the fixer on increasingly more real or realistically generated bad code, adapting the fixer from the initial synthetic distributions towards real distributions of code errors. The BIFI algorithm is related to backtranslation in unsupervised machine translation (Lample et al., 2018a), which uses a target-to-source model to generate noisy sources and trains",
+              "url": "https://proceedings.mlr.press/v139/yasunaga21a/yasunaga21a.pdf",
+              "document_sha256": "ce69aa18ed550bd9e756f8e041e359f504c1483988c936fcf848defa716cb72b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08becc68a598a22e26394aec",
+          "url": "https://aclanthology.org/D18-1193/"
+        },
+        "b": {
+          "paper_id": "paper-fcfaa9919a06592b3bcdd52b",
+          "url": "https://proceedings.mlr.press/v139/yasunaga21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Programming with Large Language Models"
+      },
+      "sha256": "a001557624ff125ab291e7feb410d29c5601ff10b0ca53038a2901fccb4861b8"
+    }
+  ]
+}

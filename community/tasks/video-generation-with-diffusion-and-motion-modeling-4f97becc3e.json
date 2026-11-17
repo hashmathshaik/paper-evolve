@@ -1,0 +1,1006 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Video Generation with Diffusion and Motion Modeling",
+  "area": "3D Generation & Reconstruction",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-bfaf61e85c5e602e2d162810",
+      "a": "paper-9d393412c859832e3af92103",
+      "b": "paper-d34bfecf9a2ded515c886876",
+      "state": {
+        "paper_a": {
+          "title": "MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "The computational challenges of Large Language Model (LLM) inference remain a significant barrier to their widespread deployment, especially as prompt lengths continue to increase. Due to the quadratic complexity of the attention computation, it takes 30 minutes for an 8B LLM to process a prompt of 1M tokens (i.e., the pre-filling stage) on a single A100 GPU. Existing methods for speeding up prefilling often fail to maintain acceptable accuracy or efficiency when applied to long-context LLMs. To address this gap, we introduce MInference (Milliontokens Inference), a sparse calculation method designed to accelerate pre-filling of long-sequence processing. Specifically, we identify three unique patterns in long-context attention matrices-the A-shape, Vertical-Slash, and Block-Sparse-that can be leveraged for efficient sparse computation on GPUs. We determine the optimal pattern for each attention head offline and dynamically build sparseindices based on the assigned pattern during inference. With the pattern and sparse indices, we perform efficient sparse attention calculations via our optimized GPU kernels to significantly reduce the latency in the pre-filling stage of longcontext LLMs. Our proposed technique can be directly applied to existing LLMs without any modifications to the pre-training setup or additional fine-tuning. Byevaluating on a wide range of downstream tasks, including InfiniteBench, RULER, PG-19, and Needle In A Haystack, and models including LLaMA-3-1M, GLM-4-1M, Yi-200K, Phi-3-128K, and Qwen2-128K, we demonstrate that MInference effectively reduces inference latency by up to 10x for pre-filling on an A100, while maintaining accuracy. Our code is available at https://aka.ms/MInference."
+        },
+        "paper_b": {
+          "title": "Sparse Video-Gen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Diffusion Transformers (DiTs) dominate video generation but their high computational cost severely limits real-world applicability, usually requiring tens of minutes to generate a few seconds of video even on high-performance GPUs. This inefficiency primarily arises from the quadratic computational complexity of 3D full attention with respect to the context length. In this paper, we propose a training-free framework termed Sparse VideoGen (SVG) that leverages the inherent sparsity in 3D full attention to boost inference efficiency. We reveal that the attention heads can be dynamically classified into two groups depending on distinct sparse patterns: (1) Spatial Head, where only spatially-related tokens within each frame dominate the attention output, and (2) Temporal Head, where only temporally-related tokens across different frames dominate. Based on this insight, SVG proposes an online profiling strategy to capture the dynamic sparse patterns and predicts the type of attention head. Combined with a novel hardware-efficient tensor layout transformation and customized kernel implementations, SVG achieves up to 2.28$\\times$ and 2.33$\\times$ end-to-end speedup on CogVideoX-v1.5 and HunyuanVideo, respectively, while preserving generation quality. Our code will be open-sourced upon publication."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In contrast, MInference (Jiang et al., 2024) fails to maintain pixel fidelity (significant blurring in the first example) and temporal coherence (inconsistencies in the tree trunk in the second example). tion.\nTidalDecode (Yang et al., 2024a) shows that attention patterns across layers are highly correlated, while DuoAttention (Xiao et al., 2024a) and MInference (Jiang et al., 2024) demonstrate distinct sparse patterns across different attention heads.\nWe compare SVG against sparse attention algorithms DiTFastAttn (Yuan et al., 2024) and MInfer-ence (Jiang et al., 2024).\nDuoAttention (Xiao et al., 2024a) and MInference (Jiang et al., 2024) find distinct sparse patterns among attention heads, with varying focus on key tokens and context.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9d393412c859832e3af92103",
+          "b": "paper-d34bfecf9a2ded515c886876",
+          "input_sha256": "75dc69888d237eee2b6acd2cd4a5fd786b7db51c47f7374d4b40c0f9831bb7d6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5dfbe6f5671e82c76841ba687a8a9ecb-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/5dfbe6f5671e82c76841ba687a8a9ecb-Paper-Conference.pdf",
+              "sha256": "1ee682e239eafc71afff1fd79cdca2ab4b99016a803197472b357fd0e0f4e823"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/xi25c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xi25c/xi25c.pdf",
+              "sha256": "9b85fe51e382c2499bb43423cab02f9bb7942a0f7bb59bffd4a2650bc772ba20"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Figure 1: Attention weights, especially in long-context LLMs, exhibit up to 96.8% sparsity in contexts of 128K. We propose MInference, leveraging dynamic sparse attention to accelerate the pre-filling stage of long-context LLM inference. It achieves up to 10x speedup for 1M contexts on a single A100, as shown in (b), and matches or surpasses baselines, as demonstrated by Needle In A Haystack [Kam23] in (a) on LLaMA-3-8B-1M [Gra24]. †",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5dfbe6f5671e82c76841ba687a8a9ecb-Paper-Conference.pdf",
+              "document_sha256": "1ee682e239eafc71afff1fd79cdca2ab4b99016a803197472b357fd0e0f4e823"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Large language models (LLMs) have entered the era of long-context processing, with some of them supporting context windows ranging from 128K to 10M tokens [Gra24, RST+ 24, LYZA24, YCL+ 24, AJA+ 24, DA24]. These extended context windows enable LLMs to unlock a multitude of complex real-world applications, such as repository-level code understanding [BSK+ 24, JYW+ 23, POC+ 23], long-document question-answering [CPG+ 23, LZD+ 24], self-play reasoning [Ope24], extreme-label in-context learning [LZD+ 24], and long-horizon agent tasks [Wen23]. However, due to the quadratic complexity of attention, it can take several minutes for the model to process the input prompt (i.e., the pre-filling stage) and then start to produce the first token, which leads to unacceptable Time To First Token experience, thus greatly hinders the wide application of long-context LLMs. As shown in Fig. 2a, when serving LLaMA-3-8B on a single A100 machine, the model would keep users waiting for 3 minutes to finish the pre-filling stage given a prompt of 300K tokens, and this number increases to 30 minutes for a prompt of 1M tokens. The overhead of self-attention computation exceeds 90% of the total pre-filling latency, which makes it the major bottleneck in long-context processing of LLMs. Previous research has shown that the attention matrices are highly sparse [LQC+ 22, DSY24], which has led to the development of fixed sparse attention methods such as Longformer [BPC20] and BigBird [ZGD+ 20]. However, prior studies have also noted that attention distributions vary significantly across different inputs [LCW21, LQC+ 22]. This dynamic nature prevents prior sparse methods from being used directly on long-context LLMs without expensive training or fine-tuning. But if the dynamic sparse attention patterns",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5dfbe6f5671e82c76841ba687a8a9ecb-Paper-Conference.pdf",
+              "document_sha256": "1ee682e239eafc71afff1fd79cdca2ab4b99016a803197472b357fd0e0f4e823"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "2.2. Efficient attention methods Sparse attention in LLMs. Recent research on sparse attention in language models reveals diverse patterns to reduce computational overhead. StreamingLLM (Xiao et al., 2023) and LM-Infinite (Han et al., 2023) observe that attention scores often concentrate on the first few or local tokens, highlighting temporal locality. H2O (Zhang et al., 2023b), Scissorhands (Liu et al., 2024d) and DoubleSparsity (Yang et al., 2024b) identify a small set of “heavy hitter” tokens dominating overall attention scores. TidalDecode (Yang et al., 2024a) shows that attention patterns across layers are highly correlated, while DuoAttention (Xiao et al., 2024a) and MInference (Jiang et al., 2024) demonstrate distinct sparse patterns across different attention heads. However, these methods focus on token-level sparsity and do not leverage the inherent redundancy of video data.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xi25c/xi25c.pdf",
+              "document_sha256": "9b85fe51e382c2499bb43423cab02f9bb7942a0f7bb59bffd4a2650bc772ba20"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "Baselines. We compare SVG against sparse attention algorithms DiTFastAttn (Yuan et al., 2024) and MInference (Jiang et al., 2024). As DiTFastAttn can be considered as spatial head only algorithm, we also manually implement a temporal head only baseline named Temporal-only attention. We also include a cache-based DiT acceleration",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xi25c/xi25c.pdf",
+              "document_sha256": "9b85fe51e382c2499bb43423cab02f9bb7942a0f7bb59bffd4a2650bc772ba20"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Diffusion Transformers (DiTs) dominate video generation but their high computational cost severely limits real-world applicability, usually requiring tens of minutes to generate a few seconds of video even on high-performance GPUs. This inefficiency primarily arises from the quadratic computational complexity of 3D full attention with respect to the context length. In this paper, we propose a training-free framework termed Sparse VideoGen (SVG) that leverages the inherent sparsity in 3D full attention to boost inference efficiency. We reveal that the attention heads can be dynamically classified into two groups depending on distinct sparse patterns: (1) Spatial Head, where only spatially-related tokens within each frame dominate the attention output, and (2) Temporal Head, where only temporally-related tokens across different frames dominate. Based on this insight, SVG proposes an online profiling strategy to capture the dynamic sparse patterns and predicts the type of attention head. Combined with a novel hardware-efficient tensor layout transformation and customized kernel implementations, SVG achieves up to 2.28× end-to-end speedup on CogVideoX-v1.5, 2.33× on HunyuanVideo, while preserving generation quality. Our code is open-sourced at https://github.com/svgproject/Sparse-VideoGen.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xi25c/xi25c.pdf",
+              "document_sha256": "9b85fe51e382c2499bb43423cab02f9bb7942a0f7bb59bffd4a2650bc772ba20"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To tackle these challenges, we propose Sparse VideoGen (SVG), a training-free framework that accelerates video DiTs with the following novel designs: (1) To efficiently identify the best sparsity pattern for each attention head, SVG introduces an online profiling strategy with minimal overhead (∼3%). It randomly samples 1% tokens from each attention head and processes sampled tokens with full attention computation and two distinct sparse attentions (spatial head and temporal head). Finally, the sparse pattern with a lower error compared to the full attention is selected for each head. (2) To improve hardware efficiency, SVG proposes a novel layout transformation, which reorders the noncontiguous sparsity pattern of temporal head into a compact and hardware-friendly sparsity pattern.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xi25c/xi25c.pdf",
+              "document_sha256": "9b85fe51e382c2499bb43423cab02f9bb7942a0f7bb59bffd4a2650bc772ba20"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9d393412c859832e3af92103",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/5dfbe6f5671e82c76841ba687a8a9ecb-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-d34bfecf9a2ded515c886876",
+          "url": "https://proceedings.mlr.press/v267/xi25c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "c48f9f093cf23dadf63f4da87041867ebb3cd40a87c19bcb858b67d73c782241"
+    },
+    {
+      "id": "edge-f5c052abfd9542dd1a83ee5e",
+      "a": "paper-01aba923fc0bec3b74b57068",
+      "b": "paper-2a5938eb4e04e70c5a9b8498",
+      "state": {
+        "paper_a": {
+          "title": "Temporally Consistent Transformers for Video Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "To generate accurate videos, algorithms have to understand the spatial and temporal dependencies in the world. Current algorithms enable accurate predictions over short horizons but tend to suffer from temporal inconsistencies. When generated content goes out of view and is later revisited, the model invents different content instead. Despite this severe limitation, no established benchmarks exist for video generation with long temporal dependencies. In this paper, we curate 3 challenging video datasets with long-range dependencies by rendering walks through 3D scenes of procedural mazes, Minecraft worlds, and indoor scans. We perform a comprehensive evaluation of current models and observe their limitations in temporal consistency. Moreover, we introduce the Temporally Consistent Transformer (TECO), a generative model that substantially improves long-term consistency while also reducing sampling time. By compressing its input sequence into fewer embeddings, applying a temporal transformer, and expanding back using a spatial MaskGit, TECO outperforms existing models across many metrics. Videos are available on the website: https://wilson1yan.github.io/teco"
+        },
+        "paper_b": {
+          "title": "History-Guided Video Diffusion",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Classifier-free guidance (CFG) is a key technique for improving conditional generation in diffusion models, enabling more accurate control while enhancing sample quality. It is natural to extend this technique to video diffusion, which generates video conditioned on a variable number of context frames, collectively referred to as history. However, we find two key challenges to guiding with variable-length history: architectures that only support fixed-size conditioning, and the empirical observation that CFG-style history dropout performs poorly. To address this, we propose the Diffusion Forcing Transformer (DFoT), a video diffusion architecture and theoretically grounded training objective that jointly enable conditioning on a flexible number of history frames. We then introduce History Guidance, a family of guidance methods uniquely enabled by DFoT. We show that its simplest form, vanilla history guidance, already significantly improves video generation quality and temporal consistency. A more advanced method, history guidance across time and frequency further enhances motion dynamics, enables compositional generalization to out-of-distribution history, and can stably roll out extremely long videos. Project website: https://boyuan.space/history-guidance"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Lastly, for RealEstate10K, we train directly in pixel space, based on the observation that latent diffusion models struggle to correctly follow camera pose conditioning, leading to poor performance on this dataset.\n• Q2: Does binary dropout diffusion (BD) perform competitively as an alternative training approach that also supports flexible history?",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01aba923fc0bec3b74b57068",
+          "b": "paper-2a5938eb4e04e70c5a9b8498",
+          "input_sha256": "a8348a38687187ae0586810f356e61ae25e42b125f65d3a568f61b5fb41d7771",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/yan23b.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/yan23b/yan23b.pdf",
+              "sha256": "7a01c4df32ec8d7c043b84e8b01f25226f0e8787ba1a224909eeb2b235a5e505"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/song25b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/song25b/song25b.pdf",
+              "sha256": "58c8dd61dac37483c59642b5e52a98ecef5bcbd3fde26cdfdda87846235966df"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In addition, there generally do not exist benchmarks for properly evaluating temporal consistency in video generation methods, where prior works either focus on generating long videos where short-term dependencies are sufficient for accurate prediction (Ge et al., 2022; Skorokhodov et al., 2021) and/or rely on metrics such as FVD (Unterthiner et al., 2019) which are more sensitive to image fidelity rather than capture long-range temporal dependencies. In this paper, we introduce a set of novel long-horizon video generation benchmarks, as well as corresponding evaluation metrics to better capture temporal consistency. In addition, we propose Temporally Consistent Video Transformer (TECO), a vector-quantized latent dynamics model that effectively models long-term dependencies in a compact representation space using efficient transformers. The key contributions are summarized as follows:",
+              "url": "https://proceedings.mlr.press/v202/yan23b/yan23b.pdf",
+              "document_sha256": "7a01c4df32ec8d7c043b84e8b01f25226f0e8787ba1a224909eeb2b235a5e505"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "To generate accurate videos, algorithms have to understand the spatial and temporal dependencies in the world. Current algorithms enable accurate predictions over short horizons but tend to suffer from temporal inconsistencies. When generated content goes out of view and is later revisited, the model invents different content instead. Despite this severe limitation, no established benchmarks on complex data exist for rigorously evaluating video generation with long temporal dependencies. In this paper, we curate 3 challenging video datasets with long-range dependencies by rendering walks through 3D scenes of procedural mazes, Minecraft worlds, and indoor scans. We perform a comprehensive evaluation of current models and observe their limitations in temporal consistency. Moreover, we introduce the Temporally Consistent Transformer (TECO), a generative model that substantially improves long-term consistency while also reducing sampling time. By compressing its input sequence into fewer embeddings, applying a temporal transformer, and expanding back using a spatial MaskGit, TECO outperforms existing models across many metrics. Videos are available on the website: https: //wilson1yan.github.io/teco",
+              "url": "https://proceedings.mlr.press/v202/yan23b/yan23b.pdf",
+              "document_sha256": "7a01c4df32ec8d7c043b84e8b01f25226f0e8787ba1a224909eeb2b235a5e505"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "We validate DFoT as a competitive video generative model without history guidance by answering the questions: • Q1: How does DFoT compare to the conventional video diffusion approach in standard video benchmarks? • Q2: Does binary dropout diffusion (BD) perform competitively as an alternative training approach that also supports flexible history? • Q3: Is DFoT empirically flexible enough to handle arbitrary sets of history frames? • Q4: Can we fine-tine an existing model into DFoT? We summarize quantitative and qualitative results in Table 1 and Figure 4 respectively. Competitive Performance of DFoT (Q1) without Guidance. DFoT outperforms all baselines, including singletask standard diffusion (SD), despite SD being optimized for the eval’s specific history length. This demonstrates DFoT’s flexibility without sacrificing task-specific performance, aligning with observations from (Chen et al., 2024).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/song25b/song25b.pdf",
+              "document_sha256": "58c8dd61dac37483c59642b5e52a98ecef5bcbd3fde26cdfdda87846235966df"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Classifier-free guidance (CFG) is a key technique for improving conditional generation in diffusion models, enabling more accurate control while enhancing sample quality. It is natural to extend this technique to video diffusion, which generates video conditioned on a variable number of context frames, collectively referred to as history. However, we find two key challenges to guiding with variable-length history: architectures that only support fixed-size conditioning, and the empirical observation that CFG-style history dropout performs poorly. To address this, we propose the Diffusion Forcing Transformer (DFoT), a video diffusion architecture and theoretically grounded training objective that jointly enable conditioning on a flexible number of history frames. We then introduce History Guidance, a family of guidance methods uniquely enabled by DFoT. We show that its simplest form, vanilla history guidance, already significantly improves video generation quality and temporal consistency. A more advanced method, history guidance across time and frequency further enhances motion dynamics, enables compositional generalization to out-ofdistribution history, and can stably roll out extremely long videos. Project website: https: //boyuan.space/history-guidance",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/song25b/song25b.pdf",
+              "document_sha256": "58c8dd61dac37483c59642b5e52a98ecef5bcbd3fde26cdfdda87846235966df"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "To address these limitations, we propose the Diffusion Forcing Transformer (DFoT), a video diffusion framework that enables flexible conditioning on any portion of the input history. Extending the “noising-as-masking” paradigm in Diffusion Forcing (Chen et al., 2024) to non-causal transformers, DFoT trains video diffusion models by applying independent noise levels to each frame. During sampling, portions of the history can be selectively masked with noise, enabling flexible conditioning and guidance. For instance, in CFG, the unconditional score corresponds to our model with the entire history masked out. Notably, DFoT is compatible with existing architectures such as DiT (Peebles & Xie, 2023) and U-ViT (Hoogeboom et al., 2023; 2024) and can be efficiently implemented through fine-tuning of pre-trained video diffusion models. At sampling time, the DFoT facilitates a family of historyconditioned guidance methods, collectively referred to as History Guidance (HG). The simplest of these, Vanilla History Guidance (HG-v), uses an arbitrary length of history as the conditioning variable for CFG. Notably, even this simple method significantly enhances video quality. We further introduce two advanced methods enabled by the DFoT: Temporal History Guidance (HG-t) and Fractional History Guidance (HG-f) . These extend history guidance beyond a special case of CFG. Temporal History Guidance combines scores from different history windows. Fractional History Guidance conditions on history windows corrupted by varying levels of noise, effectively acting as a “low-pass filter” on historical frames. With minor modifications, it can also target specific frequency bandwidths to enhance the dynamic degree of generated videos (hence the frequency-based terminology). Together, we compose",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/song25b/song25b.pdf",
+              "document_sha256": "58c8dd61dac37483c59642b5e52a98ecef5bcbd3fde26cdfdda87846235966df"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01aba923fc0bec3b74b57068",
+          "url": "https://proceedings.mlr.press/v202/yan23b.html"
+        },
+        "b": {
+          "paper_id": "paper-2a5938eb4e04e70c5a9b8498",
+          "url": "https://proceedings.mlr.press/v267/song25b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "ef1ef5b729797fe3a8af7afb7c98ea156c6cb328745c6a25be30987d12c923ab"
+    },
+    {
+      "id": "edge-59e1036f72ea79d725e248ec",
+      "a": "paper-0909609771e64ac4120a2d15",
+      "b": "paper-f808e210d7035e1b01d5f9bd",
+      "state": {
+        "paper_a": {
+          "title": "L4GM: Large 4D Gaussian Reconstruction Model",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We present L4GM, the first 4D Large Reconstruction Model that produces animated objects from a single-view video input -- in a single feed-forward pass that takes only a second.Key to our success is a novel dataset of multiview videos containing curated, rendered animated objects from Objaverse. This dataset depicts 44K diverse objects with 110K animations rendered in 48 viewpoints, resulting in 12M videos with a total of 300M frames. We keep our L4GM simple for scalability and build directly on top of LGM, a pretrained 3D Large Reconstruction Model that outputs 3D Gaussian ellipsoids from multiview image input.L4GM outputs a per-frame 3D Gaussian splat representation from video frames sampled at a low fps and then upsamples the representation to a higher fps to achieve temporal smoothness. We add temporal self-attention layers to the base LGM to help it learn consistency across time, and utilize a per-timestep multiview rendering loss to train the model. The representation is upsampled to a higher framerate by training an interpolation model which produces intermediate 3D Gaussian representations. We showcase that L4GM that is only trained on synthetic data generalizes well on in-the-wild videos, producing high quality animated 3D assets."
+        },
+        "paper_b": {
+          "title": "Cavia: Camera-controllable Multi-view Video Diffusion with View-Integrated Attention",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "In recent years there have been remarkable breakthroughs in image-to-video generation. However, the 3D consistency and camera controllability of generated frames have remained unsolved. Recent studies have attempted to incorporate camera control into the generation process, but their results are often limited to simple trajectories or lack the ability to generate consistent videos from multiple distinct camera paths for the same scene. To address these limitations, we introduce Cavia, a novel framework for camera-controllable, multi-view video generation, capable of converting an input image into multiple spatiotemporally consistent videos. Our framework extends the spatial and temporal attention modules into view-integrated attention modules, improving both viewpoint and temporal consistency. This flexible design allows for joint training with diverse curated data sources, including scene-level static videos, object-level synthetic multi-view dynamic videos, and real-world monocular dynamic videos. To the best of our knowledge, Cavia is the first framework that enables users to generate multiple videos of the same scene with precise control over camera motion, while simultaneously preserving object motion. Extensive experiments demonstrate that Cavia surpasses state-of-the-art methods in terms of geometric consistency and perceptual quality."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Follow-up works (Jiang et al., 2023; Ren et al., 2023; Yin et al., 2023; Ren et al., 2024; Zeng et al., 2024; Pan et al., 2024) investigate video-to-4D generation, enabling controllable 4D scene generation from monocular videos.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0909609771e64ac4120a2d15",
+          "b": "paper-f808e210d7035e1b01d5f9bd",
+          "input_sha256": "5f274ba6dd3397f7a581dba14bb765b4fa963580838b9b911543699bd953b00e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/6808f2c57d9564a2639a4710e3bbd9b9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/xu25l.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25l/xu25l.pdf",
+              "sha256": "55bb1491bad603e10b0ffb0be915b24fdeb26104533d97af0cf4b1deb50d5646"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Past work on automatically generating animated 3D objects, which we refer to as 4D modeling in this paper, falls into different categories. The first line of work aims to faithfully reconstruct 4D objects from multiview video data, and oftentimes requires many views across time to achieve high quality [29, 5, 36]. Such data is expensive to collect which limits applicability. Another line of work instead relies on the power of video generative models. Most commonly, the video score distillation technique is used which optimizes a 4D representation, for example a 3D deformation field, by receiving iterative feedback from the video generative model. Score distillation is known to be fragile (sensitive to prompts), and time consuming (hours per prompt) as oftentimes many iterations are needed to achieve high quality results [47, 26, 72, 1]. Recently, a promising method emerged for the task of single-image 3D reconstruction. This method leverages large scale synthetic and real datasets to train a large transformer model, dubbed 3D Large Reconstruction Model (LRM) [20, 19], to generate 3D objects represented as neural radiance fields from a single image in a single forward pass – thus being extremely fast. We build on top of this idea to achieve fast and high quality 4D reconstruction. We present L4GM, the first 4D Large Reconstruction Model (Figure 2), which aims to reconstruct a sequence of 3D Gaussians [22] from a monocular video, in a feed-forward fashion. Key to our method, is a new large-scale dataset containing 12 million multiview videos of rendered animated 3D objects from Objaverse 1.0 [11]. Our model builds on top of LGM [49], a pre-trained 3D Large Reconstruction Model that is trained to output 3D Gaussians from multiview images. We extend it to take a sequence",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "document_sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Given a monocular video of a dynamic object, denoted as I = {It }Tt=1 where T is video length, our objective is to rapidly reconstruct an accurate 4D representation of the object. Our approach is grounded in two conceptually simple yet impactful insights. Our inspiration stems from video diffusion models. Recent advances in video generation have highlighted the benefits of first pretraining on image data and then extending and finetuning the model on video datasets to effectively model temporal consistency [3, 16, 59, 2]. Similarly, recognizing the scarcity of 4D data, we want to leverage a pre-trained Large Multi-View Gaussian Model (LGM) [49] that operates on images and has been extensively trained on a large-scale 3D dataset of static objects. This strategy leverages the robustness of pre-trained models to effectively train a 4D reconstruction model with limited data. Secondly, in constrast to most existing methods [28, 29] that are required to use multiview videos for 4D reconstruction, we found that utilizing a single set of multiview images at the initial timestep is sufficient. We can obtain these multiview images easily by leveraging multiview image diffusion models to expand the first frame of the view. By adding temporal self-attention layers, our model capitalizes on the initial multiview input by propagating and adapting this information across subsequent timesteps (subsection 4.2). This approach significantly reduces the computational complexity and challenges typically associated with generating consistent multiview videos, while still enhancing the quality of the reconstruction, as our results demonstrate. Thus, in the following, we introduce L4GM, a model that processes a monocular video to output a set of 3D Gaussians for each timestep, denoted by P =",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "document_sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Recent efforts in 4D generation have explored various methods (Singer et al., 2023; Zhao et al., 2023; Bahmani et al., 2023; Zheng et al., 2023; Ling et al., 2023a) that use score distillation from video diffusion models to optimize dynamic NeRFs or 3D Gaussians for text- or imageconditioned scenes. Follow-up works (Jiang et al., 2023; Ren et al., 2023; Yin et al., 2023; Ren et al., 2024; Zeng et al., 2024; Pan et al., 2024) investigate video-to-4D generation, enabling controllable 4D scene generation from monocular videos. More recent methods (Liang et al., 2024; Xie et al., 2024; Zhang et al., 2024) utilize video diffusion models to address the spatial-temporal consistency required for efficient 4D generation. However, these approaches primarily focus on object-centric generation and face challenges in producing realistic results with complex backgrounds. In contrast, our work emphasizes generating multi-view, 3Dconsistent videos for complex scenes.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25l/xu25l.pdf",
+              "document_sha256": "55bb1491bad603e10b0ffb0be915b24fdeb26104533d97af0cf4b1deb50d5646"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "To address these challenges, we propose Cavia, a novel framework that extends a monocular video generator (Stability, 2023) to generate multi-view consistent videos with precise camera control. We enhance the spatial and temporal attention modules to cross-view and cross-frame 3D attentions respectively, improving consistency across both viewpoints and frames. Our model architecture enables a novel joint training strategy that fully utilizes static, monocular, and multi-view dynamic videos. Static videos (Zhou et al., 2018; Yu et al., 2023; Xia et al., 2024; Reizenstein et al., 2021; Deitke et al., 2023b;a) are converted to multiview formats to ensure the geometric consistency in the generated frames. We then incorporate rendered synthetic multi-view videos of dynamic 3D objects (Liang et al., 2024; Jiang et al., 2024; Li et al., 2024c) to teach the model to generate reasonable object motion. To prevent overfitting on synthetic data, we finetune the model on pose-annotated monocular videos (Wang et al., 2023b; Nan et al., 2024) to enhance performance on complex scenes. Our framework synthesizes cross-view and cross-frame consistent videos, and extensive evaluations on real and text-to-image generated images show its applicability across challenging indoor, outdoor, object-centric, and large-scene cases. We systematically measure the quality of the generated videos in terms of per-video and cross-view geometric consistency and perceptual quality. Our experiments demonstrate superior performance compared to previous methods, both qualitatively and quantitatively. Additionally, we show that our method can extrapolate to generate four views during inference and enable 3D reconstruction of the generated frames.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25l/xu25l.pdf",
+              "document_sha256": "55bb1491bad603e10b0ffb0be915b24fdeb26104533d97af0cf4b1deb50d5646"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "tent video generation. An overview of our framework is provided in Fig. 1. 3.2. Camera Controllable Video Diffusion Model Preliminaries Our model builds on pre-trained Stable Video Diffusion (SVD) (Stability, 2023). SVD extends Stable Diffusion 2.1(Rombach et al., 2022) by adding temporal convolution and attention layers, following the VideoLDM architecture (Blattmann et al., 2023). SVD is trained with a continuous-time noise scheduler (Karras et al., 2022). In each iteration, the training data is perturbed by Gaussian noise n(t) ∼ N (0, σ 2 (t)I) and the diffusion model is tasked with estimating the clean data x0 ∼ p0 . Let p(x; σ(t)) denote the marginal probability of noisy data xt = x0 + n(t), the iterative refinement process of diffusion model corresponds to the probability flow ordinary differential equation (ODE): dx = −σ̇(t)σ(t)∇x log p(x; σ(t))dt.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25l/xu25l.pdf",
+              "document_sha256": "55bb1491bad603e10b0ffb0be915b24fdeb26104533d97af0cf4b1deb50d5646"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0909609771e64ac4120a2d15",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/6808f2c57d9564a2639a4710e3bbd9b9-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-f808e210d7035e1b01d5f9bd",
+          "url": "https://proceedings.mlr.press/v267/xu25l.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "d53eea5f97fed7a45ac86643f374004416bda4c24b303d7a155c96f7c00155e7"
+    },
+    {
+      "id": "edge-f15079dd5a875e0457911e3d",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-65fd5b5b3e03f42a6c028727",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "InterDreamer: Zero-Shot Text to 3D Dynamic Human-Object Interaction",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Text-conditioned human motion generation has experienced significant advancements with diffusion models trained on extensive motion capture data and corresponding textual annotations. However, extending such success to 3D dynamic human-object interaction (HOI) generation faces notable challenges, primarily due to the lack of large-scale interaction data and comprehensive descriptions that align with these interactions. This paper takes the initiative and showcases the potential of generating human-object interactions without direct training on text-interaction pair data. Our key insight in achieving this is that interaction semantics and dynamics can be decoupled. Being unable to learn interaction semantics through supervised training, we instead leverage pre-trained large models, synergizing knowledge from a large language model and a text-to-motion model. While such knowledge offers high-level control over interaction semantics, it cannot grasp the intricacies of low-level interaction dynamics. To overcome this issue, we introduce a world model designed to comprehend simple physics, modeling how human actions influence object motion. By integrating these components, our novel framework, InterDreamer, is able to generate text-aligned 3D HOI sequences without relying on paired text-interaction data. We apply InterDreamer to the BEHAVE, OMOMO, and CHAIRS datasets, and our comprehensive experimental analysis demonstrates its capability to generate realistic and coherent interaction sequences that seamlessly align with the text directives."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "(a) Low-level control We visualize CLIP [98] features of text on HumanML3D [34] via t-SNE [82], raw HOI descriptions (“w/o planning”), and HOI descriptions processed through our high-level planning (“w/ planning”).\nIn Figure 7(b), we visualize the CLIP [98] features of descriptions from HumanML3D, our raw annotations, and those processed by high-level planning.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-65fd5b5b3e03f42a6c028727",
+          "input_sha256": "14921eaa806f07596fc0399c64c15c57826f96df3e1305d4144375c3ce96228c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5eca2e4fe7858cbbfef4e08573cfcb25-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/5eca2e4fe7858cbbfef4e08573cfcb25-Paper-Conference.pdf",
+              "sha256": "c8ed7c6d5efd942c2655dad687b171199a875efdb9847fda106ef4a19292b4e8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "Adaptability of High-Level Planning. Is our framework adaptable across different large language models (LLMs)? As illustrated in Table 4, our analysis contains two types of language models: GPT-4 [88], which is accessible through APIs and operates as a black box model; and Llama-2 [120], an open-source model. We demonstrate that language models with large parameters exhibit very high accuracy in responding to questions tailored to our prompts, validating the framework’s adaptability. Effectiveness of High-Level Planning with Low-Level Control. In consistency with Table 2, Figure 7 offers a qualitative comparison of text-to-motion results, contrasting results with and without LLM-revised text descriptions. The comparison shows that motion generated without LLM-enhanced descriptions often fails to correspond to the intended text, if the text is too challenging, e.g., not in the distribution of HumanML3D [34], which is used to train text-to-motion models. This underscores the LLM’s critical role in bridging the distribution gap. In Figure 7(b), we visualize the CLIP [98] features of descriptions from HumanML3D, our raw annotations, and those processed by high-level planning. Quantitative evidence is provided in Table 5. Text processed through high-level planning demonstrates greater similarity to the HumanML3D dataset. Additionally, we test on more challenging out-ofdistribution text, selecting examples with an average cosine similarity to HumanML3D text of less than 0.85. High-level planning successfully rephrases these texts, significantly increasing their similarity. For example, in Figure 7(a), the text “Someone can be seen sitting on a yoga ball” has a cosine similarity of 0.874 to the closest in-distribution text, while the rephrased text after planning, “A person",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5eca2e4fe7858cbbfef4e08573cfcb25-Paper-Conference.pdf",
+              "document_sha256": "c8ed7c6d5efd942c2655dad687b171199a875efdb9847fda106ef4a19292b4e8"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Figure 7: (a) Ablation study on the high-level planning. On the left are results from MotionGPT [46] using free-form descriptions, and on the right are results with our planning additionally. Without planning, the motion generative model struggles to interpret free-form HOI descriptions and generate semantically-aligned motion. (b) We visualize CLIP [98] features of text on HumanML3D [34] via t-SNE [82], raw HOI descriptions (“w/o planning”), and HOI descriptions processed through our high-level planning (“w/ planning”). See Table 5 for quantitative measurements. 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5eca2e4fe7858cbbfef4e08573cfcb25-Paper-Conference.pdf",
+              "document_sha256": "c8ed7c6d5efd942c2655dad687b171199a875efdb9847fda106ef4a19292b4e8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "size. Although recent studies [28, 65, 91, 155] have annotated some of these datasets, the volume of text-interaction pairs still lags behind that available for existing text-driven motion generation efforts. An intriguing question naturally arises: given the limited annotations of the text, what is the potential of learning for text-conditioned HOI generation without text supervision, which is the main focus of this paper. However, formulating the task in such a setting presents significant challenges, primarily due to the inability to directly learn the alignment between text and HOI dynamics. Our key observation is that interaction semantics and dynamics can be decoupled. That is, the high-level semantics of an interaction, aligned with its textual description, can be informed by human motion and the initial object pose. Meanwhile, the low-level dynamics of the interaction – specifically, the subsequent behavior of the object – is governed by the forces exerted by the human, within the constraints of physical laws. Motivated by these insights, we introduce InterDreamer – a novel framework that synergizes knowledge of interaction semantics and dynamics (Figure 1), both of which do not necessarily require learning from text-interaction pairs, if they are decoupled. The semantics of interaction, although not available through direct supervised training, can be harnessed from prior knowledge without text-interaction pair datasets. Specifically, to acquire semantically aligned interaction, we first consult a large language model (LLM), such as GPT-4 [88] and Llama 2 [120], to provide understanding including how humans typically use specific body parts in interactions with particular objects, by exploiting its in-context learning capability with few-shot prompting [10]",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5eca2e4fe7858cbbfef4e08573cfcb25-Paper-Conference.pdf",
+              "document_sha256": "c8ed7c6d5efd942c2655dad687b171199a875efdb9847fda106ef4a19292b4e8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Text-Conditioned Human Motion Generation. Significant progress has been witnessed in human motion synthesis tasks, given different kinds of external conditions, including action categories [2, 36, 61, 93], past motion [5, 17, 86, 110, 149, 150, 163], trajectories [31, 50, 51, 100, 122, 145], scene context [12, 29, 39, 44, 113, 114, 125–127, 130, 153, 175, 182, 183], and without condition [96]. Recently, human motion synthesis guided by textual descriptions [1, 6, 18, 24, 26, 34, 35, 49, 54, 57, 64, 71, 77, 81, 94, 95, 97, 104, 116, 133, 160, 162, 168, 172, 174, 178, 179, 181, 185, 187] is popular and extended to various applications, including the text-conditioned generation of multipleperson [33, 43, 63, 75, 132] and human-scene interaction [14, 21, 44, 48]. Our goal is to model human and object dynamics concurrently guided by text. Human-Object Interaction Generation. Synthesizing hand-object interactions [11, 15, 20, 68, 73, 79, 80, 119, 137, 161, 165, 167, 184, 186] and single-frame human-object interactions [25, 42, 56, 92, 128, 143, 152, 154, 166] are popular topics and extended to zero-shot settings [52, 67, 156, 157]. Recently, researchers explore whole-body dynamic interaction generation, in kinematic-based approaches [22, 27, 32, 38, 58–60, 66, 84, 85, 99, 107–109, 111, 123, 136, 139, 140, 148, 151, 176] and physics-based approaches [4, 8, 16, 23, 40, 72, 74, 78, 87, 89, 115, 117, 124, 129, 142, 146, 147, 158]. Current methods in HOI synthesis are often restricted by a narrow scope of actions, the use of non-dynamic objects, and a lack of comprehensive whole-body motion. Our work aims to generate diverse whole-body interactions with various objects, and enables control through language input. Recent datasets [7, 30, 45, 47, 53, 66, 112, 138, 144, 155, 164,",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5eca2e4fe7858cbbfef4e08573cfcb25-Paper-Conference.pdf",
+              "document_sha256": "c8ed7c6d5efd942c2655dad687b171199a875efdb9847fda106ef4a19292b4e8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-65fd5b5b3e03f42a6c028727",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/5eca2e4fe7858cbbfef4e08573cfcb25-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "a6c037dbc4e8ca64b8e1e29ffec331f8dc0c23f8bfdd91212bdc59a8e4ca3809"
+    },
+    {
+      "id": "edge-189e7ced0e7272cf29460d95",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-fd100653a2f4a8be0205380e",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "MimicMotion: High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "In recent years, while generative AI has advanced significantly in image generation, video generation continues to face challenges in controllability, length, and detail quality, which hinder its application. We present MimicMotion, a framework for generating high-quality human videos of arbitrary length using motion guidance. Our approach has several highlights. Firstly, we introduce confidence-aware pose guidance that ensures high frame quality and temporal smoothness. Secondly, we introduce regional loss amplification based on pose confidence, which reduces image distortion in key regions. Lastly, we propose a progressive latent fusion strategy to generate long and smooth videos. Experiments demonstrate the effectiveness of our approach in producing high-quality human motion videos. Videos and comparisons are available at https://tencent.github.io/MimicMotion."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The reference image follows two pathways: First, it is processed through CLIP (Radford et al., 2021) to extract features that are fed into each U-Net block’s cross-attention.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-fd100653a2f4a8be0205380e",
+          "input_sha256": "05afdde63e8e7eaf4d78753eb11577d6cbd026e7032d8eb24e211365206d01bc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/zhang25v.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25v/zhang25v.pdf",
+              "sha256": "4202a7c66ee3d9fce7e2202624a6b79c577b8d25c8806da25f919e2d7dde80c6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Figure 2 shows the structure of our model. The VAE encoder on input video frames and the corresponding decoder for getting denoised video frames are both adopted from SVD and these parameters are frozen. The VAE encoder is applied independently to each frame of the input video and the conditional reference image. In contrast, the VAE decoder processes the latent features that undergo spatiotemporal interaction from U-Net. To enhance the temporal smoothness of low-level details, the VAE decoder incorporates temporal layers alongside the spatial layers. The reference image and the sequence of poses are two other inputs of the model. The reference image follows two pathways: First, it is processed through CLIP (Radford et al., 2021) to extract features that are fed into each U-Net block’s cross-attention. Second, the image is encoded by the frozen VAE encoder to obtain its latent representation, which is then temporally duplicated to match the video frame dimensions. This latent representation is concatenated with the video frame features along the channel dimension before entering the U-Net.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25v/zhang25v.pdf",
+              "document_sha256": "4202a7c66ee3d9fce7e2202624a6b79c577b8d25c8806da25f919e2d7dde80c6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Currently, there are plenty of works focusing on this task, such as DisCo (Wang et al., 2023), AnimateAnyone (Hu, 2024), MagicDance (Chang et al., 2023), MagicAnimate (Xu et al., 2024), etc. Though various techniques have been studied, the results are unsatisfactory in several aspects. Imagery distortion especially on the regions of human hands is still a common issue which is particularly evident in videos containing large movements. Besides, to achieve good temporal smoothness, imagery details are sometimes sacrificed resulting in videos of blurred frames. In the presence of diverse appearances and motions in videos, accurate pose estimation is inherently challenging. This inaccuracy not only creates a conflict between pose alignment and temporal smoothness but also hinders the model scaling on the training schedule due to overfitting on noisy samples. In addition, due to computational limitations and model capabilities, there are still significant challenges in generating high-quality long videos containing a large number of frames. To solve these problems, we propose a series of approaches for generating long but still smooth videos based on pose guidance and image reference.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25v/zhang25v.pdf",
+              "document_sha256": "4202a7c66ee3d9fce7e2202624a6b79c577b8d25c8806da25f919e2d7dde80c6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In recent years, while generative AI has advanced significantly in image generation, video generation continues to face challenges in controllability, length, and detail quality, which hinder its application. We present MimicMotion, a framework for generating high-quality human videos of arbitrary length using motion guidance. Our approach has several highlights. Firstly, we introduce confidence-aware pose guidance that ensures high frame quality and temporal smoothness. Secondly, we introduce regional loss amplification based on pose confidence, which reduces image distortion in key regions. Lastly, we propose a progressive latent fusion strategy to generate long and smooth videos. Experiments demonstrate the effectiveness of our approach in producing high-quality human motion videos. Videos and comparisons are available at https://tencent.github.io/MimicMotion.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25v/zhang25v.pdf",
+              "document_sha256": "4202a7c66ee3d9fce7e2202624a6b79c577b8d25c8806da25f919e2d7dde80c6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-fd100653a2f4a8be0205380e",
+          "url": "https://proceedings.mlr.press/v267/zhang25v.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "c064df6c582a1e394e65cac413495d35e8ab2c19a256f6d540d3bdb0b380d3ec"
+    },
+    {
+      "id": "edge-a7881338de16f16142c8c153",
+      "a": "paper-0de974cfdc6f706ec144373a",
+      "b": "paper-5dfb40e5ea4a01ad932f2f49",
+      "state": {
+        "paper_a": {
+          "title": "Generating Diverse High-Fidelity Images with VQ-VAE-2",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "We explore the use of Vector Quantized Variational AutoEncoder (VQ-VAE) models for large scale image generation. To this end, we scale and enhance the autoregressive priors used in VQ-VAE to generate synthetic samples of much higher coherence and fidelity than possible before. We use simple feed-forward encoder and decoder networks, making our model an attractive candidate for applications where the encoding and/or decoding speed is critical. Additionally, VQ-VAE requires sampling an autoregressive model only in the compressed latent space, which is an order of magnitude faster than sampling in the pixel space, especially for large images. We demonstrate that a multi-scale hierarchical organization of VQ-VAE, augmented with powerful priors over the latent codes, is able to generate samples with quality that rivals that of state of the art Generative Adversarial Networks on multifaceted datasets such as ImageNet, while not suffering from GAN's known shortcomings such as mode collapse and lack of diversity."
+        },
+        "paper_b": {
+          "title": "HumanTOMATO: Text-aligned Whole-body Motion Generation",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This work targets a novel text-driven whole-body motion generation task, which takes a given textual description as input and aims at generating high-quality, diverse, and coherent facial expressions, hand gestures, and body motions simultaneously. Previous works on text-driven motion generation tasks mainly have two limitations: they ignore the key role of fine-grained hand and face controlling in vivid whole-body motion generation, and lack a good alignment between text and motion. To address such limitations, we propose a Text-aligned whOle-body Motion generATiOn framework, named HumanTOMATO, which is the first attempt to our knowledge towards applicable holistic motion generation in this research area. To tackle this challenging task, our solution includes two key designs: (1) a Holistic Hierarchical VQ-VAE (aka H${}^{2}$VQ) and a Hierarchical-GPT for fine-grained body and hand motion reconstruction and generation with two structured codebooks; and (2) a pre-trained text-motion-alignment model to help generated motion align with the input textual description explicitly. Comprehensive experiments verify that our model has significant advantages in both the quality of generated motions and their alignment with text."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "During the training phase, the primary goal is to reconstruct motions while concurrently updating the two codebooks through the EMA and Code Reset operations (Razavi et al., 2019; Van Den Oord et al., 2017; Zhang et al., 2023).\nDifferent from traditional methods, the codebook C in motion VQ-VAE is optimized by exponential moving average ( EMA) and codebook reset (Code Reset) operations following Razavi et al. (2019); Van Den Oord et al. (2017); Zhang et al. (2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0de974cfdc6f706ec144373a",
+          "b": "paper-5dfb40e5ea4a01ad932f2f49",
+          "input_sha256": "72ab9ba085f2c159f98a39fabdc573adbfc607981fd5c2ff3205675aa15ece44",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/lu24b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lu24b/lu24b.pdf",
+              "sha256": "1d006cfad2fdc4b7c44ad0a6cbf288d49f06cc662ade061ec910caa2b94c4399"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose a simple method for generating diverse high resolution images using VQ-VAE with a powerful autoregressive model as prior. Our encoder and decoder architectures are kept simple and light-weight as in the original VQ-VAE, with the only difference that we use a hierarchical multi-scale latent maps for increased resolution. The fidelity of our best class conditional samples are competitive with the state of the art Generative Adversarial Networks, with broader diversity in several classes, contrasting our method against the known limitations of GANs. Still, concrete measures of sample quality and diversity are in their infancy, and visual inspection is still necessary. Lastly, we believe our experiments vindicate autoregressive modeling in the latent space as a simple and effective objective for learning large scale generative models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "document_sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "The foundation of our work is the VQ-VAE framework of [41]. Our prior network is based on Gated PixelCNN [40] augmented with self-attention [42], as proposed in [7]. BigGAN [5] is currently state-of-the-art in FID and Inception scores, and produces high quality high-resolution images. The improvements in BigGAN come mostly from incorporating architectural advances such as self-attention, better stabilization methods, scaling up the model on TPUs and a mechanism to trade-off sample diversity with sample quality. In our work we also investigate how the addition of some of these elements, in particular self-attention and compute scale, indeed also improve the quality of samples of VQ-VAE models. Recent work has also been proposed to generate high resolution images with likelihood based models include Subscale Pixel Networks of [22]. Similar to the parallel multi-scale model of [29], SPN imposes a partitioning on the spatial dimensions, but unlike [29], SPN does not make the corresponding independence assumptions, whereby it trades sampling speed with density estimation performance and sample quality. Hierarchical latent variables have been proposed in e.g. [31]. Specifically for VQ-VAE, [8] uses a hierarchy of latent codes for modeling and generating music using a WaveNet decoder. The specifics of the encoding is however different from ours: in our work, the bottom levels of hierarchy do not exclusively refine the information encoded by the top level, but they extract complementary information at each level, as discussed in Sect. 3.1. Additionally, as we are using simple, feed-forward decoders and optimizing mean squared error in the pixels, our model does not suffer from, and thus needs no mitigation for, the hierarchy collapse problems detailed in [8]. Concurrent to our",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "document_sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "During the training phase, the primary goal is to reconstruct motions while concurrently updating the two codebooks through the EMA and Code Reset operations (Razavi et al., 2019; Van Den Oord et al., 2017; Zhang et al., 2023). In the inference phase, after obtaining quantized code indices, the Body-hand Decoder can generate body-hand motions",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lu24b/lu24b.pdf",
+              "document_sha256": "1d006cfad2fdc4b7c44ad0a6cbf288d49f06cc662ade061ec910caa2b94c4399"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This work targets a novel text-driven whole-body motion generation task, which takes a given textual description as input and aims at generating high-quality and diverse facial expressions, hand gestures, and body motions simultaneously. Previous works on text-driven motion generation tasks mainly have two limitations: they ignore the key role of fine-grained hand and face controlling in vivid whole-body motion generation, and lack a good alignment between text and motion. To address such limitations, we propose a Text-aligned whOle-body Motion generATiOn framework, named HumanTOMATO, which is the first attempt to our knowledge towards applicable holistic motion generation in this research area. To tackle this challenging task, our solution includes two key designs: (1) a Holistic Hierarchical VQ-VAE (aka H2 VQ) and a Hierarchical-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lu24b/lu24b.pdf",
+              "document_sha256": "1d006cfad2fdc4b7c44ad0a6cbf288d49f06cc662ade061ec910caa2b94c4399"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To tackle the above issues, we propose a novel Textaligned whOle-body Motion generATiOn framework (HumanTOMATO), which includes two key designs. First, a holistic hierarchical discrete modeling strategy for body and hand motions is proposed for reconstructing and generating whole-body motions vividly. As whole-body motion is a kind of high-dimensional spatio-temporal signal, in the first stage, we propose a Holistic Hierarchical VQVAE (aka H2 VQ) to compress the motion into two-level discrete codes for body and hand, respectively. In contrast, a naı̈ve solution that simply replaces body-only motions with whole-body motions or directly increases the size of the codebook is almost in vain. The key insight of our H2 VQ is learning informative and compact representations of fine-grained whole-body motions at very low bit rates. Moreover, the hand and body motions have different levels of amplitudes and details, which motivates us to model them separately. Based on the two-level discrete codes, in the second stage, we propose a Hierarchical-GPT to predict the hierarchical discrete codes of body and hand in an auto-regressive fashion. Extending the hierarchical modeling strategy of body-hand motions, we use an RVQ-based method for motion reconstruction and also generate facial motion with discrete codes auto-regressively. Second, a pre-trained text-motion-alignment model is introduced to enhance the textual alignment of generated motions for the first time. We pre-train a motion encoder and a text encoder, namely TMA (Text-Motion Alignment), in a contrastive learning manner (Radford et al., 2021) with pairwise text-motion data. Unlike previous work (Zhang et al., 2022; Tevet et al., 2023; 2022; Jiang et al., 2023) that relied on CLIP or LLMs embedding, our approach utilizes",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lu24b/lu24b.pdf",
+              "document_sha256": "1d006cfad2fdc4b7c44ad0a6cbf288d49f06cc662ade061ec910caa2b94c4399"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0de974cfdc6f706ec144373a",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-5dfb40e5ea4a01ad932f2f49",
+          "url": "https://proceedings.mlr.press/v235/lu24b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "5fce9004b2c383a00537882f24bfec62ebf16e7b303c97aab2204009c3a40a89"
+    },
+    {
+      "id": "edge-40c39e3c16aef49b69653d77",
+      "a": "paper-0de974cfdc6f706ec144373a",
+      "b": "paper-e28e02471ff3d8e08eb70d0c",
+      "state": {
+        "paper_a": {
+          "title": "Generating Diverse High-Fidelity Images with VQ-VAE-2",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "We explore the use of Vector Quantized Variational AutoEncoder (VQ-VAE) models for large scale image generation. To this end, we scale and enhance the autoregressive priors used in VQ-VAE to generate synthetic samples of much higher coherence and fidelity than possible before. We use simple feed-forward encoder and decoder networks, making our model an attractive candidate for applications where the encoding and/or decoding speed is critical. Additionally, VQ-VAE requires sampling an autoregressive model only in the compressed latent space, which is an order of magnitude faster than sampling in the pixel space, especially for large images. We demonstrate that a multi-scale hierarchical organization of VQ-VAE, augmented with powerful priors over the latent codes, is able to generate samples with quality that rivals that of state of the art Generative Adversarial Networks on multifaceted datasets such as ImageNet, while not suffering from GAN's known shortcomings such as mode collapse and lack of diversity."
+        },
+        "paper_b": {
+          "title": "Generating Long Videos of Dynamic Scenes",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "We present a video generation model that accurately reproduces object motion, changes in camera viewpoint, and new content that arises over time. Existing video generation methods often fail to produce new content as a function of time while maintaining consistencies expected in real environments, such as plausible dynamics and object persistence. A common failure case is for content to never change due to over-reliance on inductive bias to provide temporal consistency, such as a single latent code that dictates content for the entire video. On the other extreme, without long-term consistency, generated videos may morph unrealistically between different scenes. To address these limitations, we prioritize the time axis by redesigning the temporal latent representation and learning long-term consistency from data by training on longer videos. We leverage a two-phase training strategy, where we separately train using longer videos at a low resolution and shorter videos at a high resolution. To evaluate the capabilities of our model, we introduce two new benchmark datasets with explicit focus on long-term temporal dynamics."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Training at multiple scales is a common strategy for image generation models [7, 25, 43, 46, 58].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0de974cfdc6f706ec144373a",
+          "b": "paper-e28e02471ff3d8e08eb70d0c",
+          "input_sha256": "532ae33194d19b590a70b41410b6932e48a0c5976890f5fd5d5ca5d2b8b7f8b7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/ce208d95d020b023cba9e64031db2584-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose a simple method for generating diverse high resolution images using VQ-VAE with a powerful autoregressive model as prior. Our encoder and decoder architectures are kept simple and light-weight as in the original VQ-VAE, with the only difference that we use a hierarchical multi-scale latent maps for increased resolution. The fidelity of our best class conditional samples are competitive with the state of the art Generative Adversarial Networks, with broader diversity in several classes, contrasting our method against the known limitations of GANs. Still, concrete measures of sample quality and diversity are in their infancy, and visual inspection is still necessary. Lastly, we believe our experiments vindicate autoregressive modeling in the latent space as a simple and effective objective for learning large scale generative models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "document_sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "The foundation of our work is the VQ-VAE framework of [41]. Our prior network is based on Gated PixelCNN [40] augmented with self-attention [42], as proposed in [7]. BigGAN [5] is currently state-of-the-art in FID and Inception scores, and produces high quality high-resolution images. The improvements in BigGAN come mostly from incorporating architectural advances such as self-attention, better stabilization methods, scaling up the model on TPUs and a mechanism to trade-off sample diversity with sample quality. In our work we also investigate how the addition of some of these elements, in particular self-attention and compute scale, indeed also improve the quality of samples of VQ-VAE models. Recent work has also been proposed to generate high resolution images with likelihood based models include Subscale Pixel Networks of [22]. Similar to the parallel multi-scale model of [29], SPN imposes a partitioning on the spatial dimensions, but unlike [29], SPN does not make the corresponding independence assumptions, whereby it trades sampling speed with density estimation performance and sample quality. Hierarchical latent variables have been proposed in e.g. [31]. Specifically for VQ-VAE, [8] uses a hierarchy of latent codes for modeling and generating music using a WaveNet decoder. The specifics of the encoding is however different from ours: in our work, the bottom levels of hierarchy do not exclusively refine the information encoded by the top level, but they extract complementary information at each level, as discussed in Sect. 3.1. Additionally, as we are using simple, feed-forward decoders and optimizing mean squared error in the pixels, our model does not suffer from, and thus needs no mitigation for, the hierarchy collapse problems detailed in [8]. Concurrent to our",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Paper.pdf",
+              "document_sha256": "0dfc7871da504485962cb73addad4d063fdae9d7b7de67b08997784997a74ce1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "realistic motion. Unlike previous StyleGAN-based [28] video models, we prioritize the time axis in our generator through a new temporal latent representation, temporal upsampling, and spatiotemporal modulated convolutions. We also compare with DIGAN [66] that employs an implicit representation to generate the video pixel by pixel. Transformers are another class of models used for video generation [13, 42, 61, 65]. We compare with TATS [13] that generates long unconditional videos with transformers, improving upon VideoGPT [65]. Both TATS and VideoGPT employ a GPT-like autoregressive transformer [4] that represents videos as sequences of tokens. However, the resulting videos tend to accumulate error over time and often diverge or change too rapidly. The models are also expensive to train and deploy due to their autoregressive nature over time and space. In concurrent work, promising results in generating diverse videos have also been demonstrated using diffusion-based models [20]. Conditional video prediction. A separate line of research focuses on predicting future video frames conditioned on one or more real video frames [3, 23, 34, 36, 39, 41] or past frames accompanied by an action label [6, 15, 30, 31]. Some video prediction methods focus specifically on generating infinite scenery by conditioning on camera trajectory [37, 44] and/or explicitly predicting depth [2, 37] to then simulate a virtual camera flying through a 3D scene. Our goal, on the other hand, is to support camera movement as well as moving objects by having the scene structure emerge implicitly. Multi-resolution training. Training at multiple scales is a common strategy for image generation models [7, 25, 43, 46, 58]. Transformer-based video generators also employ a related two-phase setup [65, 13].",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Videos are data that change over time, with complex patterns of camera viewpoint, motion, deformation and occlusion. In certain respects, videos are unbounded — they may last arbitrarily long and there is no limit to the amount of new content that may become visible over time. Yet videos that depict the real world must also remain consistent with physical laws that dictate which changes over time are feasible. For example, the camera may only move through 3D space along a smooth path, objects cannot morph between each other, and time cannot go backward. Generating long videos thus requires the ability to produce endless new content while maintaining appropriate consistencies. In this work, we focus on generating long videos with rich dynamics and new content that arises over time. While existing video generation models can produce “infinite” videos, the type and amount of change along the time axis is highly limited. For example, a synthesized infinite video of a person talking will only include small motions of the mouth and head. Moreover, common video generation datasets often contain short clips with little new content over time, which may inadvertently bias the design choices toward training on short segments or pairs of frames, forcing content in videos to stay fixed, or using architectures with small temporal receptive fields. We make the time axis a first-class citizen for video generation. To this end, we introduce two new datasets that contain motion, changing camera viewpoints, and entrances/exits of objects and scenery over time. We learn long-term consistencies by training on long videos and design a temporal latent representation that enables modeling complex temporal changes. Figure 1 illustrates the rich motion and scenery changes that our model is",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Most of the existing video datasets introduce little or no new content over time. For example, talking head datasets [8, 45, 62, 63] show the same person for the duration of each video. UCF101 [53] portrays diverse human actions, but the videos are short and contain limited camera motion and little or no new objects that enter the videos over time. To best evaluate our model, we introduce two new video datasets of first-person mountain biking and horseback riding (Figure 4a,b) that exhibit complex changes over time. Our new datasets include subject motion of the horse or biker, a first-person camera viewpoint that moves through space, and new scenery and objects over time. The videos are available in high definition and were manually trimmed to remove problematic segments, scene cuts, text overlays, obstructed views, etc. The mountain biking dataset has 1202 videos with a median duration of 330 frames at 30 fps, and the horseback dataset has 66 videos with a median duration of 6504 frames also at 30fps. We have permission from the content owners to publicly release the datasets for research purposes. We believe our new datasets will serve as important benchmarks for future work. We also evaluate our model on the ACID dataset [38] (Figure 4c) that contains significant camera motion but lacks other types of motion, as well as the commonly used SkyTimelapse dataset [67] (Figure 4d) that exhibits new content over time as the clouds pass by, but the videos are relatively homogeneous and the camera remains fixed. 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0de974cfdc6f706ec144373a",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/5f8e2fa1718d1bbcadf1cd9c7a54fb8c-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-e28e02471ff3d8e08eb70d0c",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/ce208d95d020b023cba9e64031db2584-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "6dbf2a7ddfe1625c3b1316f3be3629f5d98437b031a74d4deb61db7ee59e3ac9"
+    },
+    {
+      "id": "edge-c75721cdd44b908426706bc3",
+      "a": "paper-10261d768ca86cb7e7318e1a",
+      "b": "paper-fdcf05dbec99598bbd85bb32",
+      "state": {
+        "paper_a": {
+          "title": "A Unified Sequence Interface for Vision Tasks",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "While language tasks are naturally expressed in a single, unified, modeling framework, i.e., generating sequences of tokens, this has not been the case in computer vision. As a result, there is a proliferation of distinct architectures and loss functions for different vision tasks. In this work we show that a diverse set of \"core\" computer vision tasks can also be unified if formulated in terms of a shared pixel-to-sequence interface. We focus on four tasks, namely, object detection, instance segmentation, keypoint detection, and image captioning, all with diverse types of outputs, e.g., bounding boxes or dense masks. Despite that, by formulating the output of each task as a sequence of discrete tokens with a unified interface, we show that one can train a neural network with a single model architecture and loss function on all these tasks, with no task-specific customization. To solve a specific task, we use a short prompt as task description, and the sequence output adapts to the prompt so it can produce task-specific output. We show that such a model can achieve competitive performance compared to well-established task-specific models."
+        },
+        "paper_b": {
+          "title": "M$^3$GPT: An Advanced Multimodal, Multitask Framework for Motion Comprehension and Generation",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "This paper presents M$^3$GPT, an advanced $\\textbf{M}$ultimodal, $\\textbf{M}$ultitask framework for $\\textbf{M}$otion comprehension and generation. M$^3$GPT operates on three fundamental principles. The first focuses on creating a unified representation space for various motion-relevant modalities. We employ discrete vector quantization for multimodal conditional signals, such as text, music and motion/dance, enabling seamless integration into a large language model (LLM) with a single vocabulary.The second involves modeling motion generation directly in the raw motion space. This strategy circumvents the information loss associated with a discrete tokenizer, resulting in more detailed and comprehensive motion generation. Third, M$^3$GPT learns to model the connections and synergies among various motion-relevant tasks. Text, the most familiar and well-understood modality for LLMs, is utilized as a bridge to establish connections between different motion tasks, facilitating mutual reinforcement. To our knowledge, M$^3$GPT is the first model capable of comprehending and generating motions based on multiple signals.Extensive experiments highlight M$^3$GPT's superior performance across various motion-relevant tasks and its powerful zero-shot generalization capabilities for extremely challenging tasks. Project page: \\url{https://github.com/luomingshuang/M3GPT}."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Additionally, as noted in [3], multitask joint training usually achieves inferior performance on each individual task compared to single-task training.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-10261d768ca86cb7e7318e1a",
+          "b": "paper-fdcf05dbec99598bbd85bb32",
+          "input_sha256": "7183fd7ac8a16bc70dfdde61a5f5fbe8e5fe33129fc8d7c4ade995fab6c13a43",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/cb0f9020c00fc52a9f6c9dbfacc6ac58-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/cb0f9020c00fc52a9f6c9dbfacc6ac58-Paper-Conference.pdf",
+              "sha256": "1656a700a309bc4b83032097db9f9219d5a98e8b91c0a0e0b2e8231b189889d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/316648eb8b4ffb6010f531b07848c300-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/316648eb8b4ffb6010f531b07848c300-Paper-Conference.pdf",
+              "sha256": "e681ce36510aebbca5ddf3f32a2b735f280c34936c0c332cd34fceb55f5ccae9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The vision tasks we consider are diverse, and traditionally have been formulated quite differently. Object detection requires the model to produce bounding boxes for all objects without duplication. Instance segmentation requires the model to produce a dense pixel-wise mask for each identified object instance. Human keypoint detection requires the model to generate points corresponding to specific positions of landmarks on body parts for person instances (e.g., head, eyes). Image captioning requires the model to produce a sequence of words corresponding to a natural language description of the image. Given the significant differences in the form of the outputs, customized models with specialized architectures and loss functions are designed for each task. To solve these tasks using a single model, we advocate the transformation/tokenization of task inputs and outputs into a unified interface. In this work, we propose a sequence interface for the purpose, where both task descriptions and outputs are expressed as sequences of discrete tokens: 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cb0f9020c00fc52a9f6c9dbfacc6ac58-Paper-Conference.pdf",
+              "document_sha256": "1656a700a309bc4b83032097db9f9219d5a98e8b91c0a0e0b2e8231b189889d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this work, we explore a unified sequence interface for tackling a diverse set of “core” vision tasks, where both the task description (prompt) and task output are expressed as discrete sequences of tokens. This is a significant departure from conventional norms of multi-task vision models in that both architecture and loss functions are shared among the tasks. We show that such a model can achieve competitive performance compared to well-established task-specific models. Our work is not without limitations. Due to the significant departure from conventional approaches, we believe both architectures and other training techniques can be further improved to challenge the state-of-the-art of specialized systems. We also believe our model can significantly benefit from scaling up, both in pretraining on larger datasets (e.g., image-text pairs) and/or using larger model sizes. Another limitation is the inference speed can be potentially slower (for longer sequences particularly) compared to the specialized systems as our approach is based on autoregressive modeling. There are a few ways to improve the efficiency, including using non-autoregressive sequence modeling (which we leave as future work). In this work, we exploit parallel querying for speeding up our model inference. For example, predicting multi-person poses can be done independently by prompting the model with independent bounding boxes (detected by the model itself or pre-given), so the only sequential prediction is limited to a single person with a few keypoints. The same strategy can be applied to instance segmentation as well. While the optimal implementation of a unified interface still requires more research and the sequence interface explored in this work is only one potential implementation, we believe",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/cb0f9020c00fc52a9f6c9dbfacc6ac58-Paper-Conference.pdf",
+              "document_sha256": "1656a700a309bc4b83032097db9f9219d5a98e8b91c0a0e0b2e8231b189889d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "token is the same. Apparently, relying solely on LLM’s autoregressive loss is insufficient for capturing the details of motion. To address this problem, we jointly optimize LLM and motion de-tokenizer in stage2 and stage3. This strategy enables the reconstruction error signals in raw motion space to backpropagate to LLM, enhancing LLM’s ability to generate the details of motion. With the goal of minimizing L1 loss between the predicted and real motion, we search for the motion’s token sequence that could minimize this L1 loss in original motion space. As the motion de-tokenizer continuously optimizes, the target motion’s token sequence, which supervises LLM training, dynamically changes. This dynamic adjustment reduces L1 loss progressively, achieving joint optimization. • Synergy learning of multitasks. Although aligning text with one additional modality is relatively straightforward, integrating multiple modalities (e.g., motion, text, and music) within a single framework poses a significant challenge. Additionally, as noted in [4], multitask joint training usually achieves inferior performance on each individual task compared to single-task training. This phenomenon is also observed in our text-to-motion task, as shown in Tab. 2. We argue that the large modality difference among different motion-relevant tasks (e.g., music-to-dance and text-to-motion) prevents the model from effectively establishing connections between these tasks. Thus it is difficult for the model to identify a common optimization direction that benefits all tasks. As ‘text’ serves as a highly semantic descriptor for other modalities and is the most familiar and well-modeled modality to LLM, we use ‘text’ as a bridge to align motion, text, and music data, thereby mitigating conflicts in aligning",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/316648eb8b4ffb6010f531b07848c300-Paper-Conference.pdf",
+              "document_sha256": "e681ce36510aebbca5ddf3f32a2b735f280c34936c0c332cd34fceb55f5ccae9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Motion comprehension and generation in multimodality are crucial for diverse applications, including AR/VR creation, video games, and virtual reality. Numerous studies [15, 51, 64, 52] focus on motion comprehension, including captioning 3D human motions and generating music from 3D human dances2 . Recent advancements in AI [14, 44, 42, 48] have paved the way for motion generation, allowing for various control signals including textual descriptions, music pieces, and human poses. A significant shortcoming of most existing works is their focus on single-modality control signals, overlooking the potential for multimodal information integration. More importantly, the comprehension and generation of motions are predominantly studied in isolation. In reality, human motion cognition and communication indispensably require seamless transitions between any motion-relevant modalities. Therefore, it is vital to develop a unified framework for motion comprehension and generation that can efficiently utilize multiple signals simultaneously. Recent works [12, 62, 63, 58] have shown success in developing a unified multitask motion framework which integrates text-driven and audio-driven motion generation through a single architecture. Employing a large language model (LLM), [60] adeptly handles multimodal control signals, such as text and single-frame pose, to generate consecutive motions. Despite their promising performance in motion generation, these approaches often fall short in comprehending motion. MotionGPT [21], a recent innovation, constructs a unified motion-language model to generate plausible human motions and natural language descriptions through prompt instructions. However, MotionGPT focuses solely on a single non-motion modality, i.e., text. While aligning motion with",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/316648eb8b4ffb6010f531b07848c300-Paper-Conference.pdf",
+              "document_sha256": "e681ce36510aebbca5ddf3f32a2b735f280c34936c0c332cd34fceb55f5ccae9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Motion comprehension and Generation. Many existing works focus on studying human appearance, pose, detection, attribute, part parsing and so on [61, 19, 45, 40, 23, 17]. This work focuses on studying human motion, including motion comprehension and motion generation. Motion comprehension involves two core tasks: motion-to-text and dance-to-music. Motion-to-text aims to describe human motion with natural language [37]. For example, recurrent networks have been used in [37] to accomplish this task. Dance-to-music involves creating a piece of music from a given dance [20, 27, 64]. For example, Zhun et al. [64] utilizes a generative adversarial network to generate music from dance videos. On the other hand, motion generation involves generating diverse human motions using multimodal inputs, such as text [44, 56, 15, 5, 57], music [27, 18, 52, 42] and incomplete motion [31, 1, 3]. Text-to-motion is one of the most important motion generation tasks. Recent works typically map text to motion using different architectures: diffusion model [57] and autoregressive transformer model [15]. Music-to-dance focuses on generating dance movements from music. For example, [42] predicts discrete token sequences conditioned on music, which are then used to regenerate the dance sequence. Motion Completion generates motion conditioning on partial motions, such as motion prediction [31, 1] and motion-in-between [34, 43]. Although these methods have shown promising results in various human motion tasks, most are limited to handling a single task. Until recently, some works [12, 21, 60, 62] attempt to integrate two or more tasks into a unified model, as shown in Tab. 1. However, these works either lack the ability of motion comprehension [62, 60] or fail to handle music modality [12, 21]. In",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/316648eb8b4ffb6010f531b07848c300-Paper-Conference.pdf",
+              "document_sha256": "e681ce36510aebbca5ddf3f32a2b735f280c34936c0c332cd34fceb55f5ccae9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-10261d768ca86cb7e7318e1a",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/cb0f9020c00fc52a9f6c9dbfacc6ac58-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-fdcf05dbec99598bbd85bb32",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/316648eb8b4ffb6010f531b07848c300-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "34d54fa6a06b7f22b1a97fc585f0736a27f24dd74a7d4b88bd073b9b255539e8"
+    },
+    {
+      "id": "edge-8621652a3052f2fbf0fd38de",
+      "a": "paper-15c327ae847c9d8c99d66cde",
+      "b": "paper-e28e02471ff3d8e08eb70d0c",
+      "state": {
+        "paper_a": {
+          "title": "Training Generative Adversarial Networks with Limited Data",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Training generative adversarial networks (GAN) using too little data typically leads to discriminator overfitting, causing training to diverge. We propose an adaptive discriminator augmentation mechanism that significantly stabilizes training in limited data regimes. The approach does not require changes to loss functions or network architectures, and is applicable both when training from scratch and when fine-tuning an existing GAN on another dataset. We demonstrate, on several datasets, that good results are now possible using only a few thousand training images, often matching StyleGAN2 results with an order of magnitude fewer images. We expect this to open up new application domains for GANs. We also find that the widely used CIFAR-10 is, in fact, a limited data benchmark, and improve the record FID from 5.59 to 2.42."
+        },
+        "paper_b": {
+          "title": "Generating Long Videos of Dynamic Scenes",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "We present a video generation model that accurately reproduces object motion, changes in camera viewpoint, and new content that arises over time. Existing video generation methods often fail to produce new content as a function of time while maintaining consistencies expected in real environments, such as plausible dynamics and object persistence. A common failure case is for content to never change due to over-reliance on inductive bias to provide temporal consistency, such as a single latent code that dictates content for the entire video. On the other extreme, without long-term consistency, generated videos may morph unrealistically between different scenes. To address these limitations, we prioritize the time axis by redesigning the temporal latent representation and learning long-term consistency from data by training on longer videos. We leverage a two-phase training strategy, where we separately train using longer videos at a low resolution and shorter videos at a high resolution. To evaluate the capabilities of our model, we introduce two new benchmark datasets with explicit focus on long-term temporal dynamics."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In practice, we have found strong discriminator augmentation [26, 69] to be necessary in order to stabilize the training.\nWe have observed that training with long sequences tends to exacerbate the issue of overfitting [26].\nBoth low-and high-resolution segments of 4 frames undergo adaptive augmentation [26] where the same augmentation is applied to all frames at both resolutions.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-15c327ae847c9d8c99d66cde",
+          "b": "paper-e28e02471ff3d8e08eb70d0c",
+          "input_sha256": "0bca3076fbc195c3957f2451b2dbb53623cf6d92d913f0ba6f66bc0d1f81b379",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/8d30aa96e72440759f74bd2306c1fa3d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/8d30aa96e72440759f74bd2306c1fa3d-Paper.pdf",
+              "sha256": "47b8c54db4d05ea5ba7e1a8fa2e6602cadba28d8da5079533e716da7869503ce"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/ce208d95d020b023cba9e64031db2584-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Training generative adversarial networks (GAN) using too little data typically leads to discriminator overfitting, causing training to diverge. We propose an adaptive discriminator augmentation mechanism that significantly stabilizes training in limited data regimes. The approach does not require changes to loss functions or network architectures, and is applicable both when training from scratch and when fine-tuning an existing GAN on another dataset. We demonstrate, on several datasets, that good results are now possible using only a few thousand training images, often matching StyleGAN2 results with an order of magnitude fewer images. We expect this to open up new application domains for GANs. We also find that the widely used CIFAR-10 is, in fact, a limited data benchmark, and improve the record FID from 5.59 to 2.42.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8d30aa96e72440759f74bd2306c1fa3d-Paper.pdf",
+              "document_sha256": "47b8c54db4d05ea5ba7e1a8fa2e6602cadba28d8da5079533e716da7869503ce"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 17,
+              "text": "Figure 8: (a) We report the mean and standard deviation for each comparison method, calculated over 3 training runs. (b) FID as a function of discriminator capacity, reported as median/min/max over 3 training runs. We scale the number of feature maps uniformly across all layers by a given factor (x-axis). The baseline configuration (no scaling) is indicated by the dashed vertical line. to be limited to symmetries that actually benefit the training data, e.g., x-flip is often acceptable but y-flip only rarely. Meanwhile, with ADA the augmentations do not leak, and thus the same diverse set of augmentations can be safely used in all datasets. We also find that the benefits for ADA and bCR are largely additive. We combine ADA and bCR so that ADA is first applied to the input image (real or generated), and bCR then creates another version of this image using its own set of augmentations. Qualitative results are shown in Appendix A. In Figure 8a we further compare our adaptive augmentation against a wider set of alternatives: PA-GAN [39], WGAN-GP [13], zCR [43], auxiliary rotations [6], and spectral normalization [24]. We also try modifying our baseline to use a shallower mapping network, which can be trained with less data, borrowing intuition from DeLiGAN [14]. Finally, we try replacing our augmentations with multiplicative dropout [34], whose per-layer strength is driven by our adaptation algorithm. We spent considerable effort tuning the parameters of all these methods, see Appendix D. We can see that ADA gave significantly better results than the alternatives. While PA-GAN is somewhat similar to our method, its checksum task was not strong enough to prevent overfitting in our tests. Figure 8b shows that reducing the discriminator capacity is generally harmful and does",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8d30aa96e72440759f74bd2306c1fa3d-Paper.pdf",
+              "document_sha256": "47b8c54db4d05ea5ba7e1a8fa2e6602cadba28d8da5079533e716da7869503ce"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Figure 2b shows our training setup for the low-resolution generator. In each iteration, we provide the generator with a fresh set of temporal noise to produce sequences of 128 frames (4.3 seconds at 30 fps). To train the discriminator, we sample corresponding sequences from the training data by choosing a random video and a random interval of 128 frames within that video. We have observed that training with long sequences tends to exacerbate the issue of overfitting [26]. As the sequence length increases, we suspect that it becomes harder for the generator to simultaneously model temporal dynamics at multiple time scales, but at the same time, easier for the discriminator to spot any mistakes. In practice, we have found strong discriminator augmentation [26, 69] to be necessary in order to stabilize the training. We employ DiffAug [69] using the same transformation for each frame in a sequence, as well as fractional time stretching between 12 × and 2×; see Appendix C.1 for details. Architecture. Figure 3 illustrates the architecture of our low-resolution generator. Our main goal is to make the time axis a first-class citizen, including careful design of a temporal latent representation, temporal style modulation, spatiotemporal convolutions, and temporal upsamples. Through these mechanisms, our generator spans a vast temporal receptive field (5k frames), allowing it to represent temporal correlations at multiple time scales. We employ a style-based design, similar to Karras et al. [29, 27], that maps the input temporal noise into a sequence of intermediate latents {wt } used to modulate the behavior of each layer in the main synthesis path. Each intermediate latent is associated with a specific frame, but it can significantly influence the scene composition and",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "the low-resolution network that outputs a sequence of frames and includes explicit temporal operations, the super-resolution generator outputs a single frame and only utilizes temporal information at the input, where the real low-resolution frame and 4 neighboring real low-resolution frames before and after in time are concatenated along the channel dimension to provide context. We remove the spatial Fourier feature inputs and resize and concatenate the stack of low-resolution frames to each layer throughout the generator. The generator architecture is otherwise unchanged from StyleGAN3, including the use of an intermediate latent code that is sampled per video. Low-resolution frames undergo augmentation prior to conditioning as part of the data pipeline, which helps ensure generalization to generated low-resolution images. The super-res discriminator is a similar straightforward extension of the StyleGAN discriminator, with 4 low and high-resolution frames concatenated at the input. The only other change is the removal of the minibatch standard deviation layer that we found unnecessary in practice. Both low- and highresolution segments of 4 frames undergo adaptive augmentation [26] where the same augmentation is applied to all frames at both resolutions. Low-resolution segments also undergo aggressive dropout (p = 0.9 probability of zeroing out the entire segment), which prevents the discriminator from relying too heavily on the conditioning signal; see Appendix D.1 for details. We find it remarkable that such a simple video super-resolution model appears sufficient for producing reasonably good high-resolution videos. We focus primarily on the low-resolution generator in our experiments, utilizing a single super-resolution network trained per dataset. We feel that",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Videos are data that change over time, with complex patterns of camera viewpoint, motion, deformation and occlusion. In certain respects, videos are unbounded — they may last arbitrarily long and there is no limit to the amount of new content that may become visible over time. Yet videos that depict the real world must also remain consistent with physical laws that dictate which changes over time are feasible. For example, the camera may only move through 3D space along a smooth path, objects cannot morph between each other, and time cannot go backward. Generating long videos thus requires the ability to produce endless new content while maintaining appropriate consistencies. In this work, we focus on generating long videos with rich dynamics and new content that arises over time. While existing video generation models can produce “infinite” videos, the type and amount of change along the time axis is highly limited. For example, a synthesized infinite video of a person talking will only include small motions of the mouth and head. Moreover, common video generation datasets often contain short clips with little new content over time, which may inadvertently bias the design choices toward training on short segments or pairs of frames, forcing content in videos to stay fixed, or using architectures with small temporal receptive fields. We make the time axis a first-class citizen for video generation. To this end, we introduce two new datasets that contain motion, changing camera viewpoints, and entrances/exits of objects and scenery over time. We learn long-term consistencies by training on long videos and design a temporal latent representation that enables modeling complex temporal changes. Figure 1 illustrates the rich motion and scenery changes that our model is",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We present a video generation model that accurately reproduces object motion, changes in camera viewpoint, and new content that arises over time. Existing video generation methods often fail to produce new content as a function of time while maintaining consistencies expected in real environments, such as plausible dynamics and object persistence. A common failure case is for content to never change due to over-reliance on inductive biases to provide temporal consistency, such as a single latent code that dictates content for the entire video. On the other extreme, without long-term consistency, generated videos may morph unrealistically between different scenes. To address these limitations, we prioritize the time axis by redesigning the temporal latent representation and learning long-term consistency from data by training on longer videos. We leverage a two-phase training strategy, where we separately train using longer videos at a low resolution and shorter videos at a high resolution. To evaluate the capabilities of our model, we introduce two new benchmark datasets with explicit focus on long-term temporal dynamics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ce208d95d020b023cba9e64031db2584-Paper-Conference.pdf",
+              "document_sha256": "5fe0bab131337e1e51cc2c55cb36d73996c66d3484d8346d57e3f726c9f9ef6f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-15c327ae847c9d8c99d66cde",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/8d30aa96e72440759f74bd2306c1fa3d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-e28e02471ff3d8e08eb70d0c",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/ce208d95d020b023cba9e64031db2584-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "2c3d6526fe43bf03304c6e3c9d3aed5dd98e3df37271ef9d93b4a6274143b81e"
+    },
+    {
+      "id": "edge-29962979a64227fbcb552bc8",
+      "a": "paper-1f3daf0705f67cb2594a74f4",
+      "b": "paper-cd3559df56b574a51ead5850",
+      "state": {
+        "paper_a": {
+          "title": "SA-Solver: Stochastic Adams Solver for Fast Sampling of Diffusion Models",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion Probabilistic Models (DPMs) have achieved considerable success in generation tasks. As sampling from DPMs is equivalent to solving diffusion SDE or ODE which is time-consuming, numerous fast sampling methods built upon improved differential equation solvers are proposed. The majority of such techniques consider solving the diffusion ODE due to its superior efficiency. However, stochastic sampling could offer additional advantages in generating diverse and high-quality data. In this work, we engage in a comprehensive analysis of stochastic sampling from two aspects: variance-controlled diffusion SDE and linear multi-step SDE solver. Based on our analysis, we propose SA-Solver, which is an improved efficient stochastic Adams method for solving diffusion SDE to generate data with high quality. Our experiments show that SA-Solver achieves: 1) improved or comparable performance compared with the existing state-of-the-art (SOTA) sampling methods for few-step sampling; 2) SOTA FID on substantial benchmark datasets under a suitable number of function evaluations (NFEs)."
+        },
+        "paper_b": {
+          "title": "HarmoniCa: Harmonizing Training and Inference for Better Feature Caching in Diffusion Transformer Acceleration",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Diffusion Transformers (DiTs) excel in generative tasks but face practical deployment challenges due to high inference costs. Feature caching, which stores and retrieves redundant computations, offers the potential for acceleration. Existing learning-based caching, though adaptive, overlooks the impact of the prior timestep. It also suffers from misaligned objectives- aligned predicted noise vs. high-quality images -between training and inference. These two discrepancies compromise both performance and efficiency. To this end, we harmonize training and inference with a novel learning-based caching framework dubbed HarmoniCa . It first incorporates Step-Wise Denoising Training (SDT) to ensure the continuity of the denoising process, where prior steps can be leveraged. In addition, an Image Error Proxy-Guided Objective (IEPO) is applied to balance image quality against cache utilization through an efficient proxy to approximate the image error. Extensive experiments across $8$ models, $4$ samplers, and resolutions from $256\\times256$ to $2K$ demonstrate superior performance and speedup of our framework. For instance, it achieves over $40\\%$ latency reduction (*i.e.*, $2.07\\times$ theoretical speedup) and improved performance on PixArt-$\\alpha$. Remarkably, our *image-free* approach reduces training time by $25\\%$ compared with the previous method. Our code is available at https://github.com/ModelTC/HarmoniCa."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "It leverages techniques like pruning (Fang et al., 2023; Zhang et al., 2024; Wang et al., 2024b) and quantization (Shang et al., 2023; Huang et al., 2024; He et al., 2024) to reduce the workload in a static way.\nIn detail, we sample 50K images adopting DDIM (Song et al., 2020a) for DiT-XL/2, and 30K images utilizing IDDPM (Nichol & Dhariwal, 2021), DPM-Solver++ (Lu et al., 2022b), and SA-Solver (Xue et al., 2024) for P IX A RT - α .",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1f3daf0705f67cb2594a74f4",
+          "b": "paper-cd3559df56b574a51ead5850",
+          "input_sha256": "31fb6394b653caf688dcb4d2e1ff07223f7f22c479a038f2b42f5bacfe02d275",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f4a6806490d31216a3ba667eb240c897-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f4a6806490d31216a3ba667eb240c897-Paper-Conference.pdf",
+              "sha256": "6edf676e317365bd9b22845029fb1a88301f98c09cb5fd8d0d36af092cc63411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/huang25ah.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/huang25ah/huang25ah.pdf",
+              "sha256": "76c99422841889f1d46e82fb91c0d13a40f430a473363f1688c8b13efb9f99c3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion Probabilistic Models (DPMs) have achieved considerable success in generation tasks. As sampling from DPMs is equivalent to solving diffusion SDE or ODE which is time-consuming, numerous fast sampling methods built upon improved differential equation solvers are proposed. The majority of such techniques consider solving the diffusion ODE due to its superior efficiency. However, stochastic sampling could offer additional advantages in generating diverse and high-quality data. In this work, we engage in a comprehensive analysis of stochastic sampling from two aspects: variance-controlled diffusion SDE and linear multi-step SDE solver. Based on our analysis, we propose SA-Solver, which is an improved efficient stochastic Adams method for solving diffusion SDE to generate data with high quality. Our experiments show that SA-Solver achieves: 1) improved or comparable performance compared with the existing state-of-the-art (SOTA) sampling methods for few-step sampling; 2) SOTA FID on substantial benchmark datasets under a suitable number of function evaluations (NFEs).",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f4a6806490d31216a3ba667eb240c897-Paper-Conference.pdf",
+              "document_sha256": "6edf676e317365bd9b22845029fb1a88301f98c09cb5fd8d0d36af092cc63411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "empirically exhibits better sampling efficiency. Existing stochastic samplers typically exhibit slower convergence speed. However, empirical observations in [3, 27] indicate that the stochastic sampler has the potential to generate higher-quality data when increasing the sampling steps. This empirical observation motivates us to further explore the efficient stochastic sampler. Owing to the observed superior performance of stochastic sampler [3, 27], we speculate that adding properly scaled noise in the diffusion SDE may facilitate the quality of generated data. Thus, instead of solving the vanilla diffusion SDE in [22], we propose to consider a family of diffusion SDEs which shares the same marginal distribution [28, 27] with different noise scales. Meanwhile, efficient stochastic solvers are not carefully studied, which could be the reason that diffusion ODE exhibits better sampling efficiency. To overcome this problem, we study the linear multi-step SDE solvers [29] and incorporate them in the sampling. Based on these studies, we propose SA-Solver with theoretical convergence order to solve the proposed diffusion SDEs. Our SA-Solver is based on the stochastic Adams method in [29], by adapting it to the exponentially weighted integral and analytical variance. With the proposed diffusion SDEs and SA-Solver, we can efficiently generate data with controllable noise scales. We empirically evaluate our SA-Solver on plenty of benchmark datasets of image generation. The evaluation criterion is the Fréchet Inception Distance (FID) score [30] under different number of function evaluations (NFEs). The experimental results can be summarized as three folds: 1) Under small NFEs, our SA-Solver has improved or comparable FID scores, compared with baseline methods; 2) Under suitable",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f4a6806490d31216a3ba667eb240c897-Paper-Conference.pdf",
+              "document_sha256": "6edf676e317365bd9b22845029fb1a88301f98c09cb5fd8d0d36af092cc63411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "2019) as reference metrics. For P IX A RT-α, to gauge the compatibility of image-caption pairs, we calculate CLIP score (Hessel et al., 2022) using ViT-B/32 (Dosovitskiy et al., 2020) as the backbone. To evaluate the inference efficiency, we measure CUR 7 and inference latency. In detail, we sample 50K images adopting DDIM (Song et al., 2020a) for DiT-XL/2, and 30K images utilizing IDDPM (Nichol & Dhariwal, 2021), DPM-Solver++ (Lu et al., 2022b), and SA-Solver (Xue et al., 2024) for P IX A RT-α. All of them use classifier-free guidance (cfg) (Ho & Salimans, 2022).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/huang25ah/huang25ah.pdf",
+              "document_sha256": "76c99422841889f1d46e82fb91c0d13a40f430a473363f1688c8b13efb9f99c3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion Transformers (DiTs) excel in generative tasks but face practical deployment challenges due to high inference costs. Feature caching, which stores and retrieves redundant computations, offers the potential for acceleration. Existing learning-based caching, though adaptive, overlooks the impact of the prior timestep. It also suffers from misaligned objectives–aligned predicted noise vs. high-quality images–between training and inference. These two discrepancies compromise both performance and efficiency. To this end, we harmonize training and inference with a novel learning-based caching framework dubbed HarmoniCa. It first incorporates Step-Wise Denoising Training (SDT) to ensure the continuity of the denoising process, where prior steps can be leveraged. In addition, an Image Error ProxyGuided Objective (IEPO) is applied to balance image quality against cache utilization through an efficient proxy to approximate the image error. Extensive experiments across 8 models, 4 samplers, and resolutions from 256 × 256 to 2K demonstrate superior performance and speedup of our framework. For instance, it achieves over 40% latency reduction (i.e., 2.07× theoretical speedup) and improved performance on P IX A RTα. Remarkably, our image-free approach reduces training time by 25% compared with the previous method. Our code is available at https: //github.com/ModelTC/HarmoniCa.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/huang25ah/huang25ah.pdf",
+              "document_sha256": "76c99422841889f1d46e82fb91c0d13a40f430a473363f1688c8b13efb9f99c3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "4.2. Harmonizing Training and Inference Existing studies (Ning et al., 2023; Li et al., 2024b; Ning et al., 2024) on diffusion models also validate that discrepancies between training and inference can lead to error accumulation and result in performance degradation. To solve the problem, we introduce HarmoniCa, a new learning-based caching framework that harmonizes training and inference through the following two techniques.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/huang25ah/huang25ah.pdf",
+              "document_sha256": "76c99422841889f1d46e82fb91c0d13a40f430a473363f1688c8b13efb9f99c3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1f3daf0705f67cb2594a74f4",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f4a6806490d31216a3ba667eb240c897-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-cd3559df56b574a51ead5850",
+          "url": "https://proceedings.mlr.press/v267/huang25ah.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Generation with Diffusion and Motion Modeling"
+      },
+      "sha256": "3ee33f48d32e603c63013265319634bf7d66ec361f49eaaf48da01486a96f914"
+    }
+  ]
+}

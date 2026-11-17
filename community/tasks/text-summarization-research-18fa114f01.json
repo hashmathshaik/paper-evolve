@@ -1,0 +1,1014 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Text Summarization Research",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-5d66ee01d6f49f7384490931",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-5d7545e23597a19ce2fb6c29",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Mask-to-Correct^+: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "The rapid spread of misinformation on social media highlights the need for robust, automated fact correction frameworks. However, existing works rely on supervised learning from manually annotated claim-evidence pairs, which are scarce and prone to biases, limiting their generalization across domains. Moreover, these methods overlook semantic faithfulness in their correction process. To address these challenges, we propose Mask-to-Correct (M_2C), a training-free, inference-only Retrieval Augmented Generation (RAG) based framework that leverages diversity-aware masking to identify erroneous spans of claims and evaluate the faithfulness of corrections using retrieved evidence. However, the effectiveness of RAG heavily depends on the choice of retriever, which may vary across queries. To mitigate this, we further introduce M_2C^+, an ensemble-based framework that combines corrections across multiple rankers to reduce retrieval bias and improve robustness. Extensive experiments on the benchmark datasets demonstrate that our proposed frameworks consistently outperform all baselines, achieving up to 14% improvement in SARI scores, without using gold evidence."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Inspired by Manakul et al. (2023), we use DeBERTa-v3-large (He et al., 2021) fine-tuned to MNLI as an entailment model with the ROUGE-L metric.\nHere, RoBERTa (Liu et al., 2019) was fine-tuned on two biomedical datasets to improve domain-specific performance.\nFor our proposed diversity-aware masking-based methods, like M 2 C DM and M 2 C + DM , we used all-MiniLM-L6-v2 for getting embeddings of entities and used Key-4 https://huggingface.co/TheBloke/Llama-2-70B-Chat-AWQ 5 https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-AWQ BERT 6 (Grootendorst, 2020; Bennani-Smires et al., 2018).\nAs shown in Table 3, retriever choice substantially affects correction quality–retrievers like MonoT5 and ColBERT retrieve the most relevant evidence for given claims, while Contriever achieves the highest overall nDCG@10.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-5d7545e23597a19ce2fb6c29",
+          "input_sha256": "01ec0ac1875ad33c1e6e0ad07fe7f6dbbcb5646a84177664d9d45dd408765913",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.175/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "We compare our proposed methodology with the following baselines, considering two settings for each: 1) using evidence retrieved from an external corpus, and 2) using gold-standard evidence. Non-parametric Baselines. These methods do not involve any parametric training for our downstream fact correction task. We employ the following: a) 0-shot (Labruna et al., 2024; Kojima et al., 2022b; Li et al., 2023): To assess the importance of masking, in this approach, given a claim, the model directly prompts to generate the corrected claim without utilizing any example. b) RAG (Labruna et al., 2024): Similar to the previous approach, here we directly prompt the LLM to correct a given claim, but in the presence of some context. c) M2 Cw/Ver : This variant incorporates an initial verification step in the M2 C framework by using an LLM, with corrections applied only to claims identified as incorrect. d) ZEROFECDA (Huang et al., 2023), a training-free QA-based framework that divides the task into five sub-tasks. Here, RoBERTa (Liu et al., 2019) was fine-tuned on two biomedical datasets to improve domainspecific performance. Distantly Supervised Baselines. We employ the following parametric approaches as baselines. a) T5-Distant (Thorne and Vlachos, 2021b): Similar to our methodology, it also follows a maskthen-correct approach using DPR (Karpukhin et al.,",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "domain, HM’s direct token matching is more effective in scientific texts. Moreover, the limited linguistic variability in SciFact reduces the benefit of selecting diversity-based entities. Thus, DM achieves comparable result to HM for both models. In relation to RQ-3 (Gold vs. retrieved evidence), all models perform better with gold evidence, which serves as an oracle setup due to its higher relevance. However, there is less difference in performance. Specifically, our proposed M2 C variants, M2 CDM and M2 C+ DM , achieve comparable results with both gold and retrieved evidence, demonstrating the effectiveness of our method without relying on annotated evidence. Notably, for M2 CDM and M2 C+ DM , the results are the same with gold evidence. To address RQ-4 (Correlation between retriever and performance), Figure 3e demonstrates a positive correlation between retrieval quality (nDCG@10) and downstream correction performance (SARI) for each retriever, indicating that higher-quality retrievals lead to more accurate corrections. As shown in Table 3, retriever choice substantially affects correction quality–retrievers like MonoT5 and ColBERT retrieve the most relevant evidence for given claims, while Contriever achieves the highest overall nDCG@10. Therefore, retrievers vary in effectiveness depending on the topic or the claim type. Thus, motivated by these",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The rapid spread of misinformation on social media highlights the need for robust, automated fact correction frameworks. However, existing works rely on supervised learning from manually annotated claim-evidence pairs, which are scarce and prone to biases, limiting their generalization across domains. Moreover, these methods overlook semantic faithfulness in their correction process. To address these challenges, we propose Mask-to-Correct (M2 C), a training-free, inference-only Retrieval Augmented Generation (RAG) based framework that leverages diversity-aware masking to identify erroneous spans of claims and evaluate the faithfulness of corrections using retrieved evidence. However, the effectiveness of RAG heavily depends on the choice of retriever, which may vary across queries. To mitigate this, we further introduce M2 C+ , an ensemblebased framework that combines corrections across multiple rankers to reduce retrieval bias and improve robustness. Extensive experiments on the benchmark datasets demonstrate that our proposed frameworks consistently outperform all baselines, achieving up to 14% improvement in SARI scores, without using gold evidence.",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "is resource-intensive and time-consuming and also susceptible to pooling and exposure biases (Yang et al., 2019) (see Appendix C). Inspired by Huang et al. (2023), we address these challenges by introducing training-free approaches, such as zero-shot prompting followed by a Retrieval-Augmented Generation (RAG)-based framework (Lewis et al., 2020; Izacard and Grave, 2021), which enhances an LLM’s response generation by integrating external knowledge from largescale corpora, thereby eliminating the need for manually annotated ground-truth evidence. However, such prompting approaches face some challenges: Ensuring minimal change: The corrected claim should preserve the original semantics. Identifying potentially false or weakly supported spans within a claim may help us address it convincingly. Retriever quality dependency: As illustrated in Figure 1, the effectiveness of RAG-based correction depends heavily on the quality of the retrieved evidence. A single retriever may fail to capture diverse or ambiguous contexts and accumulating complementary evidence from multiple retrievers leads to more reliable corrections. To overcome these challenges, we propose a novel masking aware, three-stage framework M2 C (Mask-to-Correct) that identifies and masks erroneous spans in a claim, generates corrected candidates using retrieved evidence, and selects the most faithful revision through a semantic–factual scoring function. We further introduce M2 C+ , an ensemble-based extension that aggregates multiple retrieval generation pathways for improved robustness. Importantly, to our knowledge, our work is the first to integrate RAG with a diversity-aware masking strategy that ensures broader coverage of plausible error regions while minimizing unnecessary edits, hallucinations, thereby",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-5d7545e23597a19ce2fb6c29",
+          "url": "https://aclanthology.org/2026.acl-long.175/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "d763c30e1faec8d4d75e7417282a9ad7aff505cf603a52cbbd972f7a003d2bb0"
+    },
+    {
+      "id": "edge-812577d3143aa5f7e2299f2c",
+      "a": "paper-96c56d0fd5e70806a87e5576",
+      "b": "paper-3162693d2958ceabd899353b",
+      "state": {
+        "paper_a": {
+          "title": "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Large language models (LLMs) such as ChatGPT have seen widespread adoption due to their ability to follow user instructions well.Developing these LLMs involves a complex yet poorly understood workflow requiring training with human feedback. Replicating and understanding this instruction-following process faces three major challenges: the high cost of data collection, the lack of trustworthy evaluation, and the absence of reference method implementations. We address these bottlenecks with AlpacaFarm, a simulator that enables research and development for learning from feedback at a low cost. First, we design LLM based simulator for human feedback that is 45x cheaper than crowdworkers and displays high agreement with humans. Second, we identify an evaluation dataset representative of real-world instructions and propose an automatic evaluation procedure. Third, we contribute reference implementations for several methods (PPO, best-of-n, expert iteration, among others) that learn from pairwise feedback. Finally, as an end-to-end validation of AlpacaFarm, we train and evaluate eleven models on 10k pairs of human feedback and show that rankings of models trained in AlpacaFarm match rankings of models trained on human data. As a demonstration of the research possible in AlpacaFarm, we find that methods that use a reward model can substantially improve over supervised fine-tuning and that our reference PPO implementation leads to a +10% win-rate improvement against Davinci003."
+        },
+        "paper_b": {
+          "title": "Summarizing Speech: A Comprehensive Survey",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Speech summarization has become an essential tool for efficiently managing and accessing the growing volume of spoken and audiovisual content. However, despite its increasing importance, speech summarization remains loosely defined. The field intersects with several research areas, including speech recognition, text summarization, and specific applications like meeting summarization. This survey not only examines existing datasets and evaluation protocols, which are crucial for assessing the quality of summarization approaches, but also synthesizes recent developments in the field, highlighting the shift from traditional systems to advanced models like fine-tuned cascaded architectures and end-to-end solutions. In doing so, we surface the ongoing challenges, such as the need for realistic evaluation benchmarks, multilingual datasets, and long-context handling."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "LLM judges also exhibit biases, such as favoring outputs from the same model (Dubois et al., 2023; Gong et al., 2024), struggling with factual error detection (Gong et al., 2024; Tang et al., 2024), preferring list-style over fluent text (Dubois et al., 2023), and being sensi-8 tive to prompt…\nHowever, they come with limitations: The judge model must be stronger than the systems it assesses (Dubois et al., 2023), often involving commercial models with limited reproducibility (Barnes et al., 2025).\n…2023; Gong et al., 2024), struggling with factual error detection (Gong et al., 2024; Tang et al., 2024), preferring list-style over fluent text (Dubois et al., 2023), and being sensi-8 tive to prompt complexity (Thakur et al., 2025) and summary length (Dubois et al., 2024; Thakur et al., 2025).\nThese models are applied by calculating win rates against reference models (Dubois et al., 2023, 2024), evaluating specific criteria (Liu et al., 2023a; Tang et al., 2024; Züfle et al., 2025), and performing reference-free quality estimation (Liu et al., 2023a; Gong et al., 2024; Kirstein et al.,…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-96c56d0fd5e70806a87e5576",
+          "b": "paper-3162693d2958ceabd899353b",
+          "input_sha256": "89759ad932b001b18299153979555c6e0eb335f8ee53d4ea6111c291c636ed96",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/5fc47800ee5b30b8777fdd30abcaaf3b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/5fc47800ee5b30b8777fdd30abcaaf3b-Paper-Conference.pdf",
+              "sha256": "39c5dc327d2b48ff52b55b04f6ef448a13d74e7fa1d5fc52a684ad3a97f9a2a9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.emnlp-main.1388/",
+              "pdf_url": "https://aclanthology.org/2025.emnlp-main.1388.pdf",
+              "sha256": "d7859bb703b81d356e4f206487ba399a84a1cf18dbe791e7bdc56477500e5e56"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: AlpacaFarm is a simulation sandbox that enables fast and cheap experimentation on methods that learn from human feedback. It simulates human feedback with API LLMs, provides a validated evaluation protocol, and offers a suite of reference method implementations. Researchers can iterate on model development and transfer their methods to training on human data to maximize performance. of existing methods. To address these three challenges, we introduce AlpacaFarm (Figure 1), a simulation sandbox that enables experimentation at a low cost. Using AlpacaFarm, researchers can rapidly iterate on method development in simulation and transfer these insights to build highperformance systems with actual human feedback. For the first challenge of data annotation costs, AlpacaFarm simulates human annotators with API LLMs that are faster and lower cost. To collect simulated feedback data, we design prompts for API LLMs (e.g. GPT-4) that enable us to simulate human pairwise comparisons at a cost that is 45x cheaper than crowd-workers, and tune these prompts to faithfully capture many aspects of human annotators, such as their quality judgments, inter-annotator variability, and stylistic preferences. For the second challenge of automated evaluation, we design an automatic evaluation protocol that aims to quantify system performance on simple but realistic real-world human instructions. Improving evaluations of open-ended instruction following has been challenging due to the cost and non-replicability of human evaluation, the lack of real human interaction data, and the diversity of natural human instructions. To address this, we use instructions from user interactions (Alpaca Demo [69]) as a reference for simple but real human interactions and show that we can combine",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/5fc47800ee5b30b8777fdd30abcaaf3b-Paper-Conference.pdf",
+              "document_sha256": "39c5dc327d2b48ff52b55b04f6ef448a13d74e7fa1d5fc52a684ad3a97f9a2a9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models (LLMs) such as ChatGPT have seen widespread adoption due to their ability to follow user instructions well. Developing these LLMs involves a complex yet poorly understood workflow requiring training with human feedback. Replicating and understanding this instruction-following process faces three major challenges: the high cost of data collection, the lack of trustworthy evaluation, and the absence of reference method implementations. We address these challenges with AlpacaFarm, a simulator that enables research and development for learning from feedback at a low cost. First, we design LLM prompts to simulate human feedback that are 45x cheaper than crowd-workers and display high agreement with humans. Second, we propose an automatic evaluation and validate it against human instructions obtained on real-world interactions. Third, we contribute reference implementations for several methods (PPO, best-of-n, expert iteration, and more) that learn from pairwise feedback. Finally, as an end-to-end validation of AlpacaFarm, we train and evaluate eleven models on 10k pairs of real human feedback and show that the rankings of models trained in AlpacaFarm match the rankings of models trained on human data. As a demonstration of the research possible in AlpacaFarm, we find that methods that use a reward model can substantially improve over supervised fine-tuning and that our reference PPO implementation leads to a +10% improvement in win-rate against Davinci003. We release AlpacaFarm at https://github.com/tatsu-lab/alpaca_farm.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/5fc47800ee5b30b8777fdd30abcaaf3b-Paper-Conference.pdf",
+              "document_sha256": "39c5dc327d2b48ff52b55b04f6ef448a13d74e7fa1d5fc52a684ad3a97f9a2a9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "2025b). These models are applied by calculating win rates against reference models (Dubois et al., 2023, 2024), evaluating specific criteria (Liu et al., 2023a; Tang et al., 2024; Züfle et al., 2025), and performing reference-free quality estimation (Liu et al., 2023a; Gong et al., 2024; Kirstein et al., 2025b). Table D1 shows an overview of these approaches. Among these, CREAM (Gong et al., 2024), MESA (Kirstein et al., 2025b), and TofuEval (Tang et al., 2024) stand out as one of the few frameworks specifically developed for meeting and dialogue summarization, targeting longcontext summarizations and dialogue-based meeting summarizations. Notably, the LLM-based evaluators either rely on transcripts or use only the system output and reference summaries to reduce computational costs. To date, no models evaluate the SSum content directly from raw audio signals. Still, LLM judges show strong performance, often surpassing traditional metrics like ROUGE and aligning closer with human judgments (Züfle et al., 2025). However, it comes with limitations: The judge must be stronger than the systems it assesses (Dubois et al., 2023), often involving commercial models with limited reproducibility (Barnes et al., 2025). LLM judges also exhibit biases, such as favoring outputs from the same model (Dubois et al., 2023; Gong et al., 2024), struggling with factual error detection (Gong et al., 2024; Tang et al., 2024), preferring list-style over fluent text (Dubois et al., 2023), and being sensitive to prompt complexity (Thakur et al., 2025) and summary length (Dubois et al., 2024; Thakur et al., 2025). These limitations are particularly relevant for SSum, where current LLM-based evaluators do not process audio or even the transcript, failing to account for key characteristics of",
+              "url": "https://aclanthology.org/2025.emnlp-main.1388.pdf",
+              "document_sha256": "d7859bb703b81d356e4f206487ba399a84a1cf18dbe791e7bdc56477500e5e56"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-96c56d0fd5e70806a87e5576",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/5fc47800ee5b30b8777fdd30abcaaf3b-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-3162693d2958ceabd899353b",
+          "url": "https://aclanthology.org/2025.emnlp-main.1388/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "ec44792d0a501efee6ba058a7d03170078e8f66bba71ef520b6130601994267a"
+    },
+    {
+      "id": "edge-5e91c39683e37b785ef9a069",
+      "a": "paper-01913df292f2486c62f5e2f3",
+      "b": "paper-6fa3ed8d11e8fb6b5f9add88",
+      "state": {
+        "paper_a": {
+          "title": "Latent Alignment and Variational Attention",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Neural attention has become central to many state-of-the-art models in natural language processing and related domains. Attention networks are an easy-to-train and effective method for softly simulating alignment; however, the approach does not marginalize over latent alignments in a probabilistic sense. This property makes it difficult to compare attention to other alignment approaches, to compose it with probabilistic models, and to perform posterior inference conditioned on observed data. A related latent approach, hard attention, fixes these issues, but is generally harder to train and less accurate. This work considers variational attention networks, alternatives to soft and hard attention for learning latent variable alignment models, with tighter approximation bounds based on amortized variational inference. We further propose methods for reducing the variance of gradients to make these approaches computationally feasible. Experiments show that for machine translation and visual question answering, inefficient exact latent variable models outperform standard neural attention, but these gains go away when using hard attention based training. On the other hand, variational attention retains most of the performance gain but with training speed comparable to neural attention."
+        },
+        "paper_b": {
+          "title": "Improving Latent Alignment in Text Summarization by Generalizing the Pointer Generator",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Pointer Generators have been the de facto standard for modern summarization systems. However, this architecture faces two major drawbacks: Firstly, the pointer is limited to copying the exact words while ignoring possible inflections or abstractions, which restricts its power of capturing richer latent alignment. Secondly, the copy mechanism results in a strong bias towards extractive generations, where most sentences are produced by simply copying from the source text. In this paper, we address these problems by allowing the model to “edit” pointed tokens instead of always hard copying them. The editing is performed by transforming the pointed word vector into a target space with a learned relation embedding. On three large-scale summarization dataset, we show the model is able to (1) capture more latent alignment relations than exact word matches, (2) improve word alignment accuracy, allowing for better model interpretation and controlling, (3) generate higher-quality summaries validated by both qualitative and quantitative evaluations and (4) bring more abstraction to the generated summaries."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…(a) people can better control the generation by manipulating the alignment trajectory, (b) posterior alignment can be inferred by Bayes’ theorem (Deng et al., 2018; Shankar and Sarawagi, 2019) to provide a better tool for interpretation and ﬁnally (c) explicitly capturing the alignment relation…\n…(a) people can better control the generation by manipulating the alignment trajectory, (b) posterior alignment can be inferred by Bayes’ theorem (Deng et al., 2018; Shankar and Sarawagi, 2019) to provide a better tool for interpretation and ﬁnally (c) explicitly capturing the alignment…\nExact marginalization is only feasible for data with limited length (Yu et al., 2016; Aharoni and Goldberg, 2017; Deng et al., 2018; Backes et al., 2018), or by assuming a simple copy generation process (Vinyals et al., 2015; Gu et al., 2016; See et al., 2017).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01913df292f2486c62f5e2f3",
+          "b": "paper-6fa3ed8d11e8fb6b5f9add88",
+          "input_sha256": "e54b2fa65509a80d90b737183d2d6e13687f7ea9729cf058e35044da6a479e56",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1390/",
+              "pdf_url": "https://aclanthology.org/D19-1390.pdf",
+              "sha256": "94ce1ad443e1fa27f2c24fcd729c9660f3de61ad20730cdf3e623f31932ec869"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The aim of this work is to quantify the issues with attention and propose alternatives based on recent developments in variational inference. While the connection between variational inference and hard attention has been noted in the literature [4, 41], the space of possible bounds and optimization methods has not been fully explored and is growing quickly. These tools allow us to better quantify whether the general underperformance of hard attention models is due to modeling issues (i.e. soft attention imbues a better inductive bias) or optimization issues. Our main contribution is a variational attention approach that can effectively fit latent alignx1:T ments while remaining tractable to train. We consider two variants of variational attention: Mary did not slap the green witch categorical and relaxed. The categorical method is fit with amortized variational inference using a learned inference network and policy gradient p(z|x,x̃) z q(z;x,x̃,y) with a soft attention variance reduction baseline. With an appropriate inference network (which conditions on the entire source/target), it can be Maria no daba una bofetada a la bruja verda used at training time as a drop-in replacement for hard attention. The relaxed version assumes y3 x̃ that the alignment is sampled from a Dirichlet distribution and hence allows attention over mul- Figure 1: Sketch of variational attention applied to tiple source elements. machine translation. Two alignment distributions are Experiments describe how to implement this shown, the blue prior p, and the red variational posterior approach for two major attention-based models: q taking into account future observations. Our aim is to neural machine translation and visual question use q to improve estimates of p and to support improved inference",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "document_sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "target embedding. For example, when decoding “closes” in Figure 1, the model should first point to “closure” in the source, predict a relation to be applied (noun → third person singular verb), then transform “closure” into “closes” by applying the relation transformation. The generalized point mode is encouraged to capture such latent alignment which cannot be identified by the standard pointer generator. This improved alignment modelling is intriguing in that (a) people can better control the generation by manipulating the alignment trajectory, (b) posterior alignment can be inferred by Bayes’ theorem (Deng et al., 2018; Shankar and Sarawagi, 2019) to provide a better tool for interpretation2 and finally (c) explicitly capturing the alignment relation should improve generation performance. (Figure 1 shows an example of how latent alignment can improve the controllability and interpretation. Pointer generators fail to model such alignment relations that are not exact copies.) To eliminate the OOV problem, we utilize the byte-pairencoding (BPE) segmentation (Sennrich et al., 2016) to split rare words into sub-units, which has very few applications in summarization so far (Fan et al., 2018; Kiyono et al., 2018), though being a common technique in machine translation (Wu et al., 2016; Vaswani et al., 2017; Gehring et al., 2017). Our experiments are conducted on three summarization datasets: CNN/dailymail (Hermann et al., 2015), English Gigaword (Rush et al., 2015) and XSum (Narayan et al., 2018) (a newly collected corpus for extreme summarization). We further perform human evaluation and examine the word alignment accuracy on the manually annotated DUC 2004 dataset. Overall we find our model provides the following benefits: 1. It can capture richer latent alignment and",
+              "url": "https://aclanthology.org/D19-1390.pdf",
+              "document_sha256": "94ce1ad443e1fa27f2c24fcd729c9660f3de61ad20730cdf3e623f31932ec869"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Neural attention models (Bahdanau et al., 2015) with the seq2seq architecture (Sutskever et al., 2014) have achieved impressive results in text summarization tasks. However, the attention vector comes from a weighted sum of source information and does not model the source-target alignment in a probabilistic sense. This makes it difficult to interpret or control model generations through the attention mechanism. In practice, people do find the attention vector is often blurred and suffers from poor alignment (Koehn and Knowles, 2017; Kiyono et al., 2018; Jain and Wallace, 2019). Hard alignment models, on the other hand, explicitly models the alignment relation between each source-target pair. Though theoretically sound, hard alignment models are hard to train. Exact marginalization is only feasible for data with limited length (Yu et al., 2016; Aharoni and Goldberg, 2017; Deng et al., 2018; Backes et al., 2018), or by assuming a simple copy generation process (Vinyals et al., 2015; Gu et al., 2016; See et al., 2017). Our model can be viewed as a combination of soft attention and hard alignment, where a simple top-k approximation is used to train the alignment part (Shankar et al., 2018; Shankar and Sarawagi, 2019). The hard alignment generation probability is designed as a relation summation operation to better fit the sum-",
+              "url": "https://aclanthology.org/D19-1390.pdf",
+              "document_sha256": "94ce1ad443e1fa27f2c24fcd729c9660f3de61ad20730cdf3e623f31932ec869"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "target word yt . Using addition transformation is mode. In the generation mode, the model combacked by the observation that vector differences putes the probability over the whole vocabulary as often reflect meaningful word analogies (Mikolov in Eq. 2. In the point mode, the model computes et al., 2013; Pennington et al., 2014) (“man” − which source word to copy based on the attention “king” ≈ “woman” − “queen”) and they are distribution at from Eq.1. The final probability is effective at encoding a great amount of word marginalized over at,i : relations like hypernym, meronym and morphoX p(yt ) = pgen pvocab (yt ) + (1 − pgen ) at,i δ(yt |xi ) logical changes (Vylomova et al., 2016; Hakami i et al., 2018; Allen and Hospedales, 2019). These ( word relations reflect most alignment conditions 1, if yt = xi . δ(yt |xi ) = (4) in text summarization. For example, humans of0, otherwise. ten change the source word to its hypernym (boy If we know exactly from which mode each word → child), to make it more specific (person → man) comes from, e.g., by assuming all co-occurred or apply morphological transformations (liked → words are copied, then the marginalization can be like). Therefore, we assume δ(yt |xi ) can be well omitted (Gulcehre et al., 2016; Wiseman et al., modelled by first predicting a relation embedding → 2017), but normally pgen is treated as a latent varito be applied, then added to − xi . If xi should able (Gu et al., 2016; See et al., 2017). be exactly copied like in standard pointer generators, the relation embedding is a zero vector mean3 Generalized Pointer Generator (GPG) ing an identity transition. We also tried apply→ ing more complex transitions to − xi like diagonal As seen in Eq .4, δ(yt |xi ) is a 0-1 event that is mapping (Trouillon et al., 2016),",
+              "url": "https://aclanthology.org/D19-1390.pdf",
+              "document_sha256": "94ce1ad443e1fa27f2c24fcd729c9660f3de61ad20730cdf3e623f31932ec869"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "In this work, we propose generalizing the pointer generator to go beyond exact copy operation. At each decoding step, the decoder can either generate from the vocabulary, copy or edit some source words by estimating a relation embedding. Experiments on abstractive summarization show the generalized model generates more abstract summaries yet faithful to the source information. The generalized pointer is able to capture richer latent alignment relationship beyond exact copies. This helps improve the alignment accuracy, allowing better model controllability and interpretation. We believe the generalized pointer mechanism could have potential applications in many fields where tokens are not exactly copied. By integrating off-the-shelf knowledge bases to clearly model the transition relation embedding, it should further improve the interpretability and might be espe-",
+              "url": "https://aclanthology.org/D19-1390.pdf",
+              "document_sha256": "94ce1ad443e1fa27f2c24fcd729c9660f3de61ad20730cdf3e623f31932ec869"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01913df292f2486c62f5e2f3",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6fa3ed8d11e8fb6b5f9add88",
+          "url": "https://aclanthology.org/D19-1390/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "21c3d64f73981bf471a62a0dd1958ba333dfd3a678e2e5fdfe97b1b655ff509b"
+    },
+    {
+      "id": "edge-9e2299bf1a900ec7567b494f",
+      "a": "paper-01913df292f2486c62f5e2f3",
+      "b": "paper-f1a67214ed47763575927d76",
+      "state": {
+        "paper_a": {
+          "title": "Latent Alignment and Variational Attention",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Neural attention has become central to many state-of-the-art models in natural language processing and related domains. Attention networks are an easy-to-train and effective method for softly simulating alignment; however, the approach does not marginalize over latent alignments in a probabilistic sense. This property makes it difficult to compare attention to other alignment approaches, to compose it with probabilistic models, and to perform posterior inference conditioned on observed data. A related latent approach, hard attention, fixes these issues, but is generally harder to train and less accurate. This work considers variational attention networks, alternatives to soft and hard attention for learning latent variable alignment models, with tighter approximation bounds based on amortized variational inference. We further propose methods for reducing the variance of gradients to make these approaches computationally feasible. Experiments show that for machine translation and visual question answering, inefficient exact latent variable models outperform standard neural attention, but these gains go away when using hard attention based training. On the other hand, variational attention retains most of the performance gain but with training speed comparable to neural attention."
+        },
+        "paper_b": {
+          "title": "Learning Opinion Summarizers by Selecting Informative Reviews",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Opinion summarization has been traditionally approached with unsupervised, weakly-supervised and few-shot learning techniques. In this work, we collect a large dataset of summaries paired with user reviews for over 31,000 products, enabling supervised training. However, the number of reviews per product is large (320 on average), making summarization – and especially training a summarizer – impractical. Moreover, the content of many reviews is not reflected in the human-written summaries, and, thus, the summarizer trained on random review subsets hallucinates. In order to deal with both of these challenges, we formulate the task as jointly learning to select informative subsets of reviews and summarizing the opinions expressed in these subsets. The choice of the review subset is treated as a latent variable, predicted by a small and simple selector. The subset is then fed into a more powerful summarizer. For joint training, we use amortized variational inference and policy gradient methods. Our experiments demonstrate the importance of selecting informative reviews resulting in improved quality of summaries and reduced hallucinations."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "We explore this direction by introducing S EL S UM that jointly learns to se lect and sum marize review subsets using amortized variational inference and policy gradient optimization (Kingma and Welling, 2013; Mnih and Gregor, 2014; Deng et al., 2018), as depicted in Fig.\nFrom the theoretical perspective, it can lead to a large gap between the log-likelihood and the lower bound, contributing to poor performance (Deng et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01913df292f2486c62f5e2f3",
+          "b": "paper-f1a67214ed47763575927d76",
+          "input_sha256": "5fb52f622197fb7f87415eecb75fc8a3a5814a57c898589a1345644cac615a76",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.743/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.743.pdf",
+              "sha256": "2874c45e79f62782af29422d445404d27fe1ae39740d8be05d4d839dd44db7a9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The aim of this work is to quantify the issues with attention and propose alternatives based on recent developments in variational inference. While the connection between variational inference and hard attention has been noted in the literature [4, 41], the space of possible bounds and optimization methods has not been fully explored and is growing quickly. These tools allow us to better quantify whether the general underperformance of hard attention models is due to modeling issues (i.e. soft attention imbues a better inductive bias) or optimization issues. Our main contribution is a variational attention approach that can effectively fit latent alignx1:T ments while remaining tractable to train. We consider two variants of variational attention: Mary did not slap the green witch categorical and relaxed. The categorical method is fit with amortized variational inference using a learned inference network and policy gradient p(z|x,x̃) z q(z;x,x̃,y) with a soft attention variance reduction baseline. With an appropriate inference network (which conditions on the entire source/target), it can be Maria no daba una bofetada a la bruja verda used at training time as a drop-in replacement for hard attention. The relaxed version assumes y3 x̃ that the alignment is sampled from a Dirichlet distribution and hence allows attention over mul- Figure 1: Sketch of variational attention applied to tiple source elements. machine translation. Two alignment distributions are Experiments describe how to implement this shown, the blue prior p, and the red variational posterior approach for two major attention-based models: q taking into account future observations. Our aim is to neural machine translation and visual question use q to improve estimates of p and to support improved inference",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "document_sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "S UM consisting of verdicts, pros and cons for more than 31,000 summarized Amazon products, as shown in Table 1. The summaries were written by professional product reviewers guiding online audience to make better purchasing decisions. In turn, each product is linked to more than 320 reviews, on average. This, however, makes it virtually impossible to train a conventional encoderdecoder model using standard hardware. Moreover, not all reviews cover the summary content. Thus, training to predict summaries based on random review subsets results in hallucinations, as we will empirically demonstrate in Sec. 5.2. This calls for specialized methods selecting smaller subsets of relevant reviews that are fed to a summarizer. We explore this direction by introducing S EL S UM that jointly learns to select and summarize review subsets using amortized variational inference and policy gradient optimization (Kingma and Welling, 2013; Mnih and Gregor, 2014; Deng et al., 2018), as depicted in Fig. 1. To select relevant review subsets in training, we utilize the summary to pre-compute lexical features. Then we score review relevance with a tiny neural selector that has only 0.1% of the deep encoder’s parameters. These simple features, as opposed to deep encoder representations, allow us to select reviews from large collections without a significant computational burden. Subsequently, only selected reviews are encoded by an ‘expensive’ encoder, in order to predict the summary. To select quality review subsets in test time, when the summary is not available, we approximate the summary relevance using another neural selector. In our experiments, we show the importance of accurate review selection, affecting the summarizer in training and its output in testing. Furthermore, we show that",
+              "url": "https://aclanthology.org/2021.emnlp-main.743.pdf",
+              "document_sha256": "2874c45e79f62782af29422d445404d27fe1ae39740d8be05d4d839dd44db7a9"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Here the latent subset r̂1:K is sampled from a prior categorical distribution agnostic of the summary. From the theoretical perspective, it can lead to a large gap between the log-likelihood and the lower bound, contributing to poor performance (Deng et al., 2018). From the practical perspective, it can result in the input reviews not covering the summary content, thus forcing the decoder in training to predict ‘novel’ content. Consequently, this leads to hallucinations (Maynez et al., 2020) in test time, as we empirically demonstrate in Sec. 5.2. 3.2",
+              "url": "https://aclanthology.org/2021.emnlp-main.743.pdf",
+              "document_sha256": "2874c45e79f62782af29422d445404d27fe1ae39740d8be05d4d839dd44db7a9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "decoder on a smaller subset of reviews. However, as not all reviews provide a good content coverage of the summary. Thus, training on random subsets leads to hallucinations, as we will show in Sec. 5.2. Instead, we propose to learn a review selector, which chooses reviews guided by the summary. We frame this as a latent variable modeling problem (the selection is latent) and rely on the variational inference framework to train the selector, see Sec. 3.2. The selector (the approximate posterior) is a neural module assessing the reviewsummary relevance using pre-computed lexical features, thus, efficiently selecting from large review collections. Further, the selected reviews are decoded to the summary, as illustrated in Fig. 1. To select reviews in test time, we train a review selector that does not rely on the summary, as presented in Sec. 3.3. 3.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.743.pdf",
+              "document_sha256": "2874c45e79f62782af29422d445404d27fe1ae39740d8be05d4d839dd44db7a9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Summarization of user opinions expressed in on- opinion-summarization domain and expensive to line resources, such as blogs, reviews, social media, produce. Specifically, the annotated datasets range from 50 to 200 annotated products (Chu and Liu, or internet forums, has drawn much attention due to its potential for various information access ap- 2019; Bražinskas et al., 2020b; Angelidis and Lapata, 2018; Angelidis et al., 2020). plications, such as creating digests, search, and The absence of large high-quality resources for report generation (Hu and Liu, 2004; Medhat et al., supervised learning has called for creative solu2014; Angelidis and Lapata, 2018; Amplayo and tions in the past. There is a long history of applyLapata, 2021a). Although significant progress has been observed in supervised summarization in non- ing unsupervised and weakly-supervised methods to opinion summarization (Mei et al., 2007; Titov subjective context, such as news articles (Rush et al., 2015; Nallapati et al., 2016; See et al., 2017; and McDonald, 2008; Angelidis and Lapata, 2018; Lebanoff et al., 2018; Gehrmann et al., 2018; Fab- Chu and Liu, 2019; Amplayo and Lapata, 2020; Bražinskas et al., 2020b). bri et al., 2019; Laban et al., 2020), modern deep learning methods rely on large amounts of anIn this work, we introduce the largest multinotated data that are not readily available in the document opinion summarization dataset A MA 9424 Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, pages 9424–9442 November 7–11, 2021. c 2021 Association for Computational Linguistics",
+              "url": "https://aclanthology.org/2021.emnlp-main.743.pdf",
+              "document_sha256": "2874c45e79f62782af29422d445404d27fe1ae39740d8be05d4d839dd44db7a9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01913df292f2486c62f5e2f3",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-f1a67214ed47763575927d76",
+          "url": "https://aclanthology.org/2021.emnlp-main.743/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "5d6a49888cafc115600ef7eda691eaf3e5e02474c22295c88767144d8a66db9b"
+    },
+    {
+      "id": "edge-0327ac0cc760d8924d863c5e",
+      "a": "paper-021fd135f736b89dc0a90908",
+      "b": "paper-dba232bddc21d8a7de6642d7",
+      "state": {
+        "paper_a": {
+          "title": "On the Inference Calibration of Neural Machine Translation",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Confidence calibration, which aims to make model predictions equal to the true correctness measures, is important for neural machine translation (NMT) because it is able to offer useful indicators of translation errors in the generated output. While prior studies have shown that NMT models trained with label smoothing are well-calibrated on the ground-truth training data, we find that miscalibration still remains a severe challenge for NMT during inference due to the discrepancy between training and inference. By carefully designing experiments on three language pairs, our work provides in-depth analyses of the correlation between calibration and translation performance as well as linguistic properties of miscalibration and reports a number of interesting findings that might help humans better analyze, understand and improve NMT models. Based on these observations, we further propose a new graduated label smoothing method that can improve both inference calibration and translation performance."
+        },
+        "paper_b": {
+          "title": "BRIO: Bringing Order to Abstractive Summarization",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Abstractive summarization models are commonly trained using maximum likelihood estimation, which assumes a deterministic (one-point) target distribution in which an ideal model will assign all the probability mass to the reference summary. This assumption may lead to performance degradation during inference, where the model needs to compare several system-generated (candidate) summaries that have deviated from the reference summary. To address this problem, we propose a novel training paradigm which assumes a non-deterministic distribution so that different candidate summaries are assigned probability mass according to their quality. Our method achieves a new state-of-the-art result on the CNN/DailyMail (47.78 ROUGE-1) and XSum (49.07 ROUGE-1) datasets. Further analysis also shows that our model can estimate probabilities of candidate summaries that are more correlated with their level of quality."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Previous work (Müller et al., 2019; Kumar and Sarawagi, 2019; Wang et al., 2020) has found that a more calibrated text generation model tends to have better performance, and techniques like label smoothing can improve both the token-level calibration and sequence-level accuracy (i.e. the ability of…\nFollowing Wang et al. (2020), we evaluate model calibration on the system-generated summaries during inference and use the tercom toolkit11 to assign labels (correct/incorrect) to the system-generated summaries based on the reference summaries.\nPrevious work (Müller et al., 2019; Kumar and Sarawagi, 2019; Wang et al., 2020) has found that a more calibrated text generation model tends to have better performance, and techniques like label smoothing can improve both the token-level calibration and sequence-level accuracy (i.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-021fd135f736b89dc0a90908",
+          "b": "paper-dba232bddc21d8a7de6642d7",
+          "input_sha256": "28987f18bea7731eed4958a4ec1953cf41aca4899f9dc107020708de6a3143d4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.278/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.278.pdf",
+              "sha256": "d01484657d334c0db87ee46c8c94b9d2da3519813534db95b421133607efb36c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.207/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.207.pdf",
+              "sha256": "e0adf7b6bea0bf3e714d6ef44c57cef9f27df769a75ab9b4fbdea9c13eb54d9c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Regularization Techniques: We investigate label smoothing and dropout (Hinton et al., 2012), which directly affect the confidence estimation. Both label smoothing and dropout improve the inference calibration by alleviating the over-estimation. Label smoothing is the key for well-calibration, which is essential for maintaining translation performance for inference in large search space. Inspired by this finding, we propose a novel graduated label smoothing approach, in which the smoothing penalty for high-confidence predictions is higher than that for low-confidence predictions. The graduated label smoothing can improve translation performance by alleviating inference miscalibration. • Model Size: Increasing model size consistently improves translation performance at the cost of negatively affecting inference calibration. The problem can be alleviated by increasing the capacity of encoder only, which maintains the inference calibration and obtains a further improvement of translation performance in large search space. To summarize, the main contributions of our work are listed as follows: • We demonstrate the necessity of studying inference calibration for NMT, which can serve as useful indicators of translation errors.",
+              "url": "https://aclanthology.org/2020.acl-main.278.pdf",
+              "document_sha256": "d01484657d334c0db87ee46c8c94b9d2da3519813534db95b421133607efb36c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "The model size of NMT models has increased significantly recently (Bahdanau et al., 2015; Vaswani et al., 2017; Wang et al., 2019). We evaluated the inference calibration of models with different sizes. We increase model size in the following two ways: • Deeper model: both the encoder and the decoder are deepened to 24 layers; • Wider model: the hidden size of the encoder and the decoder is widened to 1024. The BLEU score and inference ECE of different models are shown in Table 4. Increasing model size negatively affects inference calibration. We find that increasing both the encoder and the decoder increases the inference calibration error despite increasing the BLEU, confirming the finding of Guo et al. (2017) that increased model size is closely related to model miscalibration. This leads to a performance drop in a larger search space (i.e., Beam Size = 100). Only enlarging the encoder improves translation quality while maintaining inference calibration. As the decoder is more directly related to the generation, it is more likely to result in miscalibration. In order to maintain the performance improvement and do not aggravate over-estimation, we propose to only increase the size of encoder and keep the decoder unchanged. Results in Table 4 indicate",
+              "url": "https://aclanthology.org/2020.acl-main.278.pdf",
+              "document_sha256": "d01484657d334c0db87ee46c8c94b9d2da3519813534db95b421133607efb36c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Spearman’s rank correlation for each sample, and use the average score as the overall correlation, We investigated two specific settings: 1) ranking candidate summaries generated by a different model (PEGASUS); 2) ranking candidate summaries generated by themselves (BART & BRIOMul). We use 16 candidates in total for calculation. As Tab. 8 shows, our model achieves better rank correlation on the candidate summaries generated by both itself and the independent model. This suggests that our model can better estimate the quality of candidate summaries. 5.4 Token-level Calibration Calibration requires that a model’s confidence on its predictions is equal to the accuracy of these predictions (Guo et al., 2017). Previous work (Müller et al., 2019; Kumar and Sarawagi, 2019; Wang et al., 2020) has found that a more calibrated text generation model tends to have better performance, and techniques like label smoothing can improve both the token-level calibration and sequence-level accuracy (i.e. the ability of generating better results). One intuitive explanation of this phenomenon is to interpret the model’s estimated probability of a generated summary as the product of the model’s confidences on a series of tokenlevel predictions. Then, since a more calibrated model’s confidence estimates better the accuracy of its predictions, the model’s estimated probability of one sequence should be more indicative of",
+              "url": "https://aclanthology.org/2022.acl-long.207.pdf",
+              "document_sha256": "e0adf7b6bea0bf3e714d6ef44c57cef9f27df769a75ab9b4fbdea9c13eb54d9c"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "where the samples are grouped into M equal-width buckets by confidence (conf), Bm denotes the m-th bucket, and n is the total number of samples. Following Wang et al. (2020), we evaluate model calibration on the system-generated summaries during inference and use the tercom toolkit11 to assign labels (correct/incorrect) to the system-generated summaries based on the reference summaries. The results in Tab. 9 show that BRIO-Mul is better calibrated compared to BART, suggesting that our method helps to improve the token-level calibration by explicitly encouraging the model to have more accurate sequence-level probability estimations. The reliability graph is shown in Fig. 4. We found that (1) abstractive models are generally over-confident on their own predictions, (2) models are generally more calibrated on XSum than CNNDM. This is likely due to the fact that XSum has shorter summaries therefore it is less likely to be affected by the exposure bias. 5.5",
+              "url": "https://aclanthology.org/2022.acl-long.207.pdf",
+              "document_sha256": "e0adf7b6bea0bf3e714d6ef44c57cef9f27df769a75ab9b4fbdea9c13eb54d9c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Training Methods of Seq2Seq Models In order to align the training objective and evaluation metric, structured losses have been used for the Seq2Seq model training. Among them, marginbased losses (Herbrich et al., 1999; Taskar et al., 2004; Gimpel and Smith, 2010), which require the model to assign higher probability to the better output, are a major category. Many margin-based losses used in modern seq2seq models (Wiseman and Rush, 2016; Edunov et al., 2018) assume a deterministic (one-point) distribution: a model can achieve zero loss if it can assign a much higher probability to the (pseudo)-reference, regardless of relative comparisons of other candidate summaries. By contrast, our method has a non-deterministic assumption (Eq. 7), which focuses on the pair-wise ranking of a set of candidate summaries. One main challenge of directly optimizing a Seq2Seq model with quality scores of the output is that the discrete sampling process makes the loss non-differentiable. To circumvent this problem, reinforcement learning has been used to reformulate the conditional text generation tasks (Ranzato et al., 2016; Bahdanau et al., 2016; Li et al., 2016; Paulus et al., 2018; Li et al., 2019). Compared to this school of methods, our method is based on supervised learning, and it is more stable and less sensitive to the design choices (e.g. reward shaping), which are well-known challenges of reinforcement learning methods. Minimum risk training (Shen et al., 2016; Wieting et al., 2019) and other online sampling based methods (Bengio et al., 2015; Norouzi et al., 2016; Zhang et al., 2019) belong to another school of methods used to circumvent the problem of non-differentiability. However, they also exhibit similar problems of stability as reinforcement learning. Contrastive",
+              "url": "https://aclanthology.org/2022.acl-long.207.pdf",
+              "document_sha256": "e0adf7b6bea0bf3e714d6ef44c57cef9f27df769a75ab9b4fbdea9c13eb54d9c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "In this work, we presented a new training paradigm that assigns candidate outputs probability mass according to their quality using contrastive learning. While our method has achieved significant improvement on abstractive summarization, we note several directions for the future work to explore. First, since our method makes no assumptions specifically about the summarization task, it can be extended to other conditional text generation tasks such as machine translation. Second, it is possible to apply our method in a reinforcement learning setting, where the candidate summaries are dynamically generated. Finally, in experiments we only used diverse beam search to generate the candidate summaries, but it is likely that other candidate generation methods could yield further improvements.",
+              "url": "https://aclanthology.org/2022.acl-long.207.pdf",
+              "document_sha256": "e0adf7b6bea0bf3e714d6ef44c57cef9f27df769a75ab9b4fbdea9c13eb54d9c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-021fd135f736b89dc0a90908",
+          "url": "https://aclanthology.org/2020.acl-main.278/"
+        },
+        "b": {
+          "paper_id": "paper-dba232bddc21d8a7de6642d7",
+          "url": "https://aclanthology.org/2022.acl-long.207/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "740b4e95dc49bcf56346a4f738549ee0255a2df3366f3580245c3d85f93decb6"
+    },
+    {
+      "id": "edge-9b747b18f35fbe99ccec1d40",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-5d7545e23597a19ce2fb6c29",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Mask-to-Correct^+: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "The rapid spread of misinformation on social media highlights the need for robust, automated fact correction frameworks. However, existing works rely on supervised learning from manually annotated claim-evidence pairs, which are scarce and prone to biases, limiting their generalization across domains. Moreover, these methods overlook semantic faithfulness in their correction process. To address these challenges, we propose Mask-to-Correct (M_2C), a training-free, inference-only Retrieval Augmented Generation (RAG) based framework that leverages diversity-aware masking to identify erroneous spans of claims and evaluate the faithfulness of corrections using retrieved evidence. However, the effectiveness of RAG heavily depends on the choice of retriever, which may vary across queries. To mitigate this, we further introduce M_2C^+, an ensemble-based framework that combines corrections across multiple rankers to reduce retrieval bias and improve robustness. Extensive experiments on the benchmark datasets demonstrate that our proposed frameworks consistently outperform all baselines, achieving up to 14% improvement in SARI scores, without using gold evidence."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…explored supervised methods using pre-trained models (Stammbach and Neumann, 2019; Krishna et al., 2022; Soleimani et al., 2020; Chernyavskiy and Ilvovsky, 2019), multitask learning (Hidey and Diab, 2018; Lewis et al., 2020), and Graph-based learning (Zhou et al., 2019; Liu et al., 2020).\n…challenges by introducing training-free approaches, such as zero-shot prompting followed by a Retrieval-Augmented Generation (RAG)-based framework (Lewis et al., 2020; Izacard and Grave, 2021), which enhances an LLM’s response generation by integrating external knowledge from large-scale corpora,…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-5d7545e23597a19ce2fb6c29",
+          "input_sha256": "7ceab6f3aa9d5f267cb4e2b8337d78a4956cf5b21816fd982b61af853e856312",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.175/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "is resource-intensive and time-consuming and also susceptible to pooling and exposure biases (Yang et al., 2019) (see Appendix C). Inspired by Huang et al. (2023), we address these challenges by introducing training-free approaches, such as zero-shot prompting followed by a Retrieval-Augmented Generation (RAG)-based framework (Lewis et al., 2020; Izacard and Grave, 2021), which enhances an LLM’s response generation by integrating external knowledge from largescale corpora, thereby eliminating the need for manually annotated ground-truth evidence. However, such prompting approaches face some challenges: Ensuring minimal change: The corrected claim should preserve the original semantics. Identifying potentially false or weakly supported spans within a claim may help us address it convincingly. Retriever quality dependency: As illustrated in Figure 1, the effectiveness of RAG-based correction depends heavily on the quality of the retrieved evidence. A single retriever may fail to capture diverse or ambiguous contexts and accumulating complementary evidence from multiple retrievers leads to more reliable corrections. To overcome these challenges, we propose a novel masking aware, three-stage framework M2 C (Mask-to-Correct) that identifies and masks erroneous spans in a claim, generates corrected candidates using retrieved evidence, and selects the most faithful revision through a semantic–factual scoring function. We further introduce M2 C+ , an ensemble-based extension that aggregates multiple retrieval generation pathways for improved robustness. Importantly, to our knowledge, our work is the first to integrate RAG with a diversity-aware masking strategy that ensures broader coverage of plausible error regions while minimizing unnecessary edits, hallucinations, thereby",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Fact Verification. Early works on fact verification explored supervised methods using pre-trained models (Stammbach and Neumann, 2019; Krishna et al., 2022; Soleimani et al., 2020; Chernyavskiy and Ilvovsky, 2019), multitask learning (Hidey and Diab, 2018; Lewis et al., 2020), and Graph-based learning (Zhou et al., 2019; Liu et al., 2020). Recent methods have deployed LLMs with in-context learning (ICL) and RAG to improve scalability and factual grounding (Kojima et al., 2022a; Santra et al., 2024; Min et al., 2022; Santra et al., 2025). Retrieval Augmented Generation. RAG-based methods integrate retrieval from external KBs to reduce hallucinations during generation (Guu et al., 2020; Shi et al., 2023; Lan et al., 2023; Jiang et al., 2023; Zhang et al., 2023; Izacard and Grave, 2020; Borgeaud et al., 2022). Recent advances focus on improving retrieval through adaptive context selection (Jeong et al., 2024), iterative refinement, and relevance-based integration (Glass et al., 2022). A similar work, EoR (Li et al., 2024), adaptively fuses retrievals from different sources to reduce evidence-level inconsistencies in retrievalaugmented QA task. In contrast, our framework performs correction-level ensembling across independently corrected outputs using various retrievers. Fact Correction. Existing supervised strategies include methods that target factual inconsistencies in text summarization (Fabbri et al., 2022; Adams et al., 2022), employ masking techniques to guide correction (Shah et al., 2020; Thorne and Vlachos, 2021b), or perform iterative edits based on predicted truthfulness scores (Chen et al., 2023). In some studies, distantly supervised correctors were trained on synthetic data, avoiding the need for explicit masking (He et al., 2024; Ashok et al., 2023). Recent",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The rapid spread of misinformation on social media highlights the need for robust, automated fact correction frameworks. However, existing works rely on supervised learning from manually annotated claim-evidence pairs, which are scarce and prone to biases, limiting their generalization across domains. Moreover, these methods overlook semantic faithfulness in their correction process. To address these challenges, we propose Mask-to-Correct (M2 C), a training-free, inference-only Retrieval Augmented Generation (RAG) based framework that leverages diversity-aware masking to identify erroneous spans of claims and evaluate the faithfulness of corrections using retrieved evidence. However, the effectiveness of RAG heavily depends on the choice of retriever, which may vary across queries. To mitigate this, we further introduce M2 C+ , an ensemblebased framework that combines corrections across multiple rankers to reduce retrieval bias and improve robustness. Extensive experiments on the benchmark datasets demonstrate that our proposed frameworks consistently outperform all baselines, achieving up to 14% improvement in SARI scores, without using gold evidence.",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "strategy to identify high-impact erroneous spans more effectively than traditional methods. 3) To the best of our knowledge, we are the first to introduce majority voting-based ensembling approach for the downstream task through our framework M2 C+ .",
+              "url": "https://aclanthology.org/2026.acl-long.175.pdf",
+              "document_sha256": "6bbf127a9e8e4b6a358079a8f1a440bc4f32713b5c0f4132be9564e824e453c6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-5d7545e23597a19ce2fb6c29",
+          "url": "https://aclanthology.org/2026.acl-long.175/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "cbff14e3caa53796a8e03aaa142238316d2f098aaffff8c99577d9e93ce564fd"
+    },
+    {
+      "id": "edge-e66c92f8d23bfdb2bacc50ff",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-d7fab7ad3c305b1fbb91d60a",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "DYLE: Dynamic Latent Extraction for Abstractive Long-Input Summarization",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Transformer-based models have achieved state-of-the-art performance on short-input summarization. However, they still struggle with summarizing longer text. In this paper, we present DYLE, a novel dynamic latent extraction approach for abstractive long-input summarization. DYLE jointly trains an extractor and a generator and treats the extracted text snippets as the latent variable, allowing dynamic snippet-level attention weights during decoding. To provide adequate supervision, we propose simple yet effective heuristics for oracle extraction as well as a consistency loss term, which encourages the extractor to approximate the averaged dynamic weights predicted by the generator. We evaluate our method on different long-document and long-dialogue summarization tasks: GovReport, QMSum, and arXiv. Experiment results show that DYLE outperforms all existing methods on GovReport and QMSum, with gains up to 6.1 ROUGE, while yielding strong results on arXiv. Further analysis shows that the proposed dynamic weights provide interpretability of our generation process."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Third, models are proposed to divide source text into sections (Gidiotis and Tsoumakas, 2020; Wu et al., 2021; Liu et al., 2021) which are individually summarized and combined to form a full summary.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-d7fab7ad3c305b1fbb91d60a",
+          "input_sha256": "67f8720d4fc9f0194a374dd4a1620adf7fa4e1a7e5d73e760f5b9efd35eca149",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.118/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.118.pdf",
+              "sha256": "64dc48546d4319e16ea6458048a89245cd92ed75f51286e460b850b81e5cd88d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Prior models tackled long input summarization mostly in four ways. First, sparse attention (Child et al., 2019; Beltagy et al., 2020; Tay et al., 2020b) is used to reduce the memory complexity of the Transformers so that they can attend to more tokens. Second, extract-then-generate methods extract salient texts from the input and then summarize the extracted texts. Extractors are either independently trained with full supervision (Zhong et al., 2021b) or optimized using reinforcement learning (Williams, 1992; Chen and Bansal, 2018; Bae et al., 2019; Bražinskas et al., 2021). Third, models are proposed to divide source text into sections (Gidiotis and Tsoumakas, 2020; Wu et al., 2021; Liu et al., 2021) which are individually summarized and combined to form a full summary. Fourth, hierarchical models (Rohde et al., 2021; Zhu et al., 2020) improve summarization by capturing sentence or discourse level dependencies. We elaborate on these four directions and their limitations in Section 2. We believe that the extract-then-generate approach mimics how a person would handle longinput summarization: first identify important pieces of information in the text and then summarize them (Kiyoumarsi, 2015; Sun et al., 2020). The extractthen-generate framework is based on the assumption that salient information useful for summarization only occupies a small portion of the input,",
+              "url": "https://aclanthology.org/2022.acl-long.118.pdf",
+              "document_sha256": "64dc48546d4319e16ea6458048a89245cd92ed75f51286e460b850b81e5cd88d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "rized in Table 7. Due to the limit of GPU memory, the largest K value we tried is 25. Effect of consistency loss We evaluate the effect of consistency loss on extractor performance. Note that removing the consistency loss means that the extractor and the generator are independently trained. The results are presented in Table 5 as part of the ablation study. Removing the consistency loss leads to worse model performance. We observe that the consistency loss helps the model better learn the importance of the selected text snippets useful for the generation. Extractor performance compared with extractive oracles We feed the extractive oracles to the generator. The results are summarized in Table 8. We observe that extractive oracles contain more salient information than the text snippets extracted by the extractor. Feeding the extractive oracle to the generator indicates the upper bound of the extractor performance. However, we observe that the gap between the performance of using the extractive oracle and using the extractor output is relatively small. Comparison with RAG The generator of our method is related to but differs significantly from Retrieval-Augmented Generation (RAG) (Lewis",
+              "url": "https://aclanthology.org/2022.acl-long.118.pdf",
+              "document_sha256": "64dc48546d4319e16ea6458048a89245cd92ed75f51286e460b850b81e5cd88d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Transformer-based models have achieved state-of-the-art performance on short-input summarization. However, they still struggle with summarizing longer text. In this paper, we present DYLE, a novel dynamic latent extraction approach for abstractive long-input summarization. DYLE jointly trains an extractor and a generator and treats the extracted text snippets as the latent variable, allowing dynamic snippet-level attention weights during decoding. To provide adequate supervision, we propose simple yet effective heuristics for oracle extraction as well as a consistency loss term, which encourages the extractor to approximate the averaged dynamic weights predicted by the generator. We evaluate our method on different long-document and long-dialogue summarization tasks: GovReport, QMSum, and arXiv. Experiment results show that DYLE outperforms all existing methods on GovReport and QMSum, with gains up to 6.1 ROUGE, while yielding strong results on arXiv. Further analysis shows that the proposed dynamic weights provide interpretability of our generation process.1",
+              "url": "https://aclanthology.org/2022.acl-long.118.pdf",
+              "document_sha256": "64dc48546d4319e16ea6458048a89245cd92ed75f51286e460b850b81e5cd88d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-d7fab7ad3c305b1fbb91d60a",
+          "url": "https://aclanthology.org/2022.acl-long.118/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "1ec9c1be75782f0a43a5ae0a364776687ba43ca09c75a840aef53828ce47a6ca"
+    },
+    {
+      "id": "edge-17a50c99053a8e4b91458cc4",
+      "a": "paper-02da5571e3dfd9e1029865a2",
+      "b": "paper-077233211020a07dae7749ab",
+      "state": {
+        "paper_a": {
+          "title": "Extractive Summarization of Long Documents by Combining Global and Local Context",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we propose a novel neural single-document extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents."
+        },
+        "paper_b": {
+          "title": "Vision Guided Generative Pre-trained Language Models for Multimodal Abstractive Summarization",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Multimodal abstractive summarization (MAS) models that summarize videos (vision modality) and their corresponding transcripts (text modality) are able to extract the essential information from massive multimodal data on the Internet. Recently, large-scale generative pre-trained language models (GPLMs) have been shown to be effective in text generation tasks. However, existing MAS models cannot leverage GPLMs’ powerful generation ability. To fill this research gap, we aim to study two research questions: 1) how to inject visual information into GPLMs without hurting their generation ability; and 2) where is the optimal place in GPLMs to inject the visual information? In this paper, we present a simple yet effective method to construct vision guided (VG) GPLMs for the MAS task using attention-based add-on layers to incorporate visual information while maintaining their original text generation ability. Results show that our best model significantly surpasses the prior state-of-the-art model by 5.7 ROUGE-1, 5.3 ROUGE-2, and 5.1 ROUGE-L scores on the How2 dataset, and our vision guidance method contributes 83.6% of the overall improvement. Furthermore, we conduct thorough ablation studies to analyze the effectiveness of various modality fusion methods and fusion locations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Inspired by prior works (Yu et al., 2019; Tsai et al., 2019), we propose a vision guided multi-head attention mechanism for the text-vision fusion.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02da5571e3dfd9e1029865a2",
+          "b": "paper-077233211020a07dae7749ab",
+          "input_sha256": "c234e76d552dd72fcdd66237f1e6b709408795c32c6758a0b1789e0eb3f9f081",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1298/",
+              "pdf_url": "https://aclanthology.org/D19-1298.pdf",
+              "sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.326/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.326.pdf",
+              "sha256": "16c4034c669803c2cfdf8d0c60eda0b3b1caeb8a28409841d6fd62640521bbb2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we propose a novel neural singledocument extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "sentence classifier is a categorical feature with values like Highlight, Abstract, Introduction, etc., depending on which section the sentence appears in. In contrast, in order to exploit section information, in this paper we propose to capture a distributed representation of both the global (the whole document) and the local context (e.g., the section/topic) when deciding if a sentence should be included in the summary Our main contributions are as follows: (i) In order to capture the local context, we are the first to apply LSTM-minus to text summarization. LSTM-minus is a method for learning embeddings of text spans, which has achieved good performance in dependency parsing (Wang and Chang, 2016), in constituency parsing (Cross and Huang, 2016), as well as in discourse parsing (Liu and Lapata, 2017). With respect to more traditional methods for capturing local context, which rely on hierarchical structures, LSTM-minus produces simpler models i.e. with less parameters, and therefore faster to train and less prone to overfitting. (ii) We test our method on the Pubmed and arXiv datasets and results appear to support our goal of effectively summarizing long documents. In particular, while overall we outperform the baseline and previous approaches only by a narrow margin on both datasets, the benefit of our method become much stronger as we apply it to longer documents. Furthermore, in an ablation study to assess the relative contributions of the global and the local model we found that, rather surprisingly, the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.VI (iii) In order to evaluate our approach, we have created oracle labels for both Pubmed and arXiv (Cohan et al., 2018), by applying a greedy oracle",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Additionally, we build a variant of this fusion, which uses the linearly transformed visual features 𝐴𝑍 𝑣0 for the concatenation in Eq. 6 instead of the original 𝐴𝑍 𝑣 . A comparison of their performance is shown in Section 5. Multi-head Attention Based Fusion. Inspired by prior works (Yu et al., 2019; Tsai et al., 2019), we propose a vision guided multi-head attention mechanism for the text-vision fusion. The query 𝑄 is linearly projected from the input textual features, and the key 𝐾 and value 𝑉 are linearly projected from the visual features (Eq. 7 - 9). Then, a crossmodal multi-head attention (CMA) is applied to get the text queried visual features 𝑂 (Eq. 10). Finally, we obtain the vision guided output 𝑍𝑡0 by concatenating the input textual features 𝑍𝑡 and 𝑂, and linearly project it to the desired dimension (Eq. 11). 𝑄 = 𝑍𝑡 𝑊𝑞 , 𝑄 ∈ R 𝑁 ×𝑑𝑐",
+              "url": "https://aclanthology.org/2021.emnlp-main.326.pdf",
+              "document_sha256": "16c4034c669803c2cfdf8d0c60eda0b3b1caeb8a28409841d6fd62640521bbb2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this paper, we propose to tackle VL tasks and utilize the advantage of pre-training from a different angle by inserting add-on layers to the text-only GPLMs and fine-tuning them on multimodal tasks to incorporate visual information. This takes advantage of GPLMs’ superior generation ability to generate vision-aware texts. Of the very few works that have also considered this direction, Rahman et al. (2020) proposed the multimodal adaptation gate, which fuses data of other modalities to the textual embeddings in BERT. However, their method requires all modalities to have the same sequence 3997",
+              "url": "https://aclanthology.org/2021.emnlp-main.326.pdf",
+              "document_sha256": "16c4034c669803c2cfdf8d0c60eda0b3b1caeb8a28409841d6fd62640521bbb2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To take advantage of the superior text generation ability of the text-only Seq2seq GPLMs and adapt them to the MAS task, we present Vision guided (VG) GPLMs. Specifically, we leverage BART (Lewis et al., 2019) and T5 (Raffel et al., 2019) to construct VG-BART and VG-T5. In this section, we start by revisiting the text-only Seq2seq GPLMs in Section 3.1. These serve as the backbone of our proposed model and also one of the baselines. Then, we discuss the approach for extracting visual features from video clips in Section 3.2, as well as how to further process them. Finally, in Section 3.3, we introduce two types of text-vision fusion mechanism to guide the GPLMs to generate vision-aware summaries. 3.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.326.pdf",
+              "document_sha256": "16c4034c669803c2cfdf8d0c60eda0b3b1caeb8a28409841d6fd62640521bbb2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02da5571e3dfd9e1029865a2",
+          "url": "https://aclanthology.org/D19-1298/"
+        },
+        "b": {
+          "paper_id": "paper-077233211020a07dae7749ab",
+          "url": "https://aclanthology.org/2021.emnlp-main.326/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "7a134ae3fcf2463af579fe9967ace9eeb419bc655a37aba49043ed932f7286fc"
+    },
+    {
+      "id": "edge-3671ece0268d5e13b8ff900a",
+      "a": "paper-02da5571e3dfd9e1029865a2",
+      "b": "paper-8b512d8406cf51eb71c84ef2",
+      "state": {
+        "paper_a": {
+          "title": "Extractive Summarization of Long Documents by Combining Global and Local Context",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we propose a novel neural single-document extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents."
+        },
+        "paper_b": {
+          "title": "HIBRIDS: Attention with Hierarchical Biases for Structure-aware Long Document Summarization",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Document structure is critical for efficient information consumption. However, it is challenging to encode it efficiently into the modern Transformer architecture. In this work, we present HIBRIDS, which injects Hierarchical Biases foR Incorporating Document Structure into attention score calculation. We further present a new task, hierarchical question-summary generation, for summarizing salient content in the source document into a hierarchy of questions and summaries, where each follow-up question inquires about the content of its parent question-summary pair. We also annotate a new dataset with 6,153 question-summary hierarchies labeled on government reports. Experiment results show that our model produces better question-summary hierarchies than comparisons on both hierarchy quality and content coverage, a finding also echoed by human judges. Additionally, our model improves the generation of long-form summaries from long government reports and Wikipedia articles, as measured by ROUGE scores."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example, extractive summarization methods are developed to combine section-level and sentence-level information encoded by multilevel encoders (Xiao and Carenini, 2019) and include longer context via sliding encoding over sections (Cui and Hu, 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02da5571e3dfd9e1029865a2",
+          "b": "paper-8b512d8406cf51eb71c84ef2",
+          "input_sha256": "50984caba89996d6b70dac37349e508d08fc5a9fae42b05712152257983549c7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1298/",
+              "pdf_url": "https://aclanthology.org/D19-1298.pdf",
+              "sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.58/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.58.pdf",
+              "sha256": "6bde6830a18fce88a6978179e931ef2135ff23f4a9d17bd5f5eaefe286fc5305"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we propose a novel neural singledocument extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "sentence classifier is a categorical feature with values like Highlight, Abstract, Introduction, etc., depending on which section the sentence appears in. In contrast, in order to exploit section information, in this paper we propose to capture a distributed representation of both the global (the whole document) and the local context (e.g., the section/topic) when deciding if a sentence should be included in the summary Our main contributions are as follows: (i) In order to capture the local context, we are the first to apply LSTM-minus to text summarization. LSTM-minus is a method for learning embeddings of text spans, which has achieved good performance in dependency parsing (Wang and Chang, 2016), in constituency parsing (Cross and Huang, 2016), as well as in discourse parsing (Liu and Lapata, 2017). With respect to more traditional methods for capturing local context, which rely on hierarchical structures, LSTM-minus produces simpler models i.e. with less parameters, and therefore faster to train and less prone to overfitting. (ii) We test our method on the Pubmed and arXiv datasets and results appear to support our goal of effectively summarizing long documents. In particular, while overall we outperform the baseline and previous approaches only by a narrow margin on both datasets, the benefit of our method become much stronger as we apply it to longer documents. Furthermore, in an ablation study to assess the relative contributions of the global and the local model we found that, rather surprisingly, the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.VI (iii) In order to evaluate our approach, we have created oracle labels for both Pubmed and arXiv (Cohan et al., 2018), by applying a greedy oracle",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Long Document Summarization also benefits from the inclusion of document structure information. For example, extractive summarization methods are developed to combine section-level and sentence-level information encoded by multilevel encoders (Xiao and Carenini, 2019) and include longer context via sliding encoding over sections (Cui and Hu, 2021). Recent work on summarizing long documents focuses on designing efficient Transformers with sparse attentions to produce abstractive summaries for long documents in an end-to-end fashion (Beltagy et al., 2020; Zaheer et al., 2020; Huang et al., 2021). However, they all ignore the natural structure of long documents, such as sections and subsections. Based on a simple design, HIBRIDS can be integrated into any efficient Transformer seamlessly for incorporating document structure information. Generating question-answer (QA) pairs has been studied to facilitate information seeking within documents, mainly for producing questions that can be addressed by short phrases (Du and Cardie, 2018; Liu et al., 2020). Prior work mostly focuses on improving QA pair relevance by leveraging additional QA systems (Sachan and Xing, 2018), measuring roundtrip consistency (Alberti et al., 2019), or refining questions iteratively (Qu et al., 2021). Generating a two-level hierarchy of QA pairs from a given paragraph is investigated by Krishna and Iyyer (2019). Our work is different in at least three aspects. First, our goal is to provide a structured summary that focuses on the salient content of the given document, rather than creating questions about any generic information, as done in most QA data construction (Rajpurkar et al., 2016; Choi et al., 2018). Second, our G OV R EPORT-QS data",
+              "url": "https://aclanthology.org/2022.acl-long.58.pdf",
+              "document_sha256": "6bde6830a18fce88a6978179e931ef2135ff23f4a9d17bd5f5eaefe286fc5305"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "attentions to estimate relations between pairwise tokens and largely ignore document structures. While hierarchical encoding has been investigated (Zhang et al., 2019; Balachandran et al., 2021), its need for training large amounts of additional parameters leads to increased memory footprint and thus limits the allowed input length. As for the output, the structure of single document summaries remains largely “flat”, such as a list of aspects (Meng et al., 2021). We argue that it is imperative to develop systems that can output summaries with rich structures to support knowledge acquisition, which is especially critical for long documents that cover numerous subjects with varying details (Huang et al., 2021; Kryściński et al., 2021). This work consists of two main objectives: (1) effectively informing summarization models of the source document’s structure, and (2) presenting a new summarization task that produces hierarchically organized question-summary pairs to facilitate information consumption. To this end, we propose HIBRIDS (Hierarchical Biases foR Incorporating Document Structure).1 We design learnable hierarchical biases, as part of the Transformer attention calculation, to adjust attention weights based on tokens’ relative positions with regard to the document structure, inspired by the relative position method that modifies attention calculation (Raffel et al., 2020). Concretely, we leverage the natural structure of a document, i.e., section levels, to construct a document structure tree (Figure 2). Each learnable bias corresponds to the relation between a pair of sections, based on the distance between them in the structure tree. Intuitively, hierarchical biases adjust attention weights between tokens based on how conceptually close/distant their",
+              "url": "https://aclanthology.org/2022.acl-long.58.pdf",
+              "document_sha256": "6bde6830a18fce88a6978179e931ef2135ff23f4a9d17bd5f5eaefe286fc5305"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We introduce a new summarization task in this section: Given a document or several sections of a document, we aim to generate question-summary (QS) pairs that are organized hierarchically. As shown in Figure 1, this QS hierarchy lays out details for topics at multiple levels, with each child QS pair expanding the content of its parent. Our task is motivated by how human learns knowledge in a top-down fashion, where general knowledge is acquired first and details and in-depth content are explored later (Hintikka, 1981). This hierarchy proactively highlights the document structure, to further promote content engagement and comprehension (McKeown et al., 2009). 4.1 Question-summary Hierarchy Annotation Procedure We first annotate a new dataset, G OV R EPORT-QS, with hierarchical QS pairs, based on articles and corresponding summaries selected from the G OVR EPORT dataset (Huang et al., 2021). As these documents and summaries have 9,409 and 553 words on average respectively, directly annotating full documents with a QS hierarchy presents a challenge. To address this, we ask annotators to create hierarchical questions for a selected summary paragraph and only allow them to select complete sentences from the summary paragraph as the corresponding answers. Each question created should be fully addressed by its answer and the answer should not contain information irrelevant to the question. For follow-up questions, they are encouraged to ask about specific details or issue questions that can yield summaries that elaborate from their parents. Annotators are also instructed to construct",
+              "url": "https://aclanthology.org/2022.acl-long.58.pdf",
+              "document_sha256": "6bde6830a18fce88a6978179e931ef2135ff23f4a9d17bd5f5eaefe286fc5305"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02da5571e3dfd9e1029865a2",
+          "url": "https://aclanthology.org/D19-1298/"
+        },
+        "b": {
+          "paper_id": "paper-8b512d8406cf51eb71c84ef2",
+          "url": "https://aclanthology.org/2022.acl-long.58/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "567f468405f814850986c2869cea09c8607ba973361da13355a45ee84dfaad39"
+    },
+    {
+      "id": "edge-33ceaffb6fb468022a6796b6",
+      "a": "paper-02da5571e3dfd9e1029865a2",
+      "b": "paper-ce535a0f9ef4decd4dcff34e",
+      "state": {
+        "paper_a": {
+          "title": "Extractive Summarization of Long Documents by Combining Global and Local Context",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we propose a novel neural single-document extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents."
+        },
+        "paper_b": {
+          "title": "Demoting the Lead Bias in News Summarization via Alternating Adversarial Learning",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "In news articles the lead bias is a common phenomenon that usually dominates the learning signals for neural extractive summarizers, severely limiting their performance on data with different or even no bias. In this paper, we introduce a novel technique to demote lead bias and make the summarizer focus more on the content semantics. Experiments on two news corpora with different degrees of lead bias show that our method can effectively demote the model’s learned lead bias and improve its generality on out-of-distribution data, with little to no performance loss on in-distribution data."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": ", 2017) and scientific paper summarization (Cohan et al., 2018; Xiao and Carenini, 2019).\n…which produces a short summary for a document by selecting a set of representative sentences, has shown great potential in real-world applications, including news (Cheng and Lapata, 2016; Nallapati et al., 2017) and scientific paper summarization (Cohan et al., 2018; Xiao and Carenini, 2019).\nFollowing previous work, we formulate extractive summarization as a sequence labeling task (Xiao and Carenini, 2019, 2020; Xiao et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02da5571e3dfd9e1029865a2",
+          "b": "paper-ce535a0f9ef4decd4dcff34e",
+          "input_sha256": "0ee14554602288e636d703c38189696707f4cec58d1f8a3e041624f92b0fe30f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1298/",
+              "pdf_url": "https://aclanthology.org/D19-1298.pdf",
+              "sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-short.119/",
+              "pdf_url": "https://aclanthology.org/2021.acl-short.119.pdf",
+              "sha256": "cf81a6fb2c037c6a0391cef416410ac5d4abf655195fdc32f75b0ac924cd5cbb"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we propose a novel neural singledocument extractive summarization model for long documents, incorporating both the global context of the whole document and the local context within the current topic. We evaluate the model on two datasets of scientific papers , Pubmed and arXiv, where it outperforms previous work, both extractive and abstractive models, on ROUGE-1, ROUGE-2 and METEOR scores. We also show that, consistently with our goal, the benefits of our method become stronger as we apply it to longer documents. Rather surprisingly, an ablation study indicates that the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "sentence classifier is a categorical feature with values like Highlight, Abstract, Introduction, etc., depending on which section the sentence appears in. In contrast, in order to exploit section information, in this paper we propose to capture a distributed representation of both the global (the whole document) and the local context (e.g., the section/topic) when deciding if a sentence should be included in the summary Our main contributions are as follows: (i) In order to capture the local context, we are the first to apply LSTM-minus to text summarization. LSTM-minus is a method for learning embeddings of text spans, which has achieved good performance in dependency parsing (Wang and Chang, 2016), in constituency parsing (Cross and Huang, 2016), as well as in discourse parsing (Liu and Lapata, 2017). With respect to more traditional methods for capturing local context, which rely on hierarchical structures, LSTM-minus produces simpler models i.e. with less parameters, and therefore faster to train and less prone to overfitting. (ii) We test our method on the Pubmed and arXiv datasets and results appear to support our goal of effectively summarizing long documents. In particular, while overall we outperform the baseline and previous approaches only by a narrow margin on both datasets, the benefit of our method become much stronger as we apply it to longer documents. Furthermore, in an ablation study to assess the relative contributions of the global and the local model we found that, rather surprisingly, the benefits of our model seem to come exclusively from modeling the local context, even for the longest documents.VI (iii) In order to evaluate our approach, we have created oracle labels for both Pubmed and arXiv (Cohan et al., 2018), by applying a greedy oracle",
+              "url": "https://aclanthology.org/D19-1298.pdf",
+              "document_sha256": "b7ee06b734bc0d883526b79ca56a79a0cfb65942090535ad6deffd2cb8ca8d4f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Neural extractive summarization, which produces a short summary for a document by selecting a set of representative sentences, has shown great potential in real-world applications, including news (Cheng and Lapata, 2016; Nallapati et al., 2017) and scientific paper summarization (Cohan et al., 2018; Xiao and Carenini, 2019). Typically, a generalpurpose extractive summarizer learns to select the most important sentences from a document to form the summary by considering their content salience, informativeness and redundancy. However, when restricted to a specific domain, the summarizer can learn to exploit particular biases in the data, the most famous of which is the lead bias in news (Nenkova et al., 2011; Hong and Nenkova, 2014); namely that sentences at the beginning of a news article are more likely to contain summary-worthy information. As a result, not surprisingly, such bias is strongly captured by neural extractive summarizers for news, for which the sentence positional information tends to dominate the actual content of ∗ 1",
+              "url": "https://aclanthology.org/2021.acl-short.119.pdf",
+              "document_sha256": "cf81a6fb2c037c6a0391cef416410ac5d4abf655195fdc32f75b0ac924cd5cbb"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Following previous work, we formulate extractive summarization as a sequence labeling task (Xiao and Carenini, 2019, 2020; Xiao et al., 2020). For a document d = {s1 , s2 , ..., sk }, each sentence will be assigned a score α ∈ [0, 1]. The summary will then be formed with the highest scored sentences. We adopt a transformer-based model (Vaswani et al., 2017) as our basic “biased” summarization component (red in Fig. 1), as shown to be heavily impacted by the lead bias (Zhong et al., 2019a). This component contains a transformerbased encoder Encθt and a multilayer perceptron (MLP) decoder Decθs , parameterized by θt and θs respectively. We use the averaged word embedding from Glove as sentence embedding as suggested in Kedzie et al. (2018). We optimize this summarization system by minimizing the loss: N",
+              "url": "https://aclanthology.org/2021.acl-short.119.pdf",
+              "document_sha256": "cf81a6fb2c037c6a0391cef416410ac5d4abf655195fdc32f75b0ac924cd5cbb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "We propose a lead bias demoting method to make news extractive summarizers more robust across datastets, by optimizing a position prediction and a summarization component in an alternating way. Experiments indicate that our method improves model’s generality on out-of-distribution data, while still largely maintaining its performance on in-distribution data. As such, it represents the best viable solution when at inference time input documents may come from an unknown mixture of datasets with different degrees of position bias. For the future, we plan to explore more sophisticated and effective methods (e.g., adjusting the lead bias online) and infuse them together with neural abstractive summarization models, known to generate more succinct and natural summaries. Another interesting direction for future work can be exploring the potential of applying our proposed bias demoting strategy to other tasks, which can also be framed as the sequence labeling problem and possibly troubled by biases in the training data (e.g., Topic Segmentation (Xing et al., 2020) and Semantic Role Labeling (Ouchi et al., 2018)).",
+              "url": "https://aclanthology.org/2021.acl-short.119.pdf",
+              "document_sha256": "cf81a6fb2c037c6a0391cef416410ac5d4abf655195fdc32f75b0ac924cd5cbb"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Table 1 reports the performance of the chosen baselines and our proposal on CNN/DM test set, which has the same data distribution as the training data, and XSum test set, which is from another news resource and with much less lead bias than CNN/DM. From the middle section of Table 1, we observe that if we withhold the position cues (No Position Encoding) by using only semantic representation as input, the model’s performance drops considerably on CNN/DM, but remarkably increase on XSum. In contrast, if we merely use position cues as input (Only Position Encodings), the decrease of the performance on CNN/DM becomes much more modest, while there is substantial performance drop on XSum. These results confirm that positional signal is a rather important feature for bias-relied neural summarizers. However, relying too much on it will also limit model’s generality when applied to the dataset with less bias than the training samples. Therefore, seeking strategies to balance the semantics and position features is crucial for the neural extractive summarization for news. When we compare the lead bias demoting methods presented at the bottom of Table 1, our proposal and Shuffling give significant performance boosting on XSum, while Learned-Mixin results in performance decrease on both datasets. Comparing our method and Shuffling directly, while they are essentially equivalent on maintaining the performance on the in-distribution CNN/DM data (0.09 difference in terms of the average of ROUGE scores (ROUGE-Mean)), our method provides a significant improvement on XSum, and outperforms Shuffling and the basic transformer by 0.14 and 0.29 on ROUGE-Mean respectively. It is noteworthy that the transformer without position encoding achieves",
+              "url": "https://aclanthology.org/2021.acl-short.119.pdf",
+              "document_sha256": "cf81a6fb2c037c6a0391cef416410ac5d4abf655195fdc32f75b0ac924cd5cbb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02da5571e3dfd9e1029865a2",
+          "url": "https://aclanthology.org/D19-1298/"
+        },
+        "b": {
+          "paper_id": "paper-ce535a0f9ef4decd4dcff34e",
+          "url": "https://aclanthology.org/2021.acl-short.119/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Text Summarization Research"
+      },
+      "sha256": "a7b4ed12c57fbe2989dec89eb4399c6e858df2259d9074d8d34d746bd3ac8e10"
+    }
+  ]
+}

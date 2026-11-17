@@ -1,0 +1,982 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings",
+  "area": "Reinforcement Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-74c27fd38823d848fcd10bda",
+      "a": "paper-06027c03ec6bac1e7c38a390",
+      "b": "paper-ec2f0cfc2397b78198b47c45",
+      "state": {
+        "paper_a": {
+          "title": "Machine Theory of Mind",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Theory of mind (ToM) broadly refers to humans’ ability to represent the mental states of others, including their desires, beliefs, and intentions. We design a Theory of Mind neural network {–} a ToMnet {–} which uses meta-learning to build such models of the agents it encounters. The ToMnet learns a strong prior model for agents’ future behaviour, and, using only a small number of behavioural observations, can bootstrap to richer predictions about agents’ characteristics and mental states. We apply the ToMnet to agents behaving in simple gridworld environments, showing that it learns to model random, algorithmic, and deep RL agents from varied populations, and that it passes classic ToM tasks such as the \"Sally-Anne\" test of recognising that others can hold false beliefs about the world."
+        },
+        "paper_b": {
+          "title": "Partner Modelling Emerges in Recurrent Agents (But Only When It Matters)",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Humans are remarkably adept at collaboration, able to infer the strengths and weaknesses of new partners in order to work successfully towards shared goals. To build AI systems with this capability, we must first understand its building blocks: does such flexibility require explicit, dedicated mechanisms for modelling others—or can it emerge spontaneously from the pressures of open-ended cooperative interaction? To investigate this question, we train simple model-free RNN agents to collaborate with a population of diverse partners. Using the 'Overcooked-AI' environment, we collect data from thousands of collaborative teams, and analyse agents' internal hidden states. Despite a lack of additional architectural features, inductive biases, or auxiliary objectives, the agents nevertheless develop structured internal representations of their partners' task abilities, enabling rapid adaptation and generalisation to novel collaborators. We investigated these internal models through probing techniques, and large-scale behavioural analysis. Notably, we find that structured partner modelling emerges when agents can influence partner behaviour by controlling task allocation. Our results show that partner modelling can arise spontaneously in model-free agents—but only under environmental conditions that impose the right kind of social pressure."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06027c03ec6bac1e7c38a390",
+          "b": "paper-ec2f0cfc2397b78198b47c45",
+          "input_sha256": "430d95bd88ce512c997be3288acf0ff4f805eafa59809e0e6f9db410bcedc47d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/rabinowitz18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/rabinowitz18a/rabinowitz18a.pdf",
+              "sha256": "01788be859e612d1a119b32da9ffdc83463adf5dd7bd3cb1c45c4544038e2c1a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/0b8e8bfc40184226888e821620b216c9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/0b8e8bfc40184226888e821620b216c9-Paper-Conference.pdf",
+              "sha256": "8247141247ce725062da9dd5fd438aff48ad8cc6886482f72c5266e40b629b41"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "text, we show how meta-learning can provide the ability to build flexible and sample-efficient models of others on the fly. Such models will also be important for value alignment (Hadfield-Menell et al., 2016), flexible cooperation (Nowak, 2006; Kleiman-Weiner et al., 2016), and mediating human understanding of artificial agents. We consider the challenge of building a Theory of Mind as essentially a meta-learning problem (Schmidhuber et al., 1996; Thrun & Pratt, 1998; Hochreiter et al., 2001; Vilalta & Drissi, 2002). At test time, we want to be able to encounter a novel agent whom we have never met before, and already have a strong and rich prior about how they are going to behave. Moreover, as we see this agent act in the world, we wish to be able to form a posterior about their latent characteristics and mental states that will enable us to improve our predictions about their future behaviour. We formulate a task for an observer, who, in each episode, gets access to a set of behavioural traces of a novel agent, and must make predictions about the agent’s future behaviour. Over training, the observer should get better at rapidly forming predictions about new agents from limited data. This “learning to learn” about new agents is what we mean by meta-learning. Through this process, the observer should also acquire an effective prior over the agents’ behaviour that implicitly captures the commonalities between agents within the training population. We introduce two concepts to describe components of this observer network: its general theory of mind – the learned weights of the network, which encapsulate predictions about the common behaviour of all agents in the training set – and its agent-specific theory of mind – the “agent embedding” formed from observations about a",
+              "url": "https://proceedings.mlr.press/v80/rabinowitz18a/rabinowitz18a.pdf",
+              "document_sha256": "01788be859e612d1a119b32da9ffdc83463adf5dd7bd3cb1c45c4544038e2c1a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "strengths and weaknesses of different partners [9, 10, 11]. For example, imagine being assigned to work with unfamiliar classmates on a group project for a machine learning class. Effectively dividing up the different tasks will require representations of each contributor’s abilities: who will be best suited to implement the code, write the report, and deliver the presentation. In this paper, we examine whether artificial agents, when trained to collaborate with different partners but without explicit mechanisms for agent modelling, spontaneously develop internal representations of their partners’ abilities. We investigate this question in a fully cooperative setting, where agents optimise a shared goal (i.e., a single reward function), but have no prior knowledge of each other’s attributes or action policies. Crucially, we train reinforcement learning agents with generic recurrent architectures and only task reward supervision—there are no auxiliary objectives or architectural priors pushing agents to model one another. This stands in contrast to prior work, such as Rabinowitz et al.’s ‘Machine Theory of Mind’ framework, which relies on specialised components optimised explicitly to infer other agents’ internal states [12]. We find that despite these minimal inductive biases, agents develop structured, internal representations that (i) encode the different competencies of their partners; (ii) generalise to previously unseen collaborators; and (iii) emerge selectively, depending on agents’ ability to control task allocation. Together, our findings suggest that partner modelling can arise within artificial agents solely from the demands of flexible cooperation, without explicit incentives or specialised architectures.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/0b8e8bfc40184226888e821620b216c9-Paper-Conference.pdf",
+              "document_sha256": "8247141247ce725062da9dd5fd438aff48ad8cc6886482f72c5266e40b629b41"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "pressures acting in concert with general mechanisms for learning and memory, rather than necessarily relying on unique architectures. We believe that this is important to bear in mind as we seek to develop artificial agents that bridge the gap towards humanlike social cognition and behaviour. It is notable that structured partner modelling also emerged in blind agents trained without visual input, relying solely on egocentric signals and task reward. Despite having no explicit access to their partner’s actions or state, these \"blind\" agents developed internal representations that enabled them to effectively collaborate with partners displaying a diverse range of competencies. This emerged despite minimal inductive biases and limited observational input. This indicates that the structure of the interaction itself is sufficient to drive the emergence of partner-aware policies. While we feel our work represents a valuable contribution to the study of emergent partner modelling, we highlight various limitations that might serve as starting points for future research. First and foremost, our experiments used only a single cooperative environment (Overcooked-AI)—while we are confident that our results will generalise to other environments and task settings, an obvious target for future work is to confirm this empirically. Of particular interest would be open-ended environments that allow us to study how partner representations evolve over time in a more continuous setting; or those with more complex or overlapping subtasks. Relatedly, future work might study whether our findings scale to more than one teammate—we believe that they should, provided that the environment imposes sufficient pressure (i.e. all teammates’ behaviour is relevant to task completion). That said,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/0b8e8bfc40184226888e821620b216c9-Paper-Conference.pdf",
+              "document_sha256": "8247141247ce725062da9dd5fd438aff48ad8cc6886482f72c5266e40b629b41"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06027c03ec6bac1e7c38a390",
+          "url": "https://proceedings.mlr.press/v80/rabinowitz18a.html"
+        },
+        "b": {
+          "paper_id": "paper-ec2f0cfc2397b78198b47c45",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/0b8e8bfc40184226888e821620b216c9-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "1d583d921732c0fda3fb4be27b93e9e6ad1f2da9beee89bf1139611fce0f09db"
+    },
+    {
+      "id": "edge-710769aedec7a5ae5b760bba",
+      "a": "paper-010b1220ffe0536fd3fe9dff",
+      "b": "paper-62cc5daf750572369980b1f0",
+      "state": {
+        "paper_a": {
+          "title": "On the Utility of Learning about Humans for Human-AI Coordination",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "While we would like agents that can coordinate with humans, current algorithms such as self-play and population-based training create agents that can coordinate with themselves. Agents that assume their partner to be optimal or similar to them can converge to coordination protocols that fail to understand and be understood by humans. To demonstrate this, we introduce a simple environment that requires challenging coordination, based on the popular game Overcooked, and learn a simple model that mimics human play. We evaluate the performance of agents trained via self-play and population-based training. These agents perform very well when paired with themselves, but when paired with our human model, they are significantly worse than agents designed to play with the human model. An experiment with a planning algorithm yields the same conclusion, though only when the human-aware planner is given the exact human model that it is playing with. A user study with real humans shows this pattern as well, though less strongly. Qualitatively, we find that the gains come from having the agent adapt to the human's gameplay. Given this result, we suggest several approaches for designing agents that learn about humans in order to better coordinate with them. Code is available at https://github.com/HumanCompatibleAI/overcooked_ai."
+        },
+        "paper_b": {
+          "title": "Learning Multi-Agent Communication with Contrastive Learning",
+          "year": 2024,
+          "venue": "ICLR",
+          "abstract": "Communication is a powerful tool for coordination in multi-agent RL. But inducing an effective, common language is a difficult challenge, particularly in the decentralized setting. In this work, we introduce an alternative perspective where communicative messages sent between agents are considered as different incomplete views of the environment state. By examining the relationship between messages sent and received, we propose to learn to communicate using contrastive learning to maximize the mutual information between messages of a given trajectory. In communication-essential environments, our method outperforms previous work in both performance and learning speed. Using qualitative metrics and representation probing, we show that our method induces more symmetric communication and captures global state information from the environment. Overall, we show the power of contrastive learning and the importance of leveraging messages as encodings for effective communication."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Previous work has focused on coordination through actions (Carroll et al., 2019; Lupu et al., 2021) or pre-test grounding with a common dataset (Gupta et al., 2021) but to our knowledge, no previous work has succeeded in learning a linguistic communication protocol that is robust to zero-shot…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-010b1220ffe0536fd3fe9dff",
+          "b": "paper-62cc5daf750572369980b1f0",
+          "input_sha256": "e34c4a3c76318da09345c84c69bd71de2378181df1d3f8490169b943209a3221",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/f5b1b89d98b7286673128a5fb112cb9a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://openreview.net/forum?id=vZZ4hhniJU",
+              "pdf_url": "https://arxiv.org/pdf/2307.01403v3",
+              "sha256": "916407acc43ab6fa844fe40ff01a00e10073df73f3138c04b7d74989d956115e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract While we would like agents that can coordinate with humans, current algorithms such as self-play and population-based training create agents that can coordinate with themselves. Agents that assume their partner to be optimal or similar to them can converge to coordination protocols that fail to understand and be understood by humans. To demonstrate this, we introduce a simple environment that requires challenging coordination, based on the popular game Overcooked, and learn a simple model that mimics human play. We evaluate the performance of agents trained via self-play and population-based training. These agents perform very well when paired with themselves, but when paired with our human model, they are significantly worse than agents designed to play with the human model. An experiment with a planning algorithm yields the same conclusion, though only when the human-aware planner is given the exact human model that it is playing with. A user study with real humans shows this pattern as well, though less strongly. Qualitatively, we find that the gains come from having the agent adapt to the human’s gameplay. Given this result, we suggest several approaches for designing agents that learn about humans in order to better coordinate with them. Code is available at https://github.com/HumanCompatibleAI/overcooked_ai.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "document_sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Consider the canonical case of a common-payoff game, shown in Figure 1 (right): since both agents are maximizers, a mistake on the human’s side is no longer an advantage, but an actual problem, especially if the agent did not anticipate it. Further, agents that are allowed to co-train might converge onto opaque coordination strategies. For instance, agents trained to play the collaborative game Hanabi learned to use the hint “red” or “yellow” to indicate that the newest card is playable, which no human would immediately understand [12]. When such an agent is paired with a human, it will execute the opaque policy, which may fail spectacularly when the human doesn’t play their part. We thus hypothesize that in true collaborative scenarios agents trained to play well with other AI agents will perform much more poorly when paired with humans. We further hypothesize that incorporating human data or models into the training process will lead to significant improvements. To test this hypothesis, we introduce a simple environment based on the popular game Overcooked [13], which is specifically designed to be challenging for humans to coordinate in (Figure 2).We use this environment to compare agents trained with themselves to agents trained with a learned human model. For the former, we consider self-play [33], population-based training [19], and coupled planning with replanning. For the latter, we collect human-human data and train a behavior cloning human model; we then train a reinforcement learning and a planning agent to collaborate well with this model. We evaluate how well these agents collaborate with a held-out “simulated” human model (henceforth the “proxy human”), trained on a different data set, as well as in a user study.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "document_sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 18,
+              "text": "An advanced form of coordination is working with partners you have not seen during training (Hu et al., 2020). Previous work has focused on coordination through actions (Carroll et al., 2019; Lupu et al., 2021) or pre-test grounding with a common dataset (Gupta et al., 2021) but to our knowledge, no previous work has succeeded in learning a linguistic communication protocol that is robust to zero-shot partners. To assess this advanced robustness, we take trained agents from different methods and random seeds and evaluate them with each other (i.e., zero-shot cross-play) in Predator-Prey and Find-Goal. Given two communication learning methods, m1 and m2 , we sample two agents from each method for Predator-Prey and for Find-Goal, we average over sampling two agents from one method and one agent from the other and vice-versa. For intra-method cross-play, m1 = m2 , we evaluate agents that were trained with the same method but from different random seeds, so they have not been trained with each other. For inter-method cross-play, m1 ̸= m2 , we sample agents from two different methods and pair them with each other. Each pairing is evaluated for 10 random seeds each with 10 evaluation episodes. Given that agents are trained in self-play (Tesauro, 1994) without regard for cross-play, we expect severe performance dips. We show mean and standard deviation across random seeds for Predator-Prey and Find-Goal in Tables 6 and 7, respectively. As expected, all pairings take a significant dip in performance when compared with the main results. Inter-method cross-play performance is particularly bad across all algorithms. However, notably, CACL outperforms other methods in intra-method cross-play, indicating that the protocols learned by CACL are generally more robust even across",
+              "url": "https://arxiv.org/pdf/2307.01403v3",
+              "document_sha256": "916407acc43ab6fa844fe40ff01a00e10073df73f3138c04b7d74989d956115e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "A BSTRACT Communication is a powerful tool for coordination in multi-agent RL. But inducing an effective, common language is a difficult challenge, particularly in the decentralized setting. In this work, we introduce an alternative perspective where communicative messages sent between agents are considered as different incomplete views of the environment state. By examining the relationship between messages sent and received, we propose to learn to communicate using contrastive learning to maximize the mutual information between messages of a given trajectory. In communication-essential environments, our method outperforms previous work in both performance and learning speed. Using qualitative metrics and representation probing, we show that our method induces more symmetric communication and captures global state information from the environment. Overall, we show the power of contrastive learning and the importance of leveraging messages as encodings for effective communication.",
+              "url": "https://arxiv.org/pdf/2307.01403v3",
+              "document_sha256": "916407acc43ab6fa844fe40ff01a00e10073df73f3138c04b7d74989d956115e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "messages on a communication channel (Foerster et al., 2016), i.e., linguistic communication (Lazaridou & Baroni, 2020), are more flexible and powerful because they can convey more complex concepts. To successfully communicate, a speaker and a listener must share a common language with a shared understanding of the symbols being used (Skyrms, 2010; Dafoe et al., 2020). Emergent communication or learning a common protocol (Wagner et al., 2003; Lazaridou & Baroni, 2020), is a thriving research direction but most works focus on simple, single-turn, sender-receiver games (Lazaridou et al., 2018; Chaabouni et al., 2019). In more visually and structurally complex MARL environments (Samvelyan et al., 2019), existing approaches often rely on centralized learning mechanisms by sharing models (Lowe et al., 2017) or gradients (Sukhbaatar et al., 2016). However, a centralized controller is impractical in many real-world environments (Mai et al., 2021; Jung et al., 2021) where agents cannot easily synchronize and must act independently i.e. decentralized. Centralized training with decentralized execution (CTDE) (Lowe et al., 2017) is a middle-ground between purely centralized and decentralized methods but may not perform better than purely decentralized training (Lyu et al., 2021). A centralized controller suffers from the curse of dimensionality: as the number of agents it must control increases, the amount of communication between agents to process increases exponentially (Jin et al., 2021). Furthermore, the fully decentralized setting is more flexible and requires fewer assumptions about other agents, making it more realistic in many real-world scenarios (Li et al., 2020). Hence, this work explores learning to communicate to coordinate agents in the decentralized setting. In",
+              "url": "https://arxiv.org/pdf/2307.01403v3",
+              "document_sha256": "916407acc43ab6fa844fe40ff01a00e10073df73f3138c04b7d74989d956115e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-010b1220ffe0536fd3fe9dff",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/f5b1b89d98b7286673128a5fb112cb9a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-62cc5daf750572369980b1f0",
+          "url": "https://openreview.net/forum?id=vZZ4hhniJU"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "c25bed9821449c3e183c3ed4313e811cee9962fb0a12f7b2ac639f0527c11cfb"
+    },
+    {
+      "id": "edge-947e198d7b244444a9b2c85a",
+      "a": "paper-010b1220ffe0536fd3fe9dff",
+      "b": "paper-c04d54ebfb20439c91b77a97",
+      "state": {
+        "paper_a": {
+          "title": "On the Utility of Learning about Humans for Human-AI Coordination",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "While we would like agents that can coordinate with humans, current algorithms such as self-play and population-based training create agents that can coordinate with themselves. Agents that assume their partner to be optimal or similar to them can converge to coordination protocols that fail to understand and be understood by humans. To demonstrate this, we introduce a simple environment that requires challenging coordination, based on the popular game Overcooked, and learn a simple model that mimics human play. We evaluate the performance of agents trained via self-play and population-based training. These agents perform very well when paired with themselves, but when paired with our human model, they are significantly worse than agents designed to play with the human model. An experiment with a planning algorithm yields the same conclusion, though only when the human-aware planner is given the exact human model that it is playing with. A user study with real humans shows this pattern as well, though less strongly. Qualitatively, we find that the gains come from having the agent adapt to the human's gameplay. Given this result, we suggest several approaches for designing agents that learn about humans in order to better coordinate with them. Code is available at https://github.com/HumanCompatibleAI/overcooked_ai."
+        },
+        "paper_b": {
+          "title": "Generalized Beliefs for Cooperative AI",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Self-play is a common method for constructing solutions in Markov games that can yield optimal policies in collaborative settings. However, these policies often adopt highly-specialized conventions that make playing with a novel partner difficult. To address this, recent approaches rely on encoding symmetry and convention-awareness into policy training, but these require strong environmental assumptions and can complicate policy training. To overcome this, we propose moving the learning of conventions to the belief space. Specifically, we propose a belief learning paradigm that can maintain beliefs over rollouts of policies not seen at training time, and can thus decode and adapt to novel conventions at test time. We show how to leverage this belief model for both search and training of a best response over a pool of policies to greatly improve zero-shot coordination. We also show how our paradigm promotes explainability and interpretability of nuanced agent conventions."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Learning to Coordinate A central challenge in AI is devising agents that can coordinate with a novel partner (Canaan et al., 2020; Carroll et al., 2019; Hu et al., 2020; Kleiman-Weiner et al., 2016; Papoudakis & Albrecht, 2020; Smith et al., 2020; Stone et al., 2010; Zintgraf et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-010b1220ffe0536fd3fe9dff",
+          "b": "paper-c04d54ebfb20439c91b77a97",
+          "input_sha256": "caab75f832cfef90170785d89aeef524f477729225ff815d2dbfd1182185e296",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/f5b1b89d98b7286673128a5fb112cb9a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/muglich22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf",
+              "sha256": "19c112629928246f3eda40dd0233307317eda6457422e6d0edff81a8d0b8143d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract While we would like agents that can coordinate with humans, current algorithms such as self-play and population-based training create agents that can coordinate with themselves. Agents that assume their partner to be optimal or similar to them can converge to coordination protocols that fail to understand and be understood by humans. To demonstrate this, we introduce a simple environment that requires challenging coordination, based on the popular game Overcooked, and learn a simple model that mimics human play. We evaluate the performance of agents trained via self-play and population-based training. These agents perform very well when paired with themselves, but when paired with our human model, they are significantly worse than agents designed to play with the human model. An experiment with a planning algorithm yields the same conclusion, though only when the human-aware planner is given the exact human model that it is playing with. A user study with real humans shows this pattern as well, though less strongly. Qualitatively, we find that the gains come from having the agent adapt to the human’s gameplay. Given this result, we suggest several approaches for designing agents that learn about humans in order to better coordinate with them. Code is available at https://github.com/HumanCompatibleAI/overcooked_ai.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "document_sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Consider the canonical case of a common-payoff game, shown in Figure 1 (right): since both agents are maximizers, a mistake on the human’s side is no longer an advantage, but an actual problem, especially if the agent did not anticipate it. Further, agents that are allowed to co-train might converge onto opaque coordination strategies. For instance, agents trained to play the collaborative game Hanabi learned to use the hint “red” or “yellow” to indicate that the newest card is playable, which no human would immediately understand [12]. When such an agent is paired with a human, it will execute the opaque policy, which may fail spectacularly when the human doesn’t play their part. We thus hypothesize that in true collaborative scenarios agents trained to play well with other AI agents will perform much more poorly when paired with humans. We further hypothesize that incorporating human data or models into the training process will lead to significant improvements. To test this hypothesis, we introduce a simple environment based on the popular game Overcooked [13], which is specifically designed to be challenging for humans to coordinate in (Figure 2).We use this environment to compare agents trained with themselves to agents trained with a learned human model. For the former, we consider self-play [33], population-based training [19], and coupled planning with replanning. For the latter, we collect human-human data and train a behavior cloning human model; we then train a reinforcement learning and a planning agent to collaborate well with this model. We evaluate how well these agents collaborate with a held-out “simulated” human model (henceforth the “proxy human”), trained on a different data set, as well as in a user study.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f5b1b89d98b7286673128a5fb112cb9a-Paper.pdf",
+              "document_sha256": "308045406ea86dc40197a7b972de66d8a005f4bd9e35ac0fdc5026834bac922d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "7. Related Work Learning to Coordinate A central challenge in AI is devising agents that can coordinate with a novel partner (Canaan et al., 2020; Carroll et al., 2019; Hu et al., 2020; Kleiman-Weiner et al., 2016; Papoudakis & Albrecht, 2020; Smith et al., 2020; Stone et al., 2010; Zintgraf et al., 2021). As mentioned in Section 1, naively applying self-play approaches to one another can yield poor performance. While dynamic programming approaches may be considered as an approach to Dec-POMDPs (Hansen et al., 2004), such planning methods assume that at test time an agent’s teammates 4",
+              "url": "https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf",
+              "document_sha256": "19c112629928246f3eda40dd0233307317eda6457422e6d0edff81a8d0b8143d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "communicate, particularly when the available communication channels are too narrow to fully resolve mutual uncertainty (Heider & Simmel, 1944; Tian et al., 2020). In the case of the popular and frequently-studied card game Hanabi (Bard et al., 2020) (see Appendix A for details on Hanabi), consider the example convention that “hinting green” also means that the rightmost held card of the player receiving the hint is playable. One could then construct a second policy where instead “hinting yellow” bears this implicit cue. While these two policies are essentially equivalent, if two agents meet and one plays the former policy and the other plays the latter, they will perform poorly because they have each overfit to their respective conventions. To improve the cross-play performance of independent selfplay trained agents (i.e., to effectively engage in zero-shot coordination (Hu et al., 2020)), recent approaches have explored explicitly encoding environmental symmetries (where symmetry refers to state/action sequences that are equivalent up to relabelling of the state/action space) into policy training (Hu et al., 2020). However, this complicates the training process and requires domain knowledge. Others have explored modular approaches that separately learn the complexities intrinsic to the task (i.e., ruledependent behaviour) and the conventions specific to a partner (i.e., convention-dependent behaviour) (Shih et al., 2021). However, their method comes at the expense of scalability, with experiments limited to bandit problems and 1-colour Hanabi. Yet another approach that has been explored is in controlling the cognitive-reasoning depth (i.e. controlling the extent to which agents build more complex conventions on top of the baseline expectation that earlier conventions",
+              "url": "https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf",
+              "document_sha256": "19c112629928246f3eda40dd0233307317eda6457422e6d0edff81a8d0b8143d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "5. Improving Cross-Play This section demonstrates how the generalized belief model may be leveraged to realise a policy suited for coordination. 5.1. Method We propose two different schemes for leveraging the generalized belief: 1) a Monte Carlo search scheme; 2) training a best response over a pool of policies with the hidden state of the generalized belief model. Search has been a critical component for the success of AI in several multi-agent settings, such as chess (Campbell et al., 2002), poker (Moravčı́k et al., 2017), and Go (Silver et al., 2018). Lerer et al. (2020) propose a method of note for the Dec-POMDP setting; their work maintains an exact belief using updates as in Equation (2), samples from this belief to obtain hypothetical values for the unobservable state features, then conducts Monte Carlo search rollouts for each potential action predicated on these sampled state features using the agreed-upon policy to determine the best action. Motivated by this setup, we propose a similar framework for zero-shot cooperative tasks between policies π 1 , . . . , π n : we replace the exact belief with our learned generalized belief (thus bypassing costly Bayesian updating), and we conduct Monte Carlo rollouts by partnering π 1 with randomly chosen policies from the pool of policies the generalized belief was trained over. Intuitively, the generalized belief samples help infer the intent of policies π 2 through π n , and the Monte Carlo rollouts calculate the most robust action for π 1 to take (by playing over rollouts of multiple different pool policies) predicated on this inference. Along with the search scheme described above, we also consider training a best response. In general, one might not be able to expect high-level zero-shot performance between a best",
+              "url": "https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf",
+              "document_sha256": "19c112629928246f3eda40dd0233307317eda6457422e6d0edff81a8d0b8143d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-010b1220ffe0536fd3fe9dff",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/f5b1b89d98b7286673128a5fb112cb9a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c04d54ebfb20439c91b77a97",
+          "url": "https://proceedings.mlr.press/v162/muglich22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "e503f1c13c3bd60026a8e5e74bbb7e64dc0eda418af6419abcbd87861699cbb9"
+    },
+    {
+      "id": "edge-debc59dabfea5869a1c6417b",
+      "a": "paper-01ff01762c625eafd2db134a",
+      "b": "paper-b7ebfb271b4100f31a62db49",
+      "state": {
+        "paper_a": {
+          "title": "Latent Space Policies for Hierarchical Reinforcement Learning",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "We address the problem of learning hierarchical deep neural network policies for reinforcement learning. In contrast to methods that explicitly restrict or cripple lower layers of a hierarchy to force them to use higher-level modulating signals, each layer in our framework is trained to directly solve the task, but acquires a range of diverse strategies via a maximum entropy reinforcement learning objective. Each layer is also augmented with latent random variables, which are sampled from a prior distribution during the training of that layer. The maximum entropy objective causes these latent variables to be incorporated into the layer’s policy, and the higher level layer can directly control the behavior of the lower layer through this latent space. Furthermore, by constraining the mapping from latent variables to actions to be invertible, higher layers retain full expressivity: neither the higher layers nor the lower layers are constrained in their behavior. Our experimental evaluation demonstrates that we can improve on the performance of single-layer policies on standard benchmark tasks simply by adding additional layers, and that our method can solve more complex sparse-reward tasks by learning higher-level policies on top of high-entropy skills optimized for simple low-level objectives."
+        },
+        "paper_b": {
+          "title": "MAVEN: Multi-Agent Variational Exploration",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Centralised training with decentralised execution is an important setting for cooperative deep multi-agent reinforcement learning due to communication constraints during execution and computational tractability in training. In this paper, we analyse value-based methods that are known to have superior performance in complex environments. We specifically focus on QMIX, the current state-of-the-art in this domain. We show that the representation constraints on the joint action-values introduced by QMIX and similar methods lead to provably poor exploration and suboptimality. Furthermore, we propose a novel approach called MAVEN that hybridises value and policy-based methods by introducing a latent space for hierarchical control. The value-based agents condition their behaviour on the shared latent variable controlled by a hierarchical policy. This allows MAVEN to achieve committed, temporally extended exploration, which is key to solving complex multi-agent tasks. Our experimental results show that MAVEN achieves significant performance improvements on the challenging SMAC domain."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01ff01762c625eafd2db134a",
+          "b": "paper-b7ebfb271b4100f31a62db49",
+          "input_sha256": "e423a49f8c97e421baad74d948bc2fcb28e87e24818a76fb5b23731b74de0c45",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/haarnoja18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a.pdf",
+              "sha256": "a7163993f749bd3328d8017d0139b306853c5c34d279b70c89849960e13a7bfa"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/f816dc0acface7498e10496222e9db10-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/f816dc0acface7498e10496222e9db10-Paper.pdf",
+              "sha256": "754655e095eb48968603158a3f800ce79a9bb68db941f1678177bf97593a5fbc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We address the problem of learning hierarchical deep neural network policies for reinforcement learning. In contrast to methods that explicitly restrict or cripple lower layers of a hierarchy to force them to use higher-level modulating signals, each layer in our framework is trained to directly solve the task, but acquires a range of diverse strategies via a maximum entropy reinforcement learning objective. Each layer is also augmented with latent random variables, which are sampled from a prior distribution during the training of that layer. The maximum entropy objective causes these latent variables to be incorporated into the layer’s policy, and the higher level layer can directly control the behavior of the lower layer through this latent space. Furthermore, by constraining the mapping from latent variables to actions to be invertible, higher layers retain full expressivity: neither the higher layers nor the lower layers are constrained in their behavior. Our experimental evaluation demonstrates that we can improve on the performance of single-layer policies on standard benchmark tasks simply by adding additional layers, and that our method can solve more complex sparse-reward tasks by learning higher-level policies on top of high-entropy skills optimized for simple low-level objectives.",
+              "url": "https://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a.pdf",
+              "document_sha256": "a7163993f749bd3328d8017d0139b306853c5c34d279b70c89849960e13a7bfa"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "reinforcement learning problem based on this principle. In our framework, each layer of the hierarchy corresponds to a policy with internal latent variables. These latent variables determine how the policy maps states into actions, and the latent variables of the lower-level policy act as the action space for the higher level. Crucially, each layer is unconstrained, both in its ability to sense and affect the environment: each layer receives the full state as the observation, and each layer is, by construction, fully invertible, so that higher layers in the hierarchy can undo any transformation of the action space imposed on the layers below. In order to train policies with latent variables, we cast the problem of reinforcement learning into the framework of probabilistic graphical models. To that end, we build on maximum entropy reinforcement learning (Todorov, 2007; Ziebart et al., 2008), where the RL objective is modified to optimize for stochastic policies that maximize both reward and entropy. It can be shown that, in this framework, the RL problem becomes equivalent to an inference problem in a particular type of probabilistic graphical model (Toussaint, 2009). By augmenting this model with latent variables, we can derive a method that simultaneously produces a policy that attempts to solve the task, and a latent space that can be used by a higher-level controller to steer the policy’s behavior. The particular latent variable model representation that we use is based on normalizing flows (Dinh et al., 2016) that transform samples from a spherical Gaussian prior latent variable distribution into a posterior distribution, which in the case of our policies corresponds to a distribution over actions. When this transformation is described by a generalpurpose neural",
+              "url": "https://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a.pdf",
+              "document_sha256": "a7163993f749bd3328d8017d0139b306853c5c34d279b70c89849960e13a7bfa"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "In recent years there has been considerable work extending MARL from small discrete state spaces that can be handled by tabular methods [51, 5] to high-dimensional, continuous state spaces that require the use of function approximators [13, 28, 39]. To tackle computational intractability from exponential blow-up of state-action space, Guestrin et al. [16, 17] use coordination graphs to factor large MDPs for multi-agent systems and propose inter-agent communication arising from message passing on the graphs. Similarly [45, 11, 23] model inter-agent communication explicitly. In CTDE [26], [47] extend Independent Q-Learning [48] to use DQN to learn Q-values for each agent independently. [12, 35] tackle the instability that arises from training the agents independently. Lin et al.[27] first learn a centralised controller to solve the task, and then train the agents to imitate its behaviour. Sunehag et al. [46] propose Value Decomposition Networks (VDN), which learn the joint-action Q-values by factoring them as the sum of each agent’s Q-values. QMIX [40] extends VDN to allow the joint action Q-values to be a monotonic combination of each agent’s Q-Values that can vary depending on the state. Section 4 outlines how MAVEN builds upon QMIX. QTRAN [44] approaches the suboptimality vs. decentralisation tradeoff differently by introducing relaxed L2 penalties in the RL objective. [15] maximise the empowerment between one agents actions and the others future state in a competitive setting. Zheng et al. [52] allow each agent to condition their policies on a shared continuous latent variable. In contrast to our setting, they consider the fully-observable centralised control setting and do not attempt to enforce diversity across the shared latent variable. Aumann [1] proposes the",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f816dc0acface7498e10496222e9db10-Paper.pdf",
+              "document_sha256": "754655e095eb48968603158a3f800ce79a9bb68db941f1678177bf97593a5fbc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Centralised training with decentralised execution is an important setting for cooperative deep multi-agent reinforcement learning due to communication constraints during execution and computational tractability in training. In this paper, we analyse value-based methods that are known to have superior performance in complex environments [43]. We specifically focus on QMIX [40], the current state-of-the-art in this domain. We show that the representational constraints on the joint action-values introduced by QMIX and similar methods lead to provably poor exploration and suboptimality. Furthermore, we propose a novel approach called MAVEN that hybridises value and policy-based methods by introducing a latent space for hierarchical control. The value-based agents condition their behaviour on the shared latent variable controlled by a hierarchical policy. This allows MAVEN to achieve committed, temporally extended exploration, which is key to solving complex multi-agent tasks. Our experimental results show that MAVEN achieves significant performance improvements on the challenging SMAC domain [43].",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f816dc0acface7498e10496222e9db10-Paper.pdf",
+              "document_sha256": "754655e095eb48968603158a3f800ce79a9bb68db941f1678177bf97593a5fbc"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "RL[33] (by increasing sample inefficiency[31, 30]), but also by interacting with the representational constraints necessary for decentralisation to push the algorithm towards suboptimal policies. Single agent RL can avoid convergence to suboptimal policies using various strategies like increasing the exploration rate (✏) or policy variance, ensuring optimality in the limit. However, we show, both theoretically and empirically, that the same is not possible in decentralised MARL. Furthermore, we show that committed exploration can be used to solve the above problem. In committed exploration [36], exploratory actions are performed over extended time steps in a coordinated manner. Committed exploration is key even in single-agent exploration but is especially important in MARL, as many problems involve long-term coordination, requiring exploration to discover temporally extended joint strategies for maximising reward. Unfortunately, none of the existing methods for CTDE are equipped with committed exploration. To address these limitations, we propose a novel approach called multi-agent variational exploration (MAVEN) that hybridises value and policy-based methods by introducing a latent space for hierarchical control. MAVEN’s value-based agents condition their behaviour on the shared latent variable controlled by a hierarchical policy. Thus, fixing the latent variable, each joint action-value function can be thought of as a mode of joint exploratory behaviour that persists over an entire episode. Furthermore, MAVEN uses mutual information maximisation between the trajectories and latent variables to learn a diverse set of such behaviours. This allows MAVEN to achieve committed exploration while respecting the representational constraints. We demonstrate the efficacy of",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/f816dc0acface7498e10496222e9db10-Paper.pdf",
+              "document_sha256": "754655e095eb48968603158a3f800ce79a9bb68db941f1678177bf97593a5fbc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01ff01762c625eafd2db134a",
+          "url": "https://proceedings.mlr.press/v80/haarnoja18a.html"
+        },
+        "b": {
+          "paper_id": "paper-b7ebfb271b4100f31a62db49",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/f816dc0acface7498e10496222e9db10-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "68eb27affca014e50f97ccc7531dbc996168b0c9df1b56918a01b4910b562ec4"
+    },
+    {
+      "id": "edge-82d7c9e01d0b7ea506be1cd6",
+      "a": "paper-0433184f8ab23bb7a4965965",
+      "b": "paper-118f7fe133058c975c8db12a",
+      "state": {
+        "paper_a": {
+          "title": "Stochastic Gradient Push for Distributed Deep Learning",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Distributed data-parallel algorithms aim to accelerate the training of deep neural networks by parallelizing the computation of large mini-batch gradient updates across multiple nodes. Approaches that synchronize nodes using exact distributed averaging (e.g., via AllReduce) are sensitive to stragglers and communication delays. The PushSum gossip algorithm is robust to these issues, but only performs approximate distributed averaging. This paper studies Stochastic Gradient Push (SGP), which combines PushSum with stochastic gradient updates. We prove that SGP converges to a stationary point of smooth, non-convex objectives at the same sub-linear rate as SGD, and that all nodes achieve consensus. We empirically validate the performance of SGP on image classification (ResNet-50, ImageNet) and machine translation (Transformer, WMT’16 En-De) workloads."
+        },
+        "paper_b": {
+          "title": "Stochastic Hamiltonian Gradient Methods for Smooth Games",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "The success of adversarial formulations in machine learning has brought renewed motivation for smooth games. In this work, we focus on the class of stochastic Hamiltonian methods and provide the first convergence guarantees for certain classes of stochastic smooth games. We propose a novel unbiased estimator for the stochastic Hamiltonian gradient descent (SHGD) and highlight its benefits. Using tools from the optimization literature we show that SHGD converges linearly to the neighbourhood of a stationary point. To guarantee convergence to the exact solution, we analyze SHGD with a decreasing step-size and we also present the first stochastic variance reduced Hamiltonian method. Our results provide the first global non-asymptotic last-iterate convergence guarantees for the class of stochastic unconstrained bilinear games and for the more general class of stochastic games that satisfy a “sufficiently bilinear\" condition, notably including some non-convex non-concave problems. We supplement our analysis with experiments on stochastic bilinear and sufficiently bilinear games, where our theory is shown to be tight, and on simple adversarial machine learning formulations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We speculate that similar ideas to the ones presented in this work can be used for the development of efﬁcient decentralized methods (Assran et al., 2019; Koloskova et al., 2020) for solving problem (3).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0433184f8ab23bb7a4965965",
+          "b": "paper-118f7fe133058c975c8db12a",
+          "input_sha256": "87fa6d7e463ff7d6fb2f2ac86f5df73e4b10c0763b3d2fa03a3488e12210f083",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/assran19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/assran19a/assran19a.pdf",
+              "sha256": "e1a6b0d596a9421aed49bc1602fafaeef4db573b1f39354d9f4b7607495f612d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/loizou20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/loizou20a/loizou20a.pdf",
+              "sha256": "c8a4a7b01f70c90035d7fae625a43b4d21f447ce1113ff5ef64dac7cd15b3899"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "SGP was first proposed in the control systems literature for minimizing the sum of strongly-convex functions (Nedić & Olshevsky, 2016). We make three main contributions. 1) We propose and analyze a novel variant of SGP, called Overlap SGP, which overlaps communication and computation to hide communication overhead. 2) We provide novel theoretical guarantees, proving that SGP (and Overlap SGP) converges to a √ stationary point of smooth non-convex functions at an O(1/ nK) rate, for an appropriately chosen step-size, where n is the number of nodes and K is the number of iterations. 3) We conduct experiments on image classification (ResNet50, ImageNet) and neural machine translation tasks (Transformer, WMT16 En-De), demonstrating that SGP and Overlap SGP can substantially accelerate training of deep neural networks, by reducing communication overhead and mitigating the effects of stragglers. Given a fixed runtime budget, we find that SGP and Overlap SGP can train models that achieve better final train/validation accuracies than A LL R EDUCE SGD in communication-constrained settings. For example, we train a ResNet-50 on ImageNet using 256 GPUs spread across 32 compute nodes (8 GPUs / node), where communication between nodes is over 10 Gbps Ethernet. In this setting A LL R EDUCE SGD achieves 76.2% top-1 validation accuracy, while Overlap SGP achieves 76.2% accuracy in only 1/3 of the time, and 77.1% accuracy in 1/2 the time. Similarly, when training a Transformer network on the WMT’16 En-De translation task, SGP runs approximately 1.5× faster than A LL R EDUCE when using 8 GPUs and achieves a BLEU score that is 0.6 points higher. While our theory focuses on analyzing SGP, which combines P USH S UM with SGD, our experiments illustrate that P USH S UM can similarly be",
+              "url": "https://proceedings.mlr.press/v97/assran19a/assran19a.pdf",
+              "document_sha256": "e1a6b0d596a9421aed49bc1602fafaeef4db573b1f39354d9f4b7607495f612d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "7. Conclusion We propose SGP and OSGP for accelerating distributed training of DNNs. We provide theoretical convergence guarantees in the smooth non-convex setting, matching known convergence rates for parallel SGD. We also empirically study the methods over several computing infrastructures, and provide assessments on image classification (ImageNet, ResNet-50) and neural machine translation (Transformer, WMT16 EN-DE) tasks. We find that SGP and OSGP can run significantly faster than parallel SGD in communicationbound settings, and can train better models in less time.",
+              "url": "https://proceedings.mlr.press/v97/assran19a/assran19a.pdf",
+              "document_sha256": "e1a6b0d596a9421aed49bc1602fafaeef4db573b1f39354d9f4b7607495f612d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "8. Conclusion and Extensions We introduce new variants of SHGD (through novel unbiased estimator and step-size selection) and present the first variance reduced Hamiltonian method L-SVRHG. Using tools from optimization literature, we provide convergence guarantees for the two methods and we show how they can efficiently solve stochastic unconstrained bilinear games and the more general class of games that satisfy the “sufficiently bilinear” condition. An important result of our analysis is the first set of global non-asymptotic last-iterate convergence guarantees for a stochastic game over a non-compact domain, in the absence of strong monotonicity assumptions. We believe that our results and the Hamiltonian viewpoint could work as a first step in closing the gap between the stochastic optimization algorithms and methods for solving stochastic games and can open up many avenues for further development and research in both areas. A natural extension of our results will be the proposal of accelerated Hamiltonian methods that use momentum (Loizou & Richtárik, 2017; Assran & Rabbat, 2020) on top of the Hamiltonian gradient update. We speculate that similar ideas to the ones presented in this work can be used for the development of efficient decentralized methods (Assran et al., 2019; Koloskova et al., 2020) for solving problem (3).",
+              "url": "https://proceedings.mlr.press/v119/loizou20a/loizou20a.pdf",
+              "document_sha256": "c8a4a7b01f70c90035d7fae625a43b4d21f447ce1113ff5ef64dac7cd15b3899"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The success of adversarial formulations in machine learning has brought renewed motivation for smooth games. In this work, we focus on the class of stochastic Hamiltonian methods and provide the first convergence guarantees for certain classes of stochastic smooth games. We propose a novel unbiased estimator for the stochastic Hamiltonian gradient descent (SHGD) and highlight its benefits. Using tools from the optimization literature we show that SHGD converges linearly to the neighbourhood of a stationary point. To guarantee convergence to the exact solution, we analyze SHGD with a decreasing step-size and we also present the first stochastic variance reduced Hamiltonian method. Our results provide the first global non-asymptotic last-iterate convergence guarantees for the class of stochastic unconstrained bilinear games and for the more general class of stochastic games that satisfy a “sufficiently bilinear” condition, notably including some non-convex non-concave problems. We supplement our analysis with experiments on stochastic bilinear and sufficiently bilinear games, where our theory is shown to be tight, and on simple adversarial machine learning formulations.",
+              "url": "https://proceedings.mlr.press/v119/loizou20a/loizou20a.pdf",
+              "document_sha256": "c8a4a7b01f70c90035d7fae625a43b4d21f447ce1113ff5ef64dac7cd15b3899"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "tic gradient algorithms for solving finite-sum optimization problems. These algorithms, by reducing the variance of the stochastic gradients, are able to guarantee convergence to the exact solution of the optimization problem with faster convergence than classical SGD. For example, for smooth strongly convex functions, variance reduced methods can guarantee linear convergence to the optimum. This is a vast improvement on the sub-linear convergence of SGD with decreasing step-size. In the past several years, many efficient variance-reduced methods have been proposed. Some popular examples of variance reduced algorithms are SAG (Schmidt et al., 2017), SAGA (Defazio et al., 2014), SVRG (Johnson & Zhang, 2013) and SARAH (Nguyen et al., 2017). For more examples of variance reduced methods in different settings, see Defazio (2016); Konečný et al. (2016); Gower et al. (2018); Sebbouh et al. (2019). In our second method Algorithm 2, we propose a variance reduced Hamiltonian method for solving (3). Our method is inspired by the recently introduced and well behaved variance reduced algorithm, Loopless-SVRG (LSVRG) first proposed in Hofmann et al. (2015); Kovalev et al. (2020) and further analyzed under different settings in Qian et al. (2019); Gorbunov et al. (2020); Khaled et al. (2020). We name our method loopless stochastic variance reduced Hamiltonian gradient (L-SVRHG). The method works by selecting at each step the unbiased estimator g k = ∇Hi,j (xk ) − ∇Hi,j (wk ) + ∇H(wk ) of the full gradient. As we will prove in the next section, this method guarantees linear convergence to the min-max solution of the stochastic bilinear game (9). To get a linearly convergent algorithm in the more general setup of sufficiently bilinear games 4.2, we had to propose a",
+              "url": "https://proceedings.mlr.press/v119/loizou20a/loizou20a.pdf",
+              "document_sha256": "c8a4a7b01f70c90035d7fae625a43b4d21f447ce1113ff5ef64dac7cd15b3899"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0433184f8ab23bb7a4965965",
+          "url": "https://proceedings.mlr.press/v97/assran19a.html"
+        },
+        "b": {
+          "paper_id": "paper-118f7fe133058c975c8db12a",
+          "url": "https://proceedings.mlr.press/v119/loizou20a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "a66e7e7afa3fb83382e24a2724dbaecef147d638f12692eb19cfece9b1def04a"
+    },
+    {
+      "id": "edge-43e89f97fc11485ac22fb1c8",
+      "a": "paper-06027c03ec6bac1e7c38a390",
+      "b": "paper-080c00078533167675c841f5",
+      "state": {
+        "paper_a": {
+          "title": "Machine Theory of Mind",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Theory of mind (ToM) broadly refers to humans’ ability to represent the mental states of others, including their desires, beliefs, and intentions. We design a Theory of Mind neural network {–} a ToMnet {–} which uses meta-learning to build such models of the agents it encounters. The ToMnet learns a strong prior model for agents’ future behaviour, and, using only a small number of behavioural observations, can bootstrap to richer predictions about agents’ characteristics and mental states. We apply the ToMnet to agents behaving in simple gridworld environments, showing that it learns to model random, algorithmic, and deep RL agents from varied populations, and that it passes classic ToM tasks such as the \"Sally-Anne\" test of recognising that others can hold false beliefs about the world."
+        },
+        "paper_b": {
+          "title": "Agent Modelling under Partial Observability for Deep Reinforcement Learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Modelling the behaviours of other agents is essential for understanding how agents interact and making effective decisions. Existing methods for agent modelling commonly assume knowledge of the local observations and chosen actions of the modelled agents during execution. To eliminate this assumption, we extract representations from the local information of the controlled agent using encoder-decoder architectures. Using the observations and actions of the modelled agents during training, our models learn to extract representations about the modelled agents conditioned only on the local observations of the controlled agent. The representations are used to augment the controlled agent's decision policy which is trained via deep reinforcement learning; thus, during execution, the policy does not require access to other agents' information. We provide a comprehensive evaluation and ablations studies in cooperative, competitive and mixed multi-agent environments, showing that our method achieves significantly higher returns than baseline methods which do not use the learned representations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…2018], with recent works focused on learning informative representations about another agent’s policy using deep learning architectures for agent modelling and reinforcement learning (RL) [He et al., 2016, Raileanu et al., 2018, Grover et al., 2018, Rabinowitz et al., 2018, Zintgraf et al., 2021].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06027c03ec6bac1e7c38a390",
+          "b": "paper-080c00078533167675c841f5",
+          "input_sha256": "bd1e18b4a286cb3841620311e0c27b61de6fae00225abdd3845cb3577aab92d1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/rabinowitz18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/rabinowitz18a/rabinowitz18a.pdf",
+              "sha256": "01788be859e612d1a119b32da9ffdc83463adf5dd7bd3cb1c45c4544038e2c1a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/a03caec56cd82478bf197475b48c05f9-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/a03caec56cd82478bf197475b48c05f9-Paper.pdf",
+              "sha256": "30551aa716b1501493fc6ce8b8ef343c3ef2646b25e9de9acecbd0b45fb9501c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "text, we show how meta-learning can provide the ability to build flexible and sample-efficient models of others on the fly. Such models will also be important for value alignment (Hadfield-Menell et al., 2016), flexible cooperation (Nowak, 2006; Kleiman-Weiner et al., 2016), and mediating human understanding of artificial agents. We consider the challenge of building a Theory of Mind as essentially a meta-learning problem (Schmidhuber et al., 1996; Thrun & Pratt, 1998; Hochreiter et al., 2001; Vilalta & Drissi, 2002). At test time, we want to be able to encounter a novel agent whom we have never met before, and already have a strong and rich prior about how they are going to behave. Moreover, as we see this agent act in the world, we wish to be able to form a posterior about their latent characteristics and mental states that will enable us to improve our predictions about their future behaviour. We formulate a task for an observer, who, in each episode, gets access to a set of behavioural traces of a novel agent, and must make predictions about the agent’s future behaviour. Over training, the observer should get better at rapidly forming predictions about new agents from limited data. This “learning to learn” about new agents is what we mean by meta-learning. Through this process, the observer should also acquire an effective prior over the agents’ behaviour that implicitly captures the commonalities between agents within the training population. We introduce two concepts to describe components of this observer network: its general theory of mind – the learned weights of the network, which encapsulate predictions about the common behaviour of all agents in the training set – and its agent-specific theory of mind – the “agent embedding” formed from observations about a",
+              "url": "https://proceedings.mlr.press/v80/rabinowitz18a/rabinowitz18a.pdf",
+              "document_sha256": "01788be859e612d1a119b32da9ffdc83463adf5dd7bd3cb1c45c4544038e2c1a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "An important aspect of autonomous decision-making agents is the ability to reason about the unknown intentions and behaviours of other agents. Much research has been devoted to this agent modelling problem [Albrecht and Stone, 2018], with recent works focused on learning informative representations about another agent’s policy using deep learning architectures for agent modelling and reinforcement learning (RL) [He et al., 2016, Raileanu et al., 2018, Grover et al., 2018, Rabinowitz et al., 2018, Zintgraf et al., 2021]. A common assumption in existing methods is that the modelling agent has access to the local trajectory of the modelled agents during execution [Albrecht and Stone, 2018], which may include their local observations of the environment state and their past actions. While it is certainly desirable to be able to observe the agents’ local contexts in order to reason about their past and future decisions, in practice such an assumption may be too restrictive. Agents may only have a limited view of their surroundings, communication with other agents may be infeasible or unreliable [Stone et al., 2010], and knowledge of the perception system of other agents may be unavailable [Gmytrasiewicz and Doshi, 2005]. In such cases, an agent must reason with only locally available information. We consider the following question: Can effective agent modelling be achieved using only the locally available information of the controlled agent during execution? A strength of deep learning techniques is their ability to identify informative features in data. Here, we use deep learning techniques to extract informative features about the trajectory of the modelled agent from a stream of local observations for the purpose of agent modelling. Specifically, we consider a multi-agent",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/a03caec56cd82478bf197475b48c05f9-Paper.pdf",
+              "document_sha256": "30551aa716b1501493fc6ce8b8ef343c3ef2646b25e9de9acecbd0b45fb9501c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Modelling the behaviours of other agents is essential for understanding how agents interact and making effective decisions. Existing methods for agent modelling commonly assume knowledge of the local observations and chosen actions of the modelled agents during execution. To eliminate this assumption, we extract representations from the local information of the controlled agent using encoderdecoder architectures. Using the observations and actions of the modelled agents during training, our models learn to extract representations about the modelled agents conditioned only on the local observations of the controlled agent. The representations are used to augment the controlled agent’s decision policy which is trained via deep reinforcement learning; thus, during execution, the policy does not require access to other agents’ information. We provide a comprehensive evaluation and ablations studies in cooperative, competitive and mixed multi-agent environments, showing that our method achieves higher returns than baseline methods which do not use the learned representations.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/a03caec56cd82478bf197475b48c05f9-Paper.pdf",
+              "document_sha256": "30551aa716b1501493fc6ce8b8ef343c3ef2646b25e9de9acecbd0b45fb9501c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We propose Local Information Agent Modelling (LIAM)1 , which can be seen as the general idea of learning the relationship between the trajectory of the controlled agent and the trajectory of the modelled agent. In this work we propose one instantiation of this idea: an encoder-decoder agent modelling method that can extract a compact yet informative representation of the modelled agents given only the local information of the controlled agent (its local state observations, and past actions). The model is trained to replicate the observations and actions of the modelled agents from the local information only. During training, the modelled agent’s observations and actions are utilised as reconstruction targets for the decoder; after training, only the encoding component is retained which generates representations using local observations of the controlled agent. The learned representation conditions the policy of the controlled agent in addition to its local observation, and the policy and model are optimised concurrently during the RL learning process. We evaluate LIAM in three different multi-agent environments: double speaker-listener [Mordatch and Abbeel, 2017, Lowe et al., 2017], level-based foraging (LBF) [Albrecht and Stone, 2017, Papoudakis et al., 2021], and a modified version of predator-prey proposed by [Böhmer et al., 2020]. Our results support the idea that effective agent modelling can be achieved using only local information during execution: the same RL algorithm generally achieved higher average returns when combined with representations generated by LIAM than without, and in some cases the average returns are comparable to those achieved by an ideal baseline which has access to the modelled agent’s trajectory during execution. We also provide detailed",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/a03caec56cd82478bf197475b48c05f9-Paper.pdf",
+              "document_sha256": "30551aa716b1501493fc6ce8b8ef343c3ef2646b25e9de9acecbd0b45fb9501c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06027c03ec6bac1e7c38a390",
+          "url": "https://proceedings.mlr.press/v80/rabinowitz18a.html"
+        },
+        "b": {
+          "paper_id": "paper-080c00078533167675c841f5",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/a03caec56cd82478bf197475b48c05f9-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "b7f691f639638141c2d627321b9bb4e0d5b49b5e4937e25df4163be17af3c986"
+    },
+    {
+      "id": "edge-2101a5b04c7b95ad1bc33950",
+      "a": "paper-0688ab4f157115c98ad1e272",
+      "b": "paper-b258af5eeb124aaf5bae2018",
+      "state": {
+        "paper_a": {
+          "title": "A Unifying View of Optimism in Episodic Reinforcement Learning",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The principle of ``optimism in the face of uncertainty'' underpins many theoretically successful reinforcement learning algorithms. In this paper we provide a general framework for designing, analyzing and implementing such algorithms in the episodic reinforcement learning problem. This framework is built upon Lagrangian duality, and demonstrates that every model-optimistic algorithm that constructs an optimistic MDP has an equivalent representation as a value-optimistic dynamic programming algorithm. Typically, it was thought that these two classes of algorithms were distinct, with model-optimistic algorithms benefiting from a cleaner probabilistic analysis while value-optimistic algorithms are easier to implement and thus more practical. With the framework developed in this paper, we show that it is possible to get the best of both worlds by providing a class of algorithms which have a computationally efficient dynamic-programming implementation and also a simple probabilistic analysis. Besides being able to capture many existing algorithms in the tabular setting, our framework can also address large-scale problems under realizable function approximation, where it enables a simple model-based analysis of some recently proposed methods."
+        },
+        "paper_b": {
+          "title": "The Power of Exploiter: Provable Multi-Agent RL in Large State Spaces",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Modern reinforcement learning (RL) commonly engages practical problems with large state spaces, where function approximation must be deployed to approximate either the value function or the policy. While recent progresses in RL theory address a rich set of RL problems with general function approximation, such successes are mostly restricted to the single-agent setting. It remains elusive how to extend these results to multi-agent RL, especially in the face of new game-theoretical challenges. This paper considers two-player zero-sum Markov Games (MGs). We propose a new algorithm that can provably find the Nash equilibrium policy using a polynomial number of samples, for any MG with low multi-agent Bellman-Eluder dimension —a new complexity measure adapted from its single-agent version (Jin et al., 2021). A key component of our new algorithm is the exploiter, which facilitates the learning of the main player by deliberately exploiting her weakness. Our theoretical framework is generic, which applies to a wide range of models including but not limited to tabular MGs, MGs with linear or kernel function approximation, and MGs with rich observations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The most studied case is linear function approximation (Jin et al., 2020; Wang et al., 2019; Cai et al., 2019; Zanette et al., 2020a;b; Agarwal et al., 2020; Neu & Pike-Burke, 2020).\nThe most studied case is linear function approximation (Jin et al., 2020; Wang et al., 2019; Cai et al., 2019; Zanette et al., 2020a;b; Agarwal et al., 2020; Neu and Pike-Burke, 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0688ab4f157115c98ad1e272",
+          "b": "paper-b258af5eeb124aaf5bae2018",
+          "input_sha256": "062223febd135c17c14d2600f361f2fe664ff7f15eb4c2d7fdc4247ab68e5fcd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/0f0e13216262f4a201bec128044dd30f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/0f0e13216262f4a201bec128044dd30f-Paper.pdf",
+              "sha256": "8bc82adbdaa89e7a449d3bb92a5f217406d41ae96f15d7e3e201ba3a1a0e966b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/jin22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The principle of “optimism in the face of uncertainty” underpins many theoretically successful reinforcement learning algorithms. In this paper we provide a general framework for designing, analyzing and implementing such algorithms in the episodic reinforcement learning problem. This framework is built upon Lagrangian duality, and demonstrates that every model-optimistic algorithm that constructs an optimistic MDP has an equivalent representation as a value-optimistic dynamic programming algorithm. Typically, it was thought that these two classes of algorithms were distinct, with model-optimistic algorithms benefiting from a cleaner probabilistic analysis while value-optimistic algorithms are easier to implement and thus more practical. With the framework developed in this paper, we show that it is possible to get the best of both worlds by providing a class of algorithms which have a computationally efficient dynamic-programming implementation and also a simple probabilistic analysis. Besides being able to capture many existing algorithms in the tabular setting, our framework can also address large-scale problems under realizable function approximation, where it enables a simple model-based analysis of some recently proposed methods.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/0f0e13216262f4a201bec128044dd30f-Paper.pdf",
+              "document_sha256": "8bc82adbdaa89e7a449d3bb92a5f217406d41ae96f15d7e3e201ba3a1a0e966b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "reward functions, and select the policy that generates the highest total expected reward in the best feasible MDP. We refer to this family of methods as model-optimistic. Examples of model-optimistic methods include RMAX [13, 27, 47] and UCRL2 [4, 24, 44]. While conceptually appealing, modeloptimistic methods tend to be difficult to implement due to the complexity of jointly optimizing over models and policies. Another approach to incorporating optimism into RL is to construct optimistic upper bounds on the optimal value functions which are (informally) the total expected reward of the optimal policy in the true MDP. The optimistic policy greedily picks actions to maximize the optimistic values. We refer to this class of methods as value-optimistic. Examples of algorithms in this class are MBIE-EB [44], UCB-VI [6] and UBEV [16]. These algorithms compute the optimistic value functions via dynamic programming (cf. 9), making them computationally efficient and compatible with empirically successful RL algorithms that are typically based on value functions. One downside of these approaches is that their probabilistic analysis is often excessively complex, with complicated recursive arguments necessary to guarantee optimism. While these two approaches may look very different on the surface, we show in this paper that there is in fact a very strong connection between them. Our first contribution is to show that the optimization problems associated with these two approaches exhibit strong duality. This implies that that for every model-optimistic approach, there exists an equivalent value-optimistic approach. This bridges the gap between the conceptually simple model-optimistic approaches and the computationally efficient value-optimistic approaches. This result enables us to",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/0f0e13216262f4a201bec128044dd30f-Paper.pdf",
+              "document_sha256": "8bc82adbdaa89e7a449d3bb92a5f217406d41ae96f15d7e3e201ba3a1a0e966b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Tabular MDP has been studied thoroughly in recent years (Brafman & Tennenholtz, 2002; Jaksch et al., 2010; Dann & Brunskill, 2015; Azar et al., 2017; Zanette & Brunskill, 2019; Jin et al., 2018; Zhang et al., 2020b). Particularly, in the episodic setting, the minimax regret or sample complexity is achieved by both model-based (Azar et al., 2017) and model-free (Zhang et al., 2020b) methods, up to logarithmic factors. When the state space is large, the tabular formulation of RL is impractical and function approximation is necessary. The most studied case is linear function approximation (Jin et al., 2020; Wang et al., 2019; Cai et al., 2019; Zanette et al., 2020a;b; Agarwal et al., 2020; Neu & Pike-Burke, 2020). For general function approximation, there are two common measures of complexity: Eluder dimension (Osband & Van Roy, 2014; Wang et al., 2020) and Bellman rank (Jiang et al., 2017), which are unified by a more generic notion—Bellman-Eluder dimension (Jin et al., 2021). Recently, (Du et al., 2021) develops a new problem class termed bilinear class, which can be considered as an infinitedimensional extension of low Bellman rank class. Low complexity RL problems under the above criteria are statistically tractable. Polynomial sample complexity guarantees (Jiang et al., 2017; Sun et al., 2019; Jin et al., 2021; Foster et al., 2020), or even regret guarantees (Wang et al., 2019; Dong et al., 2020; Jin et al., 2021; Wang et al., 2020) are established, under additional completeness and realizability conditions. However, most of the above algorithms are not computationally efficient and it remains open how to design computationally efficient algorithms for these settings.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Modern reinforcement learning (RL) commonly engages practical problems with large state spaces, where function approximation must be deployed to approximate either the value function or the policy. While recent progresses in RL theory address a rich set of RL problems with general function approximation, such successes are mostly restricted to the single-agent setting. It remains elusive how to extend these results to multi-agent RL, especially in the face of new game-theoretical challenges. This paper considers two-player zero-sum Markov Games (MGs). We propose a new algorithm that can provably find the Nash equilibrium policy using a polynomial number of samples, for any MG with low multi-agent Bellman-Eluder dimension—a new complexity measure adapted from its single-agent version (Jin et al., 2021). A key component of our new algorithm is the exploiter, which facilitates the learning of the main player by deliberately exploiting her weakness. Our theoretical framework is generic, which applies to a wide range of models including but not limited to tabular MGs, MGs with linear or kernel function approximation, and MGs with rich observations.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "between exploration and exploitation. • We introduce a new general complexity measure for MARL—Multi-agent Bellman Eluder (BE) dimension, which is adapted from its single-agent version (Jin et al., 2021). We prove that our algorithm can learn the Nash equilibrium policies of any MARL problem with low multi-agent BE dimension, using a number of samples that is polynomial in all relevant parameters, but independent of the size of the state space. We further provide an online guarantee for our algorithm when facing against adversarial opponents.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0688ab4f157115c98ad1e272",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/0f0e13216262f4a201bec128044dd30f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b258af5eeb124aaf5bae2018",
+          "url": "https://proceedings.mlr.press/v162/jin22c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "85f350ca4f6ba636eee720bf49f6bab6423f0529b790276be03fbd24518234a9"
+    },
+    {
+      "id": "edge-b8a200784fcfa40185506d27",
+      "a": "paper-06bfc09af3af88971e628d8a",
+      "b": "paper-74682f159bb162c5a4d07c99",
+      "state": {
+        "paper_a": {
+          "title": "Bilinear Classes: A Structural Framework for Provable Generalization in RL",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "This work introduces Bilinear Classes, a new structural framework, which permit generalization in reinforcement learning in a wide variety of settings through the use of function approximation. The framework incorporates nearly all existing models in which a polynomial sample complexity is achievable, and, notably, also includes new models, such as the Linear Q*/V* model in which both the optimal Q-function and the optimal V-function are linear in some known feature space. Our main result provides an RL algorithm which has polynomial sample complexity for Bilinear Classes; notably, this sample complexity is stated in terms of a reduction to the generalization error of an underlying supervised learning sub-problem. These bounds nearly match the best known sample complexity bounds for existing models. Furthermore, this framework also extends to the infinite dimensional (RKHS) setting: for the the Linear Q*/V* model, linear MDPs, and linear mixture MDPs, we provide sample complexities that have no explicit dependence on the explicit feature dimension (which could be infinite), but instead depends only on information theoretic quantities."
+        },
+        "paper_b": {
+          "title": "Model-Based RL for Mean-Field Games is not Statistically Harder than Single-Agent RL",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We study the sample complexity of reinforcement learning (RL) in Mean-Field Games (MFGs) with model-based function approximation that requires strategic exploration to find a Nash Equilibrium policy. We introduce the Partial Model-Based Eluder Dimension (P-MBED), a more effective notion to characterize the model class complexity. Notably, P-MBED measures the complexity of the single-agent model class converted from the given mean-field model class, and potentially, can be exponentially lower than the MBED proposed by Huang et al. (2024). We contribute a model elimination algorithm featuring a novel exploration strategy and establish sample complexity results polynomial w.r.t. P-MBED. Crucially, our results reveal that, under the basic realizability and Lipschitz continuity assumptions, learning Nash Equilibrium in MFGs is no more statistically challenging than solving a logarithmic number of single-agent RL problems . We further extend our results to Multi-Type MFGs, generalizing from conventional MFGs and involving multiple types of agents. This extension implies statistical tractability of a broader class of Markov Games through the efficacy of mean-field approximation. Finally, inspired by our theoretical algorithm, we present a heuristic approach with improved computational efficiency and empirically demonstrate its effectiveness."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…or value function class containing the true model or optimal value functions is available, and the sample complexity is governed by the complexity of the function classes (Agarwal et al., 2020; Du et al., 2021; Foster et al., 2021; Jiang et al., 2017; Jin et al., 2020; 2021a; Sun et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06bfc09af3af88971e628d8a",
+          "b": "paper-74682f159bb162c5a4d07c99",
+          "input_sha256": "693dbeebc7f8a59f5f9335e2a2c9a67a31fb55e77f2a060903fbf8264bf945b1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/du21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/huang24i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/huang24i/huang24i.pdf",
+              "sha256": "7d8c4237c177945d29f25bd97d03d3f361b1e6f556b8c99d52cbb3bdddedcb7e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "of new settings that are not easily incorporated in previous frameworks (see Tables 1 and 2). Our main result presents an optimization-based algorithm, BiLin-UCB, which provably enjoys a polynomial sample complexity guarantee for Bilinear Classes (cf. Theorem 4.2). Although our framework is more general than existing ones, our proof is substantially simpler – we give a unified analysis based on the elliptical potential lemma, developed for the theory of linear bandits (Dani et al., 2008; Srinivas et al., 2009). Furthermore, as a point of emphasis, our results are nonparametric in nature (stated in terms of an information gain quantity (Srinivas et al., 2009)), as opposed to finite dimensional as in prior work. From a technical point of view, it is not evident how to extend prior approaches to this nonparametric setting. Notably, the non-parametric regime is particularly relevant to RL due to that, in RL, performance bounds do not degrade gracefully with approximation error or model mis-specification (e.g. see Du et al. (2020a) for dis-",
+              "url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "document_sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Qh,g (sh , ah ) − rh − Vh+1,g (sh+1 ), but we would often need to use a different discrepancy function see for e.g. Linear Mixture Models (Section 3.3.1). We now provide some intuition for definition of Bilinear Class. The first part of the definition (Equation (1)) basically relates the Bellman error for hypothesis f (and hence sub-optimality) to the sum of bilinear forms |hWh (f ) − Wh (f ? ), Xh (f )i| (see for example proof of Lemma C.5). Crucially, the second part of the definition (Equation (2)), allows us to “reuse” data from hypothesis f to estimate the bilinear form |hWh (g) − Wh (f ? ), Xh (f )i| for all hypothesis g in our hypothesis class! This is reminiscent of uniform convergence guarantees in supervised learning, where data can be reused to simultaneously estimate the loss for all hypothesis and eliminate those with high loss. 3.2.1. F INITE B ELLMAN RANK =⇒ B ILINEAR C LASS Here we show our framework naturally generalizes the Bellman rank framework (Section 3.1). For Q-bellman rank case, we define the discrepancy function `f for observed transition info oh = (rh , sh , ah , sh+1 ) as:",
+              "url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "document_sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Single-Agent RL When the number of states and actions is extremely large, sample complexity bounds derived for tabular RL (Auer et al., 2008; Azar et al., 2017; Jin et al., 2018) become vacuous. Instead, function approximation is usually considered, where a model or value function class containing the true model or optimal value functions is available, and the sample complexity is governed by the complexity of the function classes (Agarwal et al., 2020; Du et al., 2021; Foster et al., 2021; Jiang et al., 2017; Jin et al., 2020; 2021a; Sun et al., 2019). Compared with singleagent RL, the main challenge in MFGs is the additional dependence on density in transition and reward functions, especially that the density space is continuous. Although our P-MBED is inspired by the eluder dimension in the singleagent setting (Levy et al., 2022; Osband & Van Roy, 2014; Russo & Van Roy, 2013), it is a novel complexity notion in characterizing the sample efficiency of RL in MFGs.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/huang24i/huang24i.pdf",
+              "document_sha256": "7d8c4237c177945d29f25bd97d03d3f361b1e6f556b8c99d52cbb3bdddedcb7e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "3. Partial Model-Based Eluder Dimension In the function approximation setting, the exploration challenge is related to the complexity of the function classes. In this section, we introduce new notions to characterize the complexity of model function class for MFGs and its extension to Multi-Type MFGs setting. The proofs and additional discussions can be found in Appx. D.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/huang24i/huang24i.pdf",
+              "document_sha256": "7d8c4237c177945d29f25bd97d03d3f361b1e6f556b8c99d52cbb3bdddedcb7e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We study the sample complexity of reinforcement learning (RL) in Mean-Field Games (MFGs) with model-based function approximation that requires strategic exploration to find a Nash Equilibrium policy. We introduce the Partial Model-Based Eluder Dimension (P-MBED), a more effective notion to characterize the model class complexity. Notably, P-MBED measures the complexity of the single-agent model class converted from the given mean-field model class, and potentially, can be exponentially lower than the MBED proposed by Huang et al. (2023). We contribute a model elimination algorithm featuring a novel exploration strategy and establish sample complexity results polynomial w.r.t. P-MBED. Crucially, our results reveal that, under the basic realizability and Lipschitz continuity assumptions, learning Nash Equilibrium in MFGs is no more statistically challenging than solving a logarithmic number of single-agent RL problems. We further extend our results to Multi-Type MFGs, generalizing from conventional MFGs and involving multiple types of agents. This extension implies statistical tractability of a broader class of Markov Games through the efficacy of mean-field approximation. Finally, inspired by our theoretical algorithm, we present a heuristic approach with improved computational efficiency and empirically demonstrate its effectiveness.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/huang24i/huang24i.pdf",
+              "document_sha256": "7d8c4237c177945d29f25bd97d03d3f361b1e6f556b8c99d52cbb3bdddedcb7e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06bfc09af3af88971e628d8a",
+          "url": "https://proceedings.mlr.press/v139/du21a.html"
+        },
+        "b": {
+          "paper_id": "paper-74682f159bb162c5a4d07c99",
+          "url": "https://proceedings.mlr.press/v235/huang24i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "e53fc3a5d9213c87bf3e841932402f38582300d28e86198a80a8571a14ed8345"
+    },
+    {
+      "id": "edge-bfe973558917d565f75e4eff",
+      "a": "paper-06bfc09af3af88971e628d8a",
+      "b": "paper-b258af5eeb124aaf5bae2018",
+      "state": {
+        "paper_a": {
+          "title": "Bilinear Classes: A Structural Framework for Provable Generalization in RL",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "This work introduces Bilinear Classes, a new structural framework, which permit generalization in reinforcement learning in a wide variety of settings through the use of function approximation. The framework incorporates nearly all existing models in which a polynomial sample complexity is achievable, and, notably, also includes new models, such as the Linear Q*/V* model in which both the optimal Q-function and the optimal V-function are linear in some known feature space. Our main result provides an RL algorithm which has polynomial sample complexity for Bilinear Classes; notably, this sample complexity is stated in terms of a reduction to the generalization error of an underlying supervised learning sub-problem. These bounds nearly match the best known sample complexity bounds for existing models. Furthermore, this framework also extends to the infinite dimensional (RKHS) setting: for the the Linear Q*/V* model, linear MDPs, and linear mixture MDPs, we provide sample complexities that have no explicit dependence on the explicit feature dimension (which could be infinite), but instead depends only on information theoretic quantities."
+        },
+        "paper_b": {
+          "title": "The Power of Exploiter: Provable Multi-Agent RL in Large State Spaces",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Modern reinforcement learning (RL) commonly engages practical problems with large state spaces, where function approximation must be deployed to approximate either the value function or the policy. While recent progresses in RL theory address a rich set of RL problems with general function approximation, such successes are mostly restricted to the single-agent setting. It remains elusive how to extend these results to multi-agent RL, especially in the face of new game-theoretical challenges. This paper considers two-player zero-sum Markov Games (MGs). We propose a new algorithm that can provably find the Nash equilibrium policy using a polynomial number of samples, for any MG with low multi-agent Bellman-Eluder dimension —a new complexity measure adapted from its single-agent version (Jin et al., 2021). A key component of our new algorithm is the exploiter, which facilitates the learning of the main player by deliberately exploiting her weakness. Our theoretical framework is generic, which applies to a wide range of models including but not limited to tabular MGs, MGs with linear or kernel function approximation, and MGs with rich observations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Recently, (Du et al., 2021) develops a new problem class termed bilinear class, which can be considered as an infinitedimensional extension of low Bellman rank class.\nWhile a recent line of works (Jiang et al., 2017; Wang et al., 2020; Yang et al., 2020; Jin et al., 2021; Du et al., 2021) significantly advance our understanding of RL with general function approximation, and provide sample-efficient guarantees for RL with kernels, neural networks, rich observations, and several special cases of partial observability, they are all restricted to the singleagent setting.\nWhile a recent line of works (Jiang et al., 2017; Wang et al., 2020; Yang et al., 2020; Jin et al., 2021; Du et al., 2021) significantly advance our understanding of RL with general function approximation, and provide sample-efficient guarantees for RL with kernels, neural networks, rich…\nDesigning computationally efficient algorithms in the context of general function approximation is an open problem even in the single-agent setting (Jiang et al., 2017; Jin et al., 2021; Du et al., 2021), which we left as an interesting topic for future research.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06bfc09af3af88971e628d8a",
+          "b": "paper-b258af5eeb124aaf5bae2018",
+          "input_sha256": "68a36bfc82015b9b5ca7c9c797cc8ed5eb6eac9656da5acbd74925ccf1fb283b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/du21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/jin22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "of new settings that are not easily incorporated in previous frameworks (see Tables 1 and 2). Our main result presents an optimization-based algorithm, BiLin-UCB, which provably enjoys a polynomial sample complexity guarantee for Bilinear Classes (cf. Theorem 4.2). Although our framework is more general than existing ones, our proof is substantially simpler – we give a unified analysis based on the elliptical potential lemma, developed for the theory of linear bandits (Dani et al., 2008; Srinivas et al., 2009). Furthermore, as a point of emphasis, our results are nonparametric in nature (stated in terms of an information gain quantity (Srinivas et al., 2009)), as opposed to finite dimensional as in prior work. From a technical point of view, it is not evident how to extend prior approaches to this nonparametric setting. Notably, the non-parametric regime is particularly relevant to RL due to that, in RL, performance bounds do not degrade gracefully with approximation error or model mis-specification (e.g. see Du et al. (2020a) for dis-",
+              "url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "document_sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Qh,g (sh , ah ) − rh − Vh+1,g (sh+1 ), but we would often need to use a different discrepancy function see for e.g. Linear Mixture Models (Section 3.3.1). We now provide some intuition for definition of Bilinear Class. The first part of the definition (Equation (1)) basically relates the Bellman error for hypothesis f (and hence sub-optimality) to the sum of bilinear forms |hWh (f ) − Wh (f ? ), Xh (f )i| (see for example proof of Lemma C.5). Crucially, the second part of the definition (Equation (2)), allows us to “reuse” data from hypothesis f to estimate the bilinear form |hWh (g) − Wh (f ? ), Xh (f )i| for all hypothesis g in our hypothesis class! This is reminiscent of uniform convergence guarantees in supervised learning, where data can be reused to simultaneously estimate the loss for all hypothesis and eliminate those with high loss. 3.2.1. F INITE B ELLMAN RANK =⇒ B ILINEAR C LASS Here we show our framework naturally generalizes the Bellman rank framework (Section 3.1). For Q-bellman rank case, we define the discrepancy function `f for observed transition info oh = (rh , sh , ah , sh+1 ) as:",
+              "url": "https://proceedings.mlr.press/v139/du21a/du21a.pdf",
+              "document_sha256": "47ffee220b3ecf1f28227663e69ad99f1c9cb932f72ea8075c1b1631c520ae63"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "cesses are function approximation and self-play. Function approximation is frequently used in modern applications with large state spaces, where either the value function or the policy is approximated by parametric function classes, which are typically deep neural networks. Meanwhile, selfplay enables the learner to improve by playing against itself instead of traditional human experts. Despite the empirical success of MARL, existing theoretical guarantees in MARL only apply to the basic settings where the value functions can be represented by either tables (in cases where the states and actions are discrete) (Bai & Jin, 2020; Bai et al., 2020; Liu et al., 2020) or linear maps (Xie et al., 2020; Chen et al., 2021). While a recent line of works (Jiang et al., 2017; Wang et al., 2020; Yang et al., 2020; Jin et al., 2021; Du et al., 2021) significantly advance our understanding of RL with general function approximation, and provide sample-efficient guarantees for RL with kernels, neural networks, rich observations, and several special cases of partial observability, they are all restricted to the singleagent setting. Distinct from single-agent RL, each agent in MARL are facing not only the unknown environment, but also the opponents that can constantly adapt their strategies in response to the behavior of the learning agent. This additional game-theoretical feature makes it challenging to extend the single-agent general function approximation results to the multi-agent setting. This motivates us to ask the following question: Can we design sample-efficient MARL algorithms for general function approximation? By “sample-efficient”, we mean the algorithms provably learn within a polynomial number of samples that is independent of the number of states. This paper provides the",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "We remark that our algorithm is sample-efficient but not computationally efficient. Designing computationally efficient algorithms in the context of general function approximation is an open problem even in the single-agent setting (Jiang et al., 2017; Jin et al., 2021; Du et al., 2021), which we left as an interesting topic for future research.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Technical Challenges One of the most important questions in the design of RL algorithms is the choice of behavior policies—the policies that are used to collect samples. For a given general function class F, the single-agent RL algorithms simply use behavior policy in the form of πf , which is the greedy policy with respect to certain optimistic value function f ∈ F, i.e., πf (s) = argmaxa f (s, a). The choice becomes more sophisticated in the two-player setting. All existing algorithms that can perform provably efficient exploration (Bai & Jin, 2020; Bai et al., 2020; Liu et al., 2020; Xie et al., 2020; Chen et al., 2021) choose the behavior policy as the general-sum Nash equilibrium or coarse correlated equilibrium of two value functions f, g ∈ F, which are the upper and lower bound of the true value functions respectively. It turns out that this approach is only effective under optimistic closure—a strong assumption which is true for tabular and several special linear settings, but does not hold for many practical applications (see Appendix A for more discussions). In contrast, our exploiter framework provides a new approach for the theory community to choose behavior policies—the main agent plays the optimistic Nash policy based on the existing knowledge while the exploiter focuses on exploiting the main agent. Our approach does not rely on strong assumptions such as optimistic closure. We hope our exploiter framework could facilitate the future development of provable MARL algorithms.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Modern reinforcement learning (RL) commonly engages practical problems with large state spaces, where function approximation must be deployed to approximate either the value function or the policy. While recent progresses in RL theory address a rich set of RL problems with general function approximation, such successes are mostly restricted to the single-agent setting. It remains elusive how to extend these results to multi-agent RL, especially in the face of new game-theoretical challenges. This paper considers two-player zero-sum Markov Games (MGs). We propose a new algorithm that can provably find the Nash equilibrium policy using a polynomial number of samples, for any MG with low multi-agent Bellman-Eluder dimension—a new complexity measure adapted from its single-agent version (Jin et al., 2021). A key component of our new algorithm is the exploiter, which facilitates the learning of the main player by deliberately exploiting her weakness. Our theoretical framework is generic, which applies to a wide range of models including but not limited to tabular MGs, MGs with linear or kernel function approximation, and MGs with rich observations.",
+              "url": "https://proceedings.mlr.press/v162/jin22c/jin22c.pdf",
+              "document_sha256": "d916b780c7604e0febaca31134279e125373743d87e84d625004730ceb6a0a3c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06bfc09af3af88971e628d8a",
+          "url": "https://proceedings.mlr.press/v139/du21a.html"
+        },
+        "b": {
+          "paper_id": "paper-b258af5eeb124aaf5bae2018",
+          "url": "https://proceedings.mlr.press/v162/jin22c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "8640a84b7fa45f1e8ad02c6a05f21323965ab7c97c3f723f0f5f8b35b9638937"
+    },
+    {
+      "id": "edge-436dd5ca359e2ebe9af762e5",
+      "a": "paper-08c66d6294da6742c9759f90",
+      "b": "paper-ed902669869ae0c5d76314f3",
+      "state": {
+        "paper_a": {
+          "title": "Bidirectional Model-based Policy Optimization",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Model-based reinforcement learning approaches leverage a forward dynamics model to support planning and decision making, which, however, may fail catastrophically if the model is inaccurate. Although there are several existing methods dedicated to combating the model error, the potential of the single forward model is still limited. In this paper, we propose to additionally construct a backward dynamics model to reduce the reliance on accuracy in forward model predictions. We develop a novel method, called Bidirectional Model-based Policy Optimization (BMPO) to utilize both the forward model and backward model to generate short branched rollouts for policy optimization. Furthermore, we theoretically derive a tighter bound of return discrepancy, which shows the superiority of BMPO against the one using merely the forward model. Extensive experiments demonstrate that BMPO outperforms state-of-the-art model-based methods in terms of sample efficiency and asymptotic performance."
+        },
+        "paper_b": {
+          "title": "Mingling Foresight with Imagination: Model-Based Cooperative Multi-Agent Reinforcement Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Recently, model-based agents have achieved better performance than model-free ones using the same computational budget and training time in single-agent environments. However, due to the complexity of multi-agent systems, it is tough to learn the model of the environment. The significant compounding error may hinder the learning process when model-based methods are applied to multi-agent tasks. This paper proposes an implicit model-based multi-agent reinforcement learning method based on value decomposition methods. Under this method, agents can interact with the learned virtual environment and evaluate the current state value according to imagined future states in the latent space, making agents have the foresight. Our approach can be applied to any multi-agent value decomposition method. The experimental results show that our method improves the sample efficiency in different partially observable Markov decision process domains."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08c66d6294da6742c9759f90",
+          "b": "paper-ed902669869ae0c5d76314f3",
+          "input_sha256": "3d240f8cfb1ed46694c93440f5f9d1be85a29a4f68cdc5d4e64701e9cb8d1be2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/lai20b.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/lai20b/lai20b.pdf",
+              "sha256": "aa9809d7d07ec74375b965730d1062f19dabf31400a2065dd14fe9d968a74919"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/49be51578b507f37cd8b5fad379af183-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/49be51578b507f37cd8b5fad379af183-Paper-Conference.pdf",
+              "sha256": "63dae9e5bfecbea40adcaba51297c04bcc06522fa798ba9a06a7f010de2cd585"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Model-based reinforcement learning approaches leverage a forward dynamics model to support planning and decision making, which, however, may fail catastrophically if the model is inaccurate. Although there are several existing methods dedicated to combating the model error, the potential of the single forward model is still limited. In this paper, we propose to additionally construct a backward dynamics model to reduce the reliance on accuracy in forward model predictions. We develop a novel method, called Bidirectional Model-based Policy Optimization (BMPO) to utilize both the forward model and backward model to generate short branched rollouts for policy optimization. Furthermore, we theoretically derive a tighter bound of return discrepancy, which shows the superiority of BMPO against the one using merely the forward model. Extensive experiments demonstrate that BMPO outperforms state-of-theart model-based methods in terms of sample efficiency and asymptotic performance.",
+              "url": "https://proceedings.mlr.press/v119/lai20b/lai20b.pdf",
+              "document_sha256": "aa9809d7d07ec74375b965730d1062f19dabf31400a2065dd14fe9d968a74919"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "behind their model-free counterparts due to model error, which is especially severe for multi-step rollout because of the compounding error (Asadi et al., 2018b). Several previous works have been proposed to alleviate compounding model error in different ways. For example, Whitney & Fergus (2018) and Asadi et al. (2019) introduced multi-step models which directly predict the consequence of executing a sequence of actions; Mishra et al. (2017) tried to divide trajectories into temporal segments and make predictions over segments instead of one timestep; Talvitie (2017), Kaiser et al. (2019) and Freeman et al. (2019) proposed to train the dynamics model on its own outputs, hoping the model is capable of giving accurate predictions in the region of its outputs. Wu et al. (2019) attributed long horizon rollouts mismatching to the one-step supervised learning and proposed to learn the model via model imitation. Besides the above innovations in model learning, Nguyen et al. and Xiao et al. (2019) developed methods of using adaptive rollout horizon according to the estimated compounding error, and Janner et al. (2019) proposed to use truncated short rollouts branched from real states. However, even with the compounding model error mitigated, it is almost impossible to obtain perfect multi-step predictions in practice, and thus the potential of the single forward model is still limited. In this paper, we investigate how to maximally take advantage of the underlying dynamics of the environment to reduce the reliance on the accuracy of the forward model. When making decisions, human beings can not only predict future consequences of current behaviors forward but also imagine possible traces leading to a target goal backward. Based on this consideration, inspired by Edwards et",
+              "url": "https://proceedings.mlr.press/v119/lai20b/lai20b.pdf",
+              "document_sha256": "aa9809d7d07ec74375b965730d1062f19dabf31400a2065dd14fe9d968a74919"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "As we describe in ablation studies, the choice of horizon length k affects the performance of MBVD. Short horizons are easier to be predicted but do not provide enough information to be useful for decision-making. Long horizons can carry more valuable information, but the generated imagined rollouts are inaccurate because of compounding errors. There has been some work on model-based reinforcement learning that attempts to break this trade-off. For bias that might exist in sampling and environmental models, MBPO [17] suggests a branched rollout. And MBPO can determine the longest tolerable rollout length according to the lower bound of return. BMPO [28] uses the newly introduced bidirectional models to significantly reduce model compounding error. In addition, most of the model-based value expansion (MVE) methods [9] involve adaptive selection of horizons. They must use a dynamics model to simulate the short-term horizon and Q-learning to estimate the long-term value beyond the simulation horizon. The automatic selection of k would be made possible by explicitly estimating uncertainty in the dynamics model or ensemble models. STEVE [3] suggests 9",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/49be51578b507f37cd8b5fad379af183-Paper-Conference.pdf",
+              "document_sha256": "63dae9e5bfecbea40adcaba51297c04bcc06522fa798ba9a06a7f010de2cd585"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "(1) The first term log [p(ut | z t )] is the joint policy and we can ignore it. Furthermore, the term log [p(z t | ŝt )] can be viewed as the observation model. In addition, we propose a new parameterized function pPrior ϕ (ŝt | ŝt−1 , ut−1 ) to approximate the dynamics model p(ŝt | ŝt−1 , ut−1 ), which is unavailable. MBVD follows the idea of planning in latent spaces, so we use the Variational Autoencoder (VAE) [23] to maximize the ELBO. The reason is that generative models can find a low-dimensional space by reconstructing the original data, which is consistent with abstracting the decision-related state from the real observations. For the last term in Equation 1, we regard the two items in KullbackLeibler (KL) divergence as the posterior and the prior. Intuitively, according to Equation 1, we need to minimize the KL divergence between the posterior qθ (·), which incorporates information about the current observations z, with the prior pPrior ϕ (·) that tries to predict the posterior without access to the current observations. Then we use two VAEs as the prior and the posterior, respectively, as shown in Figure 1(a). In this way, we obtain the prior latent state and the posterior latent state: ŝPrior ∼ pPrior (· | ŝt−1 , ut−1 ) , t ϕ ŝt ∼ qθ (· | ŝt−1 , ut−1 , z t ) . However, we use a modified version of the posterior model in the implementation process. Since the hidden output hat of the recurrent neural network in the agent network can be regarded as the 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/49be51578b507f37cd8b5fad379af183-Paper-Conference.pdf",
+              "document_sha256": "63dae9e5bfecbea40adcaba51297c04bcc06522fa798ba9a06a7f010de2cd585"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recently, model-based agents have achieved better performance than model-free ones using the same computational budget and training time in single-agent environments. However, due to the complexity of multi-agent systems, it is tough to learn the model of the environment. The significant compounding error may hinder the learning process when model-based methods are applied to multi-agent tasks. This paper proposes an implicit model-based multi-agent reinforcement learning method based on value decomposition methods. Under this method, agents can interact with the learned virtual environment and evaluate the current state value according to imagined future states in the latent space, making agents have the foresight. Our approach can be applied to any multi-agent value decomposition method. The experimental results show that our method improves the sample efficiency in different partially observable Markov decision process domains.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/49be51578b507f37cd8b5fad379af183-Paper-Conference.pdf",
+              "document_sha256": "63dae9e5bfecbea40adcaba51297c04bcc06522fa798ba9a06a7f010de2cd585"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08c66d6294da6742c9759f90",
+          "url": "https://proceedings.mlr.press/v119/lai20b.html"
+        },
+        "b": {
+          "paper_id": "paper-ed902669869ae0c5d76314f3",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/49be51578b507f37cd8b5fad379af183-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings"
+      },
+      "sha256": "1c8eb03cdd80e87d76584e14fbe712356a2366fc52e1222d3c7d30385e0a1760"
+    }
+  ]
+}

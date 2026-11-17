@@ -1,0 +1,26 @@
+{
+  "pack": "starter-001",
+  "submission": {
+    "version": "paper-evolve-review-v1",
+    "contributor": {
+      "name": "",
+      "tool": "",
+      "method": "assistant"
+    },
+    "decisions": [
+      {
+        "task_id": "",
+        "task_sha256": "",
+        "decision": {
+          "related": false,
+          "basis": "insufficient_evidence",
+          "relations": [],
+          "reason": "",
+          "inherited": "",
+          "changed": "",
+          "evidence": []
+        }
+      }
+    ]
+  }
+}

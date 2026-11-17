@@ -1,0 +1,982 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Safety and Adversarial Risks in Large Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-cfc4e63f8f62486cd733fce8",
+      "a": "paper-00fe226b7c5c4db0c5ef679e",
+      "b": "paper-b3e8a711076f38fbd092d9a4",
+      "state": {
+        "paper_a": {
+          "title": "Safety Fine-Tuning at (Almost) No Cost: A Baseline for Vision Large Language Models",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Current vision large language models (VLLMs) exhibit remarkable capabilities yet are prone to generate harmful content and are vulnerable to even the simplest jailbreaking attacks. Our initial analysis finds that this is due to the presence of harmful data during vision-language instruction fine-tuning, and that VLLM fine-tuning can cause forgetting of safety alignment previously learned by the underpinning LLM. To address this issue, we first curate a vision-language safe instruction-following dataset VLGuard covering various harmful categories. Our experiments demonstrate that integrating this dataset into standard vision-language fine-tuning or utilizing it for post-hoc fine-tuning effectively safety aligns VLLMs. This alignment is achieved with minimal impact on, or even enhancement of, the models’ helpfulness. The versatility of our safety fine-tuning dataset makes it a valuable resource for safety-testing existing VLLMs, training new models or safeguarding pre-trained VLLMs. Empirical results demonstrate that fine-tuned VLLMs effectively reject unsafe instructions and substantially reduce the success rates of several black-box adversarial attacks, which approach zero in many cases. The code and dataset will be open-sourced."
+        },
+        "paper_b": {
+          "title": "Shape it Up! Restoring LLM Safety during Finetuning",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Finetuning large language models (LLMs) enables user-specific customization but introduces important safety risks: even a few harmful examples can compromise safety alignment. A common mitigation strategy is to update the model more strongly on examples deemed safe, while downweighting or excluding those flagged as unsafe. However, because safety context can shift within a single example, updating the model equally on both harmful and harmless parts of a response is suboptimal — an atomic treatment we term static safety shaping. In contrast, we propose dynamic safety shaping (DSS), a dynamic shaping framework that uses fine-grained safety signals to reinforce learning from safe segments of a response while suppressing unsafe content. To enable such fine-grained control during finetuning, we introduce a key insight: guardrail models, traditionally used for filtering, can be repurposed to evaluate partial responses, tracking how safety risk evolves throughout the response, segment by segment. This leads to the Safety Trajectory Assessment of Response (STAR), a token-level signal that enables shaping to operate dynamically over the training sequence. Building on this, we present ★DSS, a DSS method guided by STAR scores that robustly mitigates finetuning risks and delivers substantial safety improvements across diverse threats, datasets, and model families, all without compromising capability on intended tasks. We encourage future safety research to build on dynamic shaping principles for stronger mitigation against evolving finetuning risks. Our code is publicly available at https://github.com/poloclub/star-dss"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In this paper, we introduce safety shaping — a unified framework to mitigate such LLM finetuning risks — by leveraging external safety signals to update model weights during finetuning, which includes data inspection [13–15], safety-aware finetuning [16–21], and representation engineering [22– 25].\nExisting defenses follow static shaping strategies: data inspection [13–15], safety-aware finetuning [18–21, 68, 69], and representation engineering [23–25].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00fe226b7c5c4db0c5ef679e",
+          "b": "paper-b3e8a711076f38fbd092d9a4",
+          "input_sha256": "4e76543f85e52e9a07f6f7f953f1e64bcc1eb3950d55c8d65efee658e2c33a31",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/zong24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zong24a/zong24a.pdf",
+              "sha256": "565f93abb6a29478fe17486602494c6a47bb0807fee1ede06eb72a5e0ff306e7"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/bf05b8d4361c6be8e250be4b924f0e1d-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/bf05b8d4361c6be8e250be4b924f0e1d-Paper-Conference.pdf",
+              "sha256": "dd3ce2163a4435e402b548718ca766b39747e5147ef1b6ad0abf215cc9b6822c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In light of these challenges, we propose a simple yet effective safety fine-tuning strategy for safeguarding VLLMs. We first collect and curate a safety instruction-following dataset VLGuard consisting of vision-language data. We show that fine-tuning existing VLLMs on our dataset achieves significant improvement in safety while resulting in negligible or no helpfulness degradation, achieving a good balance in the helpfulness-harmlessness tradeoff. To summarize, our contributions are:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zong24a/zong24a.pdf",
+              "document_sha256": "565f93abb6a29478fe17486602494c6a47bb0807fee1ede06eb72a5e0ff306e7"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "As Vision Large Language Models gain increasing prominence in various applications, their safety becomes a critical factor in real-world deployments. This paper represents a pioneering effort to enhance the safety of open-source VLLMs, addressing a crucial need for the responsible advancement of these technologies. Our work, particularly the development of a dedicated safety dataset, provides a valuable resource for researchers focused on improving VLLM safety. This dataset not only aids in safeguarding against known vulnerabilities but also serves as a foundation for future explorations into more robust safety mechanisms. However, it is important to acknowledge that while our approach marks a significant step forward, it does not render VLLMs impervious to all potential threats. They may still be susceptible to sophisticated attacks. As VLLMs continue to evolve and integrate into societal frameworks, the responsibility to continuously assess and update safety measures remains paramount. By offering this dataset and our findings, we aim to encourage ongoing research and collaboration in the field, fostering the development of VLLMs that are not only advanced in capabilities but also secure and reliable in diverse environments.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zong24a/zong24a.pdf",
+              "document_sha256": "565f93abb6a29478fe17486602494c6a47bb0807fee1ede06eb72a5e0ff306e7"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Finetuning-as-a-service allows users to upload custom datasets and deploy personalized LLMs for specialized tasks, which is an encouraged practice across both open-source [1, 2] and commercial platforms [3, 4]. However, this growing flexibility introduces critical safety risks: even safety-aligned LLMs can be compromised when exposed to harmful or poorly curated finetuning data, whether uploaded intentionally or by mistake [5, 6]. Recent studies [7, 8] show that safety alignment can be subverted through finetuning on just a few adversarially crafted examples [9], on narrowly scoped tasks like generating insecure code [10], and even on benign datasets [9, 11, 12]. In this paper, we introduce safety shaping — a unified framework to mitigate such LLM finetuning risks — by leveraging external safety signals to update model weights during finetuning, which includes data inspection [13–15], safety-aware finetuning [16–21], and representation engineering [22– 25]. The majority of existing methods practice static safety shaping: they treat each training example as an atomic unit and make a binary keep-or-drop decision. However, because static methods update on the entire sample, they remain vulnerable to examples that turn unsafe mid-sequence (Fig. 1), allowing harmful content to influence training and ultimately undermining safety, which makes static 39th Conference on Neural Information Processing Systems (NeurIPS 2025).",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/bf05b8d4361c6be8e250be4b924f0e1d-Paper-Conference.pdf",
+              "document_sha256": "dd3ce2163a4435e402b548718ca766b39747e5147ef1b6ad0abf215cc9b6822c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Finetuning large language models (LLMs) enables user-specific customization but introduces important safety risks: even a few harmful examples can compromise safety alignment. A common mitigation strategy is to update the model more strongly on examples deemed safe, while downweighting or excluding those flagged as unsafe. However, because safety context can shift within a single example, updating the model equally on both harmful and harmless parts of a response is suboptimal — an atomic treatment we term static safety shaping. In contrast, we propose dynamic safety shaping (DSS), a dynamic shaping framework that uses fine-grained safety signals to reinforce learning from safe segments of a response while suppressing unsafe content. To enable such fine-grained control during finetuning, we introduce a key insight: guardrail models, traditionally used for filtering, can be repurposed to evaluate partial responses, tracking how safety risk evolves throughout the response, segment by segment. This leads to the Safety Trajectory Assessment of Response (STAR), a token-level signal that enables shaping to operate dynamically over the training sequence. Building on this, we present ⋆DSS, a DSS method guided by STAR scores that robustly mitigates finetuning risks and delivers substantial safety improvements across diverse threats, datasets, and model families, all without compromising capability on intended tasks. We encourage future safety research to build on dynamic shaping principles for stronger mitigation against evolving finetuning risks. Our code is publicly available at https://github.com/poloclub/star-dss. . This paper includes potentially offensive red-teaming data and model-generated content.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/bf05b8d4361c6be8e250be4b924f0e1d-Paper-Conference.pdf",
+              "document_sha256": "dd3ce2163a4435e402b548718ca766b39747e5147ef1b6ad0abf215cc9b6822c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "shaping suboptimal. We therefore propose dynamic safety shaping (DSS), which treats each training sample as a structured sequence and uses token-level safety signals to dynamically re-weight the loss, steering learning toward safe behavior throughout finetuning. Our safety shaping framework not only unifies existing techniques but also motivates a more principled and proactive approach to LLM finetuning safety with the following three main contributions: 1. We discover that although current methods that practice static safety shaping deliver notable safety gains, their atomic view of each training example creates exploitable blind spots (Sec. 3). We revisit rejection sampling (RS) [26], an intuitive static safety shaping strategy that discards samples flagged unsafe by a guardrail model, yet already matches or outperforms the effectiveness of many more complex mitigation approaches (Sec. 6.2). However, because guardrails are imperfect, even a few leaked harmful examples can degrade safety [9], and more importantly, the coarse-grained binary decisions made by RS are prone to context entanglement, where responses naturally include both safe and unsafe content, or even adversarially manipulated text designed to deceive guardrails (Fig. 1). These vulnerabilities make static safety shaping suboptimal and highlight the need for more fine-grained, context-aware shaping during finetuning. 2. We propose Safety Trajectory Assessment of Response (STAR), a safety signal that enables fine-grained assessment of each training sample, addressing key limitations of static safety shaping (Sec. 4). Instead of evaluating only the full response, we introduce a novel use of the guardrail model: applying it to partially completed responses to capture the evolving safety risk as the output",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/bf05b8d4361c6be8e250be4b924f0e1d-Paper-Conference.pdf",
+              "document_sha256": "dd3ce2163a4435e402b548718ca766b39747e5147ef1b6ad0abf215cc9b6822c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00fe226b7c5c4db0c5ef679e",
+          "url": "https://proceedings.mlr.press/v235/zong24a.html"
+        },
+        "b": {
+          "paper_id": "paper-b3e8a711076f38fbd092d9a4",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/bf05b8d4361c6be8e250be4b924f0e1d-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "1510f0d50f8f947a52dd22156258b768280caf7f6d248b84425e3456d79fcc95"
+    },
+    {
+      "id": "edge-ab9a6e64dcae4d62171d7bad",
+      "a": "paper-015268016e538b5c373e5871",
+      "b": "paper-6d8a37185b0e0ce93ab1003b",
+      "state": {
+        "paper_a": {
+          "title": "SHAPED: Shared-Private Encoder-Decoder for Text Style Adaptation",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Supervised training of abstractive language generation models results in learning conditional probabilities over language sequences based on the supervised training signal. When the training signal contains a variety of writing styles, such models may end up learning an ‘average’ style that is directly influenced by the training data make-up and cannot be controlled by the needs of an application. We describe a family of model architectures capable of capturing both generic language characteristics via shared model parameters, as well as particular style characteristics via private model parameters. Such models are able to generate language according to a specific learned style, while still taking advantage of their power to model generic language phenomena. Furthermore, we describe an extension that uses a mixture of output distributions from all learned styles to perform on-the-fly style adaptation based on the textual input alone. Experimentally, we find that the proposed models consistently outperform models that encapsulate single-style or average-style language generation capabilities."
+        },
+        "paper_b": {
+          "title": "Mind the Style of Text! Adversarial and Backdoor Attacks Based on Text Style Transfer",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Adversarial attacks and backdoor attacks are two common security threats that hang over deep learning. Both of them harness task-irrelevant features of data in their implementation. Text style is a feature that is naturally irrelevant to most NLP tasks, and thus suitable for adversarial and backdoor attacks. In this paper, we make the first attempt to conduct adversarial and backdoor attacks based on text style transfer, which is aimed at altering the style of a sentence while preserving its meaning. We design an adversarial attack method and a backdoor attack method, and conduct extensive experiments to evaluate them. Experimental results show that popular NLP models are vulnerable to both adversarial and backdoor attacks based on text style transfer—the attack success rates can exceed 90% without much effort. It reflects the limited ability of NLP models to handle the feature of text style that has not been widely realized. In addition, the style transfer-based adversarial and backdoor attack methods show superiority to baselines in many aspects. All the code and data of this paper can be obtained at https://github.com/thunlp/StyleAttack."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "A line of work aims to learn disentangled latent representations of style and semantics and use them to manipulate the style of generated text (Shen et al., 2017; Hu et al., 2017; Fu et al., 2018; Zhang et al., 2018; Yang et al., 2018; John et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-015268016e538b5c373e5871",
+          "b": "paper-6d8a37185b0e0ce93ab1003b",
+          "input_sha256": "22901638bf8b896a9b5b437a5cb078c45d12153c47c8b39bd97ccc81c6a4d4c5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N18-1138/",
+              "pdf_url": "https://aclanthology.org/N18-1138.pdf",
+              "sha256": "08cdd378d8c7e0e449a8b7ffa44e059086329e600cfcb016f0d049b37f6b150b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.374/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.374.pdf",
+              "sha256": "b172179744f70004e4fce77c89a1661af870e9719957a1783335873654805055"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "other sequence of vectors used to produce output symbols step by step. The prevalent approach to training such a model is to update all the model parameters using all the examples in the training data (over multiple epochs). This is a reasonable approach, under the assumption that we are modeling a single underlying distribution in the data. However, in many applications and for many natural language datasets, there exist multiple underlying distributions, characterizing a variety of language styles. For instance, the widely-used Gigaword dataset (Graff and Cieri, 2003) consists of a collection of articles written by various publishers (The New York Times, Agence France Presse, Xinhua News, etc.), each with its own style characteristics. Training a model’s parameters on all the training examples results in an averaging effect across style characteristics, which may lower the quality of the outputs; additionally, this averaging effect may be completely undesirable for applications that require a level of control over the output style. At the opposite end of the spectrum, one can choose to train one independent model per each underlying distribution (assuming we have the appropriate signals for identifying them at training time). This approach misses the opportunity to exploit common properties shared by these distributions (e.g., generic characteristics of a language, such as noun-adjective position), and leads to models that are under-trained due to limited data availability per distribution. In order to address these issues, we propose a novel neural architecture called SHAPED (sharedprivate encoder-decoder). This architecture has both shared encoder/decoder parameters that are updated based on all the training examples, as well as private encoder/decoder parameters",
+              "url": "https://aclanthology.org/N18-1138.pdf",
+              "document_sha256": "08cdd378d8c7e0e449a8b7ffa44e059086329e600cfcb016f0d049b37f6b150b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "two styles D1 and D2 . D1 articles pass through the 1 and decoder f 1 . D articles private encoder fenc 2 dec 2 and decoder pass through the private encoder fenc 2 . Both of them also go through the shared enfdec s and decoder f s . coder fdec dec Although the private encoder/decoder models do preserve style characteristics, they fail to take into account the common language features shared across styles. Furthermore, since each style is represented by a subset of the entire training set, such private models may end up as under-trained, due to limited number of available data examples. In order to efficiently capture both common and unique features of data with different styles, we propose the SHAPED model. In the SHAPED model, each data-point goes through both the shared encoder-decoder and its corresponding private encoder-decoder. At each step of the decoder, the output from private and shared ones are concatenated to form a new vector: srt z = [szt , sst ],",
+              "url": "https://aclanthology.org/N18-1138.pdf",
+              "document_sha256": "08cdd378d8c7e0e449a8b7ffa44e059086329e600cfcb016f0d049b37f6b150b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Due to the lack of parallel corpora, the majority of existing studies on text style transfer focus on unsupervised style transfer. A line of work aims to learn disentangled latent representations of style and semantics and use them to manipulate the style of generated text (Shen et al., 2017; Hu et al., 2017; Fu et al., 2018; Zhang et al., 2018; Yang et al., 2018; John et al., 2019). In addition, some other studies try different methods including reinforcement learning (Xu et al., 2018; Luo et al., 2019; Gong et al., 2019), translation (Prabhumoye et al., 2018; Lample et al., 2018), word deletion and retrieval (Li et al., 2018; Sudhakar et al., 2019), adversarial generator-discriminator framework (Dai et al., 2019b), probabilistic latent sequence model (He et al., 2020), etc. Text style transfer has some applications such as text formality alteration (Rao and Tetreault, 2018), dialogue generation diversification (Zhou et al., 2017) and personal attribute obfuscation for privacy protection (Reddy and Knight, 2016). To the best of our knowledge, text style transfer has not been used in adversarial or backdoor attacks. 6.2",
+              "url": "https://aclanthology.org/2021.emnlp-main.374.pdf",
+              "document_sha256": "b172179744f70004e4fce77c89a1661af870e9719957a1783335873654805055"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-015268016e538b5c373e5871",
+          "url": "https://aclanthology.org/N18-1138/"
+        },
+        "b": {
+          "paper_id": "paper-6d8a37185b0e0ce93ab1003b",
+          "url": "https://aclanthology.org/2021.emnlp-main.374/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "1bf5195a4492e811b6bf2a09205b9fa7ba4c5c1459c6db1c2fb87ef770e2738a"
+    },
+    {
+      "id": "edge-4cf727594203a8fac8ce5b40",
+      "a": "paper-0172605da3a51dfb07e73cd6",
+      "b": "paper-ee8f1b0eb239843131ea1632",
+      "state": {
+        "paper_a": {
+          "title": "Query-Based Adversarial Prompt Generation",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Recent work has shown it is possible to construct adversarial examples that cause aligned language models to emit harmful strings or perform harmful behavior.Existing attacks work either in the white-box setting (with full access to the model weights), or through transferability : the phenomenon that adversarial examples crafted on one model often remain effective on other models.We improve on prior work with a query-based attack that leverages API access to a remote language model to construct adversarial examples that cause the model to emit harmful strings with (much) higher probability than with transfer-only attacks.We validate our attack on GPT-3.5 and OpenAI's safety classifier; we can cause GPT-3.5 to emit harmful strings that current transfer attacks fail at, and we can evade the OpenAI and Llama Guard safety classifiers with nearly 100% probability."
+        },
+        "paper_b": {
+          "title": "Short-length Adversarial Training Helps LLMs Defend Long-length Jailbreak Attacks: Theoretical and Empirical Evidence",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Jailbreak attacks against large language models (LLMs) aim to induce harmful behaviors in LLMs through carefully crafted adversarial prompts. To mitigate attacks, one way is to perform adversarial training (AT)-based alignment, i.e., training LLMs on some of the most adversarial prompts to help them learn how to behave safely under attacks. During AT, the length of adversarial prompts plays a critical role in the robustness of aligned LLMs. While long-length adversarial prompts during AT might lead to strong LLM robustness, their synthesis however is very resource-consuming, which may limit the application of LLM AT. This paper focuses on adversarial suffix jailbreak attacks and unveils that to defend against a jailbreak attack with an adversarial suffix of length $\\Theta(M)$, it is enough to align LLMs on prompts with adversarial suffixes of length $\\Theta(\\sqrt{M})$. Theoretically, we analyze the adversarial in-context learning of linear transformers on linear regression tasks and prove a robust generalization bound for trained transformers. The bound depends on the term $\\Theta(\\sqrt{M_{\\text{test}}}/M_{\\text{train}})$, where $M_{\\text{train}}$ and $M_{\\text{test}}$ are the numbers of adversarially perturbed in-context samples during training and testing. Empirically, we conduct AT on popular open-source LLMs and evaluate their robustness against jailbreak attacks of different adversarial suffix lengths. Results confirm a positive correlation between the attack success rate and the ratio of the square root of the adversarial suffix length during jailbreaking to the length during AT. Our findings show that it is practical to defend against \"long-length\" jailbreak attacks via efficient \"short-length\" AT. The code is available at https://github.com/fshp971/adv-icl."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "• GCQ: According to Algorithm 1 in [17], hyperparameters that we need to tune for GCQ include the iteration number T , the proxy batch size b p , the query batch size b q , and the buffer size B .\nWe use both suffix and non-suffix jailbreak attacks to evaluate the adversarial robustness of trained LLMs. Specifically, five token-level suffix jailbreak attacks are adopted, which are GCG [73], BEAST [44], AmpleGCG [26], Zhu’s AutoDAN [71], and GCQ [17].\n…have been made on token-level jailbreak attacks, i.e. , searching adversarial prompts in the token space of LLMs, which can be achieved via gradient-based optimization [48, 16, 73, 26, 45, 71], heuristic greedy search [44, 17, 22], or fine-tuning prompt generators from pre-trained LLMs [38].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0172605da3a51dfb07e73cd6",
+          "b": "paper-ee8f1b0eb239843131ea1632",
+          "input_sha256": "00b8cdbdf94e6343c08d99e09bbbb67531102fe93977e66b6de83d014372ae08",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/e7b3dd853382f237128943665bca2ca0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/e7b3dd853382f237128943665bca2ca0-Paper-Conference.pdf",
+              "sha256": "7130ace17e94625da350f81b3bb8c1cb5e80d2882ebd0573465fc40b54ed1511"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/5cf93940e37f7a7877cd57b6dba6b7ab-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "The attacks we described so far rely on a local proxy model to guide the adversarial search. As will see, such proxies may be available even if there is no good surrogate model for transfer-only attacks. Yet, there are also settings where an attacker will not have access to good proxy models. In this section, we explore the possibility of pure query-based attacks on language models. We start from the observation that in existing optimization attacks such as GCG, the model gradient provides a rather weak signal (this is why GCG combines gradients with greedy search). We can thus build a simple query-only attack by ignoring the gradient entirely; this leads to a purely greedy attack that samples random token replacements and queries the target’s loss to check if progress has been made. However, since the white-box GCG attack is already quite costly, the additional overhead from foregoing the gradient information can be prohibitive. Therefore, we introduce a further optimization to GCG, which empirically reduces the number of model queries by a factor of 2×. This optimization may be of independent interest. Our attack variant differs from GCG as follows: in the original GCG, each attack iteration computes the loss for B candidates, each obtained by replacing the token in one random position of the suffix. Thus, for a suffix of length l, GCG tries an average of B/l tokens in each position. We instead focus our search on a single position of the adversarial suffix. Crucially, instead of choosing this position at random as in AutoPrompt, we first try a single token replacement in each position, and then write down the position where this replacement reduced the loss the most. We then try B 0 additional token 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e7b3dd853382f237128943665bca2ca0-Paper-Conference.pdf",
+              "document_sha256": "7130ace17e94625da350f81b3bb8c1cb5e80d2882ebd0573465fc40b54ed1511"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "One application of language models aims not to generate new content, but to classify existing content. One of the most widely deployed NLP classification domains is that of content moderation, which detects whether any given input is abusive, harmful, or otherwise undesirable. In this section, we evaluate the ability of our attacks to fool content moderation classifiers. Specifically, we target the OpenAI content moderation model text-moderation-007, which OpenAI’s “most robust moderation model to-date” [24]. The content moderation API allows one to submit a string and receive a list of flags and scores corresponding to various categories of harmful content. The scores are all in the range [0, 1] and the flags are booleans which are True when the corresponding score is deemed too high and False otherwise. The threshold for the flags is not necessarily consistent across categories. We demonstrate evasion of the OpenAI content moderation endpoint by appending an adversarially crafted suffix to harmful text. We consider the attack successful if the resulting string is not flagged for any violations. As a surrogate for this objective, we use the sum of the scores as our loss. This means we do not need to know what the category thresholds for each flag are, which is useful as they are not published online and may be subject to change. As of February 2024, OpenAI does not charge for usage of the content moderation API, so we report cost in terms of API requests, which are rate-limited. For our evaluation, we use the harmful strings dataset [36]. Of the 574 strings in the dataset, 197 of them (or around 34%) are not flagged by the content moderation API when sent without a suffix. We set our batch size to 32 to match the max batch size of the API. We report results for",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e7b3dd853382f237128943665bca2ca0-Paper-Conference.pdf",
+              "document_sha256": "7130ace17e94625da350f81b3bb8c1cb5e80d2882ebd0573465fc40b54ed1511"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Jailbreak attacks. Jailbreaking [60] can be seen as adversarial attacks [49, 14] toward LLMs, which aim to synthesize adversarial prompts to induce targeted harmful behaviors from LLMs. Many efforts have been made on token-level jailbreak attacks, i.e., searching adversarial prompts in the token space of LLMs, which can be achieved via gradient-based optimization [48, 16, 73, 26, 45, 71], heuristic greedy search [44, 17, 22], or fine-tuning prompt generators from pre-trained LLMs [38]. Other attempts include word-level adversarial prompt searching [30] or directly prompting LLMs to generate adversarial prompts [7, 29]. Our work focuses on token-level jailbreaking since it make it easier for us to control the adversarial prompt length for our analysis. More recent studies have found that increasing the length of adversarial prompts by adding more harmful demonstrations [3, 54, 61] or synthesizing longer adversarial suffixes [64] can make jailbreaking more effective. These works motivate us to investigate the problem of defending against “long-length” jailbreak attacks. Adversarial training on LLMs. To defend against jailbreak attacks, a large body of studies focus on aligning LLMs to refuse responding jailbreak prompts [37, 42, 40, 41, 8]. More recent works have started to adopt adversarial training (AT) [32] to align LLMs. [36] trained LLMs on (discrete) adversarial prompts synthesized by GCG attack [73], in which they cached the intermediate synthesized results to reduce the heavy cost of searching adversarial prompts from scratch. Meanwhile, various studies [63, 6, 46, 68] conduct AT with adversarial examples found in the continuous embedding space rather than the discrete text space since searching in the continuous embedding space is more computationally efficient.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Models&datasets. We adopt five pre-trained LLMs, which are: Vicuna-7B-v1.5 [70], Mistral-7BInstruct-v0.3 [21], Llama-2-7B-Chat [52], Llama-3-8B-Instruct [15], and Qwen2.5-7B-Instruct [65]. For data in AT, we use the training set from Harmbench [36] as the safety dataset and Alpaca [50] as the utility dataset. For data in the robustness evaluation, we construct a test set of size 100 that consists of the first 50 samples from the test set of Harmbench [36] and the first 50 samples from AdvBench [73]. For data in the utility analysis, we use the benchmark data from AlpacaEval [10]. Adversarial training. We leverage GCG [73], a token-level jailbreak attack, to synthesize (suffix) jailbreak prompts, in which the adversarial suffix length Mtrain is fixed to one of {5, 10, 20, 30, 40, 50} during AT. To reduce computational complexity of tuning LLMs, LoRA [18] is applied to all query and key projection matrices in attentions. In every AT experiment, we follow Eq. (3) to perform AT with Adam. Please refer to Appendix B.2 for omitted settings. Jailbreak attacks. We use both suffix and non-suffix jailbreak attacks to evaluate the adversarial robustness of trained LLMs. Specifically, five token-level suffix jailbreak attacks are adopted, which are GCG [73], BEAST [44], AmpleGCG [26], Zhu’s AutoDAN [71], and GCQ [17]. The adversarial suffix token length Mtest is varied within {5, 10, 20, 40, 60, 80, 100, 120}. Meanwhile, two nonsuffix jailbreak attacks are leveraged, which are PAIR [7] and DeepInception [25]. Please refer to Appendix B.3 for full implementation details of all used jailbreak attacks. Evaluations. We focus on evaluating the jailbreak robustness and the utility of trained LLMs. For the robustness evaluation, we report the Attack Success Rate (ASR) of jailbreak",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "stand ICL via constructing explicit multi-layer transformers to simulate the optimization process of learning function classes [13, 53, 1, 9, 34, 59]. The second category focuses on directly analyzing the training [69, 66, 19, 62, 27] and generalization [31, 33, 11, 47] of simple self-attention models (i.e., one-layer transformer). [4] is the first to study adversarial attacks against linear transformers and finds that an attack can always succeed by perturbing only a single in-context sample. However, their analysis allows samples to be perturbed in the entire real space, which might not appropriately reflect real-world settings since real-world adversarial prompts can only be constructed from token/character spaces of limited size. Unlike [4], we propose a new ICL adversarial attack that requires each adversarial suffix token to be perturbed only within restricted spaces, which thus can be a better tool for understanding real-world jailbreaking. Finally, we notice that [61] also recognizes the critical role that the number of adversarial in-context samples plays in ICL-based attacks. They present a theoretical analysis (not based on ICL theory) for adversarial attacks against ICL text classification and characterize the minimum number of in-context adversarial samples required to increase the safety loss of ICL to some extent. However, the main difference is that [61] focuses on studying the adversarial robustness of fixed ICL models, whereas our work analyzes how adversarial training affects the robustness of ICL models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "We now start to analyze the training dynamics of the minimax ICL AT problem formalized in Eq. (8). The main technical challenge is that to solve the inner maximization problem in Eq. (8), one needs to analyze the optimization of the adversarial perturbation matrix ∆τ . However, the matrix ∆τ along with the clean data embedding Eτ and the clean adversarial suffix (Xτsfx , Yτsfx ) are entangled adv together within the adversarial ICL input Eτ,M , which makes it very difficult to solve the inner train maximization problem and further analyze the ICL AT dynamics. To tackle such a challenge, we propose to instead study the dynamics of a closed-form upper bound of the original AT loss Ladv (θ). Formally, we will analyze the following surrogate AT problem: 4 nX o min L̃adv (θ) := min ℓi (θ) , (9) θ",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0172605da3a51dfb07e73cd6",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/e7b3dd853382f237128943665bca2ca0-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-ee8f1b0eb239843131ea1632",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/5cf93940e37f7a7877cd57b6dba6b7ab-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "7cae2174b7485efd202f13c75607f78a1a75ac8043473a792c7ba9ef23da7232"
+    },
+    {
+      "id": "edge-881c2312dac8a3ac0a913185",
+      "a": "paper-026d4120148164b9812d2d37",
+      "b": "paper-ee8f1b0eb239843131ea1632",
+      "state": {
+        "paper_a": {
+          "title": "Regularization properties of adversarially-trained linear regression",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "State-of-the-art machine learning models can be vulnerable to very small input perturbations that are adversarially constructed. Adversarial training is an effective approach to defend against it. Formulated as a min-max problem, it searches for the best solution when the training data were corrupted by the worst-case attacks. Linear models are among the simple models where vulnerabilities can be observed and are the focus of our study. In this case, adversarial training leads to a convex optimization problem which can be formulated as the minimization of a finite sum. We provide a comparative analysis between the solution of adversarial training in linear regression and other regularization methods. Our main findings are that: (A) Adversarial training yields the minimum-norm interpolating solution in the overparameterized regime (more parameters than data), as long as the maximum disturbance radius is smaller than a threshold. And, conversely, the minimum-norm interpolator is the solution to adversarial training with a given radius. (B) Adversarial training can be equivalent to parameter shrinking methods (ridge regression and Lasso). This happens in the underparametrized region, for an appropriate choice of adversarial radius and zero-mean symmetrically distributed covariates. (C) For $\\ell_\\infty$-adversarial training---as in square-root Lasso---the choice of adversarial radius for optimal bounds does not depend on the additive noise variance. We confirm our theoretical findings with numerical examples."
+        },
+        "paper_b": {
+          "title": "Short-length Adversarial Training Helps LLMs Defend Long-length Jailbreak Attacks: Theoretical and Empirical Evidence",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Jailbreak attacks against large language models (LLMs) aim to induce harmful behaviors in LLMs through carefully crafted adversarial prompts. To mitigate attacks, one way is to perform adversarial training (AT)-based alignment, i.e., training LLMs on some of the most adversarial prompts to help them learn how to behave safely under attacks. During AT, the length of adversarial prompts plays a critical role in the robustness of aligned LLMs. While long-length adversarial prompts during AT might lead to strong LLM robustness, their synthesis however is very resource-consuming, which may limit the application of LLM AT. This paper focuses on adversarial suffix jailbreak attacks and unveils that to defend against a jailbreak attack with an adversarial suffix of length $\\Theta(M)$, it is enough to align LLMs on prompts with adversarial suffixes of length $\\Theta(\\sqrt{M})$. Theoretically, we analyze the adversarial in-context learning of linear transformers on linear regression tasks and prove a robust generalization bound for trained transformers. The bound depends on the term $\\Theta(\\sqrt{M_{\\text{test}}}/M_{\\text{train}})$, where $M_{\\text{train}}$ and $M_{\\text{test}}$ are the numbers of adversarially perturbed in-context samples during training and testing. Empirically, we conduct AT on popular open-source LLMs and evaluate their robustness against jailbreak attacks of different adversarial suffix lengths. Results confirm a positive correlation between the attack success rate and the ratio of the square root of the adversarial suffix length during jailbreaking to the length during AT. Our findings show that it is practical to defend against \"long-length\" jailbreak attacks via efficient \"short-length\" AT. The code is available at https://github.com/fshp971/adv-icl."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Following previous studies on minimax AT [32, 20, 43, 12, 58], here we adopt a minimax AT loss to train the LSA model.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-026d4120148164b9812d2d37",
+          "b": "paper-ee8f1b0eb239843131ea1632",
+          "input_sha256": "4b1303210650a5df76ebd558888ba8f47d51aafd9069898a1a34a5bcd91a4bad",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/4aa13186c795a52ba88f5b822f4b77eb-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/4aa13186c795a52ba88f5b822f4b77eb-Paper-Conference.pdf",
+              "sha256": "76c6eebd4a81fe8e66a1fa7aefc79b439dfad17584640fc7c65af25499aa1161"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/5cf93940e37f7a7877cd57b6dba6b7ab-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "We study five different examples. The main goal is to experimentally confirm our theoretical findings. For each scenario, we compute and plot: train and test MSE for different choices of p, n and δ. For comparison purposes, we also compute and plot train and test MSE for Lasso and ridge regression and minimum-norm interpolators. Finally, in line with our discussion in Section 4, we compute and plot δ̄ as a function of p/n. In all the numerical examples the adversarial training solution is implemented by minimizing (2) using CVXPY [42]. The scenarios under consideration are described below (see Appendix D for additional details) 1. Isotropic Gaussian feature model. The output is a linear combination of the features plus additive 2 noise: yi = x⊤ i β + ϵi , for Gaussian noise and covariates: ϵi ∼ N (0, σ ) and xi ∼ N (0, I p ). 2. Latent-space feature model [26, Section 5.4]. The features x are noisy observations of a lowerdimensional subspace of dimension d. A vector in this latent space is represented by z ∈ Rd . x = W z + u. The output is a linear combination of the latent space plus noise. 3. Random Fourier features model [43]. We apply a random Fourier feature map to inputs of the p Diabetes dataset [18]. Random fourier features are obtained by the transformation xi = 2/m cos(W z + b) where the entries of W and b are independently sampled. It can be seen as i a one-layer untrained neural network and approximates the Gaussian kernel feature map [43]. 4. Random projection model [40]. The data is generated as in the isotropic Gaussian feature model, but we only observe Sxi , i.e., a projection of the inputs. 5. Phenotype prediction from genotype. We illustrate our method on the Diverse MAGIC wheat dataset [44] from the National Institute for Applied Botany. We use a",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/4aa13186c795a52ba88f5b822f4b77eb-Paper-Conference.pdf",
+              "document_sha256": "76c6eebd4a81fe8e66a1fa7aefc79b439dfad17584640fc7c65af25499aa1161"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "Without additional constraints (see Remark 5) it can be shown that for Lasso it is not possible to improve the above bound. To satisfy this bound, however, Lasso requires knowledge of the magnitude of the noise ε. In Theorem 3, λ∗ = n3 ∥X ⊤ ε∥. Hence, if we rescale ε (i.e., ε → ηε) then a correspondent change in magnitude follows in λ∗ (i.e., λ∗ → ηλ∗ ). Square-root Lasso [32] avoids this problem and achieves a similar rate even without knowing the variance: i.e., it is a ‘pivotal’ method. Our method has similar properties and allows us to set δ without estimating the variance. ⊤ This can be seen in Theorem 2, where re-scaling ε does not alter the value of δ ∗ = 3∥X ε∥/∥ε∥1 because it affects the numerator and denominator simultaneously. For instance, if we assume ε has i.i.d. Np (0, σ 2 ) entries and that the matrix X is fixed with maxj=1,...,m ∥xj ∥∞ ≤ M . For λ ∝ M σ (log p)/n, we (with high-probability) satisfy the conp b − β ∗ )∥2 ≲ M σ (log p)/n. For adversarial training, we can dition in Theorem 3, obtaining: n1 ∥X(β 2 p set: δ ∝ M (log p)/n, and (with high-probability) satisfy the theorem condition, obtaining the same bound. Notice that the choice of δ is not dependent on σ. We provide a full analysis in Appendix C.3. Remark 4 (On the relation between δ̄ and δ ∗ ). For sufficiently large n, we have δ ∗ > δ̄ in the scenario above—the noise ε has i.i.d. normal entries N (0, σ 2 ) and the matrix X is fixed. We can prove it by contradiction: if δ ∗ ≤ δ̄ then we could apply the bound from Theorem 2 to the minimum ℓ1 -norm 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/4aa13186c795a52ba88f5b822f4b77eb-Paper-Conference.pdf",
+              "document_sha256": "76c6eebd4a81fe8e66a1fa7aefc79b439dfad17584640fc7c65af25499aa1161"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "where M is the length of the adversarial suffix and the expectation Eτ [·] is calculated over the randomness of wτ , Xτ , Xτsfx , and xτ,q . As we aim to understand how the adversarial prompt length in AT would affect the robustness of LLM, Eq. (7) will also only focus on how the adversarial suffix length M in ICL adversarial attacks would affect the robust generalization error Radv (θ, M ). Adversarial in-context learning. Following previous studies on minimax AT [32, 20, 43, 12, 58], here we adopt a minimax AT loss to train the LSA model. Concretely, we first use the aforementioned ICL adversarial attack to synthesize adversarial prompts and then update the LSA model based on these adversarial prompts to help the model gain robustness against them. We further assume that the adversarial suffix length is fixed during AT, which thus leads to the following ICL AT problem, \u001a \u001b 1 adv 2 min Ladv (θ) := min Radv (θ, Mtrain ) = min E max |ŷq,θ (Eτ,M ) − y | , (8) τ,q train θ θ θ τ ∥∆⊤ τ ∥2,∞ ≤ϵ 2 where Ladv (θ) := Radv (θ, Mtrain ) is the AT loss in ICL and Mtrain ∈ N+ is the fixed adversarial suffix length during AT. We will perform AT with continuous gradient flow, and further following [69] to make the following assumption on the LSA model parameter initialization. Assumption 1 (c.f. Assumption 3 in [69]). Let σ > 0 be a parameter and Θ ∈ Rd×d be any matrix satisfying ∥ΘΘ⊤ ∥F = 1 and ΘΛ ̸= 0d×d . We assume \u0012 \u0013 \u0012 \u0013 0d×d 0d×1 σΘΘ⊤ 0d×1 W V (0) = , W KQ (0) = . 01×d σ 01×d 0 KQ KQ V Recall in Eq. (5), w12 , w12 , and w22 do not contribute to the model prediction ŷq,θ (·). Assumption 1 thus directly sets them to be zero at initialization. To ensure symmetric initialization, it further sets KQ V w21 (0) and w21 (0) to zero. We will see how Assumption 1 helps simplify the",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "stand ICL via constructing explicit multi-layer transformers to simulate the optimization process of learning function classes [13, 53, 1, 9, 34, 59]. The second category focuses on directly analyzing the training [69, 66, 19, 62, 27] and generalization [31, 33, 11, 47] of simple self-attention models (i.e., one-layer transformer). [4] is the first to study adversarial attacks against linear transformers and finds that an attack can always succeed by perturbing only a single in-context sample. However, their analysis allows samples to be perturbed in the entire real space, which might not appropriately reflect real-world settings since real-world adversarial prompts can only be constructed from token/character spaces of limited size. Unlike [4], we propose a new ICL adversarial attack that requires each adversarial suffix token to be perturbed only within restricted spaces, which thus can be a better tool for understanding real-world jailbreaking. Finally, we notice that [61] also recognizes the critical role that the number of adversarial in-context samples plays in ICL-based attacks. They present a theoretical analysis (not based on ICL theory) for adversarial attacks against ICL text classification and characterize the minimum number of in-context adversarial samples required to increase the safety loss of ICL to some extent. However, the main difference is that [61] focuses on studying the adversarial robustness of fixed ICL models, whereas our work analyzes how adversarial training affects the robustness of ICL models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "We now start to analyze the training dynamics of the minimax ICL AT problem formalized in Eq. (8). The main technical challenge is that to solve the inner maximization problem in Eq. (8), one needs to analyze the optimization of the adversarial perturbation matrix ∆τ . However, the matrix ∆τ along with the clean data embedding Eτ and the clean adversarial suffix (Xτsfx , Yτsfx ) are entangled adv together within the adversarial ICL input Eτ,M , which makes it very difficult to solve the inner train maximization problem and further analyze the ICL AT dynamics. To tackle such a challenge, we propose to instead study the dynamics of a closed-form upper bound of the original AT loss Ladv (θ). Formally, we will analyze the following surrogate AT problem: 4 nX o min L̃adv (θ) := min ℓi (θ) , (9) θ",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5cf93940e37f7a7877cd57b6dba6b7ab-Paper-Conference.pdf",
+              "document_sha256": "9f0bdde9ca6a03d96c93f4ddc22a56ab12c484267d8f68b427db9d2e4d49b500"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-026d4120148164b9812d2d37",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/4aa13186c795a52ba88f5b822f4b77eb-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-ee8f1b0eb239843131ea1632",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/5cf93940e37f7a7877cd57b6dba6b7ab-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "9d2df545f969d7d52bc03e52575d235a4aaf71b102797db331bc584e52eaa847"
+    },
+    {
+      "id": "edge-a5a06bdecec9b43b90aee997",
+      "a": "paper-02ba5120af24e3b0accc424e",
+      "b": "paper-bd58c1220d609546e16453f9",
+      "state": {
+        "paper_a": {
+          "title": "Contrastive Decoding: Open-ended Text Generation as Optimization",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, inco- herence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains."
+        },
+        "paper_b": {
+          "title": "Weak-to-Strong Jailbreaking on Large Language Models",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Large language models (LLMs) are vulnerable to jailbreak attacks – resulting in harmful, unethical, or biased text generations. However, existing jailbreaking methods are computationally costly. In this paper, we propose the weak-to-strong jailbreaking attack, an efficient inference time attack for aligned LLMs to produce harmful text. Our key intuition is based on the observation that jailbroken and aligned models only differ in their initial decoding distributions. The weak-to-strong attack’s key technical insight is using two smaller models (a safe and an unsafe one) to adversarially modify a significantly larger safe model’s decoding probabilities. We evaluate the weak-to-strong attack on 5 diverse open-source LLMs from 3 organizations. The results show our method can increase the misalignment rate to over 99% on two datasets with just one forward pass per example. Our study exposes an urgent safety issue that needs to be addressed when aligning LLMs. As an initial attempt, we propose a defense strategy to protect against such attacks, but creating more advanced defenses remains challenging. The code for replicating the method is available at https://github.com/XuandongZhao/weak-to-strong."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Contrastive decoding (Li et al., 2023) guides sampling from a large model by subtracting the scaled log probabilities of a small model from the large model, allowing the small model to shape the output while leveraging the capabilities of the large model.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02ba5120af24e3b0accc424e",
+          "b": "paper-bd58c1220d609546e16453f9",
+          "input_sha256": "6c94b3bbefa1e0c25cd94f955b8f85327e6e03c79a0f01658a50ecdc203733c0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.687/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/zhao25aa.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhao25aa/zhao25aa.pdf",
+              "sha256": "802cadf4d4454df1467b81e987fb54c3793f70f0cad9029ab2d59e9a9c9bcccd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Contrastive Decoding: Open-ended Text Generation as Optimization Xiang Lisa Li1 , Ari Holtzman2 , Daniel Fried3 , Percy Liang1 , Jason Eisner4 , Tatsunori Hashimoto1 , Luke Zettlemoyer2,5 , Mike Lewis5 Stanford University1 , University of Washington2 , Carnegie Mellon University3 , Johns Hopkins University4 , FAIR5 xlisali@stanford.edu, ahai@cs.washington.edu, dfried@cs.cmu.edu, pliang@stanford.edu, jason@cs.jhu.edu, thashim@stanford.edu, lsz@cs.washington.edu, mikelewis@meta.com Abstract Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, incoherence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains.1",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose contrastive decoding, a search-based decoding approach that contrasts LMs of different scales. We evaluate our approach on open-ended text generation, and find that it improves over the prevalent methods like nucleus sampling in both fluency and coherence. As future work, the idea of contrasting an expert (larger LM) and an amateur (smaller LM) can be expanded to myriad setups, for instance, contrasting an early checkpoint of an LM and a later checkpoint of the LM. We hope that this paper can encourage more exploration of how to use contrasting language models.",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "LLM Decoding. Recent works have focused on improving decoding from large language models using smaller models. Contrastive decoding (Li et al., 2023b) guides sampling from an LLM by subtracting the scaled log probabilities of a smaller model from the LLM. Speculative sampling (Chen et al., 2023) reduces inference latency by using a fast, small model to predict future tokens ahead of time. Ormazabal et al. (2023) adapts a black-box LLM through",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhao25aa/zhao25aa.pdf",
+              "document_sha256": "802cadf4d4454df1467b81e987fb54c3793f70f0cad9029ab2d59e9a9c9bcccd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this work, we take a different approach—rather than aligning decoding-time outputs, we focus on jailbreaking powerful LLMs using weak-to-strong decoding-time attacks. Our method manipulates LLM outputs through smaller models, enabling the generation of harmful content with minimal adversarial resources. By leveraging these smaller models, we expose vulnerabilities in LLMs and expand their manipulation potential (see further discussion in Appendix B).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhao25aa/zhao25aa.pdf",
+              "document_sha256": "802cadf4d4454df1467b81e987fb54c3793f70f0cad9029ab2d59e9a9c9bcccd"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "3.2. Weak-to-Strong Jailbreaking Building upon the insights from our analysis of token distribution in safety alignment, we propose a novel weak-tostrong jailbreaking attack (overview in Figure 3). The weak-to-strong jailbreaking attack leverages the fact that smaller, unsafe models can mislead larger aligned models during generation. The analogy of guiding a vast cruise ship with a more agile tugboat aptly illustrates this intuition. By tweaking the tugboat’s behavior (e.g. using a weak, unsafe 7B model that is fine-tuned on adversarial examples), we can influence the course of the cruise ship (e.g. a strong, safe 70B model’s outputs during generation). Formally, let M+ be a strong, safe model targeted for jailbreaking and M− be a weaker, safe reference model. We also have access to a weak, unsafe model M̂− which could be adversarially fine-tuned from M− . During decoding for a potentially harmful query q, the token distribution of M+ is transformed as follows: \u0011α \u0010 − (yt |q,y<t ) , M̃+ (yt |q, y<t ) = Zq,y1 M+ (yt |q, y<t ) M̂ − M (yt |q,y<t ) <t \u0010 \u0011 α − P (yt |q,y<t ) where Zq,y<t = yt M+ (yt |q, y<t ) M̂ is a M− (yt |q,y<t ) normalizing constant and α is the amplification factor.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhao25aa/zhao25aa.pdf",
+              "document_sha256": "802cadf4d4454df1467b81e987fb54c3793f70f0cad9029ab2d59e9a9c9bcccd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02ba5120af24e3b0accc424e",
+          "url": "https://aclanthology.org/2023.acl-long.687/"
+        },
+        "b": {
+          "paper_id": "paper-bd58c1220d609546e16453f9",
+          "url": "https://proceedings.mlr.press/v267/zhao25aa.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "c27cb739b695a8099412cc2c6be7b0a60910c74c5734f224763411478cd223eb"
+    },
+    {
+      "id": "edge-6c6e8228373b876d69376167",
+      "a": "paper-08d63e540d3d346cf3c7afa5",
+      "b": "paper-672de293365ac3c000acf1d5",
+      "state": {
+        "paper_a": {
+          "title": "Adversarial Neuron Pruning Purifies Backdoored Deep Models",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As deep neural networks (DNNs) are growing larger, their requirements for computational resources become huge, which makes outsourcing training more popular. Training in a third-party platform, however, may introduce potential risks that a malicious trainer will return backdoored DNNs, which behave normally on clean samples but output targeted misclassifications whenever a trigger appears at the test time. Without any knowledge of the trigger, it is difficult to distinguish or recover benign DNNs from backdoored ones. In this paper, we first identify an unexpected sensitivity of backdoored DNNs, that is, they are much easier to collapse and tend to predict the target label on clean samples when their neurons are adversarially perturbed. Based on these observations, we propose a novel model repairing method, termed Adversarial Neuron Pruning (ANP), which prunes some sensitive neurons to purify the injected backdoor. Experiments show, even with only an extremely small amount of clean data (e.g., 1%), ANP effectively removes the injected backdoor without causing obvious performance degradation."
+        },
+        "paper_b": {
+          "title": "Constrained Optimization with Dynamic Bound-scaling for Effective NLP Backdoor Defense",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Modern language models are vulnerable to backdoor attacks. An injected malicious token sequence (i.e., a trigger) can cause the compromised model to misbehave, raising security concerns. Trigger inversion is a widely-used technique for scanning backdoors in vision models. It can- not be directly applied to NLP models due to their discrete nature. In this paper, we develop a novel optimization method for NLP backdoor inversion. We leverage a dynamically reducing temperature coefficient in the softmax function to provide changing loss landscapes to the optimizer such that the process gradually focuses on the ground truth trigger, which is denoted as a one-hot value in a convex hull. Our method also features a temperature rollback mechanism to step away from local optimals, exploiting the observation that local optimals can be easily determined in NLP trigger inversion (while not in general optimization). We evaluate the technique on over 1600 models (with roughly half of them having injected backdoors) on 3 prevailing NLP tasks, with 4 different backdoor attacks and 7 architectures. Our results show that the technique is able to effectively and efficiently detect and remove backdoors, outperforming 5 baseline methods. The code is available at https: //github.com/PurduePAML/DBS."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Note that there are a number of highly effective backdoor removal methods in the visiom domain (Wang et al., 2019; Wu & Wang, 2021; Li et al., 2021b; Tao et al., 2022; Liu et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08d63e540d3d346cf3c7afa5",
+          "b": "paper-672de293365ac3c000acf1d5",
+          "input_sha256": "46801cd61f0f2891b143459dcc6a7eda4239fa09b8ca2549fb6fbe5230397d42",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/8cbe9ce23f42628c98f80fa0fac8b19a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/8cbe9ce23f42628c98f80fa0fac8b19a-Paper.pdf",
+              "sha256": "31a962cc1390f9d9b711e7948e9404f6de2108fc5139260d8eeba4c31e1a472a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/shen22e.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/shen22e/shen22e.pdf",
+              "sha256": "3f6b75c58d8e7ebe02693d5cf178f1c8bdad44d442b06e52ca7fb0c54434e871"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As deep neural networks (DNNs) are growing larger, their requirements for computational resources become huge, which makes outsourcing training more popular. Training in a third-party platform, however, may introduce potential risks that a malicious trainer will return backdoored DNNs, which behave normally on clean samples but output targeted misclassifications whenever a trigger appears at the test time. Without any knowledge of the trigger, it is difficult to distinguish or recover benign DNNs from backdoored ones. In this paper, we first identify an unexpected sensitivity of backdoored DNNs, that is, they are much easier to collapse and tend to predict the target label on clean samples when their neurons are adversarially perturbed. Based on these observations, we propose a novel model repairing method, termed Adversarial Neuron Pruning (ANP), which prunes some sensitive neurons to purify the injected backdoor. Experiments show, even with only an extremely small amount of clean data (e.g., 1%), ANP effectively removes the injected backdoor without causing obvious performance degradation. Our code is available at https://github.com/csdongxian/ANP_backdoor.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8cbe9ce23f42628c98f80fa0fac8b19a-Paper.pdf",
+              "document_sha256": "31a962cc1390f9d9b711e7948e9404f6de2108fc5139260d8eeba4c31e1a472a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "trigger pattern in brand-new attacks becomes natural [26], invisible [49], and dynamic [30], leading to the reconstruction infeasible. Different from them, in this paper, we turn to explore whether we can successfully remove the injected backdoor even without knowing the trigger pattern. Usually, the adversary perturbs inputs to cause misclassification, e.g., attaching triggers for backdoored models or adding adversarial perturbations. Parallel to this, we are also able to cause misclassification by perturbing neurons of DNNs [47]. For any neuron inside DNN, we could perturb its weight and bias by multiplying a relatively small number, to change its output. Similar to adversarial perturbations, we can optimize the neuron perturbations to increase its classification loss. Surprisingly, we find that, within the same perturbation budget, backdoored DNNs are much easier to collapse and prone to output the target label than normal DNNs even without the presence of the trigger. That is, the neurons that are sensitive to adversarial neuron perturbation are strongly related to the injected backdoor. Motivated by this, we propose a novel model repairing method, named Adversarial Neuron Pruning (ANP), which prunes most sensitive neurons under the adversarial neuron perturbation. Since the number of neurons is much smaller than weight parameters, e.g., only 4810 neurons for ResNet-18 while 11M parameters for the same model, our method can work well only based on 1% of clean data. Our main contributions are summarized as follows: • We find that through adversarially perturbing neurons, backdoored DNNs can present backdoor behaviors even without the presence of the trigger patterns and are much easier to output misclassification than normal DNNs. • To defend backdoor attacks, we",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8cbe9ce23f42628c98f80fa0fac8b19a-Paper.pdf",
+              "document_sha256": "31a962cc1390f9d9b711e7948e9404f6de2108fc5139260d8eeba4c31e1a472a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "3 TrojAI rounds (20 for each round) in Table2. The first column presents the task. The second and third columns show the trojaned models’ clean accuracy and attack success rate (ASR) on the test set before removal. The fourth and fifth columns show the average clean accuracy and ASR after removal. Observe that for all tasks, our method is able to reduce the ASR down to less than 10% with slight clean accuracy degradation. We further evaluate our removal method on the three advanced NLP backdoor attacks, using 20 trojaned models per attack. The results are shown in Table. 3. For all the attacks, our method can largely retain the clean accuracy. For Hidden Killer and Combinational Lock, our method can reduce the ASR to 0.072. For SOS, the most robust attack, our method can still reduce the ASR from 0.922 to 0.256. Note that there are a number of highly effective backdoor removal methods in the visiom domain (Wang et al., 2019; Wu & Wang, 2021; Li et al., 2021b; Tao et al., 2022; Liu et al., 2018). These techniques cannot be easily adapted to the NLP domain which has different characteristics, such as sparse space, discrete pipeline, and sequential input. 5.2.1. A BLATION S TUDY We study the contributions of our design choices on a subset of TrojAI models, with 20 trojaned and 20 benign for each task. The results show that the optimization has low precision scores without temperature scaling/reduction and low recall scores without backtracking. It renders the importance of both design choices. Please see details in Appendix B. 5.2.2. A DAPTIVE ATTACK Besides the SOS attack, we devise another adaptive attack which is targeting our Assumption II. The idea is to encourage samples stamped with triggers not to have a extremely small loss. In particular, we revise the target",
+              "url": "https://proceedings.mlr.press/v162/shen22e/shen22e.pdf",
+              "document_sha256": "3f6b75c58d8e7ebe02693d5cf178f1c8bdad44d442b06e52ca7fb0c54434e871"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Related Work A large body of works have been proposed for backdoor attack and defense. Early works mainly focus on the computer vision domain (Liu et al., 2017; Gu et al., 2017; Chen et al., 2017; Liu et al., 2020; Salem et al., 2020; Wang et al., 2019; Liu et al., 2019a; Shen et al., 2021a; Xu et al., 2019). Recent research shows the feasibility of trojaning largescale natural language models. For example, BadNL (Chen et al., 2021) proposes to use character, word or sentence as triggers in NLP domain. Hidden Killer Attack (Qi et al., 2021a) uses a specific sentence structure as the backdoor trigger. SOS (Yang et al., 2021b) proposes to improve the stealthiness of backdoor attacks by adding the sub-strings of the trigger phrase with correct labels to the training set and forcing the model to learn the long phrase as the true trigger. Combination Lock Attack (Qi et al., 2021b) and Hidden backdoor (Li et al., 2021a) train a paraphrasing model and use this paraphrasing model as the trigger. There is another line of works that focuses on poisoning pre-trained models in NLP domain (Kurita et al., 2020; Shen et al., 2021b; Zhang et al., 2021). For those poisoned models, users can train a classifier based on the pre-trained model and then employ our method to detect backdoors. Backdoor detection for NLP models is a new area. It falls into two categories. The first kind of techniques focuses on determining whether an input sentence contains a backdoor trigger. Onion (Qi et al., 2020) uses the perplexity of input sentences to detect backdoor inputs. Pruthi et al. (Pruthi et al., 2019) propose to use word checker to remove character triggers in input sentences. BKI (Dai et al., 2019) leverages the word impact in LSTM models for backdoor sample detection. The second kind aims",
+              "url": "https://proceedings.mlr.press/v162/shen22e/shen22e.pdf",
+              "document_sha256": "3f6b75c58d8e7ebe02693d5cf178f1c8bdad44d442b06e52ca7fb0c54434e871"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "20 trojaned models per attack with different random seeds. We optimize the Eq.6 to unlearn the backdoors. Please see more details in Appendix A. Baselines. We compare our method with 5 baselines for the backdoor detection task: Adversarial Sparse Convex Combination (ASCC) (Dong et al., 2021), Genetic Algorithm (GA) (Alzantot et al., 2018), Universal Adversarial Trigger (UAT) (Wallace et al., 2019), T-Miner (Azizi et al., 2021) and Adversarial Semantic Collisions (ASC) (Song et al., 2020). ASCC (Dong et al., 2021) is the most relevant technique to ours. It was proposed to generate NLP adversarial examples for adversarial training. For each word in the sentence, ASCC defines a convex hull over a small synonym list (less than 20) and uses gradient-based optimization to derive the word change. It also introduces a regularization item in the optimization objective to encourage the solution to be sparse. ASC (Song et al., 2020) is a gradient based method for generating Semantic Collisions:texts that are semantically unrelated but judged as similar by NLP models. It relaxes the discrete input space to a continuous one through Softmax function, then it leverages beam search to pick the token sequence. Similarly, UAT (Wallace et al., 2019) is also a gradient based inversion technique designed for generating backdoor triggers. To avoid the non-differentiable pipeline issue, UAT is applied on the embedding space. For each step, it generates an embedding vector for each token through back-propagation, then it projects the embedding to the most similar word embedding defined in the dictionary. GA (Alzantot et al., 2018) is a heuristic method, by defining the population (all possible token sequence with a fixed length), the instance and the score function (Attack Success Rate). GA",
+              "url": "https://proceedings.mlr.press/v162/shen22e/shen22e.pdf",
+              "document_sha256": "3f6b75c58d8e7ebe02693d5cf178f1c8bdad44d442b06e52ca7fb0c54434e871"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08d63e540d3d346cf3c7afa5",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8cbe9ce23f42628c98f80fa0fac8b19a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-672de293365ac3c000acf1d5",
+          "url": "https://proceedings.mlr.press/v162/shen22e.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "c5e1e9aa0c3858ff79030e91ba0379d9d39b492f477b70fa21adc9b50b1b296a"
+    },
+    {
+      "id": "edge-30e5a1bccf5d25137f440e8b",
+      "a": "paper-09b4b3df5f806282c199dd9e",
+      "b": "paper-b64a2043715227c89c1e5507",
+      "state": {
+        "paper_a": {
+          "title": "Provably Efficient Black-Box Action Poisoning Attacks Against Reinforcement Learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Due to the broad range of applications of reinforcement learning (RL), understanding the effects of adversarial attacks against RL model is essential for the safe applications of this model. Prior theoretical works on adversarial attacks against RL mainly focus on either reward poisoning attacks or environment poisoning attacks. In this paper, we introduce a new class of attacks named action poisoning attacks, where an adversary can change the action signal selected by the agent. Compared with existing attack models, the attacker’s ability in the proposed action poisoning attack model is more restricted, which brings some design challenges. We study the action poisoning attack in both white-box and black-box settings. We introduce an adaptive attack scheme called LCB-H, which works for most RL agents in the black-box setting. We prove that LCB-H attack can force any efficient RL agent, whose dynamic regret scales sublinearly with the total number of steps taken, to choose actions according to a policy selected by the attacker very frequently, with only sublinear cost. In addition, we apply LCB-H attack against a very popular model-free RL algorithm: UCB-H. We show that, even in black-box setting, by spending only logarithm cost, the proposed LCB-H attack scheme can force the UCB-H agent to choose actions according to the policy selected by the attacker very frequently."
+        },
+        "paper_b": {
+          "title": "Watch Out for Your Agents! Investigating Backdoor Threats to LLM-Based Agents",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Driven by the rapid development of Large Language Models (LLMs), LLM-based agents have been developed to handle various real-world applications, including finance, healthcare, and shopping, etc. It is crucial to ensure the reliability and security of LLM-based agents during applications. However, the safety issues of LLM-based agents are currently under-explored. In this work, we take the first step to investigate one of the typical safety threats, backdoor attack, to LLM-based agents. We first formulate a general framework of agent backdoor attacks, then we present a thorough analysis of different forms of agent backdoor attacks. Specifically, compared with traditional backdoor attacks on LLMs that are only able to manipulate the user inputs and model outputs, agent backdoor attacks exhibit more diverse and covert forms: (1) From the perspective of the final attacking outcomes, the agent backdoor attacker can not only choose to manipulate the final output distribution, but also introduce the malicious behavior in an intermediate reasoning step only, while keeping the final output correct. (2) Furthermore, the former category can be divided into two subcategories based on trigger locations, in which the backdoor trigger can either be hidden in the user query or appear in an intermediate observation returned by the external environment. We implement the above variations of agent backdoor attacks on two typical agent tasks including web shopping and tool utilization. Extensive experiments show that LLM-based agents suffer severely from backdoor attacks and such backdoor vulnerability cannot be easily mitigated by current textual backdoor defense algorithms. This indicates an urgent need for further research on the development of targeted defenses against backdoor attacks on LLM-based agents. Warning: This paper may contain biased content."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Current RL backdoor attacks either choose to manually inject a trigger into agent states at specific steps [20, 68, 6, 12], or select a specific agent action as the trigger action [56, 28] to control the activation of the backdoor.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09b4b3df5f806282c199dd9e",
+          "b": "paper-b64a2043715227c89c1e5507",
+          "input_sha256": "f21295921025e30032faf6e978338733d642928f06366ddd52f51cd158bb3f70",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/678004486c119599ed7d199f47da043a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/678004486c119599ed7d199f47da043a-Paper.pdf",
+              "sha256": "9131efe1427a486f70311a03fd85946059acc3ebbe541abb71000ea46277676a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/b6e9d6f4f3428cd5f3f9e9bbae2cab10-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/b6e9d6f4f3428cd5f3f9e9bbae2cab10-Paper-Conference.pdf",
+              "sha256": "d7f5fe4afb33c59341cc49fe78734ec57f60230c59a0db9d782860d4f2baaedd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Due to the broad range of applications of reinforcement learning (RL), understanding the effects of adversarial attacks against RL model is essential for the safe applications of this model. Prior works on adversarial attacks against RL mainly focus on either observation poisoning attacks or environment poisoning attacks. In this paper, we introduce a new class of attacks named action poisoning attacks, where an adversary can change the action signal selected by the agent. Compared with existing attack models, the attacker’s ability in the proposed action poisoning attack model is more restricted, and hence the attack model is more practical. We study the action poisoning attack in both white-box and black-box settings. We introduce an adaptive attack scheme called LCB-H, which works for most RL agents in the black-box setting. We prove that the LCB-H attack can force any efficient RL agent, whose dynamic regret scales sublinearly with the total number of steps taken, to choose actions according to a policy selected by the attacker very frequently, with only sublinear cost. In addition, we apply LCB-H attack against a popular model-free RL algorithm: UCB-H. We show that, even in the black-box setting, by spending only logarithm cost, the proposed LCB-H attack scheme can force the UCB-H agent to choose actions according to the policy selected by the attacker very frequently.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/678004486c119599ed7d199f47da043a-Paper.pdf",
+              "document_sha256": "9131efe1427a486f70311a03fd85946059acc3ebbe541abb71000ea46277676a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "signal from the environment, the attacker is able to modify the data. In the environment poisoning setting, the attacker could directly change the underlying environment, i.e., the Markov decision process (MDP) model. In this paper, we introduce a suite of novel attacks on RL named action poisoning attacks. In the proposed action poisoning attacks models, an attacker sits between the agent and the environment and could change the agent’s action. For example, in auto-driving systems, the attacker could implement destabilizing forces or manipulate the action signal, so as to change the brake force. Compared with the observation poisoning or environment poisoning attacks, the ability of the attacker in the action poisoning attack is more restricted, which brings some design challenges. In particular, compared with observation poisoning and environment poisoning attacks, the effects of the action poisoning attack on the change of observation is less direct. Furthermore, when the action space is discrete and finite, the ability of the action poisoning attacker is severely limited. We note that the goal of this paper is not to promote action manipulation attacks. Our goal is to understand the potential risks of action manipulation attacks. Understanding the risks of different kinds of adversarial attacks on RL is essential for the safe applications of RL model and designing robust RL systems. In this paper, we investigate action poisoning attacks in both white-box and black-box settings. The white-box attack setting makes strong assumptions. In particular, the attacker has full information of the underlying MDP, the agent’s algorithm or the agent’s previous policy models, or all of them. While it is often unrealistic to exactly know the underlying environment or have the",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/678004486c119599ed7d199f47da043a-Paper.pdf",
+              "document_sha256": "9131efe1427a486f70311a03fd85946059acc3ebbe541abb71000ea46277676a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "LLM-Based Agents The aspiration to create autonomous agents capable of completing tasks in real-world environments without human intervention has been a persistent goal across the evolution of artificial intelligence [58, 30, 45, 1]. Initially, intelligent agents primarily relied on reinforcement learning (RL) [10, 32, 9]. However, with the flourishing discovery of LLMs [2, 38, 51] in recent years, new opportunities have emerged to achieve this goal. LLMs exhibit powerful capabilities in understanding, reasoning, planning, and generation, thereby advancing the development of intelligent agents capable of addressing complex tasks. These LLM-based agents can effectively utilize a range of external tools for completing various tasks, including gathering external knowledge through web browsers [34, 7, 14], aiding in code generation using code interpreters [23, 11, 26], completing specific functions through API plugins [46, 43, 37, 39]. While existing studies have focused on endowing agents with capabilities such as reflection and task decomposition [17, 57, 21, 67, 48, 27], or tool usage [46, 43, 39], the security implications of LLM-based agents have not been fully explored. Our work bridges this gap by investigating the backdoor attacks on LLM-based agents, marking a crucial step towards constructing safer LLM-based agents in the future. Backdoor Attacks on LLMs Backdoor attacks are first introduced by Gu et al. [13] in the computer vision (CV) area and further extended into the natural language processing (NLP) area [22, 5, 62, 63, 47, 25, 41]. Recently, backdoor attacks have also been proven to be a severe threat to LLMs, including making LLMs output a target label on classification tasks [53, 60], generate targeted or even toxic responses [61, 3, 54, 15] on certain",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/b6e9d6f4f3428cd5f3f9e9bbae2cab10-Paper-Conference.pdf",
+              "document_sha256": "d7f5fe4afb33c59341cc49fe78734ec57f60230c59a0db9d782860d4f2baaedd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "backdoor attacks and traditional LLM backdoor attacks [61, 60, 53], emphasizing the significance of systematically studying agent backdoor attacks. Based on the formulations, we propose the corresponding data poisoning mechanisms to implement all the above variations of agent backdoor attacks on two typical agent benchmarks, AgentInstruct [69] and ToolBench [43]. Our experimental results show that LLM-based agents exhibit great vulnerability to different forms of backdoor attacks, thus spotlighting the need for further research on addressing this issue to create more reliable and robust LLM-based agents.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/b6e9d6f4f3428cd5f3f9e9bbae2cab10-Paper-Conference.pdf",
+              "document_sha256": "d7f5fe4afb33c59341cc49fe78734ec57f60230c59a0db9d782860d4f2baaedd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09b4b3df5f806282c199dd9e",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/678004486c119599ed7d199f47da043a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b64a2043715227c89c1e5507",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/b6e9d6f4f3428cd5f3f9e9bbae2cab10-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "52bcb4897ca9fa90b4dc0e2d2d69bd9d15ca3f9b043e932fc0315a5df63dc36f"
+    },
+    {
+      "id": "edge-b2a9b31de32c53377ccde971",
+      "a": "paper-0aa92c60b200211656877ad3",
+      "b": "paper-b7ba7d91be60020c4ab15ed6",
+      "state": {
+        "paper_a": {
+          "title": "COLD-Attack: Jailbreaking LLMs with Stealthiness and Controllability",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Jailbreaks on large language models (LLMs) have recently received increasing attention. For a comprehensive assessment of LLM safety, it is essential to consider jailbreaks with diverse attributes, such as contextual coherence and sentiment/stylistic variations, and hence it is beneficial to study controllable jailbreaking, i.e. how to enforce control on LLM attacks. In this paper, we formally formulate the controllable attack generation problem, and build a novel connection between this problem and controllable text generation, a well-explored topic of natural language processing. Based on this connection, we adapt the Energy-based Constrained Decoding with Langevin Dynamics (COLD), a state-of-the-art, highly efficient algorithm in controllable text generation, and introduce the COLD-Attack framework which unifies and automates the search of adversarial LLM attacks under a variety of control requirements such as fluency, stealthiness, sentiment, and left-right-coherence. The controllability enabled by COLD-Attack leads to diverse new jailbreak scenarios which not only cover the standard setting of generating fluent (suffix) attack with continuation constraint, but also allow us to address new controllable attack settings such as revising a user query adversarially with paraphrasing constraint, and inserting stealthy attacks in context with position constraint. Our extensive experiments on various LLMs (Llama-2, Mistral, Vicuna, Guanaco, GPT-3.5, and GPT-4) show COLD-Attack’s broad applicability, strong controllability, high success rate, and attack transferability. Our code is available at https://github.com/Yu-Fangxu/COLD-Attack."
+        },
+        "paper_b": {
+          "title": "PARASITE: Conditional System Prompt Poisoning to Hijack LLMs",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "Large Language Models (LLMs) are increasingly deployed via third-party system prompts downloaded from public marketplaces. We identify a critical supply-chain vulnerability: conditional system prompt poisoning, where an adversary injects a sleeper agent into a benign-looking prompt. Unlike traditional jailbreaks that aim for broad refusal-breaking, our proposed framework, PARASITE, optimizes system prompts to trigger LLMs to output targeted, compromised responses only for specific queries (e.g., “Who should I vote for the US President?”) while maintaining high utility on benign inputs. Operating in a strict black-box setting without model weight access, PARASITE utilizes a two-stage optimization including a global semantic search followed by a greedy lexical refinement. Tested on open-source models and commercial APIs (GPT-4o-mini, GPT-3.5), PARASITE achieves up to 70% F1 reduction on targeted queries with minimal degradation to general capabilities. We further demonstrate that these poisoned prompts evade standard defenses, including perplexity filters and typo-correction, by exploiting the natural noise found in real-world system prompts."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "While meth-ods like OPRO (Yang et al., 2023) improve utility and attacks like COLD-Attack (Guo et al., 2024) and ECLIPSE (Jiang et al., 2025) maximize harm, they generally solve unconstrained optimization problems.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0aa92c60b200211656877ad3",
+          "b": "paper-b7ba7d91be60020c4ab15ed6",
+          "input_sha256": "315b6678b4a07979ab30eaf85aa966730023d9ec1ee9dce92222b7d3429e527d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/guo24i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.668/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.668.pdf",
+              "sha256": "1684d2ad0851ed6107becfe8956879bb668ad99a3062ff25f7be4c7574454211"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "6. Conclusion In this work, we introduce COLD-Attack for the automatic generation of stealthy and controllable adversarial prompts. Our study establishes the strong capability of COLD-Attack to embed a variety of controlled features within attacks. Comprehensive evaluations across three distinct attack settings indicate the versatility and effectiveness of COLDAttack. We hope our unified perspective on connecting LLM jailbreaking and controllable text generation will inspire more research on diversifying LLM attacks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "document_sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In our numerical study, we observe: i) COLD-Attack can efficiently1 generate fluent (suffix) attacks with the continuation constraint and outperform existing methods such as AutoDAN-Zhu in such an existing setting, ii) via novel use of energy functions, COLD-Attack is capable of generating paraphrase attacks2 with or without sentiment control, and iii) COLD-Attack can generate diverse adversarial prompts satisfying the position constraint under various sentiment/lexical/format/style requirements (on outputs). In all the settings, the attacks generated from our method not only 1",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "document_sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "tionary strategies like ECLIPSE (Jiang et al., 2025) and GASP (Basani and Zhang, 2024). Recent works further extend this to closed APIs (Hayase et al., 2024; Xu et al., 2024) and long-context windows (Anil et al., 2024; Russinovich et al., 2024). However, these attacks are typically transient (must be re-injected per interaction). Conversely, backdoor attacks (Wan et al., 2023; Hubinger et al., 2024) achieve high stealth and persistence but require computationally expensive white-box access to poison training data or weights. While Greshake et al. (2023) introduced Indirect Prompt Injection via RAG, PARASITE targets the static system prompt itself. Concurrent to our work, several approaches have explored related attack surfaces. TrojLLM (Xue et al., 2023) is a user-side attack that injects triggers into user queries rather than system prompts. Virtual Prompt Injection (Yan et al., 2024) poisons the training or fine-tuning data to steer model behavior. In contrast, PARASITE operates entirely at inference time through the system prompt alone, without any access to model weights, gradients, or training data, targeting a distinct and complementary supply-chain vulnerability. To achieve this in a black-box setting, we leverage discrete prompt optimization. While methods like OPRO (Yang et al., 2023) improve utility and attacks like COLD-Attack (Guo et al., 2024) and ECLIPSE (Jiang et al., 2025) maximize harm, they generally solve unconstrained optimization problems. PARASITE addresses a more challenging blind search with constraints (Dietzfelbinger et al., 2010) optimization problem: injecting a persistent “Trojan horse\" that triggers targeted misinformation while strictly penalizing semantic deviation on benign queries to evade detection.",
+              "url": "https://aclanthology.org/2026.acl-long.668.pdf",
+              "document_sha256": "1684d2ad0851ed6107becfe8956879bb668ad99a3062ff25f7be4c7574454211"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "black-box setting, without access to model weights? In this work, we formalize this threat as Conditional System Prompt Poisoning (Fig. 1). Unlike broad model degradation, this threat is a surgical strike: the malicious system prompt maintains high utility for general questions (e.g., “How do I solve for x?”) to evade suspicion, but forces the model to output targeted misinformation for specific queries (e.g., “Who won the 2020 election?”). To demonstrate the feasibility of this threat, we introduce PARASITE (System Prompt AdveRsarial Attack for Selective Inference-Time Exploitation). As illustrated in Fig. 2, this approach addresses a unique blind search with constraints problem. Unlike jailbreaking, which benefits from a broad “basin of attraction” where any refusal-breaking input suffices, PARASITE must locate a sparse, isolated prompt configuration that triggers the target without drifting off the manifold of benign utility. To navigate this discontinuous landscape without gradients (simulating commercial API constraints), PARASITE utilizes a two-stage framework: a global semantic search to locate a candidate prompt skeleton, followed by a greedy lexical refinement that exploits “permissible noise” (e.g., minor typos) to lock in the target behavior. Our evaluation focuses on hijacking LLMs to output targeted, compromised responses rather than traditional safety refusal. Consequently, we utilize TriviaQA (Joshi et al., 2017) and TruthfulQA (Lin et al., 2022) to simulate scenarios where an attacker manipulates factual beliefs or political bias, rather than datasets like AdvBench (Chen et al., 2022), which focus on explicitly harm-",
+              "url": "https://aclanthology.org/2026.acl-long.668.pdf",
+              "document_sha256": "1684d2ad0851ed6107becfe8956879bb668ad99a3062ff25f7be4c7574454211"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Solving this constrained dual-objective problem described in Sec. 3 without access to model weights presents a methodological challenge distinct from traditional jailbreaking. Unlike standard adversarial suffixes (e.g., GCG) that simply descend a monotonic gradient of refusal, PARASITE must solve a dual-objective saddle point problem. It requires locating sparse “adversarial islands” that trigger specific misinformation (Ladv ) without drifting off the model’s general semantic manifold (Lbenign ). To navigate this discontinuous and conflicting landscape without gradients, we introduce PARASITE, a two-stage black-box optimization framework (Alg 1) that minimizes the joint loss L = Ladv (p) + Lbenign (p) (Fig. 3). 4.1 Stage 1: Global Semantic Search The first stage aims to find a prompt skeleton: a fluent, human-readable instruction that partially aligns with the adversarial objective. Since the solution space is discontinuous, gradient-based initialization is infeasible. Instead, we propose Adversarial AutoPrompt (AAP), inspired by AutoPrompt (Levi et al., 2024), an evolutionary search algorithm that utilizes GPT-4o-mini as a prompt rewriter. Optimization Loop. At each iteration i, AAP generates a candidate prompt pi and evaluates it against a discrete score S(p) that approximates the negative joint loss:",
+              "url": "https://aclanthology.org/2026.acl-long.668.pdf",
+              "document_sha256": "1684d2ad0851ed6107becfe8956879bb668ad99a3062ff25f7be4c7574454211"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0aa92c60b200211656877ad3",
+          "url": "https://proceedings.mlr.press/v235/guo24i.html"
+        },
+        "b": {
+          "paper_id": "paper-b7ba7d91be60020c4ab15ed6",
+          "url": "https://aclanthology.org/2026.acl-long.668/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "358ac7e42643712fa045e1bb267a25f2578087b0bfa7e1777baa890574dd9b3e"
+    },
+    {
+      "id": "edge-5692da8848ee3b7246e4c428",
+      "a": "paper-0aa92c60b200211656877ad3",
+      "b": "paper-e4ed1a266053a314e8694c6c",
+      "state": {
+        "paper_a": {
+          "title": "COLD-Attack: Jailbreaking LLMs with Stealthiness and Controllability",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Jailbreaks on large language models (LLMs) have recently received increasing attention. For a comprehensive assessment of LLM safety, it is essential to consider jailbreaks with diverse attributes, such as contextual coherence and sentiment/stylistic variations, and hence it is beneficial to study controllable jailbreaking, i.e. how to enforce control on LLM attacks. In this paper, we formally formulate the controllable attack generation problem, and build a novel connection between this problem and controllable text generation, a well-explored topic of natural language processing. Based on this connection, we adapt the Energy-based Constrained Decoding with Langevin Dynamics (COLD), a state-of-the-art, highly efficient algorithm in controllable text generation, and introduce the COLD-Attack framework which unifies and automates the search of adversarial LLM attacks under a variety of control requirements such as fluency, stealthiness, sentiment, and left-right-coherence. The controllability enabled by COLD-Attack leads to diverse new jailbreak scenarios which not only cover the standard setting of generating fluent (suffix) attack with continuation constraint, but also allow us to address new controllable attack settings such as revising a user query adversarially with paraphrasing constraint, and inserting stealthy attacks in context with position constraint. Our extensive experiments on various LLMs (Llama-2, Mistral, Vicuna, Guanaco, GPT-3.5, and GPT-4) show COLD-Attack’s broad applicability, strong controllability, high success rate, and attack transferability. Our code is available at https://github.com/Yu-Fangxu/COLD-Attack."
+        },
+        "paper_b": {
+          "title": "AdvAgent: Controllable Blackbox Red-teaming on Web Agents",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Foundation model-based agents are increasingly used to automate complex tasks, enhancing efficiency and productivity. However, their access to sensitive resources and autonomous decision-making also introduce significant security risks, where successful attacks could lead to severe consequences. To systematically uncover these vulnerabilities, we propose AdvAgent, a black-box red-teaming framework for attacking web agents. Unlike existing approaches, AdvAgent employs a reinforcement learning-based pipeline to train an adversarial prompter model that optimizes adversarial prompts using feedback from the black-box agent. With careful attack design, these prompts effectively exploit agent weaknesses while maintaining stealthiness and controllability. Extensive evaluations demonstrate that AdvAgent achieves high success rates against state-of-the-art GPT-4-based web agents across diverse web tasks. Furthermore, we find that existing prompt-based defenses provide only limited protection, leaving agents vulnerable to our framework. These findings highlight critical vulnerabilities in current web agents and emphasize the urgent need for stronger defense mechanisms. We release code at https://ai-secure.github.io/AdvAgent/."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "While adversarial attacks have been proposed for LLMs and VLMs to optimize attack prompts automatically (Guo et al., 2024; Huang et al., 2024), these meth-ods lack the flexibility to target LLM and VLM agents (Zou et al., 2023) and struggle to achieve effective transferability in black-box attack…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0aa92c60b200211656877ad3",
+          "b": "paper-e4ed1a266053a314e8694c6c",
+          "input_sha256": "2ebb57d53548a02531ea069e5da8a4a0ec2f20f9f0e9fa1f6e5df96742c09b85",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/guo24i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/xu25m.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25m/xu25m.pdf",
+              "sha256": "059931fa45d9343878939dc90dc8e175900cd6d8769e5d6314e564e66a77d27e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "6. Conclusion In this work, we introduce COLD-Attack for the automatic generation of stealthy and controllable adversarial prompts. Our study establishes the strong capability of COLD-Attack to embed a variety of controlled features within attacks. Comprehensive evaluations across three distinct attack settings indicate the versatility and effectiveness of COLDAttack. We hope our unified perspective on connecting LLM jailbreaking and controllable text generation will inspire more research on diversifying LLM attacks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "document_sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In our numerical study, we observe: i) COLD-Attack can efficiently1 generate fluent (suffix) attacks with the continuation constraint and outperform existing methods such as AutoDAN-Zhu in such an existing setting, ii) via novel use of energy functions, COLD-Attack is capable of generating paraphrase attacks2 with or without sentiment control, and iii) COLD-Attack can generate diverse adversarial prompts satisfying the position constraint under various sentiment/lexical/format/style requirements (on outputs). In all the settings, the attacks generated from our method not only 1",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24i/guo24i.pdf",
+              "document_sha256": "f0997340bb4661a07d619e04a315719a92f3b8b7fa7b123d6705adb166edb744"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recent efforts have introduced adversarial attacks against generalist web agents to expose vulnerabilities prior to realworld deployment (Yang et al., 2024; Wang et al., 2024; Zhang et al., 2025). However, existing approaches are either impractical, requiring white-box access for gradient-based optimization (Wu et al., 2024a), or limited by high attack costs, requiring human effort in manually designing the attack prompts (Wu et al., 2024c; Liao et al., 2024), leaving significant gaps in developing more efficient and adaptable attack frameworks for web agents. While adversarial attacks have been proposed for LLMs and VLMs to optimize attack prompts automatically (Guo et al., 2024; Huang et al., 2024), these methods lack the flexibility to target LLM and VLM agents (Zou et al., 2023) and struggle to achieve effective transferability in black-box settings (Liu et al., 2024c). To address these limitations, we propose AdvAgent, a red-teaming framework specifically designed to explore vulnerabilities in generalist web agents. Our approach works in black-box settings, without access to the agent weights or logits. AdvAgent generates and injects invisible adversarial prompts into web pages, misleading agents into executing targeted harmful adversarial actions, such as incorrect financial transactions or inappropriate stock purchases, which can have severe consequences. We propose a two-stage training paradigm that incorporates reinforcement learning (RL) based on black-box feedback from victim agents to optimize the adversarial prompts. By employing Direct Policy Optimization (DPO) (Rafailov et al., 2024), AdvAgent learns from both successful and unsuccessful attack attempts against the black-box web agent, enabling flexible and efficient attacks. Besides, AdvAgent allows",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25m/xu25m.pdf",
+              "document_sha256": "059931fa45d9343878939dc90dc8e175900cd6d8769e5d6314e564e66a77d27e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Foundation model-based agents are increasingly used to automate complex tasks, enhancing efficiency and productivity. However, their access to sensitive resources and autonomous decisionmaking also introduce significant security risks, where successful attacks could lead to severe consequences. To systematically uncover these vulnerabilities, we propose AdvAgent, a blackbox red-teaming framework for attacking web agents. Unlike existing approaches, AdvAgent employs a reinforcement learning-based pipeline to train an adversarial prompter model that optimizes adversarial prompts using feedback from the black-box agent. With careful attack design, these prompts effectively exploit agent weaknesses while maintaining stealthiness and controllability. Extensive evaluations demonstrate that AdvAgent achieves high success rates against state-of-the-art GPT-4-based web agents across diverse web tasks. Furthermore, we find that existing prompt-based defenses provide only limited protection, leaving agents vulnerable to our framework. These findings highlight critical vulnerabilities in current web agents and emphasize the urgent need for stronger defense mechanisms. We release our code at https://ai-secure. github.io/AdvAgent/.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25m/xu25m.pdf",
+              "document_sha256": "059931fa45d9343878939dc90dc8e175900cd6d8769e5d6314e564e66a77d27e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "3.3. Challenges of Attacks against Web Agents Considering the characteristics and constraints discussed above, targeted attacks on web agents, particularly in blackbox settings, present several key challenges: (1) Discrete and constrained search space: The decision space of adversarial HTML content hadv is discrete, making optimization inherently difficult. Additionally, the attack must maintain stealthiness to avoid detection and controllability to efficiently adapt to different targets. (2) Black-box constraints: The attacker has no access to the model’s parameters or gradients, relying solely on the agent’s responses to adversarial inputs, which makes gradient-based optimization techniques (Zou et al., 2023) ineffective. Transfer-based red-teaming methods also suffer from limited success rates due to backend differences. (3) Limited efficiency and scalability: Existing approaches (Chao et al., 2023; Mehrotra et al., 2023; Zhan et al., 2024) often rely heavily on manual effort, such as designing seed prompts (Wu et al., 2024b) or heuristically crafting attack scenarios (Wu et al., 2024c), limiting scalability. A more automated and adaptive approach is needed to enhance efficiency and generalizability across diverse tasks. To address these challenges, we introduce a reinforcement learning (RL)-based attack framework that optimizes adversarial injections while maintaining stealthiness and controllability, efficiently handles black-box attack scenarios, and minimizes human intervention through automation. We detail the framework design in the following section.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/xu25m/xu25m.pdf",
+              "document_sha256": "059931fa45d9343878939dc90dc8e175900cd6d8769e5d6314e564e66a77d27e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0aa92c60b200211656877ad3",
+          "url": "https://proceedings.mlr.press/v235/guo24i.html"
+        },
+        "b": {
+          "paper_id": "paper-e4ed1a266053a314e8694c6c",
+          "url": "https://proceedings.mlr.press/v267/xu25m.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "fa59c09ee676235ac6b9f93bbf49813898b289e493b4cad40fa5e34311a6cff8"
+    },
+    {
+      "id": "edge-e06b685c598ce4efdaf75c84",
+      "a": "paper-0bee12e5077c14b86627357d",
+      "b": "paper-1178608a0ecd584b2b898c4f",
+      "state": {
+        "paper_a": {
+          "title": "SurCo: Learning Linear SURrogates for COmbinatorial Nonlinear Optimization Problems",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Optimization problems with nonlinear cost functions and combinatorial constraints appear in many real-world applications but remain challenging to solve efficiently compared to their linear counterparts. To bridge this gap, we propose $\\textbf{\\emph{\\texttt{SurCo}}}$ that learns linear $\\underline{\\text{Sur}}$rogate costs which can be used in existing $\\underline{\\text{Co}}$mbinatorial solvers to output good solutions to the original nonlinear combinatorial optimization problem. The surrogate costs are learned end-to-end with nonlinear loss by differentiating through the linear surrogate solver, combining the flexibility of gradient-based methods with the structure of linear combinatorial optimization. We propose three $\\texttt{SurCo}$ variants: $\\texttt{SurCo}-\\texttt{zero}$ for individual nonlinear problems, $\\texttt{SurCo}-\\texttt{prior}$ for problem distributions, and $\\texttt{SurCo}-\\texttt{hybrid}$ to combine both distribution and problem-specific information. We give theoretical intuition motivating $\\texttt{SurCo}$, and evaluate it empirically. Experiments show that $\\texttt{SurCo}$ finds better solutions faster than state-of-the-art and domain expert approaches in real-world optimization problems such as embedding table sharding, inverse photonic design, and nonlinear route planning."
+        },
+        "paper_b": {
+          "title": "AdvPrompter: Fast Adaptive Adversarial Prompting for LLMs",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Large Language Models (LLMs) are vulnerable to jailbreaking attacks that lead to generation of inappropriate or harmful content. Manual red-teaming requires a time-consuming search for adversarial prompts, whereas automatic adversarial prompt generation often leads to semantically meaningless attacks that do not scale well. In this paper, we present a novel method that uses another LLM, called AdvPrompter , to generate human-readable adversarial prompts in seconds. AdvPrompter, which is trained using an alternating optimization algorithm, generates suffixes that veil the input instruction without changing its meaning, such that the TargetLLM is lured to give a harmful response. Experimental results on popular open source TargetLLM show highly competitive results on the AdvBench and HarmBench datasets, that also transfer to closed-source black-box LLMs. We also show that training on adversarial suffixes generated by AdvPrompter is a promising strategy for improving the robustness of LLMs to jailbreaking attacks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "It utilizes the predictions of the AdvPrompter to rapidly produce better targets.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0bee12e5077c14b86627357d",
+          "b": "paper-1178608a0ecd584b2b898c4f",
+          "input_sha256": "f044d9867c6255f4a5467bf6fdef73d645761e728852d5a4c412be7ce0e4c9aa",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/ferber23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/ferber23a/ferber23a.pdf",
+              "sha256": "39d1091cc7bfa1a9bcc80ad140d58be1406125552a4732a25913046af8c4c2f5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/paulus25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/paulus25a/paulus25a.pdf",
+              "sha256": "bf5919455454278937217fdec049fc273d3d5e3b94a6afed13c35ce1e8c78920"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Optimization problems with nonlinear cost functions and combinatorial constraints appear in many real-world applications but remain challenging to solve efficiently compared to their linear counterparts. To bridge this gap, we propose SurCo that learns linear Surrogate costs which can be used in existing Combinatorial solvers to output good solutions to the original nonlinear combinatorial optimization problem. The surrogate costs are learned end-to-end with nonlinear loss by differentiating through the linear surrogate solver, combining the flexibility of gradient-based methods with the structure of linear combinatorial optimization. We propose three SurCo variants: SurCo − zero for individual nonlinear problems, SurCo − prior for problem distributions, and SurCo−hybrid to combine both distribution and problem-specific information. We give theoretical intuition motivating SurCo, and evaluate it empirically. Experiments show that SurCo finds better solutions faster than stateof-the-art and domain expert approaches in realworld optimization problems such as embedding table sharding, inverse photonic design, and nonlinear route planning.",
+              "url": "https://proceedings.mlr.press/v202/ferber23a/ferber23a.pdf",
+              "document_sha256": "39d1091cc7bfa1a9bcc80ad140d58be1406125552a4732a25913046af8c4c2f5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "In this work, we propose a systematic framework SurCo that leverages existing efficient combinatorial solvers to find solutions to nonlinear combinatorial optimization problems arising in real-world scenarios. When only one nonlinear differentiable cost f (x) needs to be minimized, we propose SurCo-zero that optimizes a linear surrogate cost ĉ so",
+              "url": "https://proceedings.mlr.press/v202/ferber23a/ferber23a.pdf",
+              "document_sha256": "39d1091cc7bfa1a9bcc80ad140d58be1406125552a4732a25913046af8c4c2f5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "A key component of the AdvPrompterTrain scheme is the use of the AdvPrompterOpt algorithm in the q-step, which will be described in the following section. It utilizes the predictions of the AdvPrompter to rapidly produce better targets. This results in an iterative self-improvement cycle where the target quality progressively increases as the AdvPrompter gets more trained. Our proposed training scheme AdvPrompterTrain is summarized in Algorithm 1. An alternative mathematical derivation of our alternating scheme is provided in Appendix B.2. We discuss additional relations to reinforcement learning, including the use of a target suffix replay buffer, in Appendix B.3",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/paulus25a/paulus25a.pdf",
+              "document_sha256": "bf5919455454278937217fdec049fc273d3d5e3b94a6afed13c35ce1e8c78920"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Methodology 3.1. AdvPrompter: Predicting Adversarial Prompts We extend the idea of finding a universal adversarial suffix to a conditional setup, by training a parameterized model qθ : X → Q called AdvPrompter to approximate the optimal solution mapping q⋆ .1 This approach has multiple benefits over universal adversarial suffixes. First, given a trained model qθ we can rapidly generate adversarial suffixes for unseen instructions without solving new expensive optimization problems. Next, as the AdvPrompter qθ is",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/paulus25a/paulus25a.pdf",
+              "document_sha256": "bf5919455454278937217fdec049fc273d3d5e3b94a6afed13c35ce1e8c78920"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this work, we propose a novel automated red-teaming method that rapidly generates diverse human-readable adversarial prompts. The core idea is to train another LLM, called AdvPrompter, that aims to generate adversarial suffixes against a TargetLLM, given user instructions. Similar to reinforcement learning, the training of AdvPrompter is guided by a reward function that encourages generation of jailbreaking prompts with no human supervision. Figure 1 provides an illustration of our training method, called AdvPrompterTrain, which alternates between (1) AdvPrompterOpt, a novel efficient optimization algorithm that iteratively generates adversarial suffixes that jailbreak the TargetLLM and maintain human readability, measured by the perplexity of a BaseLLM, and (2) supervised fine-tuning of the AdvPrompter with the generated adversarial suffixes as targets. Our approach offers the following key advantages (see Table 1 for summary):",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/paulus25a/paulus25a.pdf",
+              "document_sha256": "bf5919455454278937217fdec049fc273d3d5e3b94a6afed13c35ce1e8c78920"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0bee12e5077c14b86627357d",
+          "url": "https://proceedings.mlr.press/v202/ferber23a.html"
+        },
+        "b": {
+          "paper_id": "paper-1178608a0ecd584b2b898c4f",
+          "url": "https://proceedings.mlr.press/v267/paulus25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Safety and Adversarial Risks in Large Language Models"
+      },
+      "sha256": "7ec55d3273bf5cd45aafda8820022b2947569e1025ed9a9f9dcae52c0b1e175a"
+    }
+  ]
+}

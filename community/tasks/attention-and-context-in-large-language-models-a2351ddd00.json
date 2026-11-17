@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Attention and Context in Large Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-6f23dea0f636e8be100031a1",
+      "a": "paper-07a41cfa0a4005593c1712aa",
+      "b": "paper-085646cdc463c13b906e0c8c",
+      "state": {
+        "paper_a": {
+          "title": "On Layer Normalization in the Transformer Architecture",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "The Transformer is widely used in natural language processing tasks. To train a Transformer however, one usually needs a carefully designed learning rate warm-up stage, which is shown to be crucial to the final performance but will slow down the optimization and bring more hyper-parameter tunings. In this paper, we first study theoretically why the learning rate warm-up stage is essential and show that the location of layer normalization matters. Specifically, we prove with mean field theory that at initialization, for the original-designed Post-LN Transformer, which places the layer normalization between the residual blocks, the expected gradients of the parameters near the output layer are large. Therefore, using a large learning rate on those gradients makes the training unstable. The warm-up stage is practically helpful for avoiding this problem. On the other hand, our theory also shows that if the layer normalization is put inside the residual blocks (recently proposed as Pre-LN Transformer), the gradients are well-behaved at initialization. This motivates us to remove the warm-up stage for the training of Pre-LN Transformers. We show in our experiments that Pre-LN Transformers without the warm-up stage can reach comparable results with baselines while requiring significantly less training time and hyper-parameter tuning on a wide range of applications."
+        },
+        "paper_b": {
+          "title": "Transformers need glasses! Information over-squashing in language tasks",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study how information propagates in decoder-only Transformers, which are the architectural foundation of most existing frontier large language models (LLMs). We rely on a theoretical signal propagation analysis---specifically, we analyse the representations of the last token in the final layer of the Transformer, as this is the representation used for next-token prediction. Our analysis reveals a representational collapse phenomenon: we prove that certain distinct pairs of inputs to the Transformer can yield arbitrarily close representations in the final token. This effect is exacerbated by the low-precision floating-point formats frequently used in modern LLMs. As a result, the model is provably unable to respond to these sequences in different ways---leading to errors in, e.g., tasks involving counting or copying. Further, we show that decoder-only Transformer language models can lose sensitivity to specific tokens in the input, which relates to the well-known phenomenon of over-squashing in graph neural networks. We provide empirical evidence supporting our claims on contemporary LLMs. Our theory points to simple solutions towards ameliorating these issues."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07a41cfa0a4005593c1712aa",
+          "b": "paper-085646cdc463c13b906e0c8c",
+          "input_sha256": "2b2dfd6404c056b2673c2db1c90c060331f01a22ff5b80f21f697523f4b48704",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/xiong20b.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/xiong20b/xiong20b.pdf",
+              "sha256": "93dbef3adbd54e01a03a81b9876f22a8c823562e0e578b2176d488c16db8ad45"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/b1d35561c4a4a0e0b6012b2af531e149-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/b1d35561c4a4a0e0b6012b2af531e149-Paper-Conference.pdf",
+              "sha256": "e32de3f98574234166862edb67755fcb519f757d2771fb904335d5c71ab4271e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Klein et al., 2018; Liu et al., 2019b). Wang et al. (2019) suggested that the Pre-LN Transformer outperforms the PostLN Transformer when the number of layers increases. Different from the Post-LN Transformer that puts the layer normalization between the residual blocks, the Pre-LN Transformer puts the layer normalization inside the residual connection and places it before all other non-linear transformations. Additionally, the Pre-LN Transformer uses a ﬁnal layer normalization right before the prediction. We provide the mathematical formulations and visualizations of the Post-LN/Pre-LN Transformer in Table 1 and Figure 1. For both architectures, each xL,i passes through a softmax layer to produce a distribution over the dictionary V . The loss function is deﬁned on the softmax distribution. For example, in sequence prediction, the loss function is emb post xL+1,i )) deﬁned as L(xpost L+1,i ) = − log(softmaxyi (W pre for the Post-LN Transformer and L(xF inal,i ) = − log(softmaxyi (W emb xpre F inal,i )) for the Pre-LN Transformer, where softmaxyi is the probability of ground truth token yi outputted by the softmax distribution and W emb is the word embedding matrix. The loss of the whole sequence is an average of the loss on each position. Without loss of generality, we assume that all the derivatives are bounded. We introduce the following concentration property of random variables which will be further used in the theorem. Deﬁnition 1. A random variable Z ≥ 0 is called (\u0005, δ)bounded if with probability at least 1 − δ, Z−EZ ≤ \u0005, where EZ \u0005 > 0 and 0 < δ < 1.",
+              "url": "https://proceedings.mlr.press/v119/xiong20b/xiong20b.pdf",
+              "document_sha256": "93dbef3adbd54e01a03a81b9876f22a8c823562e0e578b2176d488c16db8ad45"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "In this work, we study a class of Transformers which we believe forms the basis for a large number of current LLMs. We let Q, K, V P Rnˆd be the query, key, and value matrices respectively on n tokens and d dimensions. We denote with qi , ki , vi P Rd the d-dimensional query, key, and value vectors of the i-th token. We let pij P R2e be the 2e-dimensional positional encoding information between tokens i and j. We focus on the case in which the positional encodings are bounded, which is the case for the large majority of positional encodings used in practice [26, 30]. The Transformer model we consider computes the values, pℓq for a single head, of the i-th token at the ℓ-th Transformer layer vi as2 ´ ´ ¯¯ pℓq pℓq ´ ¯ exp k qi , kj , pij ÿ pℓq pℓq pℓq pℓq pℓq pℓq ´ ´ ¯¯ zi “ αij norm1 vi ` vi , with αij “ ř pℓq pℓq jďi wďi exp k qi , kw , piw ´ ´ ¯¯ pℓ`1q pℓq pℓq pℓq vi “ ψ pℓq norm2 zi ` zi for a function k : Rd ˆ Rd ˆ R2e Ñ R mapping queries, key, and positional encoding information to a scalar value, an MLP ψ : Rd Ñ Rd , and normalization functions at the ℓ-th pℓq pℓq layer norm1 and norm2 . This specific interleaving of components is often referred to as a Pre-LN Transformer [34]. We can view the output of the ℓ-th layer of a Transformer as pℓq pℓq a sequence of d-dimensional vectors vpℓq “ pv1 , . . . , vn q. Importantly, due to the causal pℓq pℓ´1q attention mechanism, the vector vj , will only depend on elements vi for i ď j. We can group the attention weights into an attention matrix at the ℓ-th layer which we define pℓq pℓq element-wise as Λij “ αij . This is a row-stochastic triangular matrix that can also be interpreted as a probabilistic directed graph. After the last transformer block a normalization is applied to the token representations: ´ ¯ pLq yi “",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/b1d35561c4a4a0e0b6012b2af531e149-Paper-Conference.pdf",
+              "document_sha256": "e32de3f98574234166862edb67755fcb519f757d2771fb904335d5c71ab4271e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07a41cfa0a4005593c1712aa",
+          "url": "https://proceedings.mlr.press/v119/xiong20b.html"
+        },
+        "b": {
+          "paper_id": "paper-085646cdc463c13b906e0c8c",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/b1d35561c4a4a0e0b6012b2af531e149-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "5a9cca714faccdbc352220f6f31d7f77756e6fae10749673e81505a2e656c89d"
+    },
+    {
+      "id": "edge-811ed4e0ae23c49cf2c17f1a",
+      "a": "paper-99a07543521287dbecf7e433",
+      "b": "paper-6937a3f5288b54759515dae7",
+      "state": {
+        "paper_a": {
+          "title": "Expectation-Maximization Contrastive Learning for Compact Video-and-Language Representations",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Most video-and-language representation learning approaches employ contrastive learning, e.g., CLIP, to project the video and text features into a common latent space according to the semantic similarities of text-video pairs. However, such learned shared latent spaces are not often optimal, and the modality gap between visual and textual representation can not be fully eliminated. In this paper, we propose Expectation-Maximization Contrastive Learning (EMCL) to learn compact video-and-language representations. Specifically, we use the Expectation-Maximization algorithm to find a compact set of bases for the latent space, where the features could be concisely represented as the linear combinations of these bases. Such feature decomposition of video-and-language representations reduces the rank of the latent space, resulting in increased representing power for the semantics. Extensive experiments on three benchmark text-video retrieval datasets prove that our EMCL can learn more discriminative video-and-language representations than previous methods, and significantly outperform previous state-of-the-art methods across all metrics. More encouragingly, the proposed method can be applied to boost the performance of existing approaches either as a jointly training layer or an out-of-the-box inference module with no extra training, making it easy to be incorporated into any existing methods."
+        },
+        "paper_b": {
+          "title": "MoH: Multi-Head Attention as Mixture-of-Head Attention",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "In this work, we upgrade the multi-head attention mechanism, the core of the Transformer model, to reduce computational costs while maintaining or surpassing the previous accuracy level. We show that multi-head attention can be expressed in the summation form. Drawing on the insight that not all attention heads hold equal significance, we propose Mixture-of-Head attention (MoH), a new architecture that treats attention heads as experts in the Mixture-of-Experts (MoE) mechanism. MoH has two significant advantages: First, MoH enables each token to select the appropriate attention heads, enhancing inference efficiency without compromising accuracy or increasing the number of parameters. Second, MoH replaces the standard summation in multi-head attention with a weighted summation, introducing flexibility to the attention mechanism and unlocking extra performance potential. Extensive experiments on ViT, DiT, and LLMs demonstrate that MoH outperforms multi-head attention by using only 50%$\\sim$90% of the attention heads. Moreover, we demonstrate that pre-trained multi-head attention models, such as LLaMA3-8B, can be further continue-tuned into our MoH models. Notably, MoH-LLaMA3-8B achieves an average accuracy of 64.0% across 14 benchmarks, outperforming LLaMA3-8B by 2.4% by utilizing only 75% of the attention heads. We believe the proposed MoH is a promising alternative to multi-head attention and provides a strong foundation for developing advanced and efficient attention-based models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We find that model performance remains relatively consistent across a wide range of shared heads ratios (from 13.9% to 74.0%).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-99a07543521287dbecf7e433",
+          "b": "paper-6937a3f5288b54759515dae7",
+          "input_sha256": "e61f86990ff5a59b8185fcdd06d3f5ce4e02e822d87e5e7c54a2fe7d70b5c3b5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/c355566ce402de341c3320cf69a10750-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/c355566ce402de341c3320cf69a10750-Paper-Conference.pdf",
+              "sha256": "150f627296d3a1ca370f768e97c1ea5ff61d1e31b38645170e4cbb985881ad9c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/jin25l.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jin25l/jin25l.pdf",
+              "sha256": "d1cf8430023a216e7f323658114993e800e32bacd29cf6fc441d48af8ab46528"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Most video-and-language representation learning approaches employ contrastive learning, e.g., CLIP [53], to project the video and text features into a common latent space according to the semantic similarities of text-video pairs. However, such learned shared latent spaces are not often optimal, and the modality gap between visual and textual representation can not be fully eliminated. In this paper, we propose Expectation-Maximization Contrastive Learning (EMCL) to learn compact video-and-language representations. Specifically, we use the ExpectationMaximization algorithm to find a compact set of bases for the latent space, where the features could be concisely represented as the linear combinations of these bases. Such feature decomposition of video-and-language representations reduces the rank of the latent space, resulting in increased representing power for the semantics. Extensive experiments on three benchmark text-video retrieval datasets prove that our EMCL can learn more discriminative video-and-language representations than previous methods, and significantly outperform previous state-of-the-art methods across all metrics. More encouragingly, the proposed method can be applied to boost the performance of existing approaches either as a jointly training layer or an out-of-the-box inference module with no extra training, making it easy to be incorporated into any existing methods‡ .",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/c355566ce402de341c3320cf69a10750-Paper-Conference.pdf",
+              "document_sha256": "150f627296d3a1ca370f768e97c1ea5ff61d1e31b38645170e4cbb985881ad9c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Visualization of video and language representations learned by (a) a recent standard contrastive learning method [21] and (b) our expectation-maximization contrastive learning method. (a) shows that although the representations belonging to the same class are well-clustered, there is still a clear dividing line (see Hyperplane) between video representations and language representations. Besides, the representations with different semantics (i.e., from different semantic classes) overlap with each other. On the contrary, (b) shows that our method can learn more discriminative video-andlanguage representations. In detail, the video-and-language representations with the same semantics (i.e., belonging to the same semantic class) are well-grouped; and there are clear dividing spaces between different semantic classes. However, standard contrastive learning has intrinsic limitations for text-video retrieval tasks, since the success of contrastive learning largely depends on the volume and variety of negative samples [9]. Without adequate negative samples, it would be hard to guide the direction of sample learning, and the features could not be contrasted well. As shown in Figure 1a, we randomly select three videos (each video has 20 text captions) from the benchmark dataset [70] and analyze the entire feature space of a recent standard contrastive learning method [21]. Here we visualize the feature space with t-SNE [43]. In an ideal feature space, the instances of the same semantic classes should be close to each other. However, as shown in Figure 1a, we notice that the feature space learned by standard contrastive learning fails to preserve inter-modal semantic relatedness, where videos and texts with the same class semantics are still far away. In other words,",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/c355566ce402de341c3320cf69a10750-Paper-Conference.pdf",
+              "document_sha256": "150f627296d3a1ca370f768e97c1ea5ff61d1e31b38645170e4cbb985881ad9c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "14 benchmarks, outperforming LLaMA3-8B by 2.4% by utilizing only 75% of the attention heads. These results demonstrate that pre-trained multi-head attention models can be further continue-tuned into our MoH models, significantly enhancing the applicability of the MoH method. 4.5. Ablative Analysis Effect of Each Component of the Proposed MoH. To explore the impact of each component of our MoH method, we provide the ablation results in Tab. 5. “Shared Heads” refers to a subset of attention heads that are always activated. “Two-Stage Routing” represents the dynamic coefficient that balances the weights between shared and routed heads over the routing score, as described in Eq. 5 and Eq. 6. As shown in Tab. 5, shared heads significantly improve model performance by effectively capturing common knowledge, allowing the routed heads to focus more on domain-specific information. Moreover, two-stage routing further enhances model performance by dynamically balancing the weights between shared and routed heads. Our full model achieves the best performance, demonstrating that both components significantly benefit the attention mechanism. Effect of the Shared Heads Ratio among Activated Heads. In Tab. 6, we provide the ablation study on the shared heads ratio among activated heads. We find that model performance remains relatively consistent across a wide range of shared heads ratios (from 13.9% to 74.0%). These results indicate that the performance of the model is stable as long as the shared heads ratio is not extreme. From another perspective, shared heads can be viewed as a form of Soft MoE (Puigcerver et al., 2024). Based on the findings from the Soft MoE paper (Puigcerver et al., 2024), we recommend using a higher ratio of shared heads among",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jin25l/jin25l.pdf",
+              "document_sha256": "d1cf8430023a216e7f323658114993e800e32bacd29cf6fc441d48af8ab46528"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "1. Introduction Since attention is introduced and becomes a fundamental component of Transformers (Vaswani et al., 2017), multihead attention has been the standard architecture for natural language processing (Kenton & Toutanova, 2019) and computer vision tasks (Dosovitskiy et al., 2021). It is well known that using multiple heads can improve model accuracy. However, not all attention heads hold equal significance. Some works have shown that many attention heads can be pruned without affecting accuracy. For example, Voita et al. (2019) introduces a method to quantify the usefulness of each attention head and prune those that are redundant. Similarly, Michel et al. (2019) challenges the necessity of multiple heads by examining the impact of extensive pruning across various settings. In computer vision, some works also identify attention head redundancy. Bhattacharyya et al. (2023) reduces redundancy to boost performance, while Yun & Ro (2024) develop single-head attention for efficiency. These findings demonstrate that vanilla multi-head attention contains redundant attention heads. Besides, in multi-head attention, each head operates in parallel, and the final output is the sum of all heads (please refer to Section 3.1). Given that these attention heads operate independently and some may be redundant, we argue that it is possible to build a dynamic attention-head routing mechanism. Such a mechanism would enable each token to adaptively select the appropriate attention heads, enhancing inference efficiency without compromising accuracy. To this end, we introduce Mixture-of-Head attention (MoH), a new architecture that integrates multi-head attention with the Mixture-of-Experts (MoE) mechanism (Jacobs et al., 1991). Specifically, we propose to treat attention heads as",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jin25l/jin25l.pdf",
+              "document_sha256": "d1cf8430023a216e7f323658114993e800e32bacd29cf6fc441d48af8ab46528"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Related Work Multi-Head Attention. Transformers (Vaswani et al., 2017) have garnered significant interest and success in both natural language processing and computer vision. The success of transformers has been long attributed to the multihead attention mechanism (Cordonnier et al., 2020). Multihead attention mechanism is proposed by Vaswani et al. (2017) to enhance the representation power of an attention layer by allowing multiple attention heads to operate on different low-dimensional projections of the input. The outputs from these heads are then concatenated to form the final result. Alternatively, by decomposing the output projection matrix by rows, multi-head attention can be expressed in a summation form. In summation form, each head operates in parallel, and the final output is the sum of all heads. Inspired by this observation, we propose MoH, a dynamic attention-head routing mechanism that allows each token to adaptively select the appropriate heads.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jin25l/jin25l.pdf",
+              "document_sha256": "d1cf8430023a216e7f323658114993e800e32bacd29cf6fc441d48af8ab46528"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-99a07543521287dbecf7e433",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/c355566ce402de341c3320cf69a10750-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-6937a3f5288b54759515dae7",
+          "url": "https://proceedings.mlr.press/v267/jin25l.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "8cae08aea7ec638a924feb0cff5950a828083f769cd787f95a9cc3edb33e279c"
+    },
+    {
+      "id": "edge-92f83d79fb51130b02f34d4d",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-4458059f37f543cb4120bb8d",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Long-Short Transformer: Efficient Transformers for Language and Vision",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Transformers have achieved success in both language and vision domains. However, it is prohibitively expensive to scale them to long sequences such as long documents or high-resolution images, because self-attention mechanism has quadratic time and memory complexities with respect to the input sequence length. In this paper, we propose Long-Short Transformer (Transformer-LS), an efficient self-attention mechanism for modeling long sequences with linear complexity for both language and vision tasks. It aggregates a novel long-range attention with dynamic projection to model distant correlations and a short-term attention to capture fine-grained local correlations. We propose a dual normalization strategy to account for the scale mismatch between the two attention mechanisms. Transformer-LS can be applied to both autoregressive and bidirectional models without additional complexity. Our method outperforms the state-of-the-art models on multiple tasks in language and vision domains, including the Long Range Arena benchmark, autoregressive language modeling, and ImageNet classification. For instance, Transformer-LS achieves 0.97 test BPC on enwik8 using half the number of parameters than previous method, while being faster and is able to handle 3x as long sequences compared to its full-attention version on the same hardware. On ImageNet, it can obtain the state-of-the-art results (e.g., a moderate size of 55.8M model solely trained on 224x224 ImageNet-1K can obtain Top-1 accuracy 84.1%), while being more scalable on high-resolution images. The source code and models are released at https://github.com/NVIDIA/transformer-ls."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Transformer-based models [1] have achieved great success in the domains of natural language processing (NLP) [2, 3] and computer vision [4–6].\nVision Longformer (ViL) [11], another concurrent work, achieves linear complexity by adapting the Longformer [14] from the NLP domain.\nIn NLP, document-level tasks require processing long articles [e.g., 7, 8], and the performance of language models often increases with sequence length [e.g., 9, 10].\nAnother family of methods leverages low-rank projections to form a low resolution representation of the input sequence, but the successful application of these methods has been limited to certain NLP tasks [e.g., 17–19].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-4458059f37f543cb4120bb8d",
+          "input_sha256": "4599aa8fc222202e0083a12ba3f361c27083d45b0c08af669d99cbbd852b36bf",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/9425be43ba92c2b4454ca7bf602efad8-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/9425be43ba92c2b4454ca7bf602efad8-Paper.pdf",
+              "sha256": "602c0bff56349735e11e5c141eaa7edba66496e8cf1a8640a1bd42ad2e5919e6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Transformer-based models [1] have achieved great success in the domains of natural language processing (NLP) [2, 3] and computer vision [4–6]. These models benefit from the self-attention module, which can capture both adjacent and long-range correlations between tokens while efficiently scaling on modern hardware. However, the time and memory consumed by self-attention scale quadratically with the input length, making it very expensive to process long sequences. Many language and vision tasks benefit from modeling long sequences. In NLP, document-level tasks require processing long articles [e.g., 7, 8], and the performance of language models often increases with sequence length [e.g., 9, 10]. In computer vision, many tasks involve high-resolution images, which are converted to long sequences of image patches before being processed with Transformer models [4, 6, 11]. As a result, it is crucial to design an efficient attention mechanism for long sequence modeling that generalizes well across different domains. ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/9425be43ba92c2b4454ca7bf602efad8-Paper.pdf",
+              "document_sha256": "602c0bff56349735e11e5c141eaa7edba66496e8cf1a8640a1bd42ad2e5919e6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Various methods have been proposed to reduce the quadratic cost of full attention. However, an efficient attention mechanism that generalizes well in both language and vision domains is less explored. One family of methods is to sparsify the attention matrix with predefined patterns such as sliding windows [e.g., 12–15] and random sparse patterns [16]. These methods leverage strong inductive biases to improve both computational and model performance, but they limit the capacity of a self-attention layer because each specific token can only attend to a subset of tokens. Another family of methods leverages low-rank projections to form a low resolution representation of the input sequence, but the successful application of these methods has been limited to certain NLP tasks [e.g., 17–19]. Unlike sparse attention, this family of methods allows each token to attend to the entire input sequence. However, due to the loss of high-fidelity token-wise information, their performance sometimes is not as good as full attention or sparse attention on tasks that require fine-grained local information, including standard benchmarks in language [20] and vision [21]. Despite the rapid progress in efficient Transformers, some proposed architectures can only be applied to bidirectional models [e.g., 15, 16, 18]. Transformer-based autoregressive models have achieved great successes in language modeling [22], image synthesis [23], and text-to-image synthesis [24], which also involve long texts or high-resolution images. It is desirable to design an efficient transformer that can be applied to both autoregressive and bidirectional models. In this work, we unify a local window attention and a novel long-range attention into a single efficient attention mechanism. We show that these two kinds",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/9425be43ba92c2b4454ca7bf602efad8-Paper.pdf",
+              "document_sha256": "602c0bff56349735e11e5c141eaa7edba66496e8cf1a8640a1bd42ad2e5919e6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Transformers have achieved success in both language and vision domains. However, it is prohibitively expensive to scale them to long sequences such as long documents or high-resolution images, because self-attention mechanism has quadratic time and memory complexities with respect to the input sequence length. In this paper, we propose Long-Short Transformer (Transformer-LS), an efficient self-attention mechanism for modeling long sequences with linear complexity for both language and vision tasks. It aggregates a novel long-range attention with dynamic projection to model distant correlations and a short-term attention to capture fine-grained local correlations. We propose a dual normalization strategy to account for the scale mismatch between the two attention mechanisms. Transformer-LS can be applied to both autoregressive and bidirectional models without additional complexity. Our method outperforms the state-of-the-art models on multiple tasks in language and vision domains, including the Long Range Arena benchmark, autoregressive language modeling, and ImageNet classification. For instance, Transformer-LS achieves 0.97 test BPC on enwik8 using half the number of parameters than previous method, while being faster and is able to handle 3× as long sequences compared to its full-attention version on the same hardware. On ImageNet, it can obtain the state-of-the-art results (e.g., a moderate size of 55.8M model solely trained on 224 × 224 ImageNet-1K can obtain Top-1 accuracy 84.1%), while being more scalable on high-resolution images. The source code and models are released at https://github.com/NVIDIA/transformer-ls.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/9425be43ba92c2b4454ca7bf602efad8-Paper.pdf",
+              "document_sha256": "602c0bff56349735e11e5c141eaa7edba66496e8cf1a8640a1bd42ad2e5919e6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "We compare our method with other efficient transformers on the character-level language modeling where each input token is a character. Setup. We train and evaluate our model on enwik8 and text8, each with 100M characters and are divided into 90M, 5M, 5M for train, dev, test, following [48]. Our smaller 12-layer and larger 30-layer models are Pre-LN Transformers with the same width and depth as Longformer [20], except that we add relative position encoding to the projected segments in each layer. We adopt the cache mechanism of Transformer-XL [9], setting the cache size to be the same as the input sequence length. We follow similar training schedule as Longformer, and train our model in 3 phases with increasing sequence lengths. The input sequence lengths are 2048, 4096 and 8192 respectively for the 3 phases. By comparison, Longformer trains their model in 5 phases on GPUs with 48GB memory (The maximal of ours is 32GB) where the sequence length is 23,040 in the last phase. The window size of Longformer increases with depth and its average window size is 4352 in phase 5, while our effective number of attended tokens is 1280 on average in the last phase. Each experiment takes around 8 days to finish on 8 V100 GPUs. Detailed hyperparameters are shown in Appendix D. For testing, same as Longformer, we split the dataset into overlapping sequences of length 32K at a step size of 512, and evaluate the BPCs for predicting the next 512 tokens given the previous 32K characters. Results Table 4 shows comparisons on text8 and enwik8. Our method has achieved state-of-the-art results. On text8, we achieve a test BPC of 1.09 with the smaller model. On enwik8, our smaller model achieves a test BPC of 0.99, and outperforms the state-of-the-art models with comparable number of",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/9425be43ba92c2b4454ca7bf602efad8-Paper.pdf",
+              "document_sha256": "602c0bff56349735e11e5c141eaa7edba66496e8cf1a8640a1bd42ad2e5919e6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-4458059f37f543cb4120bb8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/9425be43ba92c2b4454ca7bf602efad8-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "637c263eb16ea0146fad984ff6e3b3db6d513ec286cf0db1463282abd6128395"
+    },
+    {
+      "id": "edge-21184c162a18324bc5089bb1",
+      "a": "paper-005587308054cc2f7287af2c",
+      "b": "paper-e88b98f468f6089806351fd5",
+      "state": {
+        "paper_a": {
+          "title": "Linear Complexity Randomized Self-attention Mechanism",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Recently, random feature attentions (RFAs) are proposed to approximate the softmax attention in linear time and space complexity by linearizing the exponential kernel. In this paper, we first propose a novel perspective to understand the bias in such approximation by recasting RFAs as self-normalized importance samplers. This perspective further sheds light on an unbiased estimator for the whole softmax attention, called randomized attention (RA). RA constructs positive random features via query-specific distributions and enjoys greatly improved approximation fidelity, albeit exhibiting quadratic complexity. By combining the expressiveness in RA and the efficiency in RFA, we develop a novel linear complexity self-attention mechanism called linear randomized attention (LARA). Extensive experiments across various domains demonstrate that RA and LARA significantly improve the performance of RFAs by a substantial margin."
+        },
+        "paper_b": {
+          "title": "Various Lengths, Constant Speed: Efficient Language Modeling with Lightning Attention",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We present Lightning Attention, the first linear attention implementation that maintains a constant training speed for various sequence lengths under fixed memory consumption. Due to the issue with cumulative summation operations (cumsum), previous linear attention implementations cannot achieve their theoretical advantage in a casual setting. However, this issue can be effectively solved by utilizing different attention calculation strategies to compute the different parts of attention. Specifically, we split the attention calculation into intra-blocks and inter-blocks and use conventional attention computation for intra-blocks and linear attention kernel tricks for inter-blocks. This eliminates the need for cumsum in the linear attention calculation. Furthermore, a tiling technique is adopted through both forward and backward procedures to take full advantage of the GPU hardware. To enhance accuracy while preserving efficacy, we introduce TransNormerLLM (TNL), a new architecture that is tailored to our lightning attention. We conduct rigorous testing on standard and self-collected datasets with varying model sizes and sequence lengths. TNL is notably more efficient than other language models. In addition, benchmark results indicate that TNL performs on par with state-of-the-art LLMs utilizing conventional transformer structures. The source code is released at github.com/OpenNLPLab/TransnormerLLM."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "For example, Katharopoulos et al. (2020) use 1+elu as an activation function, Qin et al. (2022b) use the cosine function to approximate the properties of soft-max, and Choromanski et al. (2021); Zheng et al. (2022; 2023) approximate softmax through theoretical approaches.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-005587308054cc2f7287af2c",
+          "b": "paper-e88b98f468f6089806351fd5",
+          "input_sha256": "7b8a8c4bb5bc98467fc0c0329d42d315a23d6c90e4b999530359130c662b4ceb",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/zheng22b.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/zheng22b/zheng22b.pdf",
+              "sha256": "4520575b1d87f95662410260473f1b7277884b617ef653420ca33f298357bec9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/qin24c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/qin24c/qin24c.pdf",
+              "sha256": "5745f522ce1e75460fbb9007a270ccbdff2e614a41c32c623ba1128603421640"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "7. Conclusion In this paper, we revisit the recently proposed random feature methods for approximating the softmax attention. By recasting RFA as self-normalized importance samplers, we identify an elusive bias in its approximation process. Built on this finding, we propose the unbiased estimation, called randomized attention (RA), which constructs positive random features via query-specific distributions. We then develop a novel linear complexity self-attention mechanism called linear randomized attention (LARA), which combines the expressiveness in RA and the efficiency in RFA. Extensive experiments demonstrate the effectiveness of RA and LARA, across various domains.",
+              "url": "https://proceedings.mlr.press/v162/zheng22b/zheng22b.pdf",
+              "document_sha256": "4520575b1d87f95662410260473f1b7277884b617ef653420ca33f298357bec9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "4. Linear Complexity Randomized Attention In this section, we propose an improved estimator of softmax attention to combine both the expressiveness of RA and the efficiency of RFA. Motivated by the difference between RA and RFA, we generalize the importance sampling formulation of RFA by adopting multiple proposals. This strategy not only captures query information at a finer-grained level, but also allows the model to estimate softmax attention in a query-specific manner (§4.1). We further show that computation reuse in RFA can be achieved, which leads to linear complexity computation with the help of self-normalized importance sampling (§4.2). 4.1. Importance Sampling with Multiple Proposals As discussed in §3.2, both RA and RFA aim to estimate the expectation Epn (ω) [fn (ω)] (Equation 7). The main difference between RA and RFA is that RA samples from a distinct distribution for each query, while RFA uses the same",
+              "url": "https://proceedings.mlr.press/v162/zheng22b/zheng22b.pdf",
+              "document_sha256": "4520575b1d87f95662410260473f1b7277884b617ef653420ca33f298357bec9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "structure. Four promising alternatives, including linear transformers, state space models, long convolution, and linear recurrence, are being developed to replace self-attention modules for long sequence modeling. Linear Attention Linear attention decomposes Softmax Attention into the inner product of hidden representations, allowing it to use the \"Kernel Trick\", where the product of keys and values is computed first to avoid the quadratic n × n matrix. Different methods utilize various hidden representations. For example, Katharopoulos et al. (2020) use 1+elu as an activation function, Qin et al. (2022b) use the cosine function to approximate the properties of softmax, and Choromanski et al. (2021); Zheng et al. (2022; 2023) approximate softmax through theoretical approaches. Although its theoretical complexity is O(nd2 ), the actual computational efficiency of linear attention becomes low when used in causal attention due to the need for cumsum operations (Hua et al., 2022). Moreover, most linear attention still exhibits a certain performance gap compared to traditional Transformers (Katharopoulos et al., 2020; Liu et al., 2022).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/qin24c/qin24c.pdf",
+              "document_sha256": "5745f522ce1e75460fbb9007a270ccbdff2e614a41c32c623ba1128603421640"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "good spur. We propose a novel architecture, TransNormerLLM (TNL), which is specifically designed for Lightning Attention in order to enhance its performance. TNL evolves from the previous linear attention architecture TransNormer (Qin et al., 2022a) by making advanced modifications that include positional embedding, linear attention acceleration, gating mechanism, tensor normalization. Specifically, we use LRPE (Qin et al., 2023b) together with an exponential decay to avoid attention dilution issues while allowing the model to retain global interactions between tokens. A gating mechanism is utilized to smooth training, and a new tensor normalization scheme is proposed to accelerate the model while preserving its accuracy. We also implement an efficient model parallel schema for TransNormerLLM, enabling seamless deployment on large-scale clusters and facilitating expansion to even more extensive models. As shown in Fig. 1, TNL achieves the lowest training loss among the existing efficient transformer structures (Qin et al., 2023a;c) as well as SOTA transformer models (Touvron et al., 2023b).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/qin24c/qin24c.pdf",
+              "document_sha256": "5745f522ce1e75460fbb9007a270ccbdff2e614a41c32c623ba1128603421640"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We present Lightning Attention, the first linear attention implementation that maintains a constant training speed for various sequence lengths under fixed memory consumption. Due to the issue with cumulative summation operations (cumsum), previous linear attention implementations cannot achieve their theoretical advantage in a casual setting. However, this issue can be effectively solved by utilizing different attention calculation strategies to compute the different parts of attention. Specifically, we split the attention calculation into intra-blocks and inter-blocks and use conventional attention computation for intrablocks and linear attention kernel tricks for interblocks. This eliminates the need for cumsum in the linear attention calculation. Furthermore, a tiling technique is adopted through both forward and backward procedures to take full advantage of the GPU hardware. To enhance accuracy while preserving efficacy, we introduce TransNormerLLM (TNL), a new architecture that is tailored to our lightning attention. We conduct rigorous testing on standard and self-collected datasets with varying model sizes and sequence lengths. TNL is notably more efficient than other language models. In addition, benchmark results indicate that TNL performs on par with state-of-the-art LLMs utilizing conventional transformer structures. The source code is released at github.com/OpenNLPLab/TransnormerLLM.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/qin24c/qin24c.pdf",
+              "document_sha256": "5745f522ce1e75460fbb9007a270ccbdff2e614a41c32c623ba1128603421640"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-005587308054cc2f7287af2c",
+          "url": "https://proceedings.mlr.press/v162/zheng22b.html"
+        },
+        "b": {
+          "paper_id": "paper-e88b98f468f6089806351fd5",
+          "url": "https://proceedings.mlr.press/v235/qin24c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "4351312d8745318f43ab7b134863e38076001eb76df5a17e9f51e76fdd49c51e"
+    },
+    {
+      "id": "edge-2fce06456e476a934d115f13",
+      "a": "paper-00a7da2e6ec9a42f864e2dd2",
+      "b": "paper-19b2775798d33ce6995d26be",
+      "state": {
+        "paper_a": {
+          "title": "Knowledge Neurons in Pretrained Transformers",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus. In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers."
+        },
+        "paper_b": {
+          "title": "Exact Conversion of In-Context Learning to Model Weights in Linearized-Attention Transformers",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "In-Context Learning (ICL) has been a powerful emergent property of large language models that has attracted increasing attention in recent years. In contrast to regular gradient-based learning, ICL is highly interpretable and does not require parameter updates. In this paper, we show that, for linearized transformer networks, ICL can be made explicit and permanent through the inclusion of bias terms. We mathematically demonstrate the equivalence between a model with ICL demonstration prompts and the same model with the additional bias terms. Our algorithm (ICLCA) allows for exact conversion in an inexpensive manner. Existing methods are not exact and require expensive parameter updates. We demonstrate the efficacy of our approach through experiments that show the exact incorporation of ICL tokens into a linear transformer. We further suggest how our method can be adapted to achieve cheap approximate conversion of ICL tokens, even in regular transformer networks that are not linearized. Our experiments on GPT-2 show that, even though the conversion is only approximate, the model still gains valuable context from the included bias terms."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In-context learning is an attractive proposition compared to traditional parameter-based model update methods such as fine-tuning (Wei et al., 2021; Ouyang et al., 2022) or knowledge editing (Dai et al., 2021; Meng et al., 2022a;b).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00a7da2e6ec9a42f864e2dd2",
+          "b": "paper-19b2775798d33ce6995d26be",
+          "input_sha256": "2fdc3ba5724aeed4f63a4b3a1fd42123bc31732c7332f17fb5e1c448a8569097",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.581/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/chen24r.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/chen24r/chen24r.pdf",
+              "sha256": "31563f7847e7c5611d53729475acae2cb3bf938894d0904f4c1c027f75f439d2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus (Petroni et al., 2019; Jiang et al., 2020b). In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers. The code is available at https://github.com/ Hunter-DDM/knowledge-neurons.",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "text-form knowledge prediction. In this paper, we attempt to look deeper into pretrained Transformers and investigate how factual knowledge is stored. As shown in Figure 1, we propose a knowledge attribution method to identify the neurons that express a relational fact, where such neurons are named knowledge neurons. Specifically, we view feed-forward network (i.e., two-layer perceptron) modules in Transformer as key-value memories (Geva et al., 2020). For the example in Figure 1, the hidden state is fed into the first linear layer and activates knowledge neurons; then, the second linear layer integrates the corresponding memory vectors. The key-value-memory nature (Geva et al., 2020) inspires us to propose the knowledge attribution method, which identifies knowledge neurons in feed-forward networks by computing the contribution of each neuron to the knowledge prediction. Extensive analysis shows that the activation of the identified knowledge neurons is positively correlated to the knowledge expression, which shows",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "In-context learning is an attractive proposition compared to traditional parameter-based model update methods such as fine-tuning (Wei et al., 2021; Ouyang et al., 2022) or knowledge editing (Dai et al., 2021; Meng et al., 2022a;b). Demonstration examples can be directly included in the prompt. There is no need to edit the parameters of the model which can be costly when considering models with billions of parameters such as OpenAI’s GPT-4 and Google’s Bard. In terms of performance, ICL prompting methods (Wei et al., 2022; Zhou et al., 2022) also demonstrate stronger generalization and more precise control of the model behavior (Zheng et al., 2023). Such an advantage is expected to be more prominent as LLMs get larger and more powerful. In addition, ICL presents a degree of interpretability when incorporating demonstration examples into the model. The examples often take the form of natural language prompts or other readily understandable inputs that can be understood by humans. This is often not the case when working with machine learning. Despite its promising qualities, there are clear shortcomings to the ICL paradigm compared to the traditional gradient-based fine-tuning approaches. While not requiring costly parameter updates like other methods, ICL does not permanently modify the model weights. All included contextual information is only temporary. Demonstration examples are only incorporated on a case-by-case basis and will not be applied to future input prompts. Studies on permanently including ICL information in the model weights are still limited. There are some attempts aiming to distill the context information from ICL prompts into the model parameters (Askell et al., 2021; Choi et al., 2022; Snell et al., 2022). However, these so-called context",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/chen24r/chen24r.pdf",
+              "document_sha256": "31563f7847e7c5611d53729475acae2cb3bf938894d0904f4c1c027f75f439d2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "6. Experiments We first demonstrate that our ICL conversion algorithm (ICLCA) is numerically exact for linearized attention models. Next we conduct experiments on a synthetic induction head task and show that ICLCA is able to capture the ICL prompt in the bias terms. Furthermore, we perform experiments on a pretrained GPT-2 model and show that, although the conversion process is approximate, our method reduces the relative error of the logits and the model is aware of the context when generating the text. In this section, we denote the model before conversion with ICL prompt by Mold,ICL , the model before conversion without ICL prompt by Mold,no ICL and the model after conversion without ICL prompt by Mnew,no ICL .",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/chen24r/chen24r.pdf",
+              "document_sha256": "31563f7847e7c5611d53729475acae2cb3bf938894d0904f4c1c027f75f439d2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "In this work, we leverage the linearity of the attention module in linearized attention architectures to permanently incorporate ICL prompts into the model. This is done through the addition of a bias term to the Key-Value matrix, which can be seen as an architectural modification. Compared to current alternatives, ours is an exact conversion, which is interpretable and very computationally inexpensive to implement. Exact conversion from context data to model weights not only contributes to the theoretical understanding of ICL but also unlocks new possibilities for LLMs in practice. For instance, LLMs offered by companies are constantly being fine-tuned to incorporate new knowledge, which requires a large amount of data and delicate optimization strategies to avoid catastrophic forgetting. With our method, we can conduct ICL-guided fine-tuning, which can effectively make localized modifications. Furthermore, our method can potentially offer significant computation savings for LLM inference, by converting long context prompts such as system prompts, personalized data, and personal history that are repeatedly added as context for every inference.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/chen24r/chen24r.pdf",
+              "document_sha256": "31563f7847e7c5611d53729475acae2cb3bf938894d0904f4c1c027f75f439d2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00a7da2e6ec9a42f864e2dd2",
+          "url": "https://aclanthology.org/2022.acl-long.581/"
+        },
+        "b": {
+          "paper_id": "paper-19b2775798d33ce6995d26be",
+          "url": "https://proceedings.mlr.press/v235/chen24r.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "21a0e1ed49fbd1ec58af633729588cc8752f2c5eb9933eabbed7ece8941aba91"
+    },
+    {
+      "id": "edge-f591edd739a65cd945506aef",
+      "a": "paper-00a7da2e6ec9a42f864e2dd2",
+      "b": "paper-7159766db1bc9a9cff97cd09",
+      "state": {
+        "paper_a": {
+          "title": "Knowledge Neurons in Pretrained Transformers",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus. In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers."
+        },
+        "paper_b": {
+          "title": "The Atlas of In-Context Learning: How Attention Heads Shape In-Context Retrieval Augmentation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Large language models are able to exploit in-context learning to access external knowledge beyond their training data through retrieval-augmentation. While promising, its inner workings remain unclear. In this work, we shed light on the mechanism of in-context retrieval augmentation for question answering by viewing a prompt as a composition of informational components. We propose an attribution-based method to identify specialized attention heads, revealing in-context heads that comprehend instructions and retrieve relevant contextual information, and parametric heads that store entities' relational knowledge. To better understand their roles, we extract function vectors and modify their attention weights to show how they can influence the answer generation process. Finally, we leverage the gained insights to trace the sources of knowledge used during inference, paving the way towards more safe and transparent language models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "However, how they interact with components in MLP modules e.g., knowledge neurons [19] to induce functions remains an open question.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00a7da2e6ec9a42f864e2dd2",
+          "b": "paper-7159766db1bc9a9cff97cd09",
+          "input_sha256": "55ad7d8f83b96ced2fe4401e171fcb761705243734e02a18e3b83ef15718ceb9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.581/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ab49f5e61eadbe979373c133232a96a0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus (Petroni et al., 2019; Jiang et al., 2020b). In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers. The code is available at https://github.com/ Hunter-DDM/knowledge-neurons.",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "text-form knowledge prediction. In this paper, we attempt to look deeper into pretrained Transformers and investigate how factual knowledge is stored. As shown in Figure 1, we propose a knowledge attribution method to identify the neurons that express a relational fact, where such neurons are named knowledge neurons. Specifically, we view feed-forward network (i.e., two-layer perceptron) modules in Transformer as key-value memories (Geva et al., 2020). For the example in Figure 1, the hidden state is fed into the first linear layer and activates knowledge neurons; then, the second linear layer integrates the corresponding memory vectors. The key-value-memory nature (Geva et al., 2020) inspires us to propose the knowledge attribution method, which identifies knowledge neurons in feed-forward networks by computing the contribution of each neuron to the knowledge prediction. Extensive analysis shows that the activation of the identified knowledge neurons is positively correlated to the knowledge expression, which shows",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "We propose a method to explore the inner workings of ICL for retrieval-augmentation, revealing in-context and parametric heads that operate on the input prompt in a distinct manner and find that in-context heads can specialize into either task or retrieval heads, depending on whether they encode intensional frames or retrieve relevant information. We study the roles of the identified heads by converting them into FVs or modifying their weights, showing how they can affect the generation process. Finally, we present a probe to precisely and efficiently track for knowledge provenance, opening up a path towards more interpretable retrieval-augmented LMs. Limitations We focus our investigation on attention heads since they are primarily associated with ICL. However, how they interact with components in MLP modules e.g., knowledge neurons [19] to induce functions remains an open question. Our analyses are also mainly centered on QA (with a minor part on MT). It would be interesting to see if similar mechanisms arise in other tasks. We find that several heads exhibit inhibitory effects, and that some intermediate heads are not exclusively specialized for either in-context or parametric roles — both of which warrant further investigation. In addition, there is a possibility for redundant heads [79], which are yet to be uncovered. We leave this avenue for future work. Broader Impacts Our research enhances trust in retrieval-augmented LMs by elucidating the mechanisms through which they access and use external knowledge. Furthermore, it enables precise source attribution, allowing users to trace the origins of the information leveraged in response generation. However, we caution against its potential for misuse, such as using the identified heads to induce malicious behavior. 10",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models are able to exploit in-context learning to access external knowledge beyond their training data through retrieval-augmentation. While promising, its inner workings remain unclear. In this work, we shed light on the mechanism of in-context retrieval augmentation for question answering by viewing a prompt as a composition of informational components. We propose an attributionbased method to identify specialized attention heads, revealing in-context heads that comprehend instructions and retrieve relevant contextual information, and parametric heads that store entities’ relational knowledge. To better understand their roles, we extract function vectors and modify their attention weights to show how they can influence the answer generation process. Finally, we leverage the gained insights to trace the sources of knowledge used during inference, paving the way towards more safe and transparent language models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Functional map of in-context and parametric heads in Llama-3.1-8B-Instruct. They are surprisingly well-structured and operate on the input prompt at various levels, with in-context heads processing information in the prompt, including instruction comprehension and retrieval operations — and parametric heads that encode relational knowledge. In-context heads can specialize to task heads to parse instructions (blue) or retrieval heads for verbatim copying (green). Together with parametric heads, they affect the answer generation process through function vectors that they transport (a, c) or their attention weights (b). Our relevance analysis (bar plot) shows that instruction-following capabilities emerge in middle layers, while answer retrieval occurs in later layers. Details in C.1. On question answering tasks, we show that by viewing a prompt as a composition of informational components, certain attention heads perform various operations on the prompt at different stages of inference and layers (Figure 1). Our method identifies two groups of heads based on their functions: parametric heads that encode relational knowledge [27, 57] and in-context heads responsible for processing information in the prompt. Further, as in-context heads need to understand which prompt components to process and how, we hypothesize that they specialize to fill their respective roles. Our analysis shows that in-context heads can indeed execute specialized functions such as instruction comprehension and retrieval of relevant contextual information. To investigate this further, we curate a controlled biography dataset with entities extracted from Wikidata [78]. Remarkably, we find that through compressing them to FVs or modifying their weights, both in-context and parametric heads can",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00a7da2e6ec9a42f864e2dd2",
+          "url": "https://aclanthology.org/2022.acl-long.581/"
+        },
+        "b": {
+          "paper_id": "paper-7159766db1bc9a9cff97cd09",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ab49f5e61eadbe979373c133232a96a0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "58dc345121e93056f24f3e0b5b129f529716e5ecd3552182809cc2df6e752f1b"
+    },
+    {
+      "id": "edge-d00c00c046556c0b1f0ce54a",
+      "a": "paper-017ceb90e893555baf777c59",
+      "b": "paper-6de0fdd931fc453c5fc77892",
+      "state": {
+        "paper_a": {
+          "title": "O(n) Connections are Expressive Enough: Universal Approximability of Sparse Transformers",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recently, Transformer networks have redefined the state of the art in many NLP tasks. However, these models suffer from quadratic computational cost in the input sequence length $n$ to compute pairwise attention in each layer. This has prompted recent research into sparse Transformers that sparsify the connections in the attention layers. While empirically promising for long sequences, fundamental questions remain unanswered: Can sparse Transformers approximate any arbitrary sequence-to-sequence function, similar to their dense counterparts? How does the sparsity pattern and the sparsity level affect their performance? In this paper, we address these questions and provide a unifying framework that captures existing sparse attention models. We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function. Surprisingly, our results show that sparse Transformers with only $O(n)$ connections per attention layer can approximate the same function class as the dense model with $n^2$ connections. Lastly, we present experiments comparing different patterns/levels of sparsity on standard NLP tasks."
+        },
+        "paper_b": {
+          "title": "On the Role of Attention Masks and LayerNorm in Transformers",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Self-attention is the key mechanism of transformers, which are the essential building blocks of modern foundation models. Recent studies have shown that pure self-attention suffers from an increasing degree of rank collapse as depth increases, limiting model expressivity and further utilization of model depth. The existing literature on rank collapse, however, has mostly overlooked other critical components in transformers that may alleviate the rank collapse issue. In this paper, we provide a general analysis of rank collapse under self-attention, taking into account the effects of attention masks and layer normalization (LayerNorm). In particular, we find that although pure masked attention still suffers from exponential collapse to a rank one subspace, sparse or local masked attention can provably slow down the collapse rate. In the case of self-attention with LayerNorm, we first show that for certain classes of value matrices, collapse to a rank one subspace still happens exponentially. However, through construction of nontrivial counterexamples, we then establish that with proper choice of value matrices, a general class of sequences may not converge to a rank one subspace, and the self-attention dynamics with LayerNorm can simultaneously possess a rich set of equilibria with any possible rank between one and full. Our result refutes the previous hypothesis that LayerNorm plays no role in the rank collapse of self-attention and suggests that self-attention with LayerNorm constitutes a much more expressive, versatile nonlinear dynamical system than what was originally thought."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…GPT models [6, 30], use the causal attention masks where tokens are only allowed to attend to preceding tokens, or have sparse attention structure (sparse attention) [4, 8, 10, 21, 22, 32, 38, 41, 42], where attention is restricted to local interactions between tokens and their chosen neighbors.\nYun et al. [41] show that transformers with strongly connected graph masks are sequence-to-sequence function universal, yet with a mask G they need at least the diameter of G layers to achieve the full sequence-to-sequence function approximation property.\nThis observation seems in line with the fact that MLP modules are crucial for the universal sequence-to-sequence approximation power of transformers [40, 41].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017ceb90e893555baf777c59",
+          "b": "paper-6de0fdd931fc453c5fc77892",
+          "input_sha256": "2c0d74ce0e0b07838a5331c01bf45da0fbe7842a9c8b0c31b54d0fc0c886120b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/1ac3030fc57850b0fb11dfe9d4880ad7-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/1ac3030fc57850b0fb11dfe9d4880ad7-Paper-Conference.pdf",
+              "sha256": "fe7fb3b4d391974ba738d0e8bfbcadaa585068db6131057dda898bbae063bab9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we take the first step towards a theoretical understanding of sparse Transformers. We propose a unified framework to analyze sparse Transformers, which generalizes the existing approaches that sparsify attention layers (§ 3.1). • We propose a set of intuitive conditions on the sparsity pattern (Assumption 1) and the probability map (Assumption 2). Then, in Theorem 1, we show that Sparse Transformers, of fixed width and arbitrary depth, satisfying these conditions are universal approximators of any continuous sequence-to-sequence functions for any given fixed sequence length (§ 3.2 and § 3.3). • We next show some examples of existing sparse Transformers [2, 6, 8, 9, 11, 34, 35] that satisfy these conditions, and hence have universal approximability (§ 3.4). Surprisingly, we show that there are sparse Transformers with only O(n) connections per self-attention layer (instead of n2 ) that have enough expressive power to approximate arbitrary continuous functions (Corollary 2). • We report experimental results on standard NLP tasks using sparse Transformers, comparing different sparsity patterns/levels (§ 5). •",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Assumption 1.1 is equivalent to saying that every token always attends to itself. Assumption 1.2 reSp quires that there is a chain of direct connections that covers all n tokens; note that the set l=1 Alγ(i+1) is the set of all tokens that the γ(i + 1)-th token directly attends to. To elaborate more about Sp the chain, consider a directed graph with n vertices corresponding to the n tokens. For any j ∈ l=1 Alk , we add a directed edge j → k. Given a graph constructed this way, Assumption 1.2 requires that the graph has a Hamiltonian path γ(1) → γ(2) → · · · → γ(n). Assumption 1.3 requires that after s sparse attention layers, every token can attend to all the other tokens, either directly or indirectly. As we discuss in § 3.4, the statements in Assumption 1 are natural enough to be satisfied by many existing sparsity patterns studied in the literature. In fact, Assumption 1.3 is necessary for universal approximation. If p = 1, n = 2, A11 = {1} and A12 = {1, 2}, then the first token never attends to the second, so this sparse Transformer cannot approximate a function whose first output token is dependent on both input tokens. The other two assumptions are required in parts of our proof, which involve “propagating information” over all the tokens in a sequential manner. We now state the assumption on the probability map ρ[·]. For this, we define σH [·] to be the hardmax operator, which outputs the one-hot representation of the arg max entry for each column of the input matrix. Since ρ is a column-wise operator that outputs a column-stochastic matrix, we state the assumption for the operation of ρ on a single column. Assumption 2. For any ζ > 0 and η ∈ (0, 1], ∃ t > 0 such that, for any columnP input v satisfying vj ∗ − maxj6=j ∗ vj ≥ ζ (where j ∗ = arg maxj vj ), we have",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "such as the one deployed in the BERT family [11, 24]. The vast majority of popular transformer architectures used nowadays in language models, including the GPT models [6, 30], use the causal attention masks where tokens are only allowed to attend to preceding tokens, or have sparse attention structure (sparse attention) [4, 8, 10, 21, 22, 32, 38, 41, 42], where attention is restricted to local interactions between tokens and their chosen neighbors. This limits the practical applicability of the theoretical results developed in [12, 15, 16, 27], as they heavily rely on the key assumption that attention is fully bidirectional. Second, layer normalization (LayerNorm) is another inherent component of transformers. Dong et al. [12] put forth a hypothesis that LayerNorm plays no role in preventing rank collapse in self-attention networks. This hypothesis is then partially validated by a continuous-time analysis of self-attention dynamics conducted in Geshkovski et al. [15]. The analysis, which incorporates LayerNorm, shows the exponential convergence of tokens to a common point on the unit sphere. However, this result relies on a strong assumption that all the value matrices are the identity matrix. In contrast, for multilayer perceptrons (MLPs), Joudaki et al. [23] show that LayerNorm improves the isometry of the representations and can prevent rank collapse in that setting. It thus remains a question whether it is truly the case that LayerNorm could not have a similar effect in transformers under more general assumptions due to self-attention. Hence, in this work, we rigorously study the effect of attention masks and LayerNorm on the token dynamics and rank collapse in transformers. The main questions we address are as follows: Can attention masks alleviate rank collapse",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/1ac3030fc57850b0fb11dfe9d4880ad7-Paper-Conference.pdf",
+              "document_sha256": "fe7fb3b4d391974ba738d0e8bfbcadaa585068db6131057dda898bbae063bab9"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "As a result, a rank collapse of tokens happens exponentially with respect to µ(·), i.e. there exists C > 0 such that t/r µ(X (t) ) ≤ C (1 − ϵr ) , (6) where r is the radius of G, meaning that tokens converge to a common vector exponentially. The detailed proof is provided in Appendix B. The above result suggests that with pure self-attention, as long as there is a token which all other tokens in the sequence can directly or indirectly attend to over a fixed number of layers, exponential rank collapse of tokens to a common vector is guaranteed. In particular, it generalizes the main result in [12] from G being a complete graph to a much more general class of attention patterns: the attention pattern G only needs to be quasi-strongly connected, meaning that the result applies to general attention masks used in practice including the causal mask used in decoder-only models such as the GPT family [6, 30], or sparse attention patterns deployed in many efficient transformer models [4, 10, 21, 32, 42]. We discuss a few interesting implications below. Local vs. global attention The exponential rate (1 − ϵr )1/r is monotone in the graph radius r. This means that rank collapse should be slower for graphs with larger radius r. Our result thus indirectly supports the use of local attention patterns [4, 42], which not only make the attention computation more efficient (what those works are originally motivated by), but also implicitly alleviate the rank collapse issue. Focused vs. uniform attention In addition, the exponential rate is monotone decreasing in ϵ, which means that rank collapse is slower with smaller ϵ. One can interpret ϵ as how \"focused\" attention is distributed among reachable tokens, as ϵ is maximized when attention happens uniformly among reachable tokens. Besides",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/1ac3030fc57850b0fb11dfe9d4880ad7-Paper-Conference.pdf",
+              "document_sha256": "fe7fb3b4d391974ba738d0e8bfbcadaa585068db6131057dda898bbae063bab9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017ceb90e893555baf777c59",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6de0fdd931fc453c5fc77892",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/1ac3030fc57850b0fb11dfe9d4880ad7-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "702092175140bc817ef4a99bc5b24647e1035aaf6ce837cda6d846ca622c8cf3"
+    },
+    {
+      "id": "edge-15da37ac2a380305b928778c",
+      "a": "paper-017ceb90e893555baf777c59",
+      "b": "paper-7148ee318863d8b5285b8c12",
+      "state": {
+        "paper_a": {
+          "title": "O(n) Connections are Expressive Enough: Universal Approximability of Sparse Transformers",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recently, Transformer networks have redefined the state of the art in many NLP tasks. However, these models suffer from quadratic computational cost in the input sequence length $n$ to compute pairwise attention in each layer. This has prompted recent research into sparse Transformers that sparsify the connections in the attention layers. While empirically promising for long sequences, fundamental questions remain unanswered: Can sparse Transformers approximate any arbitrary sequence-to-sequence function, similar to their dense counterparts? How does the sparsity pattern and the sparsity level affect their performance? In this paper, we address these questions and provide a unifying framework that captures existing sparse attention models. We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function. Surprisingly, our results show that sparse Transformers with only $O(n)$ connections per attention layer can approximate the same function class as the dense model with $n^2$ connections. Lastly, we present experiments comparing different patterns/levels of sparsity on standard NLP tasks."
+        },
+        "paper_b": {
+          "title": "SparQ Attention: Bandwidth-Efficient LLM Inference",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The computational difficulties of large language model (LLM) inference remain a significant obstacle to their widespread deployment. The need for many applications to support long input sequences and process them in large batches typically causes token-generation to be bottlenecked by data transfer. For this reason, we introduce SparQ Attention , a technique for increasing the inference throughput of LLMs by utilising memory bandwidth more efficiently within the attention layers, through selective fetching of the cached history. Our proposed technique can be applied directly to off-the-shelf LLMs during inference, without requiring any modification to the pre-training setup or additional fine-tuning. We show that SparQ Attention brings up to 8x savings in attention data transfers without substantial drops in accuracy, by evaluating Llama 2 and 3, Mistral, Gemma and Pythia models on a wide range of downstream tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Despite this expensive cache-fetch at each step, tokens generally only attend to a small part of the sequence at a time (Vig, 2019; Yun et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017ceb90e893555baf777c59",
+          "b": "paper-7148ee318863d8b5285b8c12",
+          "input_sha256": "3fda18c774af4de2e58ae906cb58717af5f53ad9f61f9f4501afc2c0ef358c9a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/ribar24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/ribar24a/ribar24a.pdf",
+              "sha256": "a0e6a2d6e94743d64ab4671f9ca95064ca2d5f87cc67a5d3b09d6a01c8e46267"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we take the first step towards a theoretical understanding of sparse Transformers. We propose a unified framework to analyze sparse Transformers, which generalizes the existing approaches that sparsify attention layers (§ 3.1). • We propose a set of intuitive conditions on the sparsity pattern (Assumption 1) and the probability map (Assumption 2). Then, in Theorem 1, we show that Sparse Transformers, of fixed width and arbitrary depth, satisfying these conditions are universal approximators of any continuous sequence-to-sequence functions for any given fixed sequence length (§ 3.2 and § 3.3). • We next show some examples of existing sparse Transformers [2, 6, 8, 9, 11, 34, 35] that satisfy these conditions, and hence have universal approximability (§ 3.4). Surprisingly, we show that there are sparse Transformers with only O(n) connections per self-attention layer (instead of n2 ) that have enough expressive power to approximate arbitrary continuous functions (Corollary 2). • We report experimental results on standard NLP tasks using sparse Transformers, comparing different sparsity patterns/levels (§ 5). •",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Assumption 1.1 is equivalent to saying that every token always attends to itself. Assumption 1.2 reSp quires that there is a chain of direct connections that covers all n tokens; note that the set l=1 Alγ(i+1) is the set of all tokens that the γ(i + 1)-th token directly attends to. To elaborate more about Sp the chain, consider a directed graph with n vertices corresponding to the n tokens. For any j ∈ l=1 Alk , we add a directed edge j → k. Given a graph constructed this way, Assumption 1.2 requires that the graph has a Hamiltonian path γ(1) → γ(2) → · · · → γ(n). Assumption 1.3 requires that after s sparse attention layers, every token can attend to all the other tokens, either directly or indirectly. As we discuss in § 3.4, the statements in Assumption 1 are natural enough to be satisfied by many existing sparsity patterns studied in the literature. In fact, Assumption 1.3 is necessary for universal approximation. If p = 1, n = 2, A11 = {1} and A12 = {1, 2}, then the first token never attends to the second, so this sparse Transformer cannot approximate a function whose first output token is dependent on both input tokens. The other two assumptions are required in parts of our proof, which involve “propagating information” over all the tokens in a sequential manner. We now state the assumption on the probability map ρ[·]. For this, we define σH [·] to be the hardmax operator, which outputs the one-hot representation of the arg max entry for each column of the input matrix. Since ρ is a column-wise operator that outputs a column-stochastic matrix, we state the assumption for the operation of ρ on a single column. Assumption 2. For any ζ > 0 and η ∈ (0, 1], ∃ t > 0 such that, for any columnP input v satisfying vj ∗ − maxj6=j ∗ vj ≥ ζ (where j ∗ = arg maxj vj ), we have",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "This bottleneck can be attributed to the auto-regressive nature of transformer generation. For each token generated, the full KV cache must be fetched from memory. The size of the KV cache scales linearly with the sequence length, as well as the batch size, thus rendering generation for long batched sequences increasingly memory bandwidth limited. Despite this expensive cache-fetch at each step, tokens generally only attend to a small part of the sequence at a time (Vig, 2019; Yun et al., 2020). If it were possible to efficiently predict which tokens will have high attention scores, memory bandwidth efficiency could be significantly increased by only transferring the key-value pairs of high-scoring tokens.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/ribar24a/ribar24a.pdf",
+              "document_sha256": "a0e6a2d6e94743d64ab4671f9ca95064ca2d5f87cc67a5d3b09d6a01c8e46267"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Tasks In order to evaluate our method on a spectrum of relevant NLP tasks that present a particular challenge to sparse attention techniques, our evaluation setup consists of various tasks requiring information retrieval and reasoning over long input sequences. This includes question answering, summarisation, perplexity/bits-per-character (BPC), and text repetition. For this, we adapted standard downstream tasks and datasets to generate examples of sequence lengths be-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/ribar24a/ribar24a.pdf",
+              "document_sha256": "a0e6a2d6e94743d64ab4671f9ca95064ca2d5f87cc67a5d3b09d6a01c8e46267"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "The computational difficulties of large language model (LLM) inference remain a significant obstacle to their widespread deployment. The need for many applications to support long input sequences and process them in large batches typically causes token-generation to be bottlenecked by data transfer. For this reason, we introduce SparQ Attention, a technique for increasing the inference throughput of LLMs by utilising memory bandwidth more efficiently within the attention layers, through selective fetching of the cached history. Our proposed technique can be applied directly to off-the-shelf LLMs during inference, without requiring any modification to the pre-training setup or additional fine-tuning. We show that SparQ Attention brings up to 8× savings in attention data transfers without substantial drops in accuracy, by evaluating Llama 2 and 3, Mistral, Gemma and Pythia models on a wide range of downstream tasks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/ribar24a/ribar24a.pdf",
+              "document_sha256": "a0e6a2d6e94743d64ab4671f9ca95064ca2d5f87cc67a5d3b09d6a01c8e46267"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017ceb90e893555baf777c59",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-7148ee318863d8b5285b8c12",
+          "url": "https://proceedings.mlr.press/v235/ribar24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "ca91817f1318fae962be03ce5d42eba4ce98752a0212cb6778ad396ee839f38a"
+    },
+    {
+      "id": "edge-d12eb60c8b95536e4eae2dac",
+      "a": "paper-017ceb90e893555baf777c59",
+      "b": "paper-d20b51324157c179f93aa3f0",
+      "state": {
+        "paper_a": {
+          "title": "O(n) Connections are Expressive Enough: Universal Approximability of Sparse Transformers",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recently, Transformer networks have redefined the state of the art in many NLP tasks. However, these models suffer from quadratic computational cost in the input sequence length $n$ to compute pairwise attention in each layer. This has prompted recent research into sparse Transformers that sparsify the connections in the attention layers. While empirically promising for long sequences, fundamental questions remain unanswered: Can sparse Transformers approximate any arbitrary sequence-to-sequence function, similar to their dense counterparts? How does the sparsity pattern and the sparsity level affect their performance? In this paper, we address these questions and provide a unifying framework that captures existing sparse attention models. We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function. Surprisingly, our results show that sparse Transformers with only $O(n)$ connections per attention layer can approximate the same function class as the dense model with $n^2$ connections. Lastly, we present experiments comparing different patterns/levels of sparsity on standard NLP tasks."
+        },
+        "paper_b": {
+          "title": "Your Transformer May Not be as Powerful as You Expect",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Relative Positional Encoding (RPE), which encodes the relative distance between any pair of tokens, is one of the most successful modifications to the original Transformer. As far as we know, theoretical understanding of the RPE-based Transformers is largely unexplored. In this work, we mathematically analyze the power of RPE-based Transformers regarding whether the model is capable of approximating any continuous sequence-to-sequence functions. One may naturally assume the answer is in the affirmative---RPE-based Transformers are universal function approximators. However, we present a negative result by showing there exist continuous sequence-to-sequence functions that RPE-based Transformers cannot approximate no matter how deep and wide the neural network is. One key reason lies in that most RPEs are placed in the softmax attention that always generates a right stochastic matrix. This restricts the network from capturing positional information in the RPEs and limits its capacity. To overcome the problem and make the model more powerful, we first present sufficient conditions for RPE-based Transformers to achieve universal function approximation. With the theoretical guidance, we develop a novel attention module, called Universal RPE-based (URPE) Attention, which satisfies the conditions. Therefore, the corresponding URPE-based Transformers become universal function approximators. Extensive experiments covering typical architectures and tasks demonstrate that our model is parameter-efficient and can achieve superior performance to strong baselines in a wide range of applications. The code will be made publicly available at https://github.com/lsj2408/URPE."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Following Yun et al. [69] and many other previous theoretical works [44, 24, 70], we study the expressiveness of a simplified version of Transformer in which normalization layers are omitted, as it is widely believed that normalization mainly helps optimization but does not hurt the expressive…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017ceb90e893555baf777c59",
+          "b": "paper-d20b51324157c179f93aa3f0",
+          "input_sha256": "178ac56c4f22a2aa38406194a46dc227a8ed2bbccbb4b4e5693e244d82e20ed2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/1ba5f64159d67775a251cf9ce386a2b9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/1ba5f64159d67775a251cf9ce386a2b9-Paper-Conference.pdf",
+              "sha256": "87f69dcfd3cf46f5980a0006fcecd2a55345f5a366abe9de3674f733c72b3a75"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we take the first step towards a theoretical understanding of sparse Transformers. We propose a unified framework to analyze sparse Transformers, which generalizes the existing approaches that sparsify attention layers (§ 3.1). • We propose a set of intuitive conditions on the sparsity pattern (Assumption 1) and the probability map (Assumption 2). Then, in Theorem 1, we show that Sparse Transformers, of fixed width and arbitrary depth, satisfying these conditions are universal approximators of any continuous sequence-to-sequence functions for any given fixed sequence length (§ 3.2 and § 3.3). • We next show some examples of existing sparse Transformers [2, 6, 8, 9, 11, 34, 35] that satisfy these conditions, and hence have universal approximability (§ 3.4). Surprisingly, we show that there are sparse Transformers with only O(n) connections per self-attention layer (instead of n2 ) that have enough expressive power to approximate arbitrary continuous functions (Corollary 2). • We report experimental results on standard NLP tasks using sparse Transformers, comparing different sparsity patterns/levels (§ 5). •",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Assumption 1.1 is equivalent to saying that every token always attends to itself. Assumption 1.2 reSp quires that there is a chain of direct connections that covers all n tokens; note that the set l=1 Alγ(i+1) is the set of all tokens that the γ(i + 1)-th token directly attends to. To elaborate more about Sp the chain, consider a directed graph with n vertices corresponding to the n tokens. For any j ∈ l=1 Alk , we add a directed edge j → k. Given a graph constructed this way, Assumption 1.2 requires that the graph has a Hamiltonian path γ(1) → γ(2) → · · · → γ(n). Assumption 1.3 requires that after s sparse attention layers, every token can attend to all the other tokens, either directly or indirectly. As we discuss in § 3.4, the statements in Assumption 1 are natural enough to be satisfied by many existing sparsity patterns studied in the literature. In fact, Assumption 1.3 is necessary for universal approximation. If p = 1, n = 2, A11 = {1} and A12 = {1, 2}, then the first token never attends to the second, so this sparse Transformer cannot approximate a function whose first output token is dependent on both input tokens. The other two assumptions are required in parts of our proof, which involve “propagating information” over all the tokens in a sequential manner. We now state the assumption on the probability map ρ[·]. For this, we define σH [·] to be the hardmax operator, which outputs the one-hot representation of the arg max entry for each column of the input matrix. Since ρ is a column-wise operator that outputs a column-stochastic matrix, we state the assumption for the operation of ρ on a single column. Assumption 2. For any ζ > 0 and η ∈ (0, 1], ∃ t > 0 such that, for any columnP input v satisfying vj ∗ − maxj6=j ∗ vj ≥ ζ (where j ∗ = arg maxj vj ), we have",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Our goal is to investigate the requirements on AhU under which the induced function class ΩH,r U can become universal approximators of continuous sequence-to-sequence functions. We provide one sufficient condition in the following theorem. Following Yun et al. [69] and many other previous theoretical works [44, 24, 70], we study the expressiveness of a simplified version of Transformer in which normalization layers are omitted, as it is widely believed that normalization mainly helps optimization but does not hurt the expressive power of the network [32, 1]. Theorem 3. Given n, d ∈ N∗ , p ∈ [1, +∞), ε > 0, a compact set D ⊆ Rn×d , and a continuous sequence-to-sequence function f : D → Rn×d . Assume that AhU satisfies the following conditions: • Attentive condition. For any u ∈ Rd×1 and c ∈ \u0001R, there exists a parametrization of AhU , such that AhU (X) = softmax Xu(Xu − c1)⊤ . • Position-aware condition. There exists a parametrization of AhU and a vector v ∈ Rn whose entries are all distinct, such that AhU (X)1 = v for any X ∈ Rn×d . Then there exists a Transformer network g ∈ Ω2,1,4 such that U p where ∥ · ∥p denotes the entry-wise ℓ norm for matrices.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/1ba5f64159d67775a251cf9ce386a2b9-Paper-Conference.pdf",
+              "document_sha256": "87f69dcfd3cf46f5980a0006fcecd2a55345f5a366abe9de3674f733c72b3a75"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "such as image [14, 43] and graph [67], as the relative distance naturally preserves invariant properties for several important transformations like rotation and translation. In this paper, we first investigate the theoretical aspect of the RPE-based Transformers. In particular, we study their expressive power which describes models’ ability to approximate any continuous functions. Recently, Yun et al. [69] proved that the APE-based Transformers are universal approximators of continuous sequence-to-sequence functions on a compact domain, and one may expect that the RPE-based Transformers enjoy the same property. However, we provide a surprising theoretical finding which shows that widely-used Transformers with RPE are not universal function approximators, i.e., there exist continuous sequence-to-sequence functions that the models cannot approximate no matter how deep and wide the model is. One key observation is that the RPEs are placed inside the softmax in the attention module. The softmax operator always generates a right stochastic matrix, which fails to reflect enough positional information encoded in RPE to the output. Synthetic tasks are conducted to support this mathematical claim. To design a more powerful RPE-based Transformer, we delve into the limitation of the model and theoretically derive two sufficient conditions to achieve universal function approximation: the attentive condition and position-aware condition. Both conditions together state that the RPE-based attention function class should cover some special cases of the originally designed attention and break the right-stochastic-matrix limitation. With such theoretical guidance, we develop a new attention module called Universal RPE-based (URPE) Attention that satisfies the above conditions.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/1ba5f64159d67775a251cf9ce386a2b9-Paper-Conference.pdf",
+              "document_sha256": "87f69dcfd3cf46f5980a0006fcecd2a55345f5a366abe9de3674f733c72b3a75"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "We develop a new Transformer variant which satisfies the conditions above. In particular, we multiply the softmax attention matrix with another matrix, and obtain \u0001 AU (X) = softmax XWQ (XWK )⊤ + B ⊙ C, (8) where ⊙ denotes entry-wise product. B can take any form described in Section 2. We refer to this attention variant as Universal RPE-based Attention (URPE-based attention). To make URPE-based attention rely relative positional information, we set C ∈ Rn×n to be a learnable Toeplitz matrix in which each element on the descending diagonal from left to right has the same value. Note that a Toeplitz matrix of shape n × n has 2n − 1 degrees of freedom. Therefore, we only need 2n − 1 new parameters for each C. It can be proved that URPE-based Attention satisfies the two conditions in Theorem 3 and the proof can be found in Appendix B. Proposition 4. URPE-based Attention defined in Eq.(8) satisfies the conditions in Theorem 3. Consequently, given n, d ∈ N∗ , Transformers using this form of attention are universal approximators of continuous sequence-to-sequence functions that map a compact domain in Rn×d to Rn×d . To further improve parameter efficiency, we set C to be shared across different layers but to be unique for each attention head. As an example, in Transformer-XL (see Section 5.2), we introduce only about 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/1ba5f64159d67775a251cf9ce386a2b9-Paper-Conference.pdf",
+              "document_sha256": "87f69dcfd3cf46f5980a0006fcecd2a55345f5a366abe9de3674f733c72b3a75"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017ceb90e893555baf777c59",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-d20b51324157c179f93aa3f0",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/1ba5f64159d67775a251cf9ce386a2b9-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "4b46b4acf1cccec45e49e685536f441a334220c9ce81a9f0dc0e86a3528ddba2"
+    },
+    {
+      "id": "edge-ae064cd2cf6274d331907b35",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-7159766db1bc9a9cff97cd09",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "The Atlas of In-Context Learning: How Attention Heads Shape In-Context Retrieval Augmentation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Large language models are able to exploit in-context learning to access external knowledge beyond their training data through retrieval-augmentation. While promising, its inner workings remain unclear. In this work, we shed light on the mechanism of in-context retrieval augmentation for question answering by viewing a prompt as a composition of informational components. We propose an attribution-based method to identify specialized attention heads, revealing in-context heads that comprehend instructions and retrieve relevant contextual information, and parametric heads that store entities' relational knowledge. To better understand their roles, we extract function vectors and modify their attention weights to show how they can influence the answer generation process. Finally, we leverage the gained insights to trace the sources of knowledge used during inference, paving the way towards more safe and transparent language models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Retrieval Augmentation Retrieval-augmented language models (RALMs) [40, 45] address inherent limitations of LMs by providing external knowledge sources.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-7159766db1bc9a9cff97cd09",
+          "input_sha256": "4502687b0b09f13bfe0861d0e070e93a5866d0ec0b355a86d98096f30370843d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ab49f5e61eadbe979373c133232a96a0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Retrieval Augmentation Retrieval-augmented language models (RALMs) [40, 45] address inherent limitations of LMs by providing external knowledge sources. Despite this advantage, issues such as discrepancies between contextual and parametric knowledge may occur [48, 87]. Some 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Functional map of in-context and parametric heads in Llama-3.1-8B-Instruct. They are surprisingly well-structured and operate on the input prompt at various levels, with in-context heads processing information in the prompt, including instruction comprehension and retrieval operations — and parametric heads that encode relational knowledge. In-context heads can specialize to task heads to parse instructions (blue) or retrieval heads for verbatim copying (green). Together with parametric heads, they affect the answer generation process through function vectors that they transport (a, c) or their attention weights (b). Our relevance analysis (bar plot) shows that instruction-following capabilities emerge in middle layers, while answer retrieval occurs in later layers. Details in C.1. On question answering tasks, we show that by viewing a prompt as a composition of informational components, certain attention heads perform various operations on the prompt at different stages of inference and layers (Figure 1). Our method identifies two groups of heads based on their functions: parametric heads that encode relational knowledge [27, 57] and in-context heads responsible for processing information in the prompt. Further, as in-context heads need to understand which prompt components to process and how, we hypothesize that they specialize to fill their respective roles. Our analysis shows that in-context heads can indeed execute specialized functions such as instruction comprehension and retrieval of relevant contextual information. To investigate this further, we curate a controlled biography dataset with entities extracted from Wikidata [78]. Remarkably, we find that through compressing them to FVs or modifying their weights, both in-context and parametric heads can",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We propose a method to explore the inner workings of ICL for retrieval-augmentation, revealing in-context and parametric heads that operate on the input prompt in a distinct manner and find that in-context heads can specialize into either task or retrieval heads, depending on whether they encode intensional frames or retrieve relevant information. We study the roles of the identified heads by converting them into FVs or modifying their weights, showing how they can affect the generation process. Finally, we present a probe to precisely and efficiently track for knowledge provenance, opening up a path towards more interpretable retrieval-augmented LMs. Limitations We focus our investigation on attention heads since they are primarily associated with ICL. However, how they interact with components in MLP modules e.g., knowledge neurons [19] to induce functions remains an open question. Our analyses are also mainly centered on QA (with a minor part on MT). It would be interesting to see if similar mechanisms arise in other tasks. We find that several heads exhibit inhibitory effects, and that some intermediate heads are not exclusively specialized for either in-context or parametric roles — both of which warrant further investigation. In addition, there is a possibility for redundant heads [79], which are yet to be uncovered. We leave this avenue for future work. Broader Impacts Our research enhances trust in retrieval-augmented LMs by elucidating the mechanisms through which they access and use external knowledge. Furthermore, it enables precise source attribution, allowing users to trace the origins of the information leveraged in response generation. However, we caution against its potential for misuse, such as using the identified heads to induce malicious behavior. 10",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ab49f5e61eadbe979373c133232a96a0-Paper-Conference.pdf",
+              "document_sha256": "f0614f1e308d3651a4db85f064e100a911ba97f133a6a21a309dc717c4255735"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-7159766db1bc9a9cff97cd09",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ab49f5e61eadbe979373c133232a96a0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Attention and Context in Large Language Models"
+      },
+      "sha256": "1d40a0ab9a487242e6094c21f722d7eae26aeaae5e4f12acbb2577ce8bdd7179"
+    }
+  ]
+}

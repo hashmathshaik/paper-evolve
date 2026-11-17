@@ -1,0 +1,1006 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Conversational AI Systems and Response Generation",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-72a1e7d65abe82f5bf5eed51",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-85c52db721ab8a2e7d629dfc",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Knowledge-Aware Graph-Enhanced GPT-2 for Dialogue State Tracking",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Dialogue State Tracking is central to multi-domain task-oriented dialogue systems, responsible for extracting information from user utterances. We present a novel hybrid architecture that augments GPT-2 with representations derived from Graph Attention Networks in such a way to allow causal, sequential prediction of slot values. The model architecture captures inter-slot relationships and dependencies across domains that otherwise can be lost in sequential prediction. We report improvements in state tracking performance in MultiWOZ 2.0 against a strong GPT-2 baseline and investigate a simplified sparse training scenario in which DST models are trained only on session-level annotations but evaluated at the turn level. We further report detailed analyses to demonstrate the effectiveness of graph models in DST by showing that the proposed graph modules capture inter-slot dependencies and improve the predictions of values that are common to multiple domains."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "The ability to easily generate token sequences of arbitrary lengths is a valuable feature of the model, although it may come at the expense of modelling power relative to models with non-causal attention mechanisms, such as BERT (Devlin et al., 2019; Shan et al., 2020).\nFor example, Zhang et al. (2019) combine a span predictor for non-enumerable slot values and a cosine similarity matching that exploits a BERT model to extract representations for enumerable slot values, with a dual-strategy model jointly handling both types of slot values; Zhou and Small (2019) use both a span predictor and a candidate classiﬁer and combine their predictions with gating functions.\n(Devlin et al., 2019)) usually have to utilize span predictions or embedding-based classifications (e.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-85c52db721ab8a2e7d629dfc",
+          "input_sha256": "bf2335c3d5cb5dd0088a29608065d91d896a24c044c7e2abff9b97ee3cd27a7c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.620/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.620.pdf",
+              "sha256": "d7e1ebc2a1d0eb0fac77b77f97d7e6f11cc4e8babeeffc6ca8e6f4686d25eb79"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "generation incorporating a causal attention mechanism. We note that Hosseini-Asl et al. (2020) have demonstrated that GPT-2 can identify slot values as a prediction task, with variable length token sequences produced sequentially with interspersed special tokens indicating slot boundaries. The ability to easily generate token sequences of arbitrary lengths is a valuable feature of the model, although it may come at the expense of modelling power relative to models with non-causal attention mechanisms, such as BERT (Devlin et al., 2019; Shan et al., 2020). In particular, GPT-2’s causality requires that the prediction of later slot values can depend explicitly on previously predicted slot values, but that the reverse is not possible. This can lead to decreased performance in predicting slot values that occur early on. We find that augmenting GPT-2 prediction with representations derived from GATs allows some sharing of information between slots prior to prediction to improve this GPT-2 limitation.",
+              "url": "https://aclanthology.org/2021.emnlp-main.620.pdf",
+              "document_sha256": "d7e1ebc2a1d0eb0fac77b77f97d7e6f11cc4e8babeeffc6ca8e6f4686d25eb79"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Statistical DST prioritises general and extensible systems based on machine-learning architectures (Wu et al., 2019; Zhang et al., 2019; Huang et al., 2020; Lee et al., 2020). Systems must be able to predict slot values from domain-specific lists such as list of hotel names as well as from more open-ended categories such as days, prices, Capturing the relationships of slot values across and times. Recent trends are to combine several domains also offers the opportunity to make better strategies to deal differently with the two types of use of limited training data, particularly in sparsely values (Zhang et al., 2019; Zhou and Small, 2019; supervised and weakly supervised scenarios (Liang Heck et al., 2020). For example, Zhang et al. (2019) et al., 2021). In a ‘Last Turn’ annotation scenario, combine a span predictor for non-enumerable slot annotations are available only for the final turn of values and a cosine similarity matching that exa task-oriented dialogue. This is unlike the fullyploits a BERT model to extract representations for annotated MultiWOZ setting, which offers turnenumerable slot values, with a dual-strategy model level annotations throughout the entire dialogue jointly handling both types of slot values; Zhou session. As an annotation option, generating sumand Small (2019) use both a span predictor and a mary annotations at the completion of a recorded candidate classifier and combine their predictions session is an attractive alternative to creating a dewith gating functions. Our work is based on GPT-2 tailed, turn-by-turn annotation of the entire diaand we note that generative models such as GPT-2 logue (Liang et al., 2021). If it is possible to are less widely used in DST tasks, possibly because use only these session-level annotations to train a",
+              "url": "https://aclanthology.org/2021.emnlp-main.620.pdf",
+              "document_sha256": "d7e1ebc2a1d0eb0fac77b77f97d7e6f11cc4e8babeeffc6ca8e6f4686d25eb79"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-85c52db721ab8a2e7d629dfc",
+          "url": "https://aclanthology.org/2021.emnlp-main.620/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "ef7dd84955ba8c11c1a804a7a48d0b03a54a9c0deae56fe04613583a73df0f4e"
+    },
+    {
+      "id": "edge-c818de5de764c11c0bca8dc9",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-8978c29132ff58156d13125c",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Query Enhanced Knowledge-Intensive Conversation via Unsupervised Joint Modeling",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we propose an unsupervised query enhanced approach for knowledge-intensive conversations, namely QKConv. There are three modules in QKConv: a query generator, an off-the-shelf knowledge selector, and a response generator. QKConv is optimized through joint training, which produces the response by exploring multiple candidate queries and leveraging corresponding selected knowledge. The joint training solely relies on the dialogue context and target response, getting exempt from extra query annotations or knowledge provenances. To evaluate the effectiveness of the proposed QKConv, we conduct experiments on three representative knowledge-intensive conversation datasets: conversational question-answering, task-oriented dialogue, and knowledge-grounded conversation. Experimental results reveal that QKConv performs better than all unsupervised methods across three datasets and achieves competitive performance compared to supervised methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "As opposed, some studies directly involve the posterior distribution of knowledge to enhance knowledge selection (Lian et al., 2019; Kim et al., 2020; Paranjape et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-8978c29132ff58156d13125c",
+          "input_sha256": "cbf5a51f97de2c182461c7148a2ed182d84e75d7bb9fa9f8691b84d4b0f88b97",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.97/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.97.pdf",
+              "sha256": "ab97f213c2cdc1e935faf8fa38366e02c1fafc21d15f5400c57424e1e3727b3d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "and generating a context-independent query. Retrieval-Augmented Generation Recently, an increasing interest has been shown in modeling a dense knowledge selector and response generator simultaneously, with the dialogue context as the query. Many of these works utilize joint training (Lewis et al., 2020b; Guu et al., 2020; Shuster et al., 2021; Huang et al., 2021; Thulke et al., 2021; Glass et al., 2022) or reinforcement learning (Zhao et al., 2020a) to modify the prior selection distribution. As opposed, some studies directly involve the posterior distribution of knowledge to enhance knowledge selection (Lian et al., 2019; Kim et al., 2020; Paranjape et al., 2022). However, repeated index rebuilding for the updated knowledge selector is time-consuming with the large-scale knowledge base, and the involvement of posterior distribution may render the training-inference discrepancy. Furthermore, a few works consider a complicated selection process attributed to the challenging and interrupted gradient propagation (Glass et al., 2022). This paper investigates the query generator rather than the selector and exploits off-the-shelf selectors to refrain from the above problems. Query Generation A lengthy dialog context as the query reduces the efficiency of the knowledge selector and may be misaligned with the form preferred in off-the-shelf selectors. Prior works (Yu et al., 2020; Anantha et al., 2021; Vakulenko et al., 2021; Komeili et al., 2022; Tian et al., 2022) lever-",
+              "url": "https://aclanthology.org/2023.acl-long.97.pdf",
+              "document_sha256": "ab97f213c2cdc1e935faf8fa38366e02c1fafc21d15f5400c57424e1e3727b3d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "entry. However, it encounters some difficulties in retrieving appropriate knowledge (Shuster et al., 2021). As the focus or topic changes along with the conversation flow, the outdated information in the dialogue context brings extra noise to the retriever, resulting in obsolete or irrelevant knowledge retrieved. Moreover, the dialogue context has a native misalignment with the short and interrogative query preferred in existing retrievers. Some methods choose to finetune a task-specific retriever to enhance the performance of knowledge selection (Guu et al., 2020; Shuster et al., 2021; Glass et al., 2022). However, this strategy is usually computationally expensive (e.g., finetuning a dense retriever requires constant recomputation for massive knowledge entries) or even infeasible for complex retrieval systems (e.g., retraining a search engine is impractical). Some other methods choose to generate a self-contained query based on the dialogue context (Yu et al., 2020; Anantha et al., 2021; Chen et al., 2022). This strategy relies on careful query annotations to guarantee the completeness of essential information extraction and the adaptation to the knowledge selector. In this paper, we introduce a novel unsupervised query enhanced approach for knowledge-intensive conversations, namely QKConv. As shown in Figure 1, QKConv consists of three modules: a query generator, an off-the-shelf knowledge selector, and a response generator. Specifically, QKConv is optimized through joint training, which produces the response by exploring multiple candidate queries and leveraging corresponding selected knowledge. We also integrate two types of query guidance to regulate query generation and facilitate joint training: context-sensitive guidance (e.g., the last context utterance) and",
+              "url": "https://aclanthology.org/2023.acl-long.97.pdf",
+              "document_sha256": "ab97f213c2cdc1e935faf8fa38366e02c1fafc21d15f5400c57424e1e3727b3d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "getting exempt from extra query annotations or joint training for query generation. (2) We show knowledge provenances. Secondly, the joint train- that QKConv achieves state-of-the-art end-to-end ing of QKConv boosts query generation toward results against all unsupervised methods and outperbetter knowledge selection and ensures end-to-end forms supervised methods on certain datasets. (3) performances, compared to the individual optimiza- We show that QKConv exhibits superior query qualtion of each module. Thirdly, thanks to the query ity and robust knowledge utilization in response generation module, QKConv gets rid of the expen- generation. sive computation of tuning knowledge selectors End-to-End Backpropagation 2 Methodology and has the generality to adopt various knowledge selectors. This paper introduces a query enhanced approach To evaluate the effectiveness of the proposed QKof QKConv, which incorporates query generation Conv, we conduct experiments on three represento boost knowledge-intensive conversations and tative knowledge-intensive conversation datasets: optimizes the dialogue system via unsupervised conversational question answering QReCC (Ananjoint training. As shown in Figure 1, QKConv tha et al., 2021), task-oriented dialogue SMD consists of three modules: Query Generator to (Eric et al., 2017), and knowledge-grounded congenerate multiple queries based on the dialogue versation WoW (Dinan et al., 2019). Expericontext; an off-the-shelf Knowledge Selector to mental results reveal that QKConv performs betfind relevant knowledge given queries; Response ter than all unsupervised methods across three Generator to produce the final response. In the datasets and even outperforms supervised methods following, we will elaborate the design of these on some",
+              "url": "https://aclanthology.org/2023.acl-long.97.pdf",
+              "document_sha256": "ab97f213c2cdc1e935faf8fa38366e02c1fafc21d15f5400c57424e1e3727b3d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-8978c29132ff58156d13125c",
+          "url": "https://aclanthology.org/2023.acl-long.97/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "f5b91596c43d4c2c2cb177992e13403efdd0dcc13a765289b94263d10daed307"
+    },
+    {
+      "id": "edge-07010d29fa79093882304c86",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-9b94f3b226bd252206fdacf9",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Multi-Grained Knowledge Retrieval for End-to-End Task-Oriented Dialog",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Retrieving proper domain knowledge from an external database lies at the heart of end-to-end task-oriented dialog systems to generate informative responses. Most existing systems blend knowledge retrieval with response generation and optimize them with direct supervision from reference responses, leading to suboptimal retrieval performance when the knowledge base becomes large-scale. To address this, we propose to decouple knowledge retrieval from response generation and introduce a multi-grained knowledge retriever (MAKER) that includes an entity selector to search for relevant entities and an attribute selector to filter out irrelevant attributes. To train the retriever, we propose a novel distillation objective that derives supervision signals from the response generator. Experiments conducted on three standard benchmarks with both small and large-scale knowledge bases demonstrate that our retriever performs knowledge retrieval more effectively than existing methods. Our code has been made publicly available at https://github.com/18907305772/MAKER."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "REALM (Guu et al., 2020), RAG (Lewis et al., 2020), and EMDR2 (Singh et al., 2021) propose to train the retriever end-to-end through maximum marginal likelihood.\n, 2020), RAG (Lewis et al., 2020), and EMDR2 (Singh et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-9b94f3b226bd252206fdacf9",
+          "input_sha256": "eb1f5ee3a52eb4db5a25c54344facbc0de4b9a6d17321cdf13d037becbed5f10",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.627/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "pervised learning problem, researchers propose to distill knowledge from the answer generator to train the retriever iteratively (Yang and Seo, 2020; Izacard and Grave, 2020). Other researchers try to train the retriever and generator in an end-to-end manner. REALM (Guu et al., 2020), RAG (Lewis et al., 2020), and EMDR2 (Singh et al., 2021) propose to train the retriever end-to-end through maximum marginal likelihood. Sachan et al. (2021) propose to combine unsupervised pre-training and supervised fine-tuning to train the retriever. Motivated by these works, we propose a multi-grained knowledge retriever trained by distilling knowledge from the response generator in E2E-TOD systems.",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Retrieving proper domain knowledge from an external database lies at the heart of end-toend task-oriented dialog systems to generate informative responses. Most existing systems blend knowledge retrieval with response generation and optimize them with direct supervision from reference responses, leading to suboptimal retrieval performance when the knowledge base becomes large-scale. To address this, we propose to decouple knowledge retrieval from response generation and introduce a multigrained knowledge retriever (MAKER) that includes an entity selector to search for relevant entities and an attribute selector to filter out irrelevant attributes. To train the retriever, we propose a novel distillation objective that derives supervision signals from the response generator. Experiments conducted on three standard benchmarks with both small and largescale knowledge bases demonstrate that our retriever performs knowledge retrieval more effectively than existing methods. Our code has been made publicly available.1",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "blend knowledge retrieval and response generation and train them by the supervision of reference responses, which has two limitations. First, the system response usually consists of pure language tokens and KB-related tokens (e.g., hotel names and phone numbers), and it is challenging to train a good retriever from the weak supervision of reference responses. Second, the systems may become inefficient when the scale of the knowledge base grows large. Our preliminary study2 in Figure 1 confirms that when a large-scale cross-domain knowledge base is given, existing dialog systems suffer significant performance degradation. In this paper, we propose a novel Multi-grAined KnowlEdge Retriever (MAKER) for E2E TOD systems to improve the acquisition of knowledge for response generation. The retriever decouples knowledge retrieval from response generation and introduces an entity selector and an attribute selector to select relevant entities and attributes from the knowledge base. Then, the response generator generates a system response based on the dialogue context and the multi-grained retrieval results. The retriever is trained by distilling knowledge from the response generator using the cross-attention scores of KB-related tokens in the response. We train the entity selector, attribute selector, and response generator jointly in an end-to-end manner. We compare our system with other E2E TOD systems on three benchmark datasets (Eric et al., 2017; Wen et al., 2017; Eric et al., 2020). Empirical results show that our system achieves state-of-theart performance when either a small or a largescale knowledge base is used. Through in-depth analysis, we have several findings to report. First, our retriever shows great advantages over baselines when the size of knowledge bases",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-9b94f3b226bd252206fdacf9",
+          "url": "https://aclanthology.org/2023.acl-long.627/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "299d6d8e164007c4037e6f1cf5fe93b1be803bbac66567c13666cdb0d7b0db9d"
+    },
+    {
+      "id": "edge-70e08ff05777c2e5db2c1c0d",
+      "a": "paper-02ba5120af24e3b0accc424e",
+      "b": "paper-8cc3153890f2a7c55d27be08",
+      "state": {
+        "paper_a": {
+          "title": "Contrastive Decoding: Open-ended Text Generation as Optimization",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, inco- herence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains."
+        },
+        "paper_b": {
+          "title": "Zero-shot Cross-domain Dialogue State Tracking via Context-aware Auto-prompting and Instruction-following Contrastive Decoding",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Zero-shot cross-domain dialogue state tracking (DST) enables us to manage task-oriented dialogues in new, unseen domains without the cost of collecting in-domain data. Previous studies have implemented slot-based input improvements, such as schema-driven descriptions and question-answering formats, but still suffer from negative transfer for seen slots and inefficient transfer for unseen slots due to the significant source-target domain gap. To address these issues, we introduce a novel framework called Context-aware Auto-prompting and Instruction-following Contrastive Decoding (CAPID). This framework generates dynamic, context-aware slot queries, effectively improving the model’s transferability. Our context-aware auto-prompting approach tailors slot queries to the current dialogue context, increasing flexibility and reducing ambiguities. Additionally, an instruction-following contrastive decoding strategy helps reduce errors related to off-topic slots by penalizing deviations from the provided instructions. Extensive experiments on two datasets, with varying model sizes (from 60M to 7B), demonstrate the superior performance of CAPID. The source code is provided for reproducibility."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02ba5120af24e3b0accc424e",
+          "b": "paper-8cc3153890f2a7c55d27be08",
+          "input_sha256": "15b0e86cd3534335df95d78d12f4b2794109eee3b853c23187bbedeb21178e1b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.687/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.emnlp-main.485/",
+              "pdf_url": "https://aclanthology.org/2024.emnlp-main.485.pdf",
+              "sha256": "f6f24edd8e2c9d95a9c113d2a925af463c081c2ded6c275b3ac47283b4cdb840"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Contrastive Decoding: Open-ended Text Generation as Optimization Xiang Lisa Li1 , Ari Holtzman2 , Daniel Fried3 , Percy Liang1 , Jason Eisner4 , Tatsunori Hashimoto1 , Luke Zettlemoyer2,5 , Mike Lewis5 Stanford University1 , University of Washington2 , Carnegie Mellon University3 , Johns Hopkins University4 , FAIR5 xlisali@stanford.edu, ahai@cs.washington.edu, dfried@cs.cmu.edu, pliang@stanford.edu, jason@cs.jhu.edu, thashim@stanford.edu, lsz@cs.washington.edu, mikelewis@meta.com Abstract Given a language model (LM), maximum probability is a poor decoding objective for open-ended generation, because it produces short and repetitive text. On the other hand, sampling can often produce incoherent text that drifts from the original topics. We propose contrastive decoding (CD), a reliable decoding approach that optimizes a contrastive objective subject to a plausibility constraint. The contrastive objective returns the difference between the likelihood under a large LM (called the expert, e.g. OPT-13B) and a small LM (called the amateur, e.g. OPT-125M), and the constraint ensures that the outputs are plausible. CD is inspired by the fact that the failures of larger LMs (e.g., repetition, incoherence) are even more prevalent in smaller LMs, and that this difference signals which texts should be preferred. CD requires zero additional training, and produces higher quality text than decoding from the larger LM alone. It also works across model scales (OPT-13B and GPT2-1.5B) and significantly outperforms four strong decoding algorithms (e.g., nucleus, top-k) in automatic and human evaluations across wikipedia, news and story domains.1",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose contrastive decoding, a search-based decoding approach that contrasts LMs of different scales. We evaluate our approach on open-ended text generation, and find that it improves over the prevalent methods like nucleus sampling in both fluency and coherence. As future work, the idea of contrasting an expert (larger LM) and an amateur (smaller LM) can be expanded to myriad setups, for instance, contrasting an early checkpoint of an LM and a later checkpoint of the LM. We hope that this paper can encourage more exploration of how to use contrasting language models.",
+              "url": "https://aclanthology.org/2023.acl-long.687.pdf",
+              "document_sha256": "4e97a19f16e241e318927e59cc51e3253ccb9d7780ffc9b6ff381f816eb51674"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Zero-shot Cross-domain Dialogue State Tracking via Context-aware Auto-prompting and Instruction-following Contrastive Decoding Xiaoyu Dong* , Yujie Feng* , Zexin Lu, Guangyuan Shi, Xiao-Ming Wu† Department of Computing, The Hong Kong Polytechnic University, Hong Kong S.A.R. xiaoyu.dong@connect.polyu.hk, xiao-ming.wu@polyu.edu.hk",
+              "url": "https://aclanthology.org/2024.emnlp-main.485.pdf",
+              "document_sha256": "f6f24edd8e2c9d95a9c113d2a925af463c081c2ded6c275b3ac47283b4cdb840"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "Zero-shot cross-domain dialogue state tracking (DST) enables us to manage task-oriented dialogues in new, unseen domains without the cost of collecting in-domain data. Previous studies have implemented slot-based input improvements, such as schema-driven descriptions and question-answering formats, but still suffer from negative transfer for seen slots and inefficient transfer for unseen slots due to the significant source-target domain gap. To address these issues, we introduce a novel framework called Context-aware Auto-prompting and Instruction-following Contrastive Decoding (CAPID). This framework generates dynamic, context-aware slot queries, effectively improving the model’s transferability. Our context-aware auto-prompting approach tailors slot queries to the current dialogue context, increasing flexibility and reducing ambiguities. Additionally, an instruction-following contrastive decoding strategy helps reduce errors related to off-topic slots by penalizing deviations from the provided instructions. Extensive experiments on two datasets, with varying model sizes (from 60M to 7B), demonstrate the superior performance of CAPID. The source code1 is provided for reproducibility.",
+              "url": "https://aclanthology.org/2024.emnlp-main.485.pdf",
+              "document_sha256": "f6f24edd8e2c9d95a9c113d2a925af463c081c2ded6c275b3ac47283b4cdb840"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "tion from the dialogue. The detailed comparisons between our method and the previous DST methods can be shown in Table 1. We utilize auto-prompting capability of GPT4 (Achiam et al., 2023) to generate contextaware slots by incorporating dialogue contexts and domain-specific attributes. What’s more, when training with these context-aware slots changing dynamically with the dialogue, the model accumulate the knowledge of analyzing dialogue contexts to extract slot values, which is more tranferrable to unseen slots. While GPT-4 demonstrates remarkable capabilities, its usage limits and data privacy issues necessitate a different strategy for large-scale slot query generation. We address this by training a smaller student model to emulate GPT-4’s contextaware slot query generation. Furthermore, to ensure the student model adheres to instructions when handling off-topic slots, we developed a novel instruction-following contrastive decoding method. This method maximizes the difference between expert log-probabilities from the original prompt and amateur log-probabilities from the repurposed prompt, restricting the search space to high-probability tokens that are semantically consistent with the original prompt, thereby producing coherent results. To summarize, our main contributions include: • We propose CAPID, a novel framework for zeroshot cross-domain DST, which effectively addresses the challenges of negative transfer for seen slots and inefficient transfer for unseen slots. • We conduct comprehensive experiments to evaluate CAPID, demonstrating its remarkable capability to improve the performance of zero-shot cross-domain DST. Specifically, CAPID achieves a 16.8% increase JGA on MultiWOZ 2.1 and a 29.34% increase on MultiWOZ 2.4 compared to the previous baseline.",
+              "url": "https://aclanthology.org/2024.emnlp-main.485.pdf",
+              "document_sha256": "f6f24edd8e2c9d95a9c113d2a925af463c081c2ded6c275b3ac47283b4cdb840"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To address the mismatch domain challenge in 3.2, we propose the Instruction-following Contrastive Decoding, as illustrated in Figure 5. This innovative approach ensures that the student model generates slot queries which adhere to the original domain specified in the slots, mitigating the risk of deviating from our two primary instructions. Inspired by contrastive decoding(CD) (Li et al., 2023), our method adapts this concept to suit slotverified generation process. We also observe diminished confidence in the model’s outputs under scenarios where the slot domain mismatches the dialogue domain. Specifically, the model often assigns lower probabilities to output tokens, with only a slight discrepancy between erroneous and correct tokens. Therefore we use an “repurposed",
+              "url": "https://aclanthology.org/2024.emnlp-main.485.pdf",
+              "document_sha256": "f6f24edd8e2c9d95a9c113d2a925af463c081c2ded6c275b3ac47283b4cdb840"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02ba5120af24e3b0accc424e",
+          "url": "https://aclanthology.org/2023.acl-long.687/"
+        },
+        "b": {
+          "paper_id": "paper-8cc3153890f2a7c55d27be08",
+          "url": "https://aclanthology.org/2024.emnlp-main.485/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "a0c437e636f60bba9b737ee192ba60a2158f9ebeacff460c90bbe11cee2bd4a7"
+    },
+    {
+      "id": "edge-437b0013e76178dfae3a9634",
+      "a": "paper-0308cb6fde6d46d08ea9b250",
+      "b": "paper-e412aeb92d44cb2aa98f4bb1",
+      "state": {
+        "paper_a": {
+          "title": "The World is Not Binary: Learning to Rank with Grayscale Data for Dialogue Response Selection",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Response selection plays a vital role in building retrieval-based conversation systems. Despite that response selection is naturally a learning-to-rank problem, most prior works take a point-wise view and train binary classifiers for this task: each response candidate is labeled either relevant (one) or irrelevant (zero). On the one hand, this formalization can be sub-optimal due to its ignorance of the diversity of response quality. On the other hand, annotating grayscale data for learning-to-rank can be prohibitively expensive and challenging. In this work, we show that grayscale data can be automatically constructed without human effort. Our method employs off-the-shelf response retrieval models and response generation models as automatic grayscale data generators. With the constructed grayscale data, we propose multi-level ranking objectives for training, which can (1) teach a matching model to capture more fine-grained context-response relevance difference and (2) reduce the train-test discrepancy in terms of distractor strength. Our method is simple, effective, and universal. Experiments on three benchmark datasets and four state-of-the-art matching models show that the proposed approach brings significant and consistent performance improvements."
+        },
+        "paper_b": {
+          "title": "Towards Quantifiable Dialogue Coherence Evaluation",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Automatic dialogue coherence evaluation has attracted increasing attention and is crucial for developing promising dialogue systems. However, existing metrics have two major limitations: (a) they are mostly trained in a simplified two-level setting (coherent vs. incoherent), while humans give Likert-type multi-level coherence scores, dubbed as “quantifiable”; (b) their predicted coherence scores cannot align with the actual human rating standards due to the absence of human guidance during training. To address these limitations, we propose Quantifiable Dialogue Coherence Evaluation (QuantiDCE), a novel framework aiming to train a quantifiable dialogue coherence metric that can reflect the actual human rating standards. Specifically, QuantiDCE includes two training stages, Multi-Level Ranking (MLR) pre-training and Knowledge Distillation (KD) fine-tuning. During MLR pre-training, a new MLR loss is proposed for enabling the model to learn the coarse judgement of coherence degrees. Then, during KD fine-tuning, the pretrained model is further finetuned to learn the actual human rating standards with only very few human-annotated data. To advocate the generalizability even with limited fine-tuning data, a novel KD regularization is introduced to retain the knowledge learned at the pre-training stage. Experimental results show that the model trained by QuantiDCE presents stronger correlations with human judgements than the other state-of-the-art metrics."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The vanilla MLR loss (Lin et al., 2020) is the extension of the margin ranking loss to a multi-level version by repeatedly applying the original margin ranking loss between different levels, which can be directly applied to our evaluation task.\n…are adopted for the two-level setting, while another three loss functions are adopted for the multi-level setting, including the supervised contrastive (SupCon) loss (Khosla et al., 2020), the fast-approximated triplet (FAT) loss (Yuan et al., 2019) and the vanilla MLR loss (Lin et al., 2020) 8 .\n, 2019) and the vanilla MLR loss (Lin et al., 2020) 8.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0308cb6fde6d46d08ea9b250",
+          "b": "paper-e412aeb92d44cb2aa98f4bb1",
+          "input_sha256": "9da119ffd6d2537e5b1f8b30dc93ef7f1c2af9a116446af50d501ddfc2127ce4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.emnlp-main.741/",
+              "pdf_url": "https://aclanthology.org/2020.emnlp-main.741.pdf",
+              "sha256": "04e8715a863de09d9f38c8758b28fd6b0f6ca66c2275f895f2daaded8f1f699d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.211/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.211.pdf",
+              "sha256": "6bc299b2a0e1b9ea8a84d1d58e345d75bb030f42cc25ad05e718d7e87a8c8262"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "letting the matching model be aware of which response candidates are more incorrect or less incorrect than others may more effectively increase the model capacity. Another limitation is that in real-world scenarios the matching models are often confronted with more difficult tasks: to select the best response from a set of strong response candidates instead of random ones. An example is given in Table 1. During training, the matching models are trained to distinguish the ground truth G and the randomly sampled response R1, where R1 shows little relevance to the dialogue context. Matching models trained on such training data have little experience to identify the groundtruth response G from a set of strong distractor responses such as R2 and R3. Intuitively, a good matching model should be able to not only distinguish good responses from random ones (usually totally irrelevant), as conveyed by the binary classification objective, but also capture the more subtle differences for competitive candidates. One natural solution to the above problems is to collect grayscale data for training; if we consider the quality of all possible response candidates falls in the interval [0, 1], the golden-truth and random responses usually cover the two endpoints only, and our goal is to obtain a list of grayscale responses locate in between 0 and 1. However, grayscale data are hard to obtain in reality owing to the expense of human annotation and the subjectivity of individual human annotators. In this work, we propose to automatically construct grayscale data from standard dialogue datasets, where only golden dialogue context and response pairs are provided. To meet this goal, we resort to off-the-shelf retrieval algorithms and generation models. Our idea is inspired by the observation",
+              "url": "https://aclanthology.org/2020.emnlp-main.741.pdf",
+              "document_sha256": "04e8715a863de09d9f38c8758b28fd6b0f6ca66c2275f895f2daaded8f1f699d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Our grayscale data acquisition provides ground for carrying out more principled and sufficient training paradigms. To make full use of the grayscale data, we propose multi-level ranking objectives. Unlike prior work that minimizes binary classification errors, our training objective better fits the learning-to-rank nature of response selection, that is, minimizes ranking errors of possible responses (Cao et al., 2007). Also, as the grayscale data exhibit various response quality, training with such data rather than random negatives better simulate testing environments. We start formal descriptions with some notation: the training set can be re-organized as D = {(ci , Ri )}N i=1 , where ci denotes the dialogue context and Ri = {ri , ei , gi , r̃i } is the response set enhanced by grayscale data. Concretely, ri , ei , gi , and r̃i refer to ground-truth responses, retrieval responses, generation responses, and random responses, respectively. We consider three ordered list as follows.",
+              "url": "https://aclanthology.org/2020.emnlp-main.741.pdf",
+              "document_sha256": "04e8715a863de09d9f38c8758b28fd6b0f6ca66c2275f895f2daaded8f1f699d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "Pre-Training Objective. To verify the superiority of our pre-training objective, namely the MLR loss, we investigated the performance of several existing loss functions for pre-training compared with ours. Specifically, two categories of loss functions used for metric training are adopted, including (a) the two-level setting and (b) the multi-level setting. The binary cross entropy (BCE) loss and the margin ranking loss are adopted for the two-level setting, while another three loss functions are adopted for the multi-level setting, including the supervised contrastive (SupCon) loss (Khosla et al., 2020), the fast-approximated triplet (FAT) loss (Yuan et al., 2019) and the vanilla MLR loss (Lin et al., 2020) 8 . As shown in Table 2, the performance of our MLR loss is the best among all the pre-training objectives. And we also found that the multi-level setting losses perform better than the two-level ones, especially on the ConvAI2 dataset. Moreover, in order to more intuitively analyze the performances of these pre-training objectives, we also visualize the encoded features and the predicted scores of the model M after being pretrained by the above loss functions on the DailyDialog++ dataset without fine-tuning.9 As shown in Figure 3, (a) the BCE loss cannot separate the level-1 scores from the level-2 ones and the corresponding features are also mixed; (b) the FAT loss, on the other hand, separates the features of different levels well, but does not consider the relative gaps where the distances between the level-1 and level-3 features are 8 The details of these pre-training loss fucntions are provided in Appendix B. 9 The visualization results of the ranking loss, SupCon loss and Vanilla MLR loss are provided in Appendix C.",
+              "url": "https://aclanthology.org/2021.acl-long.211.pdf",
+              "document_sha256": "6bc299b2a0e1b9ea8a84d1d58e345d75bb030f42cc25ad05e718d7e87a8c8262"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "2018), BERT-RUBER (Ghazarian et al., 2019) and GRADE (Huang et al., 2020). However, these metrics deviate from the actual human rating due to two limitations. First, they simplify the coherence evaluation task in a two-level setting, i.e., coherent or incoherent, by maximizing the differences between the positive coherent dialogues and the negative incoherent ones obtained by some negative sampling strategies. In contrast, humans usually adopt Likert scaling and give coherence scores from multiple levels like 1 to 5, as shown in Figure 1. Second, to avoid relying on large-scale human-annotated data, they are mostly trained in a purely unsupervised manner and cannot align with the human rating due to the absence of introducing the actual human rating standards during training. To address the above limitations, we propose a novel dialogue coherence metric training framework, named as Quantifiable Dialogue Coherence Evaluation (QuantiDCE). This framework consists of two training stages: Multi-Level Ranking (MLR) pre-training and Knowledge Distillation (KD) finetuning. At the MLR pre-training stage, a new multilevel ranking (MLR) loss is proposed for learning the coarse judgement of coherence degrees. Specifically, the MLR loss separates the context-response pairs with different coherence levels and compacts the pairs within the same level in one-dimensional score space. As a result, the pretrained model is able to distinguish different coherence-level dialogue responses for a given context and predicts more accurate coherence scores. At the KD finetuning stage, the pretrained model is further finetuned to learn the actual human rating standards with only very few human-annotated coherence scores. To mitigate overfitting into the scarce annotated data during fine-tuning, a",
+              "url": "https://aclanthology.org/2021.acl-long.211.pdf",
+              "document_sha256": "6bc299b2a0e1b9ea8a84d1d58e345d75bb030f42cc25ad05e718d7e87a8c8262"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Automatic dialogue coherence evaluation has attracted increasing attention and is crucial for developing promising dialogue systems. However, existing metrics have two major limitations: (a) they are mostly trained in a simplified two-level setting (coherent vs. incoherent), while humans give Likert-type multi-level coherence scores, dubbed as “quantifiable”; (b) their predicted coherence scores cannot align with the actual human rating standards due to the absence of human guidance during training. To address these limitations, we propose Quantifiable Dialogue Coherence Evaluation (QuantiDCE), a novel framework aiming to train a quantifiable dialogue coherence metric that can reflect the actual human rating standards. Specifically, QuantiDCE includes two training stages, Multi-Level Ranking (MLR) pre-training and Knowledge Distillation (KD) fine-tuning. During MLR pre-training, a new MLR loss is proposed for enabling the model to learn the coarse judgement of coherence degrees. Then, during KD fine-tuning, the pretrained model is further finetuned to learn the actual human rating standards with only very few human-annotated data. To advocate the generalizability even with limited finetuning data, a novel KD regularization is introduced to retain the knowledge learned at the pre-training stage. Experimental results show that the model trained by QuantiDCE presents stronger correlations with human judgements than the other state-of-the-art metrics. 1",
+              "url": "https://aclanthology.org/2021.acl-long.211.pdf",
+              "document_sha256": "6bc299b2a0e1b9ea8a84d1d58e345d75bb030f42cc25ad05e718d7e87a8c8262"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0308cb6fde6d46d08ea9b250",
+          "url": "https://aclanthology.org/2020.emnlp-main.741/"
+        },
+        "b": {
+          "paper_id": "paper-e412aeb92d44cb2aa98f4bb1",
+          "url": "https://aclanthology.org/2021.acl-long.211/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "010ffed7b996a42e4dde84f51a1152c5550447af2f07df09af2b74ad5da4f78c"
+    },
+    {
+      "id": "edge-98fe4abaf63c035a512e9804",
+      "a": "paper-06ec144f57dc25a9f7560e34",
+      "b": "paper-9552969edae6d236d2b006f6",
+      "state": {
+        "paper_a": {
+          "title": "Simple and Effective Semi-Supervised Question Answering",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Recent success of deep learning models for the task of extractive Question Answering (QA) is hinged on the availability of large annotated corpora. However, large domain specific annotated corpora are limited and expensive to construct. In this work, we envision a system where the end user specifies a set of base documents and only a few labelled examples. Our system exploits the document structure to create cloze-style questions from these base documents; pre-trains a powerful neural network on the cloze style questions; and further fine-tunes the model on the labeled examples. We evaluate our proposed system across three diverse datasets from different domains, and find it to be highly effective with very little labeled data. We attain more than 50% F1 score on SQuAD and TriviaQA with less than a thousand labelled examples. We are also releasing a set of 3.2M cloze-style questions for practitioners to use while building QA systems."
+        },
+        "paper_b": {
+          "title": "Generating Information-Seeking Conversations from Unlabeled Documents",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Synthesizing datasets for conversational question answering (CQA) from unlabeled documents remains challenging due to its interactive nature.Moreover, while modeling information needs is an essential key, only few studies have discussed it.In this paper, we introduce a novel framework, SimSeek, (Simulating information-Seeking conversation from unlabeled documents), and compare its two variants.In our baseline, SimSeek-sym, a questioner generates follow-up questions upon the predetermined answer by an answerer.On the contrary, SimSeek-asym first generates the question and then finds its corresponding answer under the conversational context.Our experiments show that they can synthesize effective training resources for CQA and conversational search tasks.As a result, conversations from SimSeek-asym not only make more improvements in our experiments but also are favorably reviewed in a human evaluation.We finally release a large-scale resource of synthetic conversations, Wiki-SimSeek, containing 2 million CQA pairs built upon Wikipedia documents.With the dataset, our CQA model achieves the state-of-the-art performance on a recent CQA benchmark, QuAC.The code and dataset are available at https://github.com/naver-ai/simseek"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Synthetic QA Generation Many question generation (QG) researches have sparked advances in various QA tasks (Dhingra et al., 2018; Dong et al., 2019; Lewis et al., 2019; Alberti et al., 2019; Puri et al., 2020; Lewis et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06ec144f57dc25a9f7560e34",
+          "b": "paper-9552969edae6d236d2b006f6",
+          "input_sha256": "ebfe67fb870cfc0cfc2f3dd94b7e890f3d295fefa36a9ad56b74082242c0b388",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N18-2092/",
+              "pdf_url": "https://aclanthology.org/N18-2092.pdf",
+              "sha256": "c8584cdab69e1cfcdf97a47babe25c4a09396591d6d834ce5a767824374a38ae"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.151/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.151.pdf",
+              "sha256": "e1fac6666f104b46750d594330969febc5b4cd7e1d4d07324ca7ea11d939cfb3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Cloze pretraining outperforms the GDAN baseline from Yang et al. (2017) using the same SQuAD dataset splits. Additionally, we show improvements in the 90% data case unlike GDAN. Our approach is also applicable in the extremely low-resource setting of 1% data, which we suspect GDAN might have trouble with since it uses the labeled data to do reinforcement learning. Furthermore, we are able to use the same cloze dataset to improve performance on both SQuAD and TriviaQA datasets. When we use the same unlabeled data to pre-train with a language modeling objective, the performance is worse6 , showing the bias we introduce by constructing clozes is important. 6 Since the GA Reader uses bidirectional RNN layers, when pretraining the LM we had to mask the inputs to the intermediate layers partially to avoid the model being exposed to the labels it is predicting. This results in a only a subset of the parameters being pretrained, which is why we believe this baseline performs poorly.",
+              "url": "https://aclanthology.org/N18-2092.pdf",
+              "document_sha256": "c8584cdab69e1cfcdf97a47babe25c4a09396591d6d834ce5a767824374a38ae"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Synthetic QA Generation Many question generation (QG) researches have sparked advances in various QA tasks (Dhingra et al., 2018; Dong et al., 2019; Lewis et al., 2019; Alberti et al., 2019; Puri et al., 2020; Lewis et al., 2021). Most of early studies propose to generate them in a cloze-style (Dhingra et al., 2018; Lewis et al., 2019) or by using pre-defined templates (Fabbri et al., 2020). Recent studies for the synthetic QA generation propose the pipeline strategies composed of three sub-phases, answer extraction, question generation, and various filtering steps such as round-trip filtration (Alberti et al., 2019; Puri et al., 2020; Lewis et al., 2021).",
+              "url": "https://aclanthology.org/2022.emnlp-main.151.pdf",
+              "document_sha256": "e1fac6666f104b46750d594330969febc5b4cd7e1d4d07324ca7ea11d939cfb3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Synthesizing datasets for conversational question answering (CQA) from unlabeled documents remains challenging due to its interactive nature. Moreover, while modeling information needs is an essential key, only few studies have discussed it. In this paper, we introduce a novel framework, S IM S EEK, (Simulating information-Seeking conversation from unlabeled documents), and compare its two variants. In our baseline S IM S EEK - SYM, a questioner generates follow-up questions upon the predetermined answer by an answerer. On the contrary, S IM S EEK - ASYM first generates the question and then finds its corresponding answer under the conversational context. Our experiments show that they can synthesize effective training resources for CQA and conversational search tasks. As a result, conversations from S IM S EEK - ASYM not only make more improvements in our experiments but also are favorably reviewed in a human evaluation. We finally release a large-scale resource of synthetic conversations, W IKI -S IM S EEK, containing 2 million CQA pairs built upon Wikipedia documents. With the dataset, our CQA model achieves the state-of-the-art performance on a recent CQA benchmark, QuAC (Choi et al., 2018) 1 .",
+              "url": "https://aclanthology.org/2022.emnlp-main.151.pdf",
+              "document_sha256": "e1fac6666f104b46750d594330969febc5b4cd7e1d4d07324ca7ea11d939cfb3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "racy (Qu et al., 2019b; Kim et al., 2021; Zhao et al., 2021). Despite the recent advances, they assume all other ingredients (i.e., gold history by humans) are given. Moreover, modeling information needs can facilitate simulating realistic conversations. As illustrated in Figure 1 (a), questioners with excessive information often ask questions incoherent with the conversation. On the other hand, the information needs drive the questioners to seek new knowledge via conversation, failing to do so sometimes, as shown in Figure 1 (b). However, only few CQA studies have focused on it (Qi et al., 2020). In this paper, we propose a novel framework, S IM S EEK (Simulating Information-Seeking conversation from unlabeled documents) and compare its two variants. Both consist of two sub-modules, questioner and answerer, that converse with each other; but each variant assumes opposite scenarios, respectively. In (1) S IM S EEK - SYM, an answerer first identifies answers from the document, and then a questioner asks context-dependent questions based on the predetermined answer. On the contrary, (2) S IM S EEK - ASYM allows a questioner to ask questions without any prior knowledge about the answer. Then, an answerer provides corresponding answers to the asked questions. Either way, S IM S EEK sequentially generates QA pairs at every turn, moving the conversation forward. We generate synthetic conversations with our frameworks and evaluate them. Despite the similarity of the two frameworks, S IM S EEK - ASYM performs better, which reveals the importance of modeling information needs. We first conduct experiments on a challenging CQA benchmark, QuAC (Choi et al., 2018) in the semi-supervised setup. Our experimental results demonstrate the effectiveness of the synthetic dataset from S",
+              "url": "https://aclanthology.org/2022.emnlp-main.151.pdf",
+              "document_sha256": "e1fac6666f104b46750d594330969febc5b4cd7e1d4d07324ca7ea11d939cfb3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06ec144f57dc25a9f7560e34",
+          "url": "https://aclanthology.org/N18-2092/"
+        },
+        "b": {
+          "paper_id": "paper-9552969edae6d236d2b006f6",
+          "url": "https://aclanthology.org/2022.emnlp-main.151/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "ca8371e42a6422d4eb5d7878b3f3089edaeebbfcb6b0eba24c6f1759c4f6c8c5"
+    },
+    {
+      "id": "edge-5944f790ea5fd8720207dcd1",
+      "a": "paper-077e5579f2f365a276f450a9",
+      "b": "paper-22e9f286f2118a1acdeb1ca1",
+      "state": {
+        "paper_a": {
+          "title": "Approximating Interactive Human Evaluation with Self-Play for Open-Domain Dialog Systems",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Building an open-domain conversational agent is a challenging problem. Current evaluation methods, mostly post-hoc judgments of static conversation, do not capture conversation quality in a realistic interactive context. In this paper, we investigate interactive human evaluation and provide evidence for its necessity; we then introduce a novel, model-agnostic, and dataset-agnostic method to approximate it. In particular, we propose a self-play scenario where the dialog system talks to itself and we calculate a combination of proxies such as sentiment and semantic coherence on the conversation trajectory. We show that this metric is capable of capturing the human-rated quality of a dialog model better than any automated metric known to-date, achieving a significant Pearson correlation (r>.7, p<.05). To investigate the strengths of this novel metric and interactive evaluation in comparison to state-of-the-art metrics and human evaluation of static conversations, we perform extended experiments with a set of models, including several that make novel improvements to recent hierarchical dialog generation architectures through sentiment and semantic knowledge distillation on the utterance level. Finally, we open-source the interactive evaluation platform we built and the dataset we collected to allow researchers to efficiently deploy and evaluate dialog models."
+        },
+        "paper_b": {
+          "title": "Discovering Dialog Structure Graph for Coherent Dialog Generation",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Learning discrete dialog structure graph from human-human dialogs yields basic insights into the structure of conversation, and also provides background knowledge to facilitate dialog generation. However, this problem is less studied in open-domain dialogue. In this paper, we conduct unsupervised discovery of discrete dialog structure from chitchat corpora, and then leverage it to facilitate coherent dialog generation in downstream systems. To this end, we present an unsupervised model, Discrete Variational Auto-Encoder with Graph Neural Network (DVAE-GNN), to discover discrete hierarchical latent dialog states (at the level of both session and utterance) and their transitions from corpus as a dialog structure graph. Then we leverage it as background knowledge to facilitate dialog management in a RL based dialog system. Experimental results on two benchmark corpora confirm that DVAE-GNN can discover meaningful dialog structure graph, and the use of dialog structure as background knowledge can significantly improve multi-turn coherence."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "3 Latent variable models for chitchat Recently, latent variables are utilized to improve diversity (Serban et al., 2017; Zhao et al., 2017; Gu et al., 2019; Gao et al., 2019; Ghandeharioun et al., 2019), control responding styles (Zhao et al.\nVHCR-EI This variational hierarchical RNN model can learn hierarchical latent variables from open-domain dialogs (Ghandeharioun et al., 2019).\nRecently, latent variables are utilized to improve diversity (Serban et al., 2017; Zhao et al., 2017; Gu et al., 2019; Gao et al., 2019; Ghandeharioun et al., 2019), control responding styles (Zhao et al., 2018; Li et al., 2020) and incorporate knowledge (Kim et al., 2020) Extract a phrase…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-077e5579f2f365a276f450a9",
+          "b": "paper-22e9f286f2118a1acdeb1ca1",
+          "input_sha256": "ab9c2cf5d40b9acf8b87206f3bf4459f567f6eeab94a276f7a478ae6fa68263c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/fc9812127bf09c7bd29ad6723c683fb5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.136/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.136.pdf",
+              "sha256": "f011a7f8be165cb45a23fbd6b76b19a6a2aba259ec862e321a15dacf568aa321"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "is limited in capturing common failure modes of open-domain dialog systems, such as a lack of diversity in the responses, inability to track long-term aspects of the conversation, and inability to maintain a consistent persona [6]. Despite this, static evaluation is commonly used for evaluating these exact qualities [7, 8]. Conversation is inherently a process. In this paper, we argue that multi-turn interactive human evaluation is essential for evaluating this process, and for making progress in improving open-domain dialog models. A multi-turn interactive evaluation is open-ended, and allows the users to derive and control the trajectory of the conversation by saying whatever they want. As opposed to post-hoc observations of a generated response to a static context, this is an ultimate test of generalization. Table 1 illustrates an example where a bot generates a coherent static response, but interactive evaluation shows that the distribution of its responses has collapsed onto repeatedly saying the same phrase, a common problem in open domain dialog [9]. The relative sparsity of interactive human evaluation of dialog systems may relate to the difficulty and expense of collecting human data. Therefore, we develop a way to approximate human judgment of interactive dialog quality using a novel form of dialog self-play. We begin by moving beyond superficial word-level mapping by proposing a series of metrics to evaluate the quality of conversation motivated by findings in psychology. Specifically, inspired by the effectiveness of sense of humor in creating solidarity [10], style matching for forming relationship stability and social cohesiveness [11, 12], and the importance of active listening through forming follow up questions [13], we propose metrics to capture",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "document_sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Building an open-domain conversational agent is a challenging problem. Current evaluation methods, mostly post-hoc judgments of static conversation, do not capture conversation quality in a realistic interactive context. In this paper, we investigate interactive human evaluation and provide evidence for its necessity; we then introduce a novel, model-agnostic, and dataset-agnostic method to approximate it. In particular, we propose a self-play scenario where the dialog system talks to itself and we calculate a combination of proxies such as sentiment and semantic coherence on the conversation trajectory. We show that this metric is capable of capturing the human-rated quality of a dialog model better than any automated metric known to-date, achieving a significant Pearson correlation (r > .7, p < .05). To investigate the strengths of this novel metric and interactive evaluation in comparison to state-of-the-art metrics and human evaluation of static conversations, we perform extended experiments with a set of models, including several that make novel improvements to recent hierarchical dialog generation architectures through sentiment and semantic knowledge distillation on the utterance level. Finally, we open-source the interactive evaluation platform we built and the dataset we collected to allow researchers to efficiently deploy and evaluate dialog models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "document_sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Recently, latent variables are utilized to improve diversity (Serban et al., 2017; Zhao et al., 2017; Gu et al., 2019; Gao et al., 2019; Ghandeharioun et al., 2019), control responding styles (Zhao et al., 2018; Li et al., 2020) and incorporate knowledge (Kim et al., 2020) in dialogs. Our work differs from",
+              "url": "https://aclanthology.org/2021.acl-long.136.pdf",
+              "document_sha256": "f011a7f8be165cb45a23fbd6b76b19a6a2aba259ec862e321a15dacf568aa321"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "We carefully select the following six baselines. MMPMS It is the multi-mapping based neural open-domain conversational model with posterior mapping selection mechanism (Chen et al., 2019), which is a SOTA model on the Weibo Corpus. MemGM It is the memory-augmented opendomain dialog model (Tian et al., 2019), which learns to cluster U-R pairs for response generation. HRED It is the hierarchical recurrent encoderdecoder model (Serban et al., 2016). CVAE It is the Conditional Variational AutoEncoder based neural open-domain conversational model (Zhao et al., 2017). VHCR-EI This variational hierarchical RNN model can learn hierarchical latent variables from open-domain dialogs (Ghandeharioun et al., 2019). It is a SOTA dialog model with hierarchical VAE. DVRNN-RL It discovers dialog structure graph for task-oriented dialog modeling (Shi et al., 2019). GCS It is our proposed dialog structure graph grounded dialog system with hierarchical RL. GCS w/ UtterG It is a simplified version of GCS that just uses the utterance-level graph and utterance-level sub-policy. GCS w/ Phrase Graph It is a simplified version of GCS that just uses the phrase graph and utterancelevel sub-policy.",
+              "url": "https://aclanthology.org/2021.acl-long.136.pdf",
+              "document_sha256": "f011a7f8be165cb45a23fbd6b76b19a6a2aba259ec862e321a15dacf568aa321"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "of great importance to discover open-domain dialog structure from corpus in an unsupervised way for coherent dialog generation. Some studies tried to discover dialog structure from task-oriented dialogs (Shi et al., 2019). However, the number of their dialog states is limited to only dozens or hundreds, which cannot cover finegrained semantics in open-domain dialogs. Furthermore, the dialog structures they discovered generally only contain utterance-level semantics (non-hierarchical), without session-level semantics (chatting topics) that are essential in open-domain dialogs (Wu et al., 2019; Kang et al., 2019; Xu et al., 2020c).2 Thus, in order to provide a full picture of open-domain dialog structure, it is desirable to discover a two-layer directed graph that contains session-level semantics in the upper-layer vertices, utterance-level semantics in the lower-layer vertices, and edges among these vertices. In this paper, we propose a novel discrete variational auto-encoder with graph neural network (DVAE-GNN) to discover a two-layer dialog structure from chitchat corpus. Intuitively, since discrete dialog states are easier to capture transitions for dialog coherence, we use discrete variables to represent dialog states (or vertices in the graph) rather than dense continuous ones in most VAEbased dialog models (Serban et al., 2017; Zhao et al., 2017). Specifically, we employ an RNN Encoder with softmax function as vertex recognition module in DVAE, and an RNN decoder as reconstruction module in DVAE, as shown in Figure 3. Furthermore, we integrate GNN into DVAE to model complex relations among discrete variables for more effective discovery. The parameters of DVAE-GNN can be optimized by minimizing a reconstruction loss, without the requirement of any annotated",
+              "url": "https://aclanthology.org/2021.acl-long.136.pdf",
+              "document_sha256": "f011a7f8be165cb45a23fbd6b76b19a6a2aba259ec862e321a15dacf568aa321"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "As shown in Figure 1, with well-trained DVAEGNN, we build the dialog structure graph by three steps. First, we map all dialog sessions to utterance-level and session-level vertices, as shown in Figure 1 (b); Second, we calculate cooccurrence statistics of mapped vertices for all dialog sessions, as shown in Figure 1 (c).3 Finally, we build edges among vertices based on all collected co-occurrence statistics to form the dialog structure graph, as shown in Figure 1 (d). To prove the effectiveness of the discovered structure, we propose a hierarchical reinforcement learning (RL) based graph grounded conversational system (GCS) to leverage it for conversation generation. As shown in Figure 2, given a dialog context, GCS first maps it to a utterance-level vertex, and then learns to walk over graph edges, and finally selects a contextual appropriate utterance-level vertex to guide response generation at each turn. Our contribution includes: (1) we identify the task of unsupervised dialog structure graph discovery in open-domain dialogs. (2) we propose a novel model, DVAE-GNN, for hierarchical dialog struc3 Co-occurrence means that two utterance-level vertices are mapped by two adjacent utterances in a session.",
+              "url": "https://aclanthology.org/2021.acl-long.136.pdf",
+              "document_sha256": "f011a7f8be165cb45a23fbd6b76b19a6a2aba259ec862e321a15dacf568aa321"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-077e5579f2f365a276f450a9",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/fc9812127bf09c7bd29ad6723c683fb5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-22e9f286f2118a1acdeb1ca1",
+          "url": "https://aclanthology.org/2021.acl-long.136/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "52b48af99a2d9f74f72b8e41feffde823b9af89f5dab3f827301dcc8722e4b4f"
+    },
+    {
+      "id": "edge-bdb6924f8c6f6572dcf80047",
+      "a": "paper-077e5579f2f365a276f450a9",
+      "b": "paper-52e5b953decb37b5340c0b7d",
+      "state": {
+        "paper_a": {
+          "title": "Approximating Interactive Human Evaluation with Self-Play for Open-Domain Dialog Systems",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Building an open-domain conversational agent is a challenging problem. Current evaluation methods, mostly post-hoc judgments of static conversation, do not capture conversation quality in a realistic interactive context. In this paper, we investigate interactive human evaluation and provide evidence for its necessity; we then introduce a novel, model-agnostic, and dataset-agnostic method to approximate it. In particular, we propose a self-play scenario where the dialog system talks to itself and we calculate a combination of proxies such as sentiment and semantic coherence on the conversation trajectory. We show that this metric is capable of capturing the human-rated quality of a dialog model better than any automated metric known to-date, achieving a significant Pearson correlation (r>.7, p<.05). To investigate the strengths of this novel metric and interactive evaluation in comparison to state-of-the-art metrics and human evaluation of static conversations, we perform extended experiments with a set of models, including several that make novel improvements to recent hierarchical dialog generation architectures through sentiment and semantic knowledge distillation on the utterance level. Finally, we open-source the interactive evaluation platform we built and the dataset we collected to allow researchers to efficiently deploy and evaluate dialog models."
+        },
+        "paper_b": {
+          "title": "DynaEval: Unifying Turn and Dialogue Level Evaluation",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "A dialogue is essentially a multi-turn interaction among interlocutors. Effective evaluation metrics should reflect the dynamics of such interaction. Existing automatic metrics are focused very much on the turn-level quality, while ignoring such dynamics. To this end, we propose DynaEval, a unified automatic evaluation framework which is not only capable of performing turn-level evaluation, but also holistically considers the quality of the entire dialogue. In DynaEval, the graph convolutional network (GCN) is adopted to model a dialogue in totality, where the graph nodes denote each individual utterance and the edges represent the dependency between pairs of utterances. A contrastive loss is then applied to distinguish well-formed dialogues from carefully constructed negative samples. Experiments show that DynaEval significantly outperforms the state-of-the-art dialogue coherence model, and correlates strongly with human judgements across multiple dialogue evaluation aspects at both turn and dialogue level."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Ghandeharioun et al. (2019) propose a self-play scenario where the dialog system chats with itself and a combination of three metrics measuring sentiment, semantic coherence and engagement respectively along the conversation trajectory is computed to approximate dialogue-level quality estimation.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-077e5579f2f365a276f450a9",
+          "b": "paper-52e5b953decb37b5340c0b7d",
+          "input_sha256": "86cc63476637177a1034c1fe9cf767bd8803417b83cba166beb0ca91e0aa7e24",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/fc9812127bf09c7bd29ad6723c683fb5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.441/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.441.pdf",
+              "sha256": "5d7151189389afe7557f3b702b8a9708cedd719fe467ef08555928fc2e607a44"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "is limited in capturing common failure modes of open-domain dialog systems, such as a lack of diversity in the responses, inability to track long-term aspects of the conversation, and inability to maintain a consistent persona [6]. Despite this, static evaluation is commonly used for evaluating these exact qualities [7, 8]. Conversation is inherently a process. In this paper, we argue that multi-turn interactive human evaluation is essential for evaluating this process, and for making progress in improving open-domain dialog models. A multi-turn interactive evaluation is open-ended, and allows the users to derive and control the trajectory of the conversation by saying whatever they want. As opposed to post-hoc observations of a generated response to a static context, this is an ultimate test of generalization. Table 1 illustrates an example where a bot generates a coherent static response, but interactive evaluation shows that the distribution of its responses has collapsed onto repeatedly saying the same phrase, a common problem in open domain dialog [9]. The relative sparsity of interactive human evaluation of dialog systems may relate to the difficulty and expense of collecting human data. Therefore, we develop a way to approximate human judgment of interactive dialog quality using a novel form of dialog self-play. We begin by moving beyond superficial word-level mapping by proposing a series of metrics to evaluate the quality of conversation motivated by findings in psychology. Specifically, inspired by the effectiveness of sense of humor in creating solidarity [10], style matching for forming relationship stability and social cohesiveness [11, 12], and the importance of active listening through forming follow up questions [13], we propose metrics to capture",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "document_sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Building an open-domain conversational agent is a challenging problem. Current evaluation methods, mostly post-hoc judgments of static conversation, do not capture conversation quality in a realistic interactive context. In this paper, we investigate interactive human evaluation and provide evidence for its necessity; we then introduce a novel, model-agnostic, and dataset-agnostic method to approximate it. In particular, we propose a self-play scenario where the dialog system talks to itself and we calculate a combination of proxies such as sentiment and semantic coherence on the conversation trajectory. We show that this metric is capable of capturing the human-rated quality of a dialog model better than any automated metric known to-date, achieving a significant Pearson correlation (r > .7, p < .05). To investigate the strengths of this novel metric and interactive evaluation in comparison to state-of-the-art metrics and human evaluation of static conversations, we perform extended experiments with a set of models, including several that make novel improvements to recent hierarchical dialog generation architectures through sentiment and semantic knowledge distillation on the utterance level. Finally, we open-source the interactive evaluation platform we built and the dataset we collected to allow researchers to efficiently deploy and evaluate dialog models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fc9812127bf09c7bd29ad6723c683fb5-Paper.pdf",
+              "document_sha256": "e08d676b929badda4816726d395ab31f62452fc4f18ace1146355402575c4a72"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "human judges converse with dialogue systems and make the assessment at the end of the conversations (See et al., 2019; Finch and Choi, 2020; Li et al., 2019; Deriu et al., 2020). It has been shown to be more reliable than turn-level static evaluation (Mehri and Eskenazi, 2020a). There are few studies on fully automating this process. Ghandeharioun et al. (2019) propose a self-play scenario where the dialog system chats with itself and a combination of three metrics measuring sentiment, semantic coherence and engagement respectively along the conversation trajectory is computed to approximate dialogue-level quality estimation. Mehri and Eskenazi (2020a) propose the FED metric, which evaluates the quality of a system utterance in an interactive setting by computing the likelihood of a particular follow-up utterance responded by dialoGPT (Zhang et al., 2020). Moreover, Sinha et al. (2020) come up with MaUde, a reference-free metric tailored for online dialogue evaluation, which leverages a pre-trained DistilBERT (Sanh et al., 2019) model to extract the semantic representation of dialogue turns and uses bidirectional LSTM to explicitly model the discourse structure. While the interactive evaluation is more reliable than the turn-level static evaluation, it still relies on the aggregation of turn-level scores. An ideal approximation of the human evaluation process is a top-down approach whereby we examine the quality of the entire dialogue at macro level before zooming into the dialogue turns. Hence, a unified framework, which holistically models the entire dialogue, is highly sought after. 2.2",
+              "url": "https://aclanthology.org/2021.acl-long.441.pdf",
+              "document_sha256": "5d7151189389afe7557f3b702b8a9708cedd719fe467ef08555928fc2e607a44"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Commonly used static metrics, such as BLEU (Papineni et al., 2002), METEOR (Denkowski and Lavie, 2014) and ROUGE (Lin, 2004), correlate poorly with human judgements (Liu et al., 2016) rendering them unsuitable for dialogue evaluation. While some recent automatic dialogue evaluation metrics (Ghazarian et al., 2019; Mehri and Eskenazi, 2020b; Huang et al., 2020; Zhang et al., 2021b) demonstrate strong correlations with human judgement at the turn-level, they only focus on context-response pairs without explicitly modeling the interaction over an entire dialogue. To perform dialogue-level evaluation, we need to rely on the aggregation of turn-level scores over the dialogue as a proxy for a dialogue-level score. Furthermore, a recent study by Mehri and Eskenazi (2020a) found out that even though state-ofthe-art chatbots outperform humans across multiple turn-level evaluation criteria, such as interestingness, engagement and specificity, their dialoguelevel ratings like coherence, Likability and diversity are still far below human level. This further reinforces the idea that turn-level quality evaluation may be insufficient to assess the performance of open-domain dialogue systems. In this work, we address the problem of automatic open-domain dialogue evaluation by focusing on the quality of an entire dialogue. This is a departure from the way we frame the problem as a weakly supervised next sentence prediction (Mehri and Eskenazi, 2020b; Sato et al., 2020) or language modeling tasks (Nedelchev et al., 2020; Pang et al., 2020) for context-response pairs. To this end, we need to answer two important questions: (1) How to effectively represent the entire dialogue? (2) How to incorporate this dialogue-level knowledge into our evaluation framework? We propose DynaEval to",
+              "url": "https://aclanthology.org/2021.acl-long.441.pdf",
+              "document_sha256": "5d7151189389afe7557f3b702b8a9708cedd719fe467ef08555928fc2e607a44"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "DynaEval: Unifying Turn and Dialogue Level Evaluation Chen Zhang†,? Yiming Chen† Luis Fernando D’Haro‡ Yan Zhang† Thomas Friedrichs? Grandee Lee† Haizhou Li†,?? † National University of Singapore ? Robert Bosch (SEA), Singapore ‡ Universidad Politécnica de Madrid, Spain ?? Kriston AI Lab, China {chen zhang,yiming.chen,grandee.lee}@u.nus.edu, {haizhou.li,eleyanz}@nus.edu.sg, luisfernando.dharo@upm.es, thomas.friedrichs@sg.bosch.com Abstract A dialogue is essentially a multi-turn interaction among interlocutors. Effective evaluation metrics should reflect the dynamics of such interaction. Existing automatic metrics are focused very much on the turn-level quality, while ignoring such dynamics. To this end, we propose DynaEval1 , a unified automatic evaluation framework which is not only capable of performing turn-level evaluation, but also holistically considers the quality of the entire dialogue. In DynaEval, the graph convolutional network (GCN) is adopted to model a dialogue in totality, where the graph nodes denote each individual utterance and the edges represent the dependency between pairs of utterances. A contrastive loss is then applied to distinguish well-formed dialogues from carefully constructed negative samples. Experiments show that DynaEval significantly outperforms the state-of-the-art dialogue coherence model, and correlates strongly with human judgements across multiple dialogue evaluation aspects at both turn and dialogue level.",
+              "url": "https://aclanthology.org/2021.acl-long.441.pdf",
+              "document_sha256": "5d7151189389afe7557f3b702b8a9708cedd719fe467ef08555928fc2e607a44"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-077e5579f2f365a276f450a9",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/fc9812127bf09c7bd29ad6723c683fb5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-52e5b953decb37b5340c0b7d",
+          "url": "https://aclanthology.org/2021.acl-long.441/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "1d3416c44fd879ad621c057aea8f765618ede62058fe0031af727660d148b7fd"
+    },
+    {
+      "id": "edge-6c42a93d652f170982c2767b",
+      "a": "paper-077ff573931ae873f94ad9cb",
+      "b": "paper-9b94f3b226bd252206fdacf9",
+      "state": {
+        "paper_a": {
+          "title": "End-to-End Training of Neural Retrievers for Open-Domain Question Answering",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Recent work on training neural retrievers for open-domain question answering (OpenQA) has employed both supervised and unsupervised approaches. However, it remains unclear how unsupervised and supervised methods can be used most effectively for neural retrievers. In this work, we systematically study retriever pre-training. We first propose an approach of unsupervised pre-training with the Inverse Cloze Task and masked salient spans, followed by supervised finetuning using question-context pairs. This approach leads to absolute gains of 2+ points over the previous best result in the top-20 retrieval accuracy on Natural Questions and TriviaQA datasets. We next explore two approaches for end-to-end training of the reader and retriever components in OpenQA models, which differ in the manner the reader ingests the retrieved documents. Our experiments demonstrate the effectiveness of these approaches as we obtain state-of-the-art results. On the Natural Questions dataset, we obtain a top-20 retrieval accuracy of 84%, an improvement of 5 points over the recent DPR model. We also achieve good results on answer extraction, outperforming recent models like REALM and RAG by 3+ points."
+        },
+        "paper_b": {
+          "title": "Multi-Grained Knowledge Retrieval for End-to-End Task-Oriented Dialog",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Retrieving proper domain knowledge from an external database lies at the heart of end-to-end task-oriented dialog systems to generate informative responses. Most existing systems blend knowledge retrieval with response generation and optimize them with direct supervision from reference responses, leading to suboptimal retrieval performance when the knowledge base becomes large-scale. To address this, we propose to decouple knowledge retrieval from response generation and introduce a multi-grained knowledge retriever (MAKER) that includes an entity selector to search for relevant entities and an attribute selector to filter out irrelevant attributes. To train the retriever, we propose a novel distillation objective that derives supervision signals from the response generator. Experiments conducted on three standard benchmarks with both small and large-scale knowledge bases demonstrate that our retriever performs knowledge retrieval more effectively than existing methods. Our code has been made publicly available at https://github.com/18907305772/MAKER."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Sachan et al. (2021) propose to combine unsupervised pre-training and supervised fine-tuning to train the retriever.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-077ff573931ae873f94ad9cb",
+          "b": "paper-9b94f3b226bd252206fdacf9",
+          "input_sha256": "013b8a913ab360d807f89195fa5fb4ab7b80a96b69785bbc21bb382913856c74",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.519/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.519.pdf",
+              "sha256": "526c74481f6e008f540f8860a1f5438a77cbaf1c4ad897a3dccc825f6c56b4d9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.627/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "dicting masked salient spans (REALM) (Guu et al., 2020), while supervised approaches such as Dense Passage Retrieval (DPR) (Karpukhin et al., 2020) train the retriever using human-annotated sets of question and context pairs. However, there is no study that investigates the comparative advantages of using these two styles of training when the retrieval task is challenging, i.e., when the evidence contains millions of documents. It is unclear if the unsupervised approaches can further help to improve the performance of strong supervised approaches, and, if so, under what conditions. A core focus of this work is systematically studying these aspects of retriever training. We propose a unified approach to train the retriever: unsupervised pre-training followed by supervised finetuning. We also investigate key design choices—such as relevance score scaling and longer training—and showcase their effectiveness. Our results demonstrate that the proposed approach obtains substantial accuracy gains when evaluated on benchmark OpenQA datasets. Extensive experiments also highlight the relative importance of different pre-training strategies, revealing important trade-offs when varying the amount of supervised data available to train the retriever. Furthermore, motivated by recent work (Guu et al., 2020; Lewis et al., 2020a), we also explore two approaches for end-to-end supervised training of the reader and retriever components. In the first approach, the reader considers each retrieved document separately while in the second approach, the reader takes as input all the retrieved documents together. We compare the effectiveness of these approaches on both retrieval accuracy and answer extraction. We show that the first approach leads to an improved retrieval performance, while the",
+              "url": "https://aclanthology.org/2021.acl-long.519.pdf",
+              "document_sha256": "526c74481f6e008f540f8860a1f5438a77cbaf1c4ad897a3dccc825f6c56b4d9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "To improve the retriever training, we propose the approach of unsupervised pre-training of the retriever followed by supervised finetuning. In this approach, we first pre-train the retriever weights with ICT training or masked salient spans training (Sec. 2.2.2). After pre-training, we finetune the retriever with supervised training (Sec. 2.2.1).",
+              "url": "https://aclanthology.org/2021.acl-long.519.pdf",
+              "document_sha256": "526c74481f6e008f540f8860a1f5438a77cbaf1c4ad897a3dccc825f6c56b4d9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "pervised learning problem, researchers propose to distill knowledge from the answer generator to train the retriever iteratively (Yang and Seo, 2020; Izacard and Grave, 2020). Other researchers try to train the retriever and generator in an end-to-end manner. REALM (Guu et al., 2020), RAG (Lewis et al., 2020), and EMDR2 (Singh et al., 2021) propose to train the retriever end-to-end through maximum marginal likelihood. Sachan et al. (2021) propose to combine unsupervised pre-training and supervised fine-tuning to train the retriever. Motivated by these works, we propose a multi-grained knowledge retriever trained by distilling knowledge from the response generator in E2E-TOD systems.",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Retrieving proper domain knowledge from an external database lies at the heart of end-toend task-oriented dialog systems to generate informative responses. Most existing systems blend knowledge retrieval with response generation and optimize them with direct supervision from reference responses, leading to suboptimal retrieval performance when the knowledge base becomes large-scale. To address this, we propose to decouple knowledge retrieval from response generation and introduce a multigrained knowledge retriever (MAKER) that includes an entity selector to search for relevant entities and an attribute selector to filter out irrelevant attributes. To train the retriever, we propose a novel distillation objective that derives supervision signals from the response generator. Experiments conducted on three standard benchmarks with both small and largescale knowledge bases demonstrate that our retriever performs knowledge retrieval more effectively than existing methods. Our code has been made publicly available.1",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "blend knowledge retrieval and response generation and train them by the supervision of reference responses, which has two limitations. First, the system response usually consists of pure language tokens and KB-related tokens (e.g., hotel names and phone numbers), and it is challenging to train a good retriever from the weak supervision of reference responses. Second, the systems may become inefficient when the scale of the knowledge base grows large. Our preliminary study2 in Figure 1 confirms that when a large-scale cross-domain knowledge base is given, existing dialog systems suffer significant performance degradation. In this paper, we propose a novel Multi-grAined KnowlEdge Retriever (MAKER) for E2E TOD systems to improve the acquisition of knowledge for response generation. The retriever decouples knowledge retrieval from response generation and introduces an entity selector and an attribute selector to select relevant entities and attributes from the knowledge base. Then, the response generator generates a system response based on the dialogue context and the multi-grained retrieval results. The retriever is trained by distilling knowledge from the response generator using the cross-attention scores of KB-related tokens in the response. We train the entity selector, attribute selector, and response generator jointly in an end-to-end manner. We compare our system with other E2E TOD systems on three benchmark datasets (Eric et al., 2017; Wen et al., 2017; Eric et al., 2020). Empirical results show that our system achieves state-of-theart performance when either a small or a largescale knowledge base is used. Through in-depth analysis, we have several findings to report. First, our retriever shows great advantages over baselines when the size of knowledge bases",
+              "url": "https://aclanthology.org/2023.acl-long.627.pdf",
+              "document_sha256": "e267217e625fa200239634c26df302e3483f9d18987f9585218ad2f036d5802c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-077ff573931ae873f94ad9cb",
+          "url": "https://aclanthology.org/2021.acl-long.519/"
+        },
+        "b": {
+          "paper_id": "paper-9b94f3b226bd252206fdacf9",
+          "url": "https://aclanthology.org/2023.acl-long.627/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "656da36610a70ae5d416ce2a7bf0a65f70be32959e0980e3c393f6d05b057fde"
+    },
+    {
+      "id": "edge-fbf271fad9b98559415ba873",
+      "a": "paper-07a1eb3b1988af43e401c2b7",
+      "b": "paper-057780938df951ff71f30d06",
+      "state": {
+        "paper_a": {
+          "title": "DeeBERT: Dynamic Early Exiting for Accelerating BERT Inference",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in real-time applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ~40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/DeeBERT."
+        },
+        "paper_b": {
+          "title": "Two Birds One Stone: Dynamic Ensemble for OOD Intent Classification",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Out-of-domain (OOD) intent classification is an active field of natural language understanding, which is of great practical significance for intelligent devices such as the Task-Oriented Dialogue System. It mainly contains two challenges: it requires the model to know what it knows and what it does not know. This paper investigates “overthinking” in the open-world scenario and its impact on OOD intent classification. Inspired by this, we propose a two-birds-one-stone method, which allows the model to decide whether to make a decision on OOD classification early during inference and can ensure accuracy and accelerate inference. At the same time, to adapt to the behavior of dynamic inference, we also propose a training method based on ensemble methods. In addition to bringing certain theoretical insights, we also conduct detailed experiments on three real-world intent datasets. Compared with the previous baselines, our method can not only improve inference speed, but also achieve significant performance improvements."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "We follow the metric adopted in previous work (Zhang et al., 2021b; Zeng et al., 2021; Zhou et al., 2022) For the efﬁciency savings of the inference, we follow the settings in the research literature about early exit (Xin et al., 2020; Zhou et al., 2020; Liu et al., 2020; Sun et al., 2021).\nEarly Exiting It is considered an effective way to accelerate the speed of inference of large pre-trained language models (Xin et al., 2020; Zhou et al., 2020; Liu et al., 2020; Sun et al., 2021).\nTo this end, we ﬁrst attach extra Internal Classi-ﬁers (ICs), which also are referred to as off-ramps , between different internal transformer layers of the model as shown in Figure 2 (a) and train these internal classiﬁers and all transformer layers in two stages as suggested in Xin et al. (2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07a1eb3b1988af43e401c2b7",
+          "b": "paper-057780938df951ff71f30d06",
+          "input_sha256": "5fcd90f9024a6e37e4be048e3bb768a8aae3ecccd05abb396c899f632ec1164c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.204/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.595/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.595.pdf",
+              "sha256": "fa4f3f4e40685d89061efe26780fa4836e3fda7225f2e09f027355c642ff4aa2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pre-trained language models such as ELMo (Peters et al., 2018), GPT (Radford et al., 2019), BERT (Devlin et al., 2019), XLNet (Yang et al., 2019), and RoBERTa (Liu et al., 2019) have brought significant improvements to natural language processing (NLP) applications. Despite their power, they are notorious for being enormous in size and slow in both training and inference. Their long inference latencies present challenges to deployment in real-time applications and hardwareconstrained edge devices such as mobile phones and smart watches. To accelerate inference for BERT, we propose DeeBERT: Dynamic early exiting for BERT. The inspiration comes from a well-known observation in the computer vision community: in deep convolutional neural networks, higher layers typically produce more detailed and finer-grained features (Zeiler and Fergus, 2014). Therefore, we",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in realtime applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ∼40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/ DeeBERT.",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "training and test set come from the same distribution), previous studies have pointed out that PTMs would be “overthinking” the semantic features of the sample (Kaya et al., 2019; Zhou et al., 2020), i.e., the representation of the sample may become too complex after reaching the last layer through multiple stacked transformer layers, thus affecting the final decision of the model. Naturally, in the open-world scenario (i.e., the condition of the same distribution is not maintained), will the PTMs be “overthinking” the difference between IND and OOD intents? We want to explore the evolution of the model’s ability to distinguish IND and OOD through the forward process of two widely used models BERT (Devlin et al., 2019) and ALBERT (Lan et al., 2020). To this end, we first attach extra Internal Classifiers (ICs), which also are referred to as off-ramps, between different internal transformer layers of the model as shown in Figure 2 (a) and train these internal classifiers and all transformer layers in two stages as suggested in Xin et al. (2020). The outputs of these classifiers are used to measure the ability of different layers to distinguish between IND and OOD, specifically, by comparing the confidence (calculated by maximum softmax probabil-",
+              "url": "https://aclanthology.org/2023.acl-long.595.pdf",
+              "document_sha256": "fa4f3f4e40685d89061efe26780fa4836e3fda7225f2e09f027355c642ff4aa2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "to adapt to downstream detection features by contrastive learning paradigms. KNN-CL (Zhou et al., 2020) further improves the learned semantic features by constraining positive and negative samples in contrastive learning. Different from the existing work, our method can dynamically decide whether to exit early without going through the whole model during inference, which speeds up the speed of inference and effectively guarantees the accuracy of recognition. Early Exiting It is considered an effective way to accelerate the speed of inference of large pretrained language models (Xin et al., 2020; Zhou et al., 2020; Liu et al., 2020; Sun et al., 2021). The mechanism allows samples to exit from some internal layers of the model in advance to accelerate the inference process of the model without losing accuracy as much as possible. However, the existing research on Early Exiting is based on the closed-world scenario. In this work, based on further elaborating the manifestations of the “overthinking” phenomenon in the open-world scenario, we introduce the Early Exiting mechanism into the open-world scenario to help improve the model’s ability to distinguish IND and OOD while accelerating the inference of the model.",
+              "url": "https://aclanthology.org/2023.acl-long.595.pdf",
+              "document_sha256": "fa4f3f4e40685d89061efe26780fa4836e3fda7225f2e09f027355c642ff4aa2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Out-of-domain (OOD) intent classification is an active field of natural language understanding, which is of great practical significance for intelligent devices such as the Task-Oriented Dialogue System. It mainly contains two challenges: it requires the model to know what it knows and what it does not know. This paper investigates “overthinking” in the openworld scenario and its impact on OOD intent classification. Inspired by this, we propose a two-birds-one-stone method, which allows the model to decide whether to make a decision on OOD classification early during inference and can ensure accuracy and accelerate inference. At the same time, to adapt to the behavior of dynamic inference, we also propose a training method based on ensemble methods. In addition to bringing certain theoretical insights, we also conduct detailed experiments on three real-world intent datasets. Compared with the previous baselines, our method can not only improve inference speed, but also achieve significant performance improvements. Code is publicly available.1",
+              "url": "https://aclanthology.org/2023.acl-long.595.pdf",
+              "document_sha256": "fa4f3f4e40685d89061efe26780fa4836e3fda7225f2e09f027355c642ff4aa2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "ity) or uncertainty (calculated by entropy) outputted by each layer on In- and Out-of-domain samples. Ideally, IND should be given higher confidence (or lower uncertainty) than OOD, and a larger difference or gap suggests a stronger ability to distinguish between them. The results are shown in Figure 1. There are two types of curves in Figure 1, where the Pred Entropy (red) refers to the entropy (average value) of the sample output by the internal layers of the model, which is used to measure the certainty in its output. The curve of “Diff” shows the trend of the variation in the difference between the average values of the confidence (blue, and the orange refers to entropy) of all IND samples and OOD samples as the number of layers increases. We observe that with the increase of the number of layers, the model becomes more “confident” (lower entropy in output), but the ability to distinguish IND and OOD decreases (the difference is getting smaller) after reaching a certain peak. The above experiments show that in the openworld scenario, PTMs also would be “overthinking” for the difference between IND and OOD. The “overthinking” behavior of the model in different scenarios also inspires us it is unnecessary to forward the last layer to distinguish IND and OOD or identify a specific class of IND during inference. To this end, we design an inference strategy to let the passed ICs dynamic ensemble and let these ICs vote to determine whether the sample is IND or OOD and whether they have enough confidence to exit early (Section 3.2). Furthermore, we introduce a training method that can adapt to the accurate and accelerated behavior in the inference stage. On the one hand, according to the theory of ensemble methods, we can improve the accuracy of IND recognition of the",
+              "url": "https://aclanthology.org/2023.acl-long.595.pdf",
+              "document_sha256": "fa4f3f4e40685d89061efe26780fa4836e3fda7225f2e09f027355c642ff4aa2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07a1eb3b1988af43e401c2b7",
+          "url": "https://aclanthology.org/2020.acl-main.204/"
+        },
+        "b": {
+          "paper_id": "paper-057780938df951ff71f30d06",
+          "url": "https://aclanthology.org/2023.acl-long.595/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Conversational AI Systems and Response Generation"
+      },
+      "sha256": "3282a95ae6eee2c9c224916052fb492e4f1a189cbfa522e739eda490dd185b5f"
+    }
+  ]
+}

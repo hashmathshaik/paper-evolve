@@ -1,0 +1,982 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Algorithms for Efficient Inference on Graphs and Relational Data",
+  "area": "Optimization & Federated Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-e748d957a9e56b5d3d007dda",
+      "a": "paper-0bfecff934f7a280a159f1c7",
+      "b": "paper-b43961321f5eb99ef854f298",
+      "state": {
+        "paper_a": {
+          "title": "Continual Learning via Sequential Function-Space Variational Inference",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Sequential Bayesian inference over predictive functions is a natural framework for continual learning from streams of data. However, applying it to neural networks has proved challenging in practice. Addressing the drawbacks of existing techniques, we propose an optimization objective derived by formulating continual learning as sequential function-space variational inference. In contrast to existing methods that regularize neural network parameters directly, this objective allows parameters to vary widely during training, enabling better adaptation to new tasks. Compared to objectives that directly regularize neural network predictions, the proposed objective allows for more flexible variational distributions and more effective regularization. We demonstrate that, across a range of task sequences, neural networks trained via sequential function-space variational inference achieve better predictive accuracy than networks trained with related methods while depending less on maintaining a set of representative points from previous tasks."
+        },
+        "paper_b": {
+          "title": "Function Space Bayesian Pseudocoreset for Bayesian Neural Networks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To overcome this issue, researchers have increasingly focused on function space variational inference [6, 2, 16, 30, 25, 32, 27, 17].\nAdditionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction variable [24, 30].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0bfecff934f7a280a159f1c7",
+          "b": "paper-b43961321f5eb99ef854f298",
+          "input_sha256": "f4fd34da51d9001e31b0a4c9cb133e3f2c0e850b537e17af4f93b311020249de",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/rudner22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/rudner22a/rudner22a.pdf",
+              "sha256": "31d50e90a61d59493ee79a4ee17d600275925146c97feae09ba1d9fb2999a042"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Sequential Bayesian inference over predictive functions is a natural framework for continual learning from streams of data. However, applying it to neural networks has proved challenging in practice. Addressing the drawbacks of existing techniques, we propose an optimization objective derived by formulating continual learning as sequential function-space variational inference. In contrast to existing methods that regularize neural network parameters directly, this objective allows parameters to vary widely during training, enabling better adaptation to new tasks. Compared to objectives that directly regularize neural network predictions, the proposed objective allows for more flexible variational distributions and more effective regularization. We demonstrate that, across a range of task sequences, neural networks trained via sequential function-space variational inference achieve better predictive accuracy than networks trained with related methods while depending less on maintaining a set of representative points from previous tasks.",
+              "url": "https://proceedings.mlr.press/v162/rudner22a/rudner22a.pdf",
+              "document_sha256": "31d50e90a61d59493ee79a4ee17d600275925146c97feae09ba1d9fb2999a042"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "3. Continual Learning via Sequential Function-Space Variational Inference The ideas presented in Section 2 provide a starting point for our method. To approximate the posterior in Equation (2) at task t, we would like to find a variational distribution qt (f ) ∈ Qf that minimizes DKL (qt (f ) k pt (f |D1 , ..., Dt )),",
+              "url": "https://proceedings.mlr.press/v162/rudner22a/rudner22a.pdf",
+              "document_sha256": "31d50e90a61d59493ee79a4ee17d600275925146c97feae09ba1d9fb2999a042"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "referred to as a Bayesian pseudocoreset. The process of learning a Bayesian pseudocoreset involves minimizing a divergence measure between the posterior of the full dataset and the posterior of the pseudocoreset. However, learning Bayesian pseudocoresets is generally challenging due to the intractability of constructing both the full dataset posterior and the pseudocoreset posterior, as well as the computation of the divergence between them, which necessitates approximation. Consequently, existing works on Bayesian pseudocoresets have primarily focused on small-scale problems [19, 8, 20, 21]. Recently, Kim et al. [15] introduced a scalable method for constructing Bayesian pseudocoresets using variational Gaussian approximation for the posteriors and minimizing forward KL divergence. Although their method shows promise, it still demands substantial computational resources for high-dimensional models like deep neural networks. In this paper, we present a novel approach to enhance the scalability of Bayesian pseudocoreset construction, particularly for Bayesian neural networks (BNNs) with a large number of parameters. Our proposed method operates in function space. When working with BNNs, it is common to define a prior distribution on the weight space and infer the corresponding weight posterior distribution, which also applies to Bayesian pseudocoreset construction. However, previous studies [31, 28] have highlighted the challenge of interpreting weights in high-dimensional neural networks, making it difficult to elicit meaningful prior distributions. Additionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Bayesian coresets Bayesian Coreset [3–5, 14] is a field of research aimed at addressing the computational challenges of MCMC and VI on large datasets in terms of time and space complexity [9, 1, 26]. It aims to approximate the energy function of the entire dataset using a weighted sum of a small subset. However for high-dimensional data, Manousakas et al. [19] demonstrates that considering only subsets as Bayesian coreset is not sufficient, as the KL divergence between the approximated coreset posterior and the true posterior increases with the data dimension, and they proposed Bayesian pseudocoresets. There are recent works on constructing pseudocoreset variational posterior to be more flexible [8] or how to effectively optimize the divergences between posteriors [15, 8, 20, 21]. However, there is still a limitation in constructing high-dimensional Bayesian pseudocoresets specifically for deep neural networks. Dataset distillation Dataset distillation also aims to synthesize the compact datasets that capture the essence of the original dataset. However, the dataset distillation places particulary on optimizing the test performance of the distilled dataset. Consequently, the primary objective in dataset distillation is to maximize the performance of models trained using the distilled dataset, and researchers provides how to effectively solve this bi-level optimization [33, 23, 22, 40, 36, 39, 7]. In recent work, Kim et al. [15] established a link between specific dataset distillation methods and optimizing certain divergence measures associated with Bayesian pseudocoresets. Function space variational inference Although Bayesian neural networks exhibit strong capabilities in performing variational inference, defining meaningful priors or efficiently inferring the",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "where opt(θ, x) is a step of SGD optimization applied to θ with data x and the squares in the diag(·) are applied in element-wise manner. Note also that we are applying the stop-gradient operations for to block the gradient flow that might lead to complication in the backpropagation procedure. The variational parameters (µ̂u , Ψ̂u ) are constructed in a similar fashion, but using the psedocoreset (u, ỹ) instead of the original data (x, y). It is noteworthy that our approach is similar to one of the methods in Bayesian learning, SWAG [18]. However, while SWAG focuses on collecting statistics on weight space trajectories, our method constructs statistics in function spaces. This distinction makes our approach more suitable and scalable for pseudocoreset construction. The overview of proposed method is provided in Fig. 1. With the variational approximations constructed as described, we obtain a Monte-Carlo estimator of Eq. 14, h i ∇u DKL [νx |νu ] ≈ −∇u Eqx (fu ) [log p(ỹ | fu )] + Equ (fu ) ∇u log p(ỹ | fu ) h i 1/2 = −∇u Ep(εx ) [log p(ỹ | µ̂x + Ψ̂1/2 ε )] + E ∇ log p(ỹ | µ̂ + Ψ̂ ε ) x u u u p(εu ) x u (17) \u0012 \u0013 S \u0010 \u0011 \u0010 \u0011 X 1 (s) (s) − ∇u log p ỹ | µ̂x + Ψ̂1/2 + ∇u log p ỹ | µ̂u + Ψ̂1/2 , ≈ x εx u εu S s=1 (s)",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0bfecff934f7a280a159f1c7",
+          "url": "https://proceedings.mlr.press/v162/rudner22a.html"
+        },
+        "b": {
+          "paper_id": "paper-b43961321f5eb99ef854f298",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "53d943030827c3b17c4c50d3ec9fa815dd992f0281de718b90971a4259893218"
+    },
+    {
+      "id": "edge-53e985f5363cb38391cf4bbc",
+      "a": "paper-19d3148cb45e3a03af8bd0d1",
+      "b": "paper-b43961321f5eb99ef854f298",
+      "state": {
+        "paper_a": {
+          "title": "Continual Deep Learning by Functional Regularisation of Memorable Past",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Continually learning new skills is important for intelligent systems, yet standard deep learning methods suffer from catastrophic forgetting of the past. Recent works address this with weight regularisation. Functional regularisation, although computationally expensive, is expected to perform better, but rarely does so in practice. In this paper, we fix this issue by using a new functional-regularisation approach that utilises a few memorable past examples crucial to avoid forgetting. By using a Gaussian Process formulation of deep networks, our approach enables training in weight-space while identifying both the memorable past and a functional prior. Our method achieves state-of-the-art performance on standard benchmarks and opens a new direction for life-long learning where regularisation and memory-based methods are naturally combined."
+        },
+        "paper_b": {
+          "title": "Function Space Bayesian Pseudocoreset for Bayesian Neural Networks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Additionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction variable [24, 30].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-19d3148cb45e3a03af8bd0d1",
+          "b": "paper-b43961321f5eb99ef854f298",
+          "input_sha256": "34b92686ba2bced070bae3a50d075c898d9b32d570f2fc4269e16b3422948b57",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/2f3bbb9730639e9ea48f309d9a79ff01-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/2f3bbb9730639e9ea48f309d9a79ff01-Paper.pdf",
+              "sha256": "67580987e85b1687bb4dfb843fe65606f6bda1b58c84c15ffe41d5e0fe195b09"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Broadly, existing work on continual learning can be split into three types of approaches: inferencebased, memory/rehearsal-based, and model-based. There have also been hybrid approaches attempting to combine them. Inference-based approaches have mostly focused on weight regularisation [2, 9, 12, 18, 22, 37], with some recent efforts on functional regularisation [5, 19, 34]. Our work falls in the latter category, but also imposes functional constraints at datapoints, thereby connecting to memory-based approaches. Our goal is to consistently outperform weight-regularisation which can be inadequate and brittle for continual deep learning (see Fig. 6 and App. G for an example). The proposed method further addresses many issues with existing functional-regularisation methods [5, 34]. Arguably the work most closely related to ours is the GP-based method of Titsias et al. [34], but there are several key differences. First, our kernel uses all the network weights (they use just the last layer) which is important, especially in the early stages of learning when all the weights are changing (see App. G.4 for an example). Second, our functional prior regularises the mean to be close to the past mean, which is lacking in the regulariser of Titsias et al. [34] (see the discussion after Eq. 7). Third, our memorable past examples play a similar role as the inducing inputs, but are much cheaper to obtain (Titsias et al. [34] requires solving a discrete optimisation problem), and have an intuitive interpretation (see Fig. 1b). Due to these differences, our method outperforms the method of Titsias et al. [34], which, unlike ours, performs worse than the weight-regularisation method of Swaroop et al. [33]. We also obtain state-of-the-art performance on a larger Split CIFAR benchmark, a",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/2f3bbb9730639e9ea48f309d9a79ff01-Paper.pdf",
+              "document_sha256": "67580987e85b1687bb4dfb843fe65606f6bda1b58c84c15ffe41d5e0fe195b09"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We propose FROMP, a functional-regularisation approach for continual learning while avoiding catastrophic forgetting. FROMP uses a Gaussian Process formulation of neural networks to convert weight-space distributions into function-space. With this formulation, we proposed ways to identify relevant memorable past examples, and functionally regularise the training of neural network weights. FROMP achieves state-of-the-art performance across benchmarks. This paper takes the first step in a direction to combine the ideas from neural network and GP communities, while maintaining the simplicity of the training methods. There are plenty of future directions to explore. Would using VI instead of a Laplace approximation result in better accuracy? What are some ways to choose memorable examples? Is there a common principle behind them? How many memorable examples should one use, and how can we ensure that increasing their numbers substantially increases the performance? Do we obtain improvements when we relax some assumptions, and what kind of improvements? Will this approach work at large scale, e.g., on the ImageNet dataset? Are there better methods to automatically detect task boundaries? And finally how can all of these ideas fit in a Bayesian framework, and can we obtain theoretical guarantees for such methodologies? These are some of the questions of future interest. We believe that functional regularisation is ultimately how we want to train deep learning algorithms. We hope that the methods discussed in this paper open new methodologies for knowledge transfer in deep learning.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/2f3bbb9730639e9ea48f309d9a79ff01-Paper.pdf",
+              "document_sha256": "67580987e85b1687bb4dfb843fe65606f6bda1b58c84c15ffe41d5e0fe195b09"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "referred to as a Bayesian pseudocoreset. The process of learning a Bayesian pseudocoreset involves minimizing a divergence measure between the posterior of the full dataset and the posterior of the pseudocoreset. However, learning Bayesian pseudocoresets is generally challenging due to the intractability of constructing both the full dataset posterior and the pseudocoreset posterior, as well as the computation of the divergence between them, which necessitates approximation. Consequently, existing works on Bayesian pseudocoresets have primarily focused on small-scale problems [19, 8, 20, 21]. Recently, Kim et al. [15] introduced a scalable method for constructing Bayesian pseudocoresets using variational Gaussian approximation for the posteriors and minimizing forward KL divergence. Although their method shows promise, it still demands substantial computational resources for high-dimensional models like deep neural networks. In this paper, we present a novel approach to enhance the scalability of Bayesian pseudocoreset construction, particularly for Bayesian neural networks (BNNs) with a large number of parameters. Our proposed method operates in function space. When working with BNNs, it is common to define a prior distribution on the weight space and infer the corresponding weight posterior distribution, which also applies to Bayesian pseudocoreset construction. However, previous studies [31, 28] have highlighted the challenge of interpreting weights in high-dimensional neural networks, making it difficult to elicit meaningful prior distributions. Additionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "where opt(θ, x) is a step of SGD optimization applied to θ with data x and the squares in the diag(·) are applied in element-wise manner. Note also that we are applying the stop-gradient operations for to block the gradient flow that might lead to complication in the backpropagation procedure. The variational parameters (µ̂u , Ψ̂u ) are constructed in a similar fashion, but using the psedocoreset (u, ỹ) instead of the original data (x, y). It is noteworthy that our approach is similar to one of the methods in Bayesian learning, SWAG [18]. However, while SWAG focuses on collecting statistics on weight space trajectories, our method constructs statistics in function spaces. This distinction makes our approach more suitable and scalable for pseudocoreset construction. The overview of proposed method is provided in Fig. 1. With the variational approximations constructed as described, we obtain a Monte-Carlo estimator of Eq. 14, h i ∇u DKL [νx |νu ] ≈ −∇u Eqx (fu ) [log p(ỹ | fu )] + Equ (fu ) ∇u log p(ỹ | fu ) h i 1/2 = −∇u Ep(εx ) [log p(ỹ | µ̂x + Ψ̂1/2 ε )] + E ∇ log p(ỹ | µ̂ + Ψ̂ ε ) x u u u p(εu ) x u (17) \u0012 \u0013 S \u0010 \u0011 \u0010 \u0011 X 1 (s) (s) − ∇u log p ỹ | µ̂x + Ψ̂1/2 + ∇u log p ỹ | µ̂u + Ψ̂1/2 , ≈ x εx u εu S s=1 (s)",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-19d3148cb45e3a03af8bd0d1",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/2f3bbb9730639e9ea48f309d9a79ff01-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b43961321f5eb99ef854f298",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "7aca2f8c8f27d5467efb8477b742026f7b0054f5f5fbf724ab1783950e08c1a1"
+    },
+    {
+      "id": "edge-aec98b25f9d068c5eaf35a79",
+      "a": "paper-23c7aed6d09f994c56a350fe",
+      "b": "paper-b43961321f5eb99ef854f298",
+      "state": {
+        "paper_a": {
+          "title": "Function-space Inference with Sparse Implicit Processes",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Implicit Processes (IPs) represent a flexible framework that can be used to describe a wide variety of models, from Bayesian neural networks, neural samplers and data generators to many others. IPs also allow for approximate inference in function-space. This change of formulation solves intrinsic degenerate problems of parameter-space approximate inference concerning the high number of parameters and their strong dependencies in large models. For this, previous works in the literature have attempted to employ IPs both to set up the prior and to approximate the resulting posterior. However, this has proven to be a challenging task. Existing methods that can tune the prior IP result in a Gaussian predictive distribution, which fails to capture important data patterns. By contrast, methods producing flexible predictive distributions by using another IP to approximate the posterior process cannot tune the prior IP to the observed data. We propose here the first method that can accomplish both goals. For this, we rely on an inducing-point representation of the prior IP, as often done in the context of sparse Gaussian processes. The result is a scalable method for approximate inference with IPs that can tune the prior IP parameters to the data, and that provides accurate non-Gaussian predictive distributions."
+        },
+        "paper_b": {
+          "title": "Function Space Bayesian Pseudocoreset for Bayesian Neural Networks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To overcome this issue, researchers have increasingly focused on function space variational inference [6, 2, 16, 30, 25, 32, 27, 17].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-23c7aed6d09f994c56a350fe",
+          "b": "paper-b43961321f5eb99ef854f298",
+          "input_sha256": "3eeec831d1d1e7dc0b1e9418082d1135e2885eef99d821204be94d5ab756815e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/rodri-guez-santana22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/rodri-guez-santana22a/rodri-guez-santana22a.pdf",
+              "sha256": "1bdca226ed7d307dd6be376c8e7541193bacbb5309dd8d4fcf6b0ef83a311cf7"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Implicit Processes (IPs) represent a flexible framework that can be used to describe a wide variety of models, from Bayesian neural networks, neural samplers and data generators to many others. IPs also allow for approximate inference in functionspace. This change of formulation solves intrinsic degenerate problems of parameter-space approximate inference concerning the high number of parameters and their strong dependencies in large models. For this, previous works in the literature have attempted to employ IPs both to set up the prior and to approximate the resulting posterior. However, this has proven to be a challenging task. Existing methods that can tune the prior IP result in a Gaussian predictive distribution, which fails to capture important data patterns. By contrast, methods producing flexible predictive distributions by using another IP to approximate the posterior process cannot tune the prior IP to the observed data. We propose here the first method that can accomplish both goals. For this, we rely on an inducing-point representation of the prior IP, as often done in the context of sparse Gaussian processes. The result is a scalable method for approximate inference with IPs that can tune the prior IP parameters to the data, and that provides accurate non-Gaussian predictive distributions.",
+              "url": "https://proceedings.mlr.press/v162/rodri-guez-santana22a/rodri-guez-santana22a.pdf",
+              "document_sha256": "1bdca226ed7d307dd6be376c8e7541193bacbb5309dd8d4fcf6b0ef83a311cf7"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Damianou & Lawrence, 2013). Previous works using IPs for inference are the variational implicit processes (VIP) and the functional variational Bayesian NN (fBNN) (Ma et al., 2019; Sun et al., 2019). We introduce them next. VIPs approximate the marginal likelihood of the prior IP by the marginal likelihood of a GP. For this, an empirical covariance function is estimated by sampling from the prior IP. Namely, fsθ (·) ∼ IP(gθ (·, ·), pz ). Then, the prior mean and covariances of the GP are: S",
+              "url": "https://proceedings.mlr.press/v162/rodri-guez-santana22a/rodri-guez-santana22a.pdf",
+              "document_sha256": "1bdca226ed7d307dd6be376c8e7541193bacbb5309dd8d4fcf6b0ef83a311cf7"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Bayesian coresets Bayesian Coreset [3–5, 14] is a field of research aimed at addressing the computational challenges of MCMC and VI on large datasets in terms of time and space complexity [9, 1, 26]. It aims to approximate the energy function of the entire dataset using a weighted sum of a small subset. However for high-dimensional data, Manousakas et al. [19] demonstrates that considering only subsets as Bayesian coreset is not sufficient, as the KL divergence between the approximated coreset posterior and the true posterior increases with the data dimension, and they proposed Bayesian pseudocoresets. There are recent works on constructing pseudocoreset variational posterior to be more flexible [8] or how to effectively optimize the divergences between posteriors [15, 8, 20, 21]. However, there is still a limitation in constructing high-dimensional Bayesian pseudocoresets specifically for deep neural networks. Dataset distillation Dataset distillation also aims to synthesize the compact datasets that capture the essence of the original dataset. However, the dataset distillation places particulary on optimizing the test performance of the distilled dataset. Consequently, the primary objective in dataset distillation is to maximize the performance of models trained using the distilled dataset, and researchers provides how to effectively solve this bi-level optimization [33, 23, 22, 40, 36, 39, 7]. In recent work, Kim et al. [15] established a link between specific dataset distillation methods and optimizing certain divergence measures associated with Bayesian pseudocoresets. Function space variational inference Although Bayesian neural networks exhibit strong capabilities in performing variational inference, defining meaningful priors or efficiently inferring the",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "referred to as a Bayesian pseudocoreset. The process of learning a Bayesian pseudocoreset involves minimizing a divergence measure between the posterior of the full dataset and the posterior of the pseudocoreset. However, learning Bayesian pseudocoresets is generally challenging due to the intractability of constructing both the full dataset posterior and the pseudocoreset posterior, as well as the computation of the divergence between them, which necessitates approximation. Consequently, existing works on Bayesian pseudocoresets have primarily focused on small-scale problems [19, 8, 20, 21]. Recently, Kim et al. [15] introduced a scalable method for constructing Bayesian pseudocoresets using variational Gaussian approximation for the posteriors and minimizing forward KL divergence. Although their method shows promise, it still demands substantial computational resources for high-dimensional models like deep neural networks. In this paper, we present a novel approach to enhance the scalability of Bayesian pseudocoreset construction, particularly for Bayesian neural networks (BNNs) with a large number of parameters. Our proposed method operates in function space. When working with BNNs, it is common to define a prior distribution on the weight space and infer the corresponding weight posterior distribution, which also applies to Bayesian pseudocoreset construction. However, previous studies [31, 28] have highlighted the challenge of interpreting weights in high-dimensional neural networks, making it difficult to elicit meaningful prior distributions. Additionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-23c7aed6d09f994c56a350fe",
+          "url": "https://proceedings.mlr.press/v162/rodri-guez-santana22a.html"
+        },
+        "b": {
+          "paper_id": "paper-b43961321f5eb99ef854f298",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "e70587f04f9970bce2af9eecfe77f1440ee010441bddd173f8640933079b17e7"
+    },
+    {
+      "id": "edge-94cb93e32fc5fad6a72d5f91",
+      "a": "paper-28d5e6ff4d2afbfb216f9f47",
+      "b": "paper-7f98c3850ed78aa96703465e",
+      "state": {
+        "paper_a": {
+          "title": "Beyond neural scaling laws: beating power law scaling via data pruning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Widely observed neural scaling laws, in which error falls off as a power of the training set size, model size, or both, have driven substantial performance improvements in deep learning. However, these improvements through scaling alone require considerable costs in compute and energy. Here we focus on the scaling of error with dataset size and show how in theory we can break beyond power law scaling and potentially even reduce it to exponential scaling instead if we have access to a high-quality data pruning metric that ranks the order in which training examples should be discarded to achieve any pruned dataset size. We then test this improved scaling prediction with pruned dataset size empirically, and indeed observe better than power law scaling in practice on ResNets trained on CIFAR-10, SVHN, and ImageNet. Next, given the importance of finding high-quality pruning metrics, we perform the first large-scale benchmarking study of ten different data pruning metrics on ImageNet. We find most existing high performing metrics scale poorly to ImageNet, while the best are computationally intensive and require labels for every image. We therefore developed a new simple, cheap and scalable self-supervised pruning metric that demonstrates comparable performance to the best supervised metrics. Overall, our work suggests that the discovery of good data-pruning metrics may provide a viable path forward to substantially improved neural scaling laws, thereby reducing the resource costs of modern deep learning."
+        },
+        "paper_b": {
+          "title": "Refined Coreset Selection: Towards Minimal Coreset Size under Model Performance Constraints",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Coreset selection is powerful in reducing computational costs and accelerating data processing for deep learning algorithms. It strives to identify a small subset from large-scale data, so that training only on the subset practically performs on par with full data. Practitioners regularly desire to identify the smallest possible coreset in realistic scenes while maintaining comparable model performance, to minimize costs and maximize acceleration. Motivated by this desideratum, for the first time, we pose the problem of refined coreset selection, in which the minimal coreset size under model performance constraints is explored. Moreover, to address this problem, we propose an innovative method, which maintains optimization priority order over the model performance and coreset size, and efficiently optimizes them in the coreset selection procedure. Theoretically, we provide the convergence guarantee of the proposed method. Empirically, extensive experiments confirm its superiority compared with previous strategies, often yielding better model performance with smaller coreset sizes. The implementation is available at https://github.com/xiaoboxia/LBCS."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Most works fix the coreset size for coreset selection (Paul et al., 2021; Xia et al., 2023; Sorscher et al., 2022; Toneva et al., 2019).\nThe score criteria include margin separation (Har-Peled et al., 2007), gradient norms (Paul et al., 2021), distances to class centers (Sorscher et al., 2022; Xia et al., 2023), influence function scores (Pooladzandi et al., 2022; Yang et al., 2023), etc .\nStaying with precedent (Sorscher et al., 2022), the VISSL library (Goyal et al., 2021) is used.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-28d5e6ff4d2afbfb216f9f47",
+          "b": "paper-7f98c3850ed78aa96703465e",
+          "input_sha256": "d499e7f322db39c8a57b8f4060814638f3c99fa6b1c0925e5488e69cecbd66ea",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/7b75da9b61eda40fa35453ee5d077df6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/xia24b.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xia24b/xia24b.pdf",
+              "sha256": "52e046a2a966d97efdba88ab518e30b197c1363c8c60140bd2d2fa54c31f7793"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "scores for data pruning as their computation is expensive. We note since memorization explicitly approximates the increase in test loss due to removing each individual example, it is likely to be a good pruning metric (though it does not consider interactions). Ensemble active learning. Active learning iterates between training a model and selecting new inputs to be labeled [14, 15, 16, 17, 18]. In contrast, we focus on data pruning: one-shot selection of a data subset sufficient to train to high accuracy from scratch. A variety of coreset algorithms (e.g. [19]) have been proposed for this, but their computation is expensive, and so data-pruning has been less explored at scale on ImageNet. An early clustering approach [20] allowed training on 90% of ImageNet without sacrificing accuracy. Notably [11] reduced this to 80% by training a large ensemble of networks on ImageNet and using ensemble uncertainty to define the difficulty of each example, with low (high) uncertainty corresponding to easy (hard) examples. We will show how to achieve similar pruning performance without labels or the need to train a large ensemble. Diverse ensembles (DDD). [21] assigned a score to every ImageNet image, given by the number of models in a diverse ensemble (10 models) that misclassified the image. Intuitively, low (high) scores correspond to easy (hard) examples. The pruning performance of this metric remains unexplored. Summary. We note: (1) only one of these metrics has tested well for its efficacy in data pruning at scale on ImageNet; (2) all of these metrics require label information; (3) there is no theory of when and why data pruning is possible for any of these metrics; and (4) none of these works suggest the possibility of exponential scaling. We thus go beyond this prior work",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "document_sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "We note that the majority of data pruning experiments have been performed on small-scale datasets (i.e. variants of MNIST and CIFAR), while the few pruning metrics proposed for ImageNet have rarely been compared against baselines designed on smaller datasets. Therefore, it is currently unclear how most pruning methods scale to ImageNet and which method is best. Motivated by how strongly the quality of a pruning metric can impact performance in theory (Fig. 2), we decided to fill this knowledge gap by performing a systematic evaluation of 8 different supervised pruning metrics on ImageNet: two variants of influence scores [13], two variants of EL2N [10], DDD [21], memorization [13], ensemble active learning [11], and forgetting [9]. See Section 2 for a review of these metrics. Additionally, we include two new prototypicality metrics that we introduce in the next section. We first asked how consistent the rankings induced by different metrics are by computing the Spearman rank correlation between each pair of metrics (Fig. 5A). Interestingly, we found substantial diversity across metrics, though some (EL2N, DDD, and memorization) were fairly similar with rank correlations above 0.7. However, we observed marked performance differences between metrics: Fig 5BC shows test performance when a fraction f of the hardest examples under each metric are kept in the training set. Despite the success of many of these metrics on smaller datasets, only a 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7b75da9b61eda40fa35453ee5d077df6-Paper-Conference.pdf",
+              "document_sha256": "f446862fef24dcdf707dff0b4c7e5c80cf0d3f5d659a0c1b9b7d26cf731454d8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "5.4. Evaluations on ImageNet-1k We evaluate the performance of LBCS on ImageNet1k (Deng et al., 2009). The network structures for the inner loop and training on the coreset after coreset selection are ResNet-50. As the size of ImageNet-1k is huge, to accelerate coreset selection, the tricks discussed previously are employed. We regard 100 examples as a group, where they share the same mask. The same tricks are applied to the baseline Probabilistic. Staying with precedent (Sorscher et al., 2022), the VISSL library (Goyal et al., 2021) is used. Besides, for model training after coreset selection, we adopt a base learning rate of 0.01, a batch size of 256, an SGD optimizer with a momentum of 0.9, and a weight decay of 0.001. 100 epochs are set in total. The experiment in each case is performed once, considering calculation costs. We set the predefined ratio of coreset selection, i.e., k/n, to 70% and 80% respectively. Experimental results are provided in Table 4, which confirm the validity of our LBCS.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xia24b/xia24b.pdf",
+              "document_sha256": "52e046a2a966d97efdba88ab518e30b197c1363c8c60140bd2d2fa54c31f7793"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Coreset selection is powerful in reducing computational costs and accelerating data processing for deep learning algorithms. It strives to identify a small subset from large-scale data, so that training only on the subset practically performs on par with full data. Practitioners regularly desire to identify the smallest possible coreset in realistic scenes while maintaining comparable model performance, to minimize costs and maximize acceleration. Motivated by this desideratum, for the first time, we pose the problem of refined coreset selection, in which the minimal coreset size under model performance constraints is explored. Moreover, to address this problem, we propose an innovative method, which maintains optimization priority order over the model performance and coreset size, and efficiently optimizes them in the coreset selection procedure. Theoretically, we provide the convergence guarantee of the proposed method. Empirically, extensive experiments confirm its superiority compared with previous strategies, often yielding better model performance with smaller coreset sizes. The implementation is available at https://github.com/xiaoboxia/LBCS.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xia24b/xia24b.pdf",
+              "document_sha256": "52e046a2a966d97efdba88ab518e30b197c1363c8c60140bd2d2fa54c31f7793"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Contributions (1). Conceptually, we surpass the traditional coreset selection paradigm and propose the problem of refined coreset selection (RCS). The problem is realistic, challenging, and under-explored. The solution for it is non-trivial (c.f., §2.1). (2). Technically, we propose an advanced method to handle RCS, in which lexicographic bilevel coreset selection is framed. We also discuss implementation tricks to speed up the coreset selection in our method. Moreover, theoretical analysis is provided to guarantee the convergence of the proposed method.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/xia24b/xia24b.pdf",
+              "document_sha256": "52e046a2a966d97efdba88ab518e30b197c1363c8c60140bd2d2fa54c31f7793"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-28d5e6ff4d2afbfb216f9f47",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/7b75da9b61eda40fa35453ee5d077df6-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-7f98c3850ed78aa96703465e",
+          "url": "https://proceedings.mlr.press/v235/xia24b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "344b2563901abace0df5c801c7cb04861e86b76a9f538938d1c379c2af5065e7"
+    },
+    {
+      "id": "edge-e5e6c7f3f86385bce2706ba5",
+      "a": "paper-3b2026f56587bcb342a0e320",
+      "b": "paper-a8d52ad3b483cb1d5c53afc7",
+      "state": {
+        "paper_a": {
+          "title": "Not All Samples Are Created Equal: Deep Learning with Importance Sampling",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Deep Neural Network training spends most of the computation on examples that are properly handled, and could be ignored. We propose to mitigate this phenomenon with a principled importance sampling scheme that focuses computation on \"informative\" examples, and reduces the variance of the stochastic gradients during training. Our contribution is twofold: first, we derive a tractable upper bound to the per-sample gradient norm, and second we derive an estimator of the variance reduction achieved with importance sampling, which enables us to switch it on when it will result in an actual speedup. The resulting scheme can be used by changing a few lines of code in a standard SGD procedure, and we demonstrate experimentally on image classification, CNN fine-tuning, and RNN training, that for a fixed wall-clock time budget, it provides a reduction of the train losses of up to an order of magnitude and a relative improvement of test errors between 5% and 17%."
+        },
+        "paper_b": {
+          "title": "Towards Sustainable Learning: Coresets for Data-efficient Deep Learning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "To improve the efficiency and sustainability of learning deep models, we propose CREST, the first scalable framework with rigorous theoretical guarantees to identify the most valuable examples for training non-convex models, particularly deep networks. To guarantee convergence to a stationary point of a non-convex function, CREST models the non-convex loss as a series of quadratic functions and extracts a coreset for each quadratic sub-region. In addition, to ensure faster convergence of stochastic gradient methods such as (mini-batch) SGD, CREST iteratively extracts multiple mini-batch coresets from larger random subsets of training data, to ensure nearly-unbiased gradients with small variances. Finally, to further improve scalability and efficiency, CREST identifies and excludes the examples that are learned from the coreset selection pipeline. Our extensive experiments on several deep networks trained on vision and NLP datasets, including CIFAR-10, CIFAR-100, TinyImageNet, and SNLI, confirm that CREST speeds up training deep networks on very large datasets, by 1.7x to 2.5x with minimum loss in the performance. By analyzing the learning difficulty of the subsets selected by CREST, we show that deep models benefit the most by learning from subsets of increasing difficulty levels."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Importance sampling techniques employ the gradient norm (Alain et al., 2015; Katharopoulos & Fleuret, 2018) or the loss (Loshchilov & Hutter, 2015; Schaul et al., 2015) to reduce the variance of stochastic gradients during the training.\nInstead, one can use the gradient of the loss w.r.t the input to the last layer that is shown to capture the variation of the gradient norm well (Katharopoulos & Fleuret, 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-3b2026f56587bcb342a0e320",
+          "b": "paper-a8d52ad3b483cb1d5c53afc7",
+          "input_sha256": "47d6660aaf551166826b7adfaec2fa6d4302fe1958a475dbd71f563bcd919188",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/katharopoulos18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/katharopoulos18a/katharopoulos18a.pdf",
+              "sha256": "1d6726829dd83572323499d6dbe238b9251e529362bde12937d0969104487fd8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/yang23g.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/yang23g/yang23g.pdf",
+              "sha256": "b8754217196c551de65437b62f86dc68cf44433b9f110b1d2df45edf75059fc6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "model. To this end, we propose a novel importance sampling scheme that accelerates the training of any neural network architecture by focusing the computation on the samples that will introduce the biggest change in the parameters which reduces the variance of the gradient estimates. For convex optimization problems, many works (Bordes et al., 2005; Zhao & Zhang, 2015; Needell et al., 2014; Canévet et al., 2016; Richtárik & Takáč, 2013) have taken advantage of the difference in importance among the samples to improve the convergence speed of stochastic optimization methods. On the other hand, for deep neural networks, sample selection methods were mainly employed to generate hard negative samples for embedding learning problems or to tackle the class imbalance problem (Schroff et al., 2015; Wu et al., 2017; Simo-Serra et al., 2015). Recently, researchers have shifted their focus on using importance sampling to improve and accelerate the training of neural networks (Alain et al., 2015; Loshchilov & Hutter, 2015; Schaul et al., 2015). Those works, employ either the gradient norm or the loss to compute each sample’s importance. However, the former is prohibitively expensive to compute and the latter is not a particularly good approximation of the gradient norm. Compared to the aforementioned works, we derive an upper bound to the per sample gradient norm that can be computed in a single forward pass. This results in reduced computational requirements of more than an order of magnitude compared to Alain et al. (2015). Furthermore, we quantify the variance reduction achieved with the proposed importance sampling scheme and associate it with the batch size increment required to achieve an equivalent variance reduction. The benefits of this are twofold, firstly we provide",
+              "url": "https://proceedings.mlr.press/v80/katharopoulos18a/katharopoulos18a.pdf",
+              "document_sha256": "1d6726829dd83572323499d6dbe238b9251e529362bde12937d0969104487fd8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "Figure 3: Comparison of importance sampling using the upper-bound with uniform and loss based importance sampling. The details of the training procedure are given in § 4.2. Our proposed scheme is the only one achieving a speedup on CIFAR100 and results in 5% smaller test error. All presented results are averaged across 3 independent runs. To assess the performance of both our algorithm and our gradient norm approximation, we compare the convergence speed of our importance sampling algorithm using our upper-bound and using the loss. Once again, for robustness, we run 3 independent runs and report the average. The results of the experiment are depicted in figure 4. As expected, importance sampling is very useful for the task of fine-tuning since a lot of samples are handled correctly very early in the training process. Our upper-bound, once again, greatly outperforms sampling proportionally to the loss when the network is large and the problem is non trivial. Compared to uniform sampling, in just half an hour importance sampling has converged close to the best performance (28.06% test error) that can be expected on this dataset without any data augmentation or multiple crops (Razavian et al., 2014), while uniform achieves only 33.74%. 4.4. Pixel by Pixel MNIST To showcase the generality of our method, we use our importance sampling algorithm to accelerate the training of an LSTM in a sequence classification problem. We use the",
+              "url": "https://proceedings.mlr.press/v80/katharopoulos18a/katharopoulos18a.pdf",
+              "document_sha256": "1d6726829dd83572323499d6dbe238b9251e529362bde12937d0969104487fd8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Several heuristics have been recently proposed for finding coresets for training machine learning models. A line of work first fully trains the original model (Birodkar et al., 2019) or a smaller proxy (Coleman et al., 2020). Then, it selects examples with the most centrally located embeddings (Birodkar et al., 2019), highest uncertainty, i.e., the entropy of predicted class probabilities (Coleman et al., 2020), largest forgetting events, i.e., the number of times an example is misclassified after being correctly classified (Toneva et al., 2018), or large expected gradient norm over multiple initializations (Paul et al., 2021). These methods do not yield any speedup or theoretical guarantees. Another line of work selects examples during training to speed up learning. Importance sampling techniques employ the gradient norm (Alain et al., 2015; Katharopoulos & Fleuret, 2018) or the loss (Loshchilov & Hutter, 2015; Schaul et al., 2015) to reduce the variance of stochastic gradients during the training. However, importance sampling does not provide rigorous convergence guarantees and cannot provide a notable speedup for training deep models. Mindermann et al. (2022) finds examples that are non-noisy, non-redundant, task-relevant, and reduce the loss on a holdout set the most. This method speeds up training but requires a validation set and does not guarantee convergence.",
+              "url": "https://proceedings.mlr.press/v202/yang23g/yang23g.pdf",
+              "document_sha256": "b8754217196c551de65437b62f86dc68cf44433b9f110b1d2df45edf75059fc6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "To improve the efficiency and sustainability of learning deep models, we propose C REST, the first scalable framework with rigorous theoretical guarantees to identify the most valuable examples for training non-convex models, particularly deep networks. To guarantee convergence to a stationary point of a non-convex function, C REST models the non-convex loss as a series of quadratic functions and extracts a coreset for each quadratic sub-region. In addition, to ensure faster convergence of stochastic gradient methods such as (mini-batch) SGD, C REST iteratively extracts multiple mini-batch coresets from larger random subsets of training data, to ensure nearly-unbiased gradients with small variances. Finally, to further improve scalability and efficiency, C REST identifies and excludes the examples that are learned from the coreset selection pipeline. Our extensive experiments on several deep networks trained on vision and NLP datasets, including CIFAR-10, CIFAR-100, TinyImageNet, and SNLI, confirm that C REST speeds up training deep networks on very large datasets, by 1.7x to 2.5x with minimum loss in the performance. By analyzing the learning difficulty of the subsets selected by C REST, we show that deep models benefit the most by learning from subsets of increasing difficulty levels 1 .",
+              "url": "https://proceedings.mlr.press/v202/yang23g/yang23g.pdf",
+              "document_sha256": "b8754217196c551de65437b62f86dc68cf44433b9f110b1d2df45edf75059fc6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "C REST Setup. In our experiments, we used b = 5, and T2 = 20 for all the datasets, and tuned τ, α and h, as discussed in Appendix A.2. Nevertheless, our method is not very sensitive to the choice of α. We used |Vp | = |Vr | = r = 0.005 × n for SNLI and 0.01 × n for the rest of the",
+              "url": "https://proceedings.mlr.press/v202/yang23g/yang23g.pdf",
+              "document_sha256": "b8754217196c551de65437b62f86dc68cf44433b9f110b1d2df45edf75059fc6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-3b2026f56587bcb342a0e320",
+          "url": "https://proceedings.mlr.press/v80/katharopoulos18a.html"
+        },
+        "b": {
+          "paper_id": "paper-a8d52ad3b483cb1d5c53afc7",
+          "url": "https://proceedings.mlr.press/v202/yang23g.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "61f0d92837b1f710c4c7b7183194b8d8732d7844b973c57f3e410c75a0738c80"
+    },
+    {
+      "id": "edge-aa87c714479ad301fbf82770",
+      "a": "paper-3bda98b1da3e1862d3295e9e",
+      "b": "paper-6712405deafcf4609d296739",
+      "state": {
+        "paper_a": {
+          "title": "Fast Combinatorial Algorithms for Min Max Correlation Clustering",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We introduce fast algorithms for correlation clustering with respect to the Min Max objective that provide constant factor approximations on complete graphs. Our algorithms are the first purely combinatorial approximation algorithms for this problem. We construct a novel semi-metric on the set of vertices, which we call the correlation metric, that indicates to our clustering algorithms whether pairs of nodes should be in the same cluster. The paper demonstrates empirically that, compared to prior work, our algorithms sacrifice little in the objective quality to obtain significantly better run-time. Moreover, our algorithms scale to larger networks that are effectively intractable for known algorithms."
+        },
+        "paper_b": {
+          "title": "Query-Efficient Correlation Clustering with Noisy Oracle",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study a general clustering setting in which we have $n$ elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Nevertheless, there are a number of constant-factor approximation algorithms for various settings [1, 3, 7, 20, 22, 30–32].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-3bda98b1da3e1862d3295e9e",
+          "b": "paper-6712405deafcf4609d296739",
+          "input_sha256": "f9a99e429bf7eec3d472923f533e4d131c4b54329991e1c4980694e21785eee9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/davies23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/davies23a/davies23a.pdf",
+              "sha256": "e0810d2f9adab957e93f7a6db6cdbebcacfe95d96302320a909b955a94a0337a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We introduce fast algorithms for correlation clustering with respect to the Min Max objective that provide constant factor approximations on complete graphs. Our algorithms are the first purely combinatorial approximation algorithms for this problem. We construct a novel semi-metric on the set of vertices, which we call the correlation metric, that indicates to our clustering algorithms whether pairs of nodes should be in the same cluster. The paper demonstrates empirically that, compared to prior work, our algorithms sacrifice little in the objective quality to obtain significantly better run-time. Moreover, our algorithms scale to larger networks that are effectively intractable for known algorithms.",
+              "url": "https://proceedings.mlr.press/v202/davies23a/davies23a.pdf",
+              "document_sha256": "e0810d2f9adab957e93f7a6db6cdbebcacfe95d96302320a909b955a94a0337a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "The correlation metric. We introduce a novel semi-metric based on the positive and negative neighborhoods of nodes. 4 One could avoid the self-loops by slightly changing the definition of neighborhood intersections.",
+              "url": "https://proceedings.mlr.press/v202/davies23a/davies23a.pdf",
+              "document_sha256": "e0810d2f9adab957e93f7a6db6cdbebcacfe95d96302320a909b955a94a0337a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "assuming any specific structure of the data. This reasonably eliminates the need for domain knowledge about complex data. Correlation clustering has been applied to a wide range of problems across various domains, including duplicate detection and similarity joins [34, 46], spam detection [12, 72], co-reference resolution [66], biology [9, 14], image segmentation [54], social network analysis [13], and clustering aggregation [42]. Correlation clustering is NP-hard even in the simplest formulations [7, 75], and minimizing the cost function in (1) is APX-hard [20]; thus, we cannot expect a polynomial-time approximation scheme. Nevertheless, there are a number of constant-factor approximation algorithms for various settings [1, 3, 7, 20, 22, 30–32]. For the formulation of (1), Ailon et al. [3] presented KwikCluster, a simple 5-approximation algorithm. The algorithm randomly picks a pivot v ∈ V and constructs a cluster by taking all the vertices similar to v; then, the algorithm removes the cluster and repeats the process until V is fully clustered. The simplicity and theoretical guarantees of KwikCluster have produced a lot of variations in different scenarios [13, 29, 61, 69, 76, 79]. In practice, preparing the similarity function involves costly measurements. Given n items to be clustered, Θ(n2 ) similarity computations are needed to prepare the input to correlation clustering algorithms. Moreover, computing the similarity s(x, y) might have additional expenses (e.g., human effort or financial resources) besides the mere computational cost. To mitigate these issues, some query-efficient methods have been proposed based on the active learning framework [11, 15, 40]. In this framework, the similarity function is initially unknown but an oracle that returns the true",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study a general clustering setting in which we have n elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "the true similarity s(x, y) is observed when querying a pair of objects (x, y). In this scenario, it is desired to achieve a reasonable trade-off between the number of queries to the oracle and the cost of clustering. To this end, we introduce two formulations of online learning problems rooted in the paradigm of Pure Exploration of Combinatorial Multi-Armed Bandits (PE-CMAB). In the fixed confidence setting (Problem 1), given a confidence level δ ∈ (0, 1), the learner aims to find a well-approximate solution with probability at least 1 − δ while minimizing the number of queries required to determine the output. Conversely, in the fixed budget setting (Problem 2), given a querying budget T , the learner aims to maximize the probability that the output is a well-approximate solution. Our contributions can be summarized as follows: • For Problem 1, we design KC-FC (Algorithm 1), which effectively combines threshold bandits with KwikCluster. We prove that given confidence level δ ∈ (0, 1), KC-FC finds a solution whose expected cost is at most 5 · OPT + \u000f with probability at least 1 − δ, where OPT is the optimal value of the problem, and provide the upper bound of the number of queries (Theorem 1). • We design KC-FB (Algorithm 3) for Problem 2, which adaptively determines the number of queries for each pair of objects based on KwikCluster. We prove that the error probability of the expected cost being worse than 5 · OPT + \u000f decreases exponentially with budget T (Theorem 2). • We empirically validate our theoretical findings by demonstrating that KC-FC and KC-FB outperform baseline methods in terms of the sample complexity and cost of clustering, respectively. It is worth noting that our approximation guarantees in Theorems 1 and 2 match the approximation \u0001 ratio 5 of",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-3bda98b1da3e1862d3295e9e",
+          "url": "https://proceedings.mlr.press/v202/davies23a.html"
+        },
+        "b": {
+          "paper_id": "paper-6712405deafcf4609d296739",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "91f57d6d1e7e9df1fe78b18cfaf33706f5d21d91204d9f317bd095e826d0f101"
+    },
+    {
+      "id": "edge-ae599a3d8579c2ea4db8a2c1",
+      "a": "paper-4dba6e57443fc86d041cbc14",
+      "b": "paper-6712405deafcf4609d296739",
+      "state": {
+        "paper_a": {
+          "title": "Sequential Experimental Design for Transductive Linear Bandits",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "In this paper we introduce the pure exploration transductive linear bandit problem: given a set of measurement vectors $\\mathcal{X}\\subset \\mathbb{R}^d$, a set of items $\\mathcal{Z}\\subset \\mathbb{R}^d$, a fixed confidence $\\delta$, and an unknown vector $\\theta^{\\ast}\\in \\mathbb{R}^d$, the goal is to infer $\\arg\\max_{z\\in \\mathcal{Z}} z^\\top\\theta^\\ast$ with probability $1-\\delta$ by making as few sequentially chosen noisy measurements of the form $x^\\top\\theta^{\\ast}$ as possible. When $\\mathcal{X}=\\mathcal{Z}$, this setting generalizes linear bandits, and when $\\mathcal{X}$ is the standard basis vectors and $\\mathcal{Z}\\subset \\{0,1\\}^d$, combinatorial bandits. The transductive setting naturally arises when the set of measurement vectors is limited due to factors such as availability or cost. As an example, in drug discovery the compounds and dosages $\\mathcal{X}$ a practitioner may be willing to evaluate in the lab in vitro due to cost or safety reasons may differ vastly from those compounds and dosages $\\mathcal{Z}$ that can be safely administered to patients in vivo. Alternatively, in recommender systems for books, the set of books $\\mathcal{X}$ a user is queried about may be restricted to known best-sellers even though the goal might be to recommend more esoteric titles $\\mathcal{Z}$. In this paper, we provide instance-dependent lower bounds for the transductive setting, an algorithm that matches these up to logarithmic factors, and an evaluation. In particular, we present the first non-asymptotic algorithm for linear bandits that nearly achieves the information-theoretic lower bound."
+        },
+        "paper_b": {
+          "title": "Query-Efficient Correlation Clustering with Noisy Oracle",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study a general clustering setting in which we have $n$ elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…on the sample complexity related to PE-CMAB are known only for the following settings: (i) the time complexity of algorithms can be exponential, or (ii) the underlying offline problem is assumed to be polynomial-time solvable and to have the unique correct (namely optimal) solution [25, 35, 39].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-4dba6e57443fc86d041cbc14",
+          "b": "paper-6712405deafcf4609d296739",
+          "input_sha256": "47a043207df20fec79796d04964db4f1a7e04fe59f6549096e896c8713dcc773",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8ba6c657b03fc7c8dd4dff8e45defcd2-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8ba6c657b03fc7c8dd4dff8e45defcd2-Paper.pdf",
+              "sha256": "1086419b475741521c82b57972d30c17647c7dc5cb2cc56bea748984a19341d0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper we introduce the pure exploration transductive linear bandit problem: given a set of measurement vectors X ⇢ Rd , a set of items Z ⇢ Rd , a fixed confidence , and an unknown vector ✓⇤ 2 Rd , the goal is to infer argmaxz2Z z > ✓⇤ with probability 1 by making as few sequentially chosen noisy measurements of the form x> ✓⇤ as possible. When X = Z, this setting generalizes linear bandits, and when X is the standard basis vectors and Z ⇢ {0, 1}d , combinatorial bandits. The transductive setting naturally arises when the set of measurement vectors is limited due to factors such as availability or cost. As an example, in drug discovery the compounds and dosages X a practitioner may be willing to evaluate in the lab in vitro due to cost or safety reasons may differ vastly from those compounds and dosages Z that can be safely administered to patients in vivo. Alternatively, in recommender systems for books, the set of books X a user is queried about may be restricted to known best-sellers even though the goal might be to recommend more esoteric titles Z. In this paper, we provide instance-dependent lower bounds for the transductive setting, an algorithm that matches these up to logarithmic factors, and an evaluation. In particular, we present the first non-asymptotic algorithm for linear bandits that nearly achieves the information-theoretic lower bound.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8ba6c657b03fc7c8dd4dff8e45defcd2-Paper.pdf",
+              "document_sha256": "1086419b475741521c82b57972d30c17647c7dc5cb2cc56bea748984a19341d0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "\u0001 Statistical efficiency. In the noise-free setting, n2 queries are sufficient, while in the noisy setting, there is even no trivial upper bound on the sample complexity to achieve some desired approximation ˜ e,\u000f defined in (2) always has the guarantee (e.g., our (5, \u000f)-approximation). Note that the value of ∆ ˜ ˜ e,\u000f = ∆e + \u000f − ∆min ≥ following lower bound: ∆e,\u000f = ∆e + \u000f/2 (> 0) if \u000f/2 ≥ ∆min holds and ∆ \u000f (> 0) otherwise. Therefore, our sample complexity T given in Theorem 1 is always bounded, contrasting existing results for threshold bandits [51]. The naive sampling algorithm (Uniform-FC 6 in Appendix E) requires O( n\u000f2 log nδ ) samples to achieve the (5, \u000f)-approximation w.p. at least P 1 − δ. KC-FC achieves a much better sample complexity than Uniform-FC, as e∈E ˜ ∆−2 e,\u000f0 = P 6 0 0 \u000f −2 n \u000f \u000f2 when ∆min ≤ 2 ∆e for most e ∈ E, which is often the case in e∈E (∆e + 2 ) practice. To the best of our knowledge, lower bounds on the sample complexity related to PE-CMAB are known only for the following settings: (i) the time complexity of algorithms can be exponential, or (ii) the underlying offline problem is assumed to be polynomial-time solvable and to have the unique correct (namely optimal) solution [25, 35, 39]. Deriving an effective lower bound on the number of samples required to guarantee an approximate solution is particularly challenging because it necessitates dealing with multiple correct solutions [33], while most existing approaches rely on n2 the uniqueness of the correct solution. Evaluating the necessity of the second term 0 2 max{∆min , \u000f2 } and investigating a lower bound for our case are crucial and remain important future work. However, it is worth noting that the additional term is independent of a dominating term involving log 1δ . Remark. If we",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "the true similarity s(x, y) is observed when querying a pair of objects (x, y). In this scenario, it is desired to achieve a reasonable trade-off between the number of queries to the oracle and the cost of clustering. To this end, we introduce two formulations of online learning problems rooted in the paradigm of Pure Exploration of Combinatorial Multi-Armed Bandits (PE-CMAB). In the fixed confidence setting (Problem 1), given a confidence level δ ∈ (0, 1), the learner aims to find a well-approximate solution with probability at least 1 − δ while minimizing the number of queries required to determine the output. Conversely, in the fixed budget setting (Problem 2), given a querying budget T , the learner aims to maximize the probability that the output is a well-approximate solution. Our contributions can be summarized as follows: • For Problem 1, we design KC-FC (Algorithm 1), which effectively combines threshold bandits with KwikCluster. We prove that given confidence level δ ∈ (0, 1), KC-FC finds a solution whose expected cost is at most 5 · OPT + \u000f with probability at least 1 − δ, where OPT is the optimal value of the problem, and provide the upper bound of the number of queries (Theorem 1). • We design KC-FB (Algorithm 3) for Problem 2, which adaptively determines the number of queries for each pair of objects based on KwikCluster. We prove that the error probability of the expected cost being worse than 5 · OPT + \u000f decreases exponentially with budget T (Theorem 2). • We empirically validate our theoretical findings by demonstrating that KC-FC and KC-FB outperform baseline methods in terms of the sample complexity and cost of clustering, respectively. It is worth noting that our approximation guarantees in Theorems 1 and 2 match the approximation \u0001 ratio 5 of",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study a general clustering setting in which we have n elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-4dba6e57443fc86d041cbc14",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8ba6c657b03fc7c8dd4dff8e45defcd2-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6712405deafcf4609d296739",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "26d046fff18e12f1a206ddf78f872b4c25cf997363f4644336b1d72230fe77fc"
+    },
+    {
+      "id": "edge-b58036a45dcfc3df42406709",
+      "a": "paper-5226bd4ad9d9e0f00c216d6d",
+      "b": "paper-b43961321f5eb99ef854f298",
+      "state": {
+        "paper_a": {
+          "title": "A Simple Baseline for Bayesian Uncertainty in Deep Learning",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "We propose SWA-Gaussian (SWAG), a simple, scalable, and general purpose approach for uncertainty representation and calibration in deep learning. Stochastic Weight Averaging (SWA), which computes the first moment of stochastic gradient descent (SGD) iterates with a modified learning rate schedule, has recently been shown to improve generalization in deep learning. With SWAG, we fit a Gaussian using the SWA solution as the first moment and a low rank plus diagonal covariance also derived from the SGD iterates, forming an approximate posterior distribution over neural network weights; we then sample from this Gaussian distribution to perform Bayesian model averaging. We empirically find that SWAG approximates the shape of the true posterior, in accordance with results describing the stationary distribution of SGD iterates. Moreover, we demonstrate that SWAG performs well on a wide variety of tasks, including out of sample detection, calibration, and transfer learning, in comparison to many popular alternatives including variational inference, MC dropout, KFAC Laplace, and temperature scaling."
+        },
+        "paper_b": {
+          "title": "Function Space Bayesian Pseudocoreset for Bayesian Neural Networks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "It is noteworthy that our approach is similar to one of the methods in Bayesian learning, SWAG [18].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-5226bd4ad9d9e0f00c216d6d",
+          "b": "paper-b43961321f5eb99ef854f298",
+          "input_sha256": "a3c1d0e68e570aa9652f39965ec3c1e64893e04388edd7d7f8c273812cbf946d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/118921efba23fc329e6560b27861f0c2-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf",
+              "sha256": "5cc8a7b5ea86d3dea5bfc68172eeb5ef84f9dc47878ecafe59dca29f8fc84a00"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose SWA-Gaussian (SWAG), a simple, scalable, and general purpose approach for uncertainty representation and calibration in deep learning. Stochastic Weight Averaging (SWA), which computes the first moment of stochastic gradient descent (SGD) iterates with a modified learning rate schedule, has recently been shown to improve generalization in deep learning. With SWAG, we fit a Gaussian using the SWA solution as the first moment and a low rank plus diagonal covariance also derived from the SGD iterates, forming an approximate posterior distribution over neural network weights; we then sample from this Gaussian distribution to perform Bayesian model averaging. We empirically find that SWAG approximates the shape of the true posterior, in accordance with results describing the stationary distribution of SGD iterates. Moreover, we demonstrate that SWAG performs well on a wide variety of tasks, including out of sample detection, calibration, and transfer learning, in comparison to many popular alternatives including MC dropout, KFAC Laplace, SGLD, and temperature scaling.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf",
+              "document_sha256": "5cc8a7b5ea86d3dea5bfc68172eeb5ef84f9dc47878ecafe59dca29f8fc84a00"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Ultimately, machine learning models are used to make decisions. Representing uncertainty is crucial for decision making. For example, in medical diagnoses and autonomous vehicles we want to protect against rare but costly mistakes. Deep learning models typically lack a representation of uncertainty, and provide overconfident and miscalibrated predictions [e.g., 21, 12]. Bayesian methods provide a natural probabilistic representation of uncertainty in deep learning [e.g., 3, 24, 5], and previously had been a gold standard for inference with neural networks [38]. However, existing approaches are often highly sensitive to hyperparameter choices, and hard to scale to modern datasets and architectures, which limits their general applicability in modern deep learning. In this paper we propose a different approach to Bayesian deep learning: we use the information contained in the SGD trajectory to efficiently approximate the posterior distribution over the weights of the neural network. We find that the Gaussian distribution fitted to the first two moments of SGD iterates, with a modified learning rate schedule, captures the local geometry of the posterior surprisingly well. Using this Gaussian distribution we are able to obtain convenient, efficient, accurate and well-calibrated predictions in a broad range of tasks in computer vision. In particular, our contributions are the following: • In this work we propose SWAG (SWA-Gaussian), a scalable approximate Bayesian inference technique for deep learning. SWAG builds on Stochastic Weight Averaging [20], which ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/118921efba23fc329e6560b27861f0c2-Paper.pdf",
+              "document_sha256": "5cc8a7b5ea86d3dea5bfc68172eeb5ef84f9dc47878ecafe59dca29f8fc84a00"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "where opt(θ, x) is a step of SGD optimization applied to θ with data x and the squares in the diag(·) are applied in element-wise manner. Note also that we are applying the stop-gradient operations for to block the gradient flow that might lead to complication in the backpropagation procedure. The variational parameters (µ̂u , Ψ̂u ) are constructed in a similar fashion, but using the psedocoreset (u, ỹ) instead of the original data (x, y). It is noteworthy that our approach is similar to one of the methods in Bayesian learning, SWAG [18]. However, while SWAG focuses on collecting statistics on weight space trajectories, our method constructs statistics in function spaces. This distinction makes our approach more suitable and scalable for pseudocoreset construction. The overview of proposed method is provided in Fig. 1. With the variational approximations constructed as described, we obtain a Monte-Carlo estimator of Eq. 14, h i ∇u DKL [νx |νu ] ≈ −∇u Eqx (fu ) [log p(ỹ | fu )] + Equ (fu ) ∇u log p(ỹ | fu ) h i 1/2 = −∇u Ep(εx ) [log p(ỹ | µ̂x + Ψ̂1/2 ε )] + E ∇ log p(ỹ | µ̂ + Ψ̂ ε ) x u u u p(εu ) x u (17) \u0012 \u0013 S \u0010 \u0011 \u0010 \u0011 X 1 (s) (s) − ∇u log p ỹ | µ̂x + Ψ̂1/2 + ∇u log p ỹ | µ̂u + Ψ̂1/2 , ≈ x εx u εu S s=1 (s)",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A Bayesian pseudocoreset is a compact synthetic dataset summarizing essential information of a large-scale dataset and thus can be used as a proxy dataset for scalable Bayesian inference. Typically, a Bayesian pseudocoreset is constructed by minimizing a divergence measure between the posterior conditioning on the pseudocoreset and the posterior conditioning on the full dataset. However, evaluating the divergence can be challenging, particularly for the models like deep neural networks having high-dimensional parameters. In this paper, we propose a novel Bayesian pseudocoreset construction method that operates on a function space. Unlike previous methods, which construct and match the coreset and full data posteriors in the space of model parameters (weights), our method constructs variational approximations to the coreset posterior on a function space and matches it to the full data posterior in the function space. By working directly on the function space, our method could bypass several challenges that may arise when working on a weight space, including limited scalability and multi-modality issue. Through various experiments, we demonstrate that the Bayesian pseudocoresets constructed from our method enjoys enhanced uncertainty quantification and better robustness across various model architectures.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "referred to as a Bayesian pseudocoreset. The process of learning a Bayesian pseudocoreset involves minimizing a divergence measure between the posterior of the full dataset and the posterior of the pseudocoreset. However, learning Bayesian pseudocoresets is generally challenging due to the intractability of constructing both the full dataset posterior and the pseudocoreset posterior, as well as the computation of the divergence between them, which necessitates approximation. Consequently, existing works on Bayesian pseudocoresets have primarily focused on small-scale problems [19, 8, 20, 21]. Recently, Kim et al. [15] introduced a scalable method for constructing Bayesian pseudocoresets using variational Gaussian approximation for the posteriors and minimizing forward KL divergence. Although their method shows promise, it still demands substantial computational resources for high-dimensional models like deep neural networks. In this paper, we present a novel approach to enhance the scalability of Bayesian pseudocoreset construction, particularly for Bayesian neural networks (BNNs) with a large number of parameters. Our proposed method operates in function space. When working with BNNs, it is common to define a prior distribution on the weight space and infer the corresponding weight posterior distribution, which also applies to Bayesian pseudocoreset construction. However, previous studies [31, 28] have highlighted the challenge of interpreting weights in high-dimensional neural networks, making it difficult to elicit meaningful prior distributions. Additionally, in high-dimensional networks, the loss surfaces often exhibit a complex multimodal structure, which means that proximity in the weight space does not necessarily imply proximity in the desired prediction",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f36a180277bd3d5781dc02245f9d5f52-Paper-Conference.pdf",
+              "document_sha256": "9bbde005c8e6be167d58c6dc138aa53c1b8cccb8e8ed2c71cc9aaca0dfa55330"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-5226bd4ad9d9e0f00c216d6d",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/118921efba23fc329e6560b27861f0c2-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b43961321f5eb99ef854f298",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f36a180277bd3d5781dc02245f9d5f52-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "cc2c18a61b08c38a3ea908e6fa1b4c98b2592c1ee3fb43ff42e3bb42385036ee"
+    },
+    {
+      "id": "edge-9d22f16caa51e05bef03f906",
+      "a": "paper-56b2e37488ad26d36037539a",
+      "b": "paper-6712405deafcf4609d296739",
+      "state": {
+        "paper_a": {
+          "title": "An Empirical Process Approach to the Union Bound: Practical Algorithms for Combinatorial and Linear Bandits",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "This paper proposes near-optimal algorithms for the pure-exploration linear bandit problem in the fixed confidence and fixed budget settings. Leveraging ideas from the theory of suprema of empirical processes, we provide an algorithm whose sample complexity scales with the geometry of the instance and avoids an explicit union bound over the number of arms. Unlike previous approaches which sample based on minimizing a worst-case variance (e.g. G-optimal design), we define an experimental design objective based on the Gaussian-width of the underlying arm set. We provide a novel lower bound in terms of this objective that highlights its fundamental role in the sample complexity. The sample complexity of our fixed confidence algorithm matches this lower bound, and in addition is computationally efficient for combinatorial classes, e.g. shortest-path, matchings and matroids, where the arm sets can be exponentially large in the dimension. Finally, we propose the first algorithm for linear bandits in the the fixed budget setting. Its guarantee matches our lower bound up to logarithmic factors."
+        },
+        "paper_b": {
+          "title": "Query-Efficient Correlation Clustering with Noisy Oracle",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study a general clustering setting in which we have $n$ elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Existing algorithms for PE-CMAB (e.g., [23, 25, 35, 52, 82]) rely on the assumption that the offline problem is polynomial-time solvable.\nSince its introduction by Chen et al. [25], the study of PE-CMAB has been actively pursued in various settings [23, 35, 36, 47, 50, 52, 55, 56, 67, 78, 82].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-56b2e37488ad26d36037539a",
+          "b": "paper-6712405deafcf4609d296739",
+          "input_sha256": "529e4593a05b77c06c2fb77e557f66c5785f98c2653742129a342b0fb794641c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/75800f73fa80f935216b8cfbedf77bfa-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/75800f73fa80f935216b8cfbedf77bfa-Paper.pdf",
+              "sha256": "71ed25c4b5dde20458b445618cc176850271b2cd01f6c3c857f7b4704ee6579c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract This paper proposes near-optimal algorithms for the pure-exploration linear bandit problem in the fixed confidence and fixed budget settings. Leveraging ideas from the theory of suprema of empirical processes, we provide an algorithm whose sample complexity scales with the geometry of the instance and avoids an explicit union bound over the number of arms. Unlike previous approaches which sample based on minimizing a worst-case variance (e.g. G-optimal design), we define an experimental design objective based on the Gaussian-width of the underlying arm set. We provide a novel lower bound in terms of this objective that highlights its fundamental role in the sample complexity. The sample complexity of our fixed confidence algorithm matches this lower bound, and in addition is computationally efficient for combinatorial classes, e.g. shortest-path, matchings and matroids, where the arm sets can be exponentially large in the dimension. Finally, we propose the first algorithm for linear bandits in the the fixed budget setting. Its guarantee matches our lower bound up to logarithmic factors.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/75800f73fa80f935216b8cfbedf77bfa-Paper.pdf",
+              "document_sha256": "71ed25c4b5dde20458b445618cc176850271b2cd01f6c3c857f7b4704ee6579c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "However, in the general setting where Z is not necessarily a matroid, [8] points out a class with |Z| = 2 where the sample complexity of [10, 13] is loose by a multiplicative factor of d. Chen et al. [8] was the first to provide a lower bound equivalent to ⇢⇤ log(1/ ) for the general combinatorial bandit problem, as well as an upper bound of ⇢⇤ log(|Z|/ ). However, as stressed in the current work, the log(|Z|) term is not necessary in many scenarios; for example, in Top-K, ⇢⇤ log(|Z|) is larger than the best achievable sample complexity by a multiplicative factor of k [9, 28]. This is not in contradiction with the lower bound provided in Theorem 1.9 of [8] which provides a specific worst-case class of instances where the log(|Z|) is needed. The next technological leap in combinatorial bandits is the algorithm of [5] (and the follow-up [20]). They provided an algorithm with a novel sample complexity that replaces log(|Z|) with a more geometrically inspired term. Define the sphere B(z, r) = {z 0 2 Z : kz z 0 k2 = r}, and the 2 kz z0 k2 log(d|B(z⇤ ,kz z0 k2 )|) complexity parameter 'i := maxz2Z\\{z⇤ }:i2z⇤ z . Then [5] provide a 2 z Pn sample complexity scaling like '⇤ := i=1 'i . The following shows that ⇤ is never more than log log(d) larger than this complexity. Proposition 4. Consider the combinatorial bandit setting. Then, ⇤  O('⇤ log(log(d))). However, for even these sample complexity results that take the geometry into account, there exist clear examples of looseness that our approach avoids. Proposition 5. There exists an instance of Top-K where '⇤ = ⌦(k log(d)⇢⇤ ) but ⇤ = O(log(d)⇢⇤ ). In summary, we have the first algorithm with a sample complexity that simultaneously is nearly optimal for matroids, essentially matches our novel lower bound ⇤ + log(1/ )⇢⇤ ",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/75800f73fa80f935216b8cfbedf77bfa-Paper.pdf",
+              "document_sha256": "71ed25c4b5dde20458b445618cc176850271b2cd01f6c3c857f7b4704ee6579c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "the true similarity s(x, y) is observed when querying a pair of objects (x, y). In this scenario, it is desired to achieve a reasonable trade-off between the number of queries to the oracle and the cost of clustering. To this end, we introduce two formulations of online learning problems rooted in the paradigm of Pure Exploration of Combinatorial Multi-Armed Bandits (PE-CMAB). In the fixed confidence setting (Problem 1), given a confidence level δ ∈ (0, 1), the learner aims to find a well-approximate solution with probability at least 1 − δ while minimizing the number of queries required to determine the output. Conversely, in the fixed budget setting (Problem 2), given a querying budget T , the learner aims to maximize the probability that the output is a well-approximate solution. Our contributions can be summarized as follows: • For Problem 1, we design KC-FC (Algorithm 1), which effectively combines threshold bandits with KwikCluster. We prove that given confidence level δ ∈ (0, 1), KC-FC finds a solution whose expected cost is at most 5 · OPT + \u000f with probability at least 1 − δ, where OPT is the optimal value of the problem, and provide the upper bound of the number of queries (Theorem 1). • We design KC-FB (Algorithm 3) for Problem 2, which adaptively determines the number of queries for each pair of objects based on KwikCluster. We prove that the error probability of the expected cost being worse than 5 · OPT + \u000f decreases exponentially with budget T (Theorem 2). • We empirically validate our theoretical findings by demonstrating that KC-FC and KC-FB outperform baseline methods in terms of the sample complexity and cost of clustering, respectively. It is worth noting that our approximation guarantees in Theorems 1 and 2 match the approximation \u0001 ratio 5 of",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "assuming any specific structure of the data. This reasonably eliminates the need for domain knowledge about complex data. Correlation clustering has been applied to a wide range of problems across various domains, including duplicate detection and similarity joins [34, 46], spam detection [12, 72], co-reference resolution [66], biology [9, 14], image segmentation [54], social network analysis [13], and clustering aggregation [42]. Correlation clustering is NP-hard even in the simplest formulations [7, 75], and minimizing the cost function in (1) is APX-hard [20]; thus, we cannot expect a polynomial-time approximation scheme. Nevertheless, there are a number of constant-factor approximation algorithms for various settings [1, 3, 7, 20, 22, 30–32]. For the formulation of (1), Ailon et al. [3] presented KwikCluster, a simple 5-approximation algorithm. The algorithm randomly picks a pivot v ∈ V and constructs a cluster by taking all the vertices similar to v; then, the algorithm removes the cluster and repeats the process until V is fully clustered. The simplicity and theoretical guarantees of KwikCluster have produced a lot of variations in different scenarios [13, 29, 61, 69, 76, 79]. In practice, preparing the similarity function involves costly measurements. Given n items to be clustered, Θ(n2 ) similarity computations are needed to prepare the input to correlation clustering algorithms. Moreover, computing the similarity s(x, y) might have additional expenses (e.g., human effort or financial resources) besides the mere computational cost. To mitigate these issues, some query-efficient methods have been proposed based on the active learning framework [11, 15, 40]. In this framework, the similarity function is initially unknown but an oracle that returns the true",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study a general clustering setting in which we have n elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-56b2e37488ad26d36037539a",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/75800f73fa80f935216b8cfbedf77bfa-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6712405deafcf4609d296739",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "0ba621a5052ac216daa813d6e157ec3b2fa28ae44f160d600c02f68659c96a80"
+    },
+    {
+      "id": "edge-12834c34d7ee6b6f0dcca950",
+      "a": "paper-59bdb230c02430481424b71b",
+      "b": "paper-6712405deafcf4609d296739",
+      "state": {
+        "paper_a": {
+          "title": "Single-Pass Pivot Algorithm for Correlation Clustering. Keep it simple!",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We show that a simple single-pass semi-streaming variant of the Pivot algorithm for Correlation Clustering gives a (3+eps)-approximation using O(n/eps) words of memory. This is a slight improvement over the recent results of Cambus, Kuhn, Lindy, Pai, and Uitto, who gave a (3+eps)-approximation using O(n log n) words of memory, and Behnezhad, Charikar, Ma, and Tan, who gave a 5-approximation using O(n) words of memory. One of the main contributions of our paper is that the algorithm and its analysis are simple and easy to understand."
+        },
+        "paper_b": {
+          "title": "Query-Efficient Correlation Clustering with Noisy Oracle",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study a general clustering setting in which we have $n$ elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The simplicity and theoretical guarantees of KwikCluster have produced a lot of variations in different scenarios [13, 29, 61, 69, 76, 79].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-59bdb230c02430481424b71b",
+          "b": "paper-6712405deafcf4609d296739",
+          "input_sha256": "49ba58a49307e2c9ad7c53301995db678ba5480cb31b412bf9a466a50c65d908",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/149ad6e32c08b73a3ecc3d11977fcc47-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/149ad6e32c08b73a3ecc3d11977fcc47-Paper-Conference.pdf",
+              "sha256": "4e2d327b1ce3fc938636e59da03d9b3026d0b7d8d6774775219febc1157fc2d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "assuming any specific structure of the data. This reasonably eliminates the need for domain knowledge about complex data. Correlation clustering has been applied to a wide range of problems across various domains, including duplicate detection and similarity joins [34, 46], spam detection [12, 72], co-reference resolution [66], biology [9, 14], image segmentation [54], social network analysis [13], and clustering aggregation [42]. Correlation clustering is NP-hard even in the simplest formulations [7, 75], and minimizing the cost function in (1) is APX-hard [20]; thus, we cannot expect a polynomial-time approximation scheme. Nevertheless, there are a number of constant-factor approximation algorithms for various settings [1, 3, 7, 20, 22, 30–32]. For the formulation of (1), Ailon et al. [3] presented KwikCluster, a simple 5-approximation algorithm. The algorithm randomly picks a pivot v ∈ V and constructs a cluster by taking all the vertices similar to v; then, the algorithm removes the cluster and repeats the process until V is fully clustered. The simplicity and theoretical guarantees of KwikCluster have produced a lot of variations in different scenarios [13, 29, 61, 69, 76, 79]. In practice, preparing the similarity function involves costly measurements. Given n items to be clustered, Θ(n2 ) similarity computations are needed to prepare the input to correlation clustering algorithms. Moreover, computing the similarity s(x, y) might have additional expenses (e.g., human effort or financial resources) besides the mere computational cost. To mitigate these issues, some query-efficient methods have been proposed based on the active learning framework [11, 15, 40]. In this framework, the similarity function is initially unknown but an oracle that returns the true",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study a general clustering setting in which we have n elements to be clustered, and we aim to perform as few queries as possible to an oracle that returns a noisy sample of the weighted similarity between two elements. Our setting encompasses many application domains in which the similarity function is costly to compute and inherently noisy. We introduce two novel formulations of online learning problems rooted in the paradigm of Pure Exploration in Combinatorial Multi-Armed Bandits (PE-CMAB): fixed confidence and fixed budget settings. For both settings, we design algorithms that combine a sampling strategy with a classic approximation algorithm for correlation clustering and study their theoretical guarantees. Our results are the first examples of polynomial-time algorithms that work for the case of PE-CMAB in which the underlying offline optimization problem is NP-hard.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "the true similarity s(x, y) is observed when querying a pair of objects (x, y). In this scenario, it is desired to achieve a reasonable trade-off between the number of queries to the oracle and the cost of clustering. To this end, we introduce two formulations of online learning problems rooted in the paradigm of Pure Exploration of Combinatorial Multi-Armed Bandits (PE-CMAB). In the fixed confidence setting (Problem 1), given a confidence level δ ∈ (0, 1), the learner aims to find a well-approximate solution with probability at least 1 − δ while minimizing the number of queries required to determine the output. Conversely, in the fixed budget setting (Problem 2), given a querying budget T , the learner aims to maximize the probability that the output is a well-approximate solution. Our contributions can be summarized as follows: • For Problem 1, we design KC-FC (Algorithm 1), which effectively combines threshold bandits with KwikCluster. We prove that given confidence level δ ∈ (0, 1), KC-FC finds a solution whose expected cost is at most 5 · OPT + \u000f with probability at least 1 − δ, where OPT is the optimal value of the problem, and provide the upper bound of the number of queries (Theorem 1). • We design KC-FB (Algorithm 3) for Problem 2, which adaptively determines the number of queries for each pair of objects based on KwikCluster. We prove that the error probability of the expected cost being worse than 5 · OPT + \u000f decreases exponentially with budget T (Theorem 2). • We empirically validate our theoretical findings by demonstrating that KC-FC and KC-FB outperform baseline methods in terms of the sample complexity and cost of clustering, respectively. It is worth noting that our approximation guarantees in Theorems 1 and 2 match the approximation \u0001 ratio 5 of",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fb7214d2fdfd84165b08539d59c92e07-Paper-Conference.pdf",
+              "document_sha256": "80d7d69bfd39aceb9b235cd3c11872c531024e4a41a053a822361bd7635c3a37"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-59bdb230c02430481424b71b",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/149ad6e32c08b73a3ecc3d11977fcc47-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-6712405deafcf4609d296739",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/fb7214d2fdfd84165b08539d59c92e07-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Algorithms for Efficient Inference on Graphs and Relational Data"
+      },
+      "sha256": "869bea80d6098106e8d27914eaf0d0dd7f768866067e6e7ba538ab97d38dc235"
+    }
+  ]
+}

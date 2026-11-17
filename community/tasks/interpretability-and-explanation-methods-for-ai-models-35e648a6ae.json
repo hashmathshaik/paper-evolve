@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Interpretability and Explanation Methods for AI Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-6eb4294676f224438d16ccaa",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-79599b4985c2808f47e107fe",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Relative Importance in Sentence Processing",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Determining the relative importance of the elements in a sentence is a key factor for effortless natural language understanding. For human language processing, we can approximate patterns of relative importance by measuring reading fixations using eye-tracking technology. In neural language models, gradient-based saliency methods indicate the relative importance of a token for the target objective. In this work, we compare patterns of relative importance in English language processing by humans and models and analyze the underlying linguistic patterns. We find that human processing patterns in English correlate strongly with saliency-based importance in language models and not with attention-based importance. Our results indicate that saliency could be a cognitively more plausible metric for interpreting neural language models. The code is available on github: https://github.com/beinborn/relative_importance."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Neural language models are trained to be a good basis for any of these tasks and are thus expected to represent a more general notion of relative importance (Devlin et al., 2019).\nFor the subsequent analyses, we focus only on the BERT model 3 We combine ZuCo 1.0 (T1, T2) and ZuCo 2.0.\nIn general-purpose language models such as BERT (Devlin et al., 2019), the objective function tries to predict a token based on its context.\n4 BERT was the ﬁrst widely successful transformer-based language model and remains highly inﬂuential (Devlin et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-79599b4985c2808f47e107fe",
+          "input_sha256": "e6757eae58cb138671e91bb035c399b78d4c37c5ca224666dd043e219422887c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-short.19/",
+              "pdf_url": "https://aclanthology.org/2021.acl-short.19.pdf",
+              "sha256": "cc0728f217fa294e520c64db980b66a69dceb6f8adee439b1c041557aad79ceb"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "text classification tasks and Ding et al. (2019) calculate saliency maps for interpreting the alignment process in machine translation models. In general-purpose language models such as BERT (Devlin et al., 2019), the objective function tries to predict a token based on its context. A saliency vector for a masked token thus indicates the importance of each of the tokens in the context of correctly predicting the masked token (Madsen, 2019). We iterate over each token vector xi in our input sequence x1 , x2 , ... xn . Let Xi be the input matrix with xi being masked. The saliency sij for input token xj for the prediction of the correct token ti is then calculated as the Euclidean norm of the gradient of the logit for xi . sij = k∇xj fti (Xi )k2",
+              "url": "https://aclanthology.org/2021.acl-short.19.pdf",
+              "document_sha256": "cc0728f217fa294e520c64db980b66a69dceb6f8adee439b1c041557aad79ceb"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "We compare three state-of-the-art language models trained for English: BERT, ALBERT, and DistilBERT.4 BERT was the first widely successful transformer-based language model and remains highly influential (Devlin et al., 2019). ALBERT and DistilBERT are variants of BERT that require less training time due to a considerable reduction of the training parameters while maintaining similar performance on benchmark datasets (Lan et al., 2019; Sanh et al., 2019).5 We analyze if the lighter architectures have an influence on the patterns of relative importance that the models learn.",
+              "url": "https://aclanthology.org/2021.acl-short.19.pdf",
+              "document_sha256": "cc0728f217fa294e520c64db980b66a69dceb6f8adee439b1c041557aad79ceb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "mantically meaningful (Gulordava et al., 2018). Previous work has shown that the inductive bias of recurrent neural networks can be modified to obtain cognitively more plausible model decisions (Bhatt et al., 2020; Shen et al., 2019). In principle, our approach can also be applied to left-to-right models such as GPT-2 (Radford et al., 2019). In this case, the tokens at the beginning of the sentence would be assigned disproportionately high importance as the following tokens cannot contribute to the prediction of preceding tokens in incremental processing. It might thus be more useful to only use the first fixation duration of the gaze signal for analyzing importance in left-to-right models. However, we think that the regressions by the readers provide valuable information about sentence processing.",
+              "url": "https://aclanthology.org/2021.acl-short.19.pdf",
+              "document_sha256": "cc0728f217fa294e520c64db980b66a69dceb6f8adee439b1c041557aad79ceb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-79599b4985c2808f47e107fe",
+          "url": "https://aclanthology.org/2021.acl-short.19/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "c7ed7da6220865ca7b9dcd733479ed64961707464ba156fbaaa43d58db524712"
+    },
+    {
+      "id": "edge-8b8eb9f982219529278573bb",
+      "a": "paper-08ffda935c4dcb1554725927",
+      "b": "paper-daaa47a3e9da0d734a10109b",
+      "state": {
+        "paper_a": {
+          "title": "QUARK: Controllable Text Generation with Reinforced Unlearning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO, while relying only on standard language modeling primitives."
+        },
+        "paper_b": {
+          "title": "Are Machine Rationales (Not) Useful to Humans? Measuring and Improving Human Utility of Free-text Rationales",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Among the remarkable emergent capabilities of large language models (LMs) is free-text rationalization; beyond certain scale, large LMs are capable of generating seemingly useful rationalizations, which in turn, can dramatically enhance their performances on leaderboards. This phenomenon raises a question: can machine generated rationales also be useful for humans, especially when lay humans try to answer questions based on those machine rationales? We observe that human utility of existing rationales is far from satisfactory and expensive to estimate with human studies. Existing metrics like task performance of the LM generating the rationales or similarity between generated and gold rationales are not good indicators of their human utility. While we observe that certain properties of rationales like conciseness and novelty are correlated with their human utility, estimating them without human involvement is challenging. We show that, by estimating a rationale’s helpfulness in answering similar unseen instances, we can measure its human utility to a better extent. We also translate this finding into an automated score, Gen-U, that we propose, which can help improve LMs’ ability to generate rationales with better human utility, while maintaining most of its task performance. Lastly, we release all code and collected data with this project."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08ffda935c4dcb1554725927",
+          "b": "paper-daaa47a3e9da0d734a10109b",
+          "input_sha256": "5a7a208ff16dbfd42ce92280f13b6713f3a91821ca6e28f7aa812a320810db5d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.392/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.392.pdf",
+              "sha256": "22f4a7f94858a22b06d1cef0f399f0ae9d48246bd684955fcad23053a11a8beb"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this work, we show that Quark can steer language models away from unwanted properties as specified by reward functions, without sacrificing general language understanding/generation capabilities. We foresee two primary dual use concerns for this method. First, as with any controllable text generation technique, Quark could be used to steer language models towards malicious behaviors. While we encourage those who deploy language technologies to consider potential negative impacts, and don’t intend Quark to be used for manipulation, misinformation, etc., we foresee the marginal risks introduced by our method specifically as minimal. Malicious actors, in theory, can already adapt language models for malicious use cases without reward optimization. Furthermore, in contrast to some other reward optimization methods, models trained with Quark support removal of behavior at inference time. Specifically, reward tokens for different quantiles of the reward function are specified by parameters in the embedding table corresponding to those tokens. Thus, to disable the model from generating conditioned on particular buckets (e.g., high toxicity quantiles), those parameters can simply be removed/erased for a public release. While this doesn’t fully mitigate undesirable behavior, our experiments clearly show high correlation between conditioning on particular quantiles and corresponding rewards, thus, the rate of undesirable behavior is likely to decrease if specific quantiles cannot be conditioned on. Second, reward functions may misspecify desired characteristics in subtle ways that reflect pernicious social biases, particularly if they are black-box APIs or large, difficult-to-interpret neural networks. For example, for the task of unlearning toxicity, since the toxicity",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO [66], while relying only on standard language modeling primitives.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "G EN -U as a reward for updating LM. We use the Quark (Lu et al., 2022) algorithm with G EN -U to improve the human utility of rationales generated by F. Quark is an RL-inspired training algorithm that uses reward signals as control tokens on the encoder (or decoder) side, to condition the generation of text. For F, we use the same T5-large setup used in §2. For implementing G EN -U, we use T5-base I IR LMs for F and F , which are both finetuned on the StrategyQA dataset. We begin by first finetuning F for 25 epochs with supervised learning on the StrategyQA data, after which we continue ′ training with Quark. The final F is obtained after finding the best hyperparameter choices based on G EN -U scores for the validation set. Table 7 demonstrates the G EN -U scores before and after using Quark to update F. On the updated ′ LM F , we conduct the same human utility evaluations as done in §2 to evaluate the improvement",
+              "url": "https://aclanthology.org/2023.acl-long.392.pdf",
+              "document_sha256": "22f4a7f94858a22b06d1cef0f399f0ae9d48246bd684955fcad23053a11a8beb"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Table 7: Impact of G EN -U as a reward to update LM using Quark (Lu et al., 2022) algorithm: On the StrategyQA Dataset, we show the % of different types ′ of rationales for the LM before (F) and after (F ) being updated with generation feedback through the Quark algorithm, using G EN -U as the reward. We also note the % of rationales for davinci-instruct-beta (GPT-3), which is the best performing variant in terms of human ′ utility. Here, ↑ implies improvement seen in F , and vice versa.",
+              "url": "https://aclanthology.org/2023.acl-long.392.pdf",
+              "document_sha256": "22f4a7f94858a22b06d1cef0f399f0ae9d48246bd684955fcad23053a11a8beb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Updating LMs with Generation Feedback There are several ways to update language models with rewards to correct misaligned behaviour that models learn (Chen et al., 2021; Janner et al., 2021). Lu et al. (2022) unlearn these misalignments by fine-tuning the language model on signals of what not to do. Similarly, Zelikman et al. (2022) iteratively leverage a small number of rationale examples to training and only keep good examples. Our method is inspired by several evaluation methods (Chen et al., 2022a; Chan et al., 2022; Wiegreffe et al., 2020; Hase et al., 2020) which discussed how to better evaluate the quality of free-text rationales with regard to labels and contexts.",
+              "url": "https://aclanthology.org/2023.acl-long.392.pdf",
+              "document_sha256": "22f4a7f94858a22b06d1cef0f399f0ae9d48246bd684955fcad23053a11a8beb"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Among the remarkable emergent capabilities of large language models (LMs) is free-text rationalization; beyond a certain scale, large LMs are capable of generating seemingly useful rationalizations, which in turn, can dramatically enhance their performances on leaderboards. This phenomenon raises a question: can machine generated rationales also be useful for humans, especially when lay humans try to answer questions based on those machine rationales? We observe that human utility of existing rationales is far from satisfactory, and expensive to estimate with human studies. Existing metrics like task performance of the LM generating the rationales, or similarity between generated and gold rationales are not good indicators of their human utility. While we observe that certain properties of rationales like conciseness and novelty are correlated with their human utility, estimating them without human involvement is challenging. We show that, by estimating a rationale’s helpfulness in answering similar unseen instances, we can measure its human utility to a better extent. We also translate this finding into an automated score, G EN -U, that we propose, which can help improve LMs’ ability to generate rationales with better human utility, while maintaining most of its task performance. Lastly, we release all 1 code and collected data with this project.",
+              "url": "https://aclanthology.org/2023.acl-long.392.pdf",
+              "document_sha256": "22f4a7f94858a22b06d1cef0f399f0ae9d48246bd684955fcad23053a11a8beb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08ffda935c4dcb1554725927",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-daaa47a3e9da0d734a10109b",
+          "url": "https://aclanthology.org/2023.acl-long.392/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "d7f1543070653cadde79137223b8fb007dc20c39c24f910423474c7fb8a20b67"
+    },
+    {
+      "id": "edge-993286e8ca13e1aa3b6e792d",
+      "a": "paper-9f887a69e46a337b350b423e",
+      "b": "paper-bcce900900b71e7db99e2a4d",
+      "state": {
+        "paper_a": {
+          "title": "Deep Contextualized Word Representations",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new type of deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals."
+        },
+        "paper_b": {
+          "title": "Generating Hierarchical Explanations on Text Classification via Feature Interaction Detection",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Generating explanations for neural networks has become crucial for their applications in real-world with respect to reliability and trustworthiness. In natural language processing, existing methods usually provide important features which are words or phrases selected from an input text as an explanation, but ignore the interactions between them. It poses challenges for humans to interpret an explanation and connect it to model prediction. In this work, we build hierarchical explanations by detecting feature interactions. Such explanations visualize how words and phrases are combined at different levels of the hierarchy, which can help users understand the decision-making of black-box models. The proposed method is evaluated with three neural text classifiers (LSTM, CNN, and BERT) on two benchmark datasets, via both automatic and human evaluations. Experiments show the effectiveness of the proposed method in providing explanations that are both faithful to models and interpretable to humans."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Deep neural networks have achieved remarkable performance in natural language processing (NLP) (Devlin et al., 2018; Howard and Ruder, 2018; Peters et al., 2018), but the lack of understanding on their decision making leads them to be characterized as blackbox models and increases the risk of applying them in real-world applications (Lipton, 2016; Burns et al., 2018; Jumelet and Hupkes, 2018; Jacovi et al., 2018).\nIn NLP, most of existing work on local explanation generation focuses on producing word-level or phrase-level explanations by quantifying contributions of individual words or phrases to a model prediction (Ribeiro et al., 2016; Lundberg and Lee, 2017; Lei et al., 2016; Plumb et al., 2018).\nDeep neural networks have achieved remarkable performance in natural language processing (NLP) (Devlin et al., 2018; Howard and Ruder, 2018; Peters et al., 2018), but the lack of understanding on their decision making leads them to be characterized as blackbox models and increases the risk of applying them in real-world applications (Lipton, 2016; Burns et al.\nDeep neural networks have achieved remarkable performance in natural language processing (NLP) (Devlin et al., 2018; Howard and Ruder, 2018; Peters et al., 2018), but the lack of understanding on their decision making leads them to be characterized as blackbox models and increases the risk of…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9f887a69e46a337b350b423e",
+          "b": "paper-bcce900900b71e7db99e2a4d",
+          "input_sha256": "f8f6a2f1f52b8461e4d83bb31d33fd8dd7687abd03f9f5d14873fa3849381059",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N18-1202/",
+              "pdf_url": "https://aclanthology.org/N18-1202.pdf",
+              "sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.494/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.494.pdf",
+              "sha256": "ebdfd5818412769fd72c34448e2b324efa1fb26c9ad338726370a07bdbcadbb1"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new type of deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pretrained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals.",
+              "url": "https://aclanthology.org/N18-1202.pdf",
+              "document_sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Pre-trained word representations (Mikolov et al., 2013; Pennington et al., 2014) are a key component in many neural language understanding models. However, learning high quality representations can be challenging. They should ideally model both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). In this paper, we introduce a new type of deep contextualized word representation that directly addresses both challenges, can be easily integrated into existing models, and significantly improves the state of the art in every considered case across a range of challenging language understanding problems. Our representations differ from traditional word type embeddings in that each token is assigned a representation that is a function of the entire input sentence. We use vectors derived from a bidirectional LSTM that is trained with a coupled lan-",
+              "url": "https://aclanthology.org/N18-1202.pdf",
+              "document_sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Deep neural networks have achieved remarkable performance in natural language processing (NLP) (Devlin et al., 2018; Howard and Ruder, 2018; Peters et al., 2018), but the lack of understanding on their decision making leads them to be characterized as blackbox models and increases the risk of applying them in real-world applications (Lipton, 2016; Burns et al., 2018; Jumelet and Hupkes, 2018; Jacovi et al., 2018). Understanding model prediction behaviors has been a critical factor in whether people will trust and use these blackbox models (Ribeiro et al., 2016). A typical work on understanding decisionmaking is to generate prediction explanations for each input example, called local explanation generation. In NLP, most of existing work on local",
+              "url": "https://aclanthology.org/2020.acl-main.494.pdf",
+              "document_sha256": "ebdfd5818412769fd72c34448e2b324efa1fb26c9ad338726370a07bdbcadbb1"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "However, neither of them is able to explain the model decision-making in terms of how words and phrases are interacted with each other and composed together for the final prediction. In this example, since the final prediction is NEGATIVE, one question that we could ask is that how the word good or a phrase related to the word good contributes to the model prediction. An explanation being able to answer this question will give users a better understanding on the model decision-making and also more confidence to trust the prediction. The goal of this work is to reveal prediction behaviors of a text classifier by detecting feature (e.g., words or phrases) interactions with respect to model predictions. For a given text, we propose a model-agnostic approach, called H EDGE (for Hierarchical Explanation via Divisive Generation), to build hierarchical explanations by recursively detecting the weakest interactions and then dividing large text spans into smaller ones based on the interactions. As shown in Figure 1 (c), the hierarchical structure produced by H EDGE provides a comprehensive picture of how different granularity of features interacting with each other within the model. For example, it shows how the word good is dominated by others in the model prediction, which eventually leads to the correct prediction. Furthermore, the scores of text spans across the whole hierarchy also help identify the most important feature waste of good, which can be served as a phrase-level explanation for the model prediction. The contribution of this work is three-fold: (1) we design a top-down model-agnostic method of constructing hierarchical explanations via feature interaction detection; (2) we propose a simple and effective scoring function to quantify feature contributions with",
+              "url": "https://aclanthology.org/2020.acl-main.494.pdf",
+              "document_sha256": "ebdfd5818412769fd72c34448e2b324efa1fb26c9ad338726370a07bdbcadbb1"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "The core of generating model-agnostic explanations is how to efficiently evaluate the importance of features with respect to the prediction. So far, most of existing work on model-agnostic explanations focus on the word level. For example, Li et al. (2016) proposed Leave-one-out to probe the black-box model by observing the probability change on the predicted class when erasing a certain word. LIME proposed by Ribeiro et al. (2016) estimates individual word contribution locally by linear approximation from perturbed examples. A line of relevant works to ours is Shapleybased methods, where the variants of Shapley values (Shapley, 1953) are used to evaluate feature importance, such as SampleShapley (Kononenko et al., 2010), KernelSHAP (Lundberg and Lee, 2017), and L/C-Shapley (Chen et al., 2018). They are still in the category of generating word-level explanations, while mainly focus on addressing the challenge of computational complexity of Shapley values (Datta et al., 2016). In this work, inspired by an extension of Shapley values (Owen, 1972; Grabisch, 1997; Fujimoto et al., 2006), we design a function to detect feature interactions for building hierarchical model-agnostic explanations in subsection 3.1. While, different from prior work of using Shapley values for feature importance evaluation, we propose an effective and simpler way to",
+              "url": "https://aclanthology.org/2020.acl-main.494.pdf",
+              "document_sha256": "ebdfd5818412769fd72c34448e2b324efa1fb26c9ad338726370a07bdbcadbb1"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9f887a69e46a337b350b423e",
+          "url": "https://aclanthology.org/N18-1202/"
+        },
+        "b": {
+          "paper_id": "paper-bcce900900b71e7db99e2a4d",
+          "url": "https://aclanthology.org/2020.acl-main.494/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "ed79e38d2d334f8b0468a8fd80a03745add4714d288ddf7b0f6508c22f2b8176"
+    },
+    {
+      "id": "edge-ad1dd34e4293bb0eb54797c2",
+      "a": "paper-08cec1ceb9affb5279303835",
+      "b": "paper-bd108abfca0425938b248718",
+      "state": {
+        "paper_a": {
+          "title": "TRAK: Attributing Model Behavior at Scale",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The goal of data attribution is to trace model predictions back to training data. Despite a long line of work towards this goal, existing approaches to data attribution tend to force users to choose between computational tractability and efficacy. That is, computationally tractable methods can struggle with accurately attributing model predictions in non-convex settings (e.g., in the context of deep neural networks), while methods that are effective in such regimes require training thousands of models, which makes them impractical for large models or datasets. In this work, we introduce TRAK (Tracing with the Randomly-projected After Kernel), a data attribution method that is both effective and computationally tractable for large-scale, differentiable models. In particular, by leveraging only a handful of trained models, TRAK can match the performance of attribution methods that require training thousands of models. We demonstrate the utility of TRAK across various modalities and scales: image classifiers trained on ImageNet, vision-language models (CLIP), and language models (BERT and mT5). We provide code for using TRAK (and reproducing our work) at https://github.com/MadryLab/trak ."
+        },
+        "paper_b": {
+          "title": "A Snapshot of Influence: A Local Data Attribution Framework for Online Reinforcement Learning",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Online reinforcement learning (RL) excels in complex, safety-critical domains but suffers from sample inefficiency, training instability, and limited interpretability. Data attribution provides a principled way to trace model behavior back to training samples, yet existing methods assume fixed datasets, which is violated in online RL where each experience both updates the policy and shapes future data collection. In this paper, we initiate the study of data attribution for online RL, focusing on the widely used Proximal Policy Optimization (PPO) algorithm. We start by establishing a local attribution framework, interpreting model checkpoints with respect to the records in the recent training buffer. We design two target functions, capturing agent action and cumulative return respectively, and measure each record's contribution through gradient similarity between its training loss and these targets. We demonstrate the power of this framework through three concrete applications: diagnosis of learning, temporal analysis of behavior formation, and targeted intervention during training. Leveraging this framework, we further propose an algorithm, iterative influence-based filtering (IIF), for online RL training that iteratively performs experience filtering to refine policy updates. Across standard RL benchmarks (classic control, navigation, locomotion) to RLHF for large language models, IIF reduces sample complexity, speeds up training, and achieves higher returns. Together, these results open a new direction for making online RL more interpretable, efficient, and effective."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08cec1ceb9affb5279303835",
+          "b": "paper-bd108abfca0425938b248718",
+          "input_sha256": "659ced34fc7a4c22b94fe06ec4bb228f2b98c74432faba77736add402be4acb4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/park23c.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/377d0752059d3d4686aa021b664a25dd-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/377d0752059d3d4686aa021b664a25dd-Paper-Conference.pdf",
+              "sha256": "8a2e0478b8bc0cec6e3d8395de15c1a9ff40e5361deb51b88c5d50f0665e6aef"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The goal of data attribution is to trace model predictions back to training data. Despite a long line of work towards this goal, existing approaches to data attribution tend to force users to choose between computational tractability and efficacy. That is, computationally tractable methods can struggle with accurately attributing model predictions in non-convex settings (e.g., in the context of deep neural networks), while methods that are effective in such regimes require training thousands of models, which makes them impractical for large models or datasets. In this work, we introduce TRAK (Tracing with the Randomly-projected After Kernel), a data attribution method that is both effective and computationally tractable for large-scale, differentiable models. In particular, by leveraging only a handful of trained models, TRAK can match the performance of attribution methods that require training thousands of models. We demonstrate the utility of TRAK across various modalities and scales: image classifiers trained on ImageNet, vision-language models (CLIP), and language models (BERT and mT5). We provide code for using TRAK (and reproducing our work) at https://github.com/MadryLab/trak.",
+              "url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "document_sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "2.1. The linear datamodeling score (LDS) Motivated by the above shortcomings of existing methodologies, we propose a new metric for evaluating data attribution methods. At the heart of our metric is the perspective that an effective data attribution method should be able to make accurate counterfactual predictions about how model outputs change when the training set is modified.",
+              "url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "document_sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Data attribution, which quantifies the influence of individual training samples on model behavior, has become increasingly important in machine learning [Grosse et al., 2023, Wang et al., 2023, Zheng et al., 2024]. Common techniques include influence functions [Koh and Liang, 2017], Data Shapley [Ghorbani and Zou, 2019], SGD-influence [Hara et al., 2019], TracIn [Pruthi et al., 2020], and TRAK [Park et al., 2023]. We focus on TracIn due to its conceptual simplicity, relative efficiency, and widespread use in recent works [Xie et al., 2024, Xia et al., 2024, Lin et al., 2024]. TracIn [Pruthi et al., 2020]. TracIn measures the cumulative change in a target function f (θ) resulting from the optimization steps involving a specific training sample zi . Formally, consider training a model parameterized by θ on a training set {zi }ni=1 by minimizing the empirical loss Pn i=1 ℓ(θ, zi ) using stochastic gradient descent (SGD). At step j, with parameters θj , learning rate ηj , and mini-batch Bj , a first-order Taylor expansion of f (θ) around θj gives: X f (θj ) − f (θj+1 ) ≈ ∇θ f (θj ) · (θj − θj+1 ) = ηj ∇θ f (θj ) · ∇θ ℓ(θj , zi ). i∈Bj",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/377d0752059d3d4686aa021b664a25dd-Paper-Conference.pdf",
+              "document_sha256": "8a2e0478b8bc0cec6e3d8395de15c1a9ff40e5361deb51b88c5d50f0665e6aef"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "variants, online RL, which continuously alternates between data collection and policy updates (e.g., A3C [Mnih et al., 2016], PPO [Schulman et al., 2017]), is well-suited to real-time, adaptive, and safety-critical domains such as autonomous driving, as it enables on-the-fly correction of mistakes and rapid adaptation to non-stationary environments [Sallab et al., 2017, Andrychowicz et al., 2020]. However, modern online RL faces several challenges, including sample inefficiency, high variance, and training instability, often requiring millions of interactions for convergence and yielding inconsistent performance across runs [Henderson et al., 2018, Yu, 2018, Dulac-Arnold et al., 2019]. These challenges, together with their deployment in high-stakes domains, necessitate a deeper understanding of the operational mechanisms of online RL. To this end, prior work has explored various methods for RL interpretability [Milani et al., 2024, Cheng et al., 2025]. While useful, these methods often lack the fine-grained explanations necessary for effective interventions or have limited applicability (see Sec. 6 for a detailed review of related work). Addressing these limitations requires exploring new paradigms. In recent years, data attribution [Deng et al., 2025] has emerged as a powerful approach for machine learning interpretability, offering a complementary perspective by tracing model behaviors back to training data. This framework further benefits downstream applications such as data selection [Xia et al., 2024], bias mitigation [Wang et al., 2024], fact tracing [Chang et al., 2025], among others. However, applying data attribution to online RL is non-trivial. In online RL, agents continuously interact with their environment; each collected experience not only contributes to",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/377d0752059d3d4686aa021b664a25dd-Paper-Conference.pdf",
+              "document_sha256": "8a2e0478b8bc0cec6e3d8395de15c1a9ff40e5361deb51b88c5d50f0665e6aef"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Online RL presents unique challenges for data attribution, due to the way data interacts with model parameters during learning. To tackle this challenge, we introduce a local attribution framework tailored to local policy optimization inherent in online RL. Challenges. The key feature of online RL is the circular dependency between data and model— earlier experiences drive policy updates, and updated policies produce new experiences to learn 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/377d0752059d3d4686aa021b664a25dd-Paper-Conference.pdf",
+              "document_sha256": "8a2e0478b8bc0cec6e3d8395de15c1a9ff40e5361deb51b88c5d50f0665e6aef"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08cec1ceb9affb5279303835",
+          "url": "https://proceedings.mlr.press/v202/park23c.html"
+        },
+        "b": {
+          "paper_id": "paper-bd108abfca0425938b248718",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/377d0752059d3d4686aa021b664a25dd-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "0adf75910bd6b63f359ca1ac3bbf88f15aebc9f10682cbed75dceaf8f908ea4f"
+    },
+    {
+      "id": "edge-3de364965e45a99290b4853d",
+      "a": "paper-00a7da2e6ec9a42f864e2dd2",
+      "b": "paper-d8b73bf0d08e1dbbfa56826e",
+      "state": {
+        "paper_a": {
+          "title": "Knowledge Neurons in Pretrained Transformers",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus. In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers."
+        },
+        "paper_b": {
+          "title": "Evaluating Neuron Interpretation Methods of NLP Models",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Neuron interpretation offers valuable insights into how knowledge is structured within a deep neural network model. While a number of neuron interpretation methods have been proposed in the literature, the field lacks a comprehensive comparison among these methods. This gap hampers progress due to the absence of standardized metrics and benchmarks. The commonly used evaluation metric has limitations, and creating ground truth annotations for neurons is impractical. Addressing these challenges, we propose an evaluation framework based on voting theory. Our hypothesis posits that neurons consistently identified by different methods carry more significant information. We rigorously assess our framework across a diverse array of neuron interpretation methods. Notable findings include: i) despite the theoretical differences among the methods, neuron ranking methods share over 60% of their rankings when identifying salient neurons, ii) the neuron interpretation methods are most sensitive to the last layer representations, iii) Probeless neuron ranking emerges as the most consistent method."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "A number of works identify neurons with respect to the output class (Wang et al., 2022b; Dai et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00a7da2e6ec9a42f864e2dd2",
+          "b": "paper-d8b73bf0d08e1dbbfa56826e",
+          "input_sha256": "f4ca2ba8dfe3e2d37ebc625d6322c25ff0333623de7c007b9dff3aa93ec1d7fd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.581/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/eef6cb60fd59b32d35718e176b4b08d6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/eef6cb60fd59b32d35718e176b4b08d6-Paper-Conference.pdf",
+              "sha256": "250f8480551adf9e8bc580584afb39967da0bbdb1f44cbecb77e2aef3f816367"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus (Petroni et al., 2019; Jiang et al., 2020b). In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers. The code is available at https://github.com/ Hunter-DDM/knowledge-neurons.",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "text-form knowledge prediction. In this paper, we attempt to look deeper into pretrained Transformers and investigate how factual knowledge is stored. As shown in Figure 1, we propose a knowledge attribution method to identify the neurons that express a relational fact, where such neurons are named knowledge neurons. Specifically, we view feed-forward network (i.e., two-layer perceptron) modules in Transformer as key-value memories (Geva et al., 2020). For the example in Figure 1, the hidden state is fed into the first linear layer and activates knowledge neurons; then, the second linear layer integrates the corresponding memory vectors. The key-value-memory nature (Geva et al., 2020) inspires us to propose the knowledge attribution method, which identifies knowledge neurons in feed-forward networks by computing the contribution of each neuron to the knowledge prediction. Extensive analysis shows that the activation of the identified knowledge neurons is positively correlated to the knowledge expression, which shows",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "training diagnostic classifiers for linguistic concepts, wherein classifier accuracy serves as an indicator of concept knowledge within representations. See Belinkov & Glass (2019) for a comprehensive survey. Neuron Interpretation A more intricate form of representation analysis, termed neuron interpretation, delves into how knowledge is structured within the network (Sajjad et al., 2022b). This approach establishes connections between neurons and predefined concepts, offering insights into where and how specific concept knowledge is assimilated. Work done on neuron analysis can be broadly classified into three groups: Neuron visualization involves manual identification of patterns across a set of sentences (Li et al., 2016a; Karpathy et al., 2015). More recently Foote et al. (2023) proposed an automated approach to enhance interpretability of Large Language Models (LLMs) by extracting and visualizing individual neuron behaviors as interpretable graphs. Corpus-based Methods explore the role of a neuron through techniques such as ranking sentences in a corpus (Kádár et al., 2017b), generating synthetic sentences (Poerner et al., 2018) that maximize its activation, or computing neuron-level statistics over a corpus (Mu & Andreas, 2020; Suau et al., 2020; Antverg & Belinkov, 2022). Bills et al. (2023); Mousi et al. (2023) proposed the use of LLM to interpret neurons. Probing Methods identify salient neurons for a concept by training a classifier using neuron activations as features (Radford et al., 2019; Lakretz et al., 2019; Durrani et al., 2022) or fitting a multivariate Gaussian over all neurons and then extracting individual probes for single neurons (Hennigen et al., 2020). A number of works identify neurons with respect to the output class (Wang et al., 2022b; Dai",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/eef6cb60fd59b32d35718e176b4b08d6-Paper-Conference.pdf",
+              "document_sha256": "250f8480551adf9e8bc580584afb39967da0bbdb1f44cbecb77e2aef3f816367"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Neuron interpretation offers valuable insights into how knowledge is structured within a deep neural network model. While a number of neuron interpretation methods have been proposed in the literature, the field lacks a comprehensive comparison among these methods. This gap hampers progress due to the absence of standardized metrics and benchmarks. The commonly used evaluation metric has limitations, and creating ground truth annotations for neurons is impractical. Addressing these challenges, we propose an evaluation framework1 based on voting theory. Our hypothesis posits that neurons consistently identified by different methods carry more significant information. We rigorously assess our framework across a diverse array of neuron interpretation methods. Notable findings include: i) despite the theoretical differences among the methods, neuron ranking methods share over 60% of their rankings when identifying salient neurons, ii) the neuron interpretation methods are most sensitive to the last layer representations, iii) Probeless neuron ranking emerges as the most consistent method.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/eef6cb60fd59b32d35718e176b4b08d6-Paper-Conference.pdf",
+              "document_sha256": "250f8480551adf9e8bc580584afb39967da0bbdb1f44cbecb77e2aef3f816367"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00a7da2e6ec9a42f864e2dd2",
+          "url": "https://aclanthology.org/2022.acl-long.581/"
+        },
+        "b": {
+          "paper_id": "paper-d8b73bf0d08e1dbbfa56826e",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/eef6cb60fd59b32d35718e176b4b08d6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "c8625af106862fb8cfeeffc8f841df6175ee84e7128373a5c992046066d09ca8"
+    },
+    {
+      "id": "edge-82848b5eb7f9f65b426cb71d",
+      "a": "paper-015e29ab452386df9749f61c",
+      "b": "paper-d4f97d17943c2d355d745d01",
+      "state": {
+        "paper_a": {
+          "title": "If Influence Functions are the Answer, Then What is the Question?",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Influence functions efficiently estimate the effect of removing a single training data point on a model's learned parameters. While influence estimates align well with leave-one-out retraining for linear models, recent works have shown this alignment is often poor in neural networks. In this work, we investigate the specific factors that cause this discrepancy by decomposing it into five separate terms. We study the contributions of each term on a variety of architectures and datasets and how they vary with factors such as network width and training time. While practical influence function estimates may be a poor match to leave-one-out retraining for nonlinear networks, we show that they are often a good approximation to a different object we term the proximal Bregman response function (PBRF). Since the PBRF can still be used to answer many of the questions motivating influence functions, such as identifying influential or mislabeled examples, our results suggest that current algorithms for influence function estimation give more informative results than previous error analyses would suggest."
+        },
+        "paper_b": {
+          "title": "Enhancing Training Data Attribution with Representational Optimization",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Training data attribution (TDA) methods aim to measure how training data impacts a model's predictions. While gradient-based attribution methods, such as influence functions, offer theoretical grounding, their computational costs make them impractical for large-scale applications. Representation-based approaches are far more scalable, but typically rely on heuristic embeddings that are not optimized for attribution, limiting their fidelity. To address these challenges, we propose AirRep, a scalable, representation-based approach that closes this gap by learning task-specific and model-aligned representations optimized explicitly for TDA. AirRep introduces two key innovations: a trainable encoder tuned for attribution quality, and an attention-based pooling mechanism that enables accurate estimation of group-wise influence. We train AirRep using a ranking objective over automatically constructed training subsets labeled by their empirical effect on target predictions. Experiments on instruction-tuned LLMs demonstrate that AirRep achieves performance on par with state-of-the-art gradient-based approaches while being nearly two orders of magnitude more efficient at inference time. Further analysis highlights its robustness and generalization across tasks and models. Our code is available at https://github.com/sunnweiwei/AirRep."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "However, studies have found that the derivation of gradient-based methods may rely on incorrect assumptions in large neural networks [48, 4].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-015e29ab452386df9749f61c",
+          "b": "paper-d4f97d17943c2d355d745d01",
+          "input_sha256": "bff8db741110b4ee2f18e335ff2866d4bca934815b373b702ab49d3c516c92bf",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/7234e0c36fdbcb23e7bd56b68838999b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/7234e0c36fdbcb23e7bd56b68838999b-Paper-Conference.pdf",
+              "sha256": "943184bedd774849911e39c0b02fc35ac88241abcb3a2a82db40371400c72e14"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/940a76f6cc2e23867421e1cf1c8da4f3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/940a76f6cc2e23867421e1cf1c8da4f3-Paper-Conference.pdf",
+              "sha256": "0e0e1630cd88a2d3777ba0603320eebc5948ee380b8749c4403fa518f76f3071"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "We first applied our decomposition to various models trained on a broad range of tasks covering binary classification, regression, image reconstruction, image classification, and language modeling. The summary of our results is provided in Figure 4 and Table 5 (Appendix E). Across all tasks, we found that the first three sources dominate the misalignment, indicating influence function estimators are answering a different question from what is normally assumed. Small linearization and solver errors indicate that influence functions accurately answer the modified question (PBRF). Logistic Regression. We analyzed the logistic regression (LR) model trained on the Cancer and Diabetes classification datasets from the UCI collection [Dua and Graff, 2017]. We trained the model using L-BFGS [Liu and Nocedal, 1989] with L2 regularization of 0.01 and damping term of λ = 0.001. As the training objective is strongly convex and the base model parameters were trained till convergence, in Table 5, we observed that each source of misalignment is significantly low. Hence, in the case of logistic regression with L2 regularization, influence functions accurately capture the effect of retraining the model without a data point. Multilayer Perceptron. Next, we applied our analysis to the 2-hidden layer Multilayer Perceptron (MLP) with ReLU activations. We conducted the experiments in two settings: (1) regression on the Concrete and Energy datasets from the UCI collection and (2) image classification on 10% of the MNIST [Deng, 2012] and FashionMNIST [Xiao et al., 2017] datasets, following the set-up from Koh and Liang [2017] and Basu et al. [2020a]. We trained the networks for 1000 epochs using stochastic gradient descent (SGD) with a batch size of 128 and set a damping strength of λ = 0.001.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7234e0c36fdbcb23e7bd56b68838999b-Paper-Conference.pdf",
+              "document_sha256": "943184bedd774849911e39c0b02fc35ac88241abcb3a2a82db40371400c72e14"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "Most existing work in TDA focuses on gradient-based methods, such as Influence Functions [3] and their subsequent optimizations, including group influence estimation [41, 13], Hessian approximation [42, 21, 43], gradient normalization [24, 25], gradient projection [22, 16], model ensembling [12, 33, 44], and distillation of the proxy influence models [45–47]. However, studies have found that the derivation of gradient-based methods may rely on incorrect assumptions in large neural networks [48, 4]. Additionally, gradient-based methods suffer from the computational expense of gradient calculations and Hessian inverses [21, 33]. Alternatively, representation-based approaches for TDA measure data influence in the representation space [7, 49, 6, 9], offering computational and storage efficiency. However, current methods rely on heuristically designed representations without task-aware and model-specific optimization, often leading to suboptimal results [12]. Some research on TDA explores simulation-based methods such as datamodels [50–52, 1], which are usually not tractable for LLM applications due to their computational expense. TDA methods have been applied to various purposes in machine learning, such as identifying mislabeled training data points [3, 53], detecting data poisoning attacks [54, 55], and guiding data augmentation [56, 57]. TDA methods have also been used for understanding LLM generalization [21] and learning processes [30, 58]. Another notable line of related work is data selection for LLMs, which focuses on curating data to optimize test performance [59]. TDA-like functions for measuring relationships between data have been widely adopted in data selection pipelines to enhance the quality and diversity of the selected data. Both gradient-based [60, 25,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/940a76f6cc2e23867421e1cf1c8da4f3-Paper-Conference.pdf",
+              "document_sha256": "0e0e1630cd88a2d3777ba0603320eebc5948ee380b8749c4403fa518f76f3071"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "scalable, making them well-suited for large-scale applications, such as curating pre-training data for LLMs [8, 11]. However, the quality of a representation-based method depends heavily on the selected feature space. This problem is compounded by the fact that existing work utilizes heuristically designed representations that are not tailored to the particular target task or model [12]. Finally, a persistent challenge in both method families is is how these methods are extended to estimate the collective influence of a group of training examples. Most past work extends singleexample attribution methods to the group setting by simply summing over individual attribution scores within the group. However, this additive assumption fails to capture groupwise interactions and may lead to inaccurate influence estimation [13]. The advantages and shortcomings of existing methods raise a natural question: Can we develop a method that provides the best of both worlds? We answer this question by introducing the Attentive Influence Ranking Representation (AirRep), a new representation-based approach that incorporates two novel mechanisms to improve performance over prior representation-based methods. First it uses a trainable encoder that produces task- and model-specific text representations, ensuring that the feature space is optimized for data attribution estimation. Second, it introduces an attention-based pooling mechanism that effectively aggregates multiple examples into a single representation for more accurate group influence estimation. AirRep is optimized to produce scores that accurately reflect the influence of particular groups of training examples on a model’s predictions. To achieve this, we device a automatic pipeline to construct pairwise comparison dataset where",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/940a76f6cc2e23867421e1cf1c8da4f3-Paper-Conference.pdf",
+              "document_sha256": "0e0e1630cd88a2d3777ba0603320eebc5948ee380b8749c4403fa518f76f3071"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Training data attribution (TDA) methods aim to measure how training data impacts a model’s predictions. While gradient-based attribution methods, such as influence functions, offer theoretical grounding, their computational costs make them impractical for large-scale applications. Representation-based approaches are far more scalable, but typically rely on heuristic embeddings that are not optimized for attribution, limiting their fidelity. To address these challenges, we propose AirRep, a scalable, representation-based approach that closes this gap by learning task-specific and model-aligned representations optimized explicitly for TDA. AirRep introduces two key innovations: a trainable encoder tuned for attribution quality, and an attention-based pooling mechanism that enables accurate estimation of group-wise influence. We train AirRep using a ranking objective over automatically constructed training subsets labeled by their empirical effect on target predictions. Experiments on instruction-tuned LLMs demonstrate that AirRep achieves performance on par with state-of-the-art gradient-based approaches while being nearly two orders of magnitude more efficient at inference time. Further analysis highlights its robustness and generalization across tasks and models. Our code is available at https://github.com/sunnweiwei/AirRep.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/940a76f6cc2e23867421e1cf1c8da4f3-Paper-Conference.pdf",
+              "document_sha256": "0e0e1630cd88a2d3777ba0603320eebc5948ee380b8749c4403fa518f76f3071"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-015e29ab452386df9749f61c",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/7234e0c36fdbcb23e7bd56b68838999b-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-d4f97d17943c2d355d745d01",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/940a76f6cc2e23867421e1cf1c8da4f3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "1e3cf2ec8a8cc9395e145aab316073e328a52052fca23d4ee94f0cc7db2d360a"
+    },
+    {
+      "id": "edge-318b7192a697524ec5298083",
+      "a": "paper-017dd5c7b52a28ba75e645d4",
+      "b": "paper-875cebd58bad651d7bce1b67",
+      "state": {
+        "paper_a": {
+          "title": "Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Current saliency map interpretations for neural networks generally rely on two key assumptions. First, they use first-order approximations of the loss function, neglecting higher-order terms such as the loss curvature. Second, they evaluate each feature’s importance in isolation, ignoring feature interdependencies. This work studies the effect of relaxing these two assumptions. First, we characterize a closed-form formula for the input Hessian matrix of a deep ReLU network. Using this formula, we show that, for classification problems with many classes, if a prediction has high probability then including the Hessian term has a small impact on the interpretation. We prove this result by demonstrating that these conditions cause the Hessian matrix to be approximately rank one and its leading eigenvector to be almost parallel to the gradient of the loss. We empirically validate this theory by interpreting ImageNet classifiers. Second, we incorporate feature interdependencies by calculating the importance of group-features using a sparsity regularization term. We use an L0 - L1 relaxation technique along with proximal gradient descent to efficiently compute group-feature importance values. Our empirical results show that our method significantly improves deep learning interpretations."
+        },
+        "paper_b": {
+          "title": "Smoothed Geometry for Robust Attribution",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Feature attributions are a popular tool for explaining the behavior of Deep Neural Networks (DNNs), but have recently been shown to be vulnerable to attacks that produce divergent explanations for nearby inputs. This lack of robustness is especially problematic in high-stakes applications where adversarially-manipulated explanations could impair safety and trustworthiness. Building on a geometric understanding of these attacks presented in recent work, we identify Lipschitz continuity conditions on models' gradient that lead to robust gradient-based attributions, and observe that smoothness may also be related to the ability of an attack to transfer across multiple attribution methods. To mitigate these attacks in practice, we propose an inexpensive regularization method that promotes these conditions in DNNs, as well as a stochastic smoothing technique that does not require re-training. Our experiments on a range of image models demonstrate that both of these mitigations consistently improve attribution robustness, and confirm the role that smooth geometry plays in these attacks on real, large-scale models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017dd5c7b52a28ba75e645d4",
+          "b": "paper-875cebd58bad651d7bce1b67",
+          "input_sha256": "e8147951c64b48a44c592010e394be4fb8d4ad766c56ae75d07f82b4e7ea2a79",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/singla19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9d94c8981a48d12adfeecfe1ae6e0ec1-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9d94c8981a48d12adfeecfe1ae6e0ec1-Paper.pdf",
+              "sha256": "00e7501e6064d763290f0554bfa1750be8fc53310f1c4a5c0dcd188df567bebc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Current saliency map interpretations for neural networks generally rely on two key assumptions. First, they use first-order approximations of the loss function, neglecting higher-order terms such as the loss curvature. Second, they evaluate each feature’s importance in isolation, ignoring feature interdependencies. This work studies the effect of relaxing these two assumptions. First, we characterize a closed-form formula for the input Hessian matrix of a deep ReLU network. Using this, we show that, for classification problems with many classes, if a prediction has high probability then including the Hessian term has a small impact on the interpretation. We prove this result by demonstrating that these conditions cause the Hessian matrix to be approximately rank one and its leading eigenvector to be almost parallel to the gradient of the loss. We empirically validate this theory by interpreting ImageNet classifiers. Second, we incorporate feature interdependencies by calculating the importance of group-features using a sparsity regularization term. We use an L0 − L1 relaxation technique along with proximal gradient descent to efficiently compute group-feature importance values. Our empirical results show that our method significantly improves deep learning interpretations.",
+              "url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "document_sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "where ∆ ∶= x̃ − x and Hx is the Hessian of the loss function on the input features x (note y is fixed). This second-order expansion of the loss function decreases the interpretation’s model approximation error. By choosing proper values for regularization parameters, the resulting optimization using the second-order surrogate loss is strictly a convex minimization (or equivalently concave maximization) problem, allowing for efficient optimization using gradient descent (Theorem 3). Moreover, even though the Hessian matrix Hx can be expensive to compute for large neural networks, gradient updates of our method only require the Hessian-vector product (i.e., Hx ∆) which can be computed efficiently (Pearlmutter, 1994). This yields the following Context-Aware Second-Order (CASO) interpretation function.",
+              "url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "document_sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Map, the continuity of input gradient. Theorem 3 builds the connection between the continuity of gradients for a general function with the input Hessian. Theorem 3. Given a twice-differentiable function f : Rd1 ! Rd2 , with the first-order Taylor approximation, maxx0 2B(x, 2 ) ||Ox f (x) Ox0 f (x0 )||2  2 maxi |⇠i | where ⇠i is the i-th eigenvalue of the input Hessian Hx . Smooth Surface Regularization. Direct computation of the input Hessian can be expensive and in the case of ReLU networks, not possible to optimize as the second-order derivative is zero. Singla et al [40] introduce a closed-form solution of the input Hessian for ReLU networks and find its eigenvalues without doing exact engein-decomposition on the Hessian matrix. Motivated by Theorem 3 we propose Smooth Surface Regularization (SSR) to minimize the difference between Saliency Maps for nearby points. Proposition 3 (Singla et al’ s Closed-form Formula for Input Hessian [40]). Given a ReLU network f (x), the input Hessian of the loss can be approximated by H̃x = W (diag(p) p> p)W > , where W is the Jacobian matrix of the logits vector w.r.t to the input and p is the probits of the model. diag(p) is an identity matrix with its diagonal replaced with p. H̃x is positive semi-definite. Definition 7 (Smooth Surface Regularization (SSR)). Given data pairs (x, y) drawn from a distribution D, the training objective of SSR is given by min E(x,y)⇠D [L((x, y); ✓) + s max ⇠i ] i",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9d94c8981a48d12adfeecfe1ae6e0ec1-Paper.pdf",
+              "document_sha256": "00e7501e6064d763290f0554bfa1750be8fc53310f1c4a5c0dcd188df567bebc"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "Alternatively, one can replace ReLU with other second-order differentiable modules, e.g. Softplus, to run the min-max optimization, the intensive computation is probably still not generally affordable across the entire ML community. We include full discussion in the Supplementary Material B. From Robust Prediction To Robust Attribution. In ReLU networks, provable robust predictions may lead to robust attributions, e.g. MMR [10]. One benefit of ReLU networks is that the model behaves linearly within each activation polytobe [18]; therefore, Saliency Map within each polytobe becomes consistent. MMR increases the size of local linear regions by pushing the boundaries of activate polytobes away from each training point such that the model is locally linear in a bigger epsilon ball compared to the natural training. However, provable defenses against prediction attacks currently suffer from the lack of scalability to large models. Surface Smoothing. Smoothing the geometry with Hessians has been widely adopted for different purpose. We use Singla et al’ s Closed-form Formula given that it is the first approach that returns Hessian approximation for ReLU networks [40]. There are other approaches that approximate the Hessian’s spectrum norm, e.g. by using Frobenius norm and the finite difference of Hessian-vector product [28] and by regularizing the spectrum norms of weights [51]. Other Post-hoc Approach. An ad-hoc regularization can be an extra budget for people with pretrained models. Except Smooth Gradient and Uniform Gradient discussed in the paper, Levine et al. [24] propose Sparsified SmoothGrad as a certified robust version of Smooth Gradient.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9d94c8981a48d12adfeecfe1ae6e0ec1-Paper.pdf",
+              "document_sha256": "00e7501e6064d763290f0554bfa1750be8fc53310f1c4a5c0dcd188df567bebc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Contributions. In this paper, we characterize the vulnerability of attribution methods in terms of the geometry of the targeted model’s decision surface. Restricting our attention to attribution methods that primarily use information from the model’s gradients [38, 41, 45], we formalize attribution robustness as a local Lipschitz condition on the mapping, and show that certain smoothness criteria of the model ensure robust attributions (Sec. 3, Theorems 1 and 2). Importantly, our analysis suggests that attacks are less likely to transfer across attribution methods when the model’s decision surface is smooth (Sec. 3.2), and our experimental results confirm this on real data (Sec. 5.3). While this phenomenon is widely-known for adversarial examples [46], to our knowledge this is the first systematic demonstration of it for attribution attacks. As typical DNNs are unlikely to satisfy the criteria we present, we propose Smooth Surface Regularization (SSR) to impart models with robust gradient-based attributions (Sec. 4, Def. 7). Unlike prior regularization techniques that aim to mitigate attribution attacks [8], our approach does not require solving an expensive second-order inner objective during training, and our experiments show that it effectively promotes robust attribution without a significant reduction in model accuracy (Sec. 5.2). Finally, we propose a stochastic post-processing method as an alternative to SSR (Sec. 4), and validate its effectiveness experimentally on models of varying size and complexity, including pre-trained ImageNet models (Sec. 5.1). Taken together, our results demonstrate the central role that model geometry plays in attribution attacks, and that a variety of techniques that promote smooth geometry can effectively mitigate the problem on",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9d94c8981a48d12adfeecfe1ae6e0ec1-Paper.pdf",
+              "document_sha256": "00e7501e6064d763290f0554bfa1750be8fc53310f1c4a5c0dcd188df567bebc"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "In this section, we propose a remedy to improve the robustness of gradient-based attributions by using Smooth Surface Regularization during the training. Alternatively, without retraining the model, we discuss Uniform Gradient, another stochastic smoothing for the local geometry, towards robust interpretation. Gradient-based attributions relates deeply to Saliency Map by definitions. Instead of directly improving the robustness of Smooth Gradient or Integrated Gradient, which are computationally intensive, we should simply consider how to improve the robustness of Saliency 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9d94c8981a48d12adfeecfe1ae6e0ec1-Paper.pdf",
+              "document_sha256": "00e7501e6064d763290f0554bfa1750be8fc53310f1c4a5c0dcd188df567bebc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017dd5c7b52a28ba75e645d4",
+          "url": "https://proceedings.mlr.press/v97/singla19a.html"
+        },
+        "b": {
+          "paper_id": "paper-875cebd58bad651d7bce1b67",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9d94c8981a48d12adfeecfe1ae6e0ec1-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "833d201cf913ceea7014416625210e1bebe2ca4cb1d44f2cf3587fd29ebe9bf3"
+    },
+    {
+      "id": "edge-735125935014a4ff604edc6a",
+      "a": "paper-0205ae713dc67a94a401bb1e",
+      "b": "paper-214216c64ea79d05e002d823",
+      "state": {
+        "paper_a": {
+          "title": "Red Teaming Deep Neural Networks with Feature Synthesis Tools",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user's interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation."
+        },
+        "paper_b": {
+          "title": "SPADE: Sparsity-Guided Debugging for Deep Neural Networks",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "It is known that sparsity can improve interpretability for deep neural networks. However, existing methods in the area either require networks that are pre-trained with sparsity constraints, or impose sparsity after the fact, altering the network’s general behavior. In this paper, we demonstrate, for the first time, that sparsity can instead be incorporated into the interpretation process itself, as a sample-specific preprocessing step. Unlike previous work, this approach, which we call SPADE, does not place constraints on the trained model and does not affect its behavior during inference on the sample. Given a trained model and a target sample, SPADE uses sample-targeted pruning to provide a \"trace\" of the network’s execution on the sample, reducing the network to the most important connections prior to computing an interpretation. We demonstrate that preprocessing with SPADE significantly increases the accuracy of image saliency maps across several interpretability methods. Additionally, SPADE improves the usefulness of neuron visualizations, aiding humans in reasoning about network behavior. Our code is available at https://github.com/IST-DASLab/SPADE."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…area is seeing a lot of interest, there is also work questioning the validity of localized explanations with respect to the model’s true decision process, pointing out confounders across current explainability methods and metrics (Shetty et al., 2019; Rebuffi et al., 2020; Casper et al., 2023).\nTo overcome this issue, a recent paper (Casper et al., 2023) proposed using Trojan patches, in the form of Emoji.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0205ae713dc67a94a401bb1e",
+          "b": "paper-214216c64ea79d05e002d823",
+          "input_sha256": "b3cdc52f0515cce2a5d8116da23d14927b8902bd3075e1e5d6e1cc6c9e7da5b2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/soltani-moakhar24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/soltani-moakhar24a/soltani-moakhar24a.pdf",
+              "sha256": "120cadeee9ec147ae299c5ce790ed5486844f5b3758e5f1ae4f373b9282a6646"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Feature attribution/saliency tools are widely studied in the interpretability literature [34, 49]. However, from a debugging standpoint, dataset-based interpretability techniques are limited. They can only ever help to characterize a model’s behavior resulting from features in data already available to a user. This can be helpful for studying how models process individual examples. However, for the purposes of red teaming a model, direct analysis of how a network handles validation data can help to serve the same purpose [37]. [48] provides an example of a task where feature attribution methods perform worse than analysis of data exemplars. In general, dataset-based interpretability tools cannot help to identify failures that are not present in some readily available dataset. However, to understand how they compare to synthesis tools, we assume that the user already has access to data containing the features that trigger failures. We used implementations of 16 different feature visualization techniques off the shelf from the Captum library [36] and tested them on a trojaned ResNet-50 [22] and VGG-19 [63]. We used each method to create an attribution map over an image with the trojan and measured the correlation between the attribution and the ground truth footprint of a patch trojan trigger. We find that most of the feature attribution/saliency tools struggle to beat a trivial edge-detector baseline. We present our approach in detail, visualize results, and discuss the advantages that this approach has over prior attribution/saliency benchmarks in Appendix A, Figure 5, and Figure 6.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user’s interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation. Code is available at this https url, and a website for this paper is available at this https url.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "To overcome this issue, a recent paper (Casper et al., 2023) proposed using Trojan patches, in the form of Emoji. These are applied to selected classes in the dataset, along with a corresponding change to those instances’ labels. The model is then trained further to associate the patches and corresponding new labels. This approach creates a ground truth for input data with the Trojan patch, as evidence for the Trojan class should be minimal, outside of the inserted patch. To our knowledge, this is the only approach that enables the comparison of saliency maps with actual ground truth, and so we primarily rely on this method to test the accuracy of SPADE.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/soltani-moakhar24a/soltani-moakhar24a.pdf",
+              "document_sha256": "120cadeee9ec147ae299c5ce790ed5486844f5b3758e5f1ae4f373b9282a6646"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "We propose an alternative approach called Sparsity-Guided Debugging (SPADE), which removes the above limitations, based on two main ideas: first, instead of retraining the model to become interpretable, we disentangle the feature representations for the original model; second, this disentanglement is done for the individual sample for which we wish to obtain an interpretation. This procedure can be performed efficiently, without the computational costs of retraining. We illustrate the process in Figure 1. Given a DNN M and a sample s whose output M (s) we wish to interpret, SPADE functions as a pre-processing step, in which we execute the sample s, together with a set of its augmentations, through the network layer-by-layer, sparsifying each layer while ensuring that the output of the sparse layer still matches well with the original layer output on the sample. Thus, we obtain a sparse trace Sparse(M, s), which matches the original on the sample s, but for which extraneous connections relative to this sample’s output have been removed via sample-dependent pruning. Once the custom trace Sparse(M, s) is obtained, we can execute any interpretability method on this pruned network to extract a sample-specific feature visualization or saliency map.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/soltani-moakhar24a/soltani-moakhar24a.pdf",
+              "document_sha256": "120cadeee9ec147ae299c5ce790ed5486844f5b3758e5f1ae4f373b9282a6646"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "showing Trojan patches. We have also demonstrated that SPADE enables the application of global interpretability methods, such as feature visualization, in a local context. Global interpretability methods provide an overall view of the model’s decisionmaking process, while local interpretability methods focus on explaining model behaviour on a single data point. By bridging the gap between global and local interpretability methods, SPADE, enriches the interpretability toolkit. Limitations and future work. Although, for all methods, SPADE improves interpretations on average, it is possible that SPADE favors some categories of specific examples over others, in other words, there may be some systemic bias. This is also true for all interpretation methods, and we hope that more work will be done in the future to measure this effect. Further, additional evidence is needed toward our conjecture that the effectiveness of SPADE is due to resolving neuron polysemanticity, especially as investigating this phenomenon may be fruitful in gaining a better mechanistic understanding of the neural network by examining the masks produced by SPADE. Thus, we leave it as future work to explicitly incorporate SPADE into model-wide debugging efforts such as systematic searches for spurious correlations, or circuit identification in networks. Finally, the tuning of SPADE can be costly. We propose some mitigations for this; however, we acknowledge that it may impede practical adoption of SPADE in some cases. Additionally, the computational overhead of SPADE, may require more careful example selection.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/soltani-moakhar24a/soltani-moakhar24a.pdf",
+              "document_sha256": "120cadeee9ec147ae299c5ce790ed5486844f5b3758e5f1ae4f373b9282a6646"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0205ae713dc67a94a401bb1e",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-214216c64ea79d05e002d823",
+          "url": "https://proceedings.mlr.press/v235/soltani-moakhar24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "5ef2a9f165a8b899dc68f86f06e643664094ab36ec2afec4b0c7ae6ae2de27d6"
+    },
+    {
+      "id": "edge-850ce9d2beafb09f24d700fd",
+      "a": "paper-0205ae713dc67a94a401bb1e",
+      "b": "paper-994062be8a7182a54e4bd589",
+      "state": {
+        "paper_a": {
+          "title": "Red Teaming Deep Neural Networks with Feature Synthesis Tools",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user's interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation."
+        },
+        "paper_b": {
+          "title": "Manipulating Feature Visualizations with Gradient Slingshots",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Feature Visualization (FV) is a widely used technique for interpreting concepts learned by Deep Neural Networks (DNNs), which synthesizes input patterns that maximally activate a given feature. Despite its popularity, the trustworthiness of FV explanations has received limited attention. We introduce Gradient Slingshots, a novel method that enables FV manipulation without modifying model architecture or significantly degrading performance. By shaping new trajectories in off-distribution regions of a feature's activation landscape, we coerce the optimization process to converge to a predefined visualization. We evaluate our approach on several DNN architectures, demonstrating its ability to replace faithful FVs with arbitrary targets. These results expose a critical vulnerability: auditors relying solely on FV may accept entirely fabricated explanations. To mitigate this risk, we propose a straightforward defense and quantitatively demonstrate its effectiveness."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…2017; Couteaux et al., 2019; Yoshimura et al., 2021), including the identification of neurons that contribute to undesirable model behavior (Bykov et al., 2023a; Goh et al., 2021), backdoor attacks detection (Casper et al., 2023), and explanation of probabilistic models (Grinwald et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0205ae713dc67a94a401bb1e",
+          "b": "paper-994062be8a7182a54e4bd589",
+          "input_sha256": "bae759df621498e562aa72391cac6ee401a311ca8abb4e8b8c4fb4b69a8d8bf2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/f3a5652cd6b0b36be1c554cd6fc2896d-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/f3a5652cd6b0b36be1c554cd6fc2896d-Paper-Conference.pdf",
+              "sha256": "0c5ecd1b6330a4f9cb45fa38baaf8bed100771f207f9b339a31db11e6dade37a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Feature attribution/saliency tools are widely studied in the interpretability literature [34, 49]. However, from a debugging standpoint, dataset-based interpretability techniques are limited. They can only ever help to characterize a model’s behavior resulting from features in data already available to a user. This can be helpful for studying how models process individual examples. However, for the purposes of red teaming a model, direct analysis of how a network handles validation data can help to serve the same purpose [37]. [48] provides an example of a task where feature attribution methods perform worse than analysis of data exemplars. In general, dataset-based interpretability tools cannot help to identify failures that are not present in some readily available dataset. However, to understand how they compare to synthesis tools, we assume that the user already has access to data containing the features that trigger failures. We used implementations of 16 different feature visualization techniques off the shelf from the Captum library [36] and tested them on a trojaned ResNet-50 [22] and VGG-19 [63]. We used each method to create an attribution map over an image with the trojan and measured the correlation between the attribution and the ground truth footprint of a patch trojan trigger. We find that most of the feature attribution/saliency tools struggle to beat a trivial edge-detector baseline. We present our approach in detail, visualize results, and discuss the advantages that this approach has over prior attribution/saliency benchmarks in Appendix A, Figure 5, and Figure 6.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user’s interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation. Code is available at this https url, and a website for this paper is available at this https url.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Applications AM methods are commonly used as an aid in generating human-readable textual descriptions of features [33, 42–46]. AM has been effectively applied to identify neurons linked to undesirable behavior [10], detect backdoor attacks [47], highlight salient patterns in time series [48], and interpret CNN filters in material science tasks [49]. Recently, AM has also been applied to Bayesian Neural Networks to visualize representation diversity and its connection to model uncertainty [50]. 2.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3a5652cd6b0b36be1c554cd6fc2896d-Paper-Conference.pdf",
+              "document_sha256": "0c5ecd1b6330a4f9cb45fa38baaf8bed100771f207f9b339a31db11e6dade37a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Feature Visualization (FV) is a widely used technique for interpreting concepts learned by Deep Neural Networks (DNNs), which synthesizes input patterns that maximally activate a given feature. Despite its popularity, the trustworthiness of FV explanations has received limited attention. We introduce Gradient Slingshots, a novel method that enables FV manipulation without modifying model architecture or significantly degrading performance. By shaping new trajectories in off-distribution regions of a feature’s activation landscape, we coerce the optimization process to converge to a predefined visualization. We evaluate our approach on several DNN architectures, demonstrating its ability to replace faithful FVs with arbitrary targets. These results expose a critical vulnerability: auditors relying solely on FV may accept entirely fabricated explanations. To mitigate this risk, we propose a straightforward defense and quantitatively demonstrate its effectiveness.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3a5652cd6b0b36be1c554cd6fc2896d-Paper-Conference.pdf",
+              "document_sha256": "0c5ecd1b6330a4f9cb45fa38baaf8bed100771f207f9b339a31db11e6dade37a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "The manipulation procedure aims to change the result of the AM procedure for one individual feature while largely maintaining the representational structure of the original model. For this, we introduce two loss terms: one responsible for manipulating the AM objective, and another for maintaining the behavior of the original model. Let U be a collection of N points uniformly sampled from the tunnel TB,L (Eq. (6)). Let f θ and g θ denote the optimized version of the target feature f and the feature extractor g, respectively, with a superscript θ signifying the set of optimized parameters of the model. The manipulation loss term measures the difference between existing and required gradients in the manipulated neuron on U: 1 X 2 ∇f θ (η(q)) − γ(q t − q) 2 . LM (θ) = (9) N q∈U",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3a5652cd6b0b36be1c554cd6fc2896d-Paper-Conference.pdf",
+              "document_sha256": "0c5ecd1b6330a4f9cb45fa38baaf8bed100771f207f9b339a31db11e6dade37a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0205ae713dc67a94a401bb1e",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-994062be8a7182a54e4bd589",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/f3a5652cd6b0b36be1c554cd6fc2896d-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "a7f48fb0c07462766c77ef106fc0e7d3e46c20f6372c29a2836aceffd751e684"
+    },
+    {
+      "id": "edge-bd1a480cac151fd4a1ca9c0e",
+      "a": "paper-0205ae713dc67a94a401bb1e",
+      "b": "paper-dffd2bb6574ce36bb9b39dfa",
+      "state": {
+        "paper_a": {
+          "title": "Red Teaming Deep Neural Networks with Feature Synthesis Tools",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user's interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation."
+        },
+        "paper_b": {
+          "title": "CoSy: Evaluating Textual Explanations of Neurons",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "A crucial aspect of understanding the complex nature of Deep Neural Networks (DNNs) is the ability to explain learned concepts within their latent representations. While methods exist to connect neurons to human-understandable textual descriptions, evaluating the quality of these explanations is challenging due to the lack of a unified quantitative approach. We introduce CoSy (Concept Synthesis), a novel, architecture-agnostic framework for evaluating textual explanations of latent neurons. Given textual explanations, our proposed framework uses a generative model conditioned on textual input to create data points representing the explanations. By comparing the neuron's response to these generated data points and control data points, we can estimate the quality of the explanation. We validate our framework through sanity checks and benchmark various neuron description methods for Computer Vision tasks, revealing significant differences in quality."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Activation Maximization has been employed for explaining latent representations of models [22, 23], including probabilistic models [24], detection of backdoor attacks [25] and spurious correlations [26].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0205ae713dc67a94a401bb1e",
+          "b": "paper-dffd2bb6574ce36bb9b39dfa",
+          "input_sha256": "d61d5771f414b9528f899fe63069881bc8301fc85511a32b667f1d1bc54de640",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/3d4c0a618d0acd7921493e4f30395c22-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/3d4c0a618d0acd7921493e4f30395c22-Paper-Conference.pdf",
+              "sha256": "b52485d76c202552f66e4e8143fd489ee580f02b4e4925d080f64ffc1c3ac01d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Feature attribution/saliency tools are widely studied in the interpretability literature [34, 49]. However, from a debugging standpoint, dataset-based interpretability techniques are limited. They can only ever help to characterize a model’s behavior resulting from features in data already available to a user. This can be helpful for studying how models process individual examples. However, for the purposes of red teaming a model, direct analysis of how a network handles validation data can help to serve the same purpose [37]. [48] provides an example of a task where feature attribution methods perform worse than analysis of data exemplars. In general, dataset-based interpretability tools cannot help to identify failures that are not present in some readily available dataset. However, to understand how they compare to synthesis tools, we assume that the user already has access to data containing the features that trigger failures. We used implementations of 16 different feature visualization techniques off the shelf from the Captum library [36] and tested them on a trojaned ResNet-50 [22] and VGG-19 [63]. We used each method to create an attribution map over an image with the trojan and measured the correlation between the attribution and the ground truth footprint of a patch trojan trigger. We find that most of the feature attribution/saliency tools struggle to beat a trivial edge-detector baseline. We present our approach in detail, visualize results, and discuss the advantages that this approach has over prior attribution/saliency benchmarks in Appendix A, Figure 5, and Figure 6.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Interpretable AI tools are often motivated by the goal of understanding model behavior in out-of-distribution (OOD) contexts. Despite the attention this area of study receives, there are comparatively few cases where these tools have identified previously unknown bugs in models. We argue that this is due, in part, to a common feature of many interpretability methods: they analyze model behavior by using a particular dataset. This only allows for the study of the model in the context of features that the user can sample in advance. To address this, a growing body of research involves interpreting models using feature synthesis methods that do not depend on a dataset. In this paper, we benchmark the usefulness of interpretability tools for model debugging. Our key insight is that we can implant human-interpretable trojans into models and then evaluate these tools based on whether they can help humans discover them. This is analogous to finding OOD bugs, except the ground truth is known, allowing us to know when a user’s interpretation is correct. We make four contributions. (1) We propose trojan discovery as an evaluation task for interpretability tools and introduce a benchmark with 12 trojans of 3 different types. (2) We demonstrate the difficulty of this benchmark with a preliminary evaluation of 16 state-of-the-art feature attribution/saliency tools. Even under ideal conditions, given direct access to data with the trojan trigger, these methods still often fail to identify bugs. (3) We evaluate 7 feature-synthesis methods on our benchmark. (4) We introduce and evaluate 2 new variants of the best-performing method from the previous evaluation. Code is available at this https url, and a website for this paper is available at this https url.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/febe5c5c6973f713cc43bf0f7c90edbe-Paper-Conference.pdf",
+              "document_sha256": "7b5d7b08a978d11e86326a69eddad72defcb72ba0554fd4293781c62a1645737"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Activation Maximization Activation Maximization is a commonly used methodology to understand what a neuron has learned to detect [17]. Such methods work by identifying input signals that trigger the highest activation in a neuron. This can be achieved synthetically, where an optimization process is employed to create the optimal input that maximizes the neuron’s activation [18, 19, 20], or naturally, by finding such inputs within a data corpus [21]. Activation Maximization has been employed for explaining latent representations of models [22, 23], including probabilistic models [24], detection of backdoor attacks [25] and spurious correlations [26]. However, one of the key limitations of this methodology lies in its inability to scale, as it relies on users to manually audit maximization signals. Automatic Neuron Interpretation A more scalable alternative approach involves linking neurons with human-understandable concepts through textual descriptions. Network Dissection [11] (NetDissect) is a pioneering method in this field, associating convolutional neurons with a concept based on the Intersection over Union (IoU) of neuron activation maps and ground truth segmentation masks. 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3d4c0a618d0acd7921493e4f30395c22-Paper-Conference.pdf",
+              "document_sha256": "b52485d76c202552f66e4e8143fd489ee580f02b4e4925d080f64ffc1c3ac01d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A crucial aspect of understanding the complex nature of Deep Neural Networks (DNNs) is the ability to explain learned concepts within their latent representations. While methods exist to connect neurons to human-understandable textual descriptions, evaluating the quality of these explanations is challenging due to the lack of a unified quantitative approach. We introduce C O S Y (Concept Synthesis), a novel, architecture-agnostic framework for evaluating textual explanations of latent neurons. Given textual explanations, our proposed framework uses a generative model conditioned on textual input to create data points representing the explanations. By comparing the neuron’s response to these generated data points and control data points, we can estimate the quality of the explanation. We validate our framework through sanity checks and benchmark various neuron description methods for Computer Vision tasks, revealing significant differences in quality. We provide an open-source implementation on GitHub1 .",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3d4c0a618d0acd7921493e4f30395c22-Paper-Conference.pdf",
+              "document_sha256": "b52485d76c202552f66e4e8143fd489ee580f02b4e4925d080f64ffc1c3ac01d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: A schematic illustration of the C O S Y evaluation framework for Neuron 80 in ResNet18’s avgpool layer. The current challenge lies in the absence of general-purpose, quantitative evaluation measures to benchmark textual explanations of neurons. To address this, we propose C O S Y, a framework consisting of three steps: first, a generative model translates textual concepts into the visual domain, creating synthetic images for each explanation using a text-to-image model. Then, inference is performed on these synthetic images alongside a control image dataset to collect neuron activations. Finally, by comparing activations from the synthetic images with those from the control dataset, we quantitatively assess the quality of the textual explanation and compare results across different explanation methods. The implementation details of this example can be found in Appendix A.2. In this work, we aim to bridge this gap by introducing Concept Synthesis (C O S Y), the first automatic evaluation framework for textual explanations of neurons in Computer Vision (CV) models (illustrated in Figure 1). Our approach builds on recent advancements in Generative AI, which enable the generation of synthetic images that align with provided neuron explanations. We use a set of available text-to-image models to synthesize data points that are prototypical for specific target explanations. These data points allow us to evaluate how neurons differentiate between concept-related images and non-concept-related images combined in a control dataset. We summarize our contributions as below: (C1) We provide the first general-purpose, quantitative evaluation framework C O S Y (Section 3) that enables the evaluation of individual or a set of textual explanation methods for CV models. (C2)",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/3d4c0a618d0acd7921493e4f30395c22-Paper-Conference.pdf",
+              "document_sha256": "b52485d76c202552f66e4e8143fd489ee580f02b4e4925d080f64ffc1c3ac01d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0205ae713dc67a94a401bb1e",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/febe5c5c6973f713cc43bf0f7c90edbe-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-dffd2bb6574ce36bb9b39dfa",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/3d4c0a618d0acd7921493e4f30395c22-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Interpretability and Explanation Methods for AI Models"
+      },
+      "sha256": "53c3a3478e0fd4470ee10f190d893016e7e5729dcc674083d68d46e8a50bb77a"
+    }
+  ]
+}

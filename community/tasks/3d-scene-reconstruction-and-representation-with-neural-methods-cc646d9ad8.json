@@ -1,0 +1,958 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "3D Scene Reconstruction and Representation with Neural Methods",
+  "area": "3D Generation & Reconstruction",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-9ccafa721d4c7dd735bab828",
+      "a": "paper-065a78f5b6b86005d5985db0",
+      "b": "paper-9c89776ecf7505108d373186",
+      "state": {
+        "paper_a": {
+          "title": "Differentiable Euler Characteristic Transforms for Shape Classification",
+          "year": 2024,
+          "venue": "ICLR",
+          "abstract": "The Euler Characteristic Transform (ECT) has proven to be a powerful representation, combining geometrical and topological characteristics of shapes and graphs. However, the ECT was hitherto unable to learn task-specific representations. We overcome this issue and develop a novel computational layer that enables learning the ECT in an end-to-end fashion. Our method, the Differentiable Euler Characteristic Transform (DECT), is fast and computationally efficient, while exhibiting performance on a par with more complex models in both graph and point cloud classification tasks. Moreover, we show that this seemingly simple statistic provides the same topological expressivity as more complex topological deep learning layers."
+        },
+        "paper_b": {
+          "title": "Point Cloud Synthesis Using Inner Product Transforms",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Point cloud synthesis, i.e. the generation of novel point clouds from an input distribution, remains a challenging task, for which numerous complex machine learning models have been devised. We develop a novel method that encodes geometrical-topological characteristics of point clouds using inner products, leading to a highly-efficient point cloud representation with provable expressivity properties. Integrated into deep learning models, our encoding exhibits high quality in typical tasks like reconstruction, generation, and interpolation, with inference times orders of magnitude faster than existing methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-065a78f5b6b86005d5985db0",
+          "b": "paper-9c89776ecf7505108d373186",
+          "input_sha256": "3bfae755d0b6f32dba19ce68aa22ec8674cf78b38f861c72047fc4fdfa5da9c8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://openreview.net/forum?id=MO632iPq3I",
+              "pdf_url": "https://arxiv.org/pdf/2310.07630v3",
+              "sha256": "be57b2440ed3e6e5fb05a5b81371d1d1127a98fcde628e7f64e1576f6a241ba0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/1560e3abc9b0c602d65ab3e954370d50-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/1560e3abc9b0c602d65ab3e954370d50-Paper-Conference.pdf",
+              "sha256": "120445c903512fc19dc5298ffff19c8bcb3644a7d702183afa1b8832c0dc63ff"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Geometrical and topological characteristics play an integral role in the classification of complex shapes. Regardless of whether they are represented as point clouds, meshes (simplicial complexes), or graphs, the multi-scale perspective provided by methods from topological data analysis (TDA) can be applied effectively for classification tasks. Of particular relevance in this context are the Persistent Homology Transform (PHT) and the Euler Characteristic Transform (ECT). Originally introduced by Turner et al. (2014), recent work proved under which conditions both transforms are invertible, thus constituting an injective map (Crawford et al., 2020; Ghrist et al., 2018). Both transforms are based on the idea of looking at a shape from multiple directions, and evaluating a multi-scale topological descriptor for each such direction. For the PHT, this descriptor is persistent homology, a method for assigning multi-scale topological features to input data, whereas for the ECT, the descriptor consists of the Euler characteristic, an alternating sum of so-called simplices in a topological space. The collection of all these direction–descriptor pairs is then used to provide a classification or solve an optimisation task. This approach is mathematically sound, but evaluating all possible directions is infeasible in practice, thus posing a severe limitation of the applicability of the method. Our contributions. We overcome the computational limitations and present a differentiable, endto-end-trainable Euler Characteristic Transform. Our method (i) is highly scalable, (ii) affords an integration into deep neural networks (as a layer or loss term), and (iii) exhibits advantageous performance in different shape classification tasks for various modalities, including graphs, point",
+              "url": "https://arxiv.org/pdf/2310.07630v3",
+              "document_sha256": "be57b2440ed3e6e5fb05a5b81371d1d1127a98fcde628e7f64e1576f6a241ba0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "approach towards analysing high-dimensional data. PH has thus been instrumental for shape analysis and classification, both with kernel-based methods (Reininghaus et al., 2015) and with deep neural networks (Hofer et al., 2017). Recent work even showed that despite its seemingly discrete formulation, PH is differentiable under mild conditions (Carrière et al., 2021; Hofer et al., 2019; 2020; Moor et al., 2020), thus permitting integrations into standard machine learning workflows. Of particular relevance for shape analysis is the work by Turner et al. (2014), which showed that a transformation based on PH provides an injective characterisation of shapes. This transformation, like PH itself, suffers from computational limitations that preclude its application to large-scale data sets. As a seemingly less expressive alternative, Turner et al. (2014) thus introduced the Euler Characteristic Transform (ECT), which is highly efficient and has proven its utility in subsequent applications (Amézquita et al., 2021; Crawford et al., 2020; Marsh et al., 2022; Nadimpalli et al., 2023); see Munch (2023) for an overview. It turns out that despite its apparent simplicity, the ECT is also injective, thus theoretically providing an efficient way to characterise shapes (Ghrist et al., 2018). A gainful use in the context of deep learning was not attempted so far, however, with the ECT and its variants (Jiang et al., 2020; Kirveslahti & Mukherjee, 2023) still being used as static feature descriptors that require domain-specific hyperparameter choices. By contrast, our approach makes the ECT end-to-end trainable, resulting in an efficient and effective shape descriptor that can be integrated into deep learning models. Subsequently, we demonstrate such integrations both on the level of",
+              "url": "https://arxiv.org/pdf/2310.07630v3",
+              "document_sha256": "be57b2440ed3e6e5fb05a5b81371d1d1127a98fcde628e7f64e1576f6a241ba0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Following ideas from Röell & Rieck [32], we can replace all indicator functions with sigmoid functions, i.e. d IPT(X) : S n−1 × R → R X (4) (ξ, h) 7→ S(λ(⟨ξ, x⟩ − h)), x∈X",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1560e3abc9b0c602d65ab3e954370d50-Paper-Conference.pdf",
+              "document_sha256": "120445c903512fc19dc5298ffff19c8bcb3644a7d702183afa1b8832c0dc63ff"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Point clouds being a nigh-ubiquitous data modality, numerous models already exist to tackle classification or generation tasks [39]. The lack of structure, as well as the requirement of permutation invariance, imposes constraints on the underlying computational architecture, typically substantially increasing model complexity [29, 41]. To solve generation tasks, many methods opt for jointly learning the generation of the shape, i.e. the surface or object the points are sampled from, as well the mapping of points onto that object. This core idea drives several recent state-of-the-art models, including Point-Voxel CNN [21], PointFlow [40], SoftFlow [17], Point Voxel Diffusion [44, PVD] and LION [42]. While these models exhibit high-quality results, their architectures require long training and inference times. By contrast, our approach only needs to model a distribution of geometrical-topological descriptors, represented as 2D images, from which we subsequently reconstruct a point cloud again. While reconstructing point clouds from images is an active field of research (see Fahim et al. [11] for a survey on single-view reconstruction), such images are typically depth images or snapshots taken from a specific position around the object. As such, they are not necessarily yielding a faithful, unique representation of an object. Another close analogue to our method is given by ‘structure-from-motion’ approaches [27], which reconstruct complex geometries based on sets of images, taken from different spatial viewpoints. For our method, however, the viewpoints are represented as unit vectors on a sphere, which are used to ‘probe’ the point cloud from a specific direction. Hence, a crucial property of our method, the Inner Product Transform (IPT) is that it theoretically yields",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1560e3abc9b0c602d65ab3e954370d50-Paper-Conference.pdf",
+              "document_sha256": "120445c903512fc19dc5298ffff19c8bcb3644a7d702183afa1b8832c0dc63ff"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Our method, the Inner Product Transform (IPT), can be intuitively understood as a filtering process of point clouds, employing different sets of hyperplanes, created by a set of directions (i.e. normal vectors). The inner products of point cloud coordinates with a direction vector are then used to parametrise a curve that counts the number of points below the hyperplane. By stacking curves, we obtain a 2D image representation of the point cloud. The IPT is a special case of the Euler Characteristic Transform [35, ECT], but our subsequent description is self-contained, does not require any knowledge of topology, and presents simplified proofs of all properties. 3.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1560e3abc9b0c602d65ab3e954370d50-Paper-Conference.pdf",
+              "document_sha256": "120445c903512fc19dc5298ffff19c8bcb3644a7d702183afa1b8832c0dc63ff"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-065a78f5b6b86005d5985db0",
+          "url": "https://openreview.net/forum?id=MO632iPq3I"
+        },
+        "b": {
+          "paper_id": "paper-9c89776ecf7505108d373186",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/1560e3abc9b0c602d65ab3e954370d50-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "c71ab08643267a8aea6139683678503939a16415374ae1bcd381b213be19395b"
+    },
+    {
+      "id": "edge-0aeb321062ce19d01719df48",
+      "a": "paper-024ad8c7c2d8a7430e07af18",
+      "b": "paper-1fece95727faad4a82ffa72d",
+      "state": {
+        "paper_a": {
+          "title": "Differentiable Blocks World: Qualitative 3D Decomposition by Rendering Primitives",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Given a set of calibrated images of a scene, we present an approach that produces a simple, compact, and actionable 3D world representation by means of 3D primitives. While many approaches focus on recovering high-fidelity 3D scenes, we focus on parsing a scene into mid-level 3D representations made of a small set of textured primitives. Such representations are interpretable, easy to manipulate and suited for physics-based simulations. Moreover, unlike existing primitive decomposition methods that rely on 3D input data, our approach operates directly on images through differentiable rendering. Specifically, we model primitives as textured superquadric meshes and optimize their parameters from scratch with an image rendering loss. We highlight the importance of modeling transparency for each primitive, which is critical for optimization and also enables handling varying numbers of primitives. We show that the resulting textured primitives faithfully reconstruct the input images and accurately model the visible 3D points, while providing amodal shape completions of unseen object regions. We compare our approach to the state of the art on diverse scenes from DTU, and demonstrate its robustness on real-life captures from BlendedMVS and Nerfstudio. We also showcase how our results can be used to effortlessly edit a scene or perform physical simulations. Code and video results are available at https://www.tmonnier.com/DBW."
+        },
+        "paper_b": {
+          "title": "Disentangled 3D Scene Generation with Layout Learning",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We introduce a method to generate 3D scenes that are disentangled into their component objects. This disentanglement is unsupervised, relying only on the knowledge of a large pretrained text-to-image model. Our key insight is that objects can be discovered by finding parts of a 3D scene that, when rearranged spatially, still produce valid configurations of the same scene. Concretely, our method jointly optimizes multiple NeRFs—each representing its own object—along with a set of layouts that composite these objects into scenes. We then encourage these composited scenes to be in-distribution according to the image generator. We show that despite its simplicity, our approach successfully generates 3D scenes decomposed into individual objects, enabling new capabilities in text-to-3D content creation."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…of work on unsupervised object discovery (Russell et al., 2006; Rubinstein et al., 2013; Oktay et al., 2018; Hénaff et al., 2022; Smith et al., 2022; Ye et al., 2022; Monnier et al., 2023) proposes different inductive biases (Locatello et al., 2019) that encourage awareness of objects in a scene.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-024ad8c7c2d8a7430e07af18",
+          "b": "paper-1fece95727faad4a82ffa72d",
+          "input_sha256": "5d92f0afad8be309a7f29308f852b62ba882ff6bebdee258facdddeea34cdecd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/123fd8a56501194823c8e0dca00733df-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/123fd8a56501194823c8e0dca00733df-Paper-Conference.pdf",
+              "sha256": "fa9fe67b29367120d60e1b1222b84afa24eeb0edf9f5cfb1d16373cd72585b98"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/epstein24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "(c) Application: physics-based simulations Figure 1: Differentiable Blocks World. (a) Prior works fit primitives to point clouds and typically fail for real data where ground-truth point clouds are extremely noisy and incomplete. (b) We propose using calibrated multi-view images instead and simultaneously tackle 3D decomposition and 3D reconstruction by rendering learnable textured primitives in a differentiable manner. (c) Such a textured decomposition is highly compact and user-friendly: it enables us to do physics-based simulations, e.g., throwing a ball at the discovered primitives.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/123fd8a56501194823c8e0dca00733df-Paper-Conference.pdf",
+              "document_sha256": "fa9fe67b29367120d60e1b1222b84afa24eeb0edf9f5cfb1d16373cd72585b98"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "3D blocks. In contrast, we perform a direct top-down optimization of 3D primitives and texture using a rendering loss, starting from a random initialization in the spirit of analysis-by-synthesis. Unlike related works that fit primitives to 3D point clouds [3, 1, 68, 38, 71, 42, 43] (Figure 1a), our approach, dubbed Differentiable Blocks World (or DBW), does not require any 3D reconstruction a priori but instead operates directly on a set of calibrated input images, leveraging photometric consistency across different views (Figure 1b). This makes our approach more robust since methods based on 3D are very sensitive to noise in the reconstructions and have difficulties dealing with incomplete objects. Our setting is similar to existing NeRF-like approaches, but our model is able to recover a significantly more interpretable and parsimonious representation. In particular, such an interpretable decomposition allows us to easily play with the discovered scene, e.g., by performing physics-based simulations (Figure 1c). Code and video results are available on our project webpage: www.tmonnier.com/DBW.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/123fd8a56501194823c8e0dca00733df-Paper-Conference.pdf",
+              "document_sha256": "fa9fe67b29367120d60e1b1222b84afa24eeb0edf9f5cfb1d16373cd72585b98"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "5. Related work Object recognition and discovery. The predominant way to identify the objects present in a scene is to segment twodimensional images using extensive manual annotation (Kirillov et al., 2023; Li et al., 2022; Wang et al., 2023a), but relying on human supervision introduces challenges and scales poorly to 3D data. As an alternative, an extensive line of work on unsupervised object discovery (Russell et al., 2006; Rubinstein et al., 2013; Oktay et al., 2018; Hénaff et al., 2022; Smith et al., 2022; Ye et al., 2022; Monnier et al., 2023) proposes different inductive biases (Locatello et al., 2019) that encourage awareness of objects in a scene. However, these approaches are largely restricted to either 2D images or constrained 3D data (Yu et al., 2021; Sajjadi et al., 2022), limiting their applicability to complex 3D scenes. At the same time, large text-to-image models have been shown to implicitly encode an understanding of entities in their",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "4.1. Qualitative evaluation In Figure 1, we demonstrate several examples of our full system with layout learning. In each scene, we find that the composited 3D generation is high-quality and matches the text prompt, while the individual NeRFs learn to correspond to objects within the scene. Interestingly, since our approach does not directly rely on the input prompt, we can disentangle entities not mentioned in the text, such as a basket filled with easter eggs, a chef’s hat, and a picnic table.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We introduce a method to generate 3D scenes that are disentangled into their component objects. This disentanglement is unsupervised, relying only on the knowledge of a large pretrained textto-image model. Our key insight is that objects can be discovered by finding parts of a 3D scene that, when rearranged spatially, still produce valid configurations of the same scene. Concretely, our method jointly optimizes multiple NeRFs from scratch—each representing its own object—along with a set of layouts that composite these objects into scenes. We then encourage these composited scenes to be in-distribution according to the image generator. We show that despite its simplicity, our approach successfully generates 3D scenes decomposed into individual objects, enabling new capabilities in text-to-3D content creation. See our project page for results and an interactive demo: https://dave.ml/layoutlearning/",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-024ad8c7c2d8a7430e07af18",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/123fd8a56501194823c8e0dca00733df-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-1fece95727faad4a82ffa72d",
+          "url": "https://proceedings.mlr.press/v235/epstein24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "ae98e111f588c69a4777625c3f58017cb3d7515a0ad2270e2104a4acd04e94d7"
+    },
+    {
+      "id": "edge-0d87c9d3e2decfc6ce345c33",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-1fece95727faad4a82ffa72d",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Disentangled 3D Scene Generation with Layout Learning",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We introduce a method to generate 3D scenes that are disentangled into their component objects. This disentanglement is unsupervised, relying only on the knowledge of a large pretrained text-to-image model. Our key insight is that objects can be discovered by finding parts of a 3D scene that, when rearranged spatially, still produce valid configurations of the same scene. Concretely, our method jointly optimizes multiple NeRFs—each representing its own object—along with a set of layouts that composite these objects into scenes. We then encourage these composited scenes to be in-distribution according to the image generator. We show that despite its simplicity, our approach successfully generates 3D scenes decomposed into individual objects, enabling new capabilities in text-to-3D content creation."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…of work on unsupervised object discovery (Russell et al., 2006; Rubinstein et al., 2013; Oktay et al., 2018; Hénaff et al., 2022; Smith et al., 2022; Ye et al., 2022; Monnier et al., 2023) proposes different inductive biases (Locatello et al., 2019) that encourage awareness of objects in a scene.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-1fece95727faad4a82ffa72d",
+          "input_sha256": "7d460604644b719ba88b6aa25bbd8b7bd41f031a0aa9101bb0f5efb6d8f2ddac",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/epstein24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "5. Related work Object recognition and discovery. The predominant way to identify the objects present in a scene is to segment twodimensional images using extensive manual annotation (Kirillov et al., 2023; Li et al., 2022; Wang et al., 2023a), but relying on human supervision introduces challenges and scales poorly to 3D data. As an alternative, an extensive line of work on unsupervised object discovery (Russell et al., 2006; Rubinstein et al., 2013; Oktay et al., 2018; Hénaff et al., 2022; Smith et al., 2022; Ye et al., 2022; Monnier et al., 2023) proposes different inductive biases (Locatello et al., 2019) that encourage awareness of objects in a scene. However, these approaches are largely restricted to either 2D images or constrained 3D data (Yu et al., 2021; Sajjadi et al., 2022), limiting their applicability to complex 3D scenes. At the same time, large text-to-image models have been shown to implicitly encode an understanding of entities in their",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We introduce a method to generate 3D scenes that are disentangled into their component objects. This disentanglement is unsupervised, relying only on the knowledge of a large pretrained textto-image model. Our key insight is that objects can be discovered by finding parts of a 3D scene that, when rearranged spatially, still produce valid configurations of the same scene. Concretely, our method jointly optimizes multiple NeRFs from scratch—each representing its own object—along with a set of layouts that composite these objects into scenes. We then encourage these composited scenes to be in-distribution according to the image generator. We show that despite its simplicity, our approach successfully generates 3D scenes decomposed into individual objects, enabling new capabilities in text-to-3D content creation. See our project page for results and an interactive demo: https://dave.ml/layoutlearning/",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "One particularly exciting application of these text-to-image networks is 3D generation, leveraging the rich distribution learned by a diffusion model to optimize a 3D representation, e.g. a neural radiance field (NeRF, Mildenhall et al., 2020), such that rendered views resemble samples from the prior. This technique allows for text-to-3D generation without any 3D supervision (Poole et al., 2022; Wang et al., 2023b), but most results focus on simple prompts depicting just one or two isolated objects (Lin et al., 2023; Wang et al., 2023c). Our method builds on this work to generate complex scenes that are automatically disentangled into the objects they contain. To do so, we instantiate and render multiple NeRFs for a given scene instead of just one, encouraging the model to use each NeRF to represent a separate 3D entity. At the crux of our approach is an intuitive definition of objects as parts of a scene that can be manipulated independently of others while keeping the scene “well-formed” (Biederman, 1981). We implement this by learning a set of different layouts—3D affine transformations of every NeRF—which must yield composited scenes that render into in-distribution 2D images given a text prompt (Poole et al., 2022).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/epstein24a/epstein24a.pdf",
+              "document_sha256": "7c4a080d59bbb8d82bdbbd94cf575eacb3b13ff8f1045ae093927fe5e25c2cf7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-1fece95727faad4a82ffa72d",
+          "url": "https://proceedings.mlr.press/v235/epstein24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "7dad73e38e924e99a1df700d6d3ab7fa1c0ce88047eafe4754216c1dc91cfb15"
+    },
+    {
+      "id": "edge-052883462d0eb6966ac6140a",
+      "a": "paper-0909609771e64ac4120a2d15",
+      "b": "paper-fc0958a173d1a942b6bdd44b",
+      "state": {
+        "paper_a": {
+          "title": "L4GM: Large 4D Gaussian Reconstruction Model",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We present L4GM, the first 4D Large Reconstruction Model that produces animated objects from a single-view video input -- in a single feed-forward pass that takes only a second.Key to our success is a novel dataset of multiview videos containing curated, rendered animated objects from Objaverse. This dataset depicts 44K diverse objects with 110K animations rendered in 48 viewpoints, resulting in 12M videos with a total of 300M frames. We keep our L4GM simple for scalability and build directly on top of LGM, a pretrained 3D Large Reconstruction Model that outputs 3D Gaussian ellipsoids from multiview image input.L4GM outputs a per-frame 3D Gaussian splat representation from video frames sampled at a low fps and then upsamples the representation to a higher fps to achieve temporal smoothness. We add temporal self-attention layers to the base LGM to help it learn consistency across time, and utilize a per-timestep multiview rendering loss to train the model. The representation is upsampled to a higher framerate by training an interpolation model which produces intermediate 3D Gaussian representations. We showcase that L4GM that is only trained on synthetic data generalizes well on in-the-wild videos, producing high quality animated 3D assets."
+        },
+        "paper_b": {
+          "title": "Feed-Forward Bullet-Time Reconstruction of Dynamic Scenes from Monocular Videos",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Recent advancements in static feed-forward scene reconstruction have demonstrated significant progress in high-quality novel view synthesis. However, these models often struggle with generalizability across diverse environments and fail to effectively handle dynamic content. We present BTimer (short for Bullet Timer), the first motion-aware feed-forward model for real-time reconstruction and novel view synthesis of dynamic scenes. Our approach reconstructs the full scene in a 3D Gaussian Splatting representation at a given target (‘bullet’) timestamp by aggregating information from all the context frames. Such a formulation allows BTimer to gain scalability and generalization by leveraging both static and dynamic scene datasets. Given a casual monocular dynamic video, BTimer reconstructs a bullet-time scene within 150ms while reaching state-of-the-art performance on both static and dynamic scene datasets, even compared with optimization-based approaches."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The only feed-forward dynamic reconstruction model [17] is thus trained on synthetic object-centric datasets, requires fixed camera viewpoints and multiview supervision, and cannot generalize to real-world scene scenarios.\nExisting methods either require hard-to-acquire consistent video depth as input [39], do not support rendering [40], or only work on object-scale data [17].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0909609771e64ac4120a2d15",
+          "b": "paper-fc0958a173d1a942b6bdd44b",
+          "input_sha256": "5f008f1fb4eb265f053963b9d54fb9f39d866666134ba82b0c74413d57b773bc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/6808f2c57d9564a2639a4710e3bbd9b9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/dee4c334b00c6f34061eb71d3a9df79b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/dee4c334b00c6f34061eb71d3a9df79b-Paper-Conference.pdf",
+              "sha256": "3008ae6c0ec0f116a6bfdfc4b3483e0882a46f3ff43ebc47d4b94eeca633ef97"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Past work on automatically generating animated 3D objects, which we refer to as 4D modeling in this paper, falls into different categories. The first line of work aims to faithfully reconstruct 4D objects from multiview video data, and oftentimes requires many views across time to achieve high quality [29, 5, 36]. Such data is expensive to collect which limits applicability. Another line of work instead relies on the power of video generative models. Most commonly, the video score distillation technique is used which optimizes a 4D representation, for example a 3D deformation field, by receiving iterative feedback from the video generative model. Score distillation is known to be fragile (sensitive to prompts), and time consuming (hours per prompt) as oftentimes many iterations are needed to achieve high quality results [47, 26, 72, 1]. Recently, a promising method emerged for the task of single-image 3D reconstruction. This method leverages large scale synthetic and real datasets to train a large transformer model, dubbed 3D Large Reconstruction Model (LRM) [20, 19], to generate 3D objects represented as neural radiance fields from a single image in a single forward pass – thus being extremely fast. We build on top of this idea to achieve fast and high quality 4D reconstruction. We present L4GM, the first 4D Large Reconstruction Model (Figure 2), which aims to reconstruct a sequence of 3D Gaussians [22] from a monocular video, in a feed-forward fashion. Key to our method, is a new large-scale dataset containing 12 million multiview videos of rendered animated 3D objects from Objaverse 1.0 [11]. Our model builds on top of LGM [49], a pre-trained 3D Large Reconstruction Model that is trained to output 3D Gaussians from multiview images. We extend it to take a sequence",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "document_sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Given a monocular video of a dynamic object, denoted as I = {It }Tt=1 where T is video length, our objective is to rapidly reconstruct an accurate 4D representation of the object. Our approach is grounded in two conceptually simple yet impactful insights. Our inspiration stems from video diffusion models. Recent advances in video generation have highlighted the benefits of first pretraining on image data and then extending and finetuning the model on video datasets to effectively model temporal consistency [3, 16, 59, 2]. Similarly, recognizing the scarcity of 4D data, we want to leverage a pre-trained Large Multi-View Gaussian Model (LGM) [49] that operates on images and has been extensively trained on a large-scale 3D dataset of static objects. This strategy leverages the robustness of pre-trained models to effectively train a 4D reconstruction model with limited data. Secondly, in constrast to most existing methods [28, 29] that are required to use multiview videos for 4D reconstruction, we found that utilizing a single set of multiview images at the initial timestep is sufficient. We can obtain these multiview images easily by leveraging multiview image diffusion models to expand the first frame of the view. By adding temporal self-attention layers, our model capitalizes on the initial multiview input by propagating and adapting this information across subsequent timesteps (subsection 4.2). This approach significantly reduces the computational complexity and challenges typically associated with generating consistent multiview videos, while still enhancing the quality of the reconstruction, as our results demonstrate. Thus, in the following, we introduce L4GM, a model that processes a monocular video to output a set of 3D Gaussians for each timestep, denoted by P =",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/6808f2c57d9564a2639a4710e3bbd9b9-Paper-Conference.pdf",
+              "document_sha256": "866c5630dccfc6d22ae9ad3f95a3023a22c8e9964ffa49f98003d73fd00d3467"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "optical flow [2, 7, 8, 9]. However, balancing these priors with the data remains challenging [10, 11]. Moreover, per-scene optimization is time-consuming and thus difficult to scale. On the other hand, to avoid the lengthy per-scene-optimization, recent feed-forward approaches [12, 13, 14, 15, 16, 5] explored learning generalizable models on large-scale datasets to directly perform static scene reconstructions, thereby learning strong priors from data. These inherent priors could help resolve ambiguities due to complex motion, but none of previous approaches have yet been extended to dynamic scenes. This limitation stems from both the complexity of modeling dynamic scenes and the lack of 4D supervision data. The only feed-forward dynamic reconstruction model [17] is thus trained on synthetic object-centric datasets, requires fixed camera viewpoints and multiview supervision, and cannot generalize to real-world scene scenarios. In this work, we aim to answer the question: How can one build a feed-forward reconstruction model that can handle dynamic scenes effectively? We build upon the recent success of the pixelaligned 3D Gaussian Splatting (3DGS [18]) prediction models [5] and propose a novel bullet-time formulation for feed-forward dynamic reconstruction. The core idea is simple yet effective: we add a bullet-time embedding to the context (input) frames, indicating the desired timestamp for the output 3DGS representation. Our model is trained to aggregate the predictions of context frames to reflect the scenes at the bullet timestamp, yielding a spatially complete 3DGS scene. This design not only naturally unifies the static and dynamic reconstruction scenarios, but also enables our model to become implicitly motion-aware while learning to capture scene dynamics. In",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/dee4c334b00c6f34061eb71d3a9df79b-Paper-Conference.pdf",
+              "document_sha256": "3008ae6c0ec0f116a6bfdfc4b3483e0882a46f3ff43ebc47d4b94eeca633ef97"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Figure 2: BTimer. The model takes as input a sequence of context frames and their Plücker embeddings, along with the context timestamp and target (‘bullet’) timestamp embeddings. It then directly predicts the 3DGS representation at the bullet timestamp. of work that starts to emerge is fully feed-forward models that directly regress from 2D images to 3D, represented as either neural field [13, 37], triplanes [12], 3D Gaussians [14, 5, 15], sparse voxels [38], or latent tokens [16]. Crucially, while feed-forward reconstruction models for static scenes have seen development, the extension to dynamic scenes is still challenging. Existing methods either require hard-to-acquire consistent video depth as input [39], do not support rendering [40], or only work on object-scale data [17]. In contrast, our method supports reconstructing from a monocular video containing dynamic scenes in a fully feed-forward manner, and is able to render at arbitrary viewpoints and timestamps.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/dee4c334b00c6f34061eb71d3a9df79b-Paper-Conference.pdf",
+              "document_sha256": "3008ae6c0ec0f116a6bfdfc4b3483e0882a46f3ff43ebc47d4b94eeca633ef97"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent advancements in static feed-forward scene reconstruction have demonstrated significant progress in high-quality novel view synthesis. However, these models often struggle with generalizability across diverse environments and fail to effectively handle dynamic content. We present BTimer (short for BulletTimer), the first motion-aware feed-forward model for real-time reconstruction and novel view synthesis of dynamic scenes. Our approach reconstructs the full scene in a 3D Gaussian Splatting representation at a given target (‘bullet’) timestamp by aggregating information from all the context frames. Such a formulation allows BTimer to gain scalability and generalization by leveraging both static and dynamic scene datasets. Given a casual monocular dynamic video, BTimer reconstructs a bullet-time1 scene within 150ms on 256 × 256 resolution while reaching stateof-the-art performance on both static and dynamic scene datasets, even compared with optimization-based approaches.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/dee4c334b00c6f34061eb71d3a9df79b-Paper-Conference.pdf",
+              "document_sha256": "3008ae6c0ec0f116a6bfdfc4b3483e0882a46f3ff43ebc47d4b94eeca633ef97"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Overview. Given a monocular video (image sequence) represented by I = {Ii ∈ RH×W ×3 }N i=1 with N frames of width W and height H, along with known camera poses P = {Pi ∈ SE(3)}N i=1 , intrinsics, and corresponding timestamps T = {ti ∈ R}N i=1 , our goal is to build a feed-forward model capable of rendering high-quality novel views at arbitrary timestamps t ∈ [t1 , tN ]. The core of our approach is a transformer-based bullet-time reconstruction model, named BTimer, that takes in a subset of frames Ic ⊂ I (denoted as context frames) along with their corresponding poses Pc ⊂ P and timestamps Tc ⊂ T , and outputs a complete 3DGS [18] scene frozen at a specified bullet timestamp tb ∈ [minTc , maxTc ] (§ 3.1). Iterating over all tb ∈ T results in a full video reconstruction represented by a sequence of 3DGS. We further introduce a Novel Time Enhancer (NTE) module that synthesizes interpolated frames with timestamps t ∈ / T (§ 3.2). The output of the NTE module is used along with other context views as input to the bullet-time model to enhance reconstruction at arbitrary intermediate timestamps. To effectively train our model, we carefully design a learning curriculum (§ 3.3) that incorporates a large mixture of datasets containing both static and dynamic scenes, to enhance motion awareness and temporal consistency of our models. 3.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/dee4c334b00c6f34061eb71d3a9df79b-Paper-Conference.pdf",
+              "document_sha256": "3008ae6c0ec0f116a6bfdfc4b3483e0882a46f3ff43ebc47d4b94eeca633ef97"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0909609771e64ac4120a2d15",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/6808f2c57d9564a2639a4710e3bbd9b9-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-fc0958a173d1a942b6bdd44b",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/dee4c334b00c6f34061eb71d3a9df79b-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "e791651e87e57021ea2426769621d4d0c7238daad119857814563f9929865c1d"
+    },
+    {
+      "id": "edge-5c5f5700a9803aad96162275",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-1ca99dea7cff63fcc94c5ce3",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "GAUDI: A Neural Architect for Immersive 3D Scene Generation",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "We introduce GAUDI, a generative model capable of capturing the distribution of complex and realistic 3D scenes that can be rendered immersively from a moving camera. We tackle this challenging problem with a scalable yet powerful approach, where we first optimize a latent representation that disentangles radiance fields and camera poses. This latent representation is then used to learn a generative model that enables both unconditional and conditional generation of 3D scenes. Our model generalizes previous works that focus on single objects by removing the assumption that the camera pose distribution can be shared across samples. We show that GAUDI obtains state-of-the-art performance in the unconditional generative setting across multiple datasets and allows for conditional generation of 3D scenes given conditioning variables like sparse image observations or text that describes the scene."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To the best of our knowledge, this is the ﬁrst model that allows for conditional 3D scene generation from text in an amortized manner ( i . e . without distilling CLIP [40] through a costly optimization problem [17, 28]).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-1ca99dea7cff63fcc94c5ce3",
+          "input_sha256": "1660f75c8f6de68b10cb1645316449510a99519e7726a01a4e56332a91dbc848",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/a03037317560b8c5f2fb4b6466d4c439-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/a03037317560b8c5f2fb4b6466d4c439-Paper-Conference.pdf",
+              "sha256": "d0a71bbc99597b21eafab7c3412355cf23d09cfe194a0089e6f0ba4b9f584c33"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "We tackle the challenging task of training a text conditional model for 3D scene generation. We use the navigation text descriptions provided in VLN-CE [26] to condition our model. These text descriptions contain high level information about the scene as well as the navigation path (i.e. \"Walk out of the bedroom and into the living room\", \"Exit the room through the swinging doors and then enter the bedroom\"). We employ a pre-trained RoBERTa-base [29] text encoder and use its intermediate representation to condition the diffusion model. Fig. 7 shows qualitative results of GAUDI for this task. To the best of our knowledge, this is the first model that allows for conditional 3D scene generation from text in an amortized manner (i.e. without distilling CLIP [44] through a costly optimization problem [19, 32]). Go through the hallway",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a03037317560b8c5f2fb4b6466d4c439-Paper-Conference.pdf",
+              "document_sha256": "d0a71bbc99597b21eafab7c3412355cf23d09cfe194a0089e6f0ba4b9f584c33"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce GAUDI, a generative model capable of capturing the distribution of complex and realistic 3D scenes that can be rendered immersively from a moving camera. We tackle this challenging problem with a scalable yet powerful approach, where we first optimize a latent representation that disentangles radiance fields and camera poses. This latent representation is then used to learn a generative model that enables both unconditional and conditional generation of 3D scenes. Our model generalizes previous works that focus on single objects by removing the assumption that the camera pose distribution can be shared across samples. We show that GAUDI obtains state-of-the-art performance in the unconditional generative setting across multiple datasets and allows for conditional generation of 3D scenes given conditioning variables like sparse image observations or text that describes the scene.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a03037317560b8c5f2fb4b6466d4c439-Paper-Conference.pdf",
+              "document_sha256": "d0a71bbc99597b21eafab7c3412355cf23d09cfe194a0089e6f0ba4b9f584c33"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "In order for learning systems to be able to understand and create 3D spaces, progress in generative models for 3D is sorely needed. The quote \"The creation continues incessantly through the media of man.\" is often attributed to Antoni Gaudí, who we pay homage to with our method’s name. In this paper we ask the question: can creation continue through the media of learning machines? We are interested in generative models that can capture the distribution of 3D scenes and then render views from scenes sampled from the learned distribution. Extensions of such generative models to conditional inference problems could have tremendous impact in a wide range of tasks in machine learning and computer vision. For example, one could sample plausible scene completions that are consistent with an image observation, or a text description (see Fig. 1 for 3D scenes sampled from GAUDI). In addition, such models would be of great practical use in model-based reinforcement learning and planning [14], SLAM [43], or 3D content creation. Recent works on generative modeling for 3D objects or scenes [60, 6, 8] employ a Generative Adversarial Network (GAN) where the generator explicitly encodes radiance fields — a parametric function that takes as input the coordinates of a point in 3D space and camera pose, and outputs a density scalar and RGB value for that 3D point. Images can be rendered from the radiance field generated by the model by passing the queried 3D points through the volume rendering equation ⇤",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a03037317560b8c5f2fb4b6466d4c439-Paper-Conference.pdf",
+              "document_sha256": "d0a71bbc99597b21eafab7c3412355cf23d09cfe194a0089e6f0ba4b9f584c33"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-1ca99dea7cff63fcc94c5ce3",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/a03037317560b8c5f2fb4b6466d4c439-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "9e0dbac31b9c6859694f21a0dfef9b30606d3e66274a82a51424427f7cd778c2"
+    },
+    {
+      "id": "edge-c9d93a4dc0edb881800992f4",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-5025a5da4722de05b200ce2c",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Flex3D: Feed-Forward 3D Generation with Flexible Reconstruction Model and Input View Curation",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Generating high-quality 3D content from text, single images, or sparse view images remains a challenging task with broad applications. Existing methods typically employ multi-view diffusion models to synthesize multi-view images, followed by a feed-forward process for 3D reconstruction. However, these approaches are often constrained by a small and fixed number of input views, limiting their ability to capture diverse viewpoints and, even worse, leading to suboptimal generation results if the synthesized views are of poor quality. To address these limitations, we propose Flex3D, a novel two-stage framework capable of leveraging an arbitrary number of high-quality input views. The first stage consists of a candidate view generation and curation pipeline. In the second stage, the curated views are fed into a Flexible Reconstruction Model (FlexRM), built upon a transformer architecture that can effectively process an arbitrary number of inputs. Through extensive exploration of design and training strategies, we optimize FlexRM to achieve superior performance in both reconstruction and generation tasks. Our results demonstrate that Flex3D achieves state-of-the-art performance, with a user study winning rate of over 92% in 3D generation tasks when compared to several of the latest feed-forward 3D generative models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Table 4 summarizes the results, demonstrating that the removal of any of these components leads to a decrease in both CLIP (Radford et al., 2021) and VideoCLIP (Wang et al., 2023a) text similarity scores.\nWe conduct ablation experiments by removing: (1) multi-view generation at varying elevations, (2) consistency verification (resulting in random view selection), and (3) back view generation quality assessment.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-5025a5da4722de05b200ce2c",
+          "input_sha256": "4d66576d44364bc10cd58785680cb1713400a05eaf8c8a1e23e80207ea187c13",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/han25i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/han25i/han25i.pdf",
+              "sha256": "d0c46cd68bdcc5712d48e0c3deecccf15570025c6f27505f56fff003b2ba64d9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Flex3D in 3D Generation. Here we study the candidate view generation and selection pipeline, utilizing a fully trained FlexRM, fine-tuned with simulated imperfect data, as the reconstructor. The evaluation protocol follows that outlined in section 4.2. We conduct ablation experiments by removing: (1) multi-view generation at varying elevations, (2) consistency verification (resulting in random view selection), and (3) back view generation quality assessment. Table 4 summarizes the results, demonstrating that the removal of any of these components leads to a decrease in both CLIP (Radford et al., 2021) and VideoCLIP (Wang et al., 2023a) text similarity scores. This shows the contribution of each component in achieving high-quality 3D generation.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/han25i/han25i.pdf",
+              "document_sha256": "d0c46cd68bdcc5712d48e0c3deecccf15570025c6f27505f56fff003b2ba64d9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Junlin Han 1 2 Jianyuan Wang 1 2 Andrea Vedaldi 1 Philip Torr 2 Filippos Kokkinos 1 Abstract vision and graphics (Mildenhall et al., 2021; Kerbl et al., 2023) and deep learning (Dosovitskiy, 2020; Caron et al., Generating high-quality 3D content from text, sin2021; Oquab et al., 2023), combined with the availability gle images, or sparse view images remains a chalof large datasets of 3D objects (Deitke et al., 2023; 2024; lenging task with broad applications. Existing Yu et al., 2023; Chang et al., 2015), have made it possible methods typically employ multi-view diffusion to learn neural networks that can generate 3D objects from models to synthesize multi-view images, followed text, single images or a sparse set of views, and to do so by a feed-forward process for 3D reconstruction. in an feed-forward manner, achieving significantly faster However, these approaches are often constrained speeds than distillation-based methods (Poole et al., 2022; by a small and fixed number of input views, limitQiu et al., 2024; Chen et al., 2023; Wang et al., 2023b). ing their ability to capture diverse viewpoints and, even worse, leading to suboptimal generation reA particularly successful family of 3D generators are the sults if the synthesized views are of poor quality. ones based on sparse-views reconstruction (Xu et al., 2024c; To address these limitations, we propose Flex3D, Siddiqui et al., 2024; Li et al., 2024b; Zhang et al., 2024c; a novel two-stage framework capable of leverTang et al., 2024a; Xu et al., 2024b; Xie et al., 2024a; Wang aging an arbitrary number of high-quality input et al., 2024c; Hunyuan3D, 2024). Compared to single-image views. The first stage consists of a candidate view reconstructors, multi-view reconstruction models generally generation and curation",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/han25i/han25i.pdf",
+              "document_sha256": "d0c46cd68bdcc5712d48e0c3deecccf15570025c6f27505f56fff003b2ba64d9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "First, we propose a mechanism to generate a large and diverse set of views. We do this by training two diffusion models, one that generates novel views at different azimuth angles and the other at different elevation angles. The mod-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/han25i/han25i.pdf",
+              "document_sha256": "d0c46cd68bdcc5712d48e0c3deecccf15570025c6f27505f56fff003b2ba64d9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-5025a5da4722de05b200ce2c",
+          "url": "https://proceedings.mlr.press/v267/han25i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "e673f53b21e3f86fe6d4b9f606d8190b187e2e6b26026e5b93375f0f2e764656"
+    },
+    {
+      "id": "edge-29eb893bff189cbf32d1bff8",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-6700418d6f8faf2e77fb419e",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Rethinking Score Distilling Sampling for 3D Editing and Generation",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Score Distillation Sampling (SDS) has emerged as a prominent method for text-to-3D generation by leveraging the strengths of 2D diffusion models. However, SDS is limited to generation tasks and lacks the capability to edit existing 3D assets. Conversely, variants of SDS that introduce editing capabilities often can not generate new 3D assets effectively. In this work, we observe that the processes of generation and editing within SDS and its variants have unified underlying gradient terms. Building on this insight, we propose Unified Distillation Sampling (UDS), a method that seamlessly integrates both the generation and editing of 3D assets. Essentially, UDS refines the gradient terms used in vanilla SDS methods, unifying them to support both tasks. Extensive experiments demonstrate that UDS not only outperforms baseline methods in generating 3D assets with richer details but also excels in editing tasks, thereby bridging the gap between 3D generation and editing."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To quantitatively evaluate our editing results, we measured the CLIP score (Radford et al., 2021), which assesses the similarity between the edited 2D renderings and the target text prompts in the CLIP embedding space.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-6700418d6f8faf2e77fb419e",
+          "input_sha256": "4aa07e6ca572e371646bf4b3a87e220ecfb4f7fbacc7f39409231cb8586f32ea",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/miao25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/miao25a/miao25a.pdf",
+              "sha256": "a30bb66a1ddea63fbc816046bf2d0bbaac4a58b1cb50c493bbcca1a5728ad71c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "To quantitatively evaluate our editing results, we measured the CLIP score (Radford et al., 2021), which assesses the similarity between the edited 2D renderings and the target text prompts in the CLIP embedding space. As shown in Table 1, our method outperforms the baselines in quantitative metrics. This is further confirmed by the qualitative results in Figure Figure 2, where other baseline methods struggle to produce clear textures, especially in scenes with complex details. To further assess the perceptual quality of the editing results, we conducted a user study comparing our method with the baselines. Following the setting used in PDS, users are shown the input 3D scene videos, the editing prompts, and the edited 3D scene videos produced by our method and the baselines. They are then asked to choose the most appropriate edited 3D scene video. As shown in Table 1, our editing results significantly outperform the baselines in human evaluation, receiving 41.25% of the selections compared to 30.20% for PDS, which was the second best. Ablation study. For approximate the x0 , we can employ single denoise Tweedie’s formula and multi-steps DDIM inverse processes. In the Figure 4, using a multi-step DDIM inversion process approximation better preserves identity information, such as facial features. In contrast, a singlestep approximation with Tweedie’s formula more accurately reflects the input text. However, the multi-step DDIM inversion process increases the optimization time.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/miao25a/miao25a.pdf",
+              "document_sha256": "a30bb66a1ddea63fbc816046bf2d0bbaac4a58b1cb50c493bbcca1a5728ad71c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Score Distillation Sampling (SDS) has emerged as a prominent method for text-to-3D generation by leveraging the strengths of 2D diffusion models. However, SDS is limited to generation tasks and lacks the capability to edit existing 3D assets. Conversely, variants of SDS that introduce editing capabilities often can not generate new 3D assets effectively. In this work, we observe that the processes of generation and editing within SDS and its variants have unified underlying gradient terms. Building on this insight, we propose Unified Distillation Sampling (UDS), a method that seamlessly integrates both the generation and editing of 3D assets. Essentially, UDS refines the gradient terms used in vanilla SDS methods, unifying them to support both tasks. Extensive experiments demonstrate that UDS not only outperforms baseline methods in generating 3D assets with richer details but also excels in editing tasks, thereby bridging the gap between 3D generation and editing. The code is available on: https://github.com/xingy038/UDS.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/miao25a/miao25a.pdf",
+              "document_sha256": "a30bb66a1ddea63fbc816046bf2d0bbaac4a58b1cb50c493bbcca1a5728ad71c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "editing and generation. Specifically, we examine DDS and PDS—two representative 3D editing approaches—and disentangle their reconstruction term from the guidance term. This separation facilitates a more systematic analysis and comparison of various SDS variants. Then, we examine the factors contributing to their successes and failures, identifying notable similarities with the gradient terms used in recent DDIM-based SDS variants. Inspired by this insight, we propose Unified Distillation Sampling (UDS), to provide a general method for both 3D editing and generation tasks. Our UDS first approximates a clear latent x0 representation, which serves as the reconstruction term. This reconstruction term is then combined with classifier-free guidance to supply the necessary gradient terms. UDS shows lower gradient variability and improved stability relative to previous methods, enabling the generation of superior edited results. In summary, our contributions are:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/miao25a/miao25a.pdf",
+              "document_sha256": "a30bb66a1ddea63fbc816046bf2d0bbaac4a58b1cb50c493bbcca1a5728ad71c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-6700418d6f8faf2e77fb419e",
+          "url": "https://proceedings.mlr.press/v267/miao25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "99c0fff0d9c1105b45294ac2b664eb8a0d6681c0cf84243a80c96e3277f51d5e"
+    },
+    {
+      "id": "edge-0127e0d0ef86b1d9e7ecef1a",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-8ae2cedcca4e0008751e2e48",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Retrieval-Augmented Score Distillation for Text-to-3D Generation",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Text-to-3D generation has achieved significant success by incorporating powerful 2D diffusion models, but insufficient 3D prior knowledge also leads to the inconsistency of 3D geometry. Recently, since large-scale multi-view datasets have been released, fine-tuning the diffusion model on the multi-view datasets becomes a mainstream to solve the 3D inconsistency problem. However, it has confronted with fundamental difficulties regarding the limited quality and diversity of 3D data, compared with 2D data. To sidestep these trade-offs, we explore a retrieval-augmented approach tailored for score distillation, dubbed ReDream. We postulate that both expressiveness of 2D diffusion models and geometric consistency of 3D assets can be fully leveraged by employing the semantically relevant assets directly within the optimization process. To this end, we introduce novel framework for retrieval-based quality enhancement in text-to-3D generation. We leverage the retrieved asset to incorporate its geometric prior in the variational objective and adapt the diffusion model’s 2D prior toward view consistency, achieving drastic improvements in both geometry and fidelity of generated scenes. We conduct extensive experiments to demonstrate that ReDream exhibits superior quality with increased geometric consistency. Project page is available at https://ku-cvlab.github.io/ReDream/."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Specifically, we measure the average CLIP score between text and 3D renderings using variants of the CLIP model, OpenCLIP ViT-L/14 trained on DataComp-1B (Ilharco et al., 2021) and CLIP ViT-L/14 (Radford et al., 2021).\nWe use ScaNN (Guo et al., 2020) to retrieve N nearest neighbors based on CLIP embeddings (Radford et al., 2021) of the captions and the rendered images.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-8ae2cedcca4e0008751e2e48",
+          "input_sha256": "50fe1bb0fc2f3881bd762228ee9d1af107dbdf31f518491fa4c742b1e47b0216",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/seo24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/seo24a/seo24a.pdf",
+              "sha256": "6f216164b9efc69cc76602a8c8f1c420cafcfbd7cf2bc3a111f3cc1eaf394fdf"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "4.5. Retrieval of 3D assets We utilize 3D assets from Objaverse 1.0 (Deitke et al., 2023b) dataset and corresponding captions with the help of Cap3D (Luo et al., 2023). We use ScaNN (Guo et al., 2020) to retrieve N nearest neighbors based on CLIP embeddings (Radford et al., 2021) of the captions and the rendered images. The query embedding can be acquired from the prompt c. Specifically, we utilize both image and text embeddings by performing Top-K operation with im-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/seo24a/seo24a.pdf",
+              "document_sha256": "6f216164b9efc69cc76602a8c8f1c420cafcfbd7cf2bc3a111f3cc1eaf394fdf"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Quantitative evaluation. Currently, there is no established metric for evaluating the open-domain text-to-3D field, as text-to-3D is an inherently subjective task and encompasses various aspects that are challenging to quantify. Nevertheless, we align with the practices of quantitative evaluation (Poole et al., 2022; Li et al., 2023a; Yu et al., 2023) in text-to-3D works by utilizing CLIP-based metrics for our quantitative assessments. Specifically, we measure the average CLIP score between text and 3D renderings using variants of the CLIP model, OpenCLIP ViT-L/14 trained on DataComp-1B (Ilharco et al., 2021) and CLIP ViT-L/14 (Radford et al., 2021). The evaluation is done with 50 prompts, each rendered with 120 viewpoints of the corresponding 3D outputs. We note that the CLIP model for retrieval is not used for the evaluation. For view consistency, some works (Li et al., 2023b) manually check their success rate, and (Hong et al., 2023) proposes A-LPIPS, an average LPIPS (Zhang et al., 2018) between adjacent images of generated 3D scenes to measure artifacts caused by view inconsistency. We adopt A-LPIPS as an alternative metric to quantify view consistency and report it alongside the CLIP score in Tab. 1, showing ReDream exhibits superior performance in terms of text-3D alignment and view consistency.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/seo24a/seo24a.pdf",
+              "document_sha256": "6f216164b9efc69cc76602a8c8f1c420cafcfbd7cf2bc3a111f3cc1eaf394fdf"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Text-to-3D generation has achieved significant success by incorporating powerful 2D diffusion models, but insufficient 3D prior knowledge also leads to the inconsistency of 3D geometry. Recently, since large-scale multi-view datasets have been released, fine-tuning the diffusion model on the multi-view datasets becomes a mainstream to solve the 3D inconsistency problem. However, it has confronted with fundamental difficulties regarding the limited quality and diversity of 3D data, compared with 2D data. To sidestep these trade-offs, we explore a retrieval-augmented approach tailored for score distillation, dubbed ReDream. We postulate that both expressiveness of 2D diffusion models and geometric consistency of 3D assets can be fully leveraged by employing the semantically relevant assets directly within the optimization process. To this end, we introduce novel framework for retrieval-based quality enhancement in text-to-3D generation. We leverage the retrieved asset to incorporate its geometric prior in the variational objective and adapt the diffusion model’s 2D prior toward view consistency, achieving drastic improvements in both geometry and fidelity of generated scenes. We conduct extensive experiments to demonstrate that ReDream exhibits superior quality with increased geometric consistency. Project page is available at https: //ku-cvlab.github.io/ReDream/.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/seo24a/seo24a.pdf",
+              "document_sha256": "6f216164b9efc69cc76602a8c8f1c420cafcfbd7cf2bc3a111f3cc1eaf394fdf"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "To address these issues, we propose a novel retrievalaugmented framework, ReDream, for text-to-3D generation to leverage 3D data information without full fine-tuning of 2D diffusion models. Our key motivation is that 3D assets, which are semantically aligned with a given text, become a minimal yet effective guidance of 3D geometries for SDSbased approaches. Then, ReDream can largely maintain the quality of the pre-trained 2D diffusion model, but also provide an effective geometric prior.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/seo24a/seo24a.pdf",
+              "document_sha256": "6f216164b9efc69cc76602a8c8f1c420cafcfbd7cf2bc3a111f3cc1eaf394fdf"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-8ae2cedcca4e0008751e2e48",
+          "url": "https://proceedings.mlr.press/v235/seo24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "bb8a375140cd2fcdf52f1fa070c30479dbebaefc1a218d9628cb8d593d2bf0f3"
+    },
+    {
+      "id": "edge-ebc985ebf3eae36c1a1c8f87",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-b43ecf161a3a1600283379ed",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "GeneMAN: Generalizable Single-Image 3D Human Reconstruction from Multi-Source Human Data",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Given a single in-the-wild human photo, it remains a challenging task to reconstruct a high-fidelity 3D human model. Existing methods face difficulties including a) the varying body proportions captured by in-the-wild human images; b) diverse personal belongings within the shot; and c) ambiguities in human postures and inconsistency in human textures. In addition, the scarcity of high-quality human data intensifies the challenge. To address these problems, we propose a Generalizable image-to-3D huMAN reconstruction framework, dubbed GeneMAN, building upon a comprehensive multi-source collection of high-quality human data, including 3D scans, multi-view videos, single photos, and our generated synthetic human data. GeneMAN encompasses three key modules. 1) Without relying on parametric human models (e.g., SMPL), GeneMAN first trains a human-specific text-to-image diffusion model and a view-conditioned diffusion model, serving as GeneMAN 2D human prior and 3D human prior for reconstruction, respectively. 2) With the help of the pretrained human prior models, the Geometry Initialization-&-Sculpting pipeline is leveraged to recover high-quality 3D human geometry given a single image. 3) To achieve high-fidelity 3D human textures, GeneMAN employs the Multi-Space Texture Refinement pipeline, consecutively refining textures in the latent and the pixel spaces. Extensive experimental results demonstrate that GeneMAN could generate high-quality 3D human models from a single image input, outperforming prior state-of-the-art methods. Notably, GeneMAN could reveal much better generalizability in dealing with in-the-wild images, often yielding high-quality 3D human models in natural poses with common items, regardless of the body proportions in the input images."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Additionally, CLIP similarity [43] between the reference view and 119 novel views is measured to assess multi-view consistency.\nFor in-the-wild images, GeneMAN outperforms all competing approaches, showcasing its superiority in gener-alizable human reconstruction, with the highest CLIP-Similarity [43] indicating better multi-view consistency.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-b43ecf161a3a1600283379ed",
+          "input_sha256": "671b31815ebfa0fdb3aa048645e33e8fdd70d75b62b9a68d122f8f22e699de62",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/768c19273e20fa09147885d03da7550f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/768c19273e20fa09147885d03da7550f-Paper-Conference.pdf",
+              "sha256": "ecc6c319ad6fccb83fd3af5885c042646daf29f32d98abde55e50dcb9349a8e2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "and the rendered front view to evaluate reconstruction quality. Additionally, CLIP similarity [45] between the reference view and 119 novel views is measured to assess multi-view consistency. 5.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/768c19273e20fa09147885d03da7550f-Paper-Conference.pdf",
+              "document_sha256": "ecc6c319ad6fccb83fd3af5885c042646daf29f32d98abde55e50dcb9349a8e2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Tab. 1 presents quantitative metrics comparing GeneMAN with baseline methods on in-the-wild images and the CAPE dataset [35]. For in-the-wild images, GeneMAN outperforms all competing approaches, showcasing its superiority in generalizable human reconstruction, with the highest CLIP-Similarity [45] indicating better multi-view consistency. It also leads in PSNR and LPIPS, highlighting its improved reconstruction quality. On CAPE dataset, GeneMAN continues to excel, achieving the best results in LPIPS and CLIP-Similarity while maintaining competitive performance in PSNR, proving its effectiveness on laboratory dataset as well. Additional geometric results are placed in the supplementary materials. 5.3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/768c19273e20fa09147885d03da7550f-Paper-Conference.pdf",
+              "document_sha256": "ecc6c319ad6fccb83fd3af5885c042646daf29f32d98abde55e50dcb9349a8e2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Creating high-quality 3D human models is crucial in various real applications, including VR/AR, telepresence, digital human interfaces, film, and 3D game production. Traditional methods [5, 26, 65] usually utilize a dense camera array to capture synchronized posed multi-view images for human reconstruction, which typically involves complicated and time-consuming processes. Towards efficient 3D human reconstruction, many approaches [49, 58, 11, 50, 19, 64, 76, 14] delve into the challenge of reconstructing 3D human models from a single image, which, however, remains an ill-posed problem due to the absence of comprehensive 3D human observation data. To facilitate 3D human reconstruction, previous methods [78, 68, 67, 19, 76, 14] often employ parametric human models, e.g., SMPL [32] or SMPL-X [40] as 3D human geometry prior. Nevertheless, these parametric models fail to capture 3D clothing details, which impedes the accurate reconstruction of 3D human figures, particularly when individuals are adorned in loose garments. Recently, image-to-3D human reconstruction methods [14, 19, 76] integrate pretrained text-to-image diffusion models [46, 47] to incorporate 2D priors into the reconstruction process. Despite advances in generalizability, single-view 3D human reconstruction has not been fully resolved, especially when dealing with in-the-wild images. The primary challenges are shown in Fig. 1: (a) Varying Body Proportions: many portraits are captured with varying body proportions, such as full-body, half-body, and headshots, while existing methods primarily focus on full-body reconstructions; (b) Human with Objects: in everyday photography, it is common to capture people holding objects, standing on items, or wearing various accessories, which could greatly impact the",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/768c19273e20fa09147885d03da7550f-Paper-Conference.pdf",
+              "document_sha256": "ecc6c319ad6fccb83fd3af5885c042646daf29f32d98abde55e50dcb9349a8e2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "Effectiveness of GeneMAN 3D Prior Model. To assess how GeneMAN 3D prior model (“GeneMAN 3D prior”) make influence on reconstruction results, we conduct a comparison by substituting it with the original Zero-1-to-3 [30] model (“original 3D prior”) in our framework. As indicated in Fig. 9, (c) reveals unnatural human poses, with the neck and head leaning forward, misaligned with the input image. In contrast, our GeneMAN 3D prior model, finetuned on a large-scale multi-source human dataset, captures a more natural pose and shape prior, as shown in (d). This comparison highlights that our GeneMAN 3D prior offers more reliable and coherent guidance, leading to improved geometric accuracy and a more realistic human structure.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/768c19273e20fa09147885d03da7550f-Paper-Conference.pdf",
+              "document_sha256": "ecc6c319ad6fccb83fd3af5885c042646daf29f32d98abde55e50dcb9349a8e2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-b43ecf161a3a1600283379ed",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/768c19273e20fa09147885d03da7550f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "6dce8ef0b674ae673465be6c6d52e434acfb980e926d1077b5df5b9fde9ab655"
+    },
+    {
+      "id": "edge-81c66af8344b1c3422218d68",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-e1328d9a977e4748a89d85c3",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Point-M2AE: Multi-scale Masked Autoencoders for Hierarchical Point Cloud Pre-training",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Masked Autoencoders (MAE) have shown great potentials in self-supervised pre-training for language and 2D image transformers. However, it still remains an open question on how to exploit masked autoencoding for learning 3D representations of irregular point clouds. In this paper, we propose Point-M2AE, a strong Multi-scale MAE pre-training framework for hierarchical self-supervised learning of 3D point clouds. Unlike the standard transformer in MAE, we modify the encoder and decoder into pyramid architectures to progressively model spatial geometries and capture both fine-grained and high-level semantics of 3D shapes. For the encoder that downsamples point tokens by stages, we design a multi-scale masking strategy to generate consistent visible regions across scales, and adopt a local spatial self-attention mechanism during fine-tuning to focus on neighboring patterns. By multi-scale token propagation, the lightweight decoder gradually upsamples point tokens with complementary skip connections from the encoder, which further promotes the reconstruction from a global-to-local perspective. Extensive experiments demonstrate the state-of-the-art performance of Point-M2AE for 3D representation learning. With a frozen encoder after pre-training, Point-M2AE achieves 92.9% accuracy for linear SVM on ModelNet40, even surpassing some fully trained methods. By fine-tuning on downstream tasks, Point-M2AE achieves 86.43% accuracy on ScanObjectNN, +3.36% to the second-best, and largely benefits the few-shot classification, part segmentation and 3D object detection with the hierarchical pre-training scheme. Code is available at https://github.com/ZrrSkywalker/Point-M2AE."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Learning to represent from unlabeled data without annotations, known as self-supervised learning, has attained great success in natural language processing [10, 32, 33, 5], computer vision [19, 7, 8, 18] and multi-modality learning [31, 50, 21].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-e1328d9a977e4748a89d85c3",
+          "input_sha256": "1a5270673985c4afe7c397cf943d47d43e54f85f9310f1c6d14751df348cbf6b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/ad1d7a4df30a9c0c46b387815a774a84-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/ad1d7a4df30a9c0c46b387815a774a84-Paper-Conference.pdf",
+              "sha256": "5202cf7adbe4791e26135ec729448b6ae23c0e6fe6e0eb6c7f65ebbfb482232d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Learning to represent from unlabeled data without annotations, known as self-supervised learning, has attained great success in natural language processing [10, 32, 33, 5], computer vision [19, 7, 8, 18] and multi-modality learning [31, 50, 21]. By pre-training on the large-scale raw data, the networks are endowed with robust representation abilities and can significantly benefit downstream tasks with fine-tuning. Motivated by masked language modeling [32, 10], MAE [18] and some other methods [46, 53, 3] adopt asymmetric encoder-decoder transformers [13] to apply masked autoencoding for self-supervised learning on 2D images. They represent the input image as multiple local patches, and randomly mask them with a high ratio to build the pretext task for reconstruction. Specifically, the encoder aims at capturing high-level latent representations from limited visible patches, and the lightweight decoder is forced to reconstruct the RGB values of masked patches on 36th Conference on Neural Information Processing Systems (NeurIPS 2022).",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ad1d7a4df30a9c0c46b387815a774a84-Paper-Conference.pdf",
+              "document_sha256": "5202cf7adbe4791e26135ec729448b6ae23c0e6fe6e0eb6c7f65ebbfb482232d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Pre-training by Masked Modeling. Compared to contrastive learning methods [19, 7, 8] that learn from inter-sample relations, self-supervised pre-training by masked autoencoding builds the pretext tasks to predict the masked parts of the input signals. The series of GPT [32, 33, 5] and BERT [11] apply masked modeling to natural language processing and achieve extraordinary performance boost on downstream tasks with fine-tuning. Inspired by this, BEiT [4] proposes to match image patches with discrete tokens via dVAE [34] and pre-train a standard vision transformer [13, 49] by masked image modeling. On top of that, MAE [18] directly reconstructs the raw pixel values of masked tokens and performs great efficiency with a high mask ratio. The follow-up works further improve the performance of MAE by momentum encoder [53], contrastive learning [3], and modified reconstruction targets [42]. For self-supervised pre-training on 3D point clouds, the masked autoencoding has not been widely adopted. Similar to BEiT, Point-BERT [49] utilizes dVAE to map 3D patches to tokens for masked point modeling, but heavily relies on constrastive learning [19], complicated data augmentation, and the costly two-stage pre-training. In contrast, our Point-M2AE is a pure masked autoencoding method of one-stage pre-training, and follows MAE to reconstruct the input signals without dVAE mapping. Different from previous MAE methods adopting standard plain transformer, we propose a hierarchical transformer architecture along with the multi-scale masking strategy to better learn a strong and generic representation for 3D point clouds. Self-supervised Learning for Point Clouds. 3D representation learning without annotations has been widely studied in recent years. Mainstream methods mainly build the",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ad1d7a4df30a9c0c46b387815a774a84-Paper-Conference.pdf",
+              "document_sha256": "5202cf7adbe4791e26135ec729448b6ae23c0e6fe6e0eb6c7f65ebbfb482232d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Masked Autoencoders (MAE) have shown great potentials in self-supervised pretraining for language and 2D image transformers. However, it still remains an open question on how to exploit masked autoencoding for learning 3D representations of irregular point clouds. In this paper, we propose Point-M2AE, a strong Multi-scale MAE pre-training framework for hierarchical self-supervised learning of 3D point clouds. Unlike the standard transformer in MAE, we modify the encoder and decoder into pyramid architectures to progressively model spatial geometries and capture both fine-grained and high-level semantics of 3D shapes. For the encoder that downsamples point tokens by stages, we design a multi-scale masking strategy to generate consistent visible regions across scales, and adopt a local spatial self-attention mechanism during fine-tuning to focus on neighboring patterns. By multi-scale token propagation, the lightweight decoder gradually upsamples point tokens with complementary skip connections from the encoder, which further promotes the reconstruction from a global-to-local perspective. Extensive experiments demonstrate the state-of-the-art performance of Point-M2AE for 3D representation learning. With a frozen encoder after pretraining, Point-M2AE achieves 92.9% accuracy for linear SVM on ModelNet40, even surpassing some fully trained methods. By fine-tuning on downstream tasks, Point-M2AE achieves 86.43% accuracy on ScanObjectNN, +3.36% to the secondbest, and largely benefits the few-shot classification, part segmentation and 3D object detection with the hierarchical pre-training scheme. Code is available at https://github.com/ZrrSkywalker/Point-M2AE.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ad1d7a4df30a9c0c46b387815a774a84-Paper-Conference.pdf",
+              "document_sha256": "5202cf7adbe4791e26135ec729448b6ae23c0e6fe6e0eb6c7f65ebbfb482232d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-e1328d9a977e4748a89d85c3",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/ad1d7a4df30a9c0c46b387815a774a84-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "3D Scene Reconstruction and Representation with Neural Methods"
+      },
+      "sha256": "d5ee6015b56bae5c1398e3c293974f8cf7f3f9e5feef06cfeae3a02c12a91795"
+    }
+  ]
+}

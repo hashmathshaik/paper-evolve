@@ -1,0 +1,57 @@
+{
+  "review_date": "2026-11-13",
+  "human_verified": false,
+  "policies": [
+    {
+      "a": "paper-14b6d13795df97024a1bc186",
+      "b": "paper-9185d4195177ef6b102ed49a",
+      "action": "withhold",
+      "reason": "The supplied text links B to DreamCoder, but the asserted identity of the 2018 paper as DreamCoder is not established. DreamCoder has a separate 2021 publication. The reference context groups both years. Need a passage linking the particular 2018 contribution.",
+      "review_id": "R05",
+      "reviewer": "assistant"
+    },
+    {
+      "a": "paper-a8f694dd709536bdc976863b",
+      "b": "paper-cbc1508f1b75b479320a9eb8",
+      "action": "withhold",
+      "reason": "The excerpts show a comparison to Audio-MAE and changes to a shared MAE architecture, but do not explicitly establish reuse of this specific prior contribution. Extends is plausible; obtain the architecture paragraph. The OpenReview PDF was blocked during source verification.",
+      "review_id": "R07",
+      "reviewer": "assistant"
+    },
+    {
+      "a": "paper-c5a3219a46a39900b79fb202",
+      "b": "paper-6725e2db39616153d4075dfd",
+      "action": "infer_basis",
+      "reason": "The later analysis extends the UFM framework including the cited earlier cross-entropy analysis. The full supplied context supports an inferred connection, but the selected generic UFM quotes do not establish a unique explicit parent. Downgrade explicit_statement to contribution_comparison.",
+      "review_id": "R09",
+      "reviewer": "assistant"
+    },
+    {
+      "a": "paper-319d6d94d7b5f3d26f3aed56",
+      "b": "paper-df3dafbd5b75a44a3e801a5b",
+      "action": "withhold",
+      "reason": "B agrees with the earlier OOD likelihood failure and refines its explanation. Addressing a failure A discovered is not a criticism of A. Extends or a research-response link may fit; Challenges is not supported by this evidence.",
+      "review_id": "R20",
+      "reviewer": "assistant"
+    },
+    {
+      "a": "paper-10f9a1392383159c853ee4a2",
+      "b": "paper-881b78ce278f0aa8d67c7127",
+      "action": "withhold",
+      "reason": "A already demonstrates lossless image compression. B improves that task, including RGB handling. This does not support the claimed transfer into image compression; Extends is a better candidate label.",
+      "review_id": "R24",
+      "reviewer": "assistant"
+    },
+    {
+      "a": "paper-e38b5281828cd584ca16c2c9",
+      "b": "paper-9759fedd425f1de64fdfcc9d",
+      "review_id": "R30",
+      "reviewer": "assistant",
+      "action": "restrict_types",
+      "allowed_types": [
+        "Extends"
+      ],
+      "reason": "Generalizing the earlier valid theorem by removing assumptions supports Extends; Challenges needs separate evidence of an incorrect claim."
+    }
+  ]
+}

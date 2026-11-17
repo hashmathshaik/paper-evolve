@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Video Language Understanding with Temporal Reasoning",
+  "area": "Multimodal Understanding & Reasoning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-683ca8cbbad655485ce1a534",
+      "a": "paper-049304872f0996c323c881ed",
+      "b": "paper-bb357aed5a44972f64ce0ff3",
+      "state": {
+        "paper_a": {
+          "title": "COOT: Cooperative Hierarchical Transformer for Video-Text Representation Learning",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Many real-world video-text tasks involve different levels of granularity, such as frames and words, clip and sentences or videos and paragraphs, each with distinct semantics. In this paper, we propose a Cooperative hierarchical Transformer (COOT) to leverage this hierarchy information and model the interactions between different levels of granularity and different modalities. The method consists of three major components: an attention-aware feature aggregation layer, which leverages the local temporal context (intra-level, e.g., within a clip), a contextual transformer to learn the interactions between low-level and high-level semantics (inter-level, e.g. clip-video, sentence-paragraph), and a cross-modal cycle-consistency loss to connect video and text. The resulting method compares favorably to the state of the art on several benchmarks while having few parameters."
+        },
+        "paper_b": {
+          "title": "DeCEMBERT: Learning from Noisy Instructional Videos via Dense Captions and Entropy Minimization",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Leveraging large-scale unlabeled web videos such as instructional videos for pre-training followed by task-specific finetuning has become the de facto approach for many video-and-language tasks. However, these instructional videos are very noisy, the accompanying ASR narrations are often incomplete, and can be irrelevant to or temporally misaligned with the visual content, limiting the performance of the models trained on such data. To address these issues, we propose an improved video-and-language pre-training method that first adds automatically-extracted dense region captions from the video frames as auxiliary text input, to provide informative visual cues for learning better video and language associations. Second, to alleviate the temporal misalignment issue, our method incorporates an entropy minimization-based constrained attention loss, to encourage the model to automatically focus on the correct caption from a pool of candidate ASR captions. Our overall approach is named DeCEMBERT (Dense Captions and Entropy Minimization). Comprehensive experiments on three video-and-language tasks (text-to-video retrieval, video captioning, and video question answering) across five datasets demonstrate that our approach outperforms previous state-of-the-art methods. Ablation studies on pre-training and downstream tasks show that adding dense captions and constrained attention loss help improve the model performance. Lastly, we also provide attention visualization to show the effect of applying the proposed constrained attention loss."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-049304872f0996c323c881ed",
+          "b": "paper-bb357aed5a44972f64ce0ff3",
+          "input_sha256": "1965d6f759a04e473912f3ac2eee1d942fee8b647d73bc6ac9351282003fd5e1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/ff0abbcc0227c9124a804b084d161a2d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/ff0abbcc0227c9124a804b084d161a2d-Paper.pdf",
+              "sha256": "b5d5eeb57e99197073f9ee071889c75efd1f98ed94e9bb14bb7c526b7feec1e5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.naacl-main.193/",
+              "pdf_url": "https://aclanthology.org/2021.naacl-main.193.pdf",
+              "sha256": "65aae19184f77afb71841da7bc44795fa946b2ac9fec3be158d7fa2e8222310a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Many real-world video-text tasks involve different levels of granularity, such as frames and words, clip and sentences or videos and paragraphs, each with distinct semantics. In this paper, we propose a Cooperative hierarchical Transformer (COOT) to leverage this hierarchy information and model the interactions between different levels of granularity and different modalities. The method consists of three major components: an attention-aware feature aggregation layer, which leverages the local temporal context (intra-level, e.g., within a clip), a contextual transformer to learn the interactions between low-level and high-level semantics (inter-level, e.g. clip-video, sentence-paragraph), and a cross-modal cycle-consistency loss to connect video and text. The resulting method compares favorably to the state of the art on several benchmarks while having few parameters. All code is available open-source at https://github.com/gingsi/coot-videotext",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ff0abbcc0227c9124a804b084d161a2d-Paper.pdf",
+              "document_sha256": "b5d5eeb57e99197073f9ee071889c75efd1f98ed94e9bb14bb7c526b7feec1e5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of COOT model (best viewed in color). The model consist of two branches: one for video input (top) and one for text input (bottom). Given a video and a corresponding text, we encode them to frame-level/word-level features. Features belonging to each segment (clip/sentence) are fed to a standard temporal transformer (T-Transformer) followed by the proposed feature aggregation module (Attention-FA) to obtain clip/sentence-level features. Finally, a new contextual transformer produces the final video/paragraph embedding based on interactions between H local context (clip/sentence features) and global context (all frames/words features). `L align , `align , g `align and `CM C enforce the model to align the representations at different levels. To model intra-level cooperation, we introduce an attention-aware feature aggregation layer to focus on temporal interactions between low-level entities (Figure 1-Attention-FA). This component replaces traditional sequence representation aggregation methods in transformers such as using a [CLS] token [19, 11, 14, 15] or mean pooling [25] with an attention-aware fusion. It leverages temporal context to encourage important entities to contribute more to the final representation of a sequence of frames or words. For the inter-level cooperation, we introduce a contextual attention module, which enforces the network to highlight semantics relevant to the general context of the video and to suppress the irrelevant semantics. This is done by modeling the interaction between low-level (clips-sentences) and high-level entities (global contexts), as shown in Figure 1-green region. In addition to this architectural contributions, we introduce a new cross-modal cycle-consistency loss to enforce interaction between modalities",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/ff0abbcc0227c9124a804b084d161a2d-Paper.pdf",
+              "document_sha256": "b5d5eeb57e99197073f9ee071889c75efd1f98ed94e9bb14bb7c526b7feec1e5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Table 2: Video captioning results on YouCook2 val set. Model references: MTrans (Zhou et al., 2018), MART (Lei et al., 2020a), COOT (Ging et al., 2020), and MIL-NCE (Miech et al., 2020). PT indicates models with pre-training on HowTo100M.",
+              "url": "https://aclanthology.org/2021.naacl-main.193.pdf",
+              "document_sha256": "65aae19184f77afb71841da7bc44795fa946b2ac9fec3be158d7fa2e8222310a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Video Captioning. We follow Vaswani et al. (2017) to train auto-regressive captioning models, by only allowing the text tokens to attend to tokens that precede them at training. During inference time, we use beam search with beam size 5 to generate captions. For MSR-VTT, we evaluate captioning performance at sentence level. For YouCook2, we follow previous work (Lei et al., 2020a; Ging et al., 2020) to evaluate performance at paragraph-level, where single segment captions are concatenated as a paragraph for evaluation. We use standard metrics BLEU@4 (Papineni et al., 2002), METEOR (Denkowski and Lavie, 2014), RougeL (Lin, 2004), and CIDEr-D (Vedantam et al., 2015) to report performance. Table 1 shows the comparison on MSRVTT, our D E CEMBERT model achieves significant performance gain over previous state-of-the-art. Notably, D E CEMBERT outperforms ORG-TRL (Zhang et al., 2020) by 1.6% BLEU@4, 2.6% Rouge-L, and 1.4% CIDEr-D, even though ORG-TRL uses a set of strong visual features (appearance, motion, and object) together with a sophisticated graph encoder network and external language model supervision. Table 2 shows the results on YouCook2 captioning task. Overall, D E CEMBERT outperforms previous methods across all metrics. Compared to the strong baseline method MART+COOT+NIL-NCE (Lei et al., 2020a; Ging et al., 2020; Miech et al., 2020) PT, that uses HowTo100M videos for pre-training followed by a designated hierarchical modeling training, our approach still shows better performance with a reasonable margin. This shows the effectiveness of our pre-training strategy.",
+              "url": "https://aclanthology.org/2021.naacl-main.193.pdf",
+              "document_sha256": "65aae19184f77afb71841da7bc44795fa946b2ac9fec3be158d7fa2e8222310a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "ked language modeling on itwith with same clude captions from its neighboring clips, on it with the same clude captions from two neighboring clips, i.e., 331 hntg the same clude captions from itsthe two neighboring clips, i.e., 331 ed language modeling it the ame clude captions from its twotwo neighboring clips, i.e.,i.e., 331331 331 it with same clude captions from its two neighboring clips, i.e., language modeling on on it with e ame clude captions from its two neighboring clips, i.e., with ethe same clude captions from its twoits neighboring clips, i.e., 331331 king probability as the ASR captions. and s . In most cases, the correct matched ASR captions. s and s . In most cases, he correct matched 332 s and s . In most cases, the correct matched 332 ng probability as the ASR captions. s and s . In most cases, the correct matched Rns. captions. s and s . In most cases, the correct matched 332 i 1 i+1 probability as the ASR captions. s and s . In most cases, the correct matched 332332 332 i 1 i+1 aptions. s and s . In most cases, the correct matched 332 i 1 i+1 i 1 i+1 i 1 i+1 i 1 i+1 i 1 i+1 orm only inputting its associated caption si , we also in330 used as extra textcaption input, wefor also perform only inputting its associated caption s333 we also in330 i, caption for the clip is from these three captions. caption for the clip is from these three captions. 333 caption for the clip is from these three captions. the clip is from these three captions. caption for the clip is from these three captions. 333 caption for the clip is from these three captions. 333333 333 video-text matching, with probability of 0.5, caption for the clip is from these three captions. 333 with a probability of 0.5, video-text matching, with a probability of 0.5, bility of 0.5, a",
+              "url": "https://aclanthology.org/2021.naacl-main.193.pdf",
+              "document_sha256": "65aae19184f77afb71841da7bc44795fa946b2ac9fec3be158d7fa2e8222310a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Leveraging large-scale unlabeled web videos such as instructional videos for pre-training followed by task-specific finetuning has become the de facto approach for many videoand-language tasks. However, these instructional videos are very noisy, the accompanying ASR narrations are often incomplete, and can be irrelevant to or temporally misaligned with the visual content, limiting the performance of the models trained on such data. To address these issues, we propose an improved video-and-language pre-training method that first adds automatically-extracted dense region captions from the video frames as auxiliary text input, to provide informative visual cues for learning better video and language associations. Second, to alleviate the temporal misalignment issue, our method incorporates an entropy minimization-based constrained attention loss, to encourage the model to automatically focus on the correct caption from a pool of candidate ASR captions. Our overall approach is named D E CEMBERT (Dense Captions and Entropy Minimization). Comprehensive experiments on three video-and-language tasks (text-to-video retrieval, video captioning, and video question answering) across five datasets demonstrate that our approach outperforms previous state-of-the-art methods. Ablation studies on pre-training and downstream tasks show that adding dense captions and constrained attention loss help improve the model performance. Lastly, we also provide attention visualization to show the effect of applying the proposed constrained attention loss.1",
+              "url": "https://aclanthology.org/2021.naacl-main.193.pdf",
+              "document_sha256": "65aae19184f77afb71841da7bc44795fa946b2ac9fec3be158d7fa2e8222310a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-049304872f0996c323c881ed",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/ff0abbcc0227c9124a804b084d161a2d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-bb357aed5a44972f64ce0ff3",
+          "url": "https://aclanthology.org/2021.naacl-main.193/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "de8bf89112bbf36c12a51ccef20894b98150050b92caba0bd083571b43d5635f"
+    },
+    {
+      "id": "edge-6ac40df52d4e936bd6f20b33",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-62f0357036df460a016c1813",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Relation-aware Video Reading Comprehension for Temporal Language Grounding",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Temporal language grounding in videos aims to localize the temporal span relevant to the given query sentence. Previous methods treat it either as a boundary regression task or a span extraction task. This paper will formulate temporal language grounding into video reading comprehension and propose a Relation-aware Network (RaNet) to address it. This framework aims to select a video moment choice from the predefined answer set with the aid of coarse-and-fine choice-query interaction and choice-choice relation construction. A choice-query interactor is proposed to match the visual and textual information simultaneously in sentence-moment and token-moment levels, leading to a coarse-and-fine cross-modal interaction. Moreover, a novel multi-choice relation constructor is introduced by leveraging graph convolution to capture the dependencies among video moment choices for the best choice selection. Extensive experiments on ActivityNet-Captions, TACoS, and Charades-STA demonstrate the effectiveness of our solution. Codes will be available at https://github.com/Huntersxsx/RaNet."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "All the GloVe vectors have 300 dimensions whereas BERT Base is a 768-dimensional vector.\nTo further explore the effect of different textual features, we also conduct experiments on four pre-trained word embeddings ( i . e ., GloVe 6B, GloVe 42B, GloVe 840B and BERT Base ).\nBERT) tend to have better performance, indicating us pay more attention to textual features encoding.\nBERT (Devlin et al., 2019) is a language representation model considering bidirectional context, which achieved SOTA performance on many NLP tasks.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-62f0357036df460a016c1813",
+          "input_sha256": "5283b53ec43e24f7437a346a0d4e1b30eeb3e64d2b3ffb1fd5aac7591c5b0ff8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.324/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.324.pdf",
+              "sha256": "330b0b11e711cc712f94109b060a19694579bfba044926fbfb18391fbd53bb9e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "To further explore the effect of different textual features, we also conduct experiments on four pretrained word embeddings (i.e., GloVe 6B, GloVe 4.4.3 Feature Initialization Functions 42B, GloVe 840B and BERTBase ). GloVe (PenWe conduct experiments to reveal the effect of nington et al., 2014) is an unsupervised learndifferent feature initialization functions. For a ing algorithm for obtaining vector representations moment candidate (tsi , tei ), it has the correspond- for words, which has some common word vecing feature sequence Y from V̂ denoted as Y = tors trained on different corpora of varying sizes. tei {v̂k }k=t . We explore four types of operators (i.e., s BERT (Devlin et al., 2019) is a language reprei pooling, sampling, concatenation and addition) in sentation model considering bidirectional context, the multi-choice generator. The first two consider which achieved SOTA performance on many NLP all the information of the region within the tem- tasks. All the GloVe vectors have 300 dimensions poral span of the candidate. Pooling operator fo- whereas BERTBase is a 768-dimensional vector. cuses on the statistic characteristic and the sam- Table 6 compares the performance of these four pling serves as weight average operator. On the pre-trained word embeddings on TACoS dataset. contrary, the last two only consider the bound- From the results we can see that better word embedary information (vtsi and vtei ) of a moment can- dings (i.e.BERT) tend to have better performance, didate, which expect the cross-modal interaction indicating us pay more attention to textual features to be boundary sensitive. Table 5 reports the per- encoding. All the models in our paper use concateformance of different operators on TACoS dataset. nation feature initialization functions and",
+              "url": "https://aclanthology.org/2021.emnlp-main.324.pdf",
+              "document_sha256": "330b0b11e711cc712f94109b060a19694579bfba044926fbfb18391fbd53bb9e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 10,
+              "text": "Shaoxiang Chen and Yu-Gang Jiang. 2019. Semantic proposal for activity localization in videos via sentence query. In Proceedings of the AAAI Conference on Artificial Intelligence, volume 33, pages 8199– 8206. Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. BERT: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pages 4171–4186, Minneapolis, Minnesota. Association for Computational Linguistics. Jianfeng Dong, Xirong Li, Chaoxi Xu, Shouling Ji, Yuan He, Gang Yang, and Xun Wang. 2019. Dual encoding for zero-example video retrieval. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9346–9355. Jialin Gao, Zhixiang Shi, Guanshuo Wang, Jiani Li, Yufeng Yuan, Shiming Ge, and Xi Zhou. 2020. Accurate temporal action proposal generation with relation-aware pyramid network. In Proceedings of the AAAI Conference on Artificial Intelligence, volume 34, pages 10810–10817. Jiyang Gao, Chen Sun, Zhenheng Yang, and Ram Nevatia. 2017. Tall: Temporal activity localization via language query. In Proceedings of the IEEE international conference on computer vision, pages 5267– 5275. R. Ge, J. Gao, K. Chen, and R. Nevatia. 2019. Mac: Mining activity concepts for language-based temporal localization. In 2019 IEEE Winter Conference on Applications of Computer Vision (WACV), pages 245–253. Soham Ghosh, Anuva Agarwal, Zarana Parekh, and Alexander G Hauptmann. 2019. Excl: Extractive clip localization using natural language descriptions. In Proceedings of the 2019 Conference of the North American Chapter of the Association for",
+              "url": "https://aclanthology.org/2021.emnlp-main.324.pdf",
+              "document_sha256": "330b0b11e711cc712f94109b060a19694579bfba044926fbfb18391fbd53bb9e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this section, we first describe how to recast the temporal language grounding from the perspective of a multi-choice reading comprehension task, which is solved by the proposed Relation-aware Network (RaNet). Then, we introduce the detailed architecture of the RaNet, consisting of five components as shown in Fig.2. Finally, we illustrate the training and inference of our solution. 3.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.324.pdf",
+              "document_sha256": "330b0b11e711cc712f94109b060a19694579bfba044926fbfb18391fbd53bb9e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Figure 1: An illustration of temporal language grounding in videos based on the relation-aware network. Given a video and a query sentence, our approach aims to semantically align the query representation with a predefined answer set of video moment candidates (a1 ,a2 ,a3 and a4 ) and then mine the relationships between them to select the best-matched one.",
+              "url": "https://aclanthology.org/2021.emnlp-main.324.pdf",
+              "document_sha256": "330b0b11e711cc712f94109b060a19694579bfba044926fbfb18391fbd53bb9e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-62f0357036df460a016c1813",
+          "url": "https://aclanthology.org/2021.emnlp-main.324/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "d3821c10acdde54b4cac2fe78476bec8b831c479c338b798b192640aa0a2984e"
+    },
+    {
+      "id": "edge-e5ce0ed0f467e4607fffa10c",
+      "a": "paper-08c46a6bb6cc01b33010a6f0",
+      "b": "paper-4ac005bfa1e7cf68a12b8cf4",
+      "state": {
+        "paper_a": {
+          "title": "Self-Chained Image-Language Model for Video Localization and Question Answering",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Recent studies have shown promising results on utilizing large pre-trained image-language models for video question answering. While these image-language models can efficiently bootstrap the representation learning of video-language models, they typically concatenate uniformly sampled video frames as visual inputs without explicit language-aware, temporal modeling. When only a portion of a video input is relevant to the language query, such uniform frame sampling can often lead to missing important visual cues. Although humans often find a video moment to focus on and rewind the moment to answer questions, training a query-aware video moment localizer often requires expensive annotations and high computational costs. To address this issue, we propose Self-Chained Video Localization-Answering (SeViLA), a novel framework that leverages a single image-language model (BLIP- 2) to tackle both temporal keyframe localization and question answering on videos. SeViLA framework consists of two modules: Localizer and Answerer, where both are parameter-efficiently fine-tuned from BLIP-2. We propose two ways of chaining these modules for cascaded inference and self-refinement. First, in the forward chain, the Localizer finds multiple language-aware keyframes in a video, which the Answerer uses to predict the answer. Second, in the reverse chain, the Answerer generates keyframe pseudo-labels to refine the Localizer, alleviating the need for expensive video moment localization annotations. Our SeViLA framework outperforms several strong baselines/previous works on five challenging video question answering and event prediction benchmarks, and achieves the state-of-the-art in both fine-tuning (NExT-QA and STAR) and zero-shot (NExT-QA, STAR, How2QA, and VLEP) settings. We show a comprehensive analysis of our framework, including the impact of Localizer, comparisons of Localizer with other temporal localization models, pre-training/self-refinement of Localizer, and varying the number of keyframes."
+        },
+        "paper_b": {
+          "title": "Streaming Long Video Understanding with Large Language Models",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "This paper presents VideoStreaming, an advanced vision-language large model (VLLM) for video understanding, that capably understands arbitrary-length video with a constant number of video tokens streamingly encoded and adaptively selected.The challenge of video understanding in the vision language area mainly lies in the significant computational burden caused by the great number of tokens extracted from long videos. Previous works rely on sparse sampling or frame compression to reduce tokens. However, such approaches either disregard temporal information in a long time span or sacrifice spatial details, resulting in flawed compression. To address these limitations, our VideoStreaming has two core designs: Memory-Propagated Streaming Encoding and Adaptive Memory Selection. The Memory-Propagated Streaming Encoding architecture segments long videos into short clips and sequentially encodes each clip with a propagated memory. In each iteration, we utilize the encoded results of the preceding clip as historical memory, which is integrated with the current clip to distill a condensed representation that encapsulates the video content up to the current timestamp. This method not only incorporates long-term temporal dynamics into the streaming encoding process but also yields a fixed-length memory as a global representation for arbitrarily long videos. After the encoding process, the Adaptive Memory Selection strategy selects a constant number of question-related memories from all the historical memories, and feeds them into the LLM to generate informative responses. The question-related selection reduces redundancy within the memories, enabling efficient and precise video understanding. Meanwhile, the disentangled video extraction and reasoning design allows the LLM to answer different questions about a video by directly selecting corresponding memories, without the need to encode the whole video for each question. Through extensive experiments, our model achieves superior performance and higher efficiency on long video benchmarks, showcasing precise temporal comprehension for detailed question answering."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08c46a6bb6cc01b33010a6f0",
+          "b": "paper-4ac005bfa1e7cf68a12b8cf4",
+          "input_sha256": "c0d1fc78ae8d0ad3f4d67ca9b2abc8d38791a8fa60837136c0fd303daa19a98d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f22a9af8dbb348952b08bd58d4734b50-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f22a9af8dbb348952b08bd58d4734b50-Paper-Conference.pdf",
+              "sha256": "27bf44b6df49584cb3d81700cd59561c8145abe5b1524e512d45a9d8221d12f0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/d7ce06e9293c3d8e6cb3f80b4157f875-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/d7ce06e9293c3d8e6cb3f80b4157f875-Paper-Conference.pdf",
+              "sha256": "8955268762f014ff75d23eb9d0c163db4c5273c62ec60116e316da1677f0ebd2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent studies have shown promising results on utilizing large pre-trained imagelanguage models for video question answering. While these image-language models can efficiently bootstrap the representation learning of video-language models, they typically concatenate uniformly sampled video frames as visual inputs without explicit language-aware, temporal modeling. When only a portion of a video input is relevant to the language query, such uniform frame sampling can often lead to missing important visual cues. Although humans often find a video moment to focus on and rewind the moment to answer questions, training a query-aware video moment localizer often requires expensive annotations and high computational costs. To address this issue, we propose Self-Chained Video Localization-Answering (SeViLA), a novel framework that leverages a single image-language model (BLIP2) to tackle both temporal keyframe localization and question answering on videos. SeViLA framework consists of two modules: Localizer and Answerer, where both are parameter-efficiently fine-tuned from BLIP-2. We propose two ways of chaining these modules for cascaded inference and self-refinement. First, in the forward chain, the Localizer finds multiple language-aware keyframes in a video, which the Answerer uses to predict the answer. Second, in the reverse chain, the Answerer generates keyframe pseudo-labels to refine the Localizer, alleviating the need for expensive video moment localization annotations. Our SeViLA framework outperforms several strong baselines/previous works on five challenging video question answering and event prediction benchmarks, and achieves the stateof-the-art in both fine-tuning (NExT-QA and STAR) and zero-shot (NExT-QA, STAR, How2QA, and VLEP) settings. We show a",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f22a9af8dbb348952b08bd58d4734b50-Paper-Conference.pdf",
+              "document_sha256": "27bf44b6df49584cb3d81700cd59561c8145abe5b1524e512d45a9d8221d12f0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Self-Chained Video Localization-Answering (SeViLA) consists of a Localizer and an Answerer. Left: Forward chain for language-aware temporal keyframe localization and question answering. Right: Reverse chain for Localizer self-refinement with keyframe pseudo-labels. To address this, we introduce Self-Chained Video Localization-Answering (SeViLA), a novel video-language framework where we adopt a single image-LM to handle both temporal localization and question answering on videos, while avoiding expensive language-aware, temporal grounding annotations (plus self-refinement [48] between the two modules). Our SeViLA framework obtains two modules, a Localizer and an Answerer through parameter-efficient finetuning [62] of BLIP-2 [35], a recent state-of-the-art image-LM. SeViLA tackles video-language tasks by chaining the output of Localizer to the input of Answerer (forward chain, Fig. 1 left), while the Answerer gives feedback to refine the Localizer (backward chain, Fig. 1 right). In the forward chain, Localizer leverages the original image-language understanding of the BLIP-2 backbone and chooses the important language-aware video keyframes via the localization prompt “Does the information within the frame provide the necessary details to accurately answer the given question?” for each video frame. Then Answerer takes the concatenation of selected keyframes as visual input to predict video-level answers. In the backward chain, we generate keyframe pseudo-labels [26] to refine the Localizer, where we label a video frame as a keyframe if Answerer can output the correct answer using that frame. This self-refinement improves the language-aware temporal localization accuracy and alleviates the need for expensive keyframe annotations. We demonstrate the effectiveness",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f22a9af8dbb348952b08bd58d4734b50-Paper-Conference.pdf",
+              "document_sha256": "27bf44b6df49584cb3d81700cd59561c8145abe5b1524e512d45a9d8221d12f0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "zero-shot InternVideo [73] FrozenBiLM [84] SeViLA [86] LLoVi [87] Vamos [72] LangRepo [32] LangRepo [32] Ours",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/d7ce06e9293c3d8e6cb3f80b4157f875-Paper-Conference.pdf",
+              "document_sha256": "8955268762f014ff75d23eb9d0c163db4c5273c62ec60116e316da1677f0ebd2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "In this section, we present the results of our 8.3B model (half of Phi-2 2.7B in streaming encoder and Vicuna-7B as the LLM). We omit the comparisons to proprietary LLMs. VideoChatGPT. Table 2 presents the results on VideoChatGPT [50] in terms of Correctness of Information (CI), Detailed Orientation (DO), Contextual Understanding (CU), Temporal Understanding (TU) and Consistency (CO). Our model outperforms LLM-based video understanding methods on all five metrics, with a significant advantage in temporal understanding. It can be attributed to the memory-propagated streaming encoding architecture that explicitly captures temporal dynamics. EgoSchema. In Table 3, we report the zero-shot performance on the fullset test split of EgoSchema [51]. MC-ViT [7] consolidates a long-term memory to memorize long contexts but requires finetuning on related dataset [19]. LLM-based methods [87, 32, 72] curate answers from the captions of segmented video clips. However, these short-term captions cannot be optimized end-to-end and inevitably lose some detailed information. In contrast, we use a trainable streaming encoder to produce memory embeddings in long videos and feed them into an LLM to generate responses. Our model outperforms all zero-shot methods and is comparable to the finetuned MC-ViT, demonstrating the effectiveness of our streaming architecture for long-term temporal modeling. Next-QA. In Table 4, we perform zero-shot evaluation on the validation split of Next-QA [79] covering 5K multiple-choice questions. We respectively report the accuracy on Causal (C), Temporal (T) and Descriptive (D) subsets. Our method consistently surpasses all zero-shot counterparts. Typically, compared to LangRepo [32] with Mixtral-8×7B [30], our 8.3B model improves the causal, temporal, and",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/d7ce06e9293c3d8e6cb3f80b4157f875-Paper-Conference.pdf",
+              "document_sha256": "8955268762f014ff75d23eb9d0c163db4c5273c62ec60116e316da1677f0ebd2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "models like GPT [60] showcase remarkable performance and scalability. Recent groundbreaking works, such as PaLM [14], LLaMA [70] and GPT-4 [56], have pushed the boundaries by developing significantly larger models with billions of parameters. To harness the full potential of LLMs, a series of works [55, 57, 13] adopt supervised instruction tuning [74] to guide models towards generating more natural and contextually relevant responses. Inspired by the powerful reasoning capacities of LLMs, we explore using LLMs for challenging long video understanding. Vision Language Models like CLIP [59] employ contrastive learning on image-text pairs to formulate a unified embedding space [59, 28, 40]. Later, [46, 39, 56, 90, 3, 4, 85] integrate image features into LLMs and achieve promising visual reasoning. To process more complex video data, [50, 48, 44, 25, 86] use sparse sampling or simple temporal pooling to obtain compact video tokens for LLMs. [42, 88] employ Q-Former [39] to project frame-wise features into the textual space. To handle longer videos, [31, 75] utilize token merging [8] to reduce redundancy and alleviate computational burden. LLaMA-VID [43] proposes an instruction-aware compression strategy to represent each frame with only two tokens, but it overlooks the temporal relations in the compression step. [66, 22] develop memory banks to accumulate information in long videos and excel in global video comprehension. However, these methods struggle with moment-specific questions without explicit time indicators. To address these limitations, we propose a memory-propagated streaming encoding architecture with adaptive memory selection, which effectively reduces temporal redundancy and accurately selects relevant information for detailed question answering. Long Video",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/d7ce06e9293c3d8e6cb3f80b4157f875-Paper-Conference.pdf",
+              "document_sha256": "8955268762f014ff75d23eb9d0c163db4c5273c62ec60116e316da1677f0ebd2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Incorporating such long visual contents into LLMs requires a substantial number of tokens, which not only amplifies computational demands but also risks early contextual information loss [49]. Among the recent works on general video understanding with LLMs [48, 42, 44, 88, 50, 43, 66, 62], a prevalent strategy is using sparse temporal sampling [44, 86] or spatio-temporal pooling [50, 48] to reduce tokens. Unfortunately, this paradigm explicitly loses substantial information in the long time span. To address this limitation, [43, 42, 88] develop frame-wise compression, with LLaMA-VID [43] as a typical example. It compresses each frame into only two tokens but overlooks the inter-frame temporal dynamics which are vital in compressing temporal redundancy within videos. Besides, its question-dependent compression pipeline limits the ability to produce a general representation that can handle diverse instructions. Another line of works employ memory banks [77, 7] to store history information [66, 22]. Whereas, these methods rely on explicit timestamps to recall the historical details, limiting the ability to generate comprehensive responses without specific time indicators. In this work, we propose VideoStreaming, a novel Memory-Propagated Streaming Encoding architecture with Adaptive Memory Selection to sequentially encode a long video into condensed memories and generate responses referring to relevant timestamps. The core idea behind the memory-propagated streaming encoding is to preserve representative spatial cues and temporal dynamics while reducing temporal redundancy in videos. To achieve this goal, we segment the long video into multiple short clips and sequentially encode each clip. When encoding each clip, we first refer to the encoded results of its preceding",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/d7ce06e9293c3d8e6cb3f80b4157f875-Paper-Conference.pdf",
+              "document_sha256": "8955268762f014ff75d23eb9d0c163db4c5273c62ec60116e316da1677f0ebd2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08c46a6bb6cc01b33010a6f0",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f22a9af8dbb348952b08bd58d4734b50-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-4ac005bfa1e7cf68a12b8cf4",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/d7ce06e9293c3d8e6cb3f80b4157f875-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "cacb2465739c504d135565be23de74eae5f0393eb21df84c558a1f37c5d1e9a1"
+    },
+    {
+      "id": "edge-1a796c1896580b8c6ef0662f",
+      "a": "paper-0790ef669c17f328a4b25519",
+      "b": "paper-27bbc0a7aca588297a7534e6",
+      "state": {
+        "paper_a": {
+          "title": "Multimodal Transformer Networks for End-to-End Video-Grounded Dialogue Systems",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Developing Video-Grounded Dialogue Systems (VGDS), where a dialogue is conducted based on visual and audio aspects of a given video, is significantly more challenging than traditional image or text-grounded dialogue systems because (1) feature space of videos span across multiple picture frames, making it difficult to obtain semantic information; and (2) a dialogue agent must perceive and process information from different modalities (audio, video, caption, etc.) to obtain a comprehensive understanding. Most existing work is based on RNNs and sequence-to-sequence architectures, which are not very effective for capturing complex long-term dependencies (like in videos). To overcome this, we propose Multimodal Transformer Networks (MTN) to encode videos and incorporate information from different modalities. We also propose query-aware attention through an auto-encoder to extract query-aware features from non-text modalities. We develop a training procedure to simulate token-level decoding to improve the quality of generated responses during inference. We get state of the art performance on Dialogue System Technology Challenge 7 (DSTC7). Our model also generalizes to another multimodal visual-grounded dialogue task, and obtains promising performance."
+        },
+        "paper_b": {
+          "title": "MS-DETR: Natural Language Video Localization with Sampling Moment-Moment Interaction",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Given a text query, the task of Natural Language Video Localization (NLVL) is to localize a temporal moment in an untrimmed video that semantically matches the query. In this paper, we adopt a proposal-based solution that generates proposals (i.e. candidate moments) and then select the best matching proposal. On top of modeling the cross-modal interaction between candidate moments and the query, our proposed Moment Sampling DETR (MS-DETR) enables efficient moment-moment relation modeling. The core idea is to sample a subset of moments guided by the learnable templates with an adopted DETR framework. To achieve this, we design a multi-scale visual-linguistic encoder, and an anchor-guided moment decoder paired with a set of learnable templates. Experimental results on three public datasets demonstrate the superior performance of MS-DETR."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…a fundamental video-language task, it has a wide range of applications, such as video question answering (Fan et al., 2019; Yu et al., 2018; Li et al., 2019), video retrieval (Gabeur et al., 2020; Liu et al., 2019; Chen et al., 2020), and video grounded dialogue (Le et al., 2019; Kim et al., 2021).\n, 2020), and video grounded dialogue (Le et al., 2019; Kim et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0790ef669c17f328a4b25519",
+          "b": "paper-27bbc0a7aca588297a7534e6",
+          "input_sha256": "a5d959f2c5da0bcfaf4637fd2a0c8faefef16c1306b96644989de1cfddb55c9f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P19-1564/",
+              "pdf_url": "https://aclanthology.org/P19-1564.pdf",
+              "sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.77/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.77.pdf",
+              "sha256": "fa000cdabdcc49f4b0f7b3c06f58772ec9f9816e0a577c082caebbe081b7ed4d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Multimodal Transformer Networks for End-to-End Video-Grounded Dialogue Systems Hung Le1,2 , Doyen Sahoo1 , Nancy F. Chen2 , Steven C.H. Hoi1,3 1 Singapore Management University 2 Institute of Inforcomm Research (I2R), Singapore 3 Salesforce Research Asia {hungle.2018,doyens}@smu.edu.sg nfychen@i2r.a-star.edu.sg,chhoi@smu.edu.sg Abstract Developing Video-Grounded Dialogue Systems (VGDS), where a dialogue is conducted based on visual and audio aspects of a given video, is significantly more challenging than traditional image or text-grounded dialogue systems because (1) feature space of videos span across multiple picture frames, making it difficult to obtain semantic information; and (2) a dialogue agent must perceive and process information from different modalities (audio, video, caption, etc.) to obtain a comprehensive understanding. Most existing work is based on RNNs and sequence-to-sequence architectures, which are not very effective for capturing complex long-term dependencies (like in videos). To overcome this, we propose Multimodal Transformer Networks (MTN) to encode videos and incorporate information from different modalities. We also propose queryaware attention through an auto-encoder to extract query-aware features from non-text modalities. We develop a training procedure to simulate token-level decoding to improve the quality of generated responses during inference. We get state of the art performance on Dialogue System Technology Challenge 7 (DSTC7). Our model also generalizes to another multimodal visual-grounded dialogue task, and obtains promising performance.",
+              "url": "https://aclanthology.org/P19-1564.pdf",
+              "document_sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "to focus on specific parts of the features most relevant to the dialogue context (Hori et al., 2018; Kottur et al., 2018). Despite promising results, these methods are not very effective or efficient for processing video-frames, due to the complexity of long term sequential information from multiple modalities. We propose Multimodal Transformer Networks (MTN) which model the complex sequential information from video frames, and also incorporate information from different modalities. MTNs allow for complex reasoning over multimodal data such as in videos, by jointly attending to information in different representation subspaces, and making it easier (than RNNs) to fuse information from different modalities. Inspired by the success of Transformers (Vaswani et al., 2017)) for text, we propose novel neural architectures for VGDS: (1) We propose to capture complex sequential information from video frames using multi-head attention layers. Multihead attention is applied across several modalities (visual, audio, captions) repeatedly. This works like a memory network to allow the models to comprehensively reason over the video to answer human queries; (2) We propose an autoencoder component, designed as query-aware attention layer, to further improve the reasoning capability of the models on the non-text features of the input videos; and (3) We employ a training approach to improve the generated responses by simulating token-level decoding during training. We evaluated MTN on a video-grounded dialogue dataset (released through DSTC7 (Yoshino et al., 2018)). In each dialogue, video features such as audio, visual, and video caption, are available, which have to be processed and understood to hold a conversation. We conduct comprehensive experiments to validate our approach,",
+              "url": "https://aclanthology.org/P19-1564.pdf",
+              "document_sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Natural language video localization (NLVL) aims to retrieve a temporal moment from an untrimmed video that semantically corresponds to a given language query, see Fig. 1 for an example. This task is also known as temporal sentence grounding in video, and video moment retrieval. As a fundamental video-language task, it has a wide range of applications, such as video question answering (Fan et al., 2019; Yu et al., 2018; Li et al., 2019), video retrieval (Gabeur et al., 2020; Liu et al., 2019; Chen et al., 2020), and video grounded dialogue (Le et al., 2019; Kim et al., 2021). Generally speaking, in NLVL models, a video is first split to a sequence of many small fixed-length segments. Video features are then extracted from these segments to interact with the text query. Conceptually, each video segment can be viewed as a ∗",
+              "url": "https://aclanthology.org/2023.acl-long.77.pdf",
+              "document_sha256": "fa000cdabdcc49f4b0f7b3c06f58772ec9f9816e0a577c082caebbe081b7ed4d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "proach for its capability of cross-modal interaction at both segment level and moment level. We propose MS-DETR to facilitate effective text-moment alignment and efficient moment-moment interaction. For text-moment alignment, we devise a multi-scale vision-language transformer backbone to conduct segment-word and segment-segment interactions at different segment scales. For momentmoment interaction, our main focus is on which moments should be sampled for interaction, due to the large number of possible pairs. Recall that a moment is a span of segments. Let O(N ) be the magnitude of segment space; the magnitude of moments is O(N 2 ). Then moment-moment interaction has a space of O(N 4 ). In practice, not every pair of moments are relevant to each other, and are needed to be discriminated for a given query. Existing methods (Zhang et al., 2020b, 2021b; Wang et al., 2021a) mainly rely on a strong assumption that only the overlapping or adjacent moments are more likely to be relevant, i.e., moment locality. An example of moment locality is shown in Fig. 1, where two adjacent candidate moments share high level of visual similarity. The local interaction strategy is illustrated in Fig. 2, where the reference moment only interacts with the surrounding moments in the 2D-Map. However, not all relevant moments are overlapping or located close to each other. Following the example in Fig. 1, if the person plays saxophone again in the later part of the video (not showing for the sake of space), and the query becomes “He plays saxophone again”, then there will be at least two highly relevant moments for playing saxophone, separated by his action of talking in between. To correctly locate the answer, the model needs to understand that “again” refers to the second moment of playing",
+              "url": "https://aclanthology.org/2023.acl-long.77.pdf",
+              "document_sha256": "fa000cdabdcc49f4b0f7b3c06f58772ec9f9816e0a577c082caebbe081b7ed4d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Sequence-reduced Multi-modal Attention. Recall that relative lengths of ground truth range from 3% to 90% to their source videos. A fixed resolution for all moments becomes sub-optimal. To this end, we extend the aforementioned multi-modal attention and build a transformer that is capable of providing hierarchical text-enhanced video features, from high to low temporal resolutions. Our encoder design is motivated by the Pyramid Vision Transformer (PVT) (Wang et al., 2021b), which is a successful application of deploying transformer in segmentation problem. Handling high temporal resolution is a challenge. Directly applying multi-modal attention on high temporal resolution video features suffers from its quadratic complexity as in Eq. 2. Recall that the sequence lengths of key, query, and value in multihead attention (Vaswani et al., 2017) do not have to be the same. Its output has the same length as the query, and the key-value pair keep the same length. Thus, reducing sequence lengths of the key and value simultaneously is an effective way to save computation. Accordingly, we modify V→V attention in the visual cross-modal attention module to a sequence-reduced version as follows:",
+              "url": "https://aclanthology.org/2023.acl-long.77.pdf",
+              "document_sha256": "fa000cdabdcc49f4b0f7b3c06f58772ec9f9816e0a577c082caebbe081b7ed4d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0790ef669c17f328a4b25519",
+          "url": "https://aclanthology.org/P19-1564/"
+        },
+        "b": {
+          "paper_id": "paper-27bbc0a7aca588297a7534e6",
+          "url": "https://aclanthology.org/2023.acl-long.77/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "752479a6f0a6698d485185a437ae102fb13fcd2e20717f1f02fe5e6901860050"
+    },
+    {
+      "id": "edge-eb1890a4ca095b2845b5251f",
+      "a": "paper-0790ef669c17f328a4b25519",
+      "b": "paper-e0c7bb6105a97ba2d3d294a4",
+      "state": {
+        "paper_a": {
+          "title": "Multimodal Transformer Networks for End-to-End Video-Grounded Dialogue Systems",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Developing Video-Grounded Dialogue Systems (VGDS), where a dialogue is conducted based on visual and audio aspects of a given video, is significantly more challenging than traditional image or text-grounded dialogue systems because (1) feature space of videos span across multiple picture frames, making it difficult to obtain semantic information; and (2) a dialogue agent must perceive and process information from different modalities (audio, video, caption, etc.) to obtain a comprehensive understanding. Most existing work is based on RNNs and sequence-to-sequence architectures, which are not very effective for capturing complex long-term dependencies (like in videos). To overcome this, we propose Multimodal Transformer Networks (MTN) to encode videos and incorporate information from different modalities. We also propose query-aware attention through an auto-encoder to extract query-aware features from non-text modalities. We develop a training procedure to simulate token-level decoding to improve the quality of generated responses during inference. We get state of the art performance on Dialogue System Technology Challenge 7 (DSTC7). Our model also generalizes to another multimodal visual-grounded dialogue task, and obtains promising performance."
+        },
+        "paper_b": {
+          "title": "Span-based Localizing Network for Natural Language Video Localization",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Given an untrimmed video and a text query, natural language video localization (NLVL) is to locate a matching span from the video that semantically corresponds to the query. Existing solutions formulate NLVL either as a ranking task and apply multimodal matching architecture, or as a regression task to directly regress the target video span. In this work, we address NLVL task with a span-based QA approach by treating the input video as text passage. We propose a video span localizing network (VSLNet), on top of the standard span-based QA framework, to address NLVL. The proposed VSLNet tackles the differences between NLVL and span-based QA through a simple and yet effective query-guided highlighting (QGH) strategy. The QGH guides VSLNet to search for matching video span within a highlighted region. Through extensive experiments on three benchmark datasets, we show that the proposed VSLNet outperforms the state-of-the-art methods; and adopting span-based QA framework is a promising direction to solve NLVL."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "As an important vision-language understanding task, NLVL involves both computer vision and natural language processing techniques (Kr-ishna et al., 2017; Hendricks et al., 2017; Gao et al., 2018; Le et al., 2019; Yu et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0790ef669c17f328a4b25519",
+          "b": "paper-e0c7bb6105a97ba2d3d294a4",
+          "input_sha256": "fb6cbd0a3009fe87be0caa31406328425c383c0688c2437aefa1b72d4a40df05",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P19-1564/",
+              "pdf_url": "https://aclanthology.org/P19-1564.pdf",
+              "sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.585/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.585.pdf",
+              "sha256": "005e2704987975a77409c186cdef89c3089674cd8859f269f25561a6a7c7ef91"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Multimodal Transformer Networks for End-to-End Video-Grounded Dialogue Systems Hung Le1,2 , Doyen Sahoo1 , Nancy F. Chen2 , Steven C.H. Hoi1,3 1 Singapore Management University 2 Institute of Inforcomm Research (I2R), Singapore 3 Salesforce Research Asia {hungle.2018,doyens}@smu.edu.sg nfychen@i2r.a-star.edu.sg,chhoi@smu.edu.sg Abstract Developing Video-Grounded Dialogue Systems (VGDS), where a dialogue is conducted based on visual and audio aspects of a given video, is significantly more challenging than traditional image or text-grounded dialogue systems because (1) feature space of videos span across multiple picture frames, making it difficult to obtain semantic information; and (2) a dialogue agent must perceive and process information from different modalities (audio, video, caption, etc.) to obtain a comprehensive understanding. Most existing work is based on RNNs and sequence-to-sequence architectures, which are not very effective for capturing complex long-term dependencies (like in videos). To overcome this, we propose Multimodal Transformer Networks (MTN) to encode videos and incorporate information from different modalities. We also propose queryaware attention through an auto-encoder to extract query-aware features from non-text modalities. We develop a training procedure to simulate token-level decoding to improve the quality of generated responses during inference. We get state of the art performance on Dialogue System Technology Challenge 7 (DSTC7). Our model also generalizes to another multimodal visual-grounded dialogue task, and obtains promising performance.",
+              "url": "https://aclanthology.org/P19-1564.pdf",
+              "document_sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "to focus on specific parts of the features most relevant to the dialogue context (Hori et al., 2018; Kottur et al., 2018). Despite promising results, these methods are not very effective or efficient for processing video-frames, due to the complexity of long term sequential information from multiple modalities. We propose Multimodal Transformer Networks (MTN) which model the complex sequential information from video frames, and also incorporate information from different modalities. MTNs allow for complex reasoning over multimodal data such as in videos, by jointly attending to information in different representation subspaces, and making it easier (than RNNs) to fuse information from different modalities. Inspired by the success of Transformers (Vaswani et al., 2017)) for text, we propose novel neural architectures for VGDS: (1) We propose to capture complex sequential information from video frames using multi-head attention layers. Multihead attention is applied across several modalities (visual, audio, captions) repeatedly. This works like a memory network to allow the models to comprehensively reason over the video to answer human queries; (2) We propose an autoencoder component, designed as query-aware attention layer, to further improve the reasoning capability of the models on the non-text features of the input videos; and (3) We employ a training approach to improve the generated responses by simulating token-level decoding during training. We evaluated MTN on a video-grounded dialogue dataset (released through DSTC7 (Yoshino et al., 2018)). In each dialogue, video features such as audio, visual, and video caption, are available, which have to be processed and understood to hold a conversation. We conduct comprehensive experiments to validate our approach,",
+              "url": "https://aclanthology.org/P19-1564.pdf",
+              "document_sha256": "785b2ee0b6f3c03ca1f0d5fe41bca1599bb4ef5a47da22273a86fc18d3147568"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Given an untrimmed video, natural language video localization (NLVL) is to retrieve or localize a temporal moment that semantically corresponds to a given language query. An example is shown in Figure 1. As an important vision-language understanding task, NLVL involves both computer vision and natural language processing techniques (Krishna et al., 2017; Hendricks et al., 2017; Gao et al., 2018; Le et al., 2019; Yu et al., 2019). Clearly, cross-modal reasoning is essential for NLVL to correctly locate the target moment from a video. Prior works primarily treat NLVL as a ranking task, which is solved by applying multimodal ∗",
+              "url": "https://aclanthology.org/2020.acl-main.585.pdf",
+              "document_sha256": "005e2704987975a77409c186cdef89c3089674cd8859f269f25561a6a7c7ef91"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Given an untrimmed video and a text query, natural language video localization (NLVL) is to locate a matching span from the video that semantically corresponds to the query. Existing solutions formulate NLVL either as a ranking task and apply multimodal matching architecture, or as a regression task to directly regress the target video span. In this work, we address NLVL task with a span-based QA approach by treating the input video as text passage. We propose a video span localizing network (VSLNet), on top of the standard span-based QA framework, to address NLVL. The proposed VSLNet tackles the differences between NLVL and span-based QA through a simple and yet effective query-guided highlighting (QGH) strategy. The QGH guides VSLNet to search for matching video span within a highlighted region. Through extensive experiments on three benchmark datasets, we show that the proposed VSLNet outperforms the state-of-the-art methods; and adopting span-based QA framework is a promising direction to solve NLVL.1",
+              "url": "https://aclanthology.org/2020.acl-main.585.pdf",
+              "document_sha256": "005e2704987975a77409c186cdef89c3089674cd8859f269f25561a6a7c7ef91"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "kens may carry distinctive meanings. As the result, many events in a video are directly correlated and can even cause one another (Krishna et al., 2017). Causalities between word spans or sentences are usually indirect and can be far apart. Second, compared to word spans in text, human is insensitive to small shifting between video frames. In other words, small offsets between video frames do not affect the understanding of video content, but the differences of a few words or even one word could change the meaning of a sentence. As a baseline, we first solve the NLVL task with a standard span-based QA framework named VSLBase. Specifically, visual features are analogous to that of text passage; the target moment is regarded as the answer span. VSLBase is trained to predict the start and end boundaries of the answer span. Note that VSLBase does not address the two aforementioned major differences between video and natural language. To this end, we propose an improved version named VSLNet (Video Span Localizing Network). VSLNet introduces a Query-Guided Highlighting (QGH) strategy in addition to VSLBase. Here, we regard the target moment and its adjacent contexts as foreground, while the rest as background, i.e., foreground covers a slightly longer span than the answer span. With QGH, VSLNet is guided to search for the target moment within a highlighted region. Through region highlighting, VSLNet well addresses the two differences. First, the longer region provides additional contexts for locating answer span due to the continuous nature of video content. Second, the highlighted region helps the network to focus on subtle differences between video frames, because the search space is reduced compared to the full video. Experimental results on three benchmark datasets show",
+              "url": "https://aclanthology.org/2020.acl-main.585.pdf",
+              "document_sha256": "005e2704987975a77409c186cdef89c3089674cd8859f269f25561a6a7c7ef91"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0790ef669c17f328a4b25519",
+          "url": "https://aclanthology.org/P19-1564/"
+        },
+        "b": {
+          "paper_id": "paper-e0c7bb6105a97ba2d3d294a4",
+          "url": "https://aclanthology.org/2020.acl-main.585/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "d04b26b6bb7423ab36336b1f5d64f0213adb4ca255c09efe3da9e1880175ba27"
+    },
+    {
+      "id": "edge-8e7ac94cbaabfece40ce33b4",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-52df07c390cbf1f480c83557",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Video-LaVIT: Unified Video-Language Pre-training with Decoupled Visual-Motional Tokenization",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "In light of recent advances in multimodal Large Language Models (LLMs), there is increasing attention to scaling them from image-text data to more informative real-world videos. Compared to static images, video poses unique challenges for effective large-scale pre-training due to the modeling of its spatiotemporal dynamics. In this paper, we address such limitations in video-language pre-training with an efficient video decomposition that represents each video as keyframes and temporal motions. These are then adapted to an LLM using well-designed tokenizers that discretize visual and temporal information as a few tokens, thus enabling unified generative pre-training of videos, images, and text. At inference, the generated tokens from the LLM are carefully recovered to the original continuous pixel space to create various video content. Our proposed framework is both capable of comprehending and generating image and video content, as demonstrated by its competitive performance across 13 multimodal benchmarks in image and video understanding and generation. Our code and models are available at https://video-lavit.github.io."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Then, a pre-trained ViT encoder (Radford et al., 2021; Fang et al., 2023) is employed to separately encode these frames and produce a sequence of frame-level embeddings as the video representation.\nWe follow Phenaki (Villegas et al., 2023) and VideoPoet (Kondratyuk et al., 2023) in using a ViT-B/16 (Radford et al., 2021) to compute CLIP scores between 224 × 224 sized video frames and their corresponding captions.\nFollowing the success of using large-scale image-text pairs for contrastive learning of vision-language models (Radford et al., 2021), a similar idea has been exploited in generative pre-training, where visual and language data are jointly modeled under an autoregressive process.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-52df07c390cbf1f480c83557",
+          "input_sha256": "ec3619a9c2a622e84376d6d991d5630bfdd2397e9cb5094c5426e835bb1f991c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/jin24f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/jin24f/jin24f.pdf",
+              "sha256": "f4b50ea4c2e2d10516aa2d9a08ee2ce425fb68b4e51e1641cb9d88024fc3c9d5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "2. Related Work Vision-language pre-training. Following the success of using large-scale image-text pairs for contrastive learning of vision-language models (Radford et al., 2021), a similar idea has been exploited in generative pre-training, where visual and language data are jointly modeled under an autoregressive process. In practice, this is typically achieved by adapting visual image inputs to pre-trained LLMs (Raffel et al., 2020; Brown et al., 2020; Touvron et al., 2023a) via an intermediate module like cross-attention (Alayrac et al., 2022), Q-Former (Li et al., 2023c), or linear projection (Liu et al., 2023c). More recent approaches such as CM3Leon (Yu et al., 2023a) and LaVIT (Jin et al., 2024) advocate the use of discrete visual tokenizers (van den Oord et al., 2017; Esser et al., 2021) to form a unified next token prediction objective. However, these methods are primarily focused on image-text data and cannot be directly extended to videos due to the significantly higher computational cost.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/jin24f/jin24f.pdf",
+              "document_sha256": "f4b50ea4c2e2d10516aa2d9a08ee2ce425fb68b4e51e1641cb9d88024fc3c9d5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "This work aims to present an effective pre-training framework that harnesses the exceptional modeling capability of Large Language Models (LLMs) to facilitate the learning of video modality. In pursuit of this goal, we highlight two core designs: a video tokenizer (Section 3.1) which allows for the representation of all modalities in a unified discrete form, and a video detokenizer (Section 3.2) to map the generated discrete tokens back to the continuous pixel space. Coped with these two main components, Video-LaVIT can be optimized through a unified autoregressive training paradigm (Section 3.3), enabling it to simultaneously comprehend and generate various multimodal content. 3.1. Video Tokenization To encode an untrimmed video as inputs to LLMs, the prevailing approaches (Lin et al., 2023; Li et al., 2023d) mainly uniformly downsample the original video into a series of frames. Then, a pre-trained ViT encoder (Radford et al., 2021; Fang et al., 2023) is employed to separately encode these frames and produce a sequence of frame-level embeddings as the video representation. This straightforward way disregards the modeling of temporal dynamics between frames, thus impeding the capacity to understand the actions and camera transitions occurring in the video. While the utilization of 3D video encoders in very recent (Kondratyuk",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/jin24f/jin24f.pdf",
+              "document_sha256": "f4b50ea4c2e2d10516aa2d9a08ee2ce425fb68b4e51e1641cb9d88024fc3c9d5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "5. Conclusion This paper introduces Video-LaVIT, a multimodal generative pre-training method that empowers LLMs with unified comprehension and generation of videos, images, and language. At the core of our method is a video decomposition scheme that allows for more effective modeling of temporal information while reusing visual knowledge from imageonly multimodal LLMs. The decomposed keyframes and motion vectors can be efficiently tokenized to be adapted to LLMs for unified generative pre-training. Finally, the understanding and generative capabilities of Video-LaVIT are verified by extensive quantitative and qualitative results.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/jin24f/jin24f.pdf",
+              "document_sha256": "f4b50ea4c2e2d10516aa2d9a08ee2ce425fb68b4e51e1641cb9d88024fc3c9d5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "2023a), MM-Vet (Yu et al., 2023b). Our model successfully generalizes the pre-training knowledge to image comprehension tasks and provides the best overall performance. Specifically, with the same instruction dataset and the base model as LLaVA-1.5 (Liu et al., 2023a), our method consistently yields the best results on all image question answering datasets. For example on SQAI , it surpasses LLaVA-1.5 which has a higher input resolution by 3.2%, while consistently outperforming the other video-language models. The same advantages are further validated on more comprehensive multimodal benchmarks, where our model leads on three out of four benchmarks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/jin24f/jin24f.pdf",
+              "document_sha256": "f4b50ea4c2e2d10516aa2d9a08ee2ce425fb68b4e51e1641cb9d88024fc3c9d5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-52df07c390cbf1f480c83557",
+          "url": "https://proceedings.mlr.press/v235/jin24f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "2c3feeb654883dc0b244f78cf70f6fd0eaa52629ade91f6203242ea0f533f248"
+    },
+    {
+      "id": "edge-e517023182c1052cab826fb8",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-53440f8886ab2e1d1ae64ff2",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "VideoPrism: A Foundational Visual Encoder for Video Understanding",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We introduce VideoPrism, a general-purpose video encoder that tackles diverse video understanding tasks with a single frozen model. We pretrain VideoPrism on a heterogeneous corpus containing 36M high-quality video-caption pairs and 582M video clips with noisy parallel text (e.g., ASR transcripts). The pretraining approach improves upon masked autoencoding by global-local distillation of semantic video embeddings and a token shuffling scheme, enabling VideoPrism to focus primarily on the video modality while leveraging the invaluable text associated with videos. We extensively test VideoPrism on four broad groups of video understanding tasks, from web video question answering to CV for science, achieving state-of-the-art performance on 31 out of 33 video understanding benchmarks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "CLIP-B (Radford et al., 2021) 23.8 ATP-B (Buch et al., 2022) 20.2 VideoCoCa-g (Yan et al., 2022) 25.2 TACT-B (Bagad et al., 2023) 27.6 ImageBind-H (Girdhar et al., 2023) 25.4 VideoPrism-B 31.3 ( ↑ 3.7) VideoPrism-g 32.7 ( ↑ 5.1)\nMost recent FMs in CV focus on images (Radford et al., 2021; Yuan et al., 2021; Jia et al., 2021; Yu et al., 2022; Alayrac et al., 2022; Yan et al., 2022; Wang et al., 2022a; Chen et al., 2023c; Xu et al., 2023; Girdhar et al., 2023; Zhang et al., 2023b; Zhu et al., 2024).\nOn the modeling side, we ﬁrst contrastively learn semantic video embeddings (Radford et al., 2021; Jia et al., 2021) from all our video-text pairs of various qualities.\nFollowing prior arts (Radford et al., 2021; Jia et al., 2021; Cheng et al., 2023), we minimize a symmetric cross-entropy loss over the similarity scores of all video-text pairs in a mini-batch, initialize the spatial encoding modules using the image model of CoCa (Yu et al., 2022), and include…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-53440f8886ab2e1d1ae64ff2",
+          "input_sha256": "b23fa29eb876f0ad58e1ab28787315c6182646e2b461de5e8e5e1e447c477735",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/zhao24f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhao24f/zhao24f.pdf",
+              "sha256": "d6fb28d6d1cf39e0f570283a92240a1276a99c01af22057ac9e2aee2ff62b3d5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "On the data side, we approximate the desired pretraining corpus by assembling 36M high-quality video-caption pairs and 582M video clips with noisy parallel text (e.g., ASR transcripts, generated captions, and retrieved text). On the modeling side, we first contrastively learn semantic video embeddings (Radford et al., 2021; Jia et al., 2021) from all our video-text pairs of various qualities. Subsequently, we capitalize on the extensive video-only data by distilling the semantic embeddings globally and token-wise, improving upon masked video modeling (Tong et al., 2022; Feichtenhofer et al., 2022; Wang et al., 2023c) described below.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhao24f/zhao24f.pdf",
+              "document_sha256": "d6fb28d6d1cf39e0f570283a92240a1276a99c01af22057ac9e2aee2ff62b3d5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Our goal is to leverage both video-text pairs and the videoonly data curated in Section 2.1 to train VideoPrism scalably, so as to make VideoPrism a foundational video encoder capable of capturing both appearance and motion semantics from videos. We highlight the video-only modality rather than solely relying on video-text because the text in our large-scale pretraining corpus is very noisy for a majority of the videos. As shown in Figure 3, the training pipeline of VideoPrism consists of two stages: video-text contrastive training and masked video modeling. 2.3.1. S TAGE 1: V IDEO - TEXT CONTRASTIVE TRAINING In the first stage, we conduct contrastive learning to align a video encoder with a text encoder using all the videotext pairs. Following prior arts (Radford et al., 2021; Jia et al., 2021; Cheng et al., 2023), we minimize a symmetric cross-entropy loss over the similarity scores of all videotext pairs in a mini-batch, initialize the spatial encoding modules using the image model of CoCa (Yu et al., 2022), and include WebLI (Chen et al., 2023c) (about 1B images with alt-text) to the pretraining. The video encoder’s features are aggregated through a multi-head attention pooler (MAP) (Lee et al., 2019) before the loss computation. This stage allows the video encoder to learn rich visual semantics from language supervision, and the resulting model supplies semantic video embeddings for the second-stage training.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhao24f/zhao24f.pdf",
+              "document_sha256": "d6fb28d6d1cf39e0f570283a92240a1276a99c01af22057ac9e2aee2ff62b3d5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "we introduce and train several gluing layers while keeping both VideoPrism and the language decoder frozen. We then conduct evaluation under the zero-shot configuration on video captioning and QA benchmarks. Note that we do not tune our models separately for captioning and QA tasks. Please refer to Appendix G for implementation details. Datasets. We evaluate the model in the zero-shot setting on the test splits of a suite of standard video captioning datasets including MSRVTT (Xu et al., 2016), VATEX (Wang et al., 2019), and YouCook2 (Zhou et al., 2018), and video QA benchmarks including MSRVTT-QA (Xu et al., 2017), MSVD-QA (Xu et al., 2017), and NExTQA (Xiao et al., 2021). For video QA, where it is imperative to match the length and style of the model’s answers with groundtruths, we adopt the zero-shot approach of Flamingo (Alayrac et al., 2022) and use two-shot textonly prompts from the training set of the downstream task. Additionally, for MSRVTT-QA and MSVD-QA, we experiment with the closed-vocabulary evaluation configuration (Li et al., 2022; Yang et al., 2022). In this setting, we let the model score candidate answers according to their log-likelihoods and return the top one.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhao24f/zhao24f.pdf",
+              "document_sha256": "d6fb28d6d1cf39e0f570283a92240a1276a99c01af22057ac9e2aee2ff62b3d5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We introduce VideoPrism, a general-purpose video encoder that tackles diverse video understanding tasks with a single frozen model. We pretrain VideoPrism on a heterogeneous corpus containing 36M high-quality video-caption pairs and 582M video clips with noisy parallel text (e.g., ASR transcripts). The pretraining approach improves upon masked autoencoding by globallocal distillation of semantic video embeddings and a token shuffling scheme, enabling VideoPrism to focus primarily on the video modality while leveraging the invaluable text associated with videos. We extensively test VideoPrism on four broad groups of video understanding tasks, from web video question answering to CV for science, achieving state-of-the-art performance on 31 out of 33 video understanding benchmarks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/zhao24f/zhao24f.pdf",
+              "document_sha256": "d6fb28d6d1cf39e0f570283a92240a1276a99c01af22057ac9e2aee2ff62b3d5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-53440f8886ab2e1d1ae64ff2",
+          "url": "https://proceedings.mlr.press/v235/zhao24f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "50ee15d58d99afb8e7ccf28b3533f623e2bfb67c348db1b6ec85843e00f74001"
+    },
+    {
+      "id": "edge-a6b174bd84ed316406d8d271",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-73999f31114e8e954b8a9308",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Text-Adaptive Multiple Visual Prototype Matching for Video-Text Retrieval",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Cross-modal retrieval between videos and texts has gained increasing interest because of the rapid emergence of videos on the web. Generally, a video contains rich instance and event information and the query text only describes a part of the information. Thus, a video can have multiple different text descriptions and queries. We call it the Video-Text Correspondence Ambiguity problem. Current techniques mostly concentrate on mining local or multi-level alignment between contents of video and text (e.g., object to entity and action to verb). It is difficult for these methods to alleviate video-text correspondence ambiguity by describing a video using only one feature, which is required to be matched with multiple different text features at the same time. To address this problem, we propose a Text-Adaptive Multiple Visual Prototype Matching Model. It automatically captures multiple prototypes to describe a video by adaptive aggregation on video token features. Given a query text, the similarity is determined by the most similar prototype to find correspondence in the video, which is called text-adaptive matching. To learn diverse prototypes for representing the rich information in videos, we propose a variance loss to encourage different prototypes to attend to different contents of the video. Our method outperforms the state-of-the-art methods on four public video retrieval datasets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-73999f31114e8e954b8a9308",
+          "input_sha256": "db88e4397c64f24c15a2adfcfe5d3b6197aa8bdd54acced7988113132ae13586",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/fc65fab891d83433bd3c8d966edde311-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/fc65fab891d83433bd3c8d966edde311-Paper-Conference.pdf",
+              "sha256": "76d5256506f80788947b064e4227062ac439e3d5e3e628c2350c7944229e42a8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Figure 3: Inter-text similarity and minimum of intra-text similarity distribution on MSRVTT sample features. The features of the the left and right graph come from CLIP [19] and SentenceBertFormer [22] respectively. Intra-text similarity is defined as the similarity of different text descriptions for same video. Inter-text similarity is defined as the similarity of different text descriptions for different videos. As a result, the diversity of video contents can be represented by the minimum of intra-text similarity. It can be seen that at least one-third of the minimum of intra-text similarity is less than the mean of inter-text similarity on both graphs. It demonstrates that many videos have diverse captions and contents and it is necessary to use multiple visual prototypes to align with different text descriptions.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fc65fab891d83433bd3c8d966edde311-Paper-Conference.pdf",
+              "document_sha256": "76d5256506f80788947b064e4227062ac439e3d5e3e628c2350c7944229e42a8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Some methods aim to extract additional information from the video to get more fine-grained video features to be aligned with corresponding text features [5, 7, 8]. They focus on properly combining different video modalities, such as appearance, audio, speech, etc. Some methods pay attention to multi-level alignment, including text entity to video object, text verb to video action, and text phrase to video event [6, 9]. However, most of them ignore the fact that a video contains rich instance and event information, while the query text only describes a part of the information, which leads to video-text correspondence ambiguity problem. Concretely, as shown in Figure 1, due to the multiple characters in the video, the video has different text descriptions: “a woman does something”, “a man does something” or “a group does something”. The text descriptions are very diverse and scattered in the feature space. With diverse video contents , it is infeasible to align a single video feature with the diverse text features. Neither additional information-based methods nor multi-level alignment-based methods consider such correspondence ambiguity since both of them match a single video feature with multiple text features. In this work, we focus on video-text retrieval problem and aim to mine fine-grained and diverse event descriptions in a video and adaptively match them with multiple text descriptions to mitigate correspondence ambiguity issue for better alignment. Specifically, we automatically capture multiple prototypes for each video to account for its rich instance and event information by aggregating on token features. Based on multiple prototypes of a video, we aim at finding many-to-many correspondence between prototypes and text representations to reduce ambiguity. To",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fc65fab891d83433bd3c8d966edde311-Paper-Conference.pdf",
+              "document_sha256": "76d5256506f80788947b064e4227062ac439e3d5e3e628c2350c7944229e42a8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "methods. Given the small size of most video-text retrieval datasets, the dominant paradigm for video retrieval has been to combine pre-extracted features from “expert” models, such as models trained for a variety of tasks and on multiple modalities such as face, scene, and object recognition, action classification, and sound classification. CE [8] and MMT [5] compute the overall similarity for a video-text pair obtained as a weighted sum of each expert’s similarity with the text. DMM [7] uses hierarchical video-text alignment to explore the diverse properties in multi-modal cues for finegrained alignment. Another important paradigm is to first train on a large-scale vision-and-language dataset and then finetune on downstream dataset. ClipBERT [2] proposes an efficient end-to-end technique based on sparse sampling and demonstrates that the pretrained model by image-language dataset enables superior video-text retrieval initialization. Frozen [3] proposes an end-to-end trainable model that can benefit from large-scale image and video captioning datasets. Some works focus on the matching of different modalities. PCME [4] represents the samples from different modalities as probabilistic distributions in the common embedding space to capture one-to-many correspondences. SSVR [17] highlights the issue of one-to-one assumption in evaluation of video retrieval methods and proposes a new evaluation metric to address this. MQVR [18] tackles the issue of imperfect annotations in existing video retrieval datasets by focusing on the less-studied setting of multi-query video retrieval. Most of them, however, ignore the fact that a video contains rich instance and event information, whereas the query text only describes a portion of the information, resulting in video-text",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fc65fab891d83433bd3c8d966edde311-Paper-Conference.pdf",
+              "document_sha256": "76d5256506f80788947b064e4227062ac439e3d5e3e628c2350c7944229e42a8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-73999f31114e8e954b8a9308",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/fc65fab891d83433bd3c8d966edde311-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "c5e9db909fca0f9e518fae9609bd65e72297f06bcae239c07288238b1ab53b53"
+    },
+    {
+      "id": "edge-6eb5b3e8fff674a8a3fbe212",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-e8d68900ff63593494e99585",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "VC-Inspector: Advancing Reference-free Evaluation of Video Captions with Factual Analysis",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "We propose VC-Inspector, a lightweight, open-source large multimodal model (LMM) for reference-free evaluation of video captions, with a focus on factual accuracy. Unlike existing metrics that suffer from limited context handling, weak factuality assessment, or reliance on proprietary services, VC-Inspector offers a reproducible, fact-aware alternative that aligns closely with human judgments. To enable robust training and interpretable evaluation, we introduce a systematic approach for generating captions with controllable errors, paired with graded quality scores and explanatory annotations. Experiments show that VC-Inspector achieves state-of-the-art correlation with human judgments, generalizing across diverse domains (e.g., VATEX-Eval, Flickr8K-Expert, and Flickr8K-CF benchmarks) and revealing the potential for caption improvement."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Existing metrics (Shi et al., 2022; Sarto et al., 2023) typically measure visual-language alignment using pretrained multimodal embed-dings (Radford et al., 2021), but are limited by text\nAlthough it considers both frame-level and video-level embeddings, they are derived from an image-based encoder (Radford et al., 2021), and its text encoder is constrained by short context length.\nExisting metrics in this category typically leverage pretrained visual-language embeddings (Radford et al., 2021) to assess the semantic alignment be-tween V and ˆ X .",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-e8d68900ff63593494e99585",
+          "input_sha256": "f195a97fdc651267c78c4673d924aeaecfba563a6ce70f212c3ece5e27432f4a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.1552/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.1552.pdf",
+              "sha256": "d414076f2c336de7de2c641331c64e1d647293c243f991748cbb668e152fd96f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "(VLM) based metrics offer richer semantic alignment through continuous representations. ViLBERTScore (Lee et al., 2020) extends BERTScore using ViLBERT (Lu et al., 2019), but still requires comparison to reference captions. UMIC (Lee et al., 2021) and CLIP-based metrics (Hessel et al., 2021; Jiang et al., 2019; Cui et al., 2018; Sarto et al., 2023; Wada et al., 2024; Zeng et al., 2024; Lee et al., 2024; Shi et al., 2021; Liu and Wan, 2023) relax this constraint by directly modeling imagecaption semantic alignment via contrastive learning, though remain limited by the context length of their text encoders. Recently, Maeda et al. (2024) compare the candidate caption to the VLM-derived visual context with a LLM. However, these methods focus on static images and do not model the temporal dynamics, which limits their effectiveness for video caption evaluation. In summary, text-based methods require costly, high-quality reference captions, while image-based extensions remain less effective for video content. These challenges underscore the need for referencefree video caption evaluation tailored to video inputs, a topic that is relatively less studied compared to text-based and image-caption evaluation. EMScore (Shi et al., 2021) was an early attempt that supports evaluating video captions without a reference. Although it considers both frame-level and video-level embeddings, they are derived from an image-based encoder (Radford et al., 2021), and its text encoder is constrained by short context length. PAC-S (Sarto et al., 2023) and FactVC (Liu and Wan, 2023) augment EMScore with positive and negative data synthesis, respectively. While sharing some similarity to this work, they consider only a single level of corruption, with binary (positive/negative) differentiation,",
+              "url": "https://aclanthology.org/2026.acl-long.1552.pdf",
+              "document_sha256": "d414076f2c336de7de2c641331c64e1d647293c243f991748cbb668e152fd96f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "ducible for broad adoption. To address these limitations, we propose VC-Inspector, which leverages a lightweight, open-source large multimodal model (LMM) as the backbone for long-context reasoning and generalized video feature extraction. Our hypothesis is that the strong visual-language reasoning capability of LMMs can transfer effectively to this task. However, pretrained LMMs do not inherently produce factually grounded assessments and therefore require targeted supervision (Table 2). A key challenge is the scarcity of annotated captions exhibiting diverse degrees of factual accuracy for effective training. To overcome this, we introduce a novel data generation pipeline powered by large language models (LLMs) that systematically synthesizes candidate captions paired with graded quality scores and factual error explanations. In this work, we focus explicitly on object and action inaccuracies, which constitute the predominant sources of factual errors in video captions. The overall data generation and training framework is illustrated in Fig. 2. 3.2 Data Generation To create captions with controlled factual errors, we employ Llama-3.3-70B-Instruct to systematically alter objects and actions in ground truth captions from a supervised video caption dataset. Using this approach, we construct ActivityNet-FG-It, an instruction-tuning dataset for factual grounding derived from the ActivityNetCaptions (Krishna et al., 2017) training set. The data generation pipeline is illustrated in Fig. 3. Caption generation. Given a ground truth caption X, we first prompt the LLM to extract the set of objects O = {o1 , ..., oM } and actions A = {a1 , ..., aN }. We then randomly sample K ∼ U nif (0, M ) objects and L ∼ U nif (0, N ) actions to replace, forming a subset R ⊆ O ∪ A, where",
+              "url": "https://aclanthology.org/2026.acl-long.1552.pdf",
+              "document_sha256": "d414076f2c336de7de2c641331c64e1d647293c243f991748cbb668e152fd96f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "sitting on a chair, the caption “A little girl is sleeping on a chair” should receive a higher score than “A woman is sleeping on a chair”, because the latter deviates more from the video content. However, existing metrics like EMScore (Shi et al., 2021) often fail to capture even basic factual inaccuracies, such as incorrect objects or actions. To address these limitations, we propose VC-Inspector, built on top of a lightweight, opensource large multimodal model (LMM) trained to assess caption quality based on factual correctness. Unlike previous metrics that provide only a score, VC-Inspector also generates explanations for its judgments, improving interpretability. One key challenge is the lack of captions with varying degrees of factual quality for training. We overcome this by introducing a novel data generation framework powered by a large language model (LLM), which controllably modifies factual elements in ground-truth captions from ActivityNetCaptions (Krishna et al., 2017). This process yields ActivityNet-FG-It, a dataset of 44K instances for instruction tuning. Fig. 2 illustrates our data generation and training framework. We comprehensively evaluate the quality of VC-Inspector across multiple complementary settings. We first examine its consistency and reliability on two synthetic datasets, ActivityNet-FG-Eval and YouCook2-FG-Eval, which contain captions of diverse quality generated using the same pipeline as our instructiontuning data. Results show that VC-Inspector produces stable quality estimates across visual domains and caption lengths. We further assess its correlation with human judgments on two video caption datasets, VATEX-Eval (Shi et al., 2021) and YouCook2-Eval, and extend the evaluation to image caption benchmarks, Flickr8KExpert and",
+              "url": "https://aclanthology.org/2026.acl-long.1552.pdf",
+              "document_sha256": "d414076f2c336de7de2c641331c64e1d647293c243f991748cbb668e152fd96f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-e8d68900ff63593494e99585",
+          "url": "https://aclanthology.org/2026.acl-long.1552/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "b1c366a715fbae00b96084d17cb8768f1f787d422a250f5564231e0dc66863a4"
+    },
+    {
+      "id": "edge-c3c6c40a48501af8d810d054",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-e97a1d87e884debb80d2cf42",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Efficient Temporal Extrapolation of Multimodal Large Language Models with Temporal Grounding Bridge",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Despite progress in multimodal large language models (MLLMs), the challenge of interpreting long-form videos in response to linguistic queries persists, largely due to the inefficiency in temporal grounding and limited pre-trained context window size. In this work, we introduce Temporal Grounding Bridge (TGB), a novel framework that bootstraps MLLMs with advanced temporal grounding capabilities and broadens their contextual scope. Our framework significantly enhances the temporal capabilities of current MLLMs through three key innovations: an efficient multi-span temporal grounding algorithm applied to low-dimension temporal features projected from flow; a multimodal length extrapolation training paradigm that utilizes low-dimension temporal features to extend the training context window size; and a bootstrapping framework that bridges our model with pluggable MLLMs without requiring annotation. We validate TGB across seven video benchmarks and demonstrate substantial performance improvements compared with prior MLLMs. Notably, our model, initially trained on sequences of four frames, effectively handles sequences up to 16 longer without sacrificing performance, highlighting its scalability and effectiveness in real-world applications. Our code is publicly available."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Main Results and Analysis As shown in Table 5, our method outperforms baselines using additional feature extractors (Ren et al., 2015; Liu et al., 2021b,a; Radford et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-e97a1d87e884debb80d2cf42",
+          "input_sha256": "47417d20ce5dba54fc428d426bbfe4c1e242e810611746b8442c24224abb9c1c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.emnlp-main.556/",
+              "pdf_url": "https://aclanthology.org/2024.emnlp-main.556.pdf",
+              "sha256": "e539007042e0e040b1d9a09ea25432a24a0a635cfb9896d8fc340a98e04fbbc7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "SOTA methods. As shown in Table 4, our method’s performance on the videoQA dataset in a zeroshot setting is presented. Unlike VideoLLaVA, our method was not pretrained on additional datasets; it was only fine-tuned on the same visual instruction datasets. The results demonstrate that our method can match the performance of the latest state-ofthe-art (SOTA) MLLMs, even though the LLM of our model is less than half their size. This highlights the considerable promise of our framework in this domain. 4.2 Temporal Question Grounding on Video Setup We use the Temporal Question Grounding on Video (TQGV) dataset NExT-GQA (Xiao et al., 2023a) to evaluate the efficacy of our TGB. We select a wide range of MLLMs as baselines: VGT (Xiao et al., 2022), Temp (Buch et al., 2022; Xiao et al., 2023b), FrozenBiLM (Yang et al., 2022), IGV (Li et al., 2022), and SeViLA (Yu et al., 2023). These baseline models encompass a variety of architectures, text encoders, and vision encoders. In contrast, our method does not depend on heavy offline vision feature extractors. We obtain the optical flow using a fixed RAFT (Teed and Deng, 2020), a model with only 5.26 million parameters. This comparison highlights the efficiency and simplicity of our approach. Main Results and Analysis As shown in Table 5, our method outperforms baselines using additional feature extractors (Ren et al., 2015; Liu et al., 2021b,a; Radford et al., 2021). Our TGB with optical flow effectively learns temporal priors for videolanguage tasks. We suggest that discrete frames may introduce irrelevant visual cues, increasing the computational load for temporal learning. Despite this, all methods struggle with temporal grounding, with most mIoU values under 0.20, indicating a significant gap in current temporal modeling.",
+              "url": "https://aclanthology.org/2024.emnlp-main.556.pdf",
+              "document_sha256": "e539007042e0e040b1d9a09ea25432a24a0a635cfb9896d8fc340a98e04fbbc7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Previous Video-Language Understanding models commonly extract temporal features from videotext data using offline video encoders or image encoders (Carreira and Zisserman, 2017; Jiang et al., 2017; Xie et al., 2017; Feichtenhofer et al., 2019; Liu et al., 2021a; Tong et al., 2022), causing the model to be time-consuming and lack generality. To address these limitations, we propose a novel mechanism that combines high-dimension key visual cues with low-dimension motion features, ensuring efficiency without compromising visual information. We further contend that temporal grounding does not necessitate dense framelevel features. To support this claim, we introduce a Temporal Grounding Bridge that incorporates",
+              "url": "https://aclanthology.org/2024.emnlp-main.556.pdf",
+              "document_sha256": "e539007042e0e040b1d9a09ea25432a24a0a635cfb9896d8fc340a98e04fbbc7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "optical flows (Jiang et al., 2019; Feichtenhofer et al., 2019; Pfister et al., 2015; Feng et al., 2023; Zhang et al., 2018) during the temporal grounding stage through a dimensionality reduction. By injecting language queries, this approach generates parameter-efficient, language-guided temporal features. A key distinction of our work is that we do not use optical flow merely as supplementary information to enhance frame-based performance. Instead, our framework employs flow as a low-dimensional bridge, which can be directly or indirectly applied to infuse motion details into MLLMs. Importantly, the flow feature can be substituted with other types of features if needed. Feature Extraction We denote the optical flow for each pair of video frames as OF = {of1 , of2 , · · · , ofT } The low-dimension visual encoding is then computed over these extracted optical flows with a simple convolutional layer followed by a multi-layer perceptron (MLP) Eof = MLPt (CNNt (of )). For language queries, we use a trainable embedding layer to represent the soft query prompt, i.e., El = Embedding t (Q), where Q is the language query. Temporal Feature Length Extrapolation Despite the impressive efficacy of Transformer-based models within the sphere of deep learning, their operational capacity is inherently constrained by the length of the input. In the context of our research, the bridge is meticulously devised to identify the",
+              "url": "https://aclanthology.org/2024.emnlp-main.556.pdf",
+              "document_sha256": "e539007042e0e040b1d9a09ea25432a24a0a635cfb9896d8fc340a98e04fbbc7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-e97a1d87e884debb80d2cf42",
+          "url": "https://aclanthology.org/2024.emnlp-main.556/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Video Language Understanding with Temporal Reasoning"
+      },
+      "sha256": "7c5685caebb4705652854de02c31549343bece2ec01f4cb0e568a95334d6f18b"
+    }
+  ]
+}

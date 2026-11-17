@@ -1,0 +1,19 @@
+{
+  "total": 70861,
+  "abstracts": 70861,
+  "embeddings": 70861,
+  "model": "voyage-4-large",
+  "dimensions": 2048,
+  "problems": [],
+  "abstract_sources": {
+    "raw.githubusercontent.com": 19911,
+    "arxiv.org": 1288,
+    "api.semanticscholar.org": 9582,
+    "aclanthology.org": 9,
+    "openalex.org": 2746,
+    "huggingface.co": 2785,
+    "proceedings.mlr.press": 12662,
+    "papers.nips.cc": 21878
+  },
+  "updated_at": "2026-11-13T22:09:05.522858+00:00"
+}

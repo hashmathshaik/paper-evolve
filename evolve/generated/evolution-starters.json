@@ -1,0 +1,68 @@
+{
+  "papers": 70861,
+  "edges": 3733,
+  "classified_pairs": 29872,
+  "generated_at": "2026-11-16T05:50:51.289197+00:00",
+  "starters": [
+    {
+      "t": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "v": "naacl",
+      "y": 2019,
+      "u": "https://aclanthology.org/N19-1423/",
+      "mega": "Natural Language Processing & LLMs",
+      "topic": "Multilingual Neural Language Modeling and Embedding",
+      "leaf": "Unclustered",
+      "connections": 50
+    },
+    {
+      "t": "Learning Transferable Visual Models From Natural Language Supervision",
+      "v": "icml",
+      "y": 2021,
+      "u": "https://proceedings.mlr.press/v139/radford21a.html",
+      "mega": "Multimodal Understanding & Reasoning",
+      "topic": "Vision-Language Foundation Models and Multimodal Reasoning",
+      "leaf": "Vision-Language Pretraining and Cross-Modal Representation Learning",
+      "connections": 26
+    },
+    {
+      "t": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+      "v": "icml",
+      "y": 2018,
+      "u": "https://proceedings.mlr.press/v80/haarnoja18b.html",
+      "mega": "Reinforcement Learning",
+      "topic": "Reinforcement Learning Methods and Policies",
+      "leaf": "Unclustered",
+      "connections": 17
+    },
+    {
+      "t": "Denoising Diffusion Probabilistic Models",
+      "v": "neurips",
+      "y": 2020,
+      "u": "https://papers.nips.cc/paper_files/paper/2020/hash/4c5bcfec8584af0d967f1ab10179ca4b-Abstract.html",
+      "mega": "Generative Modeling and Inference",
+      "topic": "Generative Modeling and Inference Methods",
+      "leaf": "Unclustered",
+      "connections": 14
+    },
+    {
+      "t": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks",
+      "v": "neurips",
+      "y": 2018,
+      "u": "https://papers.nips.cc/paper_files/paper/2018/hash/5a4be1fa34e62bb8a6ec6b91d2462f5a-Abstract.html",
+      "mega": "Optimization & Federated Learning",
+      "topic": "Gradient-Based Learning and Optimization in Neural Networks",
+      "leaf": "Infinite-width neural tangent kernels",
+      "connections": 13
+    },
+    {
+      "t": "A Simple Framework for Contrastive Learning of Visual Representations",
+      "v": "icml",
+      "y": 2020,
+      "u": "https://proceedings.mlr.press/v119/chen20j.html",
+      "mega": "Cross-Cutting & Specialized Research",
+      "topic": "Self-Supervised Representation Learning",
+      "leaf": "Contrastive Self-Supervised Representation Learning",
+      "connections": 7
+    }
+  ]
+}

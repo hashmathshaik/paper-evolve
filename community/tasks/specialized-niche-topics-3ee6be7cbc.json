@@ -1,0 +1,1006 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Specialized / Niche Topics",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-08e7009ef92b481d7aea74ba",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-3d1253f2ea6863422bef3d8f",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "CTRLEval: An Unsupervised Reference-Free Metric for Evaluating Controlled Text Generation",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Existing reference-free metrics have obvious limitations for evaluating controlled text generation models. Unsupervised metrics can only provide a task-agnostic evaluation result which correlates weakly with human judgments, whereas supervised ones may overfit task-specific data with poor generalization ability to other datasets. In this paper, we propose an unsupervised reference-free metric called CTRLEval, which evaluates controlled text generation from different aspects by formulating each aspect into multiple text infilling tasks. On top of these tasks, the metric assembles the generation probabilities from a pre-trained language model without any model training. Experimental results show that our metric has higher correlations with human judgments than other baselines, while obtaining better generalization of evaluating generated texts from different models and with different qualities."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Both the sentiment and topic discriminators are implemented based on BERT (Devlin et al., 2019) and they achieve 94.\nAutomatic evaluation metrics are important for nat-ural language generation tasks, which can be simply divided into referenced, reference-free (also known as unreferenced) and hybrid metrics: 1) Referenced metrics usually measure the relevance between generated texts and reference texts via lexicon overlap (such as BLEU (Papineni et al., 2002), METEOR (Banerjee and Lavie, 2005) and ROUGE (Lin, 2004)) or embedding similarity (such as MoverScore (Zhao et al., 2019), BERTScore (Zhang et al., 2020b) and MARS (Liu et al., 2021b)).\nWe estimate IWF on a general corpus BookCorpus (Zhu et al., 2015), which is commonly adopted as the pre-training dataset in the existing works (Devlin et al., 2019): where | C | indicates the total number of sentences in BookCorpus and f w denotes the number of sentences containing the word w .\n, 2015), which is commonly adopted as the pre-training dataset in the existing works (Devlin et al., 2019):",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-3d1253f2ea6863422bef3d8f",
+          "input_sha256": "6a028f3d5f7f9b9e465e551fbea87293b232411efd7890843426f2cbb02e4322",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.164/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.164.pdf",
+              "sha256": "07af9c27e5fe8f4aeef1ac4408c3e19b355b66cf5eca9f588a9a47d7298f2511"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Automatic evaluation metrics are important for natural language generation tasks, which can be simply divided into referenced, reference-free (also known as unreferenced) and hybrid metrics: 1) Referenced metrics usually measure the relevance between generated texts and reference texts via lexicon overlap (such as BLEU (Papineni et al., 2002), METEOR (Banerjee and Lavie, 2005) and ROUGE (Lin, 2004)) or embedding similarity (such as MoverScore (Zhao et al., 2019), BERTScore (Zhang et al., 2020b) and MARS (Liu et al., 2021b)). 2) Reference-free metrics directly evaluate the quality of generated texts without references. Since unsupervised metrics like perplexity (Brown et al., 1992) and distinct n-grams (Li et al., 2016) can only provide a task-agnostic result which correlates weakly with human judgments (Hashimoto et al., 2019; Tevet and Berant, 2021), most of the reference-free metrics resort to supervised models. Specifically, they are trained to fit human-annotated ratings / labels (such as discriminator scores (Shen et al., 2017)) or distinguish human-written texts from negative samples (such as UNION (Guan and Huang, 2020)). 3) Hybrid metrics contain both referenced and reference-free scores, such as RUBER (Tao et al., 2018; Ghazarian et al., 2019), BLEURT (Sellam et al., 2020) and BARTScore (Yuan et al., 2021). Compared with existing reference-free metrics which are unsupervised, our metric can support the evaluation of generated texts from different aspects via the full utilization of pre-trained models and the formulation of text infilling tasks, which fits the evaluation protocol of controlled text generation well. Also, in contrast with supervised reference-free metrics, our metric can avoid over-",
+              "url": "https://aclanthology.org/2022.acl-long.164.pdf",
+              "document_sha256": "07af9c27e5fe8f4aeef1ac4408c3e19b355b66cf5eca9f588a9a47d7298f2511"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "is trained based on the sentiment / topic classification task, respectively (Chan et al., 2021). Both the sentiment and topic discriminators are implemented based on BERT (Devlin et al., 2019) and they achieve 94.15% / 91.54% on the corresponding test set, respectively. UNION (Guan and Huang, 2020): This method is a self-supervised metric which is trained to distinguish human-written texts from the automatically perturbed negative samples with well-designed negative sampling strategies and multi-task learning. We use the same datasets as the discriminator score to train UNION. BLEURT (Sellam et al., 2020): This method is a supervised metric which is pre-trained on synthetic examples and then fine-tuned to fit human ratings. We used the same instruction in §4.1 to additionally annotate the generated texts to construct the training set for BLEURT, whose amount is the same as the evaluation set. There is no overlap between BLEURT’s training set and the evaluation set. BARTScore (Yuan et al., 2021): This method utilizes the generation probabilities of BART (Lewis et al., 2020) to measure the relationship among sources, hypotheses, and references. Since this metric simultaneously contains referenced and reference-free parts, we only use the referencefree score in our experiments. We also use PEGASUS (Zhang et al., 2020a) as the base model for a fair comparison, which is denoted as BARTScorePEGASUS. 4.4",
+              "url": "https://aclanthology.org/2022.acl-long.164.pdf",
+              "document_sha256": "07af9c27e5fe8f4aeef1ac4408c3e19b355b66cf5eca9f588a9a47d7298f2511"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Existing reference-free metrics have obvious limitations for evaluating controlled text generation models. Unsupervised metrics can only provide a task-agnostic evaluation result which correlates weakly with human judgments, whereas supervised ones may overfit task-specific data with poor generalization ability to other datasets. In this paper, we propose an unsupervised reference-free metric called CTRLEval, which evaluates controlled text generation from different aspects by formulating each aspect into multiple text infilling tasks. On top of these tasks, the metric assembles the generation probabilities from a pre-trained language model without any model training. Experimental results show that our metric has higher correlations with human judgments than other baselines, while obtaining better generalization of evaluating generated texts from different models and with different qualities1 .",
+              "url": "https://aclanthology.org/2022.acl-long.164.pdf",
+              "document_sha256": "07af9c27e5fe8f4aeef1ac4408c3e19b355b66cf5eca9f588a9a47d7298f2511"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "under different combinations of control variables (Dathathri et al., 2020; Chan et al., 2021). The evaluation is commonly conducted in a reference-free setting because it is challenging to collect sufficient high-quality references for each input of control variables in this open-ended text generation task (Dathathri et al., 2020). However, both unsupervised and supervised metrics have shown limitations in the evaluation of controlled text generation: 1) Unsupervised metrics such as perplexity (Brown et al., 1992) can only provide task-agnostic evaluation regarding the overall quality of generated texts. However, controlled text generation tasks typically involve multiple evaluation aspects (Deng et al., 2021), including the quality of generated texts themselves and the relationship between generated texts and control variables. It is thus not surprising that existing unsupervised metrics without multi-aspect interpretability have low correlations with human judgments (Hashimoto et al., 2019). 2) Supervised metrics are commonly trained on the datasets of specific tasks to measure the corresponding aspects of generated texts (e.g., evaluating whether a generated text is accordant with the sentiment label) (Dathathri et al., 2020; Chan et al., 2021). This may cause over-fitting to task-specific data and degrade the generalization ability of metrics (Garbacea et al., 2019), thereby giving unstable evaluation of generated texts from different models or with different qualities (Guan and Huang, 2020). To deal with the above issues, we propose an unsupervised reference-free metric called CTRLEval for evaluating controlled text generation models. This metric performs evaluation from different aspects without any training on task-specific data. Specifically, we formulate the",
+              "url": "https://aclanthology.org/2022.acl-long.164.pdf",
+              "document_sha256": "07af9c27e5fe8f4aeef1ac4408c3e19b355b66cf5eca9f588a9a47d7298f2511"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-3d1253f2ea6863422bef3d8f",
+          "url": "https://aclanthology.org/2022.acl-long.164/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "65adfa44b54dae6a03ac5986e87579b7b8115d0d0cacb5679486d258816b04c4"
+    },
+    {
+      "id": "edge-0cf59b45cba0af5404f2e6a4",
+      "a": "paper-0932c0cd8dabb0d2cd1817cc",
+      "b": "paper-71e2696c72a33f0165c6cc29",
+      "state": {
+        "paper_a": {
+          "title": "TaPas: Weakly Supervised Table Parsing via Pre-training",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Answering natural language questions over tables is usually seen as a semantic parsing task. To alleviate the collection cost of full logical forms, one popular approach focuses on weak supervision consisting of denotations instead of logical forms. However, training semantic parsers from weak supervision poses difficulties, and in addition, the generated logical forms are only used as an intermediate step prior to retrieving the denotation. In this paper, we present TaPas, an approach to question answering over tables without generating logical forms. TaPas trains from weak supervision, and predicts the denotation by selecting table cells and optionally applying a corresponding aggregation operator to such selection. TaPas extends BERT’s architecture to encode tables as input, initializes from an effective joint pre-training of text segments and tables crawled from Wikipedia, and is trained end-to-end. We experiment with three different semantic parsing datasets, and find that TaPas outperforms or rivals semantic parsing models by improving state-of-the-art accuracy on SQA from 55.1 to 67.2 and performing on par with the state-of-the-art on WikiSQL and WikiTQ, but with a simpler model architecture. We additionally find that transfer learning, which is trivial in our setting, from WikiSQL to WikiTQ, yields 48.7 accuracy, 4.2 points above the state-of-the-art."
+        },
+        "paper_b": {
+          "title": "DIN-SQL: Decomposed In-Context Learning of Text-to-SQL with Self-Correction",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "There is currently a significant gap between the performance of fine-tuned models and prompting approaches using Large Language Models (LLMs) on the challenging task of text-to-SQL, as evaluated on datasets such as Spider. To improve the performance of LLMs in the reasoning process, we study how decomposing the task into smaller sub-tasks can be effective. In particular, we show that breaking down the generation problem into sub-problems and feeding the solutions of those sub-problems into LLMs can be an effective approach for significantly improving their performance. Our experiments with three LLMs show that this approach consistently improves their simple few-shot performance by roughly 10%, pushing the accuracy of LLMs towards SOTA or surpassing it. On the holdout test set of Spider, the SOTA, in terms of execution accuracy, was 79.9 and the new SOTA at the time of this writing using our approach is 85.3. Our approach with in-context learning beats many heavily fine-tuned models by at least 5%. Additionally, when evaluated on the BIRD benchmark, our approach achieved an execution accuracy of 55.9%, setting a new SOTA on its holdout test set."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0932c0cd8dabb0d2cd1817cc",
+          "b": "paper-71e2696c72a33f0165c6cc29",
+          "input_sha256": "b652d3bdcac477eaaa135a335677f87457fb95447d6d98efa4460b47d2584e09",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.398/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/72223cc66f63ca1aa59edaec1b3670e6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/72223cc66f63ca1aa59edaec1b3670e6-Paper-Conference.pdf",
+              "sha256": "9f2c001b00581bc55c01a28589a734e301b4968885510c7ebbf8e32917053400"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "the burden of data collection for semantic parsing, including paraphrasing (Wang et al., 2015), human in the loop (Iyer et al., 2017; Lawrence and Riezler, 2018) and training on examples from other domains (Herzig and Berant, 2017; Su and Yan, 2017). One prominent data collection approach focuses on weak supervision where a training example consists of a question and its denotation instead of the full logical form (Clarke et al., 2010; Liang et al., 2011; Artzi and Zettlemoyer, 2013). Although appealing, training semantic parsers from this input is often difficult due to the abundance of spurious logical forms (Berant et al., 2013; Guu et al., 2017) and reward sparsity (Agarwal et al., 2019; Muhlgay et al., 2019). In addition, semantic parsing applications only utilize the generated logical form as an intermediate step in retrieving the answer. Generating logical forms, however, introduces difficulties such as maintaining a logical formalism with sufficient expressivity, obeying decoding constraints (e.g. wellformedness), and the label bias problem (Andor et al., 2016; Lafferty et al., 2001). In this paper we present TA PAS (for Table Parser), a weakly supervised question answering model that reasons over tables without generating logical forms. TA PAS predicts a minimal program by selecting a subset of the table cells and a possible aggregation operation to be executed on top of them. Consequently, TA PAS can learn operations from natural language, without the need to specify them in some formalism. This is implemented by extending BERT’s architecture (Devlin et al., 2019) with additional embeddings that capture tabular structure, and with two classification layers for selecting cells and predicting a corresponding aggregation operator. Importantly, we introduce a",
+              "url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "document_sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "the scalar answer s. To train the model given this form of supervision one could search offline (Dua et al., 2019; Andor et al., 2019) or online (Berant et al., 2013; Liang et al., 2018) for programs (table cells and aggregation) that execute to s. In our table parsing setting, the number of spurious programs that execute to the gold scalar answer can grow quickly with the number of table cells (e.g., when s = 5, each COUNT over any five cells is potentially correct). As with this approach learning can easily fail, we avoid it. Instead, we make use of a training recipe where no search for correct programs is needed. Our approach results in an end-to-end differentiable training, similar in spirit to Neelakantan et al. (2015). We implement a fully differentiable layer that latently learns the weights for the aggregation prediction layer pa (·), without explicit supervision for the aggregation type. Specifically, we recognize that the result of executing each of the supported aggregation operators is a scalar. We then implement a soft differentiable estimation for each operator (Table 1), given the token selection probabilities and the table values: compute(op, ps , T ). Given the results for all aggregation operators we then calculate the expected result according to the current model: X spred = p̂a (opi ) · compute(opi , ps , T ), i=1 i) where p̂a (opi ) = P pa (op is a probability disi=1 pa (opi ) tribution normalized over aggregation operators excluding NONE. We then calculate the scalar answer loss with Huber loss (Huber, 1964) given by: ( 0.5 · a2 a≤δ Jscalar = 2 δ · a − 0.5 · δ otherwise",
+              "url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "document_sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Sequence-to-sequence models [Sutskever et al., 2014] have shown great potential in code generation tasks including text-to-SQL. The key idea is to jointly encode a given natural language question and the database schema and leverage a decoder to predict the target SQL. On the encoder side, learning a representation for the question and the database schema is carried out using bidirectional LSTM in IRNet [Graves and Graves, 2012], convolutional neural networks in RYANSQL [Choi et al., 2021], pretrained language models such as BERT in SQLova [Hwang et al., 2019] and graph neural networks in RATSQL [Wang et al., 2019], SADGA [Cai et al., 2021], and LGESQL [Cao et al., 2021]. Gan et al. [2021] propose an intermediate representation to bridge the gap between the natural language question and SQL statements. There has been also work on tabular language models that encode both tables and text such as TaBERT [Yin et al., 2020], TaPas [Herzig et al., 2020], and Grappa [Yu et al., 2020]. The methods on the decoder side can be categorized into sketch-based slot-filling and generationbased methods [Qin et al., 2022]. Sketch-based methods break the problem into several slot prediction sub-problems and aggregate the predictions for the slots of the SQL query to be generated [Hwang et al., 2019, Xu et al., 2017, Hui et al., 2021]. A drawback of these methods is that they cannot generalize to queries that do not follow the predefined templates. The generation-based methods [Guo et al., 2019, Wang et al., 2019, Cao et al., 2021, Huang et al., 2021] decode the SQL query as an abstract syntax tree. In contrast to pretrained and fine-tuned models, Rajkumar et al. [2022] and Liu et al. [2023a] conduct an evaluation of the zero-shot prompting capability of LLMs on text-to-SQL using",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/72223cc66f63ca1aa59edaec1b3670e6-Paper-Conference.pdf",
+              "document_sha256": "9f2c001b00581bc55c01a28589a734e301b4968885510c7ebbf8e32917053400"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "67.4 In this paper, we propose a novel method based on fewshot prompting that decomposes the task of natural lan55.1 guage text to SQL (referred to as text-to-SQL) into multiple sub-tasks. Previous works on text-to-SQL prompting 61.5 using LLMs are only evaluated in a zero-shot setting [Rajkumar et al., 2022, Liu et al., 2023a]. However, zero-shot prompting only provides a lower bound on the potential Table 1: Zero-shot and few-shot promptpower of LLMs for most tasks [Zhang et al., 2022, Ko- ing compared to fine-tuned approaches jima et al., 2022, Wei et al., 2022b, 2021, Brown et al., on the dev set of Spider 2020]. We show that our proposed method outperforms the few-shot prompting method by a large margin. We also compare our method with previous approaches on two cross-domain challenging benchmarks, Spider and BIRD. For Spider dataset, we use the two official evaluation metrics of execution accuracy and exact set match accuracy [Zhong et al., 2020]. We utilize two variants of the CodeX family, namely Davinci and Cushman [Chen et al., 2021], and the GPT-4 model for prompting. On the holdout test set of Spider, our method achieves an execution accuracy of 85.3% and 78.2% respectively using GPT-4 and CodeX Davinci models and an exact set match accuracy of 60% and 57% respectively using the same models. The large gap between the exact match and execution accuracies is due to the few-shot in-context nature of our method. Pretrained and fine-tuned approaches are more likely to generate SQL queries with a higher exact set match accuracy simply because these models have seen many examples during training that follow the composition style of the queries in the test set (queries in both sets are often written by the same people). Before our work, the SOTA on the test set had",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/72223cc66f63ca1aa59edaec1b3670e6-Paper-Conference.pdf",
+              "document_sha256": "9f2c001b00581bc55c01a28589a734e301b4968885510c7ebbf8e32917053400"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Despite improvements over zero-shot, few-shot models struggle on more complex queries including those where schema linking is less trivial and the queries that use multiple joins or have a nested structure, as discussed in Section 3. Our approach to address these challenges is to break down the problem into smaller sub-problems, solve each sub-problem, and use those solutions to construct a solution for the original problem. Similar approaches (e.g., chain-of-thought prompting [Wei et al., 2022b] and least-to-most prompting [Zhou et al., 2022]) have been taken to improve the performance of LLMs on tasks that can be broken down into multiple steps such as math word problems and compositional generalization [Cobbe et al., 2021, Lake and Baroni, 2018]. Unlike these domains where the tasks have a procedural structure with one step directly feeding into the next step, SQL queries in most parts are declarative and the possible steps and their boundaries are less clear. However, the thought process for writing SQL queries may be broken down to (1) detecting database tables and columns that are relevant to the query, (2) identifying the general query structure for more complex queries (e.g., group by, nesting, multiple joins, set operations, etc.), (3) formulating any procedural sub-components if they can be identified, and (4) writing the final query based on the solutions of the sub-problems. Based on this thought process, our proposed method for decomposing a text-to-SQL task consists of four modules (as depicted in Figure 2): (1) schema linking, (2) query classification and decomposition, (3) SQL generation, and (4) self-correction, which are explained in detail in the following sub-sections. While these modules may be implemented using techniques from the literature, we",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/72223cc66f63ca1aa59edaec1b3670e6-Paper-Conference.pdf",
+              "document_sha256": "9f2c001b00581bc55c01a28589a734e301b4968885510c7ebbf8e32917053400"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0932c0cd8dabb0d2cd1817cc",
+          "url": "https://aclanthology.org/2020.acl-main.398/"
+        },
+        "b": {
+          "paper_id": "paper-71e2696c72a33f0165c6cc29",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/72223cc66f63ca1aa59edaec1b3670e6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "c12c6199abe41de63faf76db52c67f2e9b85761062c91ad4ab5fde2f36cd6cb5"
+    },
+    {
+      "id": "edge-0e75bf6f2d2f1871240d0020",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-f8545db866bd797597d2ec66",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Multi-Instance Causal Representation Learning for Instance Label Prediction and Out-of-Distribution Generalization",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Multi-instance learning (MIL) deals with objects represented as bags of instances and can predict instance labels from bag-level supervision. However, significant performance gaps exist between instance-level MIL algorithms and supervised learners since the instance labels are unavailable in MIL. Most existing MIL algorithms tackle the problem by treating multi-instance bags as harmful ambiguities and predicting instance labels by reducing the supervision inexactness. This work studies MIL from a new perspective by considering bags as auxiliary information, and utilize it to identify instance-level causal representations from bag-level weak supervision. We propose the CausalMIL algorithm, which not only excels at instance label prediction but also provides robustness to distribution change by synergistically integrating MIL with identifiable variational autoencoder. Our approach is based on a practical and general assumption: the prior distribution over the instance latent representations belongs to the non-factorized exponential family conditioning on the multi-instance bags. Experiments on synthetic and real-world datasets demonstrate that our approach significantly outperforms various baselines on instance label prediction and out-of-distribution generalization tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-f8545db866bd797597d2ec66",
+          "input_sha256": "e8a35da29b5eda461f6bbdb4fbaa84c0acea1c84444f9303878169006ee4e916",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/e261e92e1cfb820da930ad8c38d0aead-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/e261e92e1cfb820da930ad8c38d0aead-Paper-Conference.pdf",
+              "sha256": "147a68d3aa574e01c61257928c833c43df60e96c9e1a12eafb6ffb5fa93bffba"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "where DKL denotes the KL-divergence between the approximation and the true posterior, and L is a lower bound of the marginal likelihood pθ (x) because of the non-negativity of the KL-divergence. Recently, it has been shown that VAEs with unconditional prior distributions pθ (z) are not identifiable [22], but the latent factors z can be identified with a conditionally factorized prior distribution pθ (x|u) over the latent variables to break the symmetry, where u is an additionally observed variable [17].",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/e261e92e1cfb820da930ad8c38d0aead-Paper-Conference.pdf",
+              "document_sha256": "147a68d3aa574e01c61257928c833c43df60e96c9e1a12eafb6ffb5fa93bffba"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 10,
+              "text": "Most MIL algorithms can be categorized into two groups according to whether they work at the bag space or at the instance space. Bag space algorithms [43, 37, 41, 10] work by embedding multi-instance bags into a single feature vector representation and then solving the single-instance learning problem in the embedded space, and therefore are capable of predicting instance labels. Instance space MIL algorithms aim to directly separate the positive instances from the negative ones [2, 16, 12, 34]. These algorithms can be used to predict instance labels, although not all of them are explicitly designed for the task.However, these algorithms only work with pre-computed features. Recently, several deep learning-based MIL algorithms have been proposed by utilizing permutationinvariant pooling operations, and can be used for instance label prediction. For example, [35] used a max-pooling layer with a fully connected neural network; [15] introduced the attention mechanism as a permutation-invariant MIL pooling operation and used the attention weights for instance label prediction; [29] proposed to integrate self-attention with the attention mechanism for capturing the non-i.i.d. information among instances; [21] utilized Gumbel reparametrization and proposed an algorithm for the generalized MIL assumption. Unfortunately, none of the above methods learn semantically meaningful representations. Unsupervised learning of meaningful representations with VAE-based models has attracted much attention [13, 6]. Since it has been shown that unsupervised disentanglement is theoretically impossible without inductive biases [22], various methods have been proposed for learning disentangled representations using different forms of weak supervisions. One form of weakly-supervised",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/e261e92e1cfb820da930ad8c38d0aead-Paper-Conference.pdf",
+              "document_sha256": "147a68d3aa574e01c61257928c833c43df60e96c9e1a12eafb6ffb5fa93bffba"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this work, we proposed CausalMIL, an algorithm that learns semantically meaningful causal representations from multi-instance bags and the corresponding bag-level supervision. The learned representations not only significantly improve the performances of traditional MIL tasks such as instance label prediction, but also exhibits notable performances in supervised learning tasks such as OOD generalization. Qualitative and quantative evaluation results show that CausalMIL performs significantly better than existing state-of-the-art deep MIL algorithms on semi-synthetic and realworld datasets. There are some limitations of our method and many future directions worth investigating. For example, CausalMIL is only designed for the standard multi-instance assumption. It would be interesting to see if the results extend to other assumptions in multi-instance learning. A possible way for such extension is to utilize the Gumbel reparameterization as discussed in [21]. Another possible direction would be developing an extension to learning from positive unlabeled (PU) examples, another weakly supervised learning problem that is closely related to MIL.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/e261e92e1cfb820da930ad8c38d0aead-Paper-Conference.pdf",
+              "document_sha256": "147a68d3aa574e01c61257928c833c43df60e96c9e1a12eafb6ffb5fa93bffba"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Multi-instance learning (MIL) deals with objects represented as bags of instances and can predict instance labels from bag-level supervision. However, significant performance gaps exist between instance-level MIL algorithms and supervised learners since the instance labels are unavailable in MIL. Most existing MIL algorithms tackle the problem by treating multi-instance bags as harmful ambiguities and predicting instance labels by reducing the supervision inexactness. This work studies MIL from a new perspective by considering bags as auxiliary information, and utilize it to identify instance-level causal representations from bag-level weak supervision. We propose the CausalMIL algorithm, which not only excels at instance label prediction but also provides robustness to distribution change by synergistically integrating MIL with identifiable variational autoencoder. Our approach is based on a practical and general assumption: the prior distribution over the instance latent representations belongs to the non-factorized exponential family conditioning on the multi-instance bags. Experiments on synthetic and real-world datasets demonstrate that our approach significantly outperforms various baselines on instance label prediction and out-of-distribution generalization tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/e261e92e1cfb820da930ad8c38d0aead-Paper-Conference.pdf",
+              "document_sha256": "147a68d3aa574e01c61257928c833c43df60e96c9e1a12eafb6ffb5fa93bffba"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-f8545db866bd797597d2ec66",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/e261e92e1cfb820da930ad8c38d0aead-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "b100a1f27c2afefb16f7f9e497d042dafe1a93b40a044a24741ed949e0fa7a89"
+    },
+    {
+      "id": "edge-1a7775cd13596d52ef755751",
+      "a": "paper-03ec6447f64dd38c98f38f89",
+      "b": "paper-23a3fac768dce0562bd3911a",
+      "state": {
+        "paper_a": {
+          "title": "Learning Attentional Communication for Multi-Agent Cooperation",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Communication could potentially be an effective way for multi-agent cooperation. However, information sharing among all agents or in predefined communication architectures that existing methods adopt can be problematic. When there is a large number of agents, agents cannot differentiate valuable information that helps cooperative decision making from globally shared information. Therefore, communication barely helps, and could even impair the learning of multi-agent cooperation. Predefined communication architectures, on the other hand, restrict communication among agents and thus restrain potential cooperation. To tackle these difficulties, in this paper, we propose an attentional communication model that learns when communication is needed and how to integrate shared information for cooperative decision making. Our model leads to efficient and effective communication for large-scale multi-agent cooperation. Empirically, we show the strength of our model in a variety of cooperative scenarios, where agents are able to develop more coordinated and sophisticated strategies than existing methods."
+        },
+        "paper_b": {
+          "title": "Learning Distilled Collaboration Graph for Multi-Agent Perception",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "To promote better performance-bandwidth trade-off for multi-agent perception, we propose a novel distilled collaboration graph (DiscoGraph) to model trainable, pose-aware, and adaptive collaboration among agents. Our key novelties lie in two aspects. First, we propose a teacher-student framework to train DiscoGraph via knowledge distillation. The teacher model employs an early collaboration with holistic-view inputs; the student model is based on intermediate collaboration with single-view inputs. Our framework trains DiscoGraph by constraining post-collaboration feature maps in the student model to match the correspondences in the teacher model. Second, we propose a matrix-valued edge weight in DiscoGraph. In such a matrix, each element reflects the inter-agent attention at a specific spatial region, allowing an agent to adaptively highlight the informative regions. During inference, we only need to use the student model named as the distilled collaboration network (DiscoNet). Attributed to the teacher-student framework, multiple agents with the shared DiscoNet could collaboratively approach the performance of a hypothetical teacher model with a holistic view. Our approach is validated on V2X-Sim 1.0, a large-scale multi-agent perception dataset that we synthesized using CARLA and SUMO co-simulation. Our quantitative and qualitative experiments in multi-agent 3D object detection show that DiscoNet could not only achieve a better performance-bandwidth trade-off than the state-of-the-art collaborative perception methods, but also bring more straightforward design rationale. Our code is available on https://github.com/ai4ce/DiscoNet."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03ec6447f64dd38c98f38f89",
+          "b": "paper-23a3fac768dce0562bd3911a",
+          "input_sha256": "9e5cac86b7924c49194ac7d2a0f2d3eda83b69e8e731885cbc897939a0be2970",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/6a8018b3a00b69c008601b8becae392b-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/f702defbc67edb455949f46babab0c18-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/f702defbc67edb455949f46babab0c18-Paper.pdf",
+              "sha256": "15774a9bb1f25607b2cb9bc3672103e0c5a74323d694b52fab64cf3825cf3af2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Communication could potentially be an effective way for multi-agent cooperation. However, information sharing among all agents or in predefined communication architectures that existing methods adopt can be problematic. When there is a large number of agents, agents cannot differentiate valuable information that helps cooperative decision making from globally shared information. Therefore, communication barely helps, and could even impair the learning of multi-agent cooperation. Predefined communication architectures, on the other hand, restrict communication among agents and thus restrain potential cooperation. To tackle these difficulties, in this paper, we propose an attentional communication model that learns when communication is needed and how to integrate shared information for cooperative decision making. Our model leads to efficient and effective communication for large-scale multi-agent cooperation. Empirically, we show the strength of our model in a variety of cooperative scenarios, where agents are able to develop more coordinated and sophisticated strategies than existing methods.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "document_sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "agents communicate with each other, since receiving a large amount of information requires high bandwidth and incurs long delay and high computational complexity. Predefined communication architectures, e.g., Master-Slave [8], might help, but they restrict communication among specific agents and thus restrain potential cooperation. To tackle these difficulties, we propose an attentional communication model, called ATOC, to enable agents to learn effective and efficient communication under partially observable distributed environment for large-scale MARL. Inspired by recurrent models of visual attention, we design an attention unit that receives encoded local observation and action intention of an agent and determines whether the agent should communicate with other agents to cooperate in its observable field. If so, the agent, called initiator, selects collaborators to form a communication group for coordinated strategies. The communication group dynamically changes and retains only when necessary. We exploit a bidirectional LSTM unit as the communication channel to connect each agent within a communication group. The LSTM unit takes as input internal states (i.e., encoding of local observation and action intention) and returns thoughts that guide agents for coordinated strategies. Unlike CommNet and BiCNet that perform arithmetic mean and weighted mean of internal states, respectively, our LSTM unit selectively outputs important information for cooperative decision making, which makes it possible for agents to learn coordinated strategies in dynamic communication environments. We implement ATOC as an extension of actor-critic model, which is trained end-to-end by backpropagation. Since all agents share the parameters of the policy network, Q-network, attention unit,",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/6a8018b3a00b69c008601b8becae392b-Paper.pdf",
+              "document_sha256": "730dff463e196fa983c200cffdf393f1f23cce82c7fc55e68b327e8a5b4402ca"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "Figure 3: V2X-Sim 1.0 dataset. (a) Point clouds from multiple agents in a top-down view (each color indicates an individual agent). (b) Snapshot of the rendered CARLA-SUMO co-simulation. (c) The map of Town05 which is a squared-grid town with cross junctions and multiple lanes per direction. ATOC [12] exploited an attention unit to determine what information to share with other agents; and TarMAC [5] implicitly learned a signature-based soft attention mechanism to let agents actively select which agents should receive the messages. In this work, we focus on the 3D perception task and propose a trainable, dynamic collaboration graph to control the communication among agents. Collaborative perception. Collaborative perception is an application of multi-agent communication system to perception tasks [9, 36, 14]. Who2com [20] exploited a handshake communication mechanism to determine which two agents should communicate for image segmentation; When2com [19] introduced an asymmetric attention mechanism to decide when to communicate and how to create communication groups for image segmentation; V2VNet [34] proposed multiple rounds of message passing on a spatial-aware graph neural network for joint perception and prediction in autonomous driving; and [33] proposed a pose error regression module to learn to correct pose errors when the pose information from other agents is noisy. Knowledge distillation. Knowledge distillation (KD) is a widely used technique to compress a larger teacher network to a smaller student network by pushing the student to approach the teacher in either output or intermediate feature space [10], and it has been applied to various tasks such as semantic segmentation [21], single-agent 3D detection [35], and object re-identification [13]. In this work,",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f702defbc67edb455949f46babab0c18-Paper.pdf",
+              "document_sha256": "15774a9bb1f25607b2cb9bc3672103e0c5a74323d694b52fab64cf3825cf3af2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Scheme comparison. (a) Early collaboration requires an expensive bandwidth for raw data transmission. (b) Intermediate collaboration needs an appropriate collaboration strategy. (c) The proposed method incorporates both early and intermediate collaboration into a knowledge distillation framework, enabling the knowledge of early collaboration to guide the training of an intermediate collaboration strategy, leading to better trade-off between performance and bandwidth. Early collaboration [3] aggregates the raw measurements from all the agents, promoting a holistic perspective; see Fig. 1 (a). It can fundamentally solve the occlusion and long-range issues occurring in the single-agent perception; however, it requires a lot of communication bandwidth. Contrarily, late collaboration aggregates each agent’s perception outputs. Although it is bandwidth-efficient, each individual perception output could be noisy and incomplete, causing unsatisfying fusion results. To deal with the performance-bandwidth trade-off, intermediate collaboration [19, 34, 20] has been proposed to aggregate intermediate features across agents; see Fig. 1 (b). Since we can squeeze representative information to compact features, this approach can potentially both achieve communication bandwidth efficiency and upgrade perception ability; however, a bad design of collaboration strategy might cause information loss during feature abstraction and fusion, leading to limited improvement of the perception ability. To achieve an effective design of intermediate collaboration, we propose a distilled collaboration graph (DiscoGraph) to model the collaboration among agents. In DiscoGraph, each node is an agent with real-time pose information and each edge reflects the pair-wise collaboration between two",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f702defbc67edb455949f46babab0c18-Paper.pdf",
+              "document_sha256": "15774a9bb1f25607b2cb9bc3672103e0c5a74323d694b52fab64cf3825cf3af2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract To promote better performance-bandwidth trade-off for multi-agent perception, we propose a novel distilled collaboration graph (DiscoGraph) to model trainable, pose-aware, and adaptive collaboration among agents. Our key novelties lie in two aspects. First, we propose a teacher-student framework to train DiscoGraph via knowledge distillation. The teacher model employs an early collaboration with holistic-view inputs; the student model is based on intermediate collaboration with single-view inputs. Our framework trains DiscoGraph by constraining postcollaboration feature maps in the student model to match the correspondences in the teacher model. Second, we propose a matrix-valued edge weight in DiscoGraph. In such a matrix, each element reflects the inter-agent attention at a specific spatial region, allowing an agent to adaptively highlight the informative regions. During inference, we only need to use the student model named as the distilled collaboration network (DiscoNet). Attributed to the teacher-student framework, multiple agents with the shared DiscoNet could collaboratively approach the performance of a hypothetical teacher model with a holistic view. Our approach is validated on V2XSim 1.0, a large-scale multi-agent perception dataset that we synthesized using CARLA and SUMO co-simulation. Our quantitative and qualitative experiments in multi-agent 3D object detection show that DiscoNet could not only achieve a better performance-bandwidth trade-off than the state-of-the-art collaborative perception methods, but also bring more straightforward design rationale. Our code is available on https://github.com/ai4ce/DiscoNet.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f702defbc67edb455949f46babab0c18-Paper.pdf",
+              "document_sha256": "15774a9bb1f25607b2cb9bc3672103e0c5a74323d694b52fab64cf3825cf3af2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03ec6447f64dd38c98f38f89",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/6a8018b3a00b69c008601b8becae392b-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-23a3fac768dce0562bd3911a",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/f702defbc67edb455949f46babab0c18-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "d07a8ef50d5fd2b2068d9d5e9b76311387c13d6da66ded037be2a919817e34c2"
+    },
+    {
+      "id": "edge-20103c6149cfcf85aea84999",
+      "a": "paper-0932c0cd8dabb0d2cd1817cc",
+      "b": "paper-0d8e75d3b5db2e7ccaf7dbeb",
+      "state": {
+        "paper_a": {
+          "title": "TaPas: Weakly Supervised Table Parsing via Pre-training",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Answering natural language questions over tables is usually seen as a semantic parsing task. To alleviate the collection cost of full logical forms, one popular approach focuses on weak supervision consisting of denotations instead of logical forms. However, training semantic parsers from weak supervision poses difficulties, and in addition, the generated logical forms are only used as an intermediate step prior to retrieving the denotation. In this paper, we present TaPas, an approach to question answering over tables without generating logical forms. TaPas trains from weak supervision, and predicts the denotation by selecting table cells and optionally applying a corresponding aggregation operator to such selection. TaPas extends BERT’s architecture to encode tables as input, initializes from an effective joint pre-training of text segments and tables crawled from Wikipedia, and is trained end-to-end. We experiment with three different semantic parsing datasets, and find that TaPas outperforms or rivals semantic parsing models by improving state-of-the-art accuracy on SQA from 55.1 to 67.2 and performing on par with the state-of-the-art on WikiSQL and WikiTQ, but with a simpler model architecture. We additionally find that transfer learning, which is trivial in our setting, from WikiSQL to WikiTQ, yields 48.7 accuracy, 4.2 points above the state-of-the-art."
+        },
+        "paper_b": {
+          "title": "SpreadsheetCoder: Formula Prediction from Semi-structured Context",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Spreadsheet formula prediction has been an important program synthesis problem with many real-world applications. Previous works typically utilize input-output examples as the specification for spreadsheet formula synthesis, where each input-output pair simulates a separate row in the spreadsheet. However, this formulation does not fully capture the rich context in real-world spreadsheets. First, spreadsheet data entries are organized as tables, thus rows and columns are not necessarily independent from each other. In addition, many spreadsheet tables include headers, which provide high-level descriptions of the cell data. However, previous synthesis approaches do not consider headers as part of the specification. In this work, we present the first approach for synthesizing spreadsheet formulas from tabular context, which includes both headers and semi-structured tabular data. In particular, we propose SpreadsheetCoder, a BERT-based model architecture to represent the tabular context in both row-based and column-based formats. We train our model on a large dataset of spreadsheets, and demonstrate that SpreadsheetCoder achieves top-1 prediction accuracy of 42.51%, which is a considerable improvement over baselines that do not employ rich tabular context. Compared to the rule-based system, SpreadsheetCoder assists 82% more users in composing formulas on Google Sheets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0932c0cd8dabb0d2cd1817cc",
+          "b": "paper-0d8e75d3b5db2e7ccaf7dbeb",
+          "input_sha256": "ec86e848cb8416cb7e41e4209b75432725c25a874ab10cbfc51f6f25fa97f303",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.398/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/chen21m.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/chen21m/chen21m.pdf",
+              "sha256": "e2a6eb69cffceb2fb28f737212e8239b233d68667e2f96f799b6c6055cb73390"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "the burden of data collection for semantic parsing, including paraphrasing (Wang et al., 2015), human in the loop (Iyer et al., 2017; Lawrence and Riezler, 2018) and training on examples from other domains (Herzig and Berant, 2017; Su and Yan, 2017). One prominent data collection approach focuses on weak supervision where a training example consists of a question and its denotation instead of the full logical form (Clarke et al., 2010; Liang et al., 2011; Artzi and Zettlemoyer, 2013). Although appealing, training semantic parsers from this input is often difficult due to the abundance of spurious logical forms (Berant et al., 2013; Guu et al., 2017) and reward sparsity (Agarwal et al., 2019; Muhlgay et al., 2019). In addition, semantic parsing applications only utilize the generated logical form as an intermediate step in retrieving the answer. Generating logical forms, however, introduces difficulties such as maintaining a logical formalism with sufficient expressivity, obeying decoding constraints (e.g. wellformedness), and the label bias problem (Andor et al., 2016; Lafferty et al., 2001). In this paper we present TA PAS (for Table Parser), a weakly supervised question answering model that reasons over tables without generating logical forms. TA PAS predicts a minimal program by selecting a subset of the table cells and a possible aggregation operation to be executed on top of them. Consequently, TA PAS can learn operations from natural language, without the need to specify them in some formalism. This is implemented by extending BERT’s architecture (Devlin et al., 2019) with additional embeddings that capture tabular structure, and with two classification layers for selecting cells and predicting a corresponding aggregation operator. Importantly, we introduce a",
+              "url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "document_sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "the scalar answer s. To train the model given this form of supervision one could search offline (Dua et al., 2019; Andor et al., 2019) or online (Berant et al., 2013; Liang et al., 2018) for programs (table cells and aggregation) that execute to s. In our table parsing setting, the number of spurious programs that execute to the gold scalar answer can grow quickly with the number of table cells (e.g., when s = 5, each COUNT over any five cells is potentially correct). As with this approach learning can easily fail, we avoid it. Instead, we make use of a training recipe where no search for correct programs is needed. Our approach results in an end-to-end differentiable training, similar in spirit to Neelakantan et al. (2015). We implement a fully differentiable layer that latently learns the weights for the aggregation prediction layer pa (·), without explicit supervision for the aggregation type. Specifically, we recognize that the result of executing each of the supported aggregation operators is a scalar. We then implement a soft differentiable estimation for each operator (Table 1), given the token selection probabilities and the table values: compute(op, ps , T ). Given the results for all aggregation operators we then calculate the expected result according to the current model: X spred = p̂a (opi ) · compute(opi , ps , T ), i=1 i) where p̂a (opi ) = P pa (op is a probability disi=1 pa (opi ) tribution normalized over aggregation operators excluding NONE. We then calculate the scalar answer loss with Huber loss (Huber, 1964) given by: ( 0.5 · a2 a≤δ Jscalar = 2 δ · a − 0.5 · δ otherwise",
+              "url": "https://aclanthology.org/2020.acl-main.398.pdf",
+              "document_sha256": "714b8c082cde7d237a8b4bc752f30d58b8ef3169e07fdeabe1905dade8be2954"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "standardized input-output examples or natural language descriptions. Therefore, our formula specifications are more ambiguous and diverse. Furthermore, we show that including the header information is a key factor to improving the formula prediction performance. In terms of the model input format, our spreadsheet formula prediction task is related to existing benchmarks on semantic parsing over a tabular database (Iyyer et al., 2017; Zhong et al., 2017; Yu et al., 2018). There are two key differences between these tasks and ours. First, their program specification contains a natural language question, while our work predicts spreadsheet formulas based on the tabular context only. Therefore, our input specification is much more ambiguous. Meanwhile, our spreadsheet tables are typically less structured than the database tables. As shown in Figure 1, spreadsheet tables do not necessarily satisfy a consistent row-based schema, and data cell values may be dependent on cells from other rows. Our tabular context encoder is related to prior works on tabular BERT models, including TAPAS (Herzig et al., 2020), TaBERT (Yin et al., 2020), and Table-BERT (Chen et al., 2020). Our encoder design differs from these works in the",
+              "url": "https://proceedings.mlr.press/v139/chen21m/chen21m.pdf",
+              "document_sha256": "e2a6eb69cffceb2fb28f737212e8239b233d68667e2f96f799b6c6055cb73390"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "following ways. First, these models are designed for question answering (Herzig et al., 2020; Yin et al., 2020) or fact verification (Chen et al., 2020), thus their inputs are the concatenation of a natural language question/statement and a table. In contrast, our model input only contains a spreadsheet table. Second, both TAPAS and Table-BERT require that the maximum table size is 512 tokens, which is not enough for our problem. SpreadsheetCoder encodes larger tabular input by tiling multiple rows/columns in multiple forward passes over BERT, and then doing the convolution to capture broader context. TaBERT independently embeds each table row with the question, then applies an attention mechanism over other tokens in the same column but different rows. This is similar to our row-based BERT without the row-wise convolution. As shown in Table 1, this alternative underperforms our full model. Our spreadsheet formula prediction problem is also related to code completion tasks (Raychev et al., 2014; Li et al., 2018; Svyatkovskiy et al., 2019; 2020; Svyatkovskoy et al., 2020). Specifically, the goal of code completion tasks is to synthesize the subsequent program tokens given the code context, while we aim to generate the formula in the cell with the missing value to complete the spreadsheet. However, instead of providing a token sequence to represent the code context, our data context is a semi-structured table, where data values in different cells are connected in a two-dimensional space.",
+              "url": "https://proceedings.mlr.press/v139/chen21m/chen21m.pdf",
+              "document_sha256": "e2a6eb69cffceb2fb28f737212e8239b233d68667e2f96f799b6c6055cb73390"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "(Figure 1b), if predicting a formula at the end of a column of numbers labeled “Score”, and a cell in the same row contains the text “Total”, this context might specify the user’s intent to compute a column sum. Our problem brings several new challenges compared to related work in programming by example (Gulwani, 2011; Bunel et al., 2018; Balog et al., 2017), semantic parsing (Popescu et al., 2003; Zhong et al., 2017; Yu et al., 2018) and source code completion (Raychev et al., 2014; Li et al., 2018; Svyatkovskiy et al., 2019). Spreadsheet tables contain rich two-dimensional relational structure and natural language metadata, but the rows do not follow a fixed schema as in a relational database. Meanwhile, our tabular context is more ambiguous as the program specification, and the spreadsheet language studied in this work is more flexible than languages studied in the program synthesis literature. In this paper, we present S PREADSHEET C ODER, a neural network architecture for spreadsheet formula prediction. S PREADSHEET C ODER encodes the spreadsheet context in its table format, and generates the corresponding formula in the target cell. A BERT-based encoder (Devlin et al., 2019) computes an embedding vector for each input token, incorporating the contextual information from nearby rows and columns. The BERT encoder is initialized from the weights pre-trained on English text corpora, which is beneficial for encoding table headers. To handle cell references, we propose a two-stage decoding process inspired by sketch learning for program synthesis (Solar-Lezama, 2008; Murali et al., 2018; Dong & Lapata, 2018; Nye et al., 2019). Our decoder first generates a formula sketch, which does not include concrete cell references, and then predicts the corresponding cell ranges",
+              "url": "https://proceedings.mlr.press/v139/chen21m/chen21m.pdf",
+              "document_sha256": "e2a6eb69cffceb2fb28f737212e8239b233d68667e2f96f799b6c6055cb73390"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "6. Conclusion We presented the first technique to synthesize spreadsheet formulas given a tabular context, including both headers and cell values. In particular, we develop S PREAD SHEET C ODER , a BERT-based model to capture the twodimensional relational structure of the spreadsheet context, which are typically semi-structured tables. We demonstrate that incorporating the table headers significantly facilitates the prediction. Furthermore, modeling the dependency among cells of different rows and columns is important for generating formulas in real-world spreadsheets with diverse table structures. Compared to the rule-based system on Google Sheets, S PREADSHEET C ODER assists 82% more users in composing formulas. There are a number of promising directions for future research about spreadsheet applications. First, developing a paradigm for pre-training on spreadsheet data could enable the encoder to be more specialized for spreadsheet applications. Second, we could infer more fine-grained knowledge of the table structure from the spreadsheet format information, such as colors and fonts, which could be utilized to develop more advanced encoder architectures. Finally, we could also extend our approach to support more spreadsheet applications, such as bug detection and clone detection.",
+              "url": "https://proceedings.mlr.press/v139/chen21m/chen21m.pdf",
+              "document_sha256": "e2a6eb69cffceb2fb28f737212e8239b233d68667e2f96f799b6c6055cb73390"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0932c0cd8dabb0d2cd1817cc",
+          "url": "https://aclanthology.org/2020.acl-main.398/"
+        },
+        "b": {
+          "paper_id": "paper-0d8e75d3b5db2e7ccaf7dbeb",
+          "url": "https://proceedings.mlr.press/v139/chen21m.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "8919309e8e3f363fba39ef21748f494fcd000eb24850f9773659b5f03103261c"
+    },
+    {
+      "id": "edge-3370c7682896426206d8b318",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-0a6b1678dc18ad64d18fecf2",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "In and Out-of-Domain Text Adversarial Robustness via Label Smoothing",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Recently it has been shown that state-of-the-art NLP models are vulnerable to adversarial attacks, where the predictions of a model can be drastically altered by slight modifications to the input (such as synonym substitutions). While several defense techniques have been proposed, and adapted, to the discrete nature of text adversarial attacks, the benefits of general-purpose regularization methods such as label smoothing for language models, have not been studied. In this paper, we study the adversarial robustness provided by label smoothing strategies in foundational models for diverse NLP tasks in both in-domain and out-of-domain settings. Our experiments show that label smoothing significantly improves adversarial robustness in pre-trained models like BERT, against various popular attacks. We also analyze the relationship between prediction confidence and robustness, showing that label smoothing reduces over-confident errors on adversarial examples."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "5 Table 1 shows the performance of BERT and dBERT, with and without label-smoothing.\nIn this section, we include experiment results for standard ALBERT and label smoothed ALBERT in Table 11.\nWe observe that the label smoothing technique also improves adversarial robustness of ALBERT model across different datasets.\n, 2020; Garg and Ramakrishnan, 2020) demonstrate that simple word-level text attacks (synonym substitution, word insertion/deletion) easily fool state-of-the-art models, including pre-trained transformers like BERT (Devlin et al., 2019; Wolf et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-0a6b1678dc18ad64d18fecf2",
+          "input_sha256": "0492f283b4a27e101e1ef5cd789435b9e8ea738724e152dfe184b1fe38ea5ca2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-short.58/",
+              "pdf_url": "https://aclanthology.org/2023.acl-short.58.pdf",
+              "sha256": "66085450c9c31d9ae6ef0a0ea38c5ed2a4f37862eabf29f1b33f9054d22b7a1e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Neural networks are vulnerable to adversarial attacks: small perturbations to the input ,which do not fool humans (Szegedy et al., 2013; Goodfellow et al., 2014; Madry et al., 2017). In NLP tasks, previous studies (Alzantot et al., 2018; Jin et al., 2019; Li et al., 2020; Garg and Ramakrishnan, 2020) demonstrate that simple word-level text attacks (synonym substitution, word insertion/deletion) easily fool state-of-the-art models, including pre-trained transformers like BERT (Devlin et al., 2019; Wolf et al., 2020). Further, it has recently been shown models are overconfident1 on examples which are easy to attack (Qin et al., 2021) and indeed, such over-confident predictions plague ∗",
+              "url": "https://aclanthology.org/2023.acl-short.58.pdf",
+              "document_sha256": "66085450c9c31d9ae6ef0a0ea38c5ed2a4f37862eabf29f1b33f9054d22b7a1e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "on the matched genre test-set in the OOD setting presented in subsection 3.2 . 3.1 In-domain Setting In the in-domain setting (iD), the pre-trained transformer models are fine-tuned on the train-set for each task and evaluated on the corresponding testset. For each case, we report the clean accuracy, the adversarial attack success rate (percentage of misclassified examples after an attack) and the average confidence on successfully attacked examples (on which the model makes a wrong prediction).5 Table 1 shows the performance of BERT and dBERT, with and without label-smoothing. We choose label smoothing factor α = 0.45 for standard labelsmoothed models in our experiments. We see that label-smoothed models are more robust for every adversarial attack across different datasets in terms of the attack success rate, which is a standard metric in this area (Li et al., 2021; Lee et al., 2022). Additionally, the higher confidence of the standard models on the successfully attacked examples indicates that label smoothing helps mitigate overconfident mistakes in the adversarial setting. Importantly, the clean accuracy remains almost unchanged in all the cases. Moreover, we observe that the models gain much more robustness from LS under white-box attack, compared 5",
+              "url": "https://aclanthology.org/2023.acl-short.58.pdf",
+              "document_sha256": "66085450c9c31d9ae6ef0a0ea38c5ed2a4f37862eabf29f1b33f9054d22b7a1e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-0a6b1678dc18ad64d18fecf2",
+          "url": "https://aclanthology.org/2023.acl-short.58/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "85c6f027590ae43871017bff129f2dd157e2bf9c65dd6c14adf56d34ea0b5bf8"
+    },
+    {
+      "id": "edge-41466e0671b1dff2126be6c4",
+      "a": "paper-0782ca6a524645c65ce3d3d7",
+      "b": "paper-44c49c4df9e4cd73fad118ea",
+      "state": {
+        "paper_a": {
+          "title": "BRITS: Bidirectional Recurrent Imputation for Time Series",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation. BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data. We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies."
+        },
+        "paper_b": {
+          "title": "CSDI: Conditional Score-based Diffusion Models for Probabilistic Time Series Imputation",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "The imputation of missing values in time series has many applications in healthcare and finance. While autoregressive models are natural candidates for time series imputation, score-based diffusion models have recently outperformed existing counterparts including autoregressive models in many tasks such as image generation and audio synthesis, and would be promising for time series imputation. In this paper, we propose Conditional Score-based Diffusion model (CSDI), a novel time series imputation method that utilizes score-based diffusion models conditioned on observed data. Unlike existing score-based approaches, the conditional diffusion model is explicitly trained for imputation and can exploit correlations between observed values. On healthcare and environmental data, CSDI improves by 40-65% over existing probabilistic imputation methods on popular performance metrics. In addition, deterministic imputation by CSDI reduces the error by 5-20% compared to the state-of-the-art deterministic imputation methods. Furthermore, CSDI can also be applied to time series interpolation and probabilistic forecasting, and is competitive with existing baselines. The code is available at https://github.com/ermongroup/CSDI."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0782ca6a524645c65ce3d3d7",
+          "b": "paper-44c49c4df9e4cd73fad118ea",
+          "input_sha256": "23bb04ee957cfcb3c081bab7268c98f7e615a0c2f63aa8387f891e638f32d9a2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/cfe8504bda37b575c70ee1a8276f3486-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf",
+              "sha256": "a398f6c4226fba3f9c33a2fe402802f24fe49d4e362027d76acfab43831325c4"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Time series are ubiquitous in many classification/regression applications. However, the time series data in real applications may contain many missing values. Hence, given multiple (possibly correlated) time series data, it is important to fill in missing values and at the same time to predict their class labels. Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose a novel method, called BRITS, based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during backpropagation. BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data. We evaluate our model on three real-world datasets, including an air quality dataset, a healthcare dataset, and a localization dataset for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "document_sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "values can be done by smoothing over nearby values. Matrix completion has also been used to address missing value problems (e.g., [30, 34]). But it typically applies to only static data and requires strong assumptions such as low-rankness. We can also predict missing values by fitting a parametric data-generating model with the observations [14, 2], which assumes that data of time series follow the distribution of hypothetical models. These assumptions make corresponding imputation algorithms less general, and the performance less desirable when the assumptions do not hold. In this paper, we propose BRITS, a novel method for filling the missing values for multiple correlated time series. Internally, BRITS adapts recurrent neural networks (RNN) [16, 11] for imputing missing values, without any specific assumption over the data. Much prior work uses non-linear dynamical systems for time series prediction [9, 24, 3]. In our method, we instantiate the dynamical system as a bidirectional RNN, i.e., imputing missing values with bidirectional recurrent dynamics. In particular, we make the following technical contributions: • We design a bidirectional RNN model for imputing missing values. We directly use RNN for predicting missing values, instead of tuning weights for smoothing as in [10]. Our method does not impose specific assumption, hence works more generally than previous methods. • We regard missing values as variables of the bidirectional RNN graph, which are involved in the backpropagation process. In such case, missing values get delayed gradients in both forward and backward directions with consistency constraints, which makes the estimation of missing values more accurate. • We simultaneously perform missing value imputation and classification/regression of",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf",
+              "document_sha256": "9d0512c9e3056d3b22b9bef48f1f4507c7dcca85c259b54afe4e263e1e285736"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Table 3: Comparing MAE for deterministic imputation methods and CSDI. We report the mean and the standard error for five trials. The asterisks mean the results of the method are cited from the original paper. healthcare V-RIN [32] BRITS [7] BRITS [7] (*) GLIMA [21] (*) RDIS [20] unconditional CSDI (proposed)",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf",
+              "document_sha256": "a398f6c4226fba3f9c33a2fe402802f24fe49d4e362027d76acfab43831325c4"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The imputation of missing values in time series has many applications in healthcare and finance. While autoregressive models are natural candidates for time series imputation, score-based diffusion models have recently outperformed existing counterparts including autoregressive models in many tasks such as image generation and audio synthesis, and would be promising for time series imputation. In this paper, we propose Conditional Score-based Diffusion models for Imputation (CSDI), a novel time series imputation method that utilizes score-based diffusion models conditioned on observed data. Unlike existing score-based approaches, the conditional diffusion model is explicitly trained for imputation and can exploit correlations between observed values. On healthcare and environmental data, CSDI improves by 40-65% over existing probabilistic imputation methods on popular performance metrics. In addition, deterministic imputation by CSDI reduces the error by 5-20% compared to the state-of-the-art deterministic imputation methods. Furthermore, CSDI can also be applied to time series interpolation and probabilistic forecasting, and is competitive with existing baselines. The code is available at https://github.com/ermongroup/CSDI.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf",
+              "document_sha256": "a398f6c4226fba3f9c33a2fe402802f24fe49d4e362027d76acfab43831325c4"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Multivariate time series are abundant in real world applications such as finance, meteorology and healthcare. These time series data often contain missing values due to various reasons, including device failures and human errors [1, 2, 3]. Since missing values can hamper the interpretation of a time series, many studies have addressed the task of imputing missing values using machine learning techniques [4, 5, 6]. In the past few years, imputation methods based on deep neural networks have shown great success for both deterministic imputation [7, 8, 9] and probabilistic imputation [10]. These imputation methods typically utilize autoregressive models to deal with time series. Score-based diffusion models – a class of deep generative models and generate samples by gradually converting noise into a plausible data sample through denoising – have recently achieved state-ofthe-art sample quality in many tasks such as image generation [11, 12] and audio synthesis [13, 14], outperforming counterparts including autoregressive models. Diffusion models can also be used to impute missing values by approximating the scores of the posterior distribution obtained from the prior by conditioning on the observed values [12, 15, 16]. While these approximations may work well in practice, they do not correspond to the exact conditional distribution. In this paper, we propose CSDI, a novel probabilistic imputation method that directly learns the conditional distribution with conditional score-based diffusion models. Unlike existing score-based approaches, the conditional diffusion model is designed for imputation and can exploit useful information in observed values. We illustrate the procedure of time series imputation with CSDI in 35th Conference on Neural Information Processing Systems",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/cfe8504bda37b575c70ee1a8276f3486-Paper.pdf",
+              "document_sha256": "a398f6c4226fba3f9c33a2fe402802f24fe49d4e362027d76acfab43831325c4"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0782ca6a524645c65ce3d3d7",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/734e6bfcd358e25ac1db0a4241b95651-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-44c49c4df9e4cd73fad118ea",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/cfe8504bda37b575c70ee1a8276f3486-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "d4b071c7333d040ca41cbdc44cae658b78bf95d74298517276f03bd0ca317576"
+    },
+    {
+      "id": "edge-45f6a536c94a0da4850746ae",
+      "a": "paper-97f77f84cac0413b8a46e82d",
+      "b": "paper-da7d5ac393551addbb2d31af",
+      "state": {
+        "paper_a": {
+          "title": "Deep One-Class Classification",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Despite the great advances made by deep learning in many machine learning problems, there is a relative dearth of deep learning approaches for anomaly detection. Those approaches which do exist involve networks trained to perform a task other than anomaly detection, namely generative models or compression, which are in turn adapted for use in anomaly detection; they are not trained on an anomaly detection based objective. In this paper we introduce a new anomaly detection method—Deep Support Vector Data Description—, which is trained on an anomaly detection based objective. The adaptation to the deep regime necessitates that our neural network and training procedure satisfy certain properties, which we demonstrate theoretically. We show the effectiveness of our method on MNIST and CIFAR-10 image benchmark datasets as well as on the detection of adversarial examples of GTSRB stop signs."
+        },
+        "paper_b": {
+          "title": "ARC: A Generalist Graph Anomaly Detector with In-Context Learning",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Graph anomaly detection (GAD), which aims to identify abnormal nodes that differ from the majority within a graph, has garnered significant attention. However, current GAD methods necessitate training specific to each dataset, resulting in high training costs, substantial data requirements, and limited generalizability when being applied to new datasets and domains. To address these limitations, this paper proposes ARC, a generalist GAD approach that enables a ``one-for-all'' GAD model to detect anomalies across various graph datasets on-the-fly. Equipped with in-context learning, ARC can directly extract dataset-specific patterns from the target dataset using few-shot normal samples at the inference stage, without the need for retraining or fine-tuning on the target dataset. ARC comprises three components that are well-crafted for capturing universal graph anomaly patterns: 1) smoothness-based feature A lignment module that unifies the features of different datasets into a common and anomaly-sensitive space; 2) ego-neighbor R esidual graph encoder that learns abnormality-related node embeddings; and 3) cross-attentive in- C ontext anomaly scoring module that predicts node abnormality by leveraging few-shot normal samples. Extensive experiments on multiple benchmark datasets from various domains demonstrate the superior anomaly detection performance, efficiency, and generalizability of ARC."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example, DeepSVDD [22] introduces a fully deep one-class classification objective for unsupervised anomaly detection, optimizing a data-enclosing hypersphere in output space to extract common factors of variation and demonstrating theoretical properties such as the v -property.\nFormally, the anomaly score by OC model can be written by: where ϕ ( · ) is a neural network model, as defined in Deep SVDD [22].\nThe core idea of OC model is to measure the abnormality of each sample according to the distance between its representation h and a center representation c [22].\nInterestingly, if the attention matrix assigns uniform weights to all context nodes, then our scoring module becomes a one-class classification model [22].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-97f77f84cac0413b8a46e82d",
+          "b": "paper-da7d5ac393551addbb2d31af",
+          "input_sha256": "2943bdb0715c021ff3627f7a75c19d89ebf1b62804d07cc6b16f624f6f013d8a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/ruff18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/ruff18a/ruff18a.pdf",
+              "sha256": "077d0123efdb9b76c82a5b8522c2d2cc449302e6d764c80c8bcf7e5e3717c7d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5acb720a361eecb34ee62d356859d246-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/5acb720a361eecb34ee62d356859d246-Paper-Conference.pdf",
+              "sha256": "8505448bd7cde585f3847c0c4fb2ce6d238e11cb41e2aab356041169411e6989"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "it is assumed that the majority of the training dataset consists of “normal” data (here and elsewhere the term “normal” means not anomalous and is unrelated to the Gaussian distribution). The aim then is to learn a model that accurately describes “normality.” Deviations from this description are then deemed to be anomalies. This is also known as oneclass classification (Moya et al., 1993). AD algorithms are often trained on data collected during the normal operating state of a machine or system for monitoring (Lavin & Ahmad, 2015). Other domains include intrusion detection for cybersecurity (Garcia-Teodoro et al., 2009), fraud detection (Phua et al., 2005), and medical diagnosis (Salem et al., 2013; Schlegl et al., 2017). As with many fields, the data in these domains is growing rapidly in size and dimensionality and thus we require effective and efficient ways to detect anomalies in large quantities of high-dimensional data. Classical AD methods such as the One-Class SVM (OCSVM) (Schölkopf et al., 2001) or Kernel Density Estimation (KDE) (Parzen, 1962), often fail in high-dimensional, datarich scenarios due to bad computational scalability and the curse of dimensionality. To be effective, such shallow methods typically require substantial feature engineering. In comparison, deep learning (LeCun et al., 2015; Schmidhuber, 2015) presents a way to learn relevant features automatically, with exceptional successes over classical methods (Collobert et al., 2011; Hinton et al., 2012), especially in computer vision (Krizhevsky et al., 2012; He et al., 2016). How to transfer the benefits of deep learning to AD is less clear, however, since finding the right unsupervised deep objective is hard (Bengio et al., 2013). Current approaches to deep AD have shown promising results",
+              "url": "https://proceedings.mlr.press/v80/ruff18a/ruff18a.pdf",
+              "document_sha256": "077d0123efdb9b76c82a5b8522c2d2cc449302e6d764c80c8bcf7e5e3717c7d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Deep SVDD In this section we introduce Deep SVDD, a method for deep one-class classification. We present the Deep SVDD objective, its optimization, and theoretical properties. 3.1. The Deep SVDD Objective With Deep SVDD, we build on the kernel-based SVDD and minimum volume estimation by finding a data-enclosing hypersphere of smallest size. However, with Deep SVDD",
+              "url": "https://proceedings.mlr.press/v80/ruff18a/ruff18a.pdf",
+              "document_sha256": "077d0123efdb9b76c82a5b8522c2d2cc449302e6d764c80c8bcf7e5e3717c7d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "where Q ∈ Rnq ×de and K ∈ Rnk ×de are the query and key matrices respectively, Wq and Wk are learnable parameters, and H̃q is the reconstructed query embedding matrix. Note that, unlike the conventional cross-attention blocks [64, 65, 66] that further introduce a value matrix V, our block directly multiplies the attention matrix with Hk . This design ensures that H̃q is in the same embedding space as Hq and Hk . Thanks to this property, given a query node vi , we can calculate its anomaly score f (vi ) by computing the L2 distance between its query embedding vector Hq corresponding r i and the \u00112 Pde \u0010 reconstructed query embedding vector H̃q i , i.e., f (vi ) = d(Hqi , H̃qi ) = Hq − H̃q . ij ij j=1 Discussion. The design of cross-attentive in-context anomaly scor5 1 2 ing follows a basic assumption: normal query nodes have similar 1 2 4 patterns to several context nodes, and hence their embeddings can 3 be easily represented by the linear combination of context node 4 5 3 embeddings. Consequently, given a normal node, its original and reconstructed embeddings can be close to each other in the embedding (b) Case II (a) Case I space. In contrast, abnormal nodes may display distinct patterns compared to normal ones, making it difficult to depict their corre- Figure 4: Toy examples of embeddings (•), reconsponding abnormal query embeddings using context embeddings. query Context Node Embedding structed embeddings (•), As a result, their drift distance si can be significantly larger. Fig. 4 Query Nodequery Embedding and context embeddings provides examples for the scenarios of (a) single-class normal and Rec. Query Node Embedding (■). (b) multi-class normal3 . In both cases, the drift distance (➞) can be a significant indicator for distinguishing anomaly (5) from normal",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5acb720a361eecb34ee62d356859d246-Paper-Conference.pdf",
+              "document_sha256": "8505448bd7cde585f3847c0c4fb2ce6d238e11cb41e2aab356041169411e6989"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Sketch maps of (a) supervised, (b) unsupervised, and (c) generalist GAD paradigms. Despite their remarkable detection performance, the existing GAD approaches follow a “one model for one dataset” learning paradigm (as shown in Fig. 1 (a) and (b)), necessitating dataset-specific training and ample training data to construct a detection model for each dataset. This learning paradigm inherently comes with the following limitations: ❶ Expensive training cost. For each dataset, we need to train a specialized GAD model from scratch, which incurs significant costs for model training, especially when dealing with large-scale graphs. ❷ Data requirements. Training a reliable GAD model typically needs sufficient in-domain data, sometimes requiring labels as well. The data requirements pose a challenge when applying GAD to scenarios with sparse data, data privacy concerns, or high label annotation costs. ❸ Poor generalizability. On a new-coming dataset, existing GAD methods require hyperparameter tuning or even model architecture modifications to achieve optimal performance, which increases the cost of applying them to new data and domains. Given the above limitations, a natural question arises: Can we train a “one-for-all” GAD model that can generalize to detect anomalies across various graph datasets from different application domains, without any training on the target data? Following the trend of artificial general intelligence and foundation models, a new paradigm termed “generalist anomaly detection”, originating from image anomaly detection, is a potential answer to this question [18]. As shown in Fig. 1 (c), in the generalist paradigm, we only need to train the GAD model once; afterward, the well-trained generalist GAD model can directly identify anomalies on",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5acb720a361eecb34ee62d356859d246-Paper-Conference.pdf",
+              "document_sha256": "8505448bd7cde585f3847c0c4fb2ce6d238e11cb41e2aab356041169411e6989"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "samples based on the context samples. Then, the reconstruction distance can serve as the anomaly score for each unlabeled node. In summary, this paper makes the following contributions: • Problem. We, for the first time, propose to investigate the generalist GAD problem, aiming to detect anomalies from various datasets with a single GAD model, without dataset-specific fine-tuning. • Methodology. We propose a novel generalist GAD method ARC, which can detect anomalies in new graph datasets on-the-fly via in-context learning based on few-shot normal samples. • Experiments. We conduct extensive experiments to validate the anomaly detection capability, generalizability, and efficiency of ARC across multiple benchmark datasets from various domains.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5acb720a361eecb34ee62d356859d246-Paper-Conference.pdf",
+              "document_sha256": "8505448bd7cde585f3847c0c4fb2ce6d238e11cb41e2aab356041169411e6989"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-97f77f84cac0413b8a46e82d",
+          "url": "https://proceedings.mlr.press/v80/ruff18a.html"
+        },
+        "b": {
+          "paper_id": "paper-da7d5ac393551addbb2d31af",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/5acb720a361eecb34ee62d356859d246-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "79bdb62856b2f1cac3690d330373e4057622f771fdc84124d3bc34de2356a219"
+    },
+    {
+      "id": "edge-4893cf0613d572b82c73718d",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-53d209d792866011729f3edf",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "Remasking Discrete Diffusion Models with Inference-Time Scaling",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Part of the success of diffusion models stems from their ability to perform iterative refinement, i.e., repeatedly correcting outputs during generation. However, modern masked discrete diffusion lacks this capability: when a token is generated, it cannot be updated again, even when it introduces an error. Here, we address this limitation by introducing the remasking diffusion model (ReMDM) sampler, a method that can be applied to pretrained masked diffusion models in a principled way and that is derived from a discrete diffusion model with a custom remasking backward process. Most interestingly, ReMDM endows discrete diffusion with a form of inference-time compute scaling. By increasing the number of sampling steps, ReMDM generates natural language outputs that approach the quality of autoregressive models, whereas when the computation budget is limited, ReMDM better maintains quality. ReMDM also improves sample quality of masked diffusion models for discretized images, and in scientific domains such as molecule design, ReMDM facilitates diffusion guidance and pushes the Pareto frontier of controllability relative to classical masking and uniform noise diffusion. When applied to large pretrained diffusion language models, ReMDM boosts the model’s performance on downstream tasks requiring factual knowledge grasp and reasoning ability."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-53d209d792866011729f3edf",
+          "input_sha256": "5833b5b92c051fc81106ad289f560659e5c8d92c9586e88d674fd45b1857f0ff",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/d877ea0dd78bdbe54830670618c1de09-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/d877ea0dd78bdbe54830670618c1de09-Paper-Conference.pdf",
+              "sha256": "8d397d587c41a2dbfcf6900c6208a2061ed5370dca9f17fb44d3263a7982036a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Figure 1: Our family of masked diffusion processes allow for more flexible generation with remasking of already decoded tokens. This improves sample quality and further closes the gap to AR models. (Left) An illustrative example of errors fixed by ReMDM. The first two tokens can be “They sell” or “She sells”, but due to the independence of the parallelized decoding processes, “She sell” is decoded. Such mistakes can be corrected by remasking samplers. (Right) MAUVE scores on OpenWebText. MDLM is from Sahoo et al. [41]. FB and DFM denote the forward-backward [5] and discrete flow matching [13] correctors, respectively. by a remasking backward process. The ReMDM model admits an objective that is a rescaled version of the MDLM objective [41]. This suggests using the ReMDM sampler on top of pretrained MDLMs, which we find to work well. We complement our analysis of the sampler by also showing that it can be interpreted as a predictor-corrector technique [53, 5]. Notably, we demonstrate that ReMDM is theoretically more general than previous corrector samplers for masked diffusion models [5, 13]. Most interestingly, the ReMDM sampler endows discrete diffusion with a form of inference-time compute scaling. By increasing the number of denoising steps on language modeling tasks, ReMDM generates samples with significantly higher sample quality metrics than any previous diffusion model and almost matches the performance of an autoregressive (AR) model with the same architecture. Conversely, when we reduce the sampling steps to increase speed, ReMDM’s performance degrades less than other samplers. On image generation, ReMDM scales better with inference-time compute than vanilla masked diffusion models like MaskGiT [7]. Additionally, ReMDM models are more amenable to guidance",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d877ea0dd78bdbe54830670618c1de09-Paper-Conference.pdf",
+              "document_sha256": "8d397d587c41a2dbfcf6900c6208a2061ed5370dca9f17fb44d3263a7982036a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "Experimental Setup We test the text generation capability of ReMDM with unconditional generation from models 2048 4096 trained on OpenWebText (OWT; Gokaslan & Cohen [14]). Time Steps The OWT dataset was tokenized using the gpt-2 tokenizer [38] and sequences were wrapped to a max length of L = Figure 3: ReMDM ablation for OWT 1024. Our baselines include AR, SEDD [29], MDLM, generation quality. and MDLM in conjunction with the FB [5] and DFM [13] correctors during inference. For all the experiments, we reuse the checkpoints trained by Sahoo et al. [41] for fair comparison. Following Pillutla [36], we generate 5,000 samples from each model/sampler and compute the MAUVE score [28, 37], as this metric balances sample quality and diversity. Generative Perplexity vs. MAUVE It is common practice to report generative perplexity (Gen PPL.) as a quality metric for text generation. However, for corrector samplers such as ReMDM, we find this metric can be uninformative. In line with previous work [68], we observe that one can get arbitrarily low Gen PPL. by tuning corrector schedule hyperparameters (see Appendix E.2.2) to achieve low Gen PPL. while sacrificing sentence entropy/diversity, with an extreme case of generating a sequence of repetitive words like “love love love...\" and getting a Gen PPL. of 1.5 (see Appendix F.1). Given this 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d877ea0dd78bdbe54830670618c1de09-Paper-Conference.pdf",
+              "document_sha256": "8d397d587c41a2dbfcf6900c6208a2061ed5370dca9f17fb44d3263a7982036a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Denoising Diffusion Im- Table 3: LLaDA with ReMDM performs the best on downstream plicit Models An analogy tasks, and consistently exceeds the original LLaDA with statistical can be drawn between our significance. For each metric, the best value is bolded. work and DDIM [51], where ReMDM is to MDLM for Countdown TruthfulQA discrete signals as DDIM is Metric pass@1% ∆ ROUGE 1/2/L to DDPM [18] for continuous LLaDA 45.2±0.2 27.1±0.4 / 30.1±0.4 / 27.2±0.4 data. Both our work and 44.8±0.2 28.2±0.4 / 31.1±0.4 / 28.3±0.4 DDIM propose alternative for- LLaDA-DFM LLaDA-ReMDM 46.1±0.2 29.5±0.4 / 31.8±0.4 / 29.5±0.3 ward and backward processes that maintain marginals while enabling more flexible generation. Of note, Song et al. [51] also present a way of adapting processes to discrete domains; however, they focus on uniform categorical as the limiting distribution. In Appendix B, we demonstrate how this can be adapted for absorbing state diffusion and derive an equivalence to our method. Discrete Predictor-Corrector Samplers Continuous time Markov chain (CTMC) theory provides a framework for samplers that correct errors in the reverse process, extending the original predictorcorrector formulation for continuous data [53] to discrete domains. In addition to the FB and DFM correctors discussed above, other correctors include: the Stein operator [67], and DPC [24] which improves the sample quality of MaskGiT by corrector sampling. Unlike the plug-and-play methods of FB, DFM, and ReMDM, the Stein operator and DPC correctors require additional training.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d877ea0dd78bdbe54830670618c1de09-Paper-Conference.pdf",
+              "document_sha256": "8d397d587c41a2dbfcf6900c6208a2061ed5370dca9f17fb44d3263a7982036a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Diffusion models have gained significant traction as algorithms for generating high-quality images and videos [50, 52, 18, 42]. Part of the success of diffusion stems from its ability to perform iterative refinement—repeatedly modifying outputs and fixing errors over multiple steps of generation—which makes diffusion models especially effective at guided generation [9, 17] and fast sampling [51, 44, 54] and supports inference-time scaling to improve sample quality [30, 49, 66]. Discrete counterparts of diffusion models [2] have also been steadily improving in quality on tasks such as language modeling and biological sequence design [29, 41, 46, 1, 43]. However, modern discrete diffusion—especially the most performant kind that relies on masking [32, 41, 48]—lacks the fundamental ability to iteratively refine outputs. Once a discrete token is unmasked, it cannot be updated again, even if it introduces an error. The lack of error correction in turn sets limits on controllable generation, sampling speed, and sample quality. Here, we address the inability of masked diffusion models to perform iterative refinement by introducing a new sampler that supports remasking during generation. Our method, the remasking diffusion model (ReMDM) sampler, is simple and allows users to directly specify the probability of remasking a token at each time step. We augment the sampler with components that range from nucleus sampling to remasking schedules, significantly boosting performance. Our approach for deriving the sampler is rooted in probabilistic modeling. We show that our method corresponds to ancestral sampling in a discrete diffusion model (also called ReMDM) characterized 39th Conference on Neural Information Processing Systems (NeurIPS 2025).",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d877ea0dd78bdbe54830670618c1de09-Paper-Conference.pdf",
+              "document_sha256": "8d397d587c41a2dbfcf6900c6208a2061ed5370dca9f17fb44d3263a7982036a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-53d209d792866011729f3edf",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/d877ea0dd78bdbe54830670618c1de09-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "1ba261f6bad984d85c91929521a1f1ddb18cb118594d00bd6b748e6e45a0b8b0"
+    },
+    {
+      "id": "edge-5137a528bd4a6cb7e21a1af9",
+      "a": "paper-98dfb1df51e4e388acec30d7",
+      "b": "paper-ca522fc1ea738c297608af6b",
+      "state": {
+        "paper_a": {
+          "title": "TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Recent years have witnessed the burgeoning of pretrained language models (LMs) for text-based natural language (NL) understanding tasks. Such models are typically trained on free-form NL text, hence may not be suitable for tasks like semantic parsing over structured data, which require reasoning over both free-form NL questions and structured tabular data (e.g., database tables). In this paper we present TaBERT, a pretrained LM that jointly learns representations for NL sentences and (semi-)structured tables. TaBERT is trained on a large corpus of 26 million tables and their English contexts. In experiments, neural semantic parsers using TaBERT as feature representation layers achieve new best results on the challenging weakly-supervised semantic parsing benchmark WikiTableQuestions, while performing competitively on the text-to-SQL dataset Spider."
+        },
+        "paper_b": {
+          "title": "Learning Relational Decomposition of Queries for Question Answering from Tables",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Table Question-Answering involves both understanding the natural language query and grounding it in the context of the input table to extract relevant information. In this context, many methods have highlighted the benefits of intermediate pre-training using SQL queries. However, while most approaches aim at generating final answers directly from inputs, we claim that there is better to do with SQL queries during training.By learning to imitate a restricted subset of SQL-like algebraic operations, we demonstrate that their execution flow provides intermediate supervision steps that allow for increased generalization and structural reasoning compared to classical approaches. Our method, bridges the gap between semantic parsing and direct answering methods, offering valuable insights into which types of operations should be predicted by a generative architecture and which should be executed by an external algorithm. Our code can be found at https://github.com/RaphaelMouravieff/Partial-Exec."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "SDA FDA Fine-Tuned Models TABERT (Yin et al., 2020) 52.3 - MATE (Eisenschlos et al., 2021) 51.5 - TableFormer (Yang et al., 2022) 52.6 - GRAPPA (Yu et al., 2020) 52.7 - DoT (Krichene et al., 2021) 54.0 - REASTAP (Zhao et al., 2022) 58.6 - TaCube (Zhou et al., 2022a) 60.8 - TAPAS (Herzig et al.,…\nSDA FDA Fine-Tuned Models TABERT (Yin et al., 2020) 52.3 - MATE (Eisenschlos et al., 2021) 51.5 - TableFormer (Yang et al., 2022) 52.6 - GRAPPA (Yu et al., 2020) 52.7 - DoT (Krichene et al., 2021) 54.0 - REASTAP (Zhao et al., 2022) 58.6 - TaCube (Zhou et al., 2022a) 60.8 - TAPAS (Herzig et al., 2020) 48.8 50.2 TAPEX (Liu et al., 2021) 55.5 57.9 OmniTab (Jiang et al., 2022) 61.8 62.1 Prompt-based LLMs ChatGPT (Cheng et al., 2022) 43.3 - Codex (Ye et al., 2023) 47.6 - StructGPT (Cheng et al., 2022) 48.4 - Codex-COT (Chen, 2022) 48.8 - Binder (Cheng et al., 2022) 64.6 - LEVER (Cheng et al., 2022) 65.8 - DATER (Cheng et al., 2022) 65.9 - Chain-of-Table (Wang et al., 2024) 67.3 - Semantic parsing with cleaned tables SQuALL (Shi et al., 2020) 50.4 54.3 Semantic parsing SQuALL (Shi et al., 2020) 23.2 27.2 Our models +P+C+S 59.0 61.4 Ensemble 63.3 66.3 (for similarly sized architectures), our models are also more robust (Table 3b).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-98dfb1df51e4e388acec30d7",
+          "b": "paper-ca522fc1ea738c297608af6b",
+          "input_sha256": "4dfd19a18e34ef816f9df6363cf36286e687adfcc1eba7f2154284e1614064b1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.745/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.745.pdf",
+              "sha256": "e1338b16d5c65586d8b9975786b9657edcbb0dd167815571c8477a22eec31167"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.acl-long.564/",
+              "pdf_url": "https://aclanthology.org/2024.acl-long.564.pdf",
+              "sha256": "0c83ef14bac1a99cf7a0427b98c3dd8c3eea26b20d419f56b2892baacfc630c1"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "TA B ERT and B ERT, we found TA B ERT is more effective across the board. We hypothesize that the performance improvements would be attributed by two factors. First, pre-training on large parallel textual and tabular corpora helps TA B ERT learn to encode structure-rich tabular inputs in their linearized form (Eq. (1)), whose format is different from the ordinary natural language data that B ERT is trained on. Second, pre-training on parallel data could also helps the model produce representations that better capture the alignment between an utterance and the relevant information presented in the structured schema, which is important for semantic parsing. Overall, the results on the two benchmarks demonstrate that pretraining on aligned textual and tabular data is necessary for joint understanding of NL utterances and tables, and TA B ERT works well with both structured (S PIDER) and semi-structured (W IKI TABLE Q UESTIONS) DBs, and agnostic of the task-specific structures of semantic parsers. Effect of Content Snapshots In this paper we propose using content snapshots to capture the information in input DB tables that is most relevant to answering the NL utterance. We therefore study the effectiveness of including content snapshots when generating schema representations. We include in Tab. 1 and Tab. 2 results of models without using content in row linearization (“−content snapshot”). Under this setting a column is rep-",
+              "url": "https://aclanthology.org/2020.acl-main.745.pdf",
+              "document_sha256": "e1338b16d5c65586d8b9975786b9657edcbb0dd167815571c8477a22eec31167"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "els). In fact, existing systems have attempted to leverage BERT, but each with their own domainspecific, in-house strategies to encode the structured information in the DB (Guo et al., 2019; Zhang et al., 2019a; Hwang et al., 2019), and importantly, without pretraining representations on structured data. These challenges call for development of general-purpose pretraining approaches tailored to learning representations for both NL utterances and structured DB tables. In this paper we present TA B ERT, a pretraining approach for joint understanding of NL text and (semi-)structured tabular data (§ 3). TA B ERT is built on top of BERT, and jointly learns contextual representations for utterances and the structured schema of DB tables (e.g., a vector for each utterance token and table column). Specifically, TA B ERT linearizes the structure of tables to be compatible with a Transformer-based BERT model. To cope with large tables, we propose content snapshots, a method to encode a subset of table content most relevant to the input utterance. This strategy is further combined with a vertical attention mechanism to share information among cell representations in different rows (§ 3.1). To capture the association between tabular data and related NL text, TA B ERT is pretrained on a parallel corpus of 26 million tables and English paragraphs (§ 3.2). TA B ERT can be plugged into a neural semantic parser as a general-purpose encoder to compute representations for utterances and tables. Our key insight is that although semantic parsers are highly domain-specific, most systems rely on representations of input utterances and the table schemas to facilitate subsequent generation of DB queries, and these representations can be provided by TA B ERT, regardless of the domain of the",
+              "url": "https://aclanthology.org/2020.acl-main.745.pdf",
+              "document_sha256": "e1338b16d5c65586d8b9975786b9657edcbb0dd167815571c8477a22eec31167"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "Fine-Tuned Models TABERT (Yin et al., 2020) 52.3 MATE (Eisenschlos et al., 2021) 51.5 TableFormer (Yang et al., 2022) 52.6 GRAPPA (Yu et al., 2020) 52.7 DoT (Krichene et al., 2021) 54.0 REASTAP (Zhao et al., 2022) 58.6 TaCube (Zhou et al., 2022a) 60.8 TAPAS (Herzig et al., 2020) 48.8 TAPEX (Liu et al., 2021) 55.5 OmniTab (Jiang et al., 2022) 61.8 Prompt-based LLMs ChatGPT (Cheng et al., 2022) 43.3 Codex (Ye et al., 2023) 47.6 StructGPT (Cheng et al., 2022) 48.4 Codex-COT (Chen, 2022) 48.8 Binder (Cheng et al., 2022) 64.6 LEVER (Cheng et al., 2022) 65.8 DATER (Cheng et al., 2022) 65.9 Chain-of-Table (Wang et al., 2024) 67.3 Semantic parsing with cleaned tables SQuALL (Shi et al., 2020) 50.4 Semantic parsing SQuALL (Shi et al., 2020) 23.2 Our models +P+C+S 59.0 Ensemble 63.3",
+              "url": "https://aclanthology.org/2024.acl-long.564.pdf",
+              "document_sha256": "0c83ef14bac1a99cf7a0427b98c3dd8c3eea26b20d419f56b2892baacfc630c1"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "from the input, thanks to the generative ability of the Transformer architectures. To train our model, we leverage a pre-training procedure (Pruksachatkun et al., 2020; Geva et al., 2020; Yu et al., 2020) that helps neural architectures manipulate tabular data before dealing with complex Table QA tasks. This is done by first learning to generate from SQL queries rather than from natural language. On top of that, our main contribution focuses on the fine-tuning of such models when dealing with natural language questions, through the development of a flexible framework that allows partial execution of corresponding SQL queries, enabling effective handling of real-world tables while still obtaining good performance on numerical reasoning questions (Figure 1). Our research addresses the following key questions : 1. Is there an intermediate supervision for table QA that bridges the gap between semantic parsing and direct answer generation, thereby enhancing generalization and structural reasoning capabilities (Table 2)? 2. What types of algebraic operations should be predicted by a generative architecture, and which should be preferably executed by an external algorithm (Tables 3a and4a) ? 3. Does partial execution of SQL graphs help to improve robustness to perturbations in the input tables (Table 3b and 4b) ? Through our experiments, we demonstrate that, for some intermediate cut-off levels, our approach generalizes better and is more robust compared to direct answer methods, which are usually limited in their structural reasoning capacities. This framework provides insights into the trade-off between different levels of supervision, paving the way for future research and innovation in the field of Table QA.",
+              "url": "https://aclanthology.org/2024.acl-long.564.pdf",
+              "document_sha256": "0c83ef14bac1a99cf7a0427b98c3dd8c3eea26b20d419f56b2892baacfc630c1"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Table Question-Answering involves both understanding the natural language query and grounding it in the context of the input table to extract relevant information. In this context, many methods have highlighted the benefits of intermediate pre-training using SQL queries. However, while most approaches aim at generating final answers directly from inputs, we claim that there is better to do with SQL queries during training. By learning to imitate a restricted subset of SQL-like algebraic operations, we demonstrate that their execution flow provides intermediate supervision steps that allow for increased generalization and structural reasoning compared to classical approaches. Our method, bridges the gap between semantic parsing and direct answering methods, offering valuable insights into which types of operations should be predicted by a generative architecture and which should be executed by an external algorithm. Our code can be found at https://github.com/ RaphaelMouravieff/Partial-Exec.",
+              "url": "https://aclanthology.org/2024.acl-long.564.pdf",
+              "document_sha256": "0c83ef14bac1a99cf7a0427b98c3dd8c3eea26b20d419f56b2892baacfc630c1"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-98dfb1df51e4e388acec30d7",
+          "url": "https://aclanthology.org/2020.acl-main.745/"
+        },
+        "b": {
+          "paper_id": "paper-ca522fc1ea738c297608af6b",
+          "url": "https://aclanthology.org/2024.acl-long.564/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Specialized / Niche Topics"
+      },
+      "sha256": "d764bf94dceebfbf2c51d9f17c0ad500bbfd9829c6767681409f8a27cf1a849f"
+    }
+  ]
+}

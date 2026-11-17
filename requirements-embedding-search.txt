@@ -1,0 +1,4 @@
+# Optional: scalable nearest-neighbor generation for collections above 2,000 papers.
+# The Voyage API integration and small pilot searches use Python's standard library.
+numpy>=1.26,<3
+hnswlib==0.8.0

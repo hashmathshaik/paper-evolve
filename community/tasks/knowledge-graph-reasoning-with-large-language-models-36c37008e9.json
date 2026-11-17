@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Knowledge Graph Reasoning with Large Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-e15a342d07f680eb2acabed7",
+      "a": "paper-9ec7dd0f9322b249e7545c6f",
+      "b": "paper-a19f195b510a674355cf8671",
+      "state": {
+        "paper_a": {
+          "title": "CLUTRR: A Diagnostic Benchmark for Inductive Reasoning from Text",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "The recent success of natural language understanding (NLU) systems has been troubled by results highlighting the failure of these models to generalize in a systematic and robust way. In this work, we introduce a diagnostic benchmark suite, named CLUTRR, to clarify some key issues related to the robustness and systematicity of NLU systems. Motivated by the classic work on inductive logic programming, CLUTRR requires that an NLU system infer kinship relations between characters in short stories. Successful performance on this task requires both extracting relationships between entities, as well as inferring the logical rules governing these relationships. CLUTRR allows us to precisely measure a model’s ability for systematic generalization by evaluating on held-out combinations of logical rules, and allows us to evaluate a model’s robustness by adding curated noise facts. Our empirical results highlight a substantial performance gap between state-of-the-art NLU models (e.g., BERT and MAC) and a graph neural network model that works directly with symbolic inputs—with the graph-based model exhibiting both stronger generalization and greater robustness."
+        },
+        "paper_b": {
+          "title": "Systematic Relational Reasoning With Epistemic Graph Neural Networks",
+          "year": 2025,
+          "venue": "ICLR",
+          "abstract": "Developing models that can learn to reason is a notoriously challenging problem. We focus on reasoning in relational domains, where the use of Graph Neural Networks (GNNs) seems like a natural choice. However, previous work has shown that regular GNNs lack the ability to systematically generalize from training examples on test graphs requiring longer inference chains, which fundamentally limits their reasoning abilities. A common solution relies on neuro-symbolic methods that systematically reason by learning rules, but their scalability is often limited and they tend to make unrealistically strong assumptions, e.g.\\ that the answer can always be inferred from a single relational path. We propose the Epistemic GNN (EpiGNN), a novel parameter-efficient and scalable GNN architecture with an epistemic inductive bias for systematic reasoning. Node embeddings in EpiGNNs are treated as epistemic states, and message passing is implemented accordingly. We show that EpiGNNs achieve state-of-the-art results on link prediction tasks that require systematic reasoning. Furthermore, for inductive knowledge graph completion, EpiGNNs rival the performance of state-of-the-art specialized approaches. Finally, we introduce two new benchmarks that go beyond standard relational reasoning by requiring the aggregation of information from multiple paths. Here, existing neuro-symbolic approaches fail, yet EpiGNNs learn to reason accurately. Code and datasets are available at https://github.com/erg0dic/gnn-sg."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Most of these methods, however, fail at tasks that require systematic generalization (Sinha et al., 2019; 2020) and are prone learning reasoning shortcuts (Marconato et al., 2023; Zhang et al., 2023a).\nWe consider two existing benchmarks designed to test systematic generalization for relational reasoning: CLUTRR (Sinha et al., 2019) and Graphlog (Sinha et al., 2020).\nIn summary, within the context of benchmarks for systematic generalization, our RCC-8 and IA benchmarks are novel on two fronts compared to existing benchmarks such as CLUTRR (Sinha et al., 2019) and Graphlog (Sinha et al., 2020): 1.\nWhile standard GCNs do not take into account edge types, for the experiments we concatenate edge types to node embeddings during message passing, following (Sinha et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9ec7dd0f9322b249e7545c6f",
+          "b": "paper-a19f195b510a674355cf8671",
+          "input_sha256": "0c4a37733af75373cf790f0a2eddc49e370aece4a583c4e5eee036c6595639ea",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1458/",
+              "pdf_url": "https://aclanthology.org/D19-1458.pdf",
+              "sha256": "0d427b8378a581d25839f7d5f55b9751b56792430c692b24c38d1521605d09c2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://openreview.net/forum?id=qNp86ByQlN",
+              "pdf_url": "https://arxiv.org/pdf/2407.17396v2",
+              "sha256": "631d60145eca78aed28ba8c9eb11a4bda6521b6e62fdbb7bcff394496befc7c8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "CLUTRR: A Diagnostic Benchmark for Inductive Reasoning from Text Koustuv Sinha 1,3,4 , Shagun Sodhani 2,3 , Jin Dong 1,3 , Joelle Pineau 1,3,4 and William L. Hamilton 1,3,4 1 School of Computer Science, McGill University, Canada 2 Université de Montréal, Canada 3 Montreal Institute of Learning Algorithms (Mila), Canada 4 Facebook AI Research (FAIR), Montreal, Canada {koustuv.sinha, sshagunsodhani, jin.dong, jpineau, wlh} @{mail.mcgill.ca, gmail.com, mail.mcgill.ca, cs.mcgill.ca, cs.mcgill.ca} Abstract The recent success of natural language understanding (NLU) systems has been troubled by results highlighting the failure of these models to generalize in a systematic and robust way. In this work, we introduce a diagnostic benchmark suite, named CLUTRR, to clarify some key issues related to the robustness and systematicity of NLU systems. Motivated by classic work on inductive logic programming, CLUTRR requires that an NLU system infer kinship relations between characters in short stories. Successful performance on this task requires both extracting relationships between entities, as well as inferring the logical rules governing these relationships. CLUTRR allows us to precisely measure a model’s ability for systematic generalization by evaluating on held-out combinations of logical rules, and it allows us to evaluate a model’s robustness by adding curated noise facts. Our empirical results highlight a substantial performance gap between state-of-the-art NLU models (e.g., BERT and MAC) and a graph neural network model that works directly with symbolic inputs—with the graph-based model exhibiting both stronger generalization and greater robustness.",
+              "url": "https://aclanthology.org/D19-1458.pdf",
+              "document_sha256": "0d427b8378a581d25839f7d5f55b9751b56792430c692b24c38d1521605d09c2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Our work. Inspired by the classic AI challenge of inductive logic programming (Quinlan, 1990)— as well as the recently developed CLEVR dataset for visual reasoning (Johnson et al., 2017)—we propose a semi-synthetic benchmark designed to explicitly test an NLU model’s ability for systematic and robust logical generalization. Our benchmark suite—termed CLUTRR (Compositional Language Understanding and Text-based Relational Reasoning)—contains a large set of semi-synthetic stories involving hypothetical families. Given a story, the goal is to infer the relationship between two family members, whose relationship is not explicitly mentioned (Figure 1). To solve this task, a learning agent must extract the relationships mentioned in the text, induce the logical rules governing the kinship relationships (e.g., the transitivity of the sibling relation), and use these rules to infer the relationship between a given pair of entities. Crucially, the CLUTRR benchmark allows us to test a learning agent’s ability for systematic generalization by testing on stories that contain unseen combinations of logical rules. CLUTRR also allows us to precisely test for the various forms of model robustness by adding different kinds of superfluous noise facts to the stories. We compare the performance of several stateof-the-art NLU systems on this task—including Relation Networks (Santoro et al., 2017), Compositional Attention Networks (Hudson and Manning, 2018) and BERT (Devlin et al., 2018). We find that the generalization ability of these NLU systems is substantially below that of a Graph Attention Network (Veličković et al., 2018), which is given direct access to symbolic representations of the stories. Moreover, we find that the robustness of the NLU systems generally does not improve by",
+              "url": "https://aclanthology.org/D19-1458.pdf",
+              "document_sha256": "0d427b8378a581d25839f7d5f55b9751b56792430c692b24c38d1521605d09c2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 23,
+              "text": "learned is thus more expressive than the Horn rules which are considered in most existing benchmarks. As illustrated in Example 2, this means that models need to process different relational paths and aggregate the resulting information. We vary the difficulty of problem instances based on the number b of such paths and their length k. Figure 6 provides an example where there are b = 6 paths of length k = 3. Each path is partially informative, in the sense that it allows to exclude certain candidate relations, but is not sufficiently informative to pinpoint the exact relation. The model thus needs to rely on the different paths to be able to exclude all but one of the eight possible relations. In summary, within the context of benchmarks for systematic generalization, our RCC-8 and IA benchmarks are novel on two fronts compared to existing benchmarks such as CLUTRR (Sinha et al., 2019) and Graphlog (Sinha et al., 2020): 1. Going beyond Horn rules for relation composition: The composition of some RCC-8 relations is a disjunction of several RCC-8 relations, and similar for IA. 2. Multi-path information aggregation: Models need to reason about multiple relational paths (for the case where b > 1) to infer the correct answer. 3. Rich graph topologies: The graph generation process recursively expands an edge in the base graph with valid subgraphs and leads to significantly diverse graph topolgies E.1",
+              "url": "https://arxiv.org/pdf/2407.17396v2",
+              "document_sha256": "631d60145eca78aed28ba8c9eb11a4bda6521b6e62fdbb7bcff394496befc7c8"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 10,
+              "text": "More generally, within the context of statistical relational learning, methods such as Markov Logic Networks (Richardson & Domingos, 2006) have been studied, which can learn weighted sets of arbitrary propositional formulas, but suffer from limited scalability, a limitation which is inherited by differentiable versions of such methods (Marra & Kuželka, 2021). Systematic reasoning There has been a large body of work on learning to reason with neural networks, including recent approaches based on GNNs (Zhang et al., 2020; Zhu et al., 2021; Zhang & Yao, 2022), pre-trained language models (Clark et al., 2020; Kojima et al., 2022; Creswell et al., 2023) or tailor-made architectures for relational reasoning (Santoro et al., 2017; Bergen et al., 2021). Most of these methods, however, fail at tasks that require systematic generalization (Sinha et al., 2019; 2020) and are prone learning reasoning shortcuts (Marconato et al., 2023; Zhang et al., 2023a). NBFNet (Zhu et al., 2021), R-GCN (Schlichtkrull et al., 2018), and graph-convolution methods (Dettmers et al., 2018a; Vashishth et al., 2020) are examples of scalable and (mostly) parameter-efficient methods designed for knowledge graph completion. Such methods typically leverage knowledge graph embedding methods (Bordes et al., 2013; Trouillon et al., 2017; Yang et al., 2015) in the message passing step. NBFNet uses such methods to compose relations and anchors the embeddings to a head entity to develop path-based relational representations. GNNs for logical reasoning have also been proposed, including R2N (Marra et al., 2023) and LERP (Han et al., 2023), but their focus is again on knowledge graphs and not systematic reasoning. For instance, R2N uses multi-layer perceptrons (MLPs) for information composition and sum",
+              "url": "https://arxiv.org/pdf/2407.17396v2",
+              "document_sha256": "631d60145eca78aed28ba8c9eb11a4bda6521b6e62fdbb7bcff394496befc7c8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Left: A (single) relational path reasoning problem over family relations from CLUTRR (Sinha et al., 2019), where the path P1 allows us to infer the correct relation. Right: A multi-path reasoning problem over RCC-8 relations where each path provides partial (disjunctive) information and the target label is obtained by combining information from paths P1 , P2 and P3 . formance of such methods can be explained by their focus on modeling single relational paths, as an alternative to local message passing. To predict the relationship between h and t, conceptually, these methods consider all the (exponentially many) paths between them, select the most informative path, and make a prediction based on this path, although in practice heuristics are used to avoid exhaustive exploration (Minervini et al., 2020b). The emphasis on single paths provides a useful inductive bias, while also avoiding problems with local message passing such as over-smoothing. Compared to GNNs, neuro-symbolic methods also have an advantage in how individual relational paths are modrk r1 r2 eled. Consider a relational path h −→ x1 −→ ... −→ t, or simply r1 ; r2 ; ...; rk if the entities xi are unimportant. To predict the relationship between h and t, most methods essentially proceed by repeatedly choosing two neighboring relations ri ; ri+1 and replace them by their composition. Crucially, the order in which these relations are chosen may determine whether the model finds the answer, as certain orderings may require knowledge of unseen intermediate relationships. Neuro-symbolic methods can often avoid such issues by, in principle, considering all possible orderings. However, neuro-symbolic methods also have important drawbacks, including scalability, and most fundamentally, their focus on",
+              "url": "https://arxiv.org/pdf/2407.17396v2",
+              "document_sha256": "631d60145eca78aed28ba8c9eb11a4bda6521b6e62fdbb7bcff394496befc7c8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 29,
+              "text": "CLUTRR1 (Sinha et al., 2019) is a dataset which involves reasoning about family relationships. The original version of the dataset involved narratives describing the fact graph in natural language. It was, among others, aimed at testing the ability of language models such as BERT (Devlin et al., 2019) to solve such reasoning tasks. However, the original paper also considered a number of baselines which were given access to the fact graph itself, especially GNNs and sequence classification models. A crucial finding was that such models fail to learn to reason in a systematic way: models trained on short inference chains perform poorly when tested on examples involving longer inference chains. This has inspired a line of work which has introduced a number of neuro-symbolic methods for addressing this issue. The CLUTRR dataset was released under a CC-BY-NC 4.0 license. Graphlog2 (Sinha et al., 2020) involves examples for 57 different worlds, where each world is characterised by a set of logical rules. For each world, a number of corresponding knowledge graphs are provided, which the model can use to learn the underlying rules. The model is then tested on previously unseen knowledge graphs for the same world. The aim of this benchmark is to test the ability of models to systematically generalise from the reasoning patterns that have been observed during training, i.e. to apply the rules that have been learned from the training data in novel ways. This dataset is released under a CC-BY-NC 4.0 license. RCC-8 and IA are the benchmarks that we introduce in this paper, as described in Section E. We release these benchmarks under a CC-BY 4.0 license. Inductive Knowledge Graph Completion3 (Teru et al., 2020) is focused on link prediction queries of the form (h, r, ?) which are",
+              "url": "https://arxiv.org/pdf/2407.17396v2",
+              "document_sha256": "631d60145eca78aed28ba8c9eb11a4bda6521b6e62fdbb7bcff394496befc7c8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9ec7dd0f9322b249e7545c6f",
+          "url": "https://aclanthology.org/D19-1458/"
+        },
+        "b": {
+          "paper_id": "paper-a19f195b510a674355cf8671",
+          "url": "https://openreview.net/forum?id=qNp86ByQlN"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "eecbf4d10be3c75e2e9dc841735892d63bfd61321360712cfd4d2e6e68767cdf"
+    },
+    {
+      "id": "edge-b344f3bfae1f076962630a94",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-57f830cb6aefec188bbf88b6",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Talk like a Graph: Encoding Graphs for Large Language Models",
+          "year": 2024,
+          "venue": "ICLR",
+          "abstract": "Graphs are a powerful tool for representing and analyzing complex relationships in real-world applications such as social networks, recommender systems, and computational finance. Reasoning on graphs is essential for drawing inferences about the relationships between entities in a complex system, and to identify hidden patterns and trends. Despite the remarkable progress in automated reasoning with natural text, reasoning on graphs with large language models (LLMs) remains an understudied problem. In this work, we perform the first comprehensive study of encoding graph-structured data as text for consumption by LLMs. We show that LLM performance on graph reasoning tasks varies on three fundamental levels: (1) the graph encoding method, (2) the nature of the graph task itself, and (3) interestingly, the very structure of the graph considered. These novel results provide valuable insight on strategies for encoding graphs as text. Using these insights we illustrate how the correct choice of encoders can boost performance on graph reasoning tasks inside LLMs by 4.8% to 61.8%, depending on the task."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Several different methodologies have been proposed which range from generating additional training data from KGs (Guu et al., 2020; Lewis et al., 2020; Agarwal et al., 2021) to extending pretraining (Yasunaga et al., 2022; Jin et al., 2023).\nAnother is that LLMs are fundamentally limited by when they were trained, and it can be difﬁcult to incorporate ‘fresh’ information about the state of the world which has changed (Lewis et al., 2020).\nFor example, while much work has focused on LLMs and graph databases (or knowledge graphs (Guu et al., 2020; Lewis et al., 2020)) there has not been much study about general purpose use of graph-structured data.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-57f830cb6aefec188bbf88b6",
+          "input_sha256": "0e2f1d972e375daa73cb58759563118c61a746a3a0ae717a46d28816c1fd01ac",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://openreview.net/forum?id=IuXR1CCrSi",
+              "pdf_url": "https://arxiv.org/pdf/2310.04560v1",
+              "sha256": "05f40545ecb407caf4c1f12470677d6f0e4fd344aa8a4380b6e3c404b16cf983"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "There has been remarkable recent progress in the research and applications of large language models (LLMs) (Vaswani et al., 2017; Devlin et al., 2018; Brown et al., 2020a; Ouyang et al., 2022). These generative models have captivated the artificial intelligence community and a plethora of models trained on a variety of tasks and modalities have recently been released (Zhao et al., 2023). All of these advancements have led to a growing consensus that LLMs are a pivotal advancement on the path to artificial general intelligence (AGI) (Bubeck et al., 2023). However, despite all their successes, there are a number of limitations with the current methodology of design and implementation of LLMs. One of the most obvious limitations is their reliance on unstructured text, causing the models to sometimes miss obvious logical entailments or hallucinate incorrect conclusions (Zhang et al., 2023b). Another is that LLMs are fundamentally limited by when they were trained, and it can be difficult to incorporate ‘fresh’ information about the state of the world which has changed (Lewis et al., 2020). Graph-structured data is one of the most flexible ways to represent information and could be a promising solution to both challenges (Schneider et al., 2022; Pan et al., 2023). Interestingly, despite this promise, the intersection of graphs and LLMs has been relatively understudied. For example, while much work has focused on LLMs and graph databases (or knowledge graphs (Guu et al., 2020; Lewis et al., 2020)) there has not been much study about general purpose use of graph-structured data. More recently, Wang et al. (2023) have sought to address this by designing a graph benchmarking task for language models. While their task represents an exciting initial foray into measuring LLMs",
+              "url": "https://arxiv.org/pdf/2310.04560v1",
+              "document_sha256": "05f40545ecb407caf4c1f12470677d6f0e4fd344aa8a4380b6e3c404b16cf983"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "In-context learning. One common approach for reasoning with LLMs is to pre-train it on a large corpus of text that is closely related to the reasoning task. This has been shown to improve the performance (Hendrycks et al., 2021; Shen et al., 2021), but it can be computationally expensive, especially for larger models. Additionally, fine-tuning often demands domain-specific data and human expertise, adding to the cost. Brown et al. (2020b) has demonstrated the capabilities of LLMs in tackling novel tasks with little or no training data. The FEW- SHOT method inserts k incontext input-output pairs before the test input and has been shown to significantly improve the performance of the LLM on unseen tasks. Recent research has proposed strategies to improve the selection of in-context demonstrations, such as retrieving semantically similar examples (Liu et al., 2021), employing chain-of-thought reasoning (Wei et al., 2022), and decomposing tasks into subproblems using least-to-most prompting (Zhou et al., 2022a). In this work, we focus on evaluating and enhancing LLMs on basic graph reasoning tasks. We exploit some of the ideas in the literature and compare their results. Text-based reasoning with LLMs. Numerous models have been proposed for text-based reasoning employing LLMs (see (Huang & Chang, 2022) for a survey). One approach to reasoning with LLMs is modular reasoning. This methodology divides the problem into smaller modules, utilizing distinct LMs to address each module (Zhou et al., 2022a; Kazemi et al., 2022; Khot et al., 2022). Another approach to reasoning with LLMs aims to predict the output of a question in a single LM call. This study primarily focuses on the latter method. Knowledge-Augmented LLMs. Another body of work is concerned with the use of knowledge",
+              "url": "https://arxiv.org/pdf/2310.04560v1",
+              "document_sha256": "05f40545ecb407caf4c1f12470677d6f0e4fd344aa8a4380b6e3c404b16cf983"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The goal in prompt engineering is to find the correct way to phrase a question Q such that an LLM f (or other generative model) will return the corresponding answer A, (Q ∈ W, A ∈ W ). In other words: A = f (Q) In this work, our goal is to provide the LLM f with graph information, so that it can better reason about question/answer pairs that require access to arbitrarily structured relational information. A = f (G, Q) A variety of approaches exist for modifying the LLM f (.) so that it could better perform on tasks with graph data such as fine-tuning (Clark et al., 2020), soft prompting (Lester et al., 2021), and LoRA (Hu et al., 2021). In addition, many approaches modify the model to include graph information (Müller et al., 2023; Zhang et al., 2020; Dwivedi & Bresson, 2020). However, these methods all require access to the internals of the model (either its weights or gradients), which can limit their applicability in many real-world settings. In this work, we are instead interested in the case where f (.) and its parameters are fixed, and the system is available only for use in a black box setup where the LLM only consumes and produces text (i.e., the LLM f : W 7→ W ). We believe this setting to be particularly valuable as the number of proprietary models available and their hardware demands increase. To this end, we introduce the graph encoding function g(G) and question rephrasing function q(Q), where g : G 7→ W and q : W 7→ W (where W is the large discrete domain of tokens used to train the LLM). A = f (g(G), q(Q)) (1) Our training input D to the graph-based prompt system is a set of G, Q, S triples, where G is a graph, Q is a question, and S, S ∈ W , is a solution to Q. We seek to find a g(.) and q(.) that maximize the expected score from the model (scoref ) of",
+              "url": "https://arxiv.org/pdf/2310.04560v1",
+              "document_sha256": "05f40545ecb407caf4c1f12470677d6f0e4fd344aa8a4380b6e3c404b16cf983"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our framework for reasoning with graphs using LLMs. studying prompt engineering techniques finds the most suitable way to get a desired solution to a question from an LLM. Our experimental results seek to uncover the situations where different prompt heuristics work well. To that end, we propose a new set of benchmarks GraphQA for measuring LLM performance reasoning over graph data. GraphQA is distinguished by using graphs with much more varied and realistic graph structure than has previously been studied with LLMs. Our Contributions: Specifically, the contributions of our work are the following: 1. An extensive study of graph-structure prompting techniques for use in LLMs. 2. Insights and best practices for encoding graphs as text for use in LLMs. 3. A new graph benchmark (GraphQA) to aid the community in studying the effects of graph structure on LLM prompting further.",
+              "url": "https://arxiv.org/pdf/2310.04560v1",
+              "document_sha256": "05f40545ecb407caf4c1f12470677d6f0e4fd344aa8a4380b6e3c404b16cf983"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-57f830cb6aefec188bbf88b6",
+          "url": "https://openreview.net/forum?id=IuXR1CCrSi"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "a3517fddcfb70a88324ce3b0d8ff830177eb8c7e3077fefffd06594f0f8a9514"
+    },
+    {
+      "id": "edge-5bd3e7847e3fd4e7be7a1cf3",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-b8cb7398f8f56b27e40b5ac8",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Dynamic Heterogeneous-Graph Reasoning with Language Models and Knowledge Representation Learning for Commonsense Question Answering",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, knowledge graphs (KGs) have won noteworthy success in commonsense question answering. Existing methods retrieve relevant subgraphs in the KGs through key entities and reason about the answer with language models (LMs) and graph neural networks. However, they ignore (i) optimizing the knowledge representation and structure of subgraphs and (ii) deeply fusing heterogeneous QA context with subgraphs. In this paper, we propose a dynamic heterogeneous-graph reasoning method with LMs and knowledge representation learning (DHLK), which constructs a heterogeneous knowledge graph (HKG) based on multiple knowledge sources and optimizes the structure and knowledge representation of the HKG using a two-stage pruning strategy and knowledge representation learning (KRL). It then performs joint reasoning by LMs and Relation Mask Self-Attention (RMSA). Specifically, DHLK filters key entities based on the dictionary vocabulary to achieve the first-stage pruning while incorporating the paraphrases in the dictionary into the subgraph to construct the HKG. Then, DHLK encodes and fuses the QA context and HKG using LM, and dynamically removes irrelevant KG entities based on the attention weights of LM for the second-stage pruning. Finally, DHLK introduces KRL to optimize the knowledge representation and perform answer reasoning on the HKG by RMSA.We evaluate DHLK at CommonsenseQA and OpenBookQA, and show its improvement on existing LM and LM+KG methods."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "With the development of LMs, Retrieval Augmented Architectures (Lewis et al., 2020; Guu et al., 2020) have become the mainstream method for ODQA.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-b8cb7398f8f56b27e40b5ac8",
+          "input_sha256": "90cfc7d44ffe799d78f1ca05fdfe6f884782689c013110acb1746969ef545ba6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.785/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Recently, large LMs such as UnifiedQA (Khashabi et al., 2020), T5 (Raffel et al., 2020) and GPT-3 (Brown et al., 2020) have been widely applied in QA tasks, such as open-domain question answering (ODQA) and CQA, driving the development of QA. However, larger LMs result in disproportionate resource consumption and training time. Therefore, many works have enhanced the reasoning ability of machines by introducing external knowledge, hoping to achieve good answering results while reducing resource consumption and training time. Knowledge-enhanced ODQA. ODQA model utilizes external knowledge to answer questions, typically consisting of a retriever and a reader component. With the development of LMs, Retrieval Augmented Architectures (Lewis et al., 2020; Guu et al., 2020) have become the mainstream method for ODQA. They apply LMs to retriever-reader and conduct joint training of the retriever-reader. However, previous works (Karpukhin et al., 2020; Izacard and Grave, 2021) primarily focused on unstructured knowledge sources, such as Wikipedia. Recently, some works (Min et al., 2019; Zhou et al., 2020; Hu et al., 2022) have started incorporating structured KGs into the retriever-reader architecture to enhance retrieval effectiveness and question answering capabilities. For example, UniKQA (Oguz et al., 2022) converts KG triplets into text and merges them with unstructured knowledge repositories. KG-FiD (Yu et al., 2022) utilizes KG to establish relational dependencies between retrieved paragraphs and employs GNNs to sort and prune the retrieved paragraphs. Grape (Ju et al., 2022) constructs a localized bipartite graph for each pair of question and article, learning knowledge representations through GNNs. Knowledge-enhanced CQA. CQA also requires external knowledge to answer",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "(Pennington et al., 2014), LMs, and so on, ignoring the semantic associations between entities; additionally, the knowledge representations obtained are less effective; (iii) Given that the QA context and subgraph have different structures, existing methods encode QA context and subgraph separately, with shallow interactions only at the GNN layer through message passing (Yasunaga et al., 2021; Zheng and Kordjamshidi, 2022) or at the output layer through attention mechanism (Sun et al., 2022) or MLP (Feng et al., 2020; Zhang et al., 2022; Yasunaga et al., 2022), lacking deep fusion of QA context and subgraph, which will hinder the inference capability of the model. Based on the above problems, we propose a Dynamic Heterogeneous-graph reasoning method based on Language models and Knowledge representation learning (DHLK). Specifically, given a question and choice, we first use KeyBERT (Grootendorst, 2020) to extract the candidate entities and introduce WordNet (Miller, 1995) and Wiktionary 1 vocabularies to filter the candidate entities and then obtain the key entities, which can remove some noisy entities in the subgraph retrieval process and realize first-stage pruning of the subgraph. We also incorporate the paraphrases of key entities in the two dictionaries as entities into the subgraph to construct a heterogeneous knowledge graph (HKG). Then, we use LM to encode the QA context and HKG and fuse the QA context and HKG in the encoding process. In addition, we dynamically remove irrelevant entities according to the attention weights of LM to achieve the second-stage pruning of the subgraph. Finally, we combine KRL and Relation Mask Self-Attention (RMSA) to optimize the knowledge representation of HKG and incorporate the path information in the HKG into the QA context.",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "GNNs to solve CQA. For example, QAGNN (Yasunaga et al., 2021) uses LM to estimate the importance of subgraph entities and considers the QA context as an additional node connected to the subgraph. JointLK (Sun et al., 2022) uses the bidirectional attention module to fuse the two modalities while designing a pruning module to remove irrelevant entities from the subgraph. GREASELM (Zhang et al., 2022) fuses encoding representations from LM and GNNs through multi-layered modality interaction operations. However, these works encode the QA context and KG subgraph in isolation, leading to limited interaction between textual and KG representations. Additionally, they don’t consider the influence of key entities and knowledge representations on subgraph retrieval and model inference. In contrast to previous works, we propose to reduce noisy knowledge by optimizing the set of key entities in the subgraph retrieval process. In addition, we use LM to encode and fuse the two modalities and prune the subgraph according to the attention weights of LM. Meanwhile, during the inference process, we introduce the KRL algorithm to optimize the knowledge representation of the subgraph. Figure 2 shows the overall architecture of our method.",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b8cb7398f8f56b27e40b5ac8",
+          "url": "https://aclanthology.org/2023.acl-long.785/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "7193e46ce7fb56ec1d808be51ea74cc098f7696918de64114163b36071d33aad"
+    },
+    {
+      "id": "edge-47efc04bf19a895830b0f29f",
+      "a": "paper-04c52b112002d088945fe819",
+      "b": "paper-657ac7a75f1b5b23cbec5039",
+      "state": {
+        "paper_a": {
+          "title": "An AMR Aligner Tuned by Transition-based Parser",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we propose a new rich resource enhanced AMR aligner which produces multiple alignments and a new transition system for AMR parsing along with its oracle parser. Our aligner is further tuned by our oracle parser via picking the alignment that leads to the highest-scored achievable AMR graph. Experimental results show that our aligner outperforms the rule-based aligner in previous work by achieving higher alignment F1 score and consistently improving two open-sourced AMR parsers. Based on our aligner and transition system, we develop a transition-based AMR parser that parses a sentence into its AMR graph directly. An ensemble of our parsers with only words and POS tags as input leads to 68.4 Smatch F1 score, which outperforms the current state-of-the-art parser."
+        },
+        "paper_b": {
+          "title": "Structural Information Preserving for Graph-to-Text Generation",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "The task of graph-to-text generation aims at producing sentences that preserve the meaning of input graphs. As a crucial defect, the current state-of-the-art models may mess up or even drop the core structural information of input graphs when generating outputs. We propose to tackle this problem by leveraging richer training signals that can guide our model for preserving input information. In particular, we introduce two types of autoencoding losses, each individually focusing on different aspects (a.k.a. views) of input graphs. The losses are then back-propagated to better calibrate our model via multi-task training. Experiments on two benchmarks for graph-to-text generation show the effectiveness of our approach over a state-of-the-art baseline."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example, in AMR-to-text generation, there have been several aligners (Pourdamghani et al., 2014; Flanigan et al., 2016; Wang and Xue, 2017; Liu et al., 2018c; Szubert et al., 2018) available for linking AMR nodes to words.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04c52b112002d088945fe819",
+          "b": "paper-657ac7a75f1b5b23cbec5039",
+          "input_sha256": "fede75163093824d26a1d63824baacb082e8eae4b6242dabba0e118617427bf0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D18-1264/",
+              "pdf_url": "https://aclanthology.org/D18-1264.pdf",
+              "sha256": "7042525f9eed22d1988c25cd9d1392c15761c06724ece5579f4ab6c29af015d0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.712/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.712.pdf",
+              "sha256": "417e1ac8320ea7172a4a39b267d7945fa00247cfceae740323bacb7fc8842af8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "In this paper, we propose a new rich resource enhanced AMR aligner which produces multiple alignments and a new transition system for AMR parsing along with its oracle parser. Our aligner is further tuned by our oracle parser via picking the alignment that leads to the highestscored achievable AMR graph. Experimental results show that our aligner outperforms the rule-based aligner in previous work by achieving higher alignment F1 score and consistently improving two open-sourced AMR parsers. Based on our aligner and transition system, we develop a transition-based AMR parser that parses a sentence into its AMR graph directly. An ensemble of our parsers with only words and POS tags as input leads to 68.4 Smatch F1 score, which outperforms the parser of Wang and Xue (2017).",
+              "url": "https://aclanthology.org/D18-1264.pdf",
+              "document_sha256": "7042525f9eed22d1988c25cd9d1392c15761c06724ece5579f4ab6c29af015d0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "alignment precision. The JAMR aligner adopts a rule that aligns the word-concept pair which at least have a common longest prefix of 4 characters, but omitting the shorter cases like aligning the word “actions” to the concept act-01 and the semantically matched cases like aligning the word “example” to the concept exemplify-01. The final challenge which is faced by both the rule-based and unsupervised aligners is tuning the alignment with downstream parser learning. Previous works treated the alignment as a fixed input. Its quality is never evaluated and its alternatives are never explored. All these challenges make the JAMR aligner achieve only an alignment F1 score of about 90% and influence the performance of the trained AMR parsers. In this paper, we propose a novel method to solve these challenges and improve the word-toconcept alignment, which further improves the AMR parsing performance. A rule-based aligner and a transition-based oracle AMR parser lie in the core of our method. For the aligner part, we incorporate rich semantic resources into the JAMR aligner to recall more word-concept pairs and cancel its greedily aligning process. This leads to multiple alignment outputs with higher recall but lower precision. For the parser part, we propose a new transition system that can parse the raw sentence into AMR graph directly. Meanwhile, a new oracle algorithm is proposed which produces the best achievable AMR graph from an alignment. Our aligner is tuned by our oracle parser by feeding the alignments to the oracle parser and picking the one which leads to the highest Smatch F1 score (Cai and Knight, 2013). The chosen alignment is used in downstream training of the AMR parser. Based on the newly proposed aligner and transition system, we develop a transition-based",
+              "url": "https://aclanthology.org/D18-1264.pdf",
+              "document_sha256": "7042525f9eed22d1988c25cd9d1392c15761c06724ece5579f4ab6c29af015d0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "For many tasks on graph-to-text generation, the node-to-word alignments can be easily generated from off-the-shell toolkits. For example, in AMRto-text generation, there have been several aligners (Pourdamghani et al., 2014; Flanigan et al., 2016; Wang and Xue, 2017; Liu et al., 2018c; Szubert et al., 2018) available for linking AMR nodes to words. For knowledge graphs, the alignments can be produced by simple rule-based matching or an entity-linking system. The resulting structure with labeled arcs connecting word pairs resembles a dependency tree, and thus we employ a deep biaffine model (Dozat and Manning, 2017) to predict this structure from the decoder states. More specifically, the model factorizes the probability for making each arc into two parts: an unlabeled factor and a labeled one. Given the decoder states s1 , . . . , sN , the representation for each word yi as the head or the modifier of any unlabeled factor is calculated by passing its hidden state si through the corresponding multi-layer perceptrons (MLPs): h r arc = MLParc head (si ) i",
+              "url": "https://aclanthology.org/2020.acl-main.712.pdf",
+              "document_sha256": "417e1ac8320ea7172a4a39b267d7945fa00247cfceae740323bacb7fc8842af8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The task of graph-to-text generation aims at producing sentences that preserve the meaning of input graphs. As a crucial defect, the current state-of-the-art models may mess up or even drop the core structural information of input graphs when generating outputs. We propose to tackle this problem by leveraging richer training signals that can guide our model for preserving input information. In particular, we introduce two types of autoencoding losses, each individually focusing on different aspects (a.k.a. views) of input graphs. The losses are then back-propagated to better calibrate our model via multi-task training. Experiments on two benchmarks for graph-to-text generation show the effectiveness of our approach over a state-of-the-art baseline. Our code is available at http://github.com/ Soistesimmer/AMR-multiview.",
+              "url": "https://aclanthology.org/2020.acl-main.712.pdf",
+              "document_sha256": "417e1ac8320ea7172a4a39b267d7945fa00247cfceae740323bacb7fc8842af8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "generation models, hindering the usability of these models for real-world applications (Dušek et al., 2018, 2019; Balakrishnan et al., 2019). A potential solution for this issue is improving the training signal to enhance preserving of structural information. However, little work has been done to explore this direction so far, probably because designing such signals is non-trivial. As a first step towards this goal, we propose to enrich the training signal with additional autoencoding losses (Rei, 2017). Standard autoencoding for graph-to-sequence tasks requires reconstructing (parsing into) input graphs, while the parsing algorithm for one type of graphs (such as knowledge graphs) may not generalize to other graph types or may not even exist. To make our approach general across different types of graphs, we propose to reconstruct different views of each input graph (rather than the original graph), where each view highlights one aspect of the graph and is easy to produce. Then through multi-task learning, the autoencoding losses of all views are back-propagated to the whole model so that the model can better follow the input semantic constraints. Specifically, we break each input graph into a set of triples to form our first view, where each triple (such as “want-01 :ARG0 boy” in Figure 1(a)) contains a pair of entities and their relation. As the next step, the alignments between graph nodes and target words are generated to ground this view into the target sentence for reconstruction. Our second view is the linearization of each input graph produced by depth-first graph traversal, and this view is reconstructed token-by-token from the last decoder state. Overall the first view highlights the local information of each triple relation, the second view focuses on the",
+              "url": "https://aclanthology.org/2020.acl-main.712.pdf",
+              "document_sha256": "417e1ac8320ea7172a4a39b267d7945fa00247cfceae740323bacb7fc8842af8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04c52b112002d088945fe819",
+          "url": "https://aclanthology.org/D18-1264/"
+        },
+        "b": {
+          "paper_id": "paper-657ac7a75f1b5b23cbec5039",
+          "url": "https://aclanthology.org/2020.acl-main.712/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "ce1701c933fa4bb34c135392fe358f43b4b2b2185a6f620089f476535536a37b"
+    },
+    {
+      "id": "edge-f6ee8224c12ee0040817d5ff",
+      "a": "paper-0894fda923dca942eca39da6",
+      "b": "paper-03124c801bddde1c2418bf6f",
+      "state": {
+        "paper_a": {
+          "title": "Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Knowledge Graphs (KG) are multi-relational graphs consisting of entities as nodes and relations among them as typed edges. Goal of the Question Answering over KG (KGQA) task is to answer natural language queries posed over the KG. Multi-hop KGQA requires reasoning over multiple edges of the KG to arrive at the right answer. KGs are often incomplete with many missing links, posing additional challenges for KGQA, especially for multi-hop KGQA. Recent research on multi-hop KGQA has attempted to handle KG sparsity using relevant external text, which isn’t always readily available. In a separate line of research, KG embedding methods have been proposed to reduce KG sparsity by performing missing link prediction. Such KG embedding methods, even though highly relevant, have not been explored for multi-hop KGQA so far. We fill this gap in this paper and propose EmbedKGQA. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. EmbedKGQA also relaxes the requirement of answer selection from a pre-specified neighborhood, a sub-optimal constraint enforced by previous multi-hop KGQA methods. Through extensive experiments on multiple benchmark datasets, we demonstrate EmbedKGQA’s effectiveness over other state-of-the-art baselines."
+        },
+        "paper_b": {
+          "title": "A Sequential Flow Control Framework for Multi-hop Knowledge Base Question Answering",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "One of the key challenges of knowledge base question answering (KBQA) is the multi-hop reasoning. Since in different hops, one attends to different parts of question, it is important to dynamically represent the question semantics for each hop. Existing methods, however, (i) infer the dynamic question representation only through coarse-grained attention mechanisms, which may bring information loss, (ii) and have not effectively modeled the sequential logic, which is crucial for the multi-hop reasoning process in KBQA.To address these issues, we propose a sequential reasoning self-attention mechanism to capture the crucial reasoning information of each single hop in a more fine-grained way. Based on Gated Recurrent Unit (GRU) which is good at modeling sequential process, we propose a simple but effective GRU-inspired Flow Control (GFC) framework to model sequential logic in the whole multi-hop process.Extensive experiments on three popular benchmark datasets have demonstrated the superior effectiveness of our model. In particular, GFC achieves new state-of-the-art Hits@1 of 76.8% on WebQSP and is also effective when KB is incomplete. Our code and data are available at https://github.com/Xie-Minghui/GFC."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The second is embedding-based methods which score the embeddings of question objectives and candidate answers (Dong et al., 2015; Miller et al., 2016; Hao et al., 2017; Saxena et al., 2020).\nFollowing (Saxena et al., 2020), we pruned the KB to contain only mentioned relations and within 2-hop triples of mentioned entities.\n• EmbedKGQA (Saxena et al., 2020) utilizes the link predict ability of KG embeddings (Bordes et al., 2013; Trouillon et al., 2016) to handle multi-hop reasoning questions, especially on incomplete knowledge graph.\nEmbedKGQA (Saxena et al., 2020) utilizes KG embeddings to score question and condidate answers.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0894fda923dca942eca39da6",
+          "b": "paper-03124c801bddde1c2418bf6f",
+          "input_sha256": "a1efb7d99fd20a4f697a6c475947710009407ddd0fee517cf3fd1e41dceff6fd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.412/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.578/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.578.pdf",
+              "sha256": "8c0a21af0914eeffcd84e182fed8f9958cf02bac694aabd2463409e48ac7ca86"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Let E and R be the set of all entities and relations respectively in a KG G, and K ⊆ E × R × E is the set of all available KG facts. The problem in KGQA involves, given a natural language question q and a topic entity eh ∈ E present in the question, the task is to extract an entity et ∈ E that correctly answers the question q. 4.1.1 EmbedKGQA Overview We work in a setting where there is no finegrained annotation present in the dataset, such as the question type or the exact logic reasoning steps. For example, co-actor is a combination of starred actor−1 and starred actor relations, but our model does not require this annotation. EmbedKGQA uses Knowledge Graph embeddings to answer multi-hop natural language questions. First it learns a representation of the KG in an embedding space. Then given a question it learns a question embedding. Finally it combines these embedding to predict the answer. In the following sections, we introduce the EmbedKGQA model. It consists of 3 modules: 1. KG Embedding Module creates embeddings for all entities in the KG. 2. Question Embedding Module finds the embedding of a question 3. Answer Selection Module reduces the set of candidate answer entities and selects the final answer",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2016; Yang et al., 2014a; Nickel et al., 2011). KG embedding methods learn high-dimensional embeddings for entities and relations in the KG, which are then used for link prediction. In spite of its high relevance, KG embedding methods have not been used for multi-hop KGQA – we fill this gap in this paper. In particular, we propose EmbedKGQA, a novel system which leverages KG embeddings to perform multi-hop KGQA. We make the following contributions in this paper: 1. We propose EmbedKGQA, a novel method for the multi-hop KGQA task. To the best of our knowledge, EmbedKGQA is the first method to use KG embeddings for this task. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. 2. EmbedKGQA relaxes the requirement of answer selection from a pre-specified local neighborhood, an undesirable constraint imposed by previous methods for this task. 3. Through extensive experiments on multiple real-world datasets, we demonstrate EmbedKGQA’s effectiveness over state-of-the-art baselines. We have made EmbedKGQA’s source code available to encourage reproducibility.",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "based methods, which generate query graphs or statements by parsing questions (Yih et al., 2015; Luo et al., 2018; Lan and Jiang, 2020). The second is embedding-based methods which score the embeddings of question objectives and candidate answers (Dong et al., 2015; Miller et al., 2016; Hao et al., 2017; Saxena et al., 2020). The third is pathbased methods, which start from topic entities of question and walk on KG to find answers. The third direction has its own advantages in terms of interpretability and extensibility (Sen et al., 2021). In recent years, more and more works have focused on path-based multi-hop reasoning methods (He et al., 2021; Sen et al., 2021; Shi et al., 2021). However, existing methods still face some critical problems. First, path-based methods and some embedding-based methods usually leverage coarsegrained attention mechanisms to capture reasoning",
+              "url": "https://aclanthology.org/2022.emnlp-main.578.pdf",
+              "document_sha256": "8c0a21af0914eeffcd84e182fed8f9958cf02bac694aabd2463409e48ac7ca86"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "EmbedKGQA (Saxena et al., 2020) utilizes KG embeddings to score question and condidate answers. GraftNet (Sun et al., 2018) and PullNet (Sun et al., 2019) retrieve a qustion-specific subgraph and then use graph convolutional network (Kipf and Welling, 2017) to implicitly infer answers. They enjoy high recall but suffer from much noisy entities. They have relatively weak interpretability because they usually cannot produce the reasoning chains.",
+              "url": "https://aclanthology.org/2022.emnlp-main.578.pdf",
+              "document_sha256": "8c0a21af0914eeffcd84e182fed8f9958cf02bac694aabd2463409e48ac7ca86"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "One of the key challenges of knowledge base question answering (KBQA) is the multi-hop reasoning. Since in different hops, one attends to different parts of question, it is important to dynamically represent the question semantics for each hop. Existing methods, however, (i) infer the dynamic question representation only through coarse-grained attention mechanisms, which may bring information loss, (ii) and have not effectively modeled the sequential logic, which is crucial for the multi-hop reasoning process in KBQA. To address these issues, we propose a sequential reasoning selfattention mechanism to capture the crucial reasoning information of each single hop in a more fine-grained way. Based on Gated Recurrent Unit (GRU) which is good at modeling sequential process, we propose a simple but effective GRU-inspired Flow Control (GFC) framework to model sequential logic in the whole multi-hop process. Extensive experiments on three popular benchmark datasets have demonstrated the superior effectiveness of our model. In particular, GFC achieves new state-of-the-art Hits@1 of 76.8% on WebQSP and is also effective when KB is incomplete. Our code and data are available at https: //github.com/Xie-Minghui/GFC.",
+              "url": "https://aclanthology.org/2022.emnlp-main.578.pdf",
+              "document_sha256": "8c0a21af0914eeffcd84e182fed8f9958cf02bac694aabd2463409e48ac7ca86"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "information of each hop. For example, KVMemNN (Xu et al., 2019) adopts cross-attention between key-value memory and sentence-level question representation. IRN (Zhou et al., 2018) uses the sentence-level question representation to eliminate relation embeddings of previous hop. Some methods (He et al., 2021; Shi et al., 2021) adopt crossattention between the sentence-level question representation and question tokens. However, compressing all the necessary information into the sentencelevel representation may lose some crucial information. Although these methods have achieved good performance, there is still room for improvement. Second, they lack modeling sequential logic effectively in the whole multi-hop process. Humans often reason sequentially and consider past and present information comprehensively, which is a kind of sequential logic. However, the dynamic question representation of each hop is relatively independent (Cohen et al., 2020; Shi et al., 2021). And they do not control information flow effectively in different hops. For example, in Figure 1, models need to inhibit past relations for getting the right answer. However, existing methods cannot do this well. In response, we propose a novel model for multihop KBQA, dubbed GFC. First, we design a sequential reasoning self-attention mechanism to obtain more fine-grained reasoning information of each hop. Our update mechanism combines the self-attention mechanism with sequential logic in the reasoning scenario. It can capture more nuanced reasoning information to distinguish similar relations on KG. Second, we design a simple but effective GRU-inspired flow control framework to model the sequential logic in the whole multi-hop process more effectively. This framework controls reasoning information flow among",
+              "url": "https://aclanthology.org/2022.emnlp-main.578.pdf",
+              "document_sha256": "8c0a21af0914eeffcd84e182fed8f9958cf02bac694aabd2463409e48ac7ca86"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0894fda923dca942eca39da6",
+          "url": "https://aclanthology.org/2020.acl-main.412/"
+        },
+        "b": {
+          "paper_id": "paper-03124c801bddde1c2418bf6f",
+          "url": "https://aclanthology.org/2022.emnlp-main.578/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "f1350f461c0fadab3b5845a09d554c846dfd9c366ad1a5946d2fb2c9f4f6acdd"
+    },
+    {
+      "id": "edge-282af28630fccfe7b47f70a3",
+      "a": "paper-0894fda923dca942eca39da6",
+      "b": "paper-f4780ec4730f7123f1b9794f",
+      "state": {
+        "paper_a": {
+          "title": "Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Knowledge Graphs (KG) are multi-relational graphs consisting of entities as nodes and relations among them as typed edges. Goal of the Question Answering over KG (KGQA) task is to answer natural language queries posed over the KG. Multi-hop KGQA requires reasoning over multiple edges of the KG to arrive at the right answer. KGs are often incomplete with many missing links, posing additional challenges for KGQA, especially for multi-hop KGQA. Recent research on multi-hop KGQA has attempted to handle KG sparsity using relevant external text, which isn’t always readily available. In a separate line of research, KG embedding methods have been proposed to reduce KG sparsity by performing missing link prediction. Such KG embedding methods, even though highly relevant, have not been explored for multi-hop KGQA so far. We fill this gap in this paper and propose EmbedKGQA. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. EmbedKGQA also relaxes the requirement of answer selection from a pre-specified neighborhood, a sub-optimal constraint enforced by previous multi-hop KGQA methods. Through extensive experiments on multiple benchmark datasets, we demonstrate EmbedKGQA’s effectiveness over other state-of-the-art baselines."
+        },
+        "paper_b": {
+          "title": "Deliberation on Priors: Trustworthy Reasoning of Large Language Models on Knowledge Graphs",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Knowledge graph-based retrieval-augmented generation seeks to mitigate hallucinations in Large Language Models (LLMs) caused by insufficient or outdated knowledge. However, existing methods often fail to fully exploit the prior knowledge embedded in knowledge graphs (KGs), particularly their structural information and explicit or implicit constraints. The former can enhance the faithfulness of LLMs' reasoning, while the latter can improve the reliability of response generations. Motivated by these, we propose a trustworthy reasoning framework, termed Deliberation over Priors (\\texttt{DP}), which sufficiently utilizes the priors contained in KGs. Specifically, \\texttt{DP} adopts a progressive knowledge distillation strategy that integrates structural priors into LLMs through a combination of supervised fine-tuning and Kahneman-Tversky Optimization, thereby improving the faithfulness of relation path generation. Furthermore, our framework employs a reasoning-introspection strategy, which guides LLMs to perform refined reasoning verification based on extracted constraint priors, ensuring the reliability of response generation. Extensive experiments on three benchmark datasets demonstrate that \\texttt{DP} achieves new state-of-the-art performance, especially a H@1 improvement of 13% on the ComplexWebQuestions dataset, and generates highly trustworthy responses. We also conduct various analyses to verify its flexibility and practicality. Code is available at https://github.com/mira-ai-lab/Deliberation-on-Priors ."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "SL-based methods train models using the answer labels provided in KGQA datasets to directly predict answers, including EmbedKGQA [26], TransferNet [27], UniKGQA [28], RoG [8], AMAR [10], and GNN-RAG [24].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0894fda923dca942eca39da6",
+          "b": "paper-f4780ec4730f7123f1b9794f",
+          "input_sha256": "2fe6560e92f6cebf902e0a347ec83de130e79d35ef48851c7b73edb875af4ab8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.412/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/b33ad9d46ab2a23b6783d954121d26e3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/b33ad9d46ab2a23b6783d954121d26e3-Paper-Conference.pdf",
+              "sha256": "0a288820a49546a69d2572e6f3fa9cbba7e49893c49556b13bfac1c3ec0ded37"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Let E and R be the set of all entities and relations respectively in a KG G, and K ⊆ E × R × E is the set of all available KG facts. The problem in KGQA involves, given a natural language question q and a topic entity eh ∈ E present in the question, the task is to extract an entity et ∈ E that correctly answers the question q. 4.1.1 EmbedKGQA Overview We work in a setting where there is no finegrained annotation present in the dataset, such as the question type or the exact logic reasoning steps. For example, co-actor is a combination of starred actor−1 and starred actor relations, but our model does not require this annotation. EmbedKGQA uses Knowledge Graph embeddings to answer multi-hop natural language questions. First it learns a representation of the KG in an embedding space. Then given a question it learns a question embedding. Finally it combines these embedding to predict the answer. In the following sections, we introduce the EmbedKGQA model. It consists of 3 modules: 1. KG Embedding Module creates embeddings for all entities in the KG. 2. Question Embedding Module finds the embedding of a question 3. Answer Selection Module reduces the set of candidate answer entities and selects the final answer",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2016; Yang et al., 2014a; Nickel et al., 2011). KG embedding methods learn high-dimensional embeddings for entities and relations in the KG, which are then used for link prediction. In spite of its high relevance, KG embedding methods have not been used for multi-hop KGQA – we fill this gap in this paper. In particular, we propose EmbedKGQA, a novel system which leverages KG embeddings to perform multi-hop KGQA. We make the following contributions in this paper: 1. We propose EmbedKGQA, a novel method for the multi-hop KGQA task. To the best of our knowledge, EmbedKGQA is the first method to use KG embeddings for this task. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. 2. EmbedKGQA relaxes the requirement of answer selection from a pre-specified local neighborhood, an undesirable constraint imposed by previous methods for this task. 3. Through extensive experiments on multiple real-world datasets, we demonstrate EmbedKGQA’s effectiveness over state-of-the-art baselines. We have made EmbedKGQA’s source code available to encourage reproducibility.",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Hit (H) metric assesses whether any of the ground-truth answers are present in the generated response. Hits@1 (H@1) measures the proportion of questions for which the top-ranked predicted answer exactly matches a correct answer. The F1 score accounts for scenarios with multiple correct answers by computing the harmonic mean of precision and recall, thereby providing a more comprehensive evaluation of answer quality. Implementation Detail. During the Distillation stage, the path generator (LLaMA3.1-8B-Instruct) is fine-tuned by the weak supervision signal in the form of question-to-path mapping for 2 epochs and further optimized for 1 epoch through preference optimization with KTO [18]. We apply low-rank adaptation [25] to adapt large-scale parameters during both SFT and KTO training efficiently. In the Planning stage, we employ the trained path generator in a zero-shot manner to produce a set of relation paths for each topic entity in the question. In the Introspection stage, DP guides LLMs to perform path selection, constraint extraction, and verification under a few-shot setting. Specifically, we provide one exemplar for each possible scenario within these three procedures, which consist of 3, 5, and 2 scenarios, respectively. The detailed settings are provided in Appendix B.1 and B.2. Baseline Selection. Inspired by the setup in [15, 8], we compare DP against previous state-of-the-art approaches, including Supervised Learning (SL), In-Context Learning (ICL), and Hybrid Learning (HL). SL-based methods train models using the answer labels provided in KGQA datasets to directly predict answers, including EmbedKGQA [26], TransferNet [27], UniKGQA [28], RoG [8], AMAR [10], and GNN-RAG [24]. ICL-based methods employ chain-of-thought reasoning to generate responses based on",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b33ad9d46ab2a23b6783d954121d26e3-Paper-Conference.pdf",
+              "document_sha256": "0a288820a49546a69d2572e6f3fa9cbba7e49893c49556b13bfac1c3ec0ded37"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "To equip LLMs with up-to-date, domain-specific knowledge, an emerging line of research [10–12] has focused on knowledge graph-based retrieval-augmented generation, which aims to enhance response generation through the dynamic retrieval of relevant external knowledge. Current methods [7, 8, 13, 14] employ an end-to-end or step-by-step manner to retrieve and reason on Knowledge Graphs (KGs). The former retrieves the top K triples based on the semantic similarity between questions and knowledge facts, while the latter transforms complex questions into multiple subquestions by step-by-step retrieval. After obtaining sufficient knowledge, they utilize LLMs to generate responses directly. However, existing approaches [7, 8, 13–16] fail to exploit the prior knowledge embedded in KGs fully, particularly (1) the structural information and (2) the explicit and implicit constraints. In particular, relation paths that connect topic entities in questions to their corresponding answers, such as the path \"Ang Lee → directed → . . . E\" in Figure 1, can be leveraged not only to enhance the structural pattern awareness within KGs but also to support response generation. This, in turn, can significantly improve the faithfulness of LLM reasoning over KGs. Additionally, constraints, such as the multi-entity and type constraints, can serve a dual purpose: they can be used to filter candidate relation paths (select path 2 in Figure 1 considering the mentioned two types of constraints) and also to guide LLMs in backtracking during inference, thereby improving the reliability and robustness of reasoning processes. Motivated by these, we propose a trustworthy reasoning framework over KGs named DP (Deliberation on Priors). The framework comprises four key modules: Distillation, Planning,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b33ad9d46ab2a23b6783d954121d26e3-Paper-Conference.pdf",
+              "document_sha256": "0a288820a49546a69d2572e6f3fa9cbba7e49893c49556b13bfac1c3ec0ded37"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "to \"Ang Lee −−−−−→ Crouching Tiger −−−−−−→ Compound Value Type 2\". After obtaining the reasoning path, current frameworks [7, 8, 13–16] utilize LLMs to generate responses based on them without deliberation. In contrast, to enhance reasoning reliability, DP employs the Introspection module to verify whether the selected reasoning path satisfies the constraints extracted from questions, where the constraints, such as multi-entity and ordinal constraints, are predefined following [17]. Feedback is then provided to the LLM to guide subsequent decisions. If the reasoning path passes the verification, the LLM is instructed to generate a response. Otherwise, the information about which constraints are violated is fed back to the LLM to trigger relation path backtracking. To evaluate the effectiveness of DP, we conduct extensive experiments on three benchmark Knowledge Graph Question Answering (KGQA) datasets. The experimental results on WebQuestionSP [19], ComplexWebQuestions [20], and MetaQA [21] show that, compared with baselines, our method achieves state-of-the-art performance while minimizing interaction frequency with LLMs and generates more faithful and reliable responses. The main contributions of this work are summarized as follows: • We introduce a trustworthy reasoning framework DP that empowers large language models to generate faithful and reliable responses through deliberate reasoning over the priors embedded in knowledge graphs. • We propose a progressive knowledge distillation strategy, enabling LLMs to generate faithful relation paths by exploiting prior structural information. • We propose a reasoning-introspection strategy that enhances the reliability of large language model generation by incorporating predefined constraint priors as guidance. • We",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b33ad9d46ab2a23b6783d954121d26e3-Paper-Conference.pdf",
+              "document_sha256": "0a288820a49546a69d2572e6f3fa9cbba7e49893c49556b13bfac1c3ec0ded37"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0894fda923dca942eca39da6",
+          "url": "https://aclanthology.org/2020.acl-main.412/"
+        },
+        "b": {
+          "paper_id": "paper-f4780ec4730f7123f1b9794f",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/b33ad9d46ab2a23b6783d954121d26e3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "e3de56807c4c76810735132f0cdb9e97a61a77e7409baadb17905e5ca88a64dd"
+    },
+    {
+      "id": "edge-58f942be0412cb44eac9ffde",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-245ee38b566ecf421ec57665",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Structure-aware Knowledge Graph-to-text Generation with Planning Selection and Similarity Distinction",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "The knowledge graph-to-text (KG-to-text) generation task aims to synthesize coherent and engaging sentences that accurately convey the complex information derived from an input knowledge graph. One of the primary challenges in this task is bridging the gap between the diverse structures of the KG and the target text, while preserving the details of the input KG. To address this, we propose a novel approach that efficiently integrates graph structure-aware modules with pre-trained language models. Unlike conventional techniques, which only consider direct connections between first-order neighbors, our method delves deeper by incorporating Relative Distance Encoding as a bias within the graph structure-aware module. This enables our model to better capture the intricate topology information present in the KG. To further elevate the fidelity of the generated text, Planning Selection and Similarity Distinction are introduced. Our approach filters the most relevant linearized sequences by employing a planning scorer, while simultaneously distinguishing similar input KGs through contrastive learning techniques. Experiments on two datasets demonstrate the superiority of our model."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Due to the power of contrastive learning exhibited in image representation (Radford et al., 2021), many approaches (Gao et al., 2021; Wang et al., 2021a; Reimers and Gurevych, 2019) have applied it to sentence embedding as well.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-245ee38b566ecf421ec57665",
+          "input_sha256": "b94dd8d3f80569e68523845663bfbb144f1d611a8917682fa14c93b0462fd159",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.emnlp-main.537/",
+              "pdf_url": "https://aclanthology.org/2023.emnlp-main.537.pdf",
+              "sha256": "706f6ebbcc9c5fb5e68245b01e35d5a74886fe62896a7adb5295342d02333ed9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Due to the power of contrastive learning exhibited in image representation (Radford et al., 2021), many approaches (Gao et al., 2021; Wang et al., 2021a; Reimers and Gurevych, 2019) have applied it to sentence embedding as well. SentenceBERT (Reimers and Gurevych, 2019) presents a modification of BERT, which employs the Siamese network to derive fixed-sized vectors for input sentences and employs a similarity measure to find semantically similar sentences. SimCSE (Gao et al., 2021) presents the unsupervised methods that apply different hidden dropout masks and the supervised methods that use additional description datasets to generate positives and negatives. Similar to the above sentence embedding approaches, in the KG-to-text generation task we embed linearized sequences of triples using contrastive learning to distinguish similar KGs and similar entities.",
+              "url": "https://aclanthology.org/2023.emnlp-main.537.pdf",
+              "document_sha256": "706f6ebbcc9c5fb5e68245b01e35d5a74886fe62896a7adb5295342d02333ed9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The knowledge graph-to-text (KG-to-text) generation task aims to synthesize coherent and engaging sentences that accurately convey the complex information derived from an input knowledge graph. One of the primary challenges in this task is bridging the gap between the diverse structures of the KG and the target text, while preserving the details of the input KG. To address this, we propose a novel approach that efficiently integrates graph structure-aware modules with pre-trained language models. Unlike conventional techniques, which only consider direct connections between first-order neighbors, our method delves deeper by incorporating Relative Distance Encoding as a bias within the graph structure-aware module. This enables our model to better capture the intricate topology information present in the KG. To further elevate the fidelity of the generated text, Planning Selection and Similarity Distinction are introduced. Our approach filters the most relevant linearized sequences by employing a planning scorer, while simultaneously distinguishing similar input KGs through contrastive learning techniques. Experiments on two datasets demonstrate the superiority of our model.",
+              "url": "https://aclanthology.org/2023.emnlp-main.537.pdf",
+              "document_sha256": "706f6ebbcc9c5fb5e68245b01e35d5a74886fe62896a7adb5295342d02333ed9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "der easily deviating significantly from the groundtruth order. Considering this problem, we train an efficient planning scorer to score the generated results of all linearized sequences corresponding to KG, and pick the sequence with the highest score to be the final input, thus enabling the bias caused by multistep predictions to be avoided. The linearized sequence may ignore the graph structure information in the corresponding KG, such as the connectivity of nodes and the direction of edges. Some works (Colas et al., 2022; Ke et al., 2021) have improved PLMs by adding graph structure-aware modules to every layer of the transformer encoder. These graph-aware modules only consider the directly connected entities in one triple, i.e., the first-order neighbors in the KG. During the specific text generation process, only the information within each triple is considered, while the connections of the entities between triples are ignored. Therefore, to fully utilize the topological structure information of a KG, we consider the edges in the KG as nodes to compute the shortest path distance among nodes and add it to the weight computation as a bias. Additionally, to enable better distinction of similar input KGs and similar entities in the same KG, we use contrastive learning to enable the transformer encoder to differentiate the input sequences at a finergrained level. We use two datasets to test our model: WebNLG and DART, and it outperforms the previous models. Our contributions are threefold: • We propose an efficient score control-based planning scorer to generate remarkably accurate linearized sequences for text generation. • Our approach involves capturing and distinguishing the information of a KG using finegrained control methods, including relative distance-based",
+              "url": "https://aclanthology.org/2023.emnlp-main.537.pdf",
+              "document_sha256": "706f6ebbcc9c5fb5e68245b01e35d5a74886fe62896a7adb5295342d02333ed9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-245ee38b566ecf421ec57665",
+          "url": "https://aclanthology.org/2023.emnlp-main.537/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "84f6eb7041f1af48beb4109210e6d0027daf68bc267e6a21c53e2a67b63de844"
+    },
+    {
+      "id": "edge-60f68762838cafd6a1559624",
+      "a": "paper-0b3fdba4643a0346412e7e9e",
+      "b": "paper-b8cb7398f8f56b27e40b5ac8",
+      "state": {
+        "paper_a": {
+          "title": "Relational Graph Attention Network for Aspect-based Sentiment Analysis",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Aspect-based sentiment analysis aims to determine the sentiment polarity towards a specific aspect in online reviews. Most recent efforts adopt attention-based neural network models to implicitly connect aspects with opinion words. However, due to the complexity of language and the existence of multiple aspects in a single sentence, these models often confuse the connections. In this paper, we address this problem by means of effective encoding of syntax information. Firstly, we define a unified aspect-oriented dependency tree structure rooted at a target aspect by reshaping and pruning an ordinary dependency parse tree. Then, we propose a relational graph attention network (R-GAT) to encode the new tree structure for sentiment prediction. Extensive experiments are conducted on the SemEval 2014 and Twitter datasets, and the experimental results confirm that the connections between aspects and opinion words can be better established with our approach, and the performance of the graph attention network (GAT) is significantly improved as a consequence."
+        },
+        "paper_b": {
+          "title": "Dynamic Heterogeneous-Graph Reasoning with Language Models and Knowledge Representation Learning for Commonsense Question Answering",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, knowledge graphs (KGs) have won noteworthy success in commonsense question answering. Existing methods retrieve relevant subgraphs in the KGs through key entities and reason about the answer with language models (LMs) and graph neural networks. However, they ignore (i) optimizing the knowledge representation and structure of subgraphs and (ii) deeply fusing heterogeneous QA context with subgraphs. In this paper, we propose a dynamic heterogeneous-graph reasoning method with LMs and knowledge representation learning (DHLK), which constructs a heterogeneous knowledge graph (HKG) based on multiple knowledge sources and optimizes the structure and knowledge representation of the HKG using a two-stage pruning strategy and knowledge representation learning (KRL). It then performs joint reasoning by LMs and Relation Mask Self-Attention (RMSA). Specifically, DHLK filters key entities based on the dictionary vocabulary to achieve the first-stage pruning while incorporating the paraphrases in the dictionary into the subgraph to construct the HKG. Then, DHLK encodes and fuses the QA context and HKG using LM, and dynamically removes irrelevant KG entities based on the attention weights of LM for the second-stage pruning. Finally, DHLK introduces KRL to optimize the knowledge representation and perform answer reasoning on the HKG by RMSA.We evaluate DHLK at CommonsenseQA and OpenBookQA, and show its improvement on existing LM and LM+KG methods."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Inspired by (Wang et al., 2020a; Shao et al., 2020), we introduce the relation into Mask Self-Attention to construct RMSA and combine LM and RMSA for reasoning.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b3fdba4643a0346412e7e9e",
+          "b": "paper-b8cb7398f8f56b27e40b5ac8",
+          "input_sha256": "e59bbf35204ff847992e8fc957809056c6a128bd71cae00273cb8756f911fe83",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.295/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.295.pdf",
+              "sha256": "58823689284d0e61615b1ebf80cf7ceb573f0c07730cca65c9d4e2ce5f0f19e4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.785/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Aspect-based sentiment analysis aims to determine the sentiment polarity towards a speciﬁc aspect in online reviews. Most recent efforts adopt attention-based neural network models to implicitly connect aspects with opinion words. However, due to the complexity of language and the existence of multiple aspects in a single sentence, these models often confuse the connections. In this paper, we address this problem by means of effective encoding of syntax information. Firstly, we deﬁne a uniﬁed aspect-oriented dependency tree structure rooted at a target aspect by reshaping and pruning an ordinary dependency parse tree. Then, we propose a relational graph attention network (R-GAT) to encode the new tree structure for sentiment prediction. Extensive experiments are conducted on the SemEval 2014 and Twitter datasets, and the experimental results conﬁrm that the connections between aspects and opinion words can be better established with our approach, and the performance of the graph attention network (GAT) is signiﬁcantly improved as a consequence.",
+              "url": "https://aclanthology.org/2020.acl-main.295.pdf",
+              "document_sha256": "58823689284d0e61615b1ebf80cf7ceb573f0c07730cca65c9d4e2ce5f0f19e4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To encode the new dependency trees for sentiment analysis, we propose a relational graph attention network (R-GAT) by extending the graph attention network (GAT) (Veličković et al., 2017) to encode graphs with labeled edges. 4.1",
+              "url": "https://aclanthology.org/2020.acl-main.295.pdf",
+              "document_sha256": "58823689284d0e61615b1ebf80cf7ceb573f0c07730cca65c9d4e2ce5f0f19e4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Inspired by (Wang et al., 2020a; Shao et al., 2020), we introduce the relation into Mask Self-Attention to construct RMSA and combine LM and RMSA for reasoning. First, we separately obtain the initial embedding representation E 0 = {ẽi }Vi=1 ∈ Rdt and dt of all entities and the reR0 = {r̃i }B i=1 ∈ R lations between entities in HKG by Section 3.5. Here V and B denote the number of entities and relations, respectively. Then, we apply L-layer RMSA to update the embedding representations of entities and relations in HKG. Specifically, the computation process of the l-th layer RMSA can be formulated as α̃l−1 = (E l−1 Wqe )(E l−1 Wke + Rl−1 Wkr )⊤ (11)",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Dynamic Heterogeneous-Graph Reasoning with Language Models and Knowledge Representation Learning for Commonsense Question Answering Yujie Wang1 , Hu Zhang1,2,∗, Jiye Liang1,2,∗ , Ru Li1,2 1.School of Computer and Information Technology, Shanxi University, Taiyuan, China 2.Key Laboratory of Computational Intelligence and Chinese Information Processing of Ministry of Education, Shanxi University, Taiyuan, China init_wang@foxmail.com,{zhanghu,ljy,liru}@sxu.edu.cn Abstract Recently, knowledge graphs (KGs) have won noteworthy success in commonsense question answering. Existing methods retrieve relevant subgraphs in the KGs through key entities and reason about the answer with language models (LMs) and graph neural networks. However, they ignore (i) optimizing the knowledge representation and structure of subgraphs and (ii) deeply fusing heterogeneous QA context with subgraphs. In this paper, we propose a dynamic heterogeneous-graph reasoning method with LMs and knowledge representation learning (DHLK), which constructs a heterogeneous knowledge graph (HKG) based on multiple knowledge sources and optimizes the structure and knowledge representation of the HKG using a two-stage pruning strategy and knowledge representation learning (KRL). It then performs joint reasoning by LMs and Relation Mask Self-Attention (RMSA). Specifically, DHLK filters key entities based on the dictionary vocabulary to achieve the first-stage pruning while incorporating the paraphrases in the dictionary into the subgraph to construct the HKG. Then, DHLK encodes and fuses the QA context and HKG using LM, and dynamically removes irrelevant KG entities based on the attention weights of LM for the second-stage pruning. Finally, DHLK introduces KRL to optimize the knowledge representation and perform",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "(Pennington et al., 2014), LMs, and so on, ignoring the semantic associations between entities; additionally, the knowledge representations obtained are less effective; (iii) Given that the QA context and subgraph have different structures, existing methods encode QA context and subgraph separately, with shallow interactions only at the GNN layer through message passing (Yasunaga et al., 2021; Zheng and Kordjamshidi, 2022) or at the output layer through attention mechanism (Sun et al., 2022) or MLP (Feng et al., 2020; Zhang et al., 2022; Yasunaga et al., 2022), lacking deep fusion of QA context and subgraph, which will hinder the inference capability of the model. Based on the above problems, we propose a Dynamic Heterogeneous-graph reasoning method based on Language models and Knowledge representation learning (DHLK). Specifically, given a question and choice, we first use KeyBERT (Grootendorst, 2020) to extract the candidate entities and introduce WordNet (Miller, 1995) and Wiktionary 1 vocabularies to filter the candidate entities and then obtain the key entities, which can remove some noisy entities in the subgraph retrieval process and realize first-stage pruning of the subgraph. We also incorporate the paraphrases of key entities in the two dictionaries as entities into the subgraph to construct a heterogeneous knowledge graph (HKG). Then, we use LM to encode the QA context and HKG and fuse the QA context and HKG in the encoding process. In addition, we dynamically remove irrelevant entities according to the attention weights of LM to achieve the second-stage pruning of the subgraph. Finally, we combine KRL and Relation Mask Self-Attention (RMSA) to optimize the knowledge representation of HKG and incorporate the path information in the HKG into the QA context.",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b3fdba4643a0346412e7e9e",
+          "url": "https://aclanthology.org/2020.acl-main.295/"
+        },
+        "b": {
+          "paper_id": "paper-b8cb7398f8f56b27e40b5ac8",
+          "url": "https://aclanthology.org/2023.acl-long.785/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "38cb054914f6f7c12c6e45e2f3ff969948beacf3255b7a6d0114b582c8d0d9ad"
+    },
+    {
+      "id": "edge-374a82555ea20d5b5e2e3367",
+      "a": "paper-0f748f73d187317f0d63132a",
+      "b": "paper-b8cb7398f8f56b27e40b5ac8",
+      "state": {
+        "paper_a": {
+          "title": "Is Graph Structure Necessary for Multi-hop Question Answering?",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, attempting to model texts as graph structure and introducing graph neural networks to deal with it has become a trend in many NLP research areas. In this paper, we investigate whether the graph structure is necessary for textual multi-hop reasoning. Our analysis is centered on HotpotQA. We construct a strong baseline model to establish that, with the proper use of pre-trained models, graph structure may not be necessary for textual multi-hop reasoning. We point out that both graph structure and adjacency matrix are task-related prior knowledge, and graph-attention can be considered as a special case of self-attention. Experiments demonstrate that graph-attention or the entire graph structure can be replaced by self-attention or Transformers."
+        },
+        "paper_b": {
+          "title": "Dynamic Heterogeneous-Graph Reasoning with Language Models and Knowledge Representation Learning for Commonsense Question Answering",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, knowledge graphs (KGs) have won noteworthy success in commonsense question answering. Existing methods retrieve relevant subgraphs in the KGs through key entities and reason about the answer with language models (LMs) and graph neural networks. However, they ignore (i) optimizing the knowledge representation and structure of subgraphs and (ii) deeply fusing heterogeneous QA context with subgraphs. In this paper, we propose a dynamic heterogeneous-graph reasoning method with LMs and knowledge representation learning (DHLK), which constructs a heterogeneous knowledge graph (HKG) based on multiple knowledge sources and optimizes the structure and knowledge representation of the HKG using a two-stage pruning strategy and knowledge representation learning (KRL). It then performs joint reasoning by LMs and Relation Mask Self-Attention (RMSA). Specifically, DHLK filters key entities based on the dictionary vocabulary to achieve the first-stage pruning while incorporating the paraphrases in the dictionary into the subgraph to construct the HKG. Then, DHLK encodes and fuses the QA context and HKG using LM, and dynamically removes irrelevant KG entities based on the attention weights of LM for the second-stage pruning. Finally, DHLK introduces KRL to optimize the knowledge representation and perform answer reasoning on the HKG by RMSA.We evaluate DHLK at CommonsenseQA and OpenBookQA, and show its improvement on existing LM and LM+KG methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Inspired by (Wang et al., 2020a; Shao et al., 2020), we introduce the relation into Mask Self-Attention to construct RMSA and combine LM and RMSA for reasoning.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0f748f73d187317f0d63132a",
+          "b": "paper-b8cb7398f8f56b27e40b5ac8",
+          "input_sha256": "498c19011fc88c8755ace182ff93431cd64455e40f258adbf6b57465b95bff38",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.emnlp-main.583/",
+              "pdf_url": "https://aclanthology.org/2020.emnlp-main.583.pdf",
+              "sha256": "33906eb4e525ddbad79421943e0b3fc5c1dcf02f6679793b09c7b7a77a839a84"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.785/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Inspired by (Wang et al., 2020a; Shao et al., 2020), we introduce the relation into Mask Self-Attention to construct RMSA and combine LM and RMSA for reasoning. First, we separately obtain the initial embedding representation E 0 = {ẽi }Vi=1 ∈ Rdt and dt of all entities and the reR0 = {r̃i }B i=1 ∈ R lations between entities in HKG by Section 3.5. Here V and B denote the number of entities and relations, respectively. Then, we apply L-layer RMSA to update the embedding representations of entities and relations in HKG. Specifically, the computation process of the l-th layer RMSA can be formulated as α̃l−1 = (E l−1 Wqe )(E l−1 Wke + Rl−1 Wkr )⊤ (11)",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Dynamic Heterogeneous-Graph Reasoning with Language Models and Knowledge Representation Learning for Commonsense Question Answering Yujie Wang1 , Hu Zhang1,2,∗, Jiye Liang1,2,∗ , Ru Li1,2 1.School of Computer and Information Technology, Shanxi University, Taiyuan, China 2.Key Laboratory of Computational Intelligence and Chinese Information Processing of Ministry of Education, Shanxi University, Taiyuan, China init_wang@foxmail.com,{zhanghu,ljy,liru}@sxu.edu.cn Abstract Recently, knowledge graphs (KGs) have won noteworthy success in commonsense question answering. Existing methods retrieve relevant subgraphs in the KGs through key entities and reason about the answer with language models (LMs) and graph neural networks. However, they ignore (i) optimizing the knowledge representation and structure of subgraphs and (ii) deeply fusing heterogeneous QA context with subgraphs. In this paper, we propose a dynamic heterogeneous-graph reasoning method with LMs and knowledge representation learning (DHLK), which constructs a heterogeneous knowledge graph (HKG) based on multiple knowledge sources and optimizes the structure and knowledge representation of the HKG using a two-stage pruning strategy and knowledge representation learning (KRL). It then performs joint reasoning by LMs and Relation Mask Self-Attention (RMSA). Specifically, DHLK filters key entities based on the dictionary vocabulary to achieve the first-stage pruning while incorporating the paraphrases in the dictionary into the subgraph to construct the HKG. Then, DHLK encodes and fuses the QA context and HKG using LM, and dynamically removes irrelevant KG entities based on the attention weights of LM for the second-stage pruning. Finally, DHLK introduces KRL to optimize the knowledge representation and perform",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "(Pennington et al., 2014), LMs, and so on, ignoring the semantic associations between entities; additionally, the knowledge representations obtained are less effective; (iii) Given that the QA context and subgraph have different structures, existing methods encode QA context and subgraph separately, with shallow interactions only at the GNN layer through message passing (Yasunaga et al., 2021; Zheng and Kordjamshidi, 2022) or at the output layer through attention mechanism (Sun et al., 2022) or MLP (Feng et al., 2020; Zhang et al., 2022; Yasunaga et al., 2022), lacking deep fusion of QA context and subgraph, which will hinder the inference capability of the model. Based on the above problems, we propose a Dynamic Heterogeneous-graph reasoning method based on Language models and Knowledge representation learning (DHLK). Specifically, given a question and choice, we first use KeyBERT (Grootendorst, 2020) to extract the candidate entities and introduce WordNet (Miller, 1995) and Wiktionary 1 vocabularies to filter the candidate entities and then obtain the key entities, which can remove some noisy entities in the subgraph retrieval process and realize first-stage pruning of the subgraph. We also incorporate the paraphrases of key entities in the two dictionaries as entities into the subgraph to construct a heterogeneous knowledge graph (HKG). Then, we use LM to encode the QA context and HKG and fuse the QA context and HKG in the encoding process. In addition, we dynamically remove irrelevant entities according to the attention weights of LM to achieve the second-stage pruning of the subgraph. Finally, we combine KRL and Relation Mask Self-Attention (RMSA) to optimize the knowledge representation of HKG and incorporate the path information in the HKG into the QA context.",
+              "url": "https://aclanthology.org/2023.acl-long.785.pdf",
+              "document_sha256": "163d39b0139086acc34d88b232b38c961d494c0b8ac49ad50688bf7f623b7d03"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0f748f73d187317f0d63132a",
+          "url": "https://aclanthology.org/2020.emnlp-main.583/"
+        },
+        "b": {
+          "paper_id": "paper-b8cb7398f8f56b27e40b5ac8",
+          "url": "https://aclanthology.org/2023.acl-long.785/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "9e0d637e630aaf6d5a8eb0058804b6a1f4d60dc7ffa3cb53c6e65aac0b761669"
+    },
+    {
+      "id": "edge-b4a44880392be382466f7768",
+      "a": "paper-0fe2488ecad658e15af6feeb",
+      "b": "paper-0894fda923dca942eca39da6",
+      "state": {
+        "paper_a": {
+          "title": "TuckER: Tensor Factorization for Knowledge Graph Completion",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Knowledge graphs are structured representations of real world facts. However, they typically contain only a small subset of all possible facts. Link prediction is a task of inferring missing facts based on existing ones. We propose TuckER, a relatively straightforward but powerful linear model based on Tucker decomposition of the binary tensor representation of knowledge graph triples. TuckER outperforms previous state-of-the-art models across standard link prediction datasets, acting as a strong baseline for more elaborate models. We show that TuckER is a fully expressive model, derive sufficient bounds on its embedding dimensionalities and demonstrate that several previously introduced linear models can be viewed as special cases of TuckER."
+        },
+        "paper_b": {
+          "title": "Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Knowledge Graphs (KG) are multi-relational graphs consisting of entities as nodes and relations among them as typed edges. Goal of the Question Answering over KG (KGQA) task is to answer natural language queries posed over the KG. Multi-hop KGQA requires reasoning over multiple edges of the KG to arrive at the right answer. KGs are often incomplete with many missing links, posing additional challenges for KGQA, especially for multi-hop KGQA. Recent research on multi-hop KGQA has attempted to handle KG sparsity using relevant external text, which isn’t always readily available. In a separate line of research, KG embedding methods have been proposed to reduce KG sparsity by performing missing link prediction. Such KG embedding methods, even though highly relevant, have not been explored for multi-hop KGQA so far. We fill this gap in this paper and propose EmbedKGQA. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. EmbedKGQA also relaxes the requirement of answer selection from a pre-specified neighborhood, a sub-optimal constraint enforced by previous multi-hop KGQA methods. Through extensive experiments on multiple benchmark datasets, we demonstrate EmbedKGQA’s effectiveness over other state-of-the-art baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "SimplE\n(Kazemi and Poole, 2018) and TuckER (Balažević et al., 2019) are based on Canonical Polyadic (CP) decomposition (Hitchcock, 1927) and Tucker decomposition (Tucker, 1966) respectively.\nSimplE (Kazemi and Poole, 2018) and TuckER (Balažević et al., 2019) are based on Canonical Polyadic (CP) decomposition (Hitchcock, 1927) and Tucker decomposition (Tucker, 1966) respectively.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0fe2488ecad658e15af6feeb",
+          "b": "paper-0894fda923dca942eca39da6",
+          "input_sha256": "13b810beda9ca50f8280bc898e1f3140dd15bf38f028f4b86afd3a3f0ea5ecb1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1522/",
+              "pdf_url": "https://aclanthology.org/D19-1522.pdf",
+              "sha256": "a082493a477e45722fc45ff2381da9977c412f9d9b2f2005608c37b8f2c95739"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.412/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Knowledge graphs are structured representations of real world facts. However, they typically contain only a small subset of all possible facts. Link prediction is a task of inferring missing facts based on existing ones. We propose TuckER, a relatively straightforward but powerful linear model based on Tucker decomposition of the binary tensor representation of knowledge graph triples. TuckER outperforms previous state-of-the-art models across standard link prediction datasets, acting as a strong baseline for more elaborate models. We show that TuckER is a fully expressive model, derive sufficient bounds on its embedding dimensionalities and demonstrate that several previously introduced linear models can be viewed as special cases of TuckER.",
+              "url": "https://aclanthology.org/D19-1522.pdf",
+              "document_sha256": "a082493a477e45722fc45ff2381da9977c412f9d9b2f2005608c37b8f2c95739"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We propose a model that uses Tucker decomposition for link prediction on the binary tensor representation of a knowledge graph, with entity embedding matrix E that is equivalent for subject and object entities, i.e. E = A = C ∈ Rne ×de and relation embedding matrix R = B ∈ Rnr ×dr , where ne and nr represent the number of entities and relations and de and dr the dimensionality of entity and relation embedding vectors. W",
+              "url": "https://aclanthology.org/D19-1522.pdf",
+              "document_sha256": "a082493a477e45722fc45ff2381da9977c412f9d9b2f2005608c37b8f2c95739"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "(Kazemi and Poole, 2018) and TuckER (Balažević et al., 2019) are based on Canonical Polyadic (CP) decomposition (Hitchcock, 1927) and Tucker decomposition (Tucker, 1966) respectively. TransE (Bordes et al., 2013) embeds entities in high dimensional real space and relation as translation between the head and the tail entities. RotatE (Sun et al., 2019b) on the other hand projects entities in complex space and relations are represented as rotations in the complex plane. ConvE (Dettmers et al., 2018) utilizes Convolutional Neural Networks to learn a scoring function between the head entity, tail entity and relation. InteractE (Vashishth et al., 2019) improves upon ConvE by increasing feature interaction.",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Let E and R be the set of all entities and relations respectively in a KG G, and K ⊆ E × R × E is the set of all available KG facts. The problem in KGQA involves, given a natural language question q and a topic entity eh ∈ E present in the question, the task is to extract an entity et ∈ E that correctly answers the question q. 4.1.1 EmbedKGQA Overview We work in a setting where there is no finegrained annotation present in the dataset, such as the question type or the exact logic reasoning steps. For example, co-actor is a combination of starred actor−1 and starred actor relations, but our model does not require this annotation. EmbedKGQA uses Knowledge Graph embeddings to answer multi-hop natural language questions. First it learns a representation of the KG in an embedding space. Then given a question it learns a question embedding. Finally it combines these embedding to predict the answer. In the following sections, we introduce the EmbedKGQA model. It consists of 3 modules: 1. KG Embedding Module creates embeddings for all entities in the KG. 2. Question Embedding Module finds the embedding of a question 3. Answer Selection Module reduces the set of candidate answer entities and selects the final answer",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2016; Yang et al., 2014a; Nickel et al., 2011). KG embedding methods learn high-dimensional embeddings for entities and relations in the KG, which are then used for link prediction. In spite of its high relevance, KG embedding methods have not been used for multi-hop KGQA – we fill this gap in this paper. In particular, we propose EmbedKGQA, a novel system which leverages KG embeddings to perform multi-hop KGQA. We make the following contributions in this paper: 1. We propose EmbedKGQA, a novel method for the multi-hop KGQA task. To the best of our knowledge, EmbedKGQA is the first method to use KG embeddings for this task. EmbedKGQA is particularly effective in performing multi-hop KGQA over sparse KGs. 2. EmbedKGQA relaxes the requirement of answer selection from a pre-specified local neighborhood, an undesirable constraint imposed by previous methods for this task. 3. Through extensive experiments on multiple real-world datasets, we demonstrate EmbedKGQA’s effectiveness over state-of-the-art baselines. We have made EmbedKGQA’s source code available to encourage reproducibility.",
+              "url": "https://aclanthology.org/2020.acl-main.412.pdf",
+              "document_sha256": "81ea9cdfab60573083720deff3b89b5ea3821d1cbefcd595da94262ee3f3a1e5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0fe2488ecad658e15af6feeb",
+          "url": "https://aclanthology.org/D19-1522/"
+        },
+        "b": {
+          "paper_id": "paper-0894fda923dca942eca39da6",
+          "url": "https://aclanthology.org/2020.acl-main.412/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Knowledge Graph Reasoning with Large Language Models"
+      },
+      "sha256": "321381f439648cd4c054b5b8f2a815a0764fa93f5cbf91acbe1f5e5ae29b3055"
+    }
+  ]
+}

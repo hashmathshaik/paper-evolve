@@ -1,0 +1,926 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Gradient-Based Learning and Optimization in Neural Networks",
+  "area": "Optimization & Federated Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-791a96de6ec3c6769817aa7b",
+      "a": "paper-9eef06e01322b08e3b7444ef",
+      "b": "paper-78f997f8a97123c06c04c9f2",
+      "state": {
+        "paper_a": {
+          "title": "On the Proof of Global Convergence of Gradient Descent for Deep ReLU Networks with Linear Widths",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "We give a simple proof for the global convergence of gradient descent in training deep ReLU networks with the standard square loss, and show some of its improvements over the state-of-the-art. In particular, while prior works require all the hidden layers to be wide with width at least $\\Omega(N^8)$ ($N$ being the number of training samples), we require a single wide layer of linear, quadratic or cubic width depending on the type of initialization. Unlike many recent proofs based on the Neural Tangent Kernel (NTK), our proof need not track the evolution of the entire NTK matrix, or more generally, any quantities related to the changes of activation patterns during training. Instead, we only need to track the evolution of the output at the last hidden layer, which can be done much more easily thanks to the Lipschitz property of ReLU. Some highlights of our setting: (i) all the layers are trained with standard gradient descent, (ii) the network has standard parameterization as opposed to the NTK one, and (iii) the network has a single wide layer as opposed to having all wide hidden layers as in most of NTK-related results."
+        },
+        "paper_b": {
+          "title": "Learning Provably Improves the Convergence of Gradient Descent",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Learn to Optimize (L2O) trains deep neural network-based solvers for optimization, achieving success in accelerating convex problems and improving non-convex solutions. However, L2O lacks rigorous theoretical backing for its own training convergence, as existing analyses often use unrealistic assumptions-a gap this work highlights empirically. We bridge this gap by proving the training convergence of L2O models that learn Gradient Descent (GD) hyperparameters for quadratic programming, leveraging the Neural Tangent Kernel (NTK) theory. We propose a deterministic initialization strategy to support our theoretical results and promote stable training over extended optimization horizons by mitigating gradient explosion. Our L2O framework demonstrates over 50% better optimality than GD and superior robustness over state-of-the-art L2O methods on synthetic datasets. The code of our method can be found from https://github.com/NetX-lab/MathL2OProof-Official."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Compare the left-hand-side (LHS) of Equation (9) and right-hand-side (RHS) of Equation (10), we can algin the both sides by setting C ( X 0 T ) = F ( X 0 T ) , which yields a rate for training: The LHS of the above inequation is the loss (objective) after k -iterations’ training.\n3 ⃝ is due to definition of β -smoothness of objective and upper bound of ∥ X t ∥ 2 in Lemma 4.2.\nWe use the following figure to illustrate the forward and backward processes of the Math-L2O.\nDetails are in Appendix A.5.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9eef06e01322b08e3b7444ef",
+          "b": "paper-78f997f8a97123c06c04c9f2",
+          "input_sha256": "2968ef32775aebd99ef118bfdf25e3e90dab266c2347abd44c776343514a8dac",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/nguyen21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/nguyen21a/nguyen21a.pdf",
+              "sha256": "9b1dfdf1f065e345940f6814a7b8523c8130ea7af337566210a39ece39403463"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/33f37184669db8ae7a8cbf4e37bdee6c-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/33f37184669db8ae7a8cbf4e37bdee6c-Paper-Conference.pdf",
+              "sha256": "e25606d3dded25d35c59d6dbdcd13bda3b27019c28691465f8783c1d310e254a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "one can P separate the sum into two terms: the first term L−1 involves l=1 (·), and the second term corresponds to the T derivative at WL , which is given by InL ⊗ (FL−1 FL−1 ). Since both terms are positive semidefinite, one obtains \u0001 T λmin (K) ≥ λmin FL−1 FL−1 . (3) From here, in order to obtain a PL-like inequality, it suffices to bound the RHS of (3) at initialization and keep track of FL−1 during training. This can be done efficiently without studying the changes of activation patterns. Let us highlight that this is different from most of the prior works, where the output layer is fixed and only the hidden ones are optimized, in which case the PL analysis necessarily involves σ 0 from the hidden layers. Besides that, prior works also need to study other “smoothness” properties of the loss (local Lipschitz property of the gradient, or that of the Jacobian of the network), which again requires bounds on the various quantities related to the changes of the activation patterns at different layers, and thus make their proofs more involved. In this work, we present an alternative proof framework, which does not require any analysis of the activation pattern changes. It consists of two key \u0001 steps mentioned above: T (a) bounding λmin FL−1 FL−1 at initialization, and (b) bounding the changes of FL−1 during training. To show the convergence, we introduce a small trick to relate the loss of each iteration with that of the previous one. That means, an explicit analysis of the “smoothness” of the loss is not needed. Lastly, we show that our proof leads to improved bounds on layer widths in terms of the dependency on N . Main Contributions. First, we provide some easy-tocheck sufficient conditions on the initialization under which GD is guaranteed to converge to a global",
+              "url": "https://proceedings.mlr.press/v139/nguyen21a/nguyen21a.pdf",
+              "document_sha256": "9b1dfdf1f065e345940f6814a7b8523c8130ea7af337566210a39ece39403463"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "2. We establish the first linear convergence rate for Math-L2O training. Inspired by [29], we employ a NN architecture with a single wide layer and utilize NTK to prove the boundedness of NN outputs, gradients, and the training loss function within the Math-L2O framework. 3. We introduce a novel deterministic parameter initialization scheme, coupled with a specific learning rate configuration strategy. This combined approach is proven to guarantee the training convergence of the Math-L2O model across all iterations. 4. We empirically validate our theoretical findings through comprehensive experiments. The results showcase significant performance advantages, including up to a 50% improvement in solution optimality over the standard GD algorithm post-training, and superior robustness compared to SOTA L2O models and the Adam optimizer [10]. Furthermore, ablation studies empirically confirm the practical efficacy and individual contributions of our proposed theorems.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/33f37184669db8ae7a8cbf4e37bdee6c-Paper-Conference.pdf",
+              "document_sha256": "e25606d3dded25d35c59d6dbdcd13bda3b27019c28691465f8783c1d310e254a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "In this section, we establish the linear convergence rate for training a Math-L2O model employing an over-parameterized NN, w.r.t. the loss defined in Equation (2). By training the NN (Equation (4)) using GD, we establish its linear convergence rate via NTK theory. Classical NTK theory [16] requires infinite NN width to maintain a non-singular kernel matrix, which facilitates a gradient lower bound akin to the Polyak-Lojasiewicz condition [29, 32]. Applying the relaxation from [29] and the rigorous NN formalizations (Section 2), we demonstrate that an NN width of O(N d) is sufficient. To derive the rate, we first introduce a lemma to bound Math-L2O’s gradients. We then prove that appropriate initialization leads to deterministic loss minimization in the initial training iteration. After that, we develop a strategy to maintain this property throughout training, thereby ensuring convergence. This approach culminates in a linear convergence rate for an O(N d)-width NN. The main results are summarized herein, with detailed proofs deferred to Appendix A.5 and Appendix A.6. 4.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/33f37184669db8ae7a8cbf4e37bdee6c-Paper-Conference.pdf",
+              "document_sha256": "e25606d3dded25d35c59d6dbdcd13bda3b27019c28691465f8783c1d310e254a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Learn to Optimize (L2O) trains deep neural network-based solvers for optimization, achieving success in accelerating convex problems and improving non-convex solutions. However, L2O lacks rigorous theoretical backing for its own training convergence, as existing analyses often use unrealistic assumptions—a gap this work highlights empirically. We bridge this gap by proving the training convergence of L2O models that learn Gradient Descent (GD) hyperparameters for quadratic programming, leveraging the Neural Tangent Kernel (NTK) theory. We propose a deterministic initialization strategy to support our theoretical results and promote stable training over extended optimization horizons by mitigating gradient explosion. Our L2O framework demonstrates over 50% better optimality than GD and superior robustness over state-of-the-art L2O methods on synthetic datasets. The code of our method can be found from https://github.com/NetX-lab/MathL2OProof-Official.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/33f37184669db8ae7a8cbf4e37bdee6c-Paper-Conference.pdf",
+              "document_sha256": "e25606d3dded25d35c59d6dbdcd13bda3b27019c28691465f8783c1d310e254a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "First, we introduce a general convergence analysis framework. Let X ∗ be the optimal solution, rt represents an iteration-dependent rate term, and C(X0 ) be a constant that dependent on the initial point X0 (and X ∗ ), the convergence rate of an algorithm (either learned or classical) for minimizing an objective F (X) (e.g., the objective in Equation (1) or the loss in Equation (2)) is often formulated as: F (Xt ) ≤ rt C(X0 ). For example, standard GD has a rate of F (Xt ) ≤ βt ∥X0 − X ∗ ∥22 [4]. The performance of L2O models, stabilized via training, is typically assessed after T iterations [23, 34]. We formulate the L2O training convergence rate w.r.t. training iteration k as: F (XTk ) ≤ rk C(XT0 ), where XT0 = L2OW k (X00 ), (9) 0 with XT being the initial solution from the L2O model and a constant mapping C. Based on the proof in [38], non-learning GD algorithm’s convergence rate corresponding to the initial L2O state is: F (XT0 ) ≤ Tβ ∥X00 − X ∗ ∥22 . 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/33f37184669db8ae7a8cbf4e37bdee6c-Paper-Conference.pdf",
+              "document_sha256": "e25606d3dded25d35c59d6dbdcd13bda3b27019c28691465f8783c1d310e254a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9eef06e01322b08e3b7444ef",
+          "url": "https://proceedings.mlr.press/v139/nguyen21a.html"
+        },
+        "b": {
+          "paper_id": "paper-78f997f8a97123c06c04c9f2",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/33f37184669db8ae7a8cbf4e37bdee6c-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "dcb2dac2e856330ca4be4396a4999997281c61ba989177d015e4f281861c8042"
+    },
+    {
+      "id": "edge-8bf6ffb8a8aba63f6bf6910b",
+      "a": "paper-a15e15a40ca57942e1a5c335",
+      "b": "paper-563f4da8e4ff2c16ea4f43a2",
+      "state": {
+        "paper_a": {
+          "title": "On Gradient Descent Ascent for Nonconvex-Concave Minimax Problems",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We consider nonconvex-concave minimax problems, $\\min_{\\mathbf{x}} \\max_{\\mathbf{y} \\in \\mathcal{Y}} f(\\mathbf{x}, \\mathbf{y})$, where $f$ is nonconvex in $\\mathbf{x}$ but concave in $\\mathbf{y}$ and $\\mathcal{Y}$ is a convex and bounded set. One of the most popular algorithms for solving this problem is the celebrated gradient descent ascent (GDA) algorithm, which has been widely used in machine learning, control theory and economics. Despite the extensive convergence results for the convex-concave setting, GDA with equal stepsize can converge to limit cycles or even diverge in a general setting. In this paper, we present the complexity results on two-time-scale GDA for solving nonconvex-concave minimax problems, showing that the algorithm can find a stationary point of the function $\\Phi(\\cdot) := \\max_{\\mathbf{y} \\in \\mathcal{Y}} f(\\cdot, \\mathbf{y})$ efficiently. To the best our knowledge, this is the first nonasymptotic analysis for two-time-scale GDA in this setting, shedding light on its superior practical performance in training generative adversarial networks (GANs) and other real applications."
+        },
+        "paper_b": {
+          "title": "Single-Loop Stochastic Algorithms for Difference of Max-Structured Weakly Convex Functions",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "In this paper, we study a class of non-smooth non-convex problems in the form of $\\min_{x}[\\max_{y\\in\\mathcal Y}\\phi(x, y) - \\max_{z\\in\\mathcal Z}\\psi(x, z)]$, where both $\\Phi(x) = \\max_{y\\in\\mathcal Y}\\phi(x, y)$ and $\\Psi(x)=\\max_{z\\in\\mathcal Z}\\psi(x, z)$ are weakly convex functions, and $\\phi(x, y), \\psi(x, z)$ are strongly concave functions in terms of $y$ and $z$, respectively. It covers two families of problems that have been studied but are missing single-loop stochastic algorithms, i.e., difference of weakly convex functions and weakly convex strongly-concave min-max problems. We propose a stochastic Moreau envelope approximate gradient method dubbed SMAG, the first single-loop algorithm for solving these problems, and provide a state-of-the-art non-asymptotic convergence rate. The key idea of the design is to compute an approximate gradient of the Moreau envelopes of $\\Phi, \\Psi$ using only one step of stochastic gradient update of the primal and dual variables. Empirically, we conduct experiments on positive-unlabeled (PU) learning and partial area under ROC curve (pAUC) optimization with an adversarial fairness regularizer to validate the effectiveness of our proposed algorithms."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Lemma 4.2 (Lemma 4.3 in [19]) .\nMost of the existing works focuses on the smooth setting, i.e., the objective is smooth [12, 19, 49, 43, 47, 43] or the stochastic gradient oracles are Lipschitz continuous [23, 42, 11, 21, 38].\nThe baselines on OPAUC problem with adversarial fairness regularization (9) are SGDA [19] and Epoch-GDA [40].\nThis is called a nearly ϵ -stationary point, and is widely used in non-smooth weakly-convex optimization literature [4, 29, 41, 50, 51, 19].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a15e15a40ca57942e1a5c335",
+          "b": "paper-563f4da8e4ff2c16ea4f43a2",
+          "input_sha256": "aca647c9e212bfdefba5530dab7a07c036a5b9367a0733a56b69c2ef8d5e7166",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/lin20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/lin20a/lin20a.pdf",
+              "sha256": "ccc2933a685ae9bd5056e6462c90092685afb37a86763d85ee06d9d9c8931f1f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/67e79c8e9b11f068a7cafd79505175c0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/67e79c8e9b11f068a7cafd79505175c0-Paper-Conference.pdf",
+              "sha256": "47893c0635a93aa81d77274ee22770a798da488f1dd046fb050fe97afceb09c9"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "rich literature on DC programming, DC in stochastic setting has rarely been mentioned until recently. Most of the existing studies on stochastic DC optimization are based on the classical method, DC Algorithm (DCA) in deterministic DC optimization. The main idea of DCA is to approximate the DC problem by a convex problem by taking the linear approximation of the second component. In other words, DCA solves minx {ϕ(x) − ⟨∇ϕ(xk ), x⟩} to update xk and thus forms a double-loop algorithm. [34] first proposed stochastic DCA (SDCA) for solving large sum problems of non-convex smooth functions, which was further generalized to solving large sum non-smooth problems in [16]. [15] is the first work that allows both components in DC problems to be non-smooth. The authors proposed a SDCA scheme in the aggregated update style, where all past information needs to be stored for constructing future subproblems. [17] improved the efficiency of the SDCA scheme by removing the need of storing historical information. So far, none of the above work provides non-asymptotic convergence guarantee. The first non-asymptotic convergence analysis was established in [26]. The authors proposed a stochastic proximal DC algorithm (SPD), which modifies SDCA by adding an extra quadratic term after linearizing the second component function, and proved that SPD has a convergence rate of O(ϵ−4 ). The main drawback of their analysis is that they need the smoothness assumption of the first component function. With very similar algorithm design, [39] managed to partially relax the smoothness assumption. Given at least one of the two component functions having ν-Hölder continuous gradient, i.e., ∥∇f (x) − ∇f (x′ )∥ ≤ ∥x − x′ ∥ν for all x, x′ , they proved a convergence rate of O(ϵ−4/ν ). In fact, the Hölder",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/67e79c8e9b11f068a7cafd79505175c0-Paper-Conference.pdf",
+              "document_sha256": "47893c0635a93aa81d77274ee22770a798da488f1dd046fb050fe97afceb09c9"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Notations. For simplicity, we denote Φ(x) := maxy∈Y ϕ(x, y), Ψ(x) := maxz∈Z ψ(x, z), y ∗ (·) := arg maxy∈Y ϕ(·, y), and z ∗ (·) := arg maxz∈Z ψ(·, z). We use ∥ · ∥ to denote the Euclidean norm of a vector and PC (·) to denote the Euclidean projection onto a closed set C. We use the following definitions of general subgradient and subdifferential [3, 30]. Definition 3.1 (subgradient and subdifferential). Consider a function f : Rd → R ∪ {∞} and a point x with finite f (x). A vector v ∈ Rd is a general subgradient of f at x if f (y) ≥ f (x) + ⟨v, y − x⟩ + o(∥y − x∥) as y → x. The subdifferential ∂f (x) is the set of subgradients of f at point x. For simplicity, we abuse the notation ∂f (x) to denote one subgradient from the corresponding ˜ (x) and ∇f ˜ (x) to represent an subdifferential when no confusion could be caused. We use ∂f unbiased stochastic estimator of the subgradient ∂f (x) and the gradient ∇f (x) respectively. A function f : D → R is said to be L-smooth if ∥∇f (x) − ∇f (x′ )∥ ≤ L∥x − x′ ∥ for all x, x′ ∈ D. A function f : Rd → R ∪ {∞} is δ-weakly convex if f (·) + 2δ ∥ · ∥2 is convex. A mapping M : D → Rl is said to be C-Lipschitz continuous if ∥M(x) − M(x′ )∥ ≤ C∥x − x′ ∥ for all x, x′ ∈ D. Consider solving a non-smooth problem minx f (x). One of the main challenges is that the ϵstationary point, i.e., a point x such that dist(0, ∂f (x)) ≤ ϵ, which is the typical goal for smooth problems, may not exist in the neighborhood of its optimal solution. A classical counter example would be f (x) = |x|, where for ϵ ∈ [0, 1) the only ϵ-stationary point is the optimal solution x = 0. A standard solution to this issue in weakly-convex setting is to use a relaxed convergence criteria, that is to find a point no more than ϵ away from an ϵ-stationary point. This is",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/67e79c8e9b11f068a7cafd79505175c0-Paper-Conference.pdf",
+              "document_sha256": "47893c0635a93aa81d77274ee22770a798da488f1dd046fb050fe97afceb09c9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we study a class of non-smooth non-convex problems in the form of minx [maxy∈Y ϕ(x, y) − maxz∈Z ψ(x, z)], where both Φ(x) = maxy∈Y ϕ(x, y) and Ψ(x) = maxz∈Z ψ(x, z) are weakly convex functions, and ϕ(x, y), ψ(x, z) are strongly concave functions in terms of y and z, respectively. It covers two families of problems that have been studied but are missing single-loop stochastic algorithms, i.e., difference of weakly convex functions and weakly convex stronglyconcave min-max problems. We propose a stochastic Moreau envelope approximate gradient method dubbed SMAG, the first single-loop algorithm for solving these problems, and provide a state-of-the-art non-asymptotic convergence rate. The key idea of the design is to compute an approximate gradient of the Moreau envelopes of Φ, Ψ using only one step of stochastic gradient update of the primal and dual variables. Empirically, we conduct experiments on positive-unlabeled (PU) learning and partial area under ROC curve (pAUC) optimization with an adversarial fairness regularizer to validate the effectiveness of our proposed algorithms.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/67e79c8e9b11f068a7cafd79505175c0-Paper-Conference.pdf",
+              "document_sha256": "47893c0635a93aa81d77274ee22770a798da488f1dd046fb050fe97afceb09c9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "sparsity-promoting regularizers [39], Boltzmann machines [26]) and applications of min-max optimization (e.g., adversarial learning [31, 22], distributional robust learning [8, 28], learning with non-decomposable loss [28]). In recent years, the scale of data and models significantly increased, leading to the demand of more efficient optimization methods. However, all existing stochastic methods for DWC optimization and non-smooth WCSC min-max optimization with state-of-the-art non-asymptotic convergence rate O(ϵ−4 ) are double-loop. As a result, these methods are complex regarding the implementation and require extensive hyperparameter tuning. To close this gap, we propose a single-loop stochastic algorithm for DMax optimization and provide non-asymptotic convergence analysis to match the state-of-the-art non-asymptotic convergence rate. The main challenges of designing a single-loop method for DMax optimization are threefold. 1) given the weakly-convex nature of the component functions, their difference F (x) is not necessarily weakly-convex, resulting in a non-smooth non-convex optimization problem. 2) the component functions maxy∈Y ϕ(x, y) and maxz∈Z ψ(x, z) require solving maximization subproblems, making unbiased estimations of their subgradients inaccessible. 3) existing work on non-smooth problems with DC or/and min-max structures heavily rely on inner loops to solve subproblems to a certain accuracy. To address the first challenge, we apply Moreau envelope smoothing technique [24, 3] to the component functions individually and take their difference as a smooth approximation of the original objective. Inspired by existing work [32, 45], we show that solving the original DMax problem can be achieved by solving this smooth approximation. Consequently, the problem",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/67e79c8e9b11f068a7cafd79505175c0-Paper-Conference.pdf",
+              "document_sha256": "47893c0635a93aa81d77274ee22770a798da488f1dd046fb050fe97afceb09c9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a15e15a40ca57942e1a5c335",
+          "url": "https://proceedings.mlr.press/v119/lin20a.html"
+        },
+        "b": {
+          "paper_id": "paper-563f4da8e4ff2c16ea4f43a2",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/67e79c8e9b11f068a7cafd79505175c0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "3344259a9d1347fea583f412784f0c12e9a718796f131fd62ea7ff89397ca591"
+    },
+    {
+      "id": "edge-a321d67ae57e881fbec11b5a",
+      "a": "paper-068805ddfec5e8053a6366bc",
+      "b": "paper-959302fcccb5e91104b68844",
+      "state": {
+        "paper_a": {
+          "title": "Asymmetric Valleys: Beyond Sharp and Flat Local Minima",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Despite the non-convex nature of their loss functions, deep neural networks are known to generalize well when optimized with stochastic gradient descent (SGD). Recent work conjectures that SGD with proper conﬁguration is able to ﬁnd wide and ﬂat local minima, which are correlated with good generalization performance. In this paper, we observe that local minima of modern deep networks are more than being ﬂat or sharp. Instead, at a local minimum there exist many asymmetric directions such that the loss increases abruptly along one side, and slowly along the opposite side – we formally deﬁne such minima as asymmetric valleys. Under mild assumptions, we ﬁrst prove that for asymmetric valleys, a solution biased towards the ﬂat side generalizes better than the exact empirical minimizer. Then, we show that performing weight averaging along the SGD trajectory implicitly induces such biased solutions. This provides theoretical explanations for a series of intriguing phenomena observed in recent work [25, 5, 51]. Finally, extensive empirical experiments on both modern deep networks and simple 2 layer networks are conducted to validate our assumptions and analyze the intriguing properties of asymmetric valleys."
+        },
+        "paper_b": {
+          "title": "Improving Neural Network Training in Low Dimensional Random Bases",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Stochastic Gradient Descent (SGD) has proven to be remarkably effective in optimizing deep neural networks that employ ever-larger numbers of parameters. Yet, improving the efficiency of large-scale optimization remains a vital and highly active area of research. Recent work has shown that deep neural networks can be optimized in randomly-projected subspaces of much smaller dimensionality than their native parameter space. While such training is promising for more efficient and scalable optimization schemes, its practical application is limited by inferior optimization performance. Here, we improve on recent random subspace approaches as follows. We show that keeping the random projection fixed throughout training is detrimental to optimization. We propose re-drawing the random subspace at each step, which yields significantly better performance. We realize further improvements by applying independent projections to different parts of the network, making the approximation more efficient as network dimensionality grows. To implement these experiments, we leverage hardware-accelerated pseudo-random number generation to construct the random projections on-demand at every optimization step, allowing us to distribute the computation of independent random directions across multiple workers with shared random seeds. This yields significant reductions in memory and is up to 10x faster for the workloads in question."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-068805ddfec5e8053a6366bc",
+          "b": "paper-959302fcccb5e91104b68844",
+          "input_sha256": "b03fc9297b0dace867fc2ad017eae965edaa0b5d4e6f7fadd63a8d59d9db4316",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/01d8bae291b1e4724443375634ccfa0e-Paper.pdf",
+              "sha256": "dd1cba324ccfc577dfe90831d807d95dcbeac7b0e29a051348d786190c533740"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/8dcf2420e78a64333a59674678fb283b-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/8dcf2420e78a64333a59674678fb283b-Paper.pdf",
+              "sha256": "d23502e0616911e236d81683efd23fcea9fe2729803852a65da1c01e36739904"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "The architectures we use in our experiments are: a fully-connected (FC) network, a convolutional neural network (CNN), and a residual network (ResNet) [19]. Since we have to generate random vectors of the network size in every training step, for initial evaluation, we choose architectures with a moderate (≈ 105 ) number of parameters. All networks use ReLU nonlinearities and are trained with a softmax cross-entropy loss on the image classification tasks MNIST, Fashion-MNIST (FMNIST), and CIFAR-10. Unless otherwise noted, basis vectors are drawn from a normal distribution and normalized. We do not explicitly orthogonalize, but rely on the quasi-orthogonality of random directions in high dimensions [13]. Further details can be found in the Supplementary Material. 4.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8dcf2420e78a64333a59674678fb283b-Paper.pdf",
+              "document_sha256": "d23502e0616911e236d81683efd23fcea9fe2729803852a65da1c01e36739904"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "As discussed in Section 3.1.1, constraining the dimensionality of randomization can make the approximation more efficient. To test this in our context, Figure 4 compares the performance of the network with differing numbers of compartments, with the network’s parameters evenly split between compartments. We find benefits in both achieved accuracy and training time from this compartmentalization scheme. Notably, the scheme also boosts FPD performance, although it remains inferior to RBD (see Supplementary Material, Figure B.9). To assess the viability of the random bases approach for deeper networks, we conduct experiments with ResNets [19]. To enable qualitative comparisons we use an 8-layered network with similar parameter count (D = 78k) at greater depth than the previously considered architectures. We compartmentalize the network layer-by-layer and allocate random bases coefficients proportionally to the number of weights in the layer. Table 3 shows the achieved accuracies after 80 epochs for varying reductions in the number of trainable parameters. RBD reaches 84% of the SGD baseline with a 10× reduction of trainable parameters and outperforms FPD for all compression factors; even at 75× reduction, its relative improvement is over 11%. 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8dcf2420e78a64333a59674678fb283b-Paper.pdf",
+              "document_sha256": "d23502e0616911e236d81683efd23fcea9fe2729803852a65da1c01e36739904"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Another application area of dimensionality reduction through random projection is the analysis of the neural network loss landscape. In its simplest form, the loss surface can be projected onto linear subspace by evaluating a number of loss values in random directions. Li et al. [27] conducted a comprehensive visualization of the loss landscapes for various architecture choices. They observed a transition from smooth to highly chaotic surfaces with increasing network depth. He et al. [18] analyzed the low-loss regions in “asymmetric” random directions to argue that the location of a solution within a valley correlates with its generalization ability. Random projection can also make computationally prohibitive forms of analysis more feasible. For instance, Fort and Scherlis [11] computed and analyzed the Hessian of lower-dimensional random hyperplanes of neural networks to investigate the relation of local curvature and the effectiveness of a given initialization. In follow-up work, Fort and Ganguli [10] proposed a model of a neural network’s local geometry. As we will discuss in Section 4.5, our method allows for visualizations of the loss surface in the sampled random directions at every step to analyze the descent behavior. 2.4",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8dcf2420e78a64333a59674678fb283b-Paper.pdf",
+              "document_sha256": "d23502e0616911e236d81683efd23fcea9fe2729803852a65da1c01e36739904"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Stochastic Gradient Descent (SGD) has proven to be remarkably effective in optimizing deep neural networks that employ ever-larger numbers of parameters. Yet, improving the efficiency of large-scale optimization remains a vital and highly active area of research. Recent work has shown that deep neural networks can be optimized in randomly-projected subspaces of much smaller dimensionality than their native parameter space. While such training is promising for more efficient and scalable optimization schemes, its practical application is limited by inferior optimization performance. Here, we improve on recent random subspace approaches as follows: Firstly, we show that keeping the random projection fixed throughout training is detrimental to optimization. We propose re-drawing the random subspace at each step, which yields significantly better performance. We realize further improvements by applying independent projections to different parts of the network, making the approximation more efficient as network dimensionality grows. To implement these experiments, we leverage hardware-accelerated pseudo-random number generation to construct the random projections on-demand at every optimization step, allowing us to distribute the computation of independent random directions across multiple workers with shared random seeds. This yields significant reductions in memory and is up to 10× faster for the workloads in question.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/8dcf2420e78a64333a59674678fb283b-Paper.pdf",
+              "document_sha256": "d23502e0616911e236d81683efd23fcea9fe2729803852a65da1c01e36739904"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-068805ddfec5e8053a6366bc",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-959302fcccb5e91104b68844",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/8dcf2420e78a64333a59674678fb283b-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "13a0fad096928a113f459c97dd61f23382c1ab3ccdf18af85ccaf3bbf5e8637c"
+    },
+    {
+      "id": "edge-be6c34611caa22f25834775e",
+      "a": "paper-08a7ac9848abed396a5931c9",
+      "b": "paper-514db9b18bb9f9c4e1f546a3",
+      "state": {
+        "paper_a": {
+          "title": "Noisin: Unbiased Regularization for Recurrent Neural Networks",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Recurrent neural networks (RNNs) are powerful models of sequential data. They have been successfully used in domains such as text and speech. However, RNNs are susceptible to overfitting; regularization is important. In this paper we develop Noisin, a new method for regularizing RNNs. Noisin injects random noise into the hidden states of the RNN and then maximizes the corresponding marginal likelihood of the data. We show how Noisin applies to any RNN and we study many different types of noise. Noisin is unbiased–it preserves the underlying RNN on average. We characterize how Noisin regularizes its RNN both theoretically and empirically. On language modeling benchmarks, Noisin improves over dropout by as much as 12.2% on the Penn Treebank and 9.4% on the Wikitext-2 dataset. We also compared the state-of-the-art language model of Yang et al. 2017, both with and without Noisin. On the Penn Treebank, the method with Noisin more quickly reaches state-of-the-art performance."
+        },
+        "paper_b": {
+          "title": "Asymmetric Heavy Tails and Implicit Bias in Gaussian Noise Injections",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Gaussian noise injections (GNIs) are a family of simple and widely-used regularisation methods for training neural networks, where one injects additive or multiplicative Gaussian noise to the network activations at every iteration of the optimisation algorithm, which is typically chosen as stochastic gradient descent (SGD). In this paper, we focus on the so-called ‘implicit effect’ of GNIs, which is the effect of the injected noise on the dynamics of SGD. We show that this effect induces an \\emph{asymmetric heavy-tailed noise} on SGD gradient updates. In order to model this modified dynamics, we first develop a Langevin-like stochastic differential equation that is driven by a general family of \\emph{asymmetric} heavy-tailed noise. Using this model we then formally prove that GNIs induce an ‘implicit bias’, which varies depending on the heaviness of the tails and the level of asymmetry. Our empirical results confirm that different types of neural networks trained with GNIs are well-modelled by the proposed dynamics and that the implicit effect of these injections induces a bias that degrades the performance of networks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08a7ac9848abed396a5931c9",
+          "b": "paper-514db9b18bb9f9c4e1f546a3",
+          "input_sha256": "93505b1d8357f0c3c9637078a95221751f39ae7f0a49bc7d87a7b13632718958",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/dieng18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/dieng18a/dieng18a.pdf",
+              "sha256": "73a2a216d63f0a0da512a73ec1d90f0bc28ad080d4ed31b1fe00b78e783d854e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/camuto21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/camuto21a/camuto21a.pdf",
+              "sha256": "09c19286bee75db6b93152ac88a494a073fb72061f2a8e883ea770bb87f420c6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "where the likelihood p(xt | zt ) is an exponential family as in Eq. 2. The noise variables ✏1:T are drawn from a distribution '(·; µ, ) with mean µ and scale . For example, '(·; µ, ) can be a zero-mean Gaussian with variance 2 . We will study many types of noise distributions. The noisy hidden state zt is a parametric function gW of the previous observation xt 1 , the previous noisy hidden state zt 1 , and the noise ✏t . Therefore conditional on the noise ✏1:T , the transition function gW defines a recurrence relation on z1:T . The function gW determines the noise-injected RNN. In this paper, we propose functions gW that meet the criterion described below. Unbiased noise injection. Injecting noise at each time step limits the amount of information carried by hidden states. In limiting their capacity, noise injection is some form of regularization. In Section 4 we show that noise injection under exponential family likelihoods corresponds to explicit regularization under some unbiasedness condition. We define two flavors of unbiasedness: strong unbiasedness and weak unbiasedness. Let zt (✏1:t ) denote the unrolled recurrence at time t; it is a random variable via the noise ✏1:t . Under the strong unbiasedness condition, the transition function gW must satisfy the relationship Ep(zt (✏1:t ) | zt 1 ) [zt (✏1:t )] = ht",
+              "url": "https://proceedings.mlr.press/v80/dieng18a/dieng18a.pdf",
+              "document_sha256": "73a2a216d63f0a0da512a73ec1d90f0bc28ad080d4ed31b1fe00b78e783d854e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "6. References Agapiou, S., Stuart, A. M., and Zhang, Y. X. Bayesian posterior contraction rates for linear severely ill-posed inverse problems. Journal of Inverse and Ill-Posed Problems, 22 (3):297–321, 2014. Bishop, C. M. Training with Noise is Equivalent to Tikhonov Regularization. Neural Computation, 7(1):108– 116, 1995. Camuto, A., Willetts, M., Şimşekli, U., Roberts, S., and Holmes, C. Explicit Regularisation in Gaussian Noise Injections. In Advances in Neural Information Processing Systems (NeurIPS), 2020. Cohen, J., Rosenfeld, E., and Kolter, J. Z. Certified adversarial robustness via randomized smoothing. 36th International Conference on Machine Learning, ICML 2019, 2019-June:2323–2356, 2019. Dieng, A. B., Ranganath, R., Altosaar, J., and Blei, D. M. Noisin: Unbiased regularization for recurrent neural networks. In Proceedings of the 35th International Conference on Machine Learning, pp. 1252–1261, 2018. Duan, J. An Introduction to Stochastic Dynamics. Cambridge University Press, New York, 2015. Durmus, A. and Moulines, E. Nonasymptotic convergence analysis for the unadjusted Langevin algorithm. Annals of Applied Probability, 27(3):1551–1587, 2017. Dybiec, B., Gudowska-Nowak, E., and Sokolov, I. Stationary states in Langevin dynamics under asymmetric Lévy noises. Physical Review E, 76(4):041122, 2007. Fiche, A., Cexus, J. C., Martin, A., and Khenchaf, A. Features modeling with an ↵-stable distribution: Application to pattern recognition based on continuous belief functions. Information Fusion, 14(4):504–520, 2013. Gao, X., Gürbüzbalaban, M., and Zhu, L. Global Convergence of Stochastic Gradient Hamiltonian Monte Carlo for Non-Convex Stochastic Optimization: NonAsymptotic Performance Bounds and Momentum-Based Acceleration. arXiv:1809.04618, 2018.",
+              "url": "https://proceedings.mlr.press/v139/camuto21a/camuto21a.pdf",
+              "document_sha256": "09c19286bee75db6b93152ac88a494a073fb72061f2a8e883ea770bb87f420c6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Though the regularisation conferred by Gaussian noise injections (GNIs) can be observed empirically, and there have been many studies on the benefits of noising data (Bishop, 1995; Cohen et al., 2019; Webb, 1994), the mechanisms by which these injections operate are not fully understood. Recently, the explicit effect of GNIs, which is the added term to the loss function obtained when marginalising out the injected noise, has been characterised analytically (Camuto et al., 2020): it corresponds to a penalisation in the Fourier domain which improves model generalisation. Here we extend this analysis and focus on the implicit effect of GNIs. This is the effect of the remaining noise that has been marginalised out when studying the explicit effect. In particular we focus on the manner in which such noise alters the dynamics of Stochastic Gradient Descent (SGD) (Wei et al., 2020; Zhang et al., 2017). We show that the implicit effect is driven by an asymmetric heavy-tailed noise on the SGD gradient updates, as illustrated in Figure 1. To study the effect of this gradient noise, we model the dynamics of SGD for a network experiencing GNIs by a stochastic differential equation (SDE) driven by an asymmetric heavy-tailed ↵-stable noise. We demonstrate that this model captures the dynamics of networks trained with GNIs and we show that the stationary distribution of this process becomes arbitrarily distant from the so-called Gibbs measure, whose modes exactly match the local minima of the loss function, as the gradient becomes increasingly heavy-tailed and asymmetric. Heavy-tailed and asymmetric",
+              "url": "https://proceedings.mlr.press/v139/camuto21a/camuto21a.pdf",
+              "document_sha256": "09c19286bee75db6b93152ac88a494a073fb72061f2a8e883ea770bb87f420c6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "an overall heavy-tailed behaviour in the gradient noise, as empirically reported in (Şimşekli et al., 2019; Zhang et al., 2020; Zhou et al., 2020). Accordingly, (Şimşekli et al., 2019; Zhou et al., 2020) proposed modelling the gradient noise by using a centred symmetric ↵-stable noise, which then paved the way for modelling the SGD dynamics by using an SDE driven by a symmetric ↵-stable process (see (2.7)). We take a similar route for modelling the trajectories of SGD with GNIs; however, due to the skewness arising from the GNIs, the symmetric noise assumption is not appropriate for our purposes. Hence, we propose modelling the skewed gradient noise (4.2) by using an asymmetric ↵-stable noise, which aims at modelling both the heavy-tailed behaviour and the asymmetries at the same time. In particular, we consider an SDE driven by an asymmetric stable process and its Euler discretisation as follows: dwt =",
+              "url": "https://proceedings.mlr.press/v139/camuto21a/camuto21a.pdf",
+              "document_sha256": "09c19286bee75db6b93152ac88a494a073fb72061f2a8e883ea770bb87f420c6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08a7ac9848abed396a5931c9",
+          "url": "https://proceedings.mlr.press/v80/dieng18a.html"
+        },
+        "b": {
+          "paper_id": "paper-514db9b18bb9f9c4e1f546a3",
+          "url": "https://proceedings.mlr.press/v139/camuto21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "61e3e92cb994ccbe3c101f74475e1ce8e9f2c34dd50be1ff74fdcc7f32d8fbc5"
+    },
+    {
+      "id": "edge-c9d1aaddc94e04feb7ab4ad6",
+      "a": "paper-9918d2324072ca3f280a8de2",
+      "b": "paper-aaad05aebcde3edce84e219b",
+      "state": {
+        "paper_a": {
+          "title": "Flora: Low-Rank Adapters Are Secretly Gradient Compressors",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Despite large neural networks demonstrating remarkable abilities to complete different tasks, they require excessive memory usage to store the optimization states for training. To alleviate this, the low-rank adaptation (LoRA) is proposed to reduce the optimization states by training fewer parameters. However, LoRA restricts overall weight update matrices to be low-rank, limiting the model performance. In this work, we investigate the dynamics of LoRA and identify that it can be approximated by a random projection. Based on this observation, we propose Flora, which is able to achieve high-rank updates by resampling the projection matrices while enjoying the sublinear space complexity of optimization states. We conduct experiments across different tasks and model architectures to verify the effectiveness of our approach."
+        },
+        "paper_b": {
+          "title": "Lean and Mean Adaptive Optimization via Subset-Norm and Subspace-Momentum with Convergence Guarantees",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "We introduce two complementary techniques for efficient optimization that reduce memory requirements while accelerating training of large-scale neural networks. The first technique, Subset-Norm step size, generalizes AdaGrad-Norm and AdaGrad(-Coordinate) through step-size sharing. Subset-Norm (SN) reduces AdaGrad’s memory footprint from $O(d)$ to $O(\\sqrt{d})$, where $d$ is the model size. For non-convex smooth objectives under coordinate-wise sub-gaussian noise, we show a noise-adapted high-probability convergence guarantee with improved dimensional dependence of SN over existing methods. Our second technique, Subspace-Momentum, reduces the momentum state’s memory footprint by restricting momentum to a low-dimensional subspace while performing SGD in the orthogonal complement. We prove high-probability convergence rates for Subspace-Momentum under standard assumptions. Empirical evaluation on pre-training and fine-tuning LLMs demonstrates the effectiveness of our methods. For instance, combining Subset-Norm with Subspace-Momentum achieves Adam’s validation perplexity for LLaMA 1B in approximately half the training tokens (6.8B vs 13.1B) while reducing Adam’s optimizer-states memory footprint by more than 80% with minimal additional hyperparameter tuning."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Projection-based approaches, such as GRASS (Muhamed et al., 2024) and FLORA (Hao et al., 2024), compress gradients or combine low-rank ideas with projections to reduce memory requirements.\nWe provide additional comparisons with FLORA (Hao et al., 2024), LoRA (Hu et al., 2021), and ReLoRA (Lialin et al., 2023) Furthermore, Section B.8 shows that the choice of the sub-space matters i.e. the subspace spanned by a top-k singular vectors of a snapshot of a stochastic gradient seems to be…\n…(Hu et al., 2021; Lialin et al., 2023; Zhao et al., 2024; Shazeer & Stern, 2018), sketching-based dimensionality reduction (Muhamed et al., 2024; Hao et al., 2024), etc. Existing methods either lacks theoretical guarantees, requires strong assumptions, trades too much performance, or requires…\nGradient-independent projections like random gaussian as in FLORA (Hao et al., 2024) avoids SVD and can save memory by storing the pseudorandom seed (at the cost of recomputating the projection at every step).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9918d2324072ca3f280a8de2",
+          "b": "paper-aaad05aebcde3edce84e219b",
+          "input_sha256": "4ba77213508b02e42252d2081cb4235f138f9e521e60246082afcacf7f1490c3",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/hao24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/hao24a/hao24a.pdf",
+              "sha256": "44485a6e5aa0db534641717d3b4e9537c536c5e116f82f1589817e8a366f7948"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/nguyen25f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/nguyen25f/nguyen25f.pdf",
+              "sha256": "db7a21f3122dc5b3a23cf7dc36ee17596daaceb9516fe85a404677855eba776b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "F LORA: Low-Rank Adapters Are Secretly Gradient Compressors ∂L propagation. This is because ∂W is needed for the update of A and B in LoRA (Dettmers et al., 2023), while in our approach we also compress and decompress the gradient.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/hao24a/hao24a.pdf",
+              "document_sha256": "44485a6e5aa0db534641717d3b4e9537c536c5e116f82f1589817e8a366f7948"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "In this work, we propose F LORA (from LoRA to high-rank updates), which is a novel optimization technique that uses sublinear memory for gradient accumulation and momentum calculation. Our intuition arises from investigating LoRA and observing that a LoRA update is dominated by",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/hao24a/hao24a.pdf",
+              "document_sha256": "44485a6e5aa0db534641717d3b4e9537c536c5e116f82f1589817e8a366f7948"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Subspace selection. While the top-k singular vectors of stochastic gradients gives a subspace with strong performance, performing SVD can be expensive for larger models and storing the dense projection consumes non-negligible memory for large ranks. Gradient-independent projections like random gaussian as in FLORA (Hao et al., 2024) avoids SVD and can save memory by storing the pseudorandom seed (at the cost of recomputating the projection at every step). One can further speed up the random projection by using a fast subspace embedding like the SubsampledRandomized Hadamard Transform (SRHT) used in the FastJL transform (Ailon & Chazelle, 2009). Random projections like SRHT can also be used to approximate SVD (AppxSVD) computation (Halko et al., 2011) that can be much faster than full SVD. Finally, the cheapest projection is a subspace of random standard bases. Recently, GRASS (Muhamed et al., 2024) explores this idea and tests sampling random bases with large gradient norms. We examine different choices for the subspace and compare their time, space, and performance in Appendix B.8 (Table 13).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/nguyen25f/nguyen25f.pdf",
+              "document_sha256": "db7a21f3122dc5b3a23cf7dc36ee17596daaceb9516fe85a404677855eba776b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "As model sizes grow, memory-efficient training techniques have become crucial. Following up on AdaFactor (Shazeer & Stern, 2018), low-rank methods like Galore (Zhao et al., 2024), LoRA (Hao et al., 2024), and ReLORA (Lialin et al., 2023) reduce memory usage by approximating large weight matrices with low-rank representations. Projection-based approaches, such as GRASS (Muhamed et al., 2024) and FLORA (Hao et al., 2024), compress gradients or combine low-rank ideas with projections to reduce memory requirements. Recently, AdaMeM (Vyas et al., 2024a) proposes to incorporate the orthogonal subspace to the AdaFactor optimizer; this is related to but different from our simpler SM algorithms, where we use subspace decompositions to decouple the momentum and SGD. BAdam (Luo et al., 2024), a block coordinate descent method that utilizes Adam as an inner solver, has been proposed for fine-tuning large language models. In contrast to our proposed methods, these methods are largely heuristic-driven and often lack convergence guarantees under standard assumptions. On the other hand, methods like SM3 (Anil et al., 2019), which uses subset (cover) statistics to show convergence in online learning, and MicroAdam (Modoranu et al., 2024), which provides convergence guarantees for a gradient compression scheme with error correction, offer theoretical guarantees.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/nguyen25f/nguyen25f.pdf",
+              "document_sha256": "db7a21f3122dc5b3a23cf7dc36ee17596daaceb9516fe85a404677855eba776b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "Additional Baselines. We provide additional comparisons with FLORA (Hao et al., 2024), LoRA (Hu et al., 2021), and ReLoRA (Lialin et al., 2023) in Table 8. Note that these memory-efficient methods sacrifice performance (over Adam) to save memory while our method, AdamSNSM, achieves the best of both worlds.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/nguyen25f/nguyen25f.pdf",
+              "document_sha256": "db7a21f3122dc5b3a23cf7dc36ee17596daaceb9516fe85a404677855eba776b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We introduce two complementary techniques for efficient optimization that reduce memory requirements while accelerating training of large-scale neural networks. The first technique, SubsetNorm step size, generalizes AdaGrad-Norm and AdaGrad(-Coordinate) through step-size sharing. Subset-Norm (SN) reduces√AdaGrad’s memory footprint from O(d) to O( d), where d is the model size. For non-convex smooth objectives under coordinate-wise sub-gaussian noise, we show a noise-adapted high-probability convergence guarantee with improved dimensional dependence of SN over existing methods. Our second technique, Subspace-Momentum, reduces the momentum state’s memory footprint by restricting momentum to a low-dimensional subspace while performing SGD in the orthogonal complement. We prove a high-probability convergence result for Subspace-Momentum under standard assumptions. Empirical evaluation on pre-training and fine-tuning LLMs demonstrates the effectiveness of our methods. For instance, combining Subset-Norm with Subspace-Momentum achieves Adam’s validation perplexity for LLaMA 1B in approximately half the training tokens (6.8B vs 13.1B) while reducing Adam’s optimizer-states memory footprint by more than 80% with minimal additional hyperparameter tuning.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/nguyen25f/nguyen25f.pdf",
+              "document_sha256": "db7a21f3122dc5b3a23cf7dc36ee17596daaceb9516fe85a404677855eba776b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9918d2324072ca3f280a8de2",
+          "url": "https://proceedings.mlr.press/v235/hao24a.html"
+        },
+        "b": {
+          "paper_id": "paper-aaad05aebcde3edce84e219b",
+          "url": "https://proceedings.mlr.press/v267/nguyen25f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "51ccffb3885272b5d972848ccce9a2e54caa54a6a807f4f7c1c5523cf26c0a90"
+    },
+    {
+      "id": "edge-d8005a6cfe18beec4b07d380",
+      "a": "paper-011b8d96c7974f9f35b2b0cb",
+      "b": "paper-6095fd1b22fae297072d051c",
+      "state": {
+        "paper_a": {
+          "title": "MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weight-sharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous sub-billion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases."
+        },
+        "paper_b": {
+          "title": "Efficient Distributed Optimization under Heavy-Tailed Noise",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Distributed optimization has become the default training paradigm in modern machine learning due to the growing scale of models and datasets. To mitigate communication overhead, local updates are often applied before global aggregation, resulting in a nested optimization approach with inner and outer steps. However, heavy-tailed stochastic gradient noise remains a significant challenge, particularly in attention-based models, hindering effective training. In this work, we propose TailOPT, an efficient framework designed to address heavy-tailed noise by leveraging adaptive optimization and novel clipping techniques. We establish convergence guarantees for the TailOPT framework under heavy-tailed noise with local updates and potentially unbounded gradient variance. Among its variants, we propose a memory- and communication-efficient instantiation (named $Bi^2Clip$) that performs coordinate-wise clipping from both above and below at both the inner and outer optimizers. $Bi^2Clip$ brings about benefits of adaptive optimization (e.g., Adam) without the cost of maintaining or transmitting additional gradient statistics. Empirically, TailOPT, including $Bi^2Clip$, demonstrates superior performance on various tasks and models compared with state-of-the-art methods, while being more efficient."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The training of deep learning models including large language models (LLMs) has become increasingly resource-intensive, driven by expansive datasets and models with billions of parameters (Rosa et al., 2022; Liu et al., 2024b; Sriram et al., 2022; Dehghani et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-011b8d96c7974f9f35b2b0cb",
+          "b": "paper-6095fd1b22fae297072d051c",
+          "input_sha256": "c016c1abab91a5a854b596f00a13a7a877c7ead01588a12adbb414508ad2b0ae",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/liu24ce.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/lee25ak.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25ak/lee25ak.pdf",
+              "sha256": "a7314d527e56ccafb47bed9b98c3df63e77c3d92e12a7be8cd6ed59e7385c3ef"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weightsharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous subbillion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "To further validate our design principles under a wider range of memory constraints, we extend our model to include MobileLLM-600M, 1B, and 1.5B configurations. The comprehensive results are detailed in the Appendix A. Question Answering and Reading Comprehension We evaluate pre-trained models on the TQA question answering benchmark (Joshi et al., 2017) and RACE reading comprehension benchmark (Lai et al., 2017). We follow the evaluation setup from (Touvron et al., 2023a) and report the results in Table 4. Comparing models of 125M size, MobileLLM125M demonstrates a noteworthy improvement of over 4.3 points on the TQA benchmark in contrast to its predecessor. Moreover, the MobileLLM-350M model exhibits a substantial performance increase of approximately 10 points compared to other 350M-sized models. For the reading comprehension tasks, MobileLLM model family also exhibits significantly higher scores than preceding sub-billion parameter models.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction The training of deep learning models including large language models (LLMs) has become increasingly resourceintensive, driven by expansive datasets and models with billions of parameters (Rosa et al., 2022; Liu et al., 2024b; Sriram et al., 2022; Dehghani et al., 2023). As the computational demands escalate, distributed learning has emerged as the default approach, enabling the parallel activation of",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25ak/lee25ak.pdf",
+              "document_sha256": "a7314d527e56ccafb47bed9b98c3df63e77c3d92e12a7be8cd6ed59e7385c3ef"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "To evaluate the effectiveness of our approach, we finetune RoBERTa (Liu et al., 2019) on the General Language Understanding Evaluation (GLUE) benchmark (Wang et al., 2019), a widely-used suite of natural language understanding tasks. The GLUE benchmark includes diverse tasks such as sentiment analysis, sentence similarity, textual entailment, and natural language inference, providing a comprehensive evaluation of model performance across multiple linguistic phenomena. We follow standard finetuning protocols for RoBERTa, leveraging pretrained weights and optimizing task-specific objectives for each dataset in GLUE. Our results demonstrate that BiClip (Bi2 Clip) attains competitive or superior performance similar to Adam (Adam2 ), while only requiring SGD-like memory and compute. Table 1 presents the performance of the algorithms of interest on the GLUE benchmark. Our results show that L2 Clip enhances performance on real-world data. Adaptive methods further improve upon these results, consistently outperforming L2 Clip (e.g., convergence curves in Figure 2). Notably, the newly proposed clipping method in TailOPT, BiClip, demonstrates superior performance compared to L2 Clip and, in some cases, even surpasses Adam during test time (c.f., comparing Bi2 Clip and Adam2 ), highlighting its potential as an efficient and effective optimizer in real-world applications. Additionally, instantiations of TailOPT achieving ≥ 80% average accuracy generally employ adaptive or adaptive-approximating optimizers across all nodes. In particular, adaptivity on the inner optimizer appears crucial for performance, as SGD-based methods perform considerably worse (≤ 75%). By contrast, both BiClip or Adam reach ∼ 80% even when combined with a",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25ak/lee25ak.pdf",
+              "document_sha256": "a7314d527e56ccafb47bed9b98c3df63e77c3d92e12a7be8cd6ed59e7385c3ef"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To take advantage of adaptivity without incurring additional memory or communication overhead, we propose a new clipping mechanism, BiClip, that performs coordinatewise clipping from both above and below. BiClip is motivated by an interpolation between clipped-SGD and adaptive methods. It relies on two clipping thresholds (scalars) to dynamically rescale gradients in a per-coordinate fashion, while eliminating the overhead of preconditioner maintenance. For a model parameter x ∈ Rm , parameter coordinate j ∈ [m], lower clipping threshold d, and upper clipping threshold u (0 ≤ d ≤ u), BiClip is defined as1 BiClip(u, d, x)j := sign(xj ) [d χ (|xj | ≤ d)]",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/lee25ak/lee25ak.pdf",
+              "document_sha256": "a7314d527e56ccafb47bed9b98c3df63e77c3d92e12a7be8cd6ed59e7385c3ef"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-011b8d96c7974f9f35b2b0cb",
+          "url": "https://proceedings.mlr.press/v235/liu24ce.html"
+        },
+        "b": {
+          "paper_id": "paper-6095fd1b22fae297072d051c",
+          "url": "https://proceedings.mlr.press/v267/lee25ak.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "d79f09b95693875a9f41d8ee73fcc53ed93f29723d2c681c1c32cdb4c3c49dcb"
+    },
+    {
+      "id": "edge-12b568d2a94f995ec774f2b1",
+      "a": "paper-015e29ab452386df9749f61c",
+      "b": "paper-54f47e1716f2af81786a6f99",
+      "state": {
+        "paper_a": {
+          "title": "If Influence Functions are the Answer, Then What is the Question?",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Influence functions efficiently estimate the effect of removing a single training data point on a model's learned parameters. While influence estimates align well with leave-one-out retraining for linear models, recent works have shown this alignment is often poor in neural networks. In this work, we investigate the specific factors that cause this discrepancy by decomposing it into five separate terms. We study the contributions of each term on a variety of architectures and datasets and how they vary with factors such as network width and training time. While practical influence function estimates may be a poor match to leave-one-out retraining for nonlinear networks, we show that they are often a good approximation to a different object we term the proximal Bregman response function (PBRF). Since the PBRF can still be used to answer many of the questions motivating influence functions, such as identifying influential or mislabeled examples, our results suggest that current algorithms for influence function estimation give more informative results than previous error analyses would suggest."
+        },
+        "paper_b": {
+          "title": "Structured Inverse-Free Natural Gradient Descent: Memory-Efficient & Numerically-Stable KFAC",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Second-order methods such as KFAC can be useful for neural net training. However, they are often memory-inefficient since their preconditioning Kronecker factors are dense, and numerically unstable in low precision as they require matrix inversion or decomposition. These limitations render such methods unpopular for modern mixed-precision training. We address them by (i) formulating an inverse-free KFAC update and (ii) imposing structures in the Kronecker factors, resulting in structured inverse-free natural gradient descent (SINGD). On modern neural networks, we show that SINGD is memory-efficient and numerically robust, in contrast to KFAC, and often outperforms AdamW even in half precision. Our work closes a gap between first- and second-order methods in modern low-precision training."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…in DL: It is useful for improving training dynamics (Martens & Grosse, 2015; Osawa et al., 2023), pruning (Wang et al., 2019), understanding the influence of training examples (Bae et al., 2022), and uncertainty estimation (Zhang et al., 2018; Immer et al., 2021; Daxberger et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-015e29ab452386df9749f61c",
+          "b": "paper-54f47e1716f2af81786a6f99",
+          "input_sha256": "269bf4616e3438c4f57738f9dfe32e54e7df8092e34dcf83006024bb8d69213d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/7234e0c36fdbcb23e7bd56b68838999b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/7234e0c36fdbcb23e7bd56b68838999b-Paper-Conference.pdf",
+              "sha256": "943184bedd774849911e39c0b02fc35ac88241abcb3a2a82db40371400c72e14"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/lin24f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lin24f/lin24f.pdf",
+              "sha256": "68efca00635d902dce5b978e18437ad18b4123c30c99631311095ac23e8c1bc8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "We first applied our decomposition to various models trained on a broad range of tasks covering binary classification, regression, image reconstruction, image classification, and language modeling. The summary of our results is provided in Figure 4 and Table 5 (Appendix E). Across all tasks, we found that the first three sources dominate the misalignment, indicating influence function estimators are answering a different question from what is normally assumed. Small linearization and solver errors indicate that influence functions accurately answer the modified question (PBRF). Logistic Regression. We analyzed the logistic regression (LR) model trained on the Cancer and Diabetes classification datasets from the UCI collection [Dua and Graff, 2017]. We trained the model using L-BFGS [Liu and Nocedal, 1989] with L2 regularization of 0.01 and damping term of λ = 0.001. As the training objective is strongly convex and the base model parameters were trained till convergence, in Table 5, we observed that each source of misalignment is significantly low. Hence, in the case of logistic regression with L2 regularization, influence functions accurately capture the effect of retraining the model without a data point. Multilayer Perceptron. Next, we applied our analysis to the 2-hidden layer Multilayer Perceptron (MLP) with ReLU activations. We conducted the experiments in two settings: (1) regression on the Concrete and Energy datasets from the UCI collection and (2) image classification on 10% of the MNIST [Deng, 2012] and FashionMNIST [Xiao et al., 2017] datasets, following the set-up from Koh and Liang [2017] and Basu et al. [2020a]. We trained the networks for 1000 epochs using stochastic gradient descent (SGD) with a batch size of 128 and set a damping strength of λ = 0.001.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7234e0c36fdbcb23e7bd56b68838999b-Paper-Conference.pdf",
+              "document_sha256": "943184bedd774849911e39c0b02fc35ac88241abcb3a2a82db40371400c72e14"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Amari, 1998), leverage curvature information which has many applications in DL: It is useful for improving training dynamics (Martens & Grosse, 2015; Osawa et al., 2023), pruning (Wang et al., 2019), understanding the influence of training examples (Bae et al., 2022), and uncertainty estimation (Zhang et al., 2018; Immer et al., 2021; Daxberger et al., 2021). One major obstacle why those methods are rarely used is their higher memory consumption and iteration cost.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lin24f/lin24f.pdf",
+              "document_sha256": "68efca00635d902dce5b978e18437ad18b4123c30c99631311095ac23e8c1bc8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Here, we extend INGD to lower its computational cost and theoretically resolve its connection to other approximate NGD methods for DL (overview in Figure 2): First, we show that a special case of INGD recovers the KFAC method. This allows us to effectively perform KFAC updates in an inverse-free fashion. We call this modification of INGD inverse-free KFAC (IKFAC). Second, we exploit an alge-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lin24f/lin24f.pdf",
+              "document_sha256": "68efca00635d902dce5b978e18437ad18b4123c30c99631311095ac23e8c1bc8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Inspired by INGD, we replace matrix inversion with matrix subtraction in a matrix logarithm space, then go back to the original space without explicitly inverting any matrix using a truncated matrix exponential map. The IKFAC update is ⊤ related to the KFAC update as we will use KK⊤ and CC \u0001−1 to approximate\u0001the inverse Kronecker factors SK + λI −1 and SC + λI in KFAC, respectively. We propose the following IKFAC update with learning rate β1 for K and C using a truncated matrix exponential",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lin24f/lin24f.pdf",
+              "document_sha256": "68efca00635d902dce5b978e18437ad18b4123c30c99631311095ac23e8c1bc8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-015e29ab452386df9749f61c",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/7234e0c36fdbcb23e7bd56b68838999b-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-54f47e1716f2af81786a6f99",
+          "url": "https://proceedings.mlr.press/v235/lin24f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "7eacaae958ecf573484d3f3289924c86a780e2f2c6088f092d433068e3c0186f"
+    },
+    {
+      "id": "edge-e360dcc63b0ccbb08565d6b7",
+      "a": "paper-01b9f0dbb31ec396aa829670",
+      "b": "paper-aa545609729fac8a1da432d9",
+      "state": {
+        "paper_a": {
+          "title": "Feature Learning and Signal Propagation in Deep Neural Networks",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Recent work by Baratin et al. (2021) sheds light on an intriguing pattern that occurs during the training of deep neural networks: some layers align much more with data compared to other layers (where the alignment is defined as the normalize euclidean product of the tangent features matrix and the data labels matrix). The curve of the alignment as a function of layer index (generally) exhibits a ascent-descent pattern where the maximum is reached for some hidden layer. In this work, we provide the first explanation for this phenomenon. We introduce the Equilibrium Hypothesis which connects this alignment pattern to signal propagation in deep neural networks. Our experiments demonstrate an excellent match with the theoretical predictions."
+        },
+        "paper_b": {
+          "title": "The Feature Speed Formula: a flexible approach to scale hyper-parameters of deep neural networks",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Deep learning succeeds by doing hierarchical feature learning, yet tuning hyper-parameters (HP) such as initialization scales, learning rates etc., only give indirect control over this behavior. In this paper, we introduce a key notion to predict and control feature learning: the angle $\\theta_\\ell$ between the feature updates and the backward pass (at layer index $\\ell$). We show that the magnitude of feature updates after one GD step, at any training time, can be expressed via a simple and general *feature speed formula* in terms of this angle $\\theta_\\ell$, the loss decay, and the magnitude of the backward pass. This angle $\\theta_\\ell$ is controlled by the conditioning of the layer-to-layer Jacobians and at random initialization, it is determined by the spectrum of a certain kernel, which coincides with the Neural Tangent Kernel when $\\ell=\\text{depth}$. Given $\\theta_\\ell$, the feature speed formula provides us with rules to adjust HPs (scales and learning rates) so as to satisfy certain dynamical properties, such as feature learning and loss decay. We investigate the implications of our approach for ReLU MLPs and ResNets in the large width-then-depth limit. Relying on prior work, we show that in ReLU MLPs with iid initialization, the angle degenerates with depth as $\\cos(\\theta_\\ell)=\\Theta(1/\\sqrt{\\ell})$. In contrast, ResNets with branch scale $O(1/\\sqrt{\\text{depth}})$ maintain a non-degenerate angle $\\cos(\\theta_\\ell)=\\Theta(1)$. We use these insights to recover key properties of known HP scalings (such as $\\mu$P), and also introduce a new HP scaling for large depth ReLU MLPs with favorable theoretical properties."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "When restricted to the output layer of a NN, our notion of alignment/BFA coincides with that studied in Baratin et al. [2021], Atanasov et al. [2021], Lou et al. [2022], Wang et al. [2022] and the BFK we consider coincides with the NTK [Jacot et al., 2018].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01b9f0dbb31ec396aa829670",
+          "b": "paper-aa545609729fac8a1da432d9",
+          "input_sha256": "5fcdd65fcfaeaf73d433df9f6e492ee4dd73ba76bf9e9dfd83a3c2c480319ebc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/lou22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/lou22a/lou22a.pdf",
+              "sha256": "4c818f5fcdf3a02823dafc0f6ae481b7852b7741967dee96ee5dfc32d7676a89"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/720e7ebc49c84252abc0754dddf80976-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/720e7ebc49c84252abc0754dddf80976-Paper-Conference.pdf",
+              "sha256": "bce7f9f0b7a63d7dd2c4cc114a55bd9e6e638c18d14e0093df197ebc7f56ee52"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent work by Baratin et al. (2021) sheds light on an intriguing pattern that occurs during the training of deep neural networks: some layers align much more with data compared to other layers (where the alignment is defined as the euclidean product of the tangent features matrix and the data labels matrix). The curve of the alignment as a function of layer index (generally) exhibits an ascent-descent pattern where the maximum is reached for some hidden layer. In this work, we provide the first explanation for this phenomenon. We introduce the Equilibrium Hypothesis which connects this alignment pattern to signal propagation in deep neural networks. Our experiments demonstrate an excellent match with the theoretical predictions.",
+              "url": "https://proceedings.mlr.press/v162/lou22a/lou22a.pdf",
+              "document_sha256": "4c818f5fcdf3a02823dafc0f6ae481b7852b7741967dee96ee5dfc32d7676a89"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In general, the alignment reaches its maximum for some hidden layer and tends to be minimal in the external layers (first and last). To the best of our knowledge, no explanation has been provided for this phenomenon in the literature. In this paper, we propose an explanation based on the theory of signal propagation in randomly initialized neural networks. Our intuition is based on the observation that tangent kernels can be decomposed as an Hadamard product of two quantities linked to how signal propagates in DNNs. Forward-Backward Decomposition. We show in Section 3 that for a depth L neural network, with proper normalization, the lth layer tangent kernel matrix can be written as → ← − − K̂l = K l ◦ K l",
+              "url": "https://proceedings.mlr.press/v162/lou22a/lou22a.pdf",
+              "document_sha256": "4c818f5fcdf3a02823dafc0f6ae481b7852b7741967dee96ee5dfc32d7676a89"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "• We prove the feature speed formula (Thm 2.1) which quantifies the feature updates in terms of the BFA θ` , the loss decay and the magnitude of the backward pass at layer `. This formula, valid in any architecture and with an elementary proof, helps exploring the space of HP scalings, and understanding when feature learning arises. • In Section 3, we develop tools to quantify the BFA. In particular, we show that, in the batch-size 1 case, θ` can be estimated in terms of the spectrum of the backward to feature kernel (BFK) K` and is related to the conditioning of layer-to-layer Jacobians (Thm. 3.2). We study the case of MLPs and ResNets at random initialization, and obtain that for a depth L, cos(θL ) = Θ(L−1/2 ) for ReLU MLPs (Prop. 5.1, exploiting a result in Jelassi et al. [2023]) and that cos(θL ) = Θ(1) for linear ResNets with branch scale O(L−1/2 ) (Prop. 5.2). • In Section 4, we consider several properties of NN training dynamics that can be conveniently studied with our tools, including feature learning and loss decay. Enforcing these properties leads to explicit contraints on the magnitude of the forward, backward pass and learning rates in general architectures (Prop. 4.1). • In Section 5, we show how various HP scalings for large width-then-depth MLPs and ResNets can be characterized by enforcing these properties. In particular we recover depth µP [Bordelon et al., 2023, Yang et al., 2023b] for ResNets (Table 2) and, for ReLU MLP, we √ depth introduce a scaling with output scale width (Table 1) that does not suffer from vanishing loss decay, in contrast to the one studied in [Jelassi et al., 2023]. • Finally, in Section 6 we develop a more “axiomatic” approach: starting from a minimal list of desiderata, which include a notion of gradient stability, we show",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/720e7ebc49c84252abc0754dddf80976-Paper-Conference.pdf",
+              "document_sha256": "bce7f9f0b7a63d7dd2c4cc114a55bd9e6e638c18d14e0093df197ebc7f56ee52"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Finally, several recent works have studied feature learning in infinite width and depth NNs, starting with [Jelassi et al., 2023] for √ MLPs, and [Bordelon et al., 2023, Yang et al., 2023b] for ResNets. The two latter identified the 1/ depth branch scaling as providing desirable properties, in particular that of HP transfer [Yang et al., 2021]. These works take the infinite width limit as a first step in their analysis, before studying the resulting objects, resulting in a technical analysis. In our approach, we first take the step-size to 0 (as in [Jelassi et al., 2023]) and study in detail the structure of the back-propagation equations, before taking the large width-then-depth limit, as a last step. Notations For integers a, b ∈ Z, we write [a : b] = {a, . . . , b}. For any vector x ∈ Rm we denote by kxkrms := m−1/2 kxk2 its root mean-square (RMS) norm. We use this as a proxy for the typical entry size of a vector, which is justified as long as that vector is dense.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/720e7ebc49c84252abc0754dddf80976-Paper-Conference.pdf",
+              "document_sha256": "bce7f9f0b7a63d7dd2c4cc114a55bd9e6e638c18d14e0093df197ebc7f56ee52"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "Starting from the feature speed formula, our approach allows to conveniently recover and characterize in an elementary fashion certain properties of existing HP scalings and to discover new ones, with essentially all the technical difficulty contained in the estimation of the BFA. The limitations of our approach are related to the blind spots of Thm. (2.1): it can only quantify feature speed for (S)GD (and does not apply to variants in its current form) and at “cut nodes” in the NN architecture, where all the signal goes through (in particular, it does not apply inside the blocks of a ResNet). In future works, besides removing these limitations, it would be interesting to have a better understanding of the BFA, both from a quantitative and a qualitative viewpoint. 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/720e7ebc49c84252abc0754dddf80976-Paper-Conference.pdf",
+              "document_sha256": "bce7f9f0b7a63d7dd2c4cc114a55bd9e6e638c18d14e0093df197ebc7f56ee52"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01b9f0dbb31ec396aa829670",
+          "url": "https://proceedings.mlr.press/v162/lou22a.html"
+        },
+        "b": {
+          "paper_id": "paper-aa545609729fac8a1da432d9",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/720e7ebc49c84252abc0754dddf80976-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "1f2c29e7fcd8dcc31ffd7518b715f935fb9444a9a65e7b56ef4a4912c8bbe696"
+    },
+    {
+      "id": "edge-4c53df64eb8c3277c8075a22",
+      "a": "paper-02663e2fa5ef512bbafe0bec",
+      "b": "paper-333b8d3c3e7a6f24356312b1",
+      "state": {
+        "paper_a": {
+          "title": "Towards Understanding Hierarchical Learning: Benefits of Neural Representations",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Deep neural networks can empirically perform efficient hierarchical learning, in which the layers learn useful representations of the data. However, how they make use of the intermediate representations are not explained by recent theories that relate them to ``shallow learners'' such as kernels. In this work, we demonstrate that intermediate \\emph{neural representations} add more flexibility to neural networks and can be advantageous over raw inputs. We consider a fixed, randomly initialized neural network as a representation function fed into another trainable network. When the trainable network is the quadratic Taylor model of a wide two-layer network, we show that neural representation can achieve improved sample complexities compared with the raw input: For learning a low-rank degree-$p$ polynomial ($p \\geq 4$) in $d$ dimension, neural representation requires only $\\widetilde{O}(d^{\\ceil{p/2}})$ samples, while the best-known sample complexity upper bound for the raw input is $\\widetilde{O}(d^{p-1})$. We contrast our result with a lower bound showing that neural representations do not improve over the raw input (in the infinite width limit), when the trainable network is instead a neural tangent kernel. Our results characterize when neural representations are beneficial, and may provide a new perspective on why depth is important in deep learning."
+        },
+        "paper_b": {
+          "title": "The Limitations of Large Width in Neural Networks: A Deep Gaussian Process Perspective",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Large width limits have been a recent focus of deep learning research: modulo computational practicalities, do wider networks outperform narrower ones? Answering this question has been challenging, as conventional networks gain representational power with width, potentially masking any negative effects. Our analysis in this paper decouples capacity and width via the generalization of neural networks to Deep Gaussian Processes (Deep GP), a class of nonparametric hierarchical models that subsume neural nets. In doing so, we aim to understand how width affects (standard) neural networks once they have sufficient capacity for a given modeling task. Our theoretical and empirical results on Deep GP suggest that large width can be detrimental to hierarchical models. Surprisingly, we prove that even nonparametric Deep GP converge to Gaussian processes, effectively becoming shallower without any increase in representational power. The posterior, which corresponds to a mixture of data-adaptable basis functions, becomes less data-dependent with width. Our tail analysis demonstrates that width and depth have opposite effects: depth accentuates a model’s non-Gaussianity, while width makes models increasingly Gaussian. We find there is a “sweet spot” that maximizes test performance before the limiting GP behavior prevents adaptability, occurring at width = 1 or width = 2 for nonparametric Deep GP. These results make strong predictions about the same phenomenon in conventional neural networks trained with L2 regularization (analogous to a Gaussian prior on parameters): we show that such neural networks may need up to 500 − 1000 hidden units for sufficient capacity - depending on the dataset - but further width degrades performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Research has shown that deeper neural networks tend to be more expressive and efﬁcient than wider networks under a variety of metrics [e.g. 21, 63, 67, 70, 74, 75, 78, 83].\nRecent work indeed shows that learned hierarchical features can be exponentially more efﬁcient than the ﬁxed shallow representations of kernels [e.g. 4, 5, 8, 11, 13, 21, 41, 42, 60, 91].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02663e2fa5ef512bbafe0bec",
+          "b": "paper-333b8d3c3e7a6f24356312b1",
+          "input_sha256": "26dddf24bdee5a56996cefb3f56c8ad1e7c95c79ec50510add37fda510c46581",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/fb647ca6672b0930e9d00dc384d8b16f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/fb647ca6672b0930e9d00dc384d8b16f-Paper.pdf",
+              "sha256": "baf2082e1886acf5c18c963c56a23e7e5d113231d4da0adfa23a0ebbc3390f32"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/1b9f38268c50805669fd8caf8f3cc84a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/1b9f38268c50805669fd8caf8f3cc84a-Paper.pdf",
+              "sha256": "4d5b4be5bc26462ca320f99cb342f2213d7bf293ab01ec58e214b8efad275b5e"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Research has shown that deeper neural networks tend to be more expressive and efficient than wider networks under a variety of metrics [e.g. 21, 63, 67, 70, 74, 75, 78, 83]. Nevertheless, there is resurgent interest in wide models due in part to empirical successes [e.g. 92] and theoretical analyses of limiting behavior. When randomly initialized to create a distribution over functions, neural networks converge to Gaussian processes (GP) as width increases. This result, first proved for 2-layer networks [69], has been extended to deeper networks [56, 64], convolutional networks [38, 71], and other architectures [50, 88]. A similar limit exists for gradient-trained networks, which behave increasingly like kernel machines under the neural tangent kernel [e.g. 6, 8, 28, 39, 52, 57, 89]. While these limits simplify analyses, there is something unsettling about reducing neural networks to kernel methods. Neal [69, p. 161] describes the GP limit as “disappointing,” noting that “infinite networks do not have hidden units that represent ‘hidden features’. . . often seen [as the] interesting aspect of neural network learning.” Recent work indeed shows that learned hierarchical features can be exponentially more efficient than the fixed shallow representations of kernels [e.g. 4, 5, 8, 11, 13, 21, 41, 42, 60, 91]. At the same time, wider networks can more accurately model complex functions 35th Conference on Neural Information Processing Systems (NeurIPS 2021).",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/1b9f38268c50805669fd8caf8f3cc84a-Paper.pdf",
+              "document_sha256": "4d5b4be5bc26462ca320f99cb342f2213d7bf293ab01ec58e214b8efad275b5e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02663e2fa5ef512bbafe0bec",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/fb647ca6672b0930e9d00dc384d8b16f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-333b8d3c3e7a6f24356312b1",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/1b9f38268c50805669fd8caf8f3cc84a-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "a86903398dc39dc8add487ca2fabbcd0d4bfdcf50ad4e4f8b2d8f2ec570aa5f0"
+    },
+    {
+      "id": "edge-8c6cac3a381771adbc8c1f46",
+      "a": "paper-02663e2fa5ef512bbafe0bec",
+      "b": "paper-8d062fa0f3ad611d24eda3f4",
+      "state": {
+        "paper_a": {
+          "title": "Towards Understanding Hierarchical Learning: Benefits of Neural Representations",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Deep neural networks can empirically perform efficient hierarchical learning, in which the layers learn useful representations of the data. However, how they make use of the intermediate representations are not explained by recent theories that relate them to ``shallow learners'' such as kernels. In this work, we demonstrate that intermediate \\emph{neural representations} add more flexibility to neural networks and can be advantageous over raw inputs. We consider a fixed, randomly initialized neural network as a representation function fed into another trainable network. When the trainable network is the quadratic Taylor model of a wide two-layer network, we show that neural representation can achieve improved sample complexities compared with the raw input: For learning a low-rank degree-$p$ polynomial ($p \\geq 4$) in $d$ dimension, neural representation requires only $\\widetilde{O}(d^{\\ceil{p/2}})$ samples, while the best-known sample complexity upper bound for the raw input is $\\widetilde{O}(d^{p-1})$. We contrast our result with a lower bound showing that neural representations do not improve over the raw input (in the infinite width limit), when the trainable network is instead a neural tangent kernel. Our results characterize when neural representations are beneficial, and may provide a new perspective on why depth is important in deep learning."
+        },
+        "paper_b": {
+          "title": "Benign Overfitting in Two-Layer ReLU Convolutional Neural Networks for XOR Data",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Modern deep learning models are usually highly over-parameterized so that they can overfit the training data. Surprisingly, such overfitting neural networks can usually still achieve high prediction accuracy. To study this “benign overfitting” phenomenon, a line of recent works has theoretically studied the learning of linear models and two-layer neural networks. However, most of these analyses are still limited to the very simple learning problems where the Bayes-optimal classifier is linear. In this work, we investigate a class of XOR-type classification tasks with label-flipping noises. We show that, under a certain condition on the sample complexity and signal-to-noise ratio, an over-parameterized ReLU CNN trained by gradient descent can achieve near Bayes-optimal accuracy. Moreover, we also establish a matching lower bound result showing that when the previous condition is not satisfied, the prediction accuracy of the obtained CNN is an absolute constant away from the Bayes-optimal rate. Our result demonstrates that CNNs have a remarkable capacity to efficiently learn XOR problems, even in the presence of highly correlated features."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For instance, Frei et al. (2022) provided an upper bound of risk with smoothed leaky ReLU activation when learning the log-concave mixture data with label-flipping noise.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02663e2fa5ef512bbafe0bec",
+          "b": "paper-8d062fa0f3ad611d24eda3f4",
+          "input_sha256": "0f5b137ee734d6778aaa89b5bafdf4c62e84dec1e044ec2502a168673159ee25",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/fb647ca6672b0930e9d00dc384d8b16f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/fb647ca6672b0930e9d00dc384d8b16f-Paper.pdf",
+              "sha256": "baf2082e1886acf5c18c963c56a23e7e5d113231d4da0adfa23a0ebbc3390f32"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/meng24c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/meng24c/meng24c.pdf",
+              "sha256": "ab3baa766c1e63533cd7a91c3c59b3ad4ee18d9ecdcd0606583db7d290d6d672"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "There has been a recent surge of interest in studying benign overfitting from a theoretical perspective. A line of recent works provided significant insights under the settings of linear/kernel/random feature models (Belkin et al., 2019; 2020; Bartlett et al., 2020; Chatterji & Long, 2021; Hastie et al., 2022; Montanari & Zhong, 2022; Mei & Montanari, 2022; Tsigler & Bartlett, 2023). However, the analysis of benign overfitting in neural networks under gradient descent is much more challenging due to the non-convexity in the optimization and non-linearity of activation functions. Nevertheless, several recent works have made significant progress in this area. For instance, Frei et al. (2022) provided an upper bound of risk with smoothed leaky ReLU activation when learning the log-concave mixture data with label-flipping noise. By proposing a method named “signalnoise decomposition”, (Cao et al., 2022) established a condition for sharp phase transition between benign and harmful overfitting in the learning of two-layer convolutional neural networks (CNNs) with activation functions ReLUq (q > 2). (Kou et al., 2023) further extended the analysis to ReLU neural networks, and established a condition for such a sharp phase transition with more general conditions. Despite the recent advances in the theoretical study of benign overfitting, the existing studies are still mostly limited to very simple learning problems where the Bayes-optimal classifier is linear.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/meng24c/meng24c.pdf",
+              "document_sha256": "ab3baa766c1e63533cd7a91c3c59b3ad4ee18d9ecdcd0606583db7d290d6d672"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "3. Our work also considers the regime when the features in XOR-type data are highly correlated. To overcome the technical challenges caused by the high correlation in the training process, we introduce a novel proof technique called “virtual sequence comparison”, to enable analyzing the learning of such highly correlated XOR-type data. We believe that this novel proof technique can find wide applications in related studies and therefore may be of independent interest. A concurrent work (Xu et al., 2023) studies using two-layer fully connected neural networks to learn an XOR problem, where for fixed vectors u and v, the two classes of data are generated from Gaussian clusters N (±u, I) and N (±v, I) respectively. The authors show that gradient descent can train a neural network to achieve benign overfitting, and can exhibit a “grokking” phenomenon. There are several differences between (Xu et al., 2023) and our work. First,",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/meng24c/meng24c.pdf",
+              "document_sha256": "ab3baa766c1e63533cd7a91c3c59b3ad4ee18d9ecdcd0606583db7d290d6d672"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "2. Learning XOR-Type Data with Two-Layer CNNs In this section, we introduce in detail the XOR-type learning problem and the two-layer CNN model considered in this paper. We first introduce the definition of an “XOR distribution”. Definition 2.1. Let a, b ∈ Rd \\{0} with a ⊥ b be two fixed vectors. For µ ∈ Rd and y ∈ {±1}, we say that µ and y are jointly generated from distribution DXOR (a, b) if the pair (µ, y) is randomly and uniformly drawn from the set {(a + b, +1), (−a − b, +1), (a − b, −1), (−a + b, −1)}. Definition 2.1 gives a generative model of µ ∈ Rd and y ∈ {±1} and guarantees that the samples satisfy an XOR relation with respect to two basis vectors a, b ∈ Rd . When d = 2, a = [1, 0]⊤ and b = [0, 1]⊤ , Definition 2.1 recovers the XOR data model studied by Brutzkus & Globerson (2019). We note that Definition 2.1 is more general than the standard XOR model, especially because it does not require that the two basis vectors have equal lengths. Note that in this model, µ = ±(a + b) when y = 1, and µ = ±(a − b) when y = −1. When ∥a∥2 ̸= ∥b∥2 , it is easy to see that the two vectors a + b and a − b are not orthogonal. In fact, the angles between ±(a + b) and ±(a − b) play a key role in our analysis, and the classic setting where a + b and a − b are orthogonal is a relatively simple case covered in our analysis.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/meng24c/meng24c.pdf",
+              "document_sha256": "ab3baa766c1e63533cd7a91c3c59b3ad4ee18d9ecdcd0606583db7d290d6d672"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02663e2fa5ef512bbafe0bec",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/fb647ca6672b0930e9d00dc384d8b16f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-8d062fa0f3ad611d24eda3f4",
+          "url": "https://proceedings.mlr.press/v235/meng24c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Gradient-Based Learning and Optimization in Neural Networks"
+      },
+      "sha256": "c14dc9b07991df049bbe4d6ce918810c67a4af4b0b4805e4dd2bdd29416c013f"
+    }
+  ]
+}

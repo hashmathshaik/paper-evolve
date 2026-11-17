@@ -1,0 +1,585 @@
+{
+  "date": "2026-11-13",
+  "reviewer": "assistant",
+  "human_verified": false,
+  "sampling": {
+    "seed": 20261113,
+    "snapshot_complete": 2497,
+    "snapshot_accepted": 679,
+    "sample_size": 30,
+    "strata": {
+      "random_rejected": 6,
+      "targeted_transfers": 4,
+      "random_accepted": 16,
+      "targeted_challenges": 4
+    },
+    "note": "Assistant review, not independent human expert ground truth. Random accepted subset and targeted subsets must be reported separately."
+  },
+  "cases": [
+    {
+      "review_id": "R01",
+      "stratum": "random_accepted",
+      "a": "paper-00df65f47736a5d10bf60a15",
+      "b": "paper-12286d275cc6f13972bba2f0",
+      "a_title": "mixup: Beyond Empirical Risk Minimization",
+      "b_title": "Noisy Feature Mixup",
+      "a_url": "https://openreview.net/forum?id=r1Ddp1-Rb",
+      "b_url": "https://openreview.net/forum?id=vJb4I2ANmy",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The later abstract and citing sentence explicitly generalize mixup by adding noise and feature-space mixing.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R02",
+      "stratum": "random_accepted",
+      "a": "paper-1d1ffa75b1192d6421ce7eb9",
+      "b": "paper-d50256d95ee73cd316170182",
+      "a_title": "Equiformer: Equivariant Graph Attention Transformer for 3D Atomistic Graphs",
+      "b_title": "EquiformerV2: Improved Equivariant Transformer for Scaling to Higher-Degree Representations",
+      "a_url": "https://openreview.net/forum?id=KwmPfARgOTD",
+      "b_url": "https://openreview.net/forum?id=mCOBKZmrzD",
+      "model_types": {
+        "Extends": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "The later abstract explicitly starts from Equiformer and changes its convolutions and higher-degree architecture.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R03",
+      "stratum": "random_accepted",
+      "a": "paper-a29003426865cc118bd54bfb",
+      "b": "paper-6690c056cfe213877b830632",
+      "a_title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "b_title": "Bootstrapping Language Models with DPO Implicit Rewards",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html",
+      "b_url": "https://openreview.net/forum?id=dliIIodM6b",
+      "model_types": {
+        "Extends": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "DICE reuses DPO implicit rewards and adds iterative self-alignment with reward shaping and replay.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R04",
+      "stratum": "random_accepted",
+      "a": "paper-f910ba49427713ebf52bb99c",
+      "b": "paper-b4e94279170c34e14edd1af3",
+      "a_title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "b_title": "Asymmetry in Low-Rank Adapters of Foundation Models",
+      "a_url": "https://openreview.net/forum?id=nZeVKeeFYf9",
+      "b_url": "https://proceedings.mlr.press/v235/zhu24c.html",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The later work retains LoRA factorization and adds analysis and a variant that trains only one matrix.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R05",
+      "stratum": "random_accepted",
+      "a": "paper-14b6d13795df97024a1bc186",
+      "b": "paper-9185d4195177ef6b102ed49a",
+      "a_title": "Learning Libraries of Subroutines for Neurally\u2013Guided Bayesian Program Induction",
+      "b_title": "Bayesian Program Learning by Decompiling Amortized Knowledge",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2018/hash/7aa685b3b1dc1d6780bf36f7340078c9-Abstract.html",
+      "b_url": "https://proceedings.mlr.press/v235/palmarini24a.html",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "needs_context",
+      "rationale": "The supplied text links B to DreamCoder, but the asserted identity of the 2018 paper as DreamCoder is not established. DreamCoder has a separate 2021 publication. The reference context groups both years. Need a passage linking the particular 2018 contribution.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R06",
+      "stratum": "random_accepted",
+      "a": "paper-e67bab8a9f25a0284d12c585",
+      "b": "paper-4f4388a77e2a2b8b52205a76",
+      "a_title": "SparseMAP: Differentiable Sparse Structured Inference",
+      "b_title": "LP-SparseMAP: Differentiable Relaxed Optimization for Sparse Structured Prediction",
+      "a_url": "https://proceedings.mlr.press/v80/niculae18a.html",
+      "b_url": "https://proceedings.mlr.press/v119/niculae20a.html",
+      "model_types": {
+        "Extends": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "LP-SparseMAP explicitly extends SparseMAP by relaxing its exact-MAP-oracle requirement.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R07",
+      "stratum": "random_accepted",
+      "a": "paper-a8f694dd709536bdc976863b",
+      "b": "paper-cbc1508f1b75b479320a9eb8",
+      "a_title": "Masked Autoencoders that Listen",
+      "b_title": "Masked Autoencoders with Multi-Window Local-Global Attention Are Better Audio Learners",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2022/hash/b89d5e209990b19e33b418e14f323998-Abstract-Conference.html",
+      "b_url": "https://openreview.net/forum?id=Q53QLftNkA",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "needs_context",
+      "rationale": "The excerpts show a comparison to Audio-MAE and changes to a shared MAE architecture, but do not explicitly establish reuse of this specific prior contribution. Extends is plausible; obtain the architecture paragraph. The OpenReview PDF was blocked during source verification.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R08",
+      "stratum": "random_accepted",
+      "a": "paper-2f192fd45156ab2eeb522bc5",
+      "b": "paper-e954ad7f7bf7415334c02816",
+      "a_title": "Interaction-Grounded Learning",
+      "b_title": "Interaction-Grounded Learning with Action-Inclusive Feedback",
+      "a_url": "https://proceedings.mlr.press/v139/xie21e.html",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2022/hash/512b6bc067a6c6fa6a6ff8e5f6445e10-Abstract-Conference.html",
+      "model_types": {
+        "Extends": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "The citing sentence explicitly removes the earlier IGL conditional-independence assumption.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R09",
+      "stratum": "random_accepted",
+      "a": "paper-c5a3219a46a39900b79fb202",
+      "b": "paper-6725e2db39616153d4075dfd",
+      "a_title": "A Geometric Analysis of Neural Collapse with Unconstrained Features",
+      "b_title": "Extended Unconstrained Features Model for Exploring Deep Neural Collapse",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2021/hash/f92586a25bb3145facd64ab20fd554ff-Abstract.html",
+      "b_url": "https://proceedings.mlr.press/v162/tirer22a.html",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported_basis_overstated",
+      "rationale": "The later analysis extends the UFM framework including the cited earlier cross-entropy analysis. The full supplied context supports an inferred connection, but the selected generic UFM quotes do not establish a unique explicit parent. Downgrade explicit_statement to contribution_comparison.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R10",
+      "stratum": "random_accepted",
+      "a": "paper-519a9e4df66f466073f26edc",
+      "b": "paper-16f60160bb91f9c11e4162b9",
+      "a_title": "Object-Centric Learning with Slot Attention",
+      "b_title": "Conditional Object-Centric Learning from Video",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2020/hash/8511df98c02ab60aea1b2356c013bc0f-Abstract.html",
+      "b_url": "https://openreview.net/forum?id=aD7uesX1GF_",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The abstract explicitly introduces a sequential extension of Slot Attention and describes its new video objective.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R11",
+      "stratum": "random_accepted",
+      "a": "paper-c6acc3c47a6d85c9c0756ef3",
+      "b": "paper-95c66b0f39ad3d11012e94d4",
+      "a_title": "Perceiver: General Perception with Iterative Attention",
+      "b_title": "Perceiver IO: A General Architecture for Structured Inputs & Outputs",
+      "a_url": "https://proceedings.mlr.press/v139/jaegle21a.html",
+      "b_url": "https://openreview.net/forum?id=fILj7WpI-g",
+      "model_types": {
+        "Extends": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "Perceiver IO explicitly augments Perceiver with querying for structured outputs.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R12",
+      "stratum": "random_accepted",
+      "a": "paper-09265be92e16e8139db50b43",
+      "b": "paper-cb02f2c27d977fbd3312af69",
+      "a_title": "Transformers Can Do Bayesian Inference",
+      "b_title": "Efficient Bayesian Learning Curve Extrapolation using Prior-Data Fitted Networks",
+      "a_url": "https://openreview.net/forum?id=KSugKcbNf9",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2023/hash/3f1a5e8bfcc3005724d246abe454c1e5-Abstract-Conference.html",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The later abstract explicitly applies PFNs to learning-curve extrapolation, a new task.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R13",
+      "stratum": "random_accepted",
+      "a": "paper-160d35d74c1bf62b697836e8",
+      "b": "paper-468676f8e56ef32c6e062ddb",
+      "a_title": "Non-Autoregressive Neural Machine Translation",
+      "b_title": "Retrieving Sequential Information for Non-Autoregressive Neural Machine Translation",
+      "a_url": "https://openreview.net/forum?id=B1l8BtlCb",
+      "b_url": "https://aclanthology.org/P19-1288/",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "B retains the non-autoregressive translation framework and adds training and decoder mechanisms. The baseline-comparison quote alone would be weak; the full abstract supplies the contribution change.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R14",
+      "stratum": "random_accepted",
+      "a": "paper-19f01a6e2e9a24277e46068e",
+      "b": "paper-749514fa74526b205bcff33c",
+      "a_title": "CogView2: Faster and Better Text-to-Image Generation via Hierarchical Transformers",
+      "b_title": "CogVideo: Large-scale Pretraining for Text-to-Video Generation via Transformers",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2022/hash/6baec7c4ba0a8734ccbd528a8090cb1f-Abstract-Conference.html",
+      "b_url": "https://openreview.net/forum?id=rB6TpjAuSRy",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "CogVideo explicitly inherits pretrained CogView2 and applies it from image generation to video generation.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R15",
+      "stratum": "random_accepted",
+      "a": "paper-7952fe8496b11b57a7a4f224",
+      "b": "paper-b1db133b71349dac9368ba5c",
+      "a_title": "On Identifiability in Transformers",
+      "b_title": "More Identifiable yet Equally Performant Transformers for Text Classification",
+      "a_url": "https://openreview.net/forum?id=BJg1f6EFDB",
+      "b_url": "https://aclanthology.org/2021.acl-long.94/",
+      "model_types": {
+        "Challenges": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The full citing context identifies a missing constraint in the earlier identifiability analysis and addresses it. Selected excerpts are weaker than the available context.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R16",
+      "stratum": "random_accepted",
+      "a": "paper-acbaa55c06494c24bf54604d",
+      "b": "paper-66783fb663dc5b33fdc753e8",
+      "a_title": "Ambient Diffusion: Learning Clean Distributions from Corrupted Data",
+      "b_title": "Ambient Diffusion Posterior Sampling: Solving Inverse Problems with Diffusion Models Trained on Corrupted Data",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2023/hash/012af729c5d14d279581fc8a5db975a1-Abstract-Conference.html",
+      "b_url": "https://openreview.net/forum?id=qeXcMutEZY",
+      "model_types": {
+        "Extends": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The later abstract explicitly extends Ambient Diffusion to Fourier-domain measurements.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R17",
+      "stratum": "targeted_challenges",
+      "a": "paper-319d6d94d7b5f3d26f3aed56",
+      "b": "paper-9543162bf98c296dfe3c45ab",
+      "a_title": "Do Deep Generative Models Know What They Don't Know?",
+      "b_title": "Hierarchical VAEs Know What They Don\u2019t Know",
+      "a_url": "https://openreview.net/forum?id=H1xwNhCcYm",
+      "b_url": "https://proceedings.mlr.press/v139/havtorn21a.html",
+      "model_types": {
+        "Challenges": 0.85
+      },
+      "verdict": "supported_with_caveat",
+      "rationale": "B challenges the interpretation of the reported likelihood behavior by calling it expected and desirable, and provides an OOD score. It does not dispute the observed phenomenon. The model reason and selected quotes alone do not articulate that distinction.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R18",
+      "stratum": "targeted_challenges",
+      "a": "paper-137c334beba7a22ab132aa91",
+      "b": "paper-fa5a2b58f0b3985080d1aac9",
+      "a_title": "Language Models as Knowledge Bases?",
+      "b_title": "Knowledgeable or Educated Guess? Revisiting Language Models as Knowledge Bases",
+      "a_url": "https://aclanthology.org/D19-1250/",
+      "b_url": "https://aclanthology.org/2021.acl-long.146/",
+      "model_types": {
+        "Challenges": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "B directly questions the reliability conclusion from LAMA-style knowledge extraction and identifies prompt artifacts.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R19",
+      "stratum": "targeted_challenges",
+      "a": "paper-72d29cfac2f5d7323a829ca3",
+      "b": "paper-f1d155f40ed3dc7aca297572",
+      "a_title": "DARTS: Differentiable Architecture Search",
+      "b_title": "Understanding and Robustifying Differentiable Architecture Search",
+      "a_url": "https://openreview.net/forum?id=S1eYHoC5FX",
+      "b_url": "https://openreview.net/forum?id=H1gDNyrKDS",
+      "model_types": {
+        "Extends": 0.9,
+        "Challenges": 0.9
+      },
+      "verdict": "supported",
+      "rationale": "B retains DARTS and directly identifies degenerate architectures, then proposes robust variants. Both Extends and Challenges are supported.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R20",
+      "stratum": "targeted_challenges",
+      "a": "paper-319d6d94d7b5f3d26f3aed56",
+      "b": "paper-df3dafbd5b75a44a3e801a5b",
+      "a_title": "Do Deep Generative Models Know What They Don't Know?",
+      "b_title": "Understanding Anomaly Detection with Deep Invertible Networks through Hierarchies of Distributions and Features",
+      "a_url": "https://openreview.net/forum?id=H1xwNhCcYm",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2020/hash/f106b7f99d2cb30c3db1c3cc0fde9ccb-Abstract.html",
+      "model_types": {
+        "Challenges": 0.85
+      },
+      "verdict": "wrong_type",
+      "rationale": "B agrees with the earlier OOD likelihood failure and refines its explanation. Addressing a failure A discovered is not a criticism of A. Extends or a research-response link may fit; Challenges is not supported by this evidence.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R21",
+      "stratum": "targeted_transfers",
+      "a": "paper-5ec1956abe5b8e8967014472",
+      "b": "paper-f49a8b105fd3ecbe7fa6ace4",
+      "a_title": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+      "b_title": "Playing the lottery with rewards and multiple languages: lottery tickets in RL and NLP",
+      "a_url": "https://openreview.net/forum?id=rJl-b3RcF7",
+      "b_url": "https://openreview.net/forum?id=S1xnXRVFwH",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "B evaluates the lottery-ticket hypothesis in NLP and RL, explicitly beyond the original image tasks.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R22",
+      "stratum": "targeted_transfers",
+      "a": "paper-27a42db564071176ab3a1ddf",
+      "b": "paper-cba6fe2be66a46031b2bfd43",
+      "a_title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "b_title": "ViTPose: Simple Vision Transformer Baselines for Human Pose Estimation",
+      "a_url": "https://openreview.net/forum?id=YicbFdNTTy",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2022/hash/fbb10d319d44f8c3b4720873e4177c65-Abstract-Conference.html",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The abstracts support applying the plain ViT architecture from classification to pose estimation. contribution_comparison is appropriately qualified rather than explicit_statement.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R23",
+      "stratum": "targeted_transfers",
+      "a": "paper-aaf99d8a3916e7d4e03ce7ea",
+      "b": "paper-c9bb1534f03a97d24aa7169e",
+      "a_title": "Cyclical Stochastic Gradient MCMC for Bayesian Deep Learning",
+      "b_title": "Gradient-based Discrete Sampling with Automatic Cyclical Scheduling",
+      "a_url": "https://openreview.net/forum?id=rkeS1RVtPS",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5301c49207917c5c870131959971851c-Abstract-Conference.html",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "supported",
+      "rationale": "The citing sentence explicitly adopts the earlier cyclical schedule and adapts it from continuous to discrete sampling.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R24",
+      "stratum": "targeted_transfers",
+      "a": "paper-10f9a1392383159c853ee4a2",
+      "b": "paper-881b78ce278f0aa8d67c7127",
+      "a_title": "Language Modeling Is Compression",
+      "b_title": "Large Language Models for Lossless Image Compression: Next-Pixel Prediction in Language Space is All You Need",
+      "a_url": "https://openreview.net/forum?id=jznbgiynus",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2025/hash/e7349e785900b93d8b4971a3f2c1cefe-Abstract-Conference.html",
+      "model_types": {
+        "Transfers": 0.85
+      },
+      "verdict": "wrong_type",
+      "rationale": "A already demonstrates lossless image compression. B improves that task, including RGB handling. This does not support the claimed transfer into image compression; Extends is a better candidate label.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R25",
+      "stratum": "random_rejected",
+      "a": "paper-18b372188724a19c21388a4a",
+      "b": "paper-ce17f10f1e1d4cb948f3139d",
+      "a_title": "Oddballs and Misfits: Detecting Implicit Abuse in Which Identity Groups are Depicted as Deviating from the Norm",
+      "b_title": "Beyond Negative Stereotypes \u2013 Non-Negative Abusive Utterances about Identity Groups and Their Semantic Variants",
+      "a_url": "https://aclanthology.org/2024.emnlp-main.132/",
+      "b_url": "https://aclanthology.org/2025.acl-long.1363/",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "Similar abusive-language examples and a new dataset do not clearly establish reuse of the earlier specific resource or method.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R26",
+      "stratum": "random_rejected",
+      "a": "paper-f0d98f325aa987e9025b7076",
+      "b": "paper-acd9579aa7c92f1ddd598e72",
+      "a_title": "Adversarially Robust Generalization Requires More Data",
+      "b_title": "More Data Can Expand The Generalization Gap Between Adversarially Robust and Standard Models",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2018/hash/f708f064faaf32a43e4d3c784e6af9ea-Abstract.html",
+      "b_url": "https://proceedings.mlr.press/v119/chen20q.html",
+      "model_types": {},
+      "verdict": "uncertain_rejection",
+      "rationale": "There is a substantive theoretical response, but stronger linking evidence is needed to distinguish extension of A from an independent analysis of a shared model. Do not count this as a confirmed miss.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R27",
+      "stratum": "random_rejected",
+      "a": "paper-6290c514db11b35578280725",
+      "b": "paper-c0fd54ab769ca721e8ac82ac",
+      "a_title": "Adaptive SGD with Polyak stepsize and Line-search: Robust Convergence and Variance Reduction",
+      "b_title": "Stochastic Polyak Step-sizes and Momentum: Convergence Guarantees and Practical Performance",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2023/hash/540eb9e0ee35d525231c3fd22d1dcbf2-Abstract-Conference.html",
+      "b_url": "https://openreview.net/forum?id=nuX2yPejiL",
+      "model_types": {},
+      "verdict": "missed_relation",
+      "rationale": "B introduces MomAdaSPS alongside cited Jiang/Stich terminology and lemmas. The primary paper describes these step sizes as variants of DecSPS and AdaSPS; that supports Extends. The rejection overlooks named-method reuse.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R28",
+      "stratum": "random_rejected",
+      "a": "paper-477c133d438ffa9f7e91f20c",
+      "b": "paper-6378393f1a33c733a0c312e8",
+      "a_title": "Explaining Landscape Connectivity of Low-cost Solutions for Multilayer Nets",
+      "b_title": "Mechanistic Mode Connectivity",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2019/hash/46a4378f835dc8040c8057beb6a2da52-Abstract.html",
+      "b_url": "https://proceedings.mlr.press/v202/lubana23a.html",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "The citation places A among background mode-connectivity results; no specific inherited result is identified in the supplied evidence.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R29",
+      "stratum": "random_rejected",
+      "a": "paper-3a3b799f25e14699c3f73bdd",
+      "b": "paper-db0b51cf40cdc2d798682ae1",
+      "a_title": "Dynamical Isometry and a Mean Field Theory of CNNs: How to Train 10,000-Layer Vanilla Convolutional Neural Networks",
+      "b_title": "Provable Benefit of Orthogonal Initialization in Optimizing Deep Linear Networks",
+      "a_url": "https://proceedings.mlr.press/v80/xiao18a.html",
+      "b_url": "https://openreview.net/forum?id=rkgqN1SYvr",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "The shared orthogonal-initialization principle and a grouped background citation do not identify reuse of the particular CNN construction from A.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R30",
+      "stratum": "random_rejected",
+      "a": "paper-e38b5281828cd584ca16c2c9",
+      "b": "paper-9759fedd425f1de64fdfcc9d",
+      "a_title": "Diffusion Models are Minimax Optimal Distribution Estimators",
+      "b_title": "Minimax Optimality of Score-based Diffusion Models: Beyond the Density Lower Bound Assumptions",
+      "a_url": "https://proceedings.mlr.press/v202/oko23a.html",
+      "b_url": "https://proceedings.mlr.press/v235/zhang24bv.html",
+      "model_types": {},
+      "verdict": "missed_relation",
+      "rationale": "The supplied citation identifies the earlier density lower-bound assumption, and the later abstract removes it in a generalized minimax analysis. Extends is supported. The raw predicted score of 0.6 was filtered by the 0.85 threshold; the threshold is not calibrated.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R31",
+      "stratum": "jev_negative_audit",
+      "a": "paper-c793be7b654ba704820ece98",
+      "b": "paper-d8ea8388014e08d27ea5cb07",
+      "a_title": "Explaining Image Classifiers by Counterfactual Generation",
+      "b_title": "GANMEX: One-vs-One Attributions using GAN-based Model Explainability",
+      "a_url": "https://openreview.net/forum?id=B1MXz20cYQ",
+      "b_url": "https://proceedings.mlr.press/v139/shih21a.html",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "Both methods use realistic generative perturbations, but the abstracts and citation do not identify inheritance of the specific earlier infilling algorithm. Abstention is justified.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R32",
+      "stratum": "jev_negative_audit",
+      "a": "paper-346b4e648c94ad5ecc1c9631",
+      "b": "paper-47ba807427a718d2726899fe",
+      "a_title": "GuoFeng: A Benchmark for Zero Pronoun Recovery and Translation",
+      "b_title": "PROSE: A Pronoun Omission Solution for Chinese-English Spoken Language Translation",
+      "a_url": "https://aclanthology.org/2022.emnlp-main.774/",
+      "b_url": "https://aclanthology.org/2023.emnlp-main.141/",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "The two papers introduce distinct datasets for related pronoun-omission tasks. A reference entry does not establish reuse of GuoFeng. Abstention is justified.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R33",
+      "stratum": "jev_negative_audit",
+      "a": "paper-21edbce962f5b621594e7305",
+      "b": "paper-e82e3676f7d532fdeb87e1d4",
+      "a_title": "BatchEnsemble: an Alternative Approach to Efficient Ensemble and Lifelong Learning",
+      "b_title": "Training independent subnetworks for robust prediction",
+      "a_url": "https://openreview.net/forum?id=Sklf1yrYDr",
+      "b_url": "https://openreview.net/forum?id=OGg9XnKxFAH",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "MIMO and BatchEnsemble have a shared efficiency goal, but MIMO does not retain the rank-one Hadamard mechanism. Extends would be misleading on this evidence; abstention is reasonable.",
+      "reviewer": "assistant",
+      "human_verified": false
+    },
+    {
+      "review_id": "R34",
+      "stratum": "jev_negative_audit",
+      "a": "paper-b8dd2425cb63e1882babdc8f",
+      "b": "paper-cb2fa378acab92159e927fb3",
+      "a_title": "Attention over Learned Object Embeddings Enables Complex Visual Reasoning",
+      "b_title": "Reusable Slotwise Mechanisms",
+      "a_url": "https://papers.nips.cc/paper_files/paper/2021/hash/4c26774d852f62440fc746ea4cdd57f6-Abstract.html",
+      "b_url": "https://papers.nips.cc/paper_files/paper/2023/hash/49ff6951ef47bc9bab276a31a965528e-Abstract-Conference.html",
+      "model_types": {},
+      "verdict": "reasonable_abstention",
+      "rationale": "Aloe is used as a downstream reasoning component to evaluate predicted frames. That does not establish that the core reusable dynamics mechanisms extend Aloe. Withhold a core evolution claim without further context.",
+      "reviewer": "assistant",
+      "human_verified": false
+    }
+  ],
+  "additional_negative_audit": {
+    "seed": 20261114,
+    "pool": 123,
+    "sample_size": 4,
+    "findings": "Four reasonable abstentions on available evidence. Too small to estimate Jev false-negative rate."
+  }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fafbf9">
+  <title>Paper Evolve — Follow the idea</title>
+  <link rel="stylesheet" href="evolve/style.css?v=3b080bf0551b">
+  <link rel="stylesheet" href="evolve/evolution-home.css?v=3b080bf0551b">
+</head>
+<body class="notes-collapsed">
+<header>
+  <button id="toggle-explorer" class="panel-toggle" aria-label="Hide explorer" aria-controls="explorer" aria-expanded="true" title="Toggle explorer"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3" width="15" height="14" rx="2"/><path d="M8 3v14"/></svg><span>Explore</span></button>
+  <a class="brand" href="index.html"><span class="mark">p<span>e</span></span><span>paper evolve</span></a>
+  <nav aria-label="Main navigation">
+    <button data-view="evolution" class="active" aria-current="page">Evolution</button>
+    <button data-view="map">Landscape</button>
+    <button data-view="browse">Browse papers</button>
+    <a class="contribute-nav" href="contribute.html">Contribute</a>
+  </nav>
+  <button id="toggle-notes" class="panel-toggle" aria-label="Show paper details" aria-controls="details" aria-expanded="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3" width="15" height="14" rx="2"/><path d="M12 3v14"/></svg><span>Details</span></button>
+</header>
+<div id="app">
+  <aside id="explorer" class="sidebar" aria-label="Research explorer">
+    <div class="panel-heading explorer-heading"><h2>Explore research</h2><button id="close-explorer" class="icon-button" aria-label="Close explorer">×</button></div>
+    <div class="explorer-search">
+    <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="search" placeholder="Search papers or topics…" aria-label="Search topics or papers" aria-controls="discovery-results" aria-expanded="false" autocomplete="off"><button id="clear-search" type="button" aria-label="Clear search" title="Clear search" hidden>×</button></div>
+    </div>
+    <div class="sidebar-scroll" tabindex="0" role="region" aria-label="Explore controls">
+    <div id="discovery-results" class="discovery-results" hidden aria-label="Topic and paper results" aria-live="polite"></div>
+    <p class="explorer-help">Press Enter to search the collection.</p>
+    <div class="evolution-filters" hidden>
+      <details class="filter-disclosure" id="filters">
+        <summary><svg class="filter-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14M7 3v4M13 8v4M7 13v4"/></svg>Filters <span id="filter-count"></span><span class="chevron" aria-hidden="true">⌄</span></summary>
+        <div class="filter-content">
+          <label>Published between<div class="years"><select id="from" aria-label="From year"><option>2023</option><option>2024</option><option>2025</option></select><span>–</span><select id="to" aria-label="Through year"><option>2025</option><option>2024</option><option>2023</option></select></div></label>
+          <label id="timeline-venue-field">Venue<select id="venue" aria-label="Discovery venue"><option>All sources</option><option>Preprint</option><option>NeurIPS</option><option>ICML</option><option>ICLR</option><option>ACL</option><option>EMNLP</option><option>CVPR</option><option>ICCV</option><option>ECCV</option><option>AAAI</option></select></label>
+          <label>Connection type<select id="relation" aria-label="Connection type"><option>All relationships</option><option>Extends</option><option>Challenges</option><option>Combines</option><option>Transfers</option><option>Revives</option></select></label>
+          <label>Evidence<select id="evidence" aria-label="Evidence"><option>All evidence</option><option>explicit</option><option>inferred</option></select></label>
+          <button id="reset" class="text-button">Reset filters</button>
+        </div>
+      </details>
+    </div>
+    </div>
+    <div class="sidebar-bottom"><div class="collection-caption"><span class="dot"></span><span><strong>70,861</strong> papers</span></div><a href="EVOLVE.md" target="_blank" rel="noopener" aria-label="About Paper Evolve" title="About Paper Evolve"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 9v5M10 6v.5"/></svg></a></div>
+  </aside>
+  <main>
+    <section id="evolution" aria-label="Evolution workspace">
+      <div class="map-heading"><div><div class="eyebrow">FOLLOW THE IDEA</div><h1 id="evolution-title">Explore research evolution</h1><p id="counts">Find a paper or choose a starting point</p></div><div class="map-heading-actions"><button id="change-paper" hidden>Change paper</button><span class="collection" hidden>Research connections</span></div></div>
+      <div id="evolution-start" class="evolution-start"></div>
+      <div class="toolbar" hidden><div class="segmented" role="group" aria-label="Explore connections"><button class="active" data-highlight="all" aria-pressed="true">All connections</button><button data-highlight="ancestors" aria-pressed="false">Roots</button><button data-highlight="descendants" aria-pressed="false">Developments</button><button data-highlight="path" aria-pressed="false">Trace path</button></div><button id="reset-layout" title="Restore paper positions">Reset layout</button></div>
+      <p id="graph-status" class="path-status" role="status" hidden></p>
+      <div class="canvas-shell" hidden>
+        <div id="graph-notice" class="graph-notice" role="status" hidden></div>
+        <div id="graph-scroll" tabindex="0" role="region" aria-label="Evolution canvas. Scroll or drag empty space to pan."><div id="canvas-surface"><div id="graph" role="region" aria-label="Paper evolution timeline"></div></div></div>
+        <div class="canvas-help" aria-hidden="true">Drag papers to arrange · Drag canvas to pan</div>
+        <div class="canvas-controls" role="group" aria-label="Evolution zoom controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="zoom-level" aria-label="Reset zoom to 100 percent" title="Reset zoom" aria-live="polite">100%</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><span class="control-divider"></span><button id="fit" aria-label="Fit timeline to panel" title="Fit timeline to panel">⤢ <span>Fit</span></button></div>
+      </div>
+      <div class="workspace-footer" hidden><div class="legend" aria-label="Relationship guide"><button data-guide="Extends"><i style="background:#438078"></i>Extends</button><button data-guide="Challenges"><i style="background:#b97b55"></i>Challenges</button><button data-guide="Combines"><i style="background:#8c81a3"></i>Combines</button><button data-guide="Transfers"><i style="background:#7291a3"></i>Transfers</button><button data-guide="Revives"><i style="background:#a9a05e"></i>↻ Revives</button><button data-guide="Similar"><i style="background:#a3a99a"></i>Similar</button></div><details class="map-info"><summary>About these connections</summary><p class="note">Connections describe contributions. Similarity is a separate discovery layer. Curated records are listed as preprints; venue acceptance is unverified.</p><p>Scroll to explore. Ctrl/⌘ + wheel to zoom. Select a connection to inspect its evidence.</p><p><a href="contribute.html">Help review connections →</a></p></details></div>
+    </section>
+    <section id="library" hidden>
+      <div class="map-heading"><div><div class="eyebrow">EXPLORE THE COLLECTION</div><h1 id="library-title">Research landscape</h1><p id="library-count">Loading collection…</p></div><a id="library-contribute" class="contribute-topic" href="contribute.html" hidden>Contribute connections →</a></div>
+      <div class="library-controls" id="library-controls"><input id="library-search" type="hidden" value="" hidden><label>Year<select id="library-year" aria-label="Publication year"><option value="">All years</option></select></label><label>Venue<select id="library-venue" aria-label="Venue"><option value="">All venues</option></select></label><label id="library-sort-field">Sort by<select id="library-sort" aria-label="Sort by"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select></label></div>
+      <div id="topic-trail" aria-label="Research breadcrumb"></div><div id="library-pagination-top" aria-label="Paper pages"></div><div id="library-content"></div><div id="library-pagination"></div>
+    </section>
+  </main>
+  <aside id="details" aria-label="Paper details" hidden>
+    <div class="panel-heading"><h2 id="details-title">Paper details</h2><button id="close-notes" class="icon-button" aria-label="Close paper details">×</button></div>
+    <div id="detail-content" tabindex="0" role="region" aria-label="Paper content" aria-live="polite"><h2>Choose a paper</h2><p>Find a paper to read its abstract and explore the ideas connected to it.</p></div>
+  </aside>
+</div>
+<button id="panel-backdrop" aria-label="Close open panels" hidden></button>
+<script type="module" src="evolve/app.js?v=3b080bf0551b"></script>
+</body>
+</html>

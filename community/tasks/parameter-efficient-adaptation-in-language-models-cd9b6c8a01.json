@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Parameter Efficient Adaptation in Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-076315f64f4f3b3b678124af",
+      "a": "paper-051bb58e7ef263eb7c49b423",
+      "b": "paper-c3eb30d2129fbdd4353fc49c",
+      "state": {
+        "paper_a": {
+          "title": "TWEETQA: A Social Media Focused Question Answering Dataset",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "With social media becoming increasingly popular on which lots of news and real-time events are reported, developing automated question answering systems is critical to the effective-ness of many applications that rely on real-time knowledge. While previous datasets have concentrated on question answering (QA) for formal text like news and Wikipedia, we present the first large-scale dataset for QA over social media data. To ensure that the tweets we collected are useful, we only gather tweets used by journalists to write news articles. We then ask human annotators to write questions and answers upon these tweets. Unlike otherQA datasets like SQuAD in which the answers are extractive, we allow the answers to be abstractive. We show that two recently proposed neural models that perform well on formal texts are limited in their performance when applied to our dataset. In addition, even the fine-tuned BERT model is still lagging behind human performance with a large margin. Our results thus point to the need of improved QA systems targeting social media text."
+        },
+        "paper_b": {
+          "title": "CrossFit: A Few-shot Learning Challenge for Cross-task Generalization in NLP",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Humans can learn a new language task efficiently with only few examples, by leveraging their knowledge obtained when learning prior tasks. In this paper, we explore whether and how such cross-task generalization ability can be acquired, and further applied to build better few-shot learners across diverse NLP tasks. We introduce CrossFit, a problem setup for studying cross-task generalization ability, which standardizes seen/unseen task partitions, data access during different learning stages, and the evaluation protocols. To instantiate different seen/unseen task partitions in CrossFit and facilitate in-depth analysis, we present the NLP Few-shot Gym, a repository of 160 diverse few-shot NLP tasks created from open-access NLP datasets and converted to a unified text-to-text format. Our analysis reveals that the few-shot learning ability on unseen tasks can be improved via an upstream learning stage using a set of seen tasks. We also observe that the selection of upstream learning tasks can significantly influence few-shot performance on unseen tasks, asking further analysis on task similarity and transferability."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-051bb58e7ef263eb7c49b423",
+          "b": "paper-c3eb30d2129fbdd4353fc49c",
+          "input_sha256": "ab789a3d1f7cc1f0174aa4e072ca1a000d453c7682e8b8ec73a48fbebf02bcee",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P19-1496/",
+              "pdf_url": "https://aclanthology.org/P19-1496.pdf",
+              "sha256": "076ce6c2bbdb524318b98a2f5f71640c7d6166c3bf9ab923bf71514cb07a100f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.572/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.572.pdf",
+              "sha256": "7055098d088473d50895ed15def0819ee0dca00d174ca1557850cb5a7db7f8b6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "In recent years, while several tools for core natural language understanding tasks involving syntactic and semantic analysis have been developed for noisy social media text (Gimpel et al., 2011; Ritter et al., 2011; Kong et al., 2014; Wang et al., 2014), there is little work on question answering or reading comprehension over social media, with the primary bottleneck being the lack of available datasets. We observe that recently proposed QA datasets usually focus on formal domains, e.g. CNN/DAILY M AIL (Hermann et al., 2015) and NewsQA (Trischler et al., 2016) on news articles; SQuAD (Rajpurkar et al., 2016) and W IKI M OVIES (Miller et al., 2016) that use Wikipedia. In this paper, we propose the first large-scale dataset for QA over social media data. Rather than naively obtaining tweets from Twitter using",
+              "url": "https://aclanthology.org/P19-1496.pdf",
+              "document_sha256": "076ce6c2bbdb524318b98a2f5f71640c7d6166c3bf9ab923bf71514cb07a100f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Question Answering Reading Comprehension SQuAD (Rajpurkar et al. 2016) QuoRef (Dasigi et al. 2019) TweetQA (Xiong et al. 2019) ...",
+              "url": "https://aclanthology.org/2021.emnlp-main.572.pdf",
+              "document_sha256": "7055098d088473d50895ed15def0819ee0dca00d174ca1557850cb5a7db7f8b6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 18,
+              "text": "Wenhan Xiong, Jiawei Wu, Hong Wang, Vivek Kulkarni, Mo Yu, Shiyu Chang, Xiaoxiao Guo, and William Yang Wang. 2019. TWEETQA: A social media focused question answering dataset. In Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pages 5020– 5031, Florence, Italy. Association for Computational Linguistics.",
+              "url": "https://aclanthology.org/2021.emnlp-main.572.pdf",
+              "document_sha256": "7055098d088473d50895ed15def0819ee0dca00d174ca1557850cb5a7db7f8b6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Towards learning to generalize across tasks in C ROSS F IT challenge, we need a resource that contains sufficient number of tasks, covering a wide range of NLP applications, and presented in a unified text-to-text format. Herein, we introduce the NLP Few-shot Gym, a repository of 160 few-shot tasks gathered from existing open-access datasets. 4.1 Dataset Selection We choose to use Huggingface Datasets3 (Lhoest et al., 2021) as the pool of our candidate tasks. We filter these datasets on a case-by-case basis, mainly using the following criteria: (1) We focus on English monolingual datasets. (2) We exclude datasets that require information retrieval, as they require a separate retriever. (3) We exclude sequence labeling tasks (e.g., dependency parsing, NER), which are highly dependent on tokenization, and are hard to evaluate in text-to-text format. (4) We exclude datasets dealing with extremely long documents (e.g., a scientific paper) as input, as most pre-trained models cannot process such long input sequences. We finalize our selection with 160 datasets which are detailed in Appendix A. 4.2 A Unified Text-to-Text Format We follow Raffel et al. (2020) and convert all of our datasets into a unified text-to-text format. For example, the task of natural language inference (originally a sentence-pair classification problem) becomes: premise: <premise> hypothesis: <hypothesis>, and the target sequence is either the word entailment, contradiction or neutral. As for machine reading comprehension tasks, the input format is question: <question> context: <context> and the target sequence is the correct answer span. We also reference the format for QA tasks from UnifiedQA (Khashabi et al., 2020).",
+              "url": "https://aclanthology.org/2021.emnlp-main.572.pdf",
+              "document_sha256": "7055098d088473d50895ed15def0819ee0dca00d174ca1557850cb5a7db7f8b6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Humans can learn a new language task efficiently with only few examples, by leveraging their knowledge obtained when learning prior tasks. In this paper, we explore whether and how such cross-task generalization ability can be acquired, and further applied to build better few-shot learners across diverse NLP tasks. We introduce C ROSS F IT , a problem setup for studying cross-task generalization ability, which standardizes seen/unseen task partitions, data access during different learning stages, and the evaluation protocols. To instantiate different seen/unseen task partitions in C ROSS F IT and facilitate in-depth analysis, we present the NLP Few-shot Gym, a repository of 160 diverse few-shot NLP tasks created from openaccess NLP datasets and converted to a unified text-to-text format. Our analysis reveals that the few-shot learning ability on unseen tasks can be improved via an upstream learning stage using a set of seen tasks. We also observe that the selection of upstream learning tasks can significantly influence few-shot performance on unseen tasks, asking further analysis on task similarity and transferability.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.572.pdf",
+              "document_sha256": "7055098d088473d50895ed15def0819ee0dca00d174ca1557850cb5a7db7f8b6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-051bb58e7ef263eb7c49b423",
+          "url": "https://aclanthology.org/P19-1496/"
+        },
+        "b": {
+          "paper_id": "paper-c3eb30d2129fbdd4353fc49c",
+          "url": "https://aclanthology.org/2021.emnlp-main.572/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "9483d536e98bf687a803380936c4a2c78344dd4119746a93643e091bff263e60"
+    },
+    {
+      "id": "edge-44120c8b65103482bdb08ea2",
+      "a": "paper-04a52d31bc96801781f8807d",
+      "b": "paper-220e61b1f14547602560f46e",
+      "state": {
+        "paper_a": {
+          "title": "Sparsified SGD with Memory",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Huge scale machine learning problems are nowadays tackled by distributed optimization algorithms, i.e. algorithms that leverage the compute power of many devices for training. The communication overhead is a key bottleneck that hinders perfect scalability. Various recent works proposed to use quantization or sparsification techniques to reduce the amount of data that needs to be communicated, for instance by only sending the most significant entries of the stochastic gradient (top-k sparsification). Whilst such schemes showed very promising performance in practice, they have eluded theoretical analysis so far."
+        },
+        "paper_b": {
+          "title": "VeLoRA: Memory Efficient Training using Rank-1 Sub-Token Projections",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Large language models (LLMs) have recently emerged as powerful tools for tackling many language-processing tasks. Despite their success, training and fine-tuning these models is still far too computationally and memory intensive. In this paper, we identify and characterise the important components needed for effective model convergence using gradient descent. In doing so we find that the intermediate activations used to implement backpropagation can be excessively compressed without incurring any degradation in performance. This result leads us to a cheap and memory-efficient algorithm for both fine-tuning and pre-training LLMs. The proposed algorithm simply divides the tokens up into smaller sub-tokens before projecting them onto a fixed 1-dimensional subspace during the forward pass. These features are then coarsely reconstructed during the backward pass to implement the update rules. We confirm the effectiveness of our algorithm as being complimentary to many state-of-the-art PEFT methods on the VTAB-1k fine-tuning benchmark. Furthermore, we outperform QLoRA for fine-tuning LLaMA and show competitive performance against other memory-efficient pre-training methods on the large-scale C4 dataset."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04a52d31bc96801781f8807d",
+          "b": "paper-220e61b1f14547602560f46e",
+          "input_sha256": "47b9fb10531ba32545408e189ffd84ab0063da7c13c953b13df790fbbb242dc7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/b440509a0106086a67bc2ea9df0a1dab-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b440509a0106086a67bc2ea9df0a1dab-Paper.pdf",
+              "sha256": "2e64213272ab30cc2b5d12751b9c62eaee29e6aeb39e0d7d0b281348f61b2ef5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Paper-Conference.pdf",
+              "sha256": "634caa673c9729db2859b860c928b5f83bef47d93ddc7abbfeb3c90777bb2b5f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this section we present the sparsified SGD algorithm with memory. First we introduce sparsification and quantization operators which allow us to drastically reduce the communication cost in comparison with vanilla SGD. 2.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/b440509a0106086a67bc2ea9df0a1dab-Paper.pdf",
+              "document_sha256": "2e64213272ab30cc2b5d12751b9c62eaee29e6aeb39e0d7d0b281348f61b2ef5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We provide the first concise convergence analysis of sparsified SGD [1, 9, 33, 37]. This extremely communication-efficient variant of SGD enforces sparsity of the applied updates by only updating a constant number of coordinates in every iteration. This way, the method overcomes the communication bottleneck of SGD, while still enjoying the same convergence rate in terms of stochastic gradient computations. Our experiments verify the drastic reduction in communication cost by demonstrating that M EM SGD requires one to two orders of magnitude less bits to be communicated than QSGD [3] while converging to the same accuracy. The experiments show an advantage for the top-k sparsification over random sparsification in the serial setting, but not in the multi-core shared memory implementation. There, both schemes are on par, and show better scaling than a simple shared memory implementation that just writes the unquantized updates in a lock-free asynchronous fashion (like Hogwild! [25]). The theoretical insights to M EM -SGD that were developed here should facilitate the analysis of the same scheme in the parallel (as developped in [8]) and the distributed setting. It has already been shown in practice that gradient sparsification can be efficiently applied to bandwidth memory limited systems such as multi-GPU training for neural networks [1, 9, 21, 33, 37]. By delivering sparsity no matter if the original gradients were sparse or not, our scheme is not only communication efficient, but becomes more eligible for asynchronous implementations as well. While those were so far limited by strict sparsity assumptions (as e.g. in [25]), our approach might make such methods much more widely applicable.",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/b440509a0106086a67bc2ea9df0a1dab-Paper.pdf",
+              "document_sha256": "2e64213272ab30cc2b5d12751b9c62eaee29e6aeb39e0d7d0b281348f61b2ef5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Gradient Sparsification. Recently, there has been a surge in interest for memory-efficient training methods. In [50] only a sparse subset of the gradient vector components are stored zeroing out the remaining components. Different criteria have been proposed for selecting which gradient components to retain, such as Top-K SGD [43] which keeps only the top-k largest components, Sparsified-SGD [44] and various other sparsification methods [37, 38, 40, 25, 28, 16]. More recently, techniques combining quantization and sparsification have been proposed for resource-efficient training. Examples include TernGrad [51], Qsparse-local-SGD [3], sparse ternary compression [39], and the sparse-signSGD [32] method which combine sparsity with quantizing gradients to just the sign. A key difference is how VeLoRA compresses the intermediate activations that are used to compute gradients. Our compression algorithm is fully dense-to-dense without any pruning or sparsification of the activations. This prevents accuracy degradation issues associated with sparse updates and facilitates memory-efficient training. equation 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Paper-Conference.pdf",
+              "document_sha256": "634caa673c9729db2859b860c928b5f83bef47d93ddc7abbfeb3c90777bb2b5f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large language models (LLMs) have achieved remarkable success on a wide range of natural language processing tasks [31, 47, 2]. However, training these massive deep learning models remains computationally expensive, requiring vast amounts of data, compute, and memory resources. A key bottleneck for training or adapting these models is the large memory needed to store all the intermediate features required to compute the gradients for optimization. This makes it challenging to fully leverage the scalability and performance gains promised by larger models on currently available hardware. Several techniques have been proposed to reduce the memory requirements, such as GaLore [54], gradient checkpointing [8], reversible backpropagation [14], parameter-efficient finetuning [18, 7], quantization [11] and activation offloading [30]. GaLore uses a low-rank projection of the gradients during training to reduce the memory footprint. Gradient checkpointing reduces the activation memory demands by recomputing the activations in the backward pass instead of storing them. While these methods are promising and lower the memory cost, they also might introduce a substantial computational overhead, are limited in their memory savings, or require specialized hardware [11]. Knowing that compute is the primary mover for the advancements in machine learning [46], it is to be expected that the LLM sizes will continue growing exponentially. Thus, it is imperative to develop more efficient and scalable methods that allow better utilization of compute power and training data. In this work, we present a novel approach for efficient training and finetuning, which we name Vector projected LoRA (VeLoRA). Our approach is based on a key observation that the intermediate † Corresponding authors:",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Paper-Conference.pdf",
+              "document_sha256": "634caa673c9729db2859b860c928b5f83bef47d93ddc7abbfeb3c90777bb2b5f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: The memory overhead for backpropagation on a single layer consists of storing the intermediate activations and the weights. (a) demonstrates that PEFT methods can reduce the memory by using cheap low-rank adapters. (b) VeLoRA additionally compresses the saved intermediate activations to further reduce the memory usage. activations produced during the forward propagation of deep neural networks, and kept in memory for computing the gradients during backpropagation, can be effectively represented and reconstructed from a single and fixed one-dimensional vector without losing any accuracy. This compressed representation can be made very memory efficient, with a controllable hyperparameter that provides a trade-off between the compression ratio and the model’s performance. By compressing and then reconstructing the activations on the fly, our method reduces the peak activation memory footprint to a tiny fraction of what is required to store the original activations. This enables fitting much larger models into limited GPU memory compared to approaches like GaLore or gradient checkpointing. More concretely, during the forward pass, we propose to divide each input token into a set of much smaller sub-tokens. Using a single projection vector, we then project these individual sub-tokens onto a one-dimensional subspace. Importantly, we notice that we can initialize this projection vector cheaply using first-order batch statistics and then keep it fixed throughout training. We then reconstruct the original tokens using the same vector during the backward pass. Although this reconstruction loses the original gradient properties such as the direction or magnitude, we find that it jointly encourages sparsity and locally preserves the gradient similarity, which we",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Paper-Conference.pdf",
+              "document_sha256": "634caa673c9729db2859b860c928b5f83bef47d93ddc7abbfeb3c90777bb2b5f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04a52d31bc96801781f8807d",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b440509a0106086a67bc2ea9df0a1dab-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-220e61b1f14547602560f46e",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/4a9eaf6dff3fdac9ab1aaf4c0fe2d563-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "5b434b098cf4080b11a0d375c85ef763c167409017b6e3b4b5c9f39f296232b0"
+    },
+    {
+      "id": "edge-92d5b7ae43b62e0b34193fe2",
+      "a": "paper-06097f3306712d0aa28ea2d7",
+      "b": "paper-c6ffa35130b57b7e68f9286b",
+      "state": {
+        "paper_a": {
+          "title": "Meta-Weight-Net: Learning an Explicit Mapping For Sample Weighting",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Current deep neural networks(DNNs) can easily overfit to biased training data with corrupted labels or class imbalance. Sample re-weighting strategy is commonly used to alleviate this issue by designing a weighting function mapping from training loss to sample weight, and then iterating between weight recalculating and classifier updating. Current approaches, however, need manually pre-specify the weighting function as well as its additional hyper-parameters. It makes them fairly hard to be generally applied in practice due to the significant variation of proper weighting schemes relying on the investigated problem and training data. To address this issue, we propose a method capable of adaptively learning an explicit weighting function directly from data. The weighting function is an MLP with one hidden layer, constituting a universal approximator to almost any continuous functions, making the method able to fit a wide range of weighting function forms including those assumed in conventional research. Guided by a small amount of unbiased meta-data, the parameters of the weighting function can be finely updated simultaneously with the learning process of the classifiers. Synthetic and real experiments substantiate the capability of our method for achieving proper weighting functions in class imbalance and noisy label cases, fully complying with the common settings in traditional methods, and more complicated scenarios beyond conventional cases. This naturally leads to its better accuracy than other state-of-the-art methods."
+        },
+        "paper_b": {
+          "title": "Not All Negatives are Equal: Label-Aware Contrastive Loss for Fine-grained Text Classification",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Fine-grained classification involves dealing with datasets with larger number of classes with subtle differences between them. Guiding the model to focus on differentiating dimensions between these commonly confusable classes is key to improving performance on fine-grained tasks. In this work, we analyse the contrastive fine-tuning of pre-trained language models on two fine-grained text classification tasks, emotion classification and sentiment analysis. We adaptively embed class relationships into a contrastive objective function to help differently weigh the positives and negatives, and in particular, weighting closely confusable negatives more than less similar negative examples. We find that Label-aware Contrastive Loss outperforms previous contrastive methods, in the presence of larger number and/or more confusable classes, and helps models to produce output distributions that are more differentiated."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06097f3306712d0aa28ea2d7",
+          "b": "paper-c6ffa35130b57b7e68f9286b",
+          "input_sha256": "b80c9d293b1eab52376a00e1bb7bdad823c24fe9fb3b7aeba245e51b80dd0bc6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/e58cc5ca94270acaceed13bc82dfedf7-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/e58cc5ca94270acaceed13bc82dfedf7-Paper.pdf",
+              "sha256": "11dbb5bf05f6aec256f8170b44f9310dcf2f0292eadeae98c237cf85fe5915d3"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.359/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.359.pdf",
+              "sha256": "3388992b4e5c10fb002ab44dedbc7874e6fb14379fb51dafbe2e66df15c45c46"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Current deep neural networks (DNNs) can easily overfit to biased training data with corrupted labels or class imbalance. Sample re-weighting strategy is commonly used to alleviate this issue by designing a weighting function mapping from training loss to sample weight, and then iterating between weight recalculating and classifier updating. Current approaches, however, need manually pre-specify the weighting function as well as its additional hyper-parameters. It makes them fairly hard to be generally applied in practice due to the significant variation of proper weighting schemes relying on the investigated problem and training data. To address this issue, we propose a method capable of adaptively learning an explicit weighting function directly from data. The weighting function is an MLP with one hidden layer, constituting a universal approximator to almost any continuous functions, making the method able to fit a wide range of weighting functions including those assumed in conventional research. Guided by a small amount of unbiased meta-data, the parameters of the weighting function can be finely updated simultaneously with the learning process of the classifiers. Synthetic and real experiments substantiate the capability of our method for achieving proper weighting functions in class imbalance and noisy label cases, fully complying with the common settings in traditional methods, and more complicated scenarios beyond conventional cases. This naturally leads to its better accuracy than other state-of-the-art methods. Source code is available at https://github.com/xjtushujun/meta-weight-net.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/e58cc5ca94270acaceed13bc82dfedf7-Paper.pdf",
+              "document_sha256": "11dbb5bf05f6aec256f8170b44f9310dcf2f0292eadeae98c237cf85fe5915d3"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: (a)-(b) weight functions set in focal loss and self-paced learning (SPL). (c) Meta-WeightingNet architecture. (d)-(f) Meta-Weighting-Net functions learned in class imbalance (imbalanced factor 100), noisy label (40% uniform noise), and real dataset, respectively, by our method. under-represented. Effective learning with these biased training data, which is regarded to be biased from evaluation/test ones, is thus an important while challenging issue in machine learning [1, 21]. Sample reweighting approach is a commonly used strategy against this robust learning issue. The main methodology is to design a weighting function mapping from training loss to sample weight (with hyper-parameters), and then iterates between calculating weights from current training loss values and minimizing weighted training loss for classifier updating. There exist two entirely contradictive ideas for constructing such a loss-weight mapping. One makes the function monotonically increasing as depicted in Fig. 1(a), i.e., enforce the learning to more emphasize samples with larger loss values since they are more like to be uncertain hard samples located on the classification boundary. Typical methods of this category include AdaBoost [22, 23], hard negative mining [24] and focal loss [25]. This sample weighting manner is known to be necessary for class imbalance problems, since it can prioritize the minority class with relatively higher training losses. On the contrary, the other methodology sets the weighting function as monotonically decreasing, as shown in Fig. 1(b), to take samples with smaller loss values as more important ones. The rationality lies on that these samples are more likely to be high-confident ones with clean labels. Typical methods include self-paced learning(SPL)",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/e58cc5ca94270acaceed13bc82dfedf7-Paper.pdf",
+              "document_sha256": "11dbb5bf05f6aec256f8170b44f9310dcf2f0292eadeae98c237cf85fe5915d3"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "In addition to the above works, we mention other related references which used similar techniques. Dual-model approaches are used in tasks like knowledge distillation, where the knowledge from a larger teacher network is transferred to a lighter student model (Hinton et al., 2015; Kim and Rush, 2016; Sun et al., 2020, 2019; Li et al., 2020; Aguilar et al., 2020), however, these works are mainly focused on model compression. Dual-model strate2K gies have also been widely used in label-noise repX exp(hi · hg(i) /τ ) (1) L = − log P self resentation learning in image classification tasks exp(hi · hk /τ ) k∈I/i i=1 (Han et al., 2018; Wei et al., 2020; Lu et al., 2021; Feng et al., 2019) by updating each other with clean where τ is the temperature hyper-parameter. Larger samples (the samples which have the lowest loss values of τ scale down the dot-products, creating value in every iteration). However, the sample semore difficult comparisons. hi is the normalised lection performed by these works assume that the representation vector of xi obtained from an ennoise rate in each dataset is known or needs to be coder Φ. estimated, which is not always possible. Khosla et al. (2020) extended the above loss to Another set of works focus on sample re- a Supervised Contrastive Loss (SCL) by including weighting to focus on select samples more. Plank the samples belonging to the same class as xi in et al. (2014) use inter-annotator agreement to guide its positive set. The positive set is given by P = the model’s focus on samples that are harder to {p : p ∈ I, yp = yi ∧ p 6= i}, with size |P|. The distinguish. Sample re-weighting is also widely supervised contrastive loss is given by: used to reduce label noise. Although the majority of works in this area depend on a pre-determined 2K",
+              "url": "https://aclanthology.org/2021.emnlp-main.359.pdf",
+              "document_sha256": "3388992b4e5c10fb002ab44dedbc7874e6fb14379fb51dafbe2e66df15c45c46"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "and negative samples equally to the current sample xi . But not all negatives are equal. In certain fine-grained text classification tasks, we have semantically-similar labels with more subtle differences, and are thus more confusable. For example, “sad” and “devastated” are semantically closer emotion categories than “sad” and “happy”. Thus, our goal was to introduce a method for adaptively weighting a given input’s positive/negative samples based on the label-relationships between them, thereby helping the model differentiate the more difficult negatives. We propose Label-aware Contrastive Loss (LCL) which adapts Contrastive Loss for fine-grained classification tasks by incorporating inter labelrelationships. For the positive set, we follow (Khosla et al., 2020; Gunel et al., 2021) where P of a given sample contains the augmented sample and samples within the same class. We utilise a weighting vector wi ∈ RC where C is total number of classes to weight the pair-wise similarity values of the supervised contrastive loss defined in Eq. 2. Our adapted loss function for each entry i and total across the batch is:",
+              "url": "https://aclanthology.org/2021.emnlp-main.359.pdf",
+              "document_sha256": "3388992b4e5c10fb002ab44dedbc7874e6fb14379fb51dafbe2e66df15c45c46"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "amongst closely confusable classes (Collins et al., 2018; Zhao et al., 2017). Fine-grained classification involves dealing The standard approach today to task classificawith datasets with larger number of classes tion involves using a pre-trained language model with subtle differences between them. Guiding the model to focus on differentiating di(e.g., BERT) which is fine-tuned on downstream mensions between these commonly confustasks using a standard cross-entropy loss. However, able classes is key to improving performance this standard loss may not be the optimal manner on fine-grained tasks. In this work, we analyse in which to train fine-grained classification models. the contrastive fine-tuning of pre-trained lanA simple counterexample is that cross-entropy loss guage models on two fine-grained text classitreats misclassifications as nominal, not ordinal, so fication tasks, emotion classification and senmisclassifying a “positive” as a “very positive” is timent analysis. We adaptively embed class no worse (in terms of the loss) as “very negative”. relationships into a contrastive objective function to help differently weigh the positives and But even within nominal categories, misclassifynegatives, and in particular, weighting closely ing “annoyed” as “furious” is quite different from confusable negatives more than less similar a misclassification of “joyful”, as there are varynegative examples. We find that Label-aware ing degrees of semantic similarity between nomiContrastive Loss outperforms previous connal categories. Intuitively, we can try to improve trastive methods, in the presence of larger nummodel performance by modifying the loss to reber and/or more confusable classes, and helps flect the contrast between pairs of examples of models to produce output",
+              "url": "https://aclanthology.org/2021.emnlp-main.359.pdf",
+              "document_sha256": "3388992b4e5c10fb002ab44dedbc7874e6fb14379fb51dafbe2e66df15c45c46"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06097f3306712d0aa28ea2d7",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/e58cc5ca94270acaceed13bc82dfedf7-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c6ffa35130b57b7e68f9286b",
+          "url": "https://aclanthology.org/2021.emnlp-main.359/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "53c6552c7dbb2f3602c3083faef0391a73c7224a608be7eae265200dcd6dba36"
+    },
+    {
+      "id": "edge-b280cfcfd5d13c3d15ad625c",
+      "a": "paper-04570e5f5c5a9f8167257d5d",
+      "b": "paper-5d87375a56e7174e089681cb",
+      "state": {
+        "paper_a": {
+          "title": "Can You Tell Me How to Get Past Sesame Street? Sentence-Level Pretraining Beyond Language Modeling",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Natural language understanding has recently seen a surge of progress with the use of sentence encoders like ELMo (Peters et al., 2018a) and BERT (Devlin et al., 2019) which are pretrained on variants of language modeling. We conduct the first large-scale systematic study of candidate pretraining tasks, comparing 19 different tasks both as alternatives and complements to language modeling. Our primary results support the use language modeling, especially when combined with pretraining on additional labeled-data tasks. However, our results are mixed across pretraining tasks and show some concerning trends: In ELMo’s pretrain-then-freeze paradigm, random baselines are worryingly strong and results vary strikingly across target tasks. In addition, fine-tuning BERT on an intermediate task often negatively impacts downstream transfer. In a more positive trend, we see modest gains from multitask training, suggesting the development of more sophisticated multitask and transfer learning techniques as an avenue for further research."
+        },
+        "paper_b": {
+          "title": "Grad2Task: Improved Few-shot Text Classification Using Gradients for Task Representation",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Large pretrained language models (LMs) like BERT have improved performance in many disparate natural language processing (NLP) tasks. However, fine tuning such models requires a large number of training examples for each target task. Simultaneously, many realistic NLP problems are \"few shot\", without a sufficiently large training set. In this work, we propose a novel conditional neural process-based approach for few-shot text classification that learns to transfer from other diverse tasks with rich annotation. Our key idea is to represent each task using gradient information from a base model and to train an adaptation network that modulates a text classifier conditioned on the task representation. While previous task-aware few-shot learners represent tasks by input encoding, our novel task representation is more powerful, as the gradient captures input-output relationships of a task. Experimental results show that our approach outperforms traditional fine-tuning, sequential transfer learning, and state-of-the-art meta learning approaches on a collection of diverse few-shot tasks. We further conducted analysis and ablations to justify our design choices."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04570e5f5c5a9f8167257d5d",
+          "b": "paper-5d87375a56e7174e089681cb",
+          "input_sha256": "be0f5489ecca3a084c5783e9ecc1ecd2cb9e283443468b8f9a802b61746b93a7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P19-1439/",
+              "pdf_url": "https://aclanthology.org/P19-1439.pdf",
+              "sha256": "ec1de40ff8f884ce75810030b7d11cc6df648c1908b9761bb1b010ee1a262ece"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/33a854e247155d590883b93bca53848a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/33a854e247155d590883b93bca53848a-Paper.pdf",
+              "sha256": "b1dcc9e5dd8d08db545a65381e885498ef575f3544c0341074e04c6ab43d2d2d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "From Table 2, among target tasks, we find the grammar-related CoLA task benefits dramatically from LM pretraining: The results achieved with LM pretraining are significantly better than the results achieved without. In contrast, the meaningoriented STS sees good results with several kinds of pretraining, but does not benefit substantially from LM pretraining. Among pretraining tasks, language modeling performs best, followed by MNLI. The remaining pretraining tasks yield performance near that of the random baseline. Even our single-task baseline gets less than a one point gain over this simple baseline. The multitask models are tied or outperformed by models trained on one of their constituent tasks, suggesting that our approach to multitask learning does not reliably produce models that productively combine the knowledge taught by each task. However, of the two models that perform best on the development data, the multitask model generalizes better than the single-task model on test data for tasks like STS and MNLI where the test set contains out-of-domain data.",
+              "url": "https://aclanthology.org/P19-1439.pdf",
+              "document_sha256": "ec1de40ff8f884ce75810030b7d11cc6df648c1908b9761bb1b010ee1a262ece"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Transformer-based pretrained large-scale language models (LMs) have achieved tremendous success on many NLP tasks [15, 34], but require a large number of in-domain labeled examples for finetuning [54]. One approach to alleviate that issue is to fine-tune the model on an intermediate (source) task that is related to the target task. While previous work has focused on this setting for a single source task [33, 50], the problem of transferring from a set of source tasks has not been thoroughly considered. Wang et al. [51] showed that a naïve combination of multiple source tasks may negatively impact target task performance. Additionally, transfer learning methods typically consider the setting where more than a medium (N>100) number of training examples are available for both the source and target tasks. In this work we develop a method to improve a large pre-trained LM for few-shot text classification problems by transferring from multiple source tasks. While it is possible to directly adapt recent advances in meta-learning developed for few-shot image classification, a unique challenge in the NLP setting is that source tasks do no share the same task structure. Namely, on standard few-shot image classification benchmarks, the training tasks are sampled from a “single” larger dataset, and the label space contains the same task structure for all tasks. In contrast, in text classification tasks, the set of source tasks available during training can range from sentiment analysis to grammatical acceptability judgment. Different source tasks could not only be different in terms of input domain, but also their task structure (i.e. label semantics, and number of output labels). This challenging problem requires resistance to overfitting due to its few-shot nature and more",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/33a854e247155d590883b93bca53848a-Paper.pdf",
+              "document_sha256": "b1dcc9e5dd8d08db545a65381e885498ef575f3544c0341074e04c6ab43d2d2d"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Our work is also related to transfer learning. Instead of fine-tuning a pretrained language model directly on a target task, Phang et al. [33] and Talmor and Berant [46] showed that intermediate training on data-rich supervised tasks is beneficial for downstream performance. Wang et al. [51] found that there is no guarantee that multi-task learning or intermediate training yields better performance than direct fine-tuning on target tasks. Transferability estimation is the task of predicting whether it is 1",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/33a854e247155d590883b93bca53848a-Paper.pdf",
+              "document_sha256": "b1dcc9e5dd8d08db545a65381e885498ef575f3544c0341074e04c6ab43d2d2d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pretrained language models (LMs) like BERT have improved performance in many disparate natural language processing (NLP) tasks. However, fine tuning such models requires a large number of training examples for each target task. Simultaneously, many realistic NLP problems are \"few shot\", without a sufficiently large training set. In this work, we propose a novel conditional neural process-based approach for few-shot text classification that learns to transfer from other diverse tasks with rich annotation. Our key idea is to represent each task using gradient information from a base model and to train an adaptation network that modulates a text classifier conditioned on the task representation. While previous task-aware few-shot learners represent tasks by input encoding, our novel task representation is more powerful, as the gradient captures input-output relationships of a task. Experimental results show that our approach outperforms traditional fine-tuning, sequential transfer learning, and state-of-the-art meta learning approaches on a collection of diverse few-shot tasks. We further conducted analysis and ablations to justify our design choices.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/33a854e247155d590883b93bca53848a-Paper.pdf",
+              "document_sha256": "b1dcc9e5dd8d08db545a65381e885498ef575f3544c0341074e04c6ab43d2d2d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "Does the adaptation really help? Starting from the base model trained after the first stage, we compare our approach with just training the base model using the ProtoNet loss for the same number of steps. Shown as “ProtoNet Longer Training” in Table 2, the performance of this approach is worse than our proposed approach. This justifies that we can do better by adapting the base model than training it for more steps. How are gradients compared with other task representations? We compare our approach with other CNP-based approaches with different methods of task embedding. Similar to Requeima et al. [37], we use the average embeddings of the training sequences as representations for a task, and keep the other model architecture unchanged. We also consider using the embeddings of both input sequences and labels for task representation. We treat labels as normal text instead of discrete values and encode them using the BERT model. The label embedding and average input embeddings are concatenated as the task representation. Shown as “Grad2Task w/ X” and “Grad2Task w/ X&Y”, respectively, in Table 2, both of these two approach underperform our gradient-based method while “Grad2Task w/ X” performs closely with our method. Note that we can also combine those methods for task representation, which we leave for future work. Adapt all or just “[CLS]\"? The only difference between this model and ours is whether we apply the generated adaptation parameters only on the hidden representation of the “[CLS]\" token or on all tokens in each sequence. Shown as “Grad2Task Adapt All” in Table 2, this model performs worse, resulting in 44.57% on average. Generating model parameters or adaptation parameters? We also experimented with a hypernetwork [20]-based approach. Conditioned on the task",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/33a854e247155d590883b93bca53848a-Paper.pdf",
+              "document_sha256": "b1dcc9e5dd8d08db545a65381e885498ef575f3544c0341074e04c6ab43d2d2d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04570e5f5c5a9f8167257d5d",
+          "url": "https://aclanthology.org/P19-1439/"
+        },
+        "b": {
+          "paper_id": "paper-5d87375a56e7174e089681cb",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/33a854e247155d590883b93bca53848a-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "312954116ba193506a82e1bf31d60b28a9bb5162f654a9b8cf1b4219cd586399"
+    },
+    {
+      "id": "edge-ed866eecfe70b4ae5c35ff6b",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-13bbb010a4411ca3106c8f3c",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Knowledge-Aware Meta-learning for Low-Resource Text Classification",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Meta-learning has achieved great success in leveraging the historical learned knowledge to facilitate the learning process of the new task. However, merely learning the knowledge from the historical tasks, adopted by current meta-learning algorithms, may not generalize well to testing tasks when they are not well-supported by training tasks. This paper studies a low-resource text classification problem and bridges the gap between meta-training and meta-testing tasks by leveraging the external knowledge bases. Specifically, we propose KGML to introduce additional representation for each sentence learned from the extracted sentence-specific knowledge graph. The extensive experiments on three datasets demonstrate the effectiveness of KGML under both supervised adaptation and unsupervised adaptation settings."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "For each task T i , we use the shared BERT encoder to compute a representation of each query sentence x q i,j , which returns an embedding vector, denoted f θ B ( x ,j ) .\nMeta-learning has been shown to dominate selfsupervised pretraining techniques such as masked language modeling (Devlin et al., 2018) when the training tasks are representative enough of the tasks encountered at test time (Bansal et al.\nMeta-learning has been shown to dominate self-supervised pretraining techniques such as masked language modeling (Devlin et al., 2018) when the training tasks are representative enough of the tasks encountered at test time (Bansal et al., 2019, 2020).\nOn both scenarios, accuracy is used as the evaluation metric and all baselines use ALBERT (Lan et al., 2019) as encoder.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-13bbb010a4411ca3106c8f3c",
+          "input_sha256": "198fa217a0a0f2439ac87f55f247d638c2cff4878d1baa16c9d69d03218fedc0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.136/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.136.pdf",
+              "sha256": "29aac65cc92e52dbc5e0cbce52c913fdb58b07da00b643dad76b0cad24c67e1d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "and metric-based meta-learning (KGML-ProtoNet) algorithms. Under the unsupervised adaptation scenario, KGML is compared with the following four baselines: empirical risk minimization (ERM), upweighting (UW), domain adversarial neural network (DANN) (Ganin and Lempitsky, 2015), and adaptive risk minimization (ARM) (Zhang et al., 2020). Here, we report the performance with full users and 60% users for meta-training. On both scenarios, accuracy is used as the evaluation metric and all baselines use ALBERT (Lan et al., 2019) as encoder. WordNet (Miller, 1995) is used as the knowledge graph. All other hyperparameters are reported in Appendix D. 4.3",
+              "url": "https://aclanthology.org/2021.emnlp-main.136.pdf",
+              "document_sha256": "29aac65cc92e52dbc5e0cbce52c913fdb58b07da00b643dad76b0cad24c67e1d"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "We consider the standard meta-learning setting, where given a set of training tasks T1 , . . . , Tn , we would like to learn a good parameter initialization θ? for a predictive model fθ such that it can be quickly adapted to new tasks given only a limited amount of data (i.e., few-shot regime). Each task Ti has a support set of labeled or unlabeled sens )}N s and a tences Dis = {Xsi , Yis } = {(xsi,j , yi,j j=1 q q query set, Diq = {Xqi , Yiq } = {(xqi,j , yi,j )}N j=1 of labeled sentences. In our text classification setup, we assume that parameters θ are split into two subsets: (1) BERT (Devlin et al., 2018) parameters θB shared across tasks and (2) task-specific parameters θc that are adapted for each task. Below, we discuss two adaptation strategies: supervised and unsupervised. 2.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.136.pdf",
+              "document_sha256": "29aac65cc92e52dbc5e0cbce52c913fdb58b07da00b643dad76b0cad24c67e1d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2021) and, especially in the natural language domain, mitigating discrepancy between training and test tasks becomes non-trivial due to new concepts or entities that can be present at test time only. In this paper, we propose to leverage external knowledge bases (KBs) in order to bridge the gap between the training and test tasks and enable more efficient meta-learning for low-resource text classification. Our key idea is based on computing additional representations for each sentence by constructing and embedding sentence-specific knowledge graphs (KGs) of entities extracted from a knowledge base shared across all tasks (e.g., Fig. 1). These representations are computed using a graph neural network (GNN) which is meta-trained endto-end jointly with the text classification model. Our approach is compatible with both supervised and unsupervised adaptation of predictive models.",
+              "url": "https://aclanthology.org/2021.emnlp-main.136.pdf",
+              "document_sha256": "29aac65cc92e52dbc5e0cbce52c913fdb58b07da00b643dad76b0cad24c67e1d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Meta-learning has achieved great success in leveraging the historical learned knowledge to facilitate the learning process of the new task. However, merely learning the knowledge from the historical tasks, adopted by current meta-learning algorithms, may not generalize well to testing tasks when they are not well-supported by training tasks. This paper studies a low-resource text classification problem and bridges the gap between meta-training and meta-testing tasks by leveraging the external knowledge bases. Specifically, we propose KGML to introduce additional representation for each sentence learned from the extracted sentence-specific knowledge graph. The extensive experiments on three datasets demonstrate the effectiveness of KGML under both supervised adaptation and unsupervised adaptation settings.",
+              "url": "https://aclanthology.org/2021.emnlp-main.136.pdf",
+              "document_sha256": "29aac65cc92e52dbc5e0cbce52c913fdb58b07da00b643dad76b0cad24c67e1d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-13bbb010a4411ca3106c8f3c",
+          "url": "https://aclanthology.org/2021.emnlp-main.136/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "e54df503403698a6eccce99c8fbe7b4800a2ea683e211656ef3e39494a9a659f"
+    },
+    {
+      "id": "edge-c450c3571f414d477a61e6f2",
+      "a": "paper-02c22df416be41c38b027322",
+      "b": "paper-84150da47bd77b7cf59d5dc0",
+      "state": {
+        "paper_a": {
+          "title": "Unsupervised Meta-Learning for Few-Shot Image Classification",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Few-shot or one-shot learning of classifiers requires a significant inductive bias towards the type of task to be learned. One way to acquire this is by meta-learning on tasks similar to the target task. In this paper, we propose UMTRA, an algorithm that performs unsupervised, model-agnostic meta-learning for classification tasks. The meta-learning step of UMTRA is performed on a flat collection of unlabeled images. While we assume that these images can be grouped into a diverse set of classes and are relevant to the target task, no explicit information about the classes or any labels are needed. UMTRA uses random sampling and augmentation to create synthetic training tasks for meta-learning phase. Labels are only needed at the final target task learning step, and they can be as little as one sample per class. On the Omniglot and Mini-Imagenet few-shot learning benchmarks, UMTRA outperforms every tested approach based on unsupervised learning of representations, while alternating for the best performance with the recent CACTUs algorithm. Compared to supervised model-agnostic meta-learning approaches, UMTRA trades off some classification accuracy for a reduction in the required labels of several orders of magnitude."
+        },
+        "paper_b": {
+          "title": "Diverse Distributions of Self-Supervised Tasks for Meta-Learning in NLP",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Meta-learning considers the problem of learning an efficient learning process that can leverage its past experience to accurately solve new tasks. However, the efficacy of meta-learning crucially depends on the distribution of tasks available for training, and this is often assumed to be known a priori or constructed from limited supervised datasets. In this work, we aim to provide task distributions for meta-learning by considering self-supervised tasks automatically proposed from unlabeled text, to enable large-scale meta-learning in NLP. We design multiple distributions of self-supervised tasks by considering important aspects of task diversity, difficulty, type, domain, and curriculum, and investigate how they affect meta-learning performance. Our analysis shows that all these factors meaningfully alter the task distribution, some inducing significant improvements in downstream few-shot accuracy of the meta-learned models. Empirically, results on 20 downstream tasks show significant improvements in few-shot learning – adding up to +4.2% absolute accuracy (on average) to the previous unsupervised meta-learning method, and perform comparably to supervised methods on the FewRel 2.0 benchmark."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Unsupervised meta-learning has been explored in computer vision (Hsu et al., 2019; Khodadadeh et al., 2019) and reinforcement learning (Gupta et al.\nUnsupervised meta-learning has been explored in computer vision (Hsu et al., 2019; Khodadadeh et al., 2019) and reinforcement learning (Gupta et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02c22df416be41c38b027322",
+          "b": "paper-84150da47bd77b7cf59d5dc0",
+          "input_sha256": "376fbb8266f5a564336bc48da1f8ff6e2fe74bd3115c770234efa6edcbce90f7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/fd0a5a5e367a0955d81278062ef37429-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/fd0a5a5e367a0955d81278062ef37429-Paper.pdf",
+              "sha256": "34d4f1e13d8595469baea64531b5dda98c136c81be82dfe8d1bc84194ae88e10"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.469/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.469.pdf",
+              "sha256": "604ffec04ad41c30ba68f830712fe318d69fae9ba9a6401e63692c692b68b896"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Few-shot or one-shot learning of classifiers requires a significant inductive bias towards the type of task to be learned. One way to acquire this is by meta-learning on tasks similar to the target task. In this paper, we propose UMTRA, an algorithm that performs unsupervised, model-agnostic meta-learning for classification tasks. The meta-learning step of UMTRA is performed on a flat collection of unlabeled images. While we assume that these images can be grouped into a diverse set of classes and are relevant to the target task, no explicit information about the classes or any labels are needed. UMTRA uses random sampling and augmentation to create synthetic training tasks for meta-learning phase. Labels are only needed at the final target task learning step, and they can be as little as one sample per class. On the Omniglot and Mini-Imagenet few-shot learning benchmarks, UMTRA outperforms every tested approach based on unsupervised learning of representations, while alternating for the best performance with the recent CACTUs algorithm. Compared to supervised model-agnostic meta-learning approaches, UMTRA trades off some classification accuracy for a reduction in the required labels of several orders of magnitude.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fd0a5a5e367a0955d81278062ef37429-Paper.pdf",
+              "document_sha256": "34d4f1e13d8595469baea64531b5dda98c136c81be82dfe8d1bc84194ae88e10"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we propose an algorithm called Unsupervised Meta-learning with Tasks constructed by Random sampling and Augmentation (UMTRA) that performs meta-learning of one-shot or few-shot classifiers in an unsupervised manner on an unlabeled dataset. Instead of starting from a collection of labeled tasks, {. . . Ti . . .}, UMTRA starts with a collection of unlabeled data U = {. . . xi . . .}. We have only a set of relatively easy-to-satisfy requirements towards U: Its objects have to be drawn from the same distribution as the objects classified in the target task and it must have a set of classes significantly larger than the number of classes of the final classifier. Starting from this unlabeled dataset, UMTRA uses statistical diversity properties and domain specific augmentations to generate the training and validation data for a collection of synthetic tasks, {. . . Ti0 . . .}. These tasks are then used in the meta-learning process based on a modified classification variant of the MAML algorithm [11]. Figure 1 summarizes the differences between the original supervised MAML model and the process of generating synthetic tasks from unsupervised data in UMTRA. The contributions of this paper can be summarized as follows: • We describe a novel algorithm that allows unsupervised, model-agnostic meta-learning for few-shot classification by generating synthetic meta-learning data with artificial labels. • From a theoretical point of view, we demonstrate a relationship between generalization error and the loss backpropagated from the validation set in MAML. Our intuition is that we can generate unsupervised validation tasks which can perform effectively if we are able to span the space of the classes by generating useful samples with augmentation. • On all the Omniglot",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/fd0a5a5e367a0955d81278062ef37429-Paper.pdf",
+              "document_sha256": "34d4f1e13d8595469baea64531b5dda98c136c81be82dfe8d1bc84194ae88e10"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Meta-learning applications in NLP have yielded improvements on specific tasks (Gu et al., 2018; Chen et al., 2018; Guo et al., 2018; Yu et al., 2018; Han et al., 2018; Dou et al., 2019). Unsupervised meta-learning has been explored in computer vision (Hsu et al., 2019; Khodadadeh et al., 2019) and reinforcement learning (Gupta et al., 2018). Hsu et al. (2019) cluster images using pre-trained embeddings to create tasks. Metz et al. (2019) 4.4 Evaluation on FewRel 2.0 benchmark meta-learn an unsupervised update rule in a semiFewRel (Han et al., 2018; Gao et al., 2019) is a supervised framework. Bansal et al. (2020b) decommon benchmark for few-shot learning in NLP, veloped the SMLMT approach to unsupervised which consists of many few-shot relation classifi- meta-learning in NLP. Contemporary work (Murty cation tasks created by sub-sampling from a pool et al., 2021) explored the use of clustering, though of relation labels. The resemblance to the popular focused only on natural language inference tasks. few-shot benchmarks like MiniImageNet (Vinyals Curriculum learning (Bengio et al., 2009) in the et al., 2016) makes FewRel one of the few widely context of meta-learning has been unexplored in used datasets for training and evaluating NLP meta- NLP, prior to this work. Jabri et al. (2019) found learning methods. unsupervised curriculum to be beneficial for metareinforcement learning. We refer to Hospedales Before submitting to the competition site for test et al. (2020) for a comprehensive review of metaset results, we first use the validation set to select the best model(s), where we observed that the Clus- learning. ter approaches performs better than the other task Self-supervised learning has emerged as an effiproposals (see validation results in Supplementary). cient",
+              "url": "https://aclanthology.org/2021.emnlp-main.469.pdf",
+              "document_sha256": "604ffec04ad41c30ba68f830712fe318d69fae9ba9a6401e63692c692b68b896"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "new tasks is still inefficient (Yogatama et al., 2019; Bansal et al., 2020a; Linzen, 2020). Meta-learning Meta-learning considers the problem of learn(Schmidhuber, 1987; Bengio et al., 1992; Thrun ing an efficient learning process that can leverand Pratt, 2012) treats the learning process itself age its past experience to accurately solve new as a learning problem from data, with the goal of tasks. However, the efficacy of meta-learning learning systems that can generalize to new tasks crucially depends on the distribution of tasks efficiently. This has the potential to produce fewavailable for training, and this is often assumed shot learners that can accurately solve a wide range to be known a priori or constructed from limited supervised datasets. In this work, we aim of new tasks. However, meta-learning requires a to provide task distributions for meta-learning distribution over tasks with relevant labeled data by considering self-supervised tasks automatithat can be difficult to obtain, severely limiting the cally proposed from unlabeled text, to enable practical utility of meta-learning methods. large-scale meta-learning in NLP. We design In the supervised setting, in particular, metamultiple distributions of self-supervised tasks learning task distribution is often defined by subby considering important aspects of task diversity, difficulty, type, domain, and curriculum, sampling from the classes in a classification proband investigate how they affect meta-learning lem over a fixed dataset (Vinyals et al., 2016). This performance. Our analysis shows that all these not only limits the applicability of meta-learning factors meaningfully alter the task distributo the underlying classification problem, but also tion, some inducing significant improvements requires a",
+              "url": "https://aclanthology.org/2021.emnlp-main.469.pdf",
+              "document_sha256": "604ffec04ad41c30ba68f830712fe318d69fae9ba9a6401e63692c692b68b896"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "task distributions are prone to producing tasks that might not be challenging enough for the underlying model to learn useful representations, which in turn translates into poor downstream task performance. We therefore propose several new approaches that instead consider important features of the task distribution including task diversity, difficulty, resemblance to the downstream tasks, and the curriculum or the order in which tasks are presented during training. When evaluated on a suite of 20 NLP classification tasks, our best unsupervised metalearning method leads to an absolute increase of up to +4.2% in average few-shot accuracy over unsupervised baseline results; and it even outperforms supervised meta-learning methods on FewRel 2.0 benchmark (Gao et al., 2019) on 5-shot evaluation. The paper is organized as follows. We start by providing some relevant background (2) on metalearning and the unsupervised task generation approach in SMLMT. Next, we introduce (3) new approaches to improve the task distribution. We then analyze (4.2) the different unsupervised distributions and how they relate to each other. Finally, we evaluate (4.3, 4.4) the different unsupervised methods on a wide range of NLP tasks including sentiment classification, entity typing, text classification, sentence-pair classification and relation classification.",
+              "url": "https://aclanthology.org/2021.emnlp-main.469.pdf",
+              "document_sha256": "604ffec04ad41c30ba68f830712fe318d69fae9ba9a6401e63692c692b68b896"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02c22df416be41c38b027322",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/fd0a5a5e367a0955d81278062ef37429-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-84150da47bd77b7cf59d5dc0",
+          "url": "https://aclanthology.org/2021.emnlp-main.469/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "2e6ca1a9e6000bef759b68d6ed314cc90b8ff7745504069689d31b860bcc2f00"
+    },
+    {
+      "id": "edge-1c4b8b654e6335884d927dd8",
+      "a": "paper-04570e5f5c5a9f8167257d5d",
+      "b": "paper-f630f708b2f06679e351564e",
+      "state": {
+        "paper_a": {
+          "title": "Can You Tell Me How to Get Past Sesame Street? Sentence-Level Pretraining Beyond Language Modeling",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Natural language understanding has recently seen a surge of progress with the use of sentence encoders like ELMo (Peters et al., 2018a) and BERT (Devlin et al., 2019) which are pretrained on variants of language modeling. We conduct the first large-scale systematic study of candidate pretraining tasks, comparing 19 different tasks both as alternatives and complements to language modeling. Our primary results support the use language modeling, especially when combined with pretraining on additional labeled-data tasks. However, our results are mixed across pretraining tasks and show some concerning trends: In ELMo’s pretrain-then-freeze paradigm, random baselines are worryingly strong and results vary strikingly across target tasks. In addition, fine-tuning BERT on an intermediate task often negatively impacts downstream transfer. In a more positive trend, we see modest gains from multitask training, suggesting the development of more sophisticated multitask and transfer learning techniques as an avenue for further research."
+        },
+        "paper_b": {
+          "title": "On Transferability of Prompt Tuning for Natural Language Processing",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Prompt tuning (PT) is a promising parameter-efficient method to utilize extremely large pre-trained language models (PLMs), which can achieve comparable performance to full-parameter fine-tuning by only tuning a few soft prompts. However, PT requires much more training time than fine-tuning. Intuitively, knowledge transfer can help to improve the efficiency. To explore whether we can improve PT via prompt transfer, we empirically investigate the transferability of soft prompts across different downstream tasks and PLMs in this work. We find that (1) in zero-shot setting, trained soft prompts can effectively transfer to similar tasks on the same PLM and also to other PLMs with a cross-model projector trained on similar tasks; (2) when used as initialization, trained soft prompts of similar tasks and projected prompts of other PLMs can significantly accelerate training and also improve the performance of PT. Moreover, to explore what decides prompt transferability, we investigate various transferability indicators and find that the overlapping rate of activated neurons strongly reflects the transferability, which suggests how the prompts stimulate PLMs is essential. Our findings show that prompt transfer is promising for improving PT, and further research shall focus more on prompts’ stimulation to PLMs. The source code can be obtained from https://github.com/thunlp/Prompt-Transferability."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We select MNLI (Williams et al., 2018), QNLI (Wang et al., 2019b), and SNLI (Bowman et al., 2015) for our experiments.\nIn the PLM era, some works pro-pose to tune the PLMs on intermediate tasks (Phang et al., 2018; Pruksachatkun et al., 2020; Gururan-gan et al., 2020; Wang et al., 2019a; Vu et al., 2020; Poth et al., 2021) before ﬁne-tuning on speciﬁc target tasks to achieve certain beneﬁts.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04570e5f5c5a9f8167257d5d",
+          "b": "paper-f630f708b2f06679e351564e",
+          "input_sha256": "6837ff4c2cc64bf6953b37cc738e08287cb2e54ab6c606b486d7715954bd8cad",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P19-1439/",
+              "pdf_url": "https://aclanthology.org/P19-1439.pdf",
+              "sha256": "ec1de40ff8f884ce75810030b7d11cc6df648c1908b9761bb1b010ee1a262ece"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.naacl-main.290/",
+              "pdf_url": "https://aclanthology.org/2022.naacl-main.290.pdf",
+              "sha256": "29664323e433912a269a96c49eda90871cd8a2c385b5e826efb06f6947378f16"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "From Table 2, among target tasks, we find the grammar-related CoLA task benefits dramatically from LM pretraining: The results achieved with LM pretraining are significantly better than the results achieved without. In contrast, the meaningoriented STS sees good results with several kinds of pretraining, but does not benefit substantially from LM pretraining. Among pretraining tasks, language modeling performs best, followed by MNLI. The remaining pretraining tasks yield performance near that of the random baseline. Even our single-task baseline gets less than a one point gain over this simple baseline. The multitask models are tied or outperformed by models trained on one of their constituent tasks, suggesting that our approach to multitask learning does not reliably produce models that productively combine the knowledge taught by each task. However, of the two models that perform best on the development data, the multitask model generalizes better than the single-task model on test data for tasks like STS and MNLI where the test set contains out-of-domain data.",
+              "url": "https://aclanthology.org/P19-1439.pdf",
+              "document_sha256": "ec1de40ff8f884ce75810030b7d11cc6df648c1908b9761bb1b010ee1a262ece"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "kens but not necessarily human-readable. Furthermore, soft prompts (Hambardzumyan et al., 2021; Qin and Eisner, 2021; Zhong et al., 2021; Liu et al., 2021) are proposed, which are tuneable embeddings rather than tokens in the vocabularies and can be directly trained with task-specific supervision. Lester et al. (2021) demonstrate that prompt tuning (PT) method can match the performance of full-parameter fine-tuning when the PLM has billions of parameters. This suggests that PT is promising to utilize extremely large PLMs. However, the much more training time needed to reach the convergence makes PT inefficient. In this work, we show that prompt transfer can improve the effectiveness to some extent with knowledge transfer, and empirically analyze the transferability of prompts across tasks and PLMs. Knowledge Transfer Cross-task knowledge transfer (Ruder, 2017) has been a long-standing way to improve the effectiveness and efficiency of NLP systems. In the PLM era, some works propose to tune the PLMs on intermediate tasks (Phang et al., 2018; Pruksachatkun et al., 2020; Gururangan et al., 2020; Wang et al., 2019a; Vu et al., 2020; Poth et al., 2021) before fine-tuning on specific target tasks to achieve certain benefits. Vu et al. (2020) empirically analyze the transferability between tasks in this setting. These explorations are all for fine-tuning. Considering the potential of PT, we believe the transferability and knowledge transfer methods for PT are worth exploring. As a prior attempt, Lester et al. (2021) demonstrate that PT’s cross-domain transferability is stronger than fine-tuning. Similar to our work, recent work (Vu et al., 2021) also explores the cross-task transfer with prompt initialization and prompt similarity metrics based on cosine similarity. However,",
+              "url": "https://aclanthology.org/2022.naacl-main.290.pdf",
+              "document_sha256": "29664323e433912a269a96c49eda90871cd8a2c385b5e826efb06f6947378f16"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "we propose to transfer prompts with initialization. In cross-task transfer, we start PT with the trained soft prompts of similar tasks as initialization. While in cross-model transfer, the initialization is the projected prompts of the same task trained on the source PLM. The two methods are dubbed as TPTTASK and TPTMODEL , which are short for transferable prompt tuning. Experiments show that they can both accelerate PT to some extent and also achieve a certain performance improvement. Furthermore, we explore why can the prompts transfer and what decides their transferability. To this end, we design various prompt similarity metrics from different perspectives and examine how well they can serve as transferability indicators, i.e., how well they correlate with prompt transfer performance. Experiments find that our novel method of measuring prompt similarity via model activations in feed-forward layers is better correlated with prompt transferability than prompt embedding distance-based metrics. This suggests the prompts are essentially stimulating PLM’s inner ability distributing among neurons to do specific NLP tasks, and future prompt transfer works should focus more on how the PLMs respond to different prompts’ stimulation rather than the prompts’ embedding properties. To summarize, our contributions are three-fold: (1) We thoroughly analyze the transferability of prompts across different tasks and models, and show that improving PT with prompt transfer is possible and promising. (2) We propose to transfer prompts with initialization, which enhances both PT’s efficiency and effectiveness. (3) We explore the effectiveness of various prompt similarity metrics serving as transferability indicators and demonstrate how the prompts stimulate PLMs to decide the",
+              "url": "https://aclanthology.org/2022.naacl-main.290.pdf",
+              "document_sha256": "29664323e433912a269a96c49eda90871cd8a2c385b5e826efb06f6947378f16"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "Similar to § 4.2, we further study whether the projected soft prompts can initialize PT on the target PLM and accelerate training as well as improve performance. We propose cross-model transferable prompt tuning, TPTMODEL , which adopts the Task Tuning projectors to project the soft prompts trained on the source PLM into the target PLM and initialize PT with the projected prompts. The performance and speedup are shown in Table 2 (b). We can see that, for the tasks within the same type of the projector-training task, compared to vanilla PT, TPTMODEL can mostly achieve comparable or better performance with much less training time, which demonstrates that practical cross-model prompt transfer is promising for improving the efficiency and effectiveness of PT.",
+              "url": "https://aclanthology.org/2022.naacl-main.290.pdf",
+              "document_sha256": "29664323e433912a269a96c49eda90871cd8a2c385b5e826efb06f6947378f16"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04570e5f5c5a9f8167257d5d",
+          "url": "https://aclanthology.org/P19-1439/"
+        },
+        "b": {
+          "paper_id": "paper-f630f708b2f06679e351564e",
+          "url": "https://aclanthology.org/2022.naacl-main.290/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "861dd517c583a688013b51a8ee9e3777cf7a174bccdb7ea8d75f6c885ae70f38"
+    },
+    {
+      "id": "edge-01500f76ceb22d09d917ed79",
+      "a": "paper-045fe8a3ba76a24156453301",
+      "b": "paper-65dd9089c50480fc1a0ca8b6",
+      "state": {
+        "paper_a": {
+          "title": "LEEP: A New Measure to Evaluate Transferability of Learned Representations",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We introduce a new measure to evaluate the transferability of representations learned by classifiers. Our measure, the Log Expected Empirical Prediction (LEEP), is simple and easy to compute: when given a classifier trained on a source data set, it only requires running the target data set through this classifier once. We analyze the properties of LEEP theoretically and demonstrate its effectiveness empirically. Our analysis shows that LEEP can predict the performance and convergence speed of both transfer and meta-transfer learning methods, even for small or imbalanced data. Moreover, LEEP outperforms recently proposed transferability measures such as negative conditional entropy and H scores. Notably, when transferring from ImageNet to CIFAR100, LEEP can achieve up to 30% improvement compared to the best competing method in terms of the correlations with actual transfer accuracy."
+        },
+        "paper_b": {
+          "title": "What to Pre-Train on? Efficient Intermediate Task Selection",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Intermediate task fine-tuning has been shown to culminate in large transfer gains across many NLP tasks. With an abundance of candidate datasets as well as pre-trained language models, it has become infeasible to experiment with all combinations to find the best transfer setting. In this work, we provide a comprehensive comparison of different methods for efficiently identifying beneficial tasks for intermediate transfer learning. We focus on parameter and computationally efficient adapter settings, highlight different data-availability scenarios, and provide expense estimates for each method. We experiment with a diverse set of 42 intermediate and 11 target English classification, multiple choice, question answering, and sequence tagging tasks. Our results demonstrate that efficient embedding based methods, which rely solely on the respective datasets, outperform computational expensive few-shot fine-tuning approaches. Our best methods achieve an average Regret@3 of 1% across all target tasks, demonstrating that we are able to efficiently identify the best datasets for intermediate training."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Nguyen et al. (2020), Li et al. (2021) and Deshpande et al. (2021) estimate the trans-ferability between classiﬁcation tasks by building an empirical classiﬁer from the source and target task label distribution.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-045fe8a3ba76a24156453301",
+          "b": "paper-65dd9089c50480fc1a0ca8b6",
+          "input_sha256": "6eda8350cd43e9d7c325092defb117cd27d599b3cd74bc3aa1b5cba57e316113",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/nguyen20b.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.827/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.827.pdf",
+              "sha256": "a4835b1386b818419715a9a4dd8f61f209f07cf9e21e440a19138ab3d8af382d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new measure to evaluate the transferability of representations learned by classifiers. Our measure, the Log Expected Empirical Prediction (LEEP), is simple and easy to compute: when given a classifier trained on a source data set, it only requires running the target data set through this classifier once. We analyze the properties of LEEP theoretically and demonstrate its effectiveness empirically. Our analysis shows that LEEP can predict the performance and convergence speed of both transfer and meta-transfer learning methods, even for small or imbalanced data. Moreover, LEEP outperforms recently proposed transferability measures such as negative conditional entropy and H scores. Notably, when transferring from ImageNet to CIFAR100, LEEP can achieve up to 30% improvement compared to the best competing method in terms of the correlations with actual transfer accuracy.",
+              "url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "document_sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "choose good source models for a given target task (Achille et al., 2019; Bao et al., 2019; Bhattacharjee et al., 2019). Previous approaches to transferability estimation often require running a transfer learning algorithm that involves expensive parameter optimization (Zamir et al., 2018; Achille et al., 2019), do not have a simple interpretation (Bao et al., 2019), or make strong assumptions about the data sets that limit their applicability (Zamir et al., 2018; Tran et al., 2019). We propose a novel measure called the Log Expected Empirical Prediction (LEEP) for transferability estimation of deep networks that overcomes all the shortcomings above. In contrast to previous approaches, LEEP scores are obtained without training on the target task, thus avoiding the expensive parameter optimization step. Additionally, they have a simple interpretation and can be applied in general settings to a wide range of modern deep networks. In particular, LEEP scores are obtained from a source model and a target data set by making a single forward pass of the model through the target data. This is a simpler process than previous methods, such as Taskonomy (Zamir et al., 2018) and Task2Vec (Achille et al., 2019), where one has to re-train at least part of the source model on the target data set. Furthermore, LEEP has a simple interpretation: it is the average log-likelihood of the expected empirical predictor, a simple classifier that makes prediction based on the expected empirical conditional distribution between source and target labels. Finally, LEEP does not make any assumption on the source and target input samples, except that they have the same size. This is more general and applicable than previous work (Zamir et al., 2018; Tran et al., 2019) where source and target data",
+              "url": "https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf",
+              "document_sha256": "9f2945a3da2990179b4db90a95b2a6661652319efb73e6e7ab605c14de267b00"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Automatically selecting intermediate tasks that yield transfer gains is critical when considering the increasing availability of tasks and models. Proxy estimators have been proposed to evaluate the transferability of pre-trained models towards a target task. Nguyen et al. (2020), Li et al. (2021) and Deshpande et al. (2021) estimate the transferability between classification tasks by building an empirical classifier from the source and target task label distribution. Puigcerver et al. (2021) experiment with multiple model selection methods, including kNN proxy models to estimate the target task performance. In a similar direction, Renggli et al. (2020) study proxy models based on kNN and linear classifiers, finding that a hybrid approach combination of task-aware and task-agnostic strategies yields the best results. Bingel and Søgaard (2017) find that gradients of the learning curves correlate with multi-task learning success. Zamir et al. (2018) build a taxonomy of vision tasks, giving insights into non-trivial transfer relations between tasks. Multiple works propose using embeddings that capture statistics, features, or the domain of a dataset. Edwards and Storkey (2017) leverage variational autoencoders (Kingma and Welling, 2014) to encode all samples of a dataset. Jomaa et al. (2019) train a dataset 2 Related Work meta-feature extractor that can successfully cap2.1 Transfer between tasks ture the domain of a dataset. Vu et al. (2020) Phang et al. (2018) show that training on interme- encode each training example of a dataset by averaging over BERT’s representations of the last diate tasks results in performance gains for many layer. Rücklé et al. (2020) capture domain simitarget tasks. Subsequent work further explores the effects on more diverse sets of tasks",
+              "url": "https://aclanthology.org/2021.emnlp-main.827.pdf",
+              "document_sha256": "a4835b1386b818419715a9a4dd8f61f209f07cf9e21e440a19138ab3d8af382d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-045fe8a3ba76a24156453301",
+          "url": "https://proceedings.mlr.press/v119/nguyen20b.html"
+        },
+        "b": {
+          "paper_id": "paper-65dd9089c50480fc1a0ca8b6",
+          "url": "https://aclanthology.org/2021.emnlp-main.827/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "5a0452ed8a2e99ccb7c0dfb5242579e0bf9e3a134fc36a30bba24820c180dffe"
+    },
+    {
+      "id": "edge-75fe360f0f0ea24c5ea75da6",
+      "a": "paper-068805ddfec5e8053a6366bc",
+      "b": "paper-d81d125f0d4a4c0f6c360cd6",
+      "state": {
+        "paper_a": {
+          "title": "Asymmetric Valleys: Beyond Sharp and Flat Local Minima",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Despite the non-convex nature of their loss functions, deep neural networks are known to generalize well when optimized with stochastic gradient descent (SGD). Recent work conjectures that SGD with proper conﬁguration is able to ﬁnd wide and ﬂat local minima, which are correlated with good generalization performance. In this paper, we observe that local minima of modern deep networks are more than being ﬂat or sharp. Instead, at a local minimum there exist many asymmetric directions such that the loss increases abruptly along one side, and slowly along the opposite side – we formally deﬁne such minima as asymmetric valleys. Under mild assumptions, we ﬁrst prove that for asymmetric valleys, a solution biased towards the ﬂat side generalizes better than the exact empirical minimizer. Then, we show that performing weight averaging along the SGD trajectory implicitly induces such biased solutions. This provides theoretical explanations for a series of intriguing phenomena observed in recent work [25, 5, 51]. Finally, extensive empirical experiments on both modern deep networks and simple 2 layer networks are conducted to validate our assumptions and analyze the intriguing properties of asymmetric valleys."
+        },
+        "paper_b": {
+          "title": "HiFi: High-Information Attention Heads Hold for Parameter-Efficient Model Adaptation",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "To fully leverage the advantages of large-scale pre-trained language models (PLMs) on downstream tasks, it has become a ubiquitous adaptation paradigm to fine-tune the entire parameters of PLMs. However, this paradigm poses issues of inefficient updating and resource over-consuming for fine-tuning in data-scarce and resource-limited scenarios, because of the large scale of parameters in PLMs. To alleviate these concerns, in this paper, we propose a parameter-efficient fine-tuning method HiFi, that is, only the highly informative and strongly correlated attention heads for the specific task are fine-tuned. To search for those significant attention heads, we develop a novel framework to analyze the effectiveness of heads. Specifically, we first model the relationship between heads into a graph from two perspectives of information richness and correlation, and then apply PageRank algorithm to determine the relative importance of each head. Extensive experiments on the GLUE benchmark demonstrate the effectiveness of our method, and show that HiFi obtains state-of-the-art performance over the prior baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "indicate enhanced standard and robust generalization (He et al., 2019; Wu et al., 2020), where an intuitive understanding is that if optimum basin is flat enough, it is possible to avoid the model jumping out the well-generalized region.\nA smoother/ﬂatter loss surface is often believed to indicate enhanced standard and robust generalization (He et al., 2019; Wu et al., 2020), where an intuitive understanding is that if optimum basin is ﬂat enough, it is possible to avoid the model jumping out the well-generalized region.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-068805ddfec5e8053a6366bc",
+          "b": "paper-d81d125f0d4a4c0f6c360cd6",
+          "input_sha256": "ab87bb33fee1cedc7a1938bd3b314d5c2c9e2fc4693732524bdb3a5d6ada8d86",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/01d8bae291b1e4724443375634ccfa0e-Paper.pdf",
+              "sha256": "dd1cba324ccfc577dfe90831d807d95dcbeac7b0e29a051348d786190c533740"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.475/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.475.pdf",
+              "sha256": "e87f8db2647d5cb6f311ff5878a0b92330ab960ee912fbc30cd4a369cce8e42e"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "indicate enhanced standard and robust generalization (He et al., 2019; Wu et al., 2020), where an intuitive understanding is that if optimum basin is flat enough, it is possible to avoid the model jumping out the well-generalized region. Therefore, this provides a possible perspective to explain that HiFi has a more robust generalization capability than Full-FT on downstream tasks.",
+              "url": "https://aclanthology.org/2023.acl-long.475.pdf",
+              "document_sha256": "e87f8db2647d5cb6f311ff5878a0b92330ab960ee912fbc30cd4a369cce8e42e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract To fully leverage the advantages of large-scale pre-trained language models (PLMs) on downstream tasks, it has become a ubiquitous adaptation paradigm to fine-tune the entire parameters of PLMs. However, this paradigm poses issues of inefficient updating and resource overconsuming for fine-tuning in data-scarce and resource-limited scenarios, because of the large scale of parameters in PLMs. To alleviate these concerns, in this paper, we propose a parameterefficient fine-tuning method HiFi, that is, only the highly informative and strongly correlated attention heads for the specific task are finetuned. To search for those significant attention heads, we develop a novel framework to analyze the effectiveness of heads. Specifically, we first model the relationship between heads into a graph from two perspectives of information richness and correlation, and then apply PageRank algorithm to determine the relative importance of each head. Extensive experiments on the GLUE benchmark demonstrate the effectiveness of our method, and show that HiFi obtains state-of-the-art performance over the prior baselines.",
+              "url": "https://aclanthology.org/2023.acl-long.475.pdf",
+              "document_sha256": "e87f8db2647d5cb6f311ff5878a0b92330ab960ee912fbc30cd4a369cce8e42e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "task, which presents the challenge of resource overconsuming for the limited storage infrastructure. Parameter-efficient fine-tuning (PEFT), as an alternative paradigm, has attracted more attention recently (He et al., 2022; Ding et al., 2022). Compared to full fine-tuning, PEFT only fine-tunes the minority of the original parameters (or extra introduced parameters) instead of the entire parameters of PLMs, as shown in Fig. 1. Although current PEFTs effectively decrease the proportion of trainable parameters, these methods also lead to varying aspects of concerns. For instance, Adapter (Houlsby et al., 2019) not only breaks the model structure by introducing additional parameters but also causes inference delays (Hu et al., 2022). We compare the representative models in Tab. 1. Motivated by these issues, in this paper, we propose HiFi, a novel PEFT method by fine-tuning the relatively significant heads in multi-head attention",
+              "url": "https://aclanthology.org/2023.acl-long.475.pdf",
+              "document_sha256": "e87f8db2647d5cb6f311ff5878a0b92330ab960ee912fbc30cd4a369cce8e42e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-068805ddfec5e8053a6366bc",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-d81d125f0d4a4c0f6c360cd6",
+          "url": "https://aclanthology.org/2023.acl-long.475/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "52c84382d7170ca4fc1d4af13ae84d4a6b8d7b8786580cac7896eeb094b2aefc"
+    },
+    {
+      "id": "edge-c576b171cfa81508a0883a57",
+      "a": "paper-06d6ad625094dd6e134e0ff1",
+      "b": "paper-8ee6d4ecd4fe305b5ce9a050",
+      "state": {
+        "paper_a": {
+          "title": "DuoRC: Towards Complex Language Understanding with Paraphrased Reading Comprehension",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique question-answer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset, even when coupled with traditional NLP techniques to address the challenges presented in DuoRC exhibit very poor performance (F1 score of 37.42% on DuoRC v/s 86% on SQuAD dataset). This opens up several interesting research avenues wherein DuoRC could complement other RC datasets to explore novel neural approaches for studying language understanding."
+        },
+        "paper_b": {
+          "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "In this work, we explore “prompt tuning,” a simple yet effective mechanism for learning “soft prompts” to condition frozen language models to perform specific downstream tasks. Unlike the discrete text prompts used by GPT-3, soft prompts are learned through backpropagation and can be tuned to incorporate signals from any number of labeled examples. Our end-to-end learned approach outperforms GPT-3’s few-shot learning by a large margin. More remarkably, through ablations on model size using T5, we show that prompt tuning becomes more competitive with scale: as models exceed billions of parameters, our method “closes the gap” and matches the strong performance of model tuning (where all model weights are tuned). This finding is especially relevant because large models are costly to share and serve and the ability to reuse one frozen model for multiple downstream tasks can ease this burden. Our method can be seen as a simplification of the recently proposed “prefix tuning” of Li and Liang (2021) and we provide a comparison to this and other similar approaches. Finally, we show that conditioning a frozen model with soft prompts confers benefits in robustness to domain transfer and enables efficient “prompt ensembling.” We release code and model checkpoints to reproduce our experiments."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For this task, several different question answering datasets (Dua et al., 2019; Saha et al., 2018; Lai et al., 2017; Levy et al., 2017; Kembhavi et al., 2017; Rajpurkar et al., 2016) are converted into a singular, extractive format.\nThe out-of-domain datasets are TextbookQA (Kembhavi et al., 2017), RACE (Lai et al., 2017), BioASQ ( http://bioasq. org/ ), RE (Levy et al., 2017), DuoRC (Saha et al., 2018), and DROP (Dua et al., 2019). model (+ 3 .",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06d6ad625094dd6e134e0ff1",
+          "b": "paper-8ee6d4ecd4fe305b5ce9a050",
+          "input_sha256": "120267519d4beae03f928d663366e5984ff9fef65eca498440182e8a1d6bf2ec",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P18-1156/",
+              "pdf_url": "https://aclanthology.org/P18-1156.pdf",
+              "sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.243/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.243.pdf",
+              "sha256": "d201f70a733b065d802b1adfa98ecac35c4633aa839dd7ef54d56c73d0fecf80"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose DuoRC, a novel dataset for Reading Comprehension (RC) that motivates several new challenges for neural approaches in language understanding beyond those offered by existing RC datasets. DuoRC contains 186,089 unique questionanswer pairs created from a collection of 7680 pairs of movie plots where each pair in the collection reflects two versions of the same movie - one from Wikipedia and the other from IMDb - written by two different authors. We asked crowdsourced workers to create questions from one version of the plot and a different set of workers to extract or synthesize answers from the other version. This unique characteristic of DuoRC where questions and answers are created from different versions of a document narrating the same underlying story, ensures by design, that there is very little lexical overlap between the questions created from one version and the segments containing the answer in the other version. Further, since the two versions have different levels of plot detail, narration style, vocabulary, etc., answering questions from the second version requires deeper language understanding and incorporating external background knowledge. Additionally, the narrative style of passages arising from movie plots (as opposed to typical descriptive passages in existing datasets) exhibits the need to perform complex reasoning over events across multiple sentences. Indeed, we observe that state-of-the-art neural RC models which have achieved near human performance on the SQuAD dataset (Rajpurkar et al., 2016b), even when coupled with tra-",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "a small dataset of 15K QA pairs, all other largescale RC datasets deal only with factual descriptive passages and not narratives (involving events with causality linkages that require reasoning and background knowledge) which is the case with a lot of real-world content such as story books, movies, news reports, etc. (ii) their questions possess a large lexical overlap with segments of the passage, or have a high noise level in QA pairs themselves. As demonstrated by recent work, this makes it easy for even simple keyword matching algorithms to achieve high accuracy (Weissenborn et al., 2017). In fact, these models have been shown to perform poorly in the presence of adversarially inserted sentences which have a high word overlap with the question but do not contain the answer (Jia and Liang, 2017). While this problem does not exist in TriviaQA it is admittedly noisy because of the use of distant supervision. Similarly, for cloze-style datasets, due to the automatic question generation process, it is very easy for current models to reach near human performance (Cui, 2017). This therefore limits the complexity in language understanding that a machine is required to demonstrate to do well on the RC task. Motivated by these shortcomings and to push the state-of-the-art in language understanding in RC, in this paper we propose DuoRC, which specifically presents the following challenges beyond the existing datasets: 1. DuoRC is especially designed to contain a large number of questions with low lexical overlap between questions and their corresponding passages. 2. It requires the use of background and commonsense knowledge to arrive at the answer and go beyond the content of the passage itself. 3. It contains narrative passages from movie plots that require complex",
+              "url": "https://aclanthology.org/P18-1156.pdf",
+              "document_sha256": "1fc59e9152e2d3b2d653f3f0dcf34a61cc594ae325416c4cd73b56866896a13f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Ensembles of neural models trained from different initializations on the same data are widely observed to improve task performance (Hansen and Salamon, 1990) and are useful for estimating model uncertainty (Lakshminarayanan et al., 2017). However, as model size increases, ensembling can become impractical. Beyond the space required to store N models (e.g. 42 GiB for each copy of T5-XXL), there is a substantial inference cost to running N distinct models, whether in parallel or in series. Prompt tuning provides a more efficient way to ensemble multiple adaptations of a pre-trained language model. By training N prompts on the same task, we create N separate “models” for a task, while still sharing the core language modeling parameters throughout. Beyond drastically reducing storage costs, the prompt ensemble makes inference more efficient. To process one example, rather than computing forward passes of N different models, we can execute a single forward pass with a batch size of N , replicating the example across the batch and varying the prompt. These savings mirror those seen for multi-tasking in Figure 2. To demonstrate the viability of prompt ensembling, we train five prompts for each SuperGLUE task, using a single frozen T5-XXL model with our default hyperparameters. We use simple major11 ity voting to compute predictions from the ensemWe select checkpoints based on SQuAD validation F1. The out-of-domain datasets are TextbookQA (Kembhavi et al., ble. Table 3 shows that across all tasks, the ensem2017), RACE (Lai et al., 2017), BioASQ (http://bioasq. ble beats the single-prompt average and beats, or org/), RE (Levy et al., 2017), DuoRC (Saha et al., 2018), and DROP (Dua et al., 2019). matches, the best individual prompt. 3052",
+              "url": "https://aclanthology.org/2021.emnlp-main.243.pdf",
+              "document_sha256": "d201f70a733b065d802b1adfa98ecac35c4633aa839dd7ef54d56c73d0fecf80"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 12,
+              "text": "Amrita Saha, Rahul Aralikatte, Mitesh M. Khapra, and Karthik Sankaranarayanan. 2018. DuoRC: Towards complex language understanding with paraphrased reading comprehension. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 1683–1693, Melbourne, Australia. Association for Computational Linguistics. Timo Schick and Hinrich Schütze. 2021. Exploiting cloze-questions for few-shot text classification and natural language inference. In Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume, pages 255–269, Online. Association for Computational Linguistics. Noam Shazeer. 2020. GLU variants improve transformer. CoRR, abs/2002.05202. Noam Shazeer and Mitchell Stern. 2018. Adafactor: Adaptive learning rates with sublinear memory cost. In Proceedings of the 35th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, pages 4596–4604. PMLR. Taylor Shin, Yasaman Razeghi, Robert L. Logan IV, Eric Wallace, and Sameer Singh. 2020. AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 4222–4235, Online. Association for Computational Linguistics. Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in Neural Information Processing Systems, volume 30, pages 5998–6008. Alex Wang, Yada Pruksachatkun, Nikita Nangia, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel Bowman. 2019a. SuperGLUE: A stickier benchmark for general-purpose language",
+              "url": "https://aclanthology.org/2021.emnlp-main.243.pdf",
+              "document_sha256": "d201f70a733b065d802b1adfa98ecac35c4633aa839dd7ef54d56c73d0fecf80"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "In this work, we explore “prompt tuning,” a simple yet effective mechanism for learning “soft prompts” to condition frozen language models to perform specific downstream tasks. Unlike the discrete text prompts used by GPT-3, soft prompts are learned through backpropagation and can be tuned to incorporate signals from any number of labeled examples. Our end-to-end learned approach outperforms GPT-3’s few-shot learning by a large margin. More remarkably, through ablations on model size using T5, we show that prompt tuning becomes more competitive with scale: as models exceed billions of parameters, our method “closes the gap” and matches the strong performance of model tuning (where all model weights are tuned). This finding is especially relevant because large models are costly to share and serve and the ability to reuse one frozen model for multiple downstream tasks can ease this burden. Our method can be seen as a simplification of the recently proposed “prefix tuning” of Li and Liang (2021) and we provide a comparison to this and other similar approaches. Finally, we show that conditioning a frozen model with soft prompts confers benefits in robustness to domain transfer and enables efficient “prompt ensembling.” We release code and model checkpoints to reproduce our experiments.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.243.pdf",
+              "document_sha256": "d201f70a733b065d802b1adfa98ecac35c4633aa839dd7ef54d56c73d0fecf80"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "the same time, since a single pre-trained model is recycled for all downstream tasks, we retain the efficient serving benefits of frozen models (Figure 2). While we developed our method concurrently with Li and Liang (2021) and Hambardzumyan et al. (2021), we are the first to show that prompt tuning alone (with no intermediate-layer prefixes or task-specific output layers) is sufficient to be competitive with model tuning. Through detailed experiments in sections 2–3, we demonstrate that language model capacity is a key ingredient for these approaches to succeed. As Figure 1 shows, prompt tuning becomes more competitive with scale. We compare with similar approaches in Section 4. Explicitly separating task-specific parameters from the “generalist” parameters needed for general language-understanding has a range of additional benefits. We show in Section 5 that by capturing the task definition in the prompt while keeping the generalist parameters fixed, we are able to achieve better resilience to domain shifts. In Section 6, we show that “prompt ensembling”, learning multiple prompts for the same task, can boost quality and is more efficient than classic model ensembling. Finally, in Section 7, we investigate the interpretability of our learned soft prompts. In sum, our key contributions are:",
+              "url": "https://aclanthology.org/2021.emnlp-main.243.pdf",
+              "document_sha256": "d201f70a733b065d802b1adfa98ecac35c4633aa839dd7ef54d56c73d0fecf80"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06d6ad625094dd6e134e0ff1",
+          "url": "https://aclanthology.org/P18-1156/"
+        },
+        "b": {
+          "paper_id": "paper-8ee6d4ecd4fe305b5ce9a050",
+          "url": "https://aclanthology.org/2021.emnlp-main.243/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Parameter Efficient Adaptation in Language Models"
+      },
+      "sha256": "609d23ceb66c041f328b2b1f31605ebefac45d5dccb8368b687b928147fccad4"
+    }
+  ]
+}

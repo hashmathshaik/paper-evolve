@@ -1,0 +1,1006 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Audio and Language Perception and Generation",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-b771d5466e3ad0c53d499cf9",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-3e4b1b6ccc60c066f3857b72",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Audio Flamingo: A Novel Audio Language Model with Few-Shot Learning and Dialogue Abilities",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Augmenting large language models (LLMs) to understand audio – including non-speech sounds and non-verbal speech – is critically important for diverse real-world applications of LLMs. In this paper, we propose Audio Flamingo, a novel audio language model with 1) strong audio understanding abilities, 2) the ability to quickly adapt to unseen tasks via in-context learning and retrieval, and 3) strong multi-turn dialogue abilities. We introduce a series of training techniques, architecture design, and data strategies to enhance our model with these abilities. Extensive evaluations across various audio understanding tasks confirm the efficacy of our method, setting new state-of-the-art benchmarks. Our demo website is https://audioflamingo.github.io/ and the code is open-sourced at https://github.com/NVIDIA/audio-flamingo."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "It has been widely applied in natural language tasks (Guu et al., 2020; Karpukhin et al., 2020; Lewis et al., 2020; Borgeaud et al., 2022) and visual-language models (Yang et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-3e4b1b6ccc60c066f3857b72",
+          "input_sha256": "a795700d895c7941496ad26d87faed257cce7ce1355ed5fb543609572da2133f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/kong24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kong24a/kong24a.pdf",
+              "sha256": "352babbd051c4ab485cd87e7e46b330d99eb916889f3c507ef2523cd032f0c67"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Retrieval-augmented generation (RAG). Retrievalaugmented generation for LLMs is to improve generation quality by using external knowledge, for example from an external database, which contains useful and related knowledge. It has been widely applied in natural language tasks (Guu et al., 2020; Karpukhin et al., 2020; Lewis et al., 2020; Borgeaud et al., 2022) and visual-language models (Yang et al., 2023). In the audio-language domain, Ghosh et al. (2023) proposed a retrieval method for audio captioning by prepending captions from similar audios to the prompt. However, it does not provide the retrieved audio to the model. Consequently, the model loses information on how similar the retrieved audio is to the test audio. In contrast, we provide both the retrieved audio and text to our model. The benefit of this approach is that our model could determine",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kong24a/kong24a.pdf",
+              "document_sha256": "352babbd051c4ab485cd87e7e46b330d99eb916889f3c507ef2523cd032f0c67"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Our contribution to expand LLM’s ability to understand sound is called Audio Flamingo: a novel audio language model that supports in-context learning (ICL), retrieval augmented generation (RAG), and multi-turn dialogues. It achieves state-of-the-art results on multiple audio understanding tasks. Expanding LLM’s ability to understand sound is a challenging task. The first challenge is extracting features from variable-length audio, and conditioning the LM on the audio features. While prior works have designed representations for audio of any length (Wu et al., 2023), they can lose temporal information. In this work, we introduce an audio feature extractor with sliding window based on Elizalde et al. (2023b), which we believe to capture temporal information better. To condition the LM on audio inputs, previous models prepended language tokens with audio tokens (Deshmukh et al., 2023; Chu et al., 2023; Tang et al., 2023a). This approach may have excessive overhead especially for long audio, as the complexity is quadratic with respect to the number of audio tokens. In contrast, we use cross attentions to fuse audio inputs into the LM in a similar way as Flamingo (Alayrac et al., 2022). In our approach the complexity is linear in the number of audio tokens, thus making Audio Flamingo able to generalize to many audio inputs efficiently.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kong24a/kong24a.pdf",
+              "document_sha256": "352babbd051c4ab485cd87e7e46b330d99eb916889f3c507ef2523cd032f0c67"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "We aim to measure the effect of ICL-based RAG in Audio Flamingo when it is evaluated on unseen datasets. First, we report the results on several zero-shot benchmarks and comparison with SOTA zero-shot methods in Table 3. The results indicate our method is better on most tasks and has strong generalization ability. We then apply ICL-based RAG to these benchmarks. We compare to our zero-shot results and the SOTA baseline of audio captioning on AudioCaps. The results on classification are shown in Table 4, and the comparison on retrieval-augmented audio captioning is shown in Table 5. As expected, there is consistent improvement over zeroshot results, with an average improvement over 10% for classification. Our method also significantly outperforms the SOTA retrieval-augmented audio captioning method on AudioCaps. In Appendix C.1, we show Audio Flamingo can adapt to unseen labels. In Appendix C.4, we show Audio Flamingo looks at related retrieval (e.g., by taking key words from retrieved captions), and ignores noisy retrieval.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kong24a/kong24a.pdf",
+              "document_sha256": "352babbd051c4ab485cd87e7e46b330d99eb916889f3c507ef2523cd032f0c67"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-3e4b1b6ccc60c066f3857b72",
+          "url": "https://proceedings.mlr.press/v235/kong24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "6cadb7c49d4556e84e4d00ade18c056d04425cfc236529053a22b459c21e19f8"
+    },
+    {
+      "id": "edge-2b3d5d93986b3e4ecdc67988",
+      "a": "paper-02e9c0c2d4b7067dd662338e",
+      "b": "paper-208d6694c78f4c39289f7a2b",
+      "state": {
+        "paper_a": {
+          "title": "TinyTTA: Efficient Test-time Adaptation via Early-exit Ensembles on Edge Devices",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "The increased adoption of Internet of Things (IoT) devices has led to the generation of large data streams with applications in healthcare, sustainability, and robotics. In some cases, deep neural networks have been deployed directly on these resource-constrained units to limit communication overhead, increase efficiency and privacy, and enable real-time applications. However, a common challenge in this setting is the continuous adaptation of models necessary to accommodate changing environments, i.e., data distribution shifts. Test-time adaptation (TTA) has emerged as one potential solution, but its validity has yet to be explored in resource-constrained hardware settings, such as those involving microcontroller units (MCUs). TTA on constrained devices generally suffers from i) memory overhead due to the full backpropagation of a large pre-trained network, ii) lack of support for normalization layers on MCUs, and iii) either memory exhaustion with large batch sizes required for updating or poor performance with small batch sizes. In this paper, we propose TinyTTA, to enable, for the first time, efficient TTA on constrained devices with limited memory. To address the limited memory constraints, we introduce a novel self-ensemble and batch-agnostic early-exit strategy for TTA, which enables continuous adaptation with small batch sizes for reduced memory usage, handles distribution shifts, and improves latency efficiency. Moreover, we develop the TinyTTA Engine, a first-of-its-kind MCU library that enables on-device TTA. We validate TinyTTA on a Raspberry Pi Zero 2W and an STM32H747 MCU. Experimental results demonstrate that TinyTTA improves TTA accuracy by up to 57.6\\%, reduces memory usage by up to six times, and achieves faster and more energy-efficient TTA. Notably, TinyTTA is the only framework able to run TTA on MCU STM32H747 with a 512 KB memory constraint while maintaining high performance."
+        },
+        "paper_b": {
+          "title": "E-BATS: Efficient Backpropagation-Free Test-Time Adaptation for Speech Foundation Models",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Speech Foundation Models encounter significant performance degradation when deployed in real-world scenarios involving acoustic domain shifts, such as background noise and speaker accents. Test-time adaptation (TTA) has recently emerged as a viable strategy to address such domain shifts at inference time without requiring access to source data or labels. However, existing TTA approaches, particularly those relying on backpropagation, are memory-intensive, limiting their applicability in speech tasks and resource-constrained settings. Although backpropagation-free methods offer improved efficiency, existing ones exhibit poor accuracy. This is because they are predominantly developed for vision tasks, which fundamentally differ from speech task formulations, noise characteristics, and model architecture, posing unique transferability challenges. In this paper, we introduce E-BAT, first Efficient BAckpropagation-free TTA framework designed explicitly for speech foundation models. E-BAT achieves a balance between adaptation effectiveness and memory efficiency through three key components: (i) lightweight prompt adaptation for a forward-pass-based feature alignment, (ii) a multi-scale loss to capture both global (utterance-level) and local distribution shifts (token-level) and (iii) a test-time exponential moving average mechanism for stable adaptation across utterances. Experiments conducted on four noisy speech datasets spanning sixteen acoustic conditions demonstrate consistent improvements, with 4.1\\%--13.5% accuracy gains over backpropogation-free baselines and 2.0$\\times$–6.4$\\times$ GPU memory savings compared to backpropogation-based methods. By enabling scalable and robust adaptation under acoustic variability, this work paves the way for developing more efficient adaptation approaches for practical speech processing systems in real-world environments."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Even when updates are limited to a small subset of model parameters, such as batch normalization layers [13, 14, 15] or early exits [22], these methods still require high GPU memory due to automatic differentiation frameworks.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02e9c0c2d4b7067dd662338e",
+          "b": "paper-208d6694c78f4c39289f7a2b",
+          "input_sha256": "3e4c69ff4f161614006d3283c3fefc2f693d61b99e9a590e04bd976ffc4e82b7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/4c454d34f3a4c8d6b4ca85a918e5d7ba-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/4c454d34f3a4c8d6b4ca85a918e5d7ba-Paper-Conference.pdf",
+              "sha256": "0c510443e751a29ac76b860af692175fa47dfdec5a71b6e159c441888106982e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ce6326ac4794bb04d5eb16f597446baf-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ce6326ac4794bb04d5eb16f597446baf-Paper-Conference.pdf",
+              "sha256": "e1070a1eaefe7c486fb30d872d67e39e7964075b481d565f34048e3cdb050927"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "impractical for edge devices due to constraints on memory, energy, and computational resources. Consequently, developing effective adaptation techniques for edge devices to address such distribution shifts while maintaining efficiency is a critical and pressing need. Test-time adaptation (TTA) emerges as an effective strategy to mitigate generalization issues [6]. By adapting a pre-trained model to unlabeled test samples, TTA aims to align the model with the current data distribution through entropy minimization. This technique reduces the model’s prediction entropy without requiring extensive retraining [6]. However, conventional TTA approaches face several limitations that prevent them from being applicable to edge devices. Firstly, TTA typically requires updates to either the entire network or several layers. Even when updating only a few layers, it still incurs substantial memory overhead due to the need for backpropagation. This process requires storing activations for a large pre-trained model, therefore imposing substantial memory requirements. Secondly, few works have considered mixed distribution shifts and have uniformly updated networks for samples exhibiting varying distribution shifts. This approach not only results in varying accuracy for different levels of distribution shifts but also increases computational overhead, as samples with minor shifts may not, in theory, necessitate updating the entire network. Thirdly, the most effective TTA strategies often involve adapting the normalization layers [3, 7, 8]. However, in practice, these layers are usually fused with convolutional layers when developed for MCUs to reduce computational and memory demands [9–11]. This poses practical challenges as currently there is no available library support for",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/4c454d34f3a4c8d6b4ca85a918e5d7ba-Paper-Conference.pdf",
+              "document_sha256": "0c510443e751a29ac76b860af692175fa47dfdec5a71b6e159c441888106982e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The increased adoption of Internet of Things (IoT) devices has led to the generation of large data streams with applications in healthcare, sustainability, and robotics. In some cases, deep neural networks have been deployed directly on these resource-constrained units to limit communication overhead, increase efficiency and privacy, and enable real-time applications. However, a common challenge in this setting is the continuous adaptation of models necessary to accommodate changing environments, i.e., data distribution shifts. Test-time adaptation (TTA) has emerged as one potential solution, but its validity has yet to be explored in resource-constrained hardware settings, such as those involving microcontroller units (MCUs). TTA on constrained devices generally suffers from i) memory overhead due to the full backpropagation of a large pre-trained network, ii) lack of support for normalization layers on MCUs, and iii) either memory exhaustion with large batch sizes required for updating or poor performance with small batch sizes. In this paper, we propose TinyTTA, to enable, for the first time, efficient TTA on constrained devices with limited memory. To address the limited memory constraints, we introduce a novel self-ensemble and batch-agnostic early-exit strategy for TTA, which enables continuous adaptation with small batch sizes for reduced memory usage, handles distribution shifts, and improves latency efficiency. Moreover, we develop the TinyTTA Engine, a first-of-its-kind MCU library that enables on-device TTA. We validate TinyTTA on a Raspberry Pi Zero 2W and an STM32H747 MCU. Experimental results demonstrate that TinyTTA improves TTA accuracy by up to 57.6%, reduces memory usage by up to six times, and achieves faster and more energy-efficient TTA.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/4c454d34f3a4c8d6b4ca85a918e5d7ba-Paper-Conference.pdf",
+              "document_sha256": "0c510443e751a29ac76b860af692175fa47dfdec5a71b6e159c441888106982e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "eralization [9, 10, 11, 12] have been extensively studied to address distributional shifts, they often require access to labeled target domain data or continuous availability of raw source data. These requirements are seldom feasible in real-world scenarios following model deployment. Recently, Test-Time Adaptation (TTA) has emerged as an attractive solution, adapting pre-trained models to new domains during inference using only unlabeled test data. Existing TTA methods can be broadly categorized into backpropagation-based (BP) and backpropagation-free (BP-free) approaches. While the former achieved state-of-the-art (SOTA) performance using entropy minimization [13, 14, 15, 16, 17, 18, 19] or pseudo-labeling techniques [20, 21], they have a large memory overhead, mainly due to gradient computation. Even when updates are limited to a small subset of model parameters, such as batch normalization layers [13, 14, 15] or early exits [22], these methods still require high GPU memory due to automatic differentiation frameworks. This significantly limits their practical use in continuous inference scenarios and on resource-constrained devices. In contrast, BP-free TTA methods eliminate the need for gradient computation, making them more efficient and computationally lightweight. These methods either modify the model parameters during the forward pass [23, 24, 25, 26, 27] or learn a new input prompt, a vector integrated with the partially processed input samples at an intermediate layer of the model [28].",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ce6326ac4794bb04d5eb16f597446baf-Paper-Conference.pdf",
+              "document_sha256": "e1070a1eaefe7c486fb30d872d67e39e7964075b481d565f34048e3cdb050927"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Speech Foundation Models encounter significant performance degradation when deployed in real-world scenarios involving acoustic domain shifts, such as background noise and speaker accents. Test-time adaptation (TTA) has recently emerged as a viable strategy to address such domain shifts at inference time without requiring access to source data or labels. However, existing TTA approaches, particularly those relying on backpropagation, are memory-intensive, limiting their applicability in speech tasks and resource-constrained settings. Although backpropagation-free methods offer improved efficiency, existing ones exhibit poor accuracy. This is because they are predominantly developed for vision tasks, which fundamentally differ from speech task formulations, noise characteristics, and model architecture, posing unique transferability challenges. In this paper, we introduce E-BATS, the first Efficient BAckpropagation-free TTA framework designed explicitly for speech foundation models. E-BATS achieves a balance between adaptation effectiveness and memory efficiency through three key components: (i) lightweight prompt adaptation for a forward-pass-based feature alignment, (ii) a multi-scale loss to capture both global (utterance-level) and local distribution shifts (token-level) and (iii) a test-time exponential moving average mechanism for stable adaptation across utterances. Experiments conducted on four noisy speech datasets spanning sixteen acoustic conditions demonstrate consistent improvements, with 4.1%–13.5% accuracy gains over backpropagation-free baselines and 2.0×–6.4× GPU memory savings compared to backpropagation-based methods. By enabling scalable and robust adaptation under acoustic variability, this work paves the way for developing more efficient",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ce6326ac4794bb04d5eb16f597446baf-Paper-Conference.pdf",
+              "document_sha256": "e1070a1eaefe7c486fb30d872d67e39e7964075b481d565f34048e3cdb050927"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To address these challenges, we propose the first Efficient BAckpropagation-free single-utterance TTA framework for SFMs, E-BATS, which achieves SOTA accuracy with memory efficiency. Here we focus on one of the most popular tasks on speech data – speech recognition. E-BATS consists of three novel modules: i) A lightweight, prompt-based tuning mechanism tailored for SFMs which directly adapts latent feature distribution using forward pass only; ii) a custom multi-scale loss function that captures both global (utterance-level) and local (token-level) latent embeddings distribution shifts; and iii) a test-time Exponential Moving Average (T-EMA) module that stabilizes prompt updates across dynamic utterances. The main contributions are threefold: • We introduce the first backpropagation-free TTA approach tailored explicitly for SFMs that achieves high accuracy and low memory consumption. • We propose a novel framework E-BATS, consisting of three novel modules to effectively address the multi-scale domain shifts and stable adaptation across the dynamic speech streams. • We validate E-BATS across four noisy datasets, sixteen acoustic environments, and two model architectures have demonstrated significant improvements in both accuracy and memory, particularly 2× to 6.4× reduction in peak GPU memory usage over SOTA baselines. 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ce6326ac4794bb04d5eb16f597446baf-Paper-Conference.pdf",
+              "document_sha256": "e1070a1eaefe7c486fb30d872d67e39e7964075b481d565f34048e3cdb050927"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02e9c0c2d4b7067dd662338e",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/4c454d34f3a4c8d6b4ca85a918e5d7ba-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-208d6694c78f4c39289f7a2b",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ce6326ac4794bb04d5eb16f597446baf-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "d294a2a9cf70501f0563a86ca7b3b202504d06b734e49a4bda1b0fce4bd74f12"
+    },
+    {
+      "id": "edge-a4aad50acd9764d08eb80f27",
+      "a": "paper-05a80b07f1eb9fca125a4978",
+      "b": "paper-10c07551e68f261fc8b9cf1e",
+      "state": {
+        "paper_a": {
+          "title": "Fused Acoustic and Text Encoding for Multimodal Bilingual Pretraining and Speech Translation",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Recently, representation learning for text and speech has successfully improved many language related tasks. However, all existing methods suffer from two limitations: (a) they only learn from one input modality, while a unified representation for both speech and text is needed by tasks such as end-to-end speech translation, and as a result, (b) they can not exploit various large-scale text and speech data and their performance is limited by the scarcity of parallel speech translation data. To address these problems, we propose a Fused Acoustic and Text Masked Language Model (FAT-MLM) which jointly learns a unified representation for both acoustic and text input from various types of corpora including parallel data for speech recognition and machine translation, and even pure speech and text data. Within this cross-modal representation learning framework, we further present an end-to-end model for Fused Acoustic and Text Speech Translation (FAT-ST). Experiments on three translation directions show that by fine-tuning from FAT-MLM, our proposed speech translation models substantially improve translation quality by up to +5.9 BLEU."
+        },
+        "paper_b": {
+          "title": "Revisiting End-to-End Speech-to-Text Translation From Scratch",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "End-to-end (E2E) speech-to-text translation (ST) often depends on pretraining its encoder and/or decoder using source transcripts via speech recognition or text translation tasks, without which translation performance drops substantially. However, transcripts are not always available, and how significant such pretraining is for E2E ST has rarely been studied in the literature. In this paper, we revisit this question and explore the extent to which the quality of E2E ST trained on speech-translation pairs alone can be improved. We reexamine several techniques proven beneficial to ST previously, and offer a set of best practices that biases a Transformer-based E2E ST system toward training from scratch. Besides, we propose parameterized distance penalty to facilitate the modeling of locality in the self-attention model for speech. On four benchmarks covering 23 languages, our experiments show that, without using any transcripts or pretraining, the proposed system reaches and even outperforms previous studies adopting pretraining, although the gap remains in (extremely) low-resource settings. Finally, we discuss neural acoustic feature modeling, where a neural model is designed to extract acoustic features from raw speech signals directly, with the goal to simplify inductive biases and add freedom to the model in describing speech. For the first time, we demonstrate its feasibility and show encouraging results on ST tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…any intermediate outputs (Duong et al., 2016; B´erard et al., 2016), which has gained increasing popularity and obtained great success recently (Sung et al., 2019; Salesky et al., 2019; Zhang et al., 2020; Chen et al., 2020; Han et al., 2021; Zheng et al., 2021; Anastasopoulos et al., 2021).\nMulti-task learning beneﬁts ST by jointly modeling ASR and ST tasks within a single model (Anastasopoulos & Chiang, 2018; Zheng et al., 2021; Dong et al., 2021; Indurthi et al., 2021).\n…pretraining was reported to greatly improve translation quality (Di Gangi et al., 2019; Wang et al., 2019a; Zhang et al., 2020; Xu et al., 2021), and has become the de-facto standard in recent ST studies and toolkits (Inaguma et al., 2020; Wang et al., 2020a; Zhao et al., 2021; Zheng et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-05a80b07f1eb9fca125a4978",
+          "b": "paper-10c07551e68f261fc8b9cf1e",
+          "input_sha256": "8cb30601866d4535cc777e5d58a663757511b28af06e96f3b26d3c2dee60f6c4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/zheng21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/zheng21a/zheng21a.pdf",
+              "sha256": "2ecabbd0f3e52f9bcbab50d294afa9a1d61579d80b1967a2359f17ed6772e664"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/zhang22i.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/zhang22i/zhang22i.pdf",
+              "sha256": "06de7e61dc0ae7dff6ec4567a56bed2ee4a9e95bc3bbf3efe6f1860ec9e91315"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Fused Acoustic and Text Masked Language Model (FAT-MLM) Although existing pretraining models show a strong representation learning ability and significantly improve upon many down-streaming tasks, they all can only learn the representation for either text or speech. However, a unified speech and text multi-modal representation is useful for many end-to-end spoken language processing tasks. To address this problem, we propose the Fused Acoustic and Text Masked Language Model (FAT-MLM), a multimodal pretraining model which encodes acoustic, text into a unified representation. The idea is similar with Lample & Conneau (2019) who propose to learn a unified representation of different languages. They first propose a method relying on the shared sub-word vocabulary to align different languages’ representation. However this is unapplicable in our case because of the modality difference. Thus we propose a method similar to their second approach TLM which uses parallel speech recognition data. In the following sections, we first introduce the monolingual FAT-MLM and then show how to extend it to translation scenario. 3.1. Monolingual FAT-MLM The monolingual FAT-MLM takes speech and transcription tuples as input, denotes as Ds,x = {(s, x)}, where",
+              "url": "https://proceedings.mlr.press/v139/zheng21a/zheng21a.pdf",
+              "document_sha256": "2ecabbd0f3e52f9bcbab50d294afa9a1d61579d80b1967a2359f17ed6772e664"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "to unify the representations of different languages into one encoder, we propose a Fused Acoustic and Text Masked Language Model (FAT-MLM). This model jointly learns a unified representation for both acoustic and text input. In this way, we extend the masked language model’s input from only acoustic or text data to multimodal corpora containing both acoustic and text data, such as speech recognition and speech translation for the first time (Fig. 1). We further extend this Fused Acoustic and Text encoder to a sequence-to-sequence framework and present an end-to-end Speech Translation model (FAT-ST). This enables the model to be trained from both speech and text machine translation data into one single encoder-decoder model. Meanwhile, this model can also learn from speech recognition data using an extra FAT-MLM loss. This resolves the limitation of existing single encoder and decoder speech translation models, which can only learn from scarce parallel speech translation data, but neglects much larger scale speech recognition and text machine translation data (Fig. 1). We make the following contributions: • We propose the Fused Acoustic and Text Masked Language Model (FAT-MLM), which can learn a unified acoustic and text representation. • Based on FAT-MLM, we propose the Fused Acoustic and Text Speech Translation model (FAT-ST), which can do speech recognition and machine translation in a single encoder-decoder framework. • Spontaneous speech translation experiments on three language pairs show that by finetuning FAT-MLM, the accuracy of FAT-ST improves end-to-end speech translation model by +4.65 BLEU in average and achieves",
+              "url": "https://proceedings.mlr.press/v139/zheng21a/zheng21a.pdf",
+              "document_sha256": "2ecabbd0f3e52f9bcbab50d294afa9a1d61579d80b1967a2359f17ed6772e664"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "text without any intermediate outputs (Duong et al., 2016; Bérard et al., 2016), which has gained increasing popularity and obtained great success recently (Sung et al., 2019; Salesky et al., 2019; Zhang et al., 2020; Chen et al., 2020; Han et al., 2021; Zheng et al., 2021; Anastasopoulos et al., 2021). Different from the traditional cascading method which decomposes ST into two sub-tasks – automatic speech recognition (ASR) for transcription and machine translation (MT) for translation, E2E ST jointly handles them in a single, large neural network. This endows E2E ST with special advantages on reducing translation latency and bypassing transcription mistakes made by ASR models, making it theoretically attractive. However, directly modeling speech-to-text mapping is nontrivial. The translation alignment between speech and text is no longer subject to the monotonic assumption. Also, the high variation of speech increases the modeling difficulty. Therefore, rather than training E2E ST models from scratch, researchers often resort to pipeline-based training with auxiliary tasks utilizing source transcripts, which first pretrains the speech encoder on ASR data and/or the text decoder on MT data followed by a finetuning on ST data. Such pretraining was reported to greatly improve translation quality (Di Gangi et al., 2019; Wang et al., 2019a; Zhang et al., 2020; Xu et al., 2021), and has become the de-facto standard in recent ST studies and toolkits (Inaguma et al., 2020; Wang et al., 2020a; Zhao et al., 2021; Zheng et al., 2021). Despite these successes, nevertheless, how significant the pretraining is for E2E ST and how far we can go using speech-translation pairs alone are still open questions. In this paper, we aim at exploring the extent to which the quality of ST",
+              "url": "https://proceedings.mlr.press/v162/zhang22i/zhang22i.pdf",
+              "document_sha256": "06de7e61dc0ae7dff6ec4567a56bed2ee4a9e95bc3bbf3efe6f1860ec9e91315"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "7. Related Work Methods to improve E2E ST are many. Apart from developing novel model architectures (Di Gangi et al., 2019; Karita et al., 2019; Zhang et al., 2020), one promising way is to leverage knowledge transfer from auxiliary tasks. Multilingual or cross-lingual ST improves translation by adding translation supervisions from other languages (Inaguma et al., 2019; Bansal et al., 2019; Liu et al., 2019). Multi-task learning benefits ST by jointly modeling ASR and ST tasks within a single model (Anastasopoulos & Chiang, 2018; Zheng et al., 2021; Dong et al., 2021; Indurthi et al., 2021). Pretraining methods, including large-scale self-supervised pretraining (Schneider et al., 2019) and ASR/MT-based supervised pretraining, offer a warm-up initialization for E2E ST to improve its data efficiency (Le et al., 2021; Salesky et al., 2019; Xu et al., 2021). However, all these studies assume that (bilingual) ST from scratch is poor, while spending little effort on optimizing it. We challenge this assumption and demonstrate that ST from scratch can also yield decent performance after optimization. We adopt the CTC objective as a regularizer to improve E2E ST. CTC was proposed for ASR tasks to handle the latent alignment between speech and transcript (Graves et al., 2006), which has been widely used to train ASR models. Based on source transcripts, CTC also improves autoregressive E2E ST via ASR pretraining (Zhao et al., 2021), encoder representation compression using the learned latent alignment (Liu et al., 2020; Gaido et al., 2021), and encoder regularization (Bahar et al., 2019). Particularly, Bahar et al. (2019) applied CTC in a similar way to ours but focused on a multi-task setup where source transcripts are used as CTC labels. Instead, we explore target translations",
+              "url": "https://proceedings.mlr.press/v162/zhang22i/zhang22i.pdf",
+              "document_sha256": "06de7e61dc0ae7dff6ec4567a56bed2ee4a9e95bc3bbf3efe6f1860ec9e91315"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract End-to-end (E2E) speech-to-text translation (ST) often depends on pretraining its encoder and/or decoder using source transcripts via speech recognition or text translation tasks, without which translation performance drops substantially. However, transcripts are not always available, and how significant such pretraining is for E2E ST has rarely been studied in the literature. In this paper, we revisit this question and explore the extent to which the quality of E2E ST trained on speechtranslation pairs alone can be improved. We reexamine several techniques proven beneficial to ST previously, and offer a set of best practices that biases a Transformer-based E2E ST system toward training from scratch. Besides, we propose parameterized distance penalty to facilitate the modeling of locality in the self-attention model for speech. On four benchmarks covering 23 languages, our experiments show that, without using any transcripts or pretraining, the proposed system reaches and even outperforms previous studies adopting pretraining, although the gap remains in (extremely) low-resource settings. Finally, we discuss neural acoustic feature modeling, where a neural model is designed to extract acoustic features from raw speech signals directly, with the goal to simplify inductive biases and add freedom to the model in describing speech. For the first time, we demonstrate its feasibility and show encouraging results on ST tasks.1",
+              "url": "https://proceedings.mlr.press/v162/zhang22i/zhang22i.pdf",
+              "document_sha256": "06de7e61dc0ae7dff6ec4567a56bed2ee4a9e95bc3bbf3efe6f1860ec9e91315"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "cally capture or learn the underlying pattern behind data. In E2E ST, one heuristic is the adoption of log mel-scale filterbanks for acoustic modeling. Despite its success, filterbankbased modeling prevents us from accessing full acoustic details and its transformation might suffer from information loss (Lam et al., 2021), making it sub-optimal for ST. Inspired by recent speech studies on modeling raw waveforms (Lam et al., 2021), we propose neural acoustic feature modeling (NAFM) to remove such heuristic and increase the freedom of E2E ST in describing speech. The extraction of filterbanks often involves a sequence of two specifically designed linear transformations. To simulate such structure, we employ two feed-forward neural blocks for NAFM as follows: \u0010 \u0010 \u0011 \u0011 x(1) = LN FFN x(0) + x(0) , (5) \u0010 \u0010 \u0011 \u0011 x(2) = LN FFN x(1) + x(1) , (6) where x(0) ∈ Rdspeech is the raw speech frame, and FFN(·) is the feed-forward layer as in Transformer (Vaswani et al., 2017) with df f = 4096. We expect that, by adding trainable parameters tuned with translation losses, NAFM could induce ST-oriented acoustic features that improves ST. However, directly using x(2) as an alternative to the filterbank features xf results in poor convergence. We argue that filterbanks offer helpful inductive biases to ST, and propose to leverage such information to regularize NAFM. Formally, we add the following L2 objective into training: LNAFM (X, Y ) = L(X, Y ) + γ",
+              "url": "https://proceedings.mlr.press/v162/zhang22i/zhang22i.pdf",
+              "document_sha256": "06de7e61dc0ae7dff6ec4567a56bed2ee4a9e95bc3bbf3efe6f1860ec9e91315"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-05a80b07f1eb9fca125a4978",
+          "url": "https://proceedings.mlr.press/v139/zheng21a.html"
+        },
+        "b": {
+          "paper_id": "paper-10c07551e68f261fc8b9cf1e",
+          "url": "https://proceedings.mlr.press/v162/zhang22i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "1ddf73d76c0a2d3ff76c44f47b90fbfcbcd82f464030d9029708cc4914d8d374"
+    },
+    {
+      "id": "edge-d27948ef75881b54dcf0b087",
+      "a": "paper-06107a30e0f3f8240050ca43",
+      "b": "paper-9d4fd39e16024fbb02417596",
+      "state": {
+        "paper_a": {
+          "title": "On Exposure Bias, Hallucination and Domain Shift in Neural Machine Translation",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "The standard training algorithm in neural machine translation (NMT) suffers from exposure bias, and alternative algorithms have been proposed to mitigate this. However, the practical impact of exposure bias is under debate. In this paper, we link exposure bias to another well-known problem in NMT, namely the tendency to generate hallucinations under domain shift. In experiments on three datasets with multiple test domains, we show that exposure bias is partially to blame for hallucinations, and that training with Minimum Risk Training, which avoids exposure bias, can mitigate this. Our analysis explains why exposure bias is more problematic under domain shift, and also links exposure bias to the beam search problem, i.e. performance deterioration with increasing beam size. Our results provide a new justification for methods that reduce exposure bias: even if they do not increase performance on in-domain test sets, they can increase model robustness to domain shift."
+        },
+        "paper_b": {
+          "title": "Understanding and Bridging the Modality Gap for Speech Translation",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "How to achieve better end-to-end speech translation (ST) by leveraging (text) machine translation (MT) data? Among various existing techniques, multi-task learning is one of the effective ways to share knowledge between ST and MT in which additional MT data can help to learn source-to-target mapping. However, due to the differences between speech and text, there is always a gap between ST and MT. In this paper, we first aim to understand this modality gap from the target-side representation differences, and link the modality gap to another well-known problem in neural machine translation: exposure bias. We find that the modality gap is relatively small during training except for some difficult cases, but keeps increasing during inference due to the cascading effect. To address these problems, we propose the Cross-modal Regularization with Scheduled Sampling (Cress) method. Specifically, we regularize the output predictions of ST and MT, whose target-side contexts are derived by sampling between ground truth words and self-generated words with a varying probability. Furthermore, we introduce token-level adaptive training which assigns different training weights to target tokens to handle difficult cases with large modality gaps. Experiments and analysis show that our approach effectively bridges the modality gap, and achieves significant improvements over a strong baseline in all eight directions of the MuST-C dataset."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Exposure bias, a discrepancy between training and inference, is a well-known problem in neural machine translation (Bengio et al., 2015; Ranzato et al., 2016; Wang and Sennrich, 2020; Arora et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06107a30e0f3f8240050ca43",
+          "b": "paper-9d4fd39e16024fbb02417596",
+          "input_sha256": "6af11c88405cd7f9e9f3bf40dc1fb1ac60e61b3885f3bb239412cdf8f2e99ef7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.326/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.326.pdf",
+              "sha256": "3d4a88f2b389914d1007fe1a9ac2719624bb2cfb7ec4a871b709ce5545340ddd"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.884/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.884.pdf",
+              "sha256": "b6c283ee7efd7c87f6e0a2cb5db02d72a697d50ab85b34a19f9904f6210ffe27"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "3.2 Connection between Exposure Bias and Modality Gap Exposure bias, a discrepancy between training and inference, is a well-known problem in neural machine translation (Bengio et al., 2015; Ranzato et al., 2016; Wang and Sennrich, 2020; Arora et al., 2022). During training with teacher forcing, both ST and MT predict the next token conditioned on the ground truth target prefix y<i . However, during inference, the predictions of ST and MT depend on their previously generated tokens by the model s and y x for ST and MT reb<i b<i itself (denoted as y spectively), which might be different due to the modality gap. Furthermore, different predictions at the current decoding step result in different target prefixes for ST and MT, potentially causing even more different predictions at the next step. Such cascading effect will enlarge the modality gap step by step during inference. To prove our hypothesis, we present the curves of the modality gap with decoding steps under teacher forcing, beam search, and greedy search strategies, respectively. As shown in Figure 2, with teacher forcing, there is no significant difference in the modality gap across steps, as both ST and MT depend on the same target prefix at any step. Hence, the modality gap G(s, y<i ∥x, y<i ) only comes from the difference between input speech s and text x. However, when decoding with greedy search, due to the cascading effect mentioned above, the s and y x become b<i b<i self-generated target prefix y increasingly different, making the modality gap s ∥x, y x ) keep increasing with decoding b<i b<i G(s, y steps. A simple way to alleviate this problem is beam search, which considers several candidate",
+              "url": "https://aclanthology.org/2023.acl-long.884.pdf",
+              "document_sha256": "b6c283ee7efd7c87f6e0a2cb5db02d72a697d50ab85b34a19f9904f6210ffe27"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract How to achieve better end-to-end speech translation (ST) by leveraging (text) machine translation (MT) data? Among various existing techniques, multi-task learning is one of the effective ways to share knowledge between ST and MT in which additional MT data can help to learn source-to-target mapping. However, due to the differences between speech and text, there is always a gap between ST and MT. In this paper, we first aim to understand this modality gap from the target-side representation differences, and link the modality gap to another well-known problem in neural machine translation: exposure bias. We find that the modality gap is relatively small during training except for some difficult cases, but keeps increasing during inference due to the cascading effect. To address these problems, we propose the Cross-modal Regularization with Scheduled Sampling (C RESS) method. Specifically, we regularize the output predictions of ST and MT, whose target-side contexts are derived by sampling between ground truth words and self-generated words with a varying probability. Furthermore, we introduce token-level adaptive training which assigns different training weights to target tokens to handle difficult cases with large modality gaps. Experiments and analysis show that our approach effectively bridges the modality gap, and achieves promising results in all eight directions of the MuST-C dataset.1",
+              "url": "https://aclanthology.org/2023.acl-long.884.pdf",
+              "document_sha256": "b6c283ee7efd7c87f6e0a2cb5db02d72a697d50ab85b34a19f9904f6210ffe27"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "error propagation and high latency (Sperber and Paulik, 2020). Recently, end-to-end ST models have achieved comparable or even better results than cascaded ST models (Bentivogli et al., 2021; Anastasopoulos et al., 2021, 2022). However, due to the scarcity of ST data, it is difficult to directly learn a mapping from source speech to the target text. Previous works often leverage MT data to help the training with multi-task learning (Ye et al., 2022; Tang et al., 2021a). By sharing encoder and decoder between ST and MT, the model tends to learn similar representations from different modalities. In this way, the auxiliary MT task can help build the source-to-target mapping. However, there remains a gap between ST and MT due to the differences between speech and text. In this paper, we measure the modality gap with representation differences of the last decoder layer between ST and MT, because the representation of this layer will be mapped into the embedding space to obtain the final translation. A significant modality gap potentially causes different predictions, which makes ST lag behind MT. Thanks to multi-task learning, we observe that when training with teacher forcing, where both ST and MT use ground truth words as target-side contexts, the modality gap is relatively small except for some difficult cases. However, the exposure bias problem can make things worse. During inference, both ST and MT predict the next token conditioned on their previously generated tokens, which may be different due to the modality gap. Moreover, different predictions at the current step may lead to even more different predictions at the next step. As a result, the modality gap will increase step by step due to this cascading effect. To solve these problems, we propose the Crossmodal",
+              "url": "https://aclanthology.org/2023.acl-long.884.pdf",
+              "document_sha256": "b6c283ee7efd7c87f6e0a2cb5db02d72a697d50ab85b34a19f9904f6210ffe27"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06107a30e0f3f8240050ca43",
+          "url": "https://aclanthology.org/2020.acl-main.326/"
+        },
+        "b": {
+          "paper_id": "paper-9d4fd39e16024fbb02417596",
+          "url": "https://aclanthology.org/2023.acl-long.884/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "5f32f59b95edb1ca513fe5dd0f113b37aec2f795fe521ff5aac13cf013dc86fc"
+    },
+    {
+      "id": "edge-0bfccb97625d446daa8329a6",
+      "a": "paper-06554506192bf1eec567e2a9",
+      "b": "paper-09a67c789af940912ce8d44c",
+      "state": {
+        "paper_a": {
+          "title": "Multimodal Language Analysis in the Wild: CMU-MOSEI Dataset and Interpretable Dynamic Fusion Graph",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Analyzing human multimodal language is an emerging area of research in NLP. Intrinsically this language is multimodal (heterogeneous), sequential and asynchronous; it consists of the language (words), visual (expressions) and acoustic (paralinguistic) modalities all in the form of asynchronous coordinated sequences. From a resource perspective, there is a genuine need for large scale datasets that allow for in-depth studies of this form of language. In this paper we introduce CMU Multimodal Opinion Sentiment and Emotion Intensity (CMU-MOSEI), the largest dataset of sentiment analysis and emotion recognition to date. Using data from CMU-MOSEI and a novel multimodal fusion technique called the Dynamic Fusion Graph (DFG), we conduct experimentation to exploit how modalities interact with each other in human multimodal language. Unlike previously proposed fusion techniques, DFG is highly interpretable and achieves competative performance when compared to the previous state of the art."
+        },
+        "paper_b": {
+          "title": "Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Text-to-speech (TTS) has advanced from generating natural-sounding speech to enabling fine-grained control over attributes like emotion, timbre, and style. Driven by rising industrial demand and breakthroughs in deep learning, e.g., diffusion and large language models (LLMs), controllable TTS has become a rapidly growing research area. This survey provides the first comprehensive review of controllable TTS methods, from traditional control techniques to emerging approaches using natural language prompts. We categorize model architectures, control strategies, and feature representations, while also summarizing challenges, datasets, and evaluations in controllable TTS. This survey aims to guide researchers and practitioners by offering a clear taxonomy and highlighting future directions in this fast-evolving field. One can visit https://github.com/imxtx/awesome-controllabe-speech-synthesis for a comprehensive paper list and updates."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Tag-based datasets contain speech recordings annotated with predefined discrete attribute labels that describe various aspects of the speech audio (Zhou et al., 2022; Busso et al., 2008; Ringeval et al., 2013; Bagher Zadeh et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06554506192bf1eec567e2a9",
+          "b": "paper-09a67c789af940912ce8d44c",
+          "input_sha256": "d732a225d1392e34aa4916b5c15973ac961b2f9916a00fe39bb78451fc37b518",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P18-1208/",
+              "pdf_url": "https://aclanthology.org/P18-1208.pdf",
+              "sha256": "aa9c9018b13b3beb8bef7a35702b1897095d5a44c1e17956f460cf834716e748"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.emnlp-main.40/",
+              "pdf_url": "https://aclanthology.org/2025.emnlp-main.40.pdf",
+              "sha256": "99b08bd400ae2e8581e67ac05770bb85793aefc5cb01ca8e460b6a9402be9631"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Multimodal Language Analysis in the Wild: CMU-MOSEI Dataset and Interpretable Dynamic Fusion Graph Amir Zadeh1 , Paul Pu Liang2 , Jonathan Vanbriesen1 , Soujanya Poria3 , Edmund Tong1 , Erik Cambria4 , Minghai Chen1 , Louis-Philippe Morency1 {1- Language Technologies Institute, 2- Machine Learning Department}, CMU, USA {3- A*STAR, 4- Nanyang Technological University}, Singapore {abagherz,pliang,jvanbrie}@cs.cmu.edu, soujanya@sentic.net edtong@cmu.edu, cambria@ntu.edu.sg, morency@cs.cmu.edu Abstract Analyzing human multimodal language is an emerging area of research in NLP. Intrinsically human communication is multimodal (heterogeneous), temporal and asynchronous; it consists of the language (words), visual (expressions), and acoustic (paralinguistic) modalities all in the form of asynchronous coordinated sequences. From a resource perspective, there is a genuine need for large scale datasets that allow for in-depth studies of multimodal language. In this paper we introduce CMU Multimodal Opinion Sentiment and Emotion Intensity (CMU-MOSEI), the largest dataset of sentiment analysis and emotion recognition to date. Using data from CMU-MOSEI and a novel multimodal fusion technique called the Dynamic Fusion Graph (DFG), we conduct experimentation to investigate how modalities interact with each other in human multimodal language. Unlike previously proposed fusion techniques, DFG is highly interpretable and achieves competitive performance compared to the current state of the art.",
+              "url": "https://aclanthology.org/P18-1208.pdf",
+              "document_sha256": "aa9c9018b13b3beb8bef7a35702b1897095d5a44c1e17956f460cf834716e748"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Understanding expressed sentiment and emotions are two crucial factors in human multimodal language. We introduce a novel dataset for multimodal sentiment and emotion recognition called CMU Multimodal Opinion Sentiment and Emotion Intensity (CMU-MOSEI). In the following subsections, we first explain the details of the CMU-MOSEI data acquisition, followed by details of annotation and feature extraction. 3.1",
+              "url": "https://aclanthology.org/P18-1208.pdf",
+              "document_sha256": "aa9c9018b13b3beb8bef7a35702b1897095d5a44c1e17956f460cf834716e748"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "4.1 Datasets Fully controllable TTS systems require large, diverse, and finely annotated datasets to generate expressive, attribute-controllable speech. There are mainly three types of datasets for controllable TTS: Tag-based Datasets. Tag-based datasets contain speech recordings annotated with predefined discrete attribute labels that describe various aspects of the speech audio (Zhou et al., 2022; Busso et al., 2008; Ringeval et al., 2013; Bagher Zadeh et al., 2018). Common attributes include pitch, energy, speaking rate, age, gender, emotion, emphasis, accent, and topic. By leveraging attribute labels, models can dynamically adjust specific speech characteristics, enabling more expressive synthesis. Description-based Datasets. Description-based datasets pair speech samples with rich, free-form textual descriptions that capture nuanced attributes such as intonation, prosody, speaking style, and emotional tone (Guo et al., 2023; Ji et al., 2024b; Jin et al., 2024; Lyth and King, 2024). Unlike tagbased datasets with predefined categorical labels, these datasets allow models to interpret and generate speech from natural language prompts, enabling context-aware and highly expressive synthesis. Dialogue Datasets. Dialogue datasets (Byrne et al., 2019; Lee et al., 2023a; Yang et al., 2022) contain multi-turn conversational speech involving two or more speakers, emphasizing natural interaction features such as turn-taking, contextual dependencies, speaker intent, pauses, and prosodic variation. These datasets are essential for generating dynamic and contextually appropriate speech for interactive systems. By leveraging these datasets, researchers can develop more expressive, context-aware, and highly controllable TTS models. Table 3 in the Appendix summarizes publicly",
+              "url": "https://aclanthology.org/2025.emnlp-main.40.pdf",
+              "document_sha256": "99b08bd400ae2e8581e67ac05770bb85793aefc5cb01ca8e460b6a9402be9631"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06554506192bf1eec567e2a9",
+          "url": "https://aclanthology.org/P18-1208/"
+        },
+        "b": {
+          "paper_id": "paper-09a67c789af940912ce8d44c",
+          "url": "https://aclanthology.org/2025.emnlp-main.40/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "0150c3bf3dfb7ffe81624d7fc47ff329584d5f6acf40c35314052d9c415125b4"
+    },
+    {
+      "id": "edge-edb6cb9998f878147fcc3e42",
+      "a": "paper-070b5a2f85d6cae20795762c",
+      "b": "paper-5c454199c9de147518131cdb",
+      "state": {
+        "paper_a": {
+          "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth."
+        },
+        "paper_b": {
+          "title": "ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "In this paper, we present ControlSpeech, a text-to-speech (TTS) system capable of fully cloning the speaker’s voice and enabling arbitrary control and adjustment of speaking style. Prior zero-shot TTS models only mimic the speaker’s voice without further control and adjustment capabilities while prior controllable TTS models cannot perform speaker-specific voice generation. Therefore, ControlSpeech focuses on a more challenging task—a TTS system with controllable timbre, content, and style at the same time. ControlSpeech takes speech prompts, content prompts, and style prompts as inputs and utilizes bidirectional attention and mask-based parallel decoding to capture codec representations corresponding to timbre, content, and style in a discrete decoupling codec space. Moreover, we analyze the many-to-many issue in textual style control and propose the Style Mixture Semantic Density (SMSD) module, which is based on Gaussian mixture density networks, to resolve this problem. To facilitate empirical validations, we make available a new style controllable dataset called VccmDataset. Our experimental results demonstrate that ControlSpeech exhibits comparable or state-of-the-art (SOTA) performance in terms of controllability, timbre similarity, audio quality, robustness, and generalizability. Codes are available at https://github.com/jishengpeng/ControlSpeech."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "PromptStyle (Liu et al., 2023) proposes a two-stage TTS approach for cross-speaker style transfer with natural language descriptions based on VITS (Kim et al., 2021).\nOver the past decade, the field of speech synthesis has seen remarkable advancements (Ren et al., 2020; Kim et al., 2021), achieving synthesized speech that rivals real human speech in terms of expressiveness and naturalness (Tan et al., 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070b5a2f85d6cae20795762c",
+          "b": "paper-5c454199c9de147518131cdb",
+          "input_sha256": "312e1591ddeff2d648650d9e3b51f618771137949707659c95f54825335e3af2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kim21f.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.acl-long.346/",
+              "pdf_url": "https://aclanthology.org/2025.acl-long.346.pdf",
+              "sha256": "08b12af712b0950eca7768de2c68ba36591fe79cdd69754e18dde7cb9c712c1e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and designing a specialized spectrogram loss to relax lengthmismatch between target and generated speech. However, despite potentially improving performance by utilizing the learned representations, their synthesis quality lags behind two-stage systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Using a variational autoencoder (VAE) (Kingma & Welling, 2014), we connect two modules of TTS systems through latent variables to enable efficient end-to-end learning. To improve the expressive power of our method so that high-quality speech waveforms can be synthesized, we apply normalizing flows to our conditional prior distribution and adversarial training on the waveform domain. In addition to generating fine-grained audio, it is important for TTS systems to express the one-to-many relationship in which text input can be spoken in multiple ways with different variations (e.g., pitch and duration). To tackle the one-to-many problem, we also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method captures speech variations that cannot be represented by text. Our method obtains more natural sounding speech and higher sampling efficiency than the best publicly available TTS system, Glow-TTS (Kim et al., 2020) with HiFiGAN (Kong et al., 2020). We make both our demo page and source-code publicly available.2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Method In this section, we explain our proposed method and the architecture of it. The proposed method is mostly described in the first three subsections: a conditional VAE formulation; alignment estimation derived from variational inference; adversarial training for improving synthesis quality. The overall architecture is described at the end of this section. Figures 1a and 1b show the training and inference procedures of our method, respectively. From now on, we will refer to our method as Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS). 2.1. Variational Inference 2.1.1. OVERVIEW VITS can be expressed as a conditional VAE with the objective of maximizing the variational lower bound, also called the evidence lower bound (ELBO), of the intractable marginal log-likelihood of data log pθ (x|c): 2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Over the past decade, the field of speech synthesis has seen remarkable advancements (Ren et al., 2020; Kim et al., 2021), achieving synthesized speech that rivals real human speech in terms of expressiveness and naturalness (Tan et al., 2024). Recently, with the development of large language models (Brown et al., 2020; Touvron et al., 2023) * Corresponding author.",
+              "url": "https://aclanthology.org/2025.acl-long.346.pdf",
+              "document_sha256": "08b12af712b0950eca7768de2c68ba36591fe79cdd69754e18dde7cb9c712c1e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "In this section, we summarize previous studies on text prompt-based controllable TTS. Detailed discussions of discrete codec related to ControlSpeech are in Appendix A. 2.1 Text Prompt Based Controllable TTS Some recent studies propose to control speech style through natural text prompts. PromptTTS (Guo et al., 2023) employs manually annotated text prompts to describe four to five attributes of speech (gender, pitch, speaking speed, volume, and emotion). InstructTTS (Yang et al., 2023b) employs a three-stage training approach to capture semantic information from natural language style prompts as conditioning to the TTS system. Textrolspeech (Ji et al., 2023) introduces an efficient architecture which treats textual controllable TTS as a language model task. PromptStyle (Liu et al., 2023) proposes a two-stage TTS approach for cross-speaker style transfer with natural language descriptions based on VITS (Kim et al., 2021). PromptTTS 2 (Leng et al., 2023) proposes an automatic description creation pipeline leveraging large language models (LLMs) (Bubeck et al., 2023) and adopts a diffusion model to capture the one-to-many relationship. Audiobox (Vyas et al., 2023) propose a unified model based on flow-matching that is capable of generating and controlling various audio modalities. While AudioBox supports multiple inputs, it does not decouple the speech prompt from the style prompt. Consequently, when there is a conflict between the styles in the speech prompt and the style text prompt, it significantly impacts the controllability. We also validate the necessity of decoupling in our ablation study presented in Table 4. It is noteworthy that existing style-controllable TTS models are either speaker-independent or can only control timbre using speaker IDs, without the",
+              "url": "https://aclanthology.org/2025.acl-long.346.pdf",
+              "document_sha256": "08b12af712b0950eca7768de2c68ba36591fe79cdd69754e18dde7cb9c712c1e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "speaker IDs to control the timbre, these approaches are limited to testing on constrained in-domain datasets and lack the zero shot ability. As a result, current speech synthesis systems lack independent and flexible control over content, timbre, and style at the same time, for example, they are unable to synthesize speech in Trump’s voice with a child’s joyful style saying “Today is Monday”. To address these limitations, we propose a novel model called ControlSpeech. To the best of our knowledge, ControlSpeech is the first model to simultaneously and independently control timbre, content, and style, and demonstrate competitive zero-shot voice cloning and style control abilities. There are two main challenges to achieve simultaneous and independent control over content, timbre, and style in a TTS system. First, the information from the style prompt and the speech prompt can become entangled and interfere with or contradict each other. For instance, the speech prompt might contain a style different from that described by the textual style prompt; therefore, simply adding a style prompt control module or a speech prompt control module to previous model frameworks (Leng et al., 2023; Wang et al., 2023) is evidently insufficient. Second, there lacks large datasets that fulfill both requirements of zero-shot TTS systems and textual style-controllable TTS systems. Specifically, due to the scarcity of styledescriptive textual data, the training data for mainstream style-controllable TTS systems (Guo et al., 2023; Liu et al., 2023) typically amounts to only a few hundred hours (Ji et al., 2023), far from meeting the requirements of a large-scale, multispeaker training dataset (Kahn et al., 2020) that is crucial to attain robust zero-shot speaker cloning capabilities. To tackle",
+              "url": "https://aclanthology.org/2025.acl-long.346.pdf",
+              "document_sha256": "08b12af712b0950eca7768de2c68ba36591fe79cdd69754e18dde7cb9c712c1e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "codec generator (Chang et al., 2022; Borsos et al., 2023; Villegas et al., 2022) as the decoder. We also identify and analyze the many-to-many issue in textual style-controllable TTS for the first time, that is, different textual style descriptions may correspond to the same audio, while a single textual style description may be associated with varying degrees of a particular style for the same speaker. For instance, the phrases “The man speaks at a very rapid pace\" and “The man articulates his words with considerable speed\" describe the same speech style, yet “The man speaks at a very rapid pace\" can also correspond to many audio clips exhibiting different levels of high speaking rate. To address this many-to-many issue in style control, we propose a novel module called Style Mixture Semantic Density Sampling (SMSD). This module integrates the global semantic information of style control and utilizes sampling from a mixed distribution (Zen and Senior, 2014; Hwang et al., 2020) of style descriptions to achieve hierarchical control. Additionally, we incorporate a noise perturbation mechanism to further enhance style diversity. The design motivation and detailed architecture of SMSD are elaborated in Section 3.3. To comprehensively evaluate ControlSpeech’s controllability, timbre similarity, audio quality, diversity, and generalization, we create a new open sourced dataset called VccmDataset based on TextrolSpeech (Ji et al., 2023) to foster advancements in controllable TTS. In summary, our contributions are as follows: • We conduct detailed analysis of existing zeroshot TTS and style-controllable TTS models and identify their inability to simultaneously and independently control content, style, and timbre in a zero-shot setting. We propose the ControlSpeech to achieve",
+              "url": "https://aclanthology.org/2025.acl-long.346.pdf",
+              "document_sha256": "08b12af712b0950eca7768de2c68ba36591fe79cdd69754e18dde7cb9c712c1e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070b5a2f85d6cae20795762c",
+          "url": "https://proceedings.mlr.press/v139/kim21f.html"
+        },
+        "b": {
+          "paper_id": "paper-5c454199c9de147518131cdb",
+          "url": "https://aclanthology.org/2025.acl-long.346/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "9097c9465bcf25e45aca1d9be0d7dfe3ee64213666058e60886a1dc594766704"
+    },
+    {
+      "id": "edge-e1864f01ab2a929c887ecc5b",
+      "a": "paper-070b5a2f85d6cae20795762c",
+      "b": "paper-9549ba9db20e1e412db3f21e",
+      "state": {
+        "paper_a": {
+          "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth."
+        },
+        "paper_b": {
+          "title": "Shallow Flow Matching for Coarse-to-Fine Text-to-Speech Synthesis",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "We propose Shallow Flow Matching (SFM), a novel mechanism that enhances flow matching (FM)-based text-to-speech (TTS) models within a coarse-to-fine generation paradigm. Unlike conventional FM modules, which use the coarse representations from the weak generator as conditions, SFM constructs intermediate states along the FM paths from these representations. During training, we introduce an orthogonal projection method to adaptively determine the temporal position of these states, and apply a principled construction strategy based on a single-segment piecewise flow. The SFM inference starts from the intermediate state rather than pure noise, thereby focusing computation on the latter stages of the FM paths. We integrate SFM into multiple TTS models with a lightweight SFM head. Experiments demonstrate that SFM yields consistent gains in speech naturalness across both objective and subjective evaluations, and significantly accelerates inference when using adaptive-step ODE solvers. Demo and codes are available at https://ydqmkkx.github.io/SFMDemo/."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "One [33, 13, 15, 30] follows traditional TTS designs, where a non-autoregressive encoder and an alignment module [35, 19] jointly generate coarse mel-spectrograms when aligning encoder outputs with target mel-spectrograms.\nBecause the encoder adopts the monotonic alignment search (MAS)-based alignment [18, 19, 33] for phoneme-spectrogram alignment, the encoder outputs are optimized towards the ground-truth mel-spectrograms (via the prior loss in the paper), resulting in coarse mel-spectrograms.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070b5a2f85d6cae20795762c",
+          "b": "paper-9549ba9db20e1e412db3f21e",
+          "input_sha256": "64a86e4ea440e5df24365f418e678b58ce616428a78fcd257d5ce5b5d66f27c5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kim21f.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/6ee0ebd0983f0926496b7d4e0d48b8e3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/6ee0ebd0983f0926496b7d4e0d48b8e3-Paper-Conference.pdf",
+              "sha256": "9f20f64bef038077d763235bb55d712f7372ecedc10caadaabbc5a8939322c88"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and designing a specialized spectrogram loss to relax lengthmismatch between target and generated speech. However, despite potentially improving performance by utilizing the learned representations, their synthesis quality lags behind two-stage systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Using a variational autoencoder (VAE) (Kingma & Welling, 2014), we connect two modules of TTS systems through latent variables to enable efficient end-to-end learning. To improve the expressive power of our method so that high-quality speech waveforms can be synthesized, we apply normalizing flows to our conditional prior distribution and adversarial training on the waveform domain. In addition to generating fine-grained audio, it is important for TTS systems to express the one-to-many relationship in which text input can be spoken in multiple ways with different variations (e.g., pitch and duration). To tackle the one-to-many problem, we also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method captures speech variations that cannot be represented by text. Our method obtains more natural sounding speech and higher sampling efficiency than the best publicly available TTS system, Glow-TTS (Kim et al., 2020) with HiFiGAN (Kong et al., 2020). We make both our demo page and source-code publicly available.2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Method In this section, we explain our proposed method and the architecture of it. The proposed method is mostly described in the first three subsections: a conditional VAE formulation; alignment estimation derived from variational inference; adversarial training for improving synthesis quality. The overall architecture is described at the end of this section. Figures 1a and 1b show the training and inference procedures of our method, respectively. From now on, we will refer to our method as Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS). 2.1. Variational Inference 2.1.1. OVERVIEW VITS can be expressed as a conditional VAE with the objective of maximizing the variational lower bound, also called the evidence lower bound (ELBO), of the intractable marginal log-likelihood of data log pθ (x|c): 2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Text-to-speech (TTS) synthesis has advanced with generative algorithms in recent years, particularly autoregressive (AR) [45, 25, 22, 49, 38, 46], diffusion [33, 12, 48, 2, 24], and flow matching (FM) [23, 13, 15, 10, 30, 7, 42] methods. TTS models typically contain a front-end for processing contextual information and a back-end for speech synthesis. Due to the strong temporal alignment between texts and speech, many diffusion- or FM-based TTS models adopt a coarse-to-fine generation paradigm: a weak generator first produces coarse representations conditioned on the input context, which are then refined by the diffusion or FM module into high-quality mel-spectrograms, and finally converted into audio waveforms by a vocoder. There are two main approaches to the weak generator. One [33, 13, 15, 30] follows traditional TTS designs, where a non-autoregressive encoder and an alignment module [35, 19] jointly generate coarse mel-spectrograms when aligning encoder outputs with target mel-spectrograms. The other [2, 8, 9, 31, 51] employs an AR large language model (LLM) as a context processor and weak generator to generate discrete speech tokens, which are transformed into continuous mel-spectrograms by a diffusion or FM module. FM has gained increasing attention due to its efficiency and high-quality generation in TTS. In conventional coarse-to-fine FM-based TTS models, coarse representations are used as conditions for the flow module. However, the generation still starts from pure noise, resulting in a suboptimal allocation of modeling capacity. Since the coarse representations already encode a significant portion of the overall semantic and acoustic structure, modeling the early stage from noise becomes redundant and contributes little to the quality of the final output.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ee0ebd0983f0926496b7d4e0d48b8e3-Paper-Conference.pdf",
+              "document_sha256": "9f20f64bef038077d763235bb55d712f7372ecedc10caadaabbc5a8939322c88"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Our backbone configurations involve three fully open-source TTS models. Matcha-TTS: Matcha-TTS [30] is a non-AR FM-based TTS model that employs a conventional encoder-decoder architecture. The Transformer-based [43] encoder takes phonemes and speaker IDs (for multi-speaker training) as input, producing hidden states and predicted phoneme-level durations. The U-Net-based FM decoder receives the encoder’s outputs and speaker embeddings as FM conditions and generates mel-spectrograms. Because the encoder adopts the monotonic alignment search (MAS)-based alignment [18, 19, 33] for phoneme-spectrogram alignment, the encoder outputs are optimized towards the ground-truth mel-spectrograms (via the prior loss in the paper), resulting in coarse mel-spectrograms. CosyVoice: CosyVoice [8] is a large zero-shot TTS model that consists of four components: the text encoder, the speech tokenizer, the LLM, and the FM module. The speech tokenizer extracts discrete speech tokens from mel-spectrograms of waveforms, while the text encoder processes textual inputs and aligns text encodings with speech tokens. The LLM, a Transformer decoder-based model, takes speaker embeddings, text encodings, and prompt speech tokens as input and generates target speech tokens in an AR way. Subsequently, the FM module, conditioned on speaker embeddings, target speech tokens, and masked mel-spectrograms, generates the target mel-spectrograms. The FM module adopts an encoder-decoder structure. The Conformer-based [14] encoder encodes the speech tokens generated by the LLM into hidden states and linearly projects them to the same dimension as mel-spectrograms. These hidden states are then upsampled by a length regulator for token-spectrogram alignment and fed into the U-Net-based decoder, along with other",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ee0ebd0983f0926496b7d4e0d48b8e3-Paper-Conference.pdf",
+              "document_sha256": "9f20f64bef038077d763235bb55d712f7372ecedc10caadaabbc5a8939322c88"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose Shallow Flow Matching (SFM), a novel mechanism that enhances flow matching (FM)-based text-to-speech (TTS) models within a coarse-to-fine generation paradigm. Unlike conventional FM modules, which use the coarse representations from the weak generator as conditions, SFM constructs intermediate states along the FM paths from these representations. During training, we introduce an orthogonal projection method to adaptively determine the temporal position of these states, and apply a principled construction strategy based on a singlesegment piecewise flow. The SFM inference starts from the intermediate state rather than pure noise, thereby focusing computation on the latter stages of the FM paths. We integrate SFM into multiple TTS models with a lightweight SFM head. Experiments demonstrate that SFM yields consistent gains in speech naturalness across both objective and subjective evaluations, and significantly accelerates inference when using adaptive-step ODE solvers. Demo and codes are available at https://ydqmkkx.github.io/SFMDemo/.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ee0ebd0983f0926496b7d4e0d48b8e3-Paper-Conference.pdf",
+              "document_sha256": "9f20f64bef038077d763235bb55d712f7372ecedc10caadaabbc5a8939322c88"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We introduce a novel Shallow Flow Matching (SFM) method for coarse-to-fine TTS models. SFM leverages coarse representations to construct intermediate states on the CondOT path, enabling FM module to produce more stable generation, more natural synthetic speech, and faster inference when using adaptive-step ODE solvers. SFM focuses on cases where the FM module serves as a refiner. Although it is validated on TTS tasks, the underlying framework and theoretical foundation are general. It also holds potential for other domains, such as speech denoising and enhancement, as well as image generation tasks like denoising and super-resolution. Further exploration of its applications to these tasks remains a promising direction for future work.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ee0ebd0983f0926496b7d4e0d48b8e3-Paper-Conference.pdf",
+              "document_sha256": "9f20f64bef038077d763235bb55d712f7372ecedc10caadaabbc5a8939322c88"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070b5a2f85d6cae20795762c",
+          "url": "https://proceedings.mlr.press/v139/kim21f.html"
+        },
+        "b": {
+          "paper_id": "paper-9549ba9db20e1e412db3f21e",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/6ee0ebd0983f0926496b7d4e0d48b8e3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "7685e632c2a5938019f591a2ffa86eea59cd16ec057dc28677806a5abe6baf55"
+    },
+    {
+      "id": "edge-b75b86b90217a4ce2c2b9dda",
+      "a": "paper-070b5a2f85d6cae20795762c",
+      "b": "paper-9c1efa8bc82adada0ccf1fdf",
+      "state": {
+        "paper_a": {
+          "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth."
+        },
+        "paper_b": {
+          "title": "DMOSpeech: Direct Metric Optimization via Distilled Diffusion Model in Zero-Shot Speech Synthesis",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Diffusion models have demonstrated significant potential in speech synthesis tasks, including text-to-speech (TTS) and voice cloning. However, their iterative denoising processes are computationally intensive, and previous distillation attempts have shown consistent quality degradation. Moreover, existing TTS approaches are limited by non-differentiable components or iterative sampling that prevent true end-to-end optimization with perceptual metrics. We introduce DMOSpeech, a distilled diffusion-based TTS model that uniquely achieves both faster inference and superior performance compared to its teacher model. By enabling direct gradient pathways to all model components, we demonstrate the first successful end-to-end optimization of differentiable metrics in TTS, incorporating Connectionist Temporal Classification (CTC) loss and Speaker Verification (SV) loss. Our comprehensive experiments, validated through extensive human evaluation, show significant improvements in naturalness, intelligibility, and speaker similarity while reducing inference time by orders of magnitude. This work establishes a new framework for aligning speech synthesis with human auditory preferences through direct metric optimization. The audio samples are available at https://dmospeech.github.io/demo"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Both frameworks enable end-to-end speech generation without the need for hand-engineered features such as prosody and duration modeling as seen in works before the LLM era (Ren et al., 2020; Kim et al., 2021), simplifying the TTS pipeline and improving scalability.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070b5a2f85d6cae20795762c",
+          "b": "paper-9c1efa8bc82adada0ccf1fdf",
+          "input_sha256": "354d943d8cf98447bab3eaecc5e0a26897e676c18fa55e728006ee723c4c8370",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kim21f.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/li25ay.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/li25ay/li25ay.pdf",
+              "sha256": "475d15c1039f95a1ba285a2c87511a5cd1416ec3bd84ab4a9306599d24ce30f6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and designing a specialized spectrogram loss to relax lengthmismatch between target and generated speech. However, despite potentially improving performance by utilizing the learned representations, their synthesis quality lags behind two-stage systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Using a variational autoencoder (VAE) (Kingma & Welling, 2014), we connect two modules of TTS systems through latent variables to enable efficient end-to-end learning. To improve the expressive power of our method so that high-quality speech waveforms can be synthesized, we apply normalizing flows to our conditional prior distribution and adversarial training on the waveform domain. In addition to generating fine-grained audio, it is important for TTS systems to express the one-to-many relationship in which text input can be spoken in multiple ways with different variations (e.g., pitch and duration). To tackle the one-to-many problem, we also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method captures speech variations that cannot be represented by text. Our method obtains more natural sounding speech and higher sampling efficiency than the best publicly available TTS system, Glow-TTS (Kim et al., 2020) with HiFiGAN (Kong et al., 2020). We make both our demo page and source-code publicly available.2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Method In this section, we explain our proposed method and the architecture of it. The proposed method is mostly described in the first three subsections: a conditional VAE formulation; alignment estimation derived from variational inference; adversarial training for improving synthesis quality. The overall architecture is described at the end of this section. Figures 1a and 1b show the training and inference procedures of our method, respectively. From now on, we will refer to our method as Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS). 2.1. Variational Inference 2.1.1. OVERVIEW VITS can be expressed as a conditional VAE with the objective of maximizing the variational lower bound, also called the evidence lower bound (ELBO), of the intractable marginal log-likelihood of data log pθ (x|c): 2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "ing law (Kaplan et al., 2020), the focus of TTS research has shifted from small-scale datasets to large-scale models trained on tens to hundreds of thousands of hours of data encompassing a wide variety of speakers (Wang et al., 2023a;c; Shen et al., 2024; Peng et al., 2024; Łajszczak et al., 2024; Li et al., 2024b). Two primary methodologies have emerged for training these large-scale models: diffusion-based approaches and autoregressive language modeling (LM)-based methods. Both frameworks enable end-to-end speech generation without the need for hand-engineered features such as prosody and duration modeling as seen in works before the LLM era (Ren et al., 2020; Kim et al., 2021), simplifying the TTS pipeline and improving scalability.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/li25ay/li25ay.pdf",
+              "document_sha256": "475d15c1039f95a1ba285a2c87511a5cd1416ec3bd84ab4a9306599d24ce30f6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this work, we introduce Direct Metric Optimization Speech, a distilled diffusion-based speech synthesis model that achieves both superior performance and faster inference compared to existing approaches. Our key innovation is to enable, for the first time, true end-to-end (E2E) optimization of differentiable metrics in TTS, with two technical advances: (1) reducing sampling steps from 128 to 4 via distribution matching distillation (Yin et al., 2024b;a), and (2) providing a direct gradient pathway from the noise input to speech output without non-differentiable components. This allows us to directly optimize speaker similarity and word error rate through speaker verification (SV) and CTC losses respectively, a capability not achievable in previous TTS approaches due to either non-differentiable components like duration predictors (Casanova et al., 2022) or prohibitively expensive backpropagation through hundreds of sampling steps. Our comprehensive experiments demonstrate that this E2E optimization leads to significant improvements across all metrics, outperforming both the teacher model and other recent baselines in both subjective and objective evaluations. Importantly, we discover that our optimized metrics strongly correlate with human perception, and the distillation process induces beneficial mode shrinkage that improves quality in strongly conditional generation by focusing on high-probability regions without compromising output diversity across different prompts and text inputs.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/li25ay/li25ay.pdf",
+              "document_sha256": "475d15c1039f95a1ba285a2c87511a5cd1416ec3bd84ab4a9306599d24ce30f6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Diffusion models have demonstrated significant potential in speech synthesis tasks, including textto-speech (TTS) and voice cloning. However, their iterative denoising processes are computationally intensive, and previous distillation attempts have shown consistent quality degradation. Moreover, existing TTS approaches are limited by non-differentiable components or iterative sampling that prevent true end-to-end optimization with perceptual metrics. We introduce DMOSpeech, a distilled diffusion-based TTS model that uniquely achieves both faster inference and superior performance compared to its teacher model. By enabling direct gradient pathways to all model components, we demonstrate the first successful end-to-end optimization of differentiable metrics in TTS, incorporating Connectionist Temporal Classification (CTC) loss and Speaker Verification (SV) loss. Our comprehensive experiments, validated through extensive human evaluation, show significant improvements in naturalness, intelligibility, and speaker similarity while reducing inference time by orders of magnitude. This work establishes a new framework for aligning speech synthesis with human auditory preferences through direct metric optimization. The audio samples are available at https://dmospeech.github.io.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/li25ay/li25ay.pdf",
+              "document_sha256": "475d15c1039f95a1ba285a2c87511a5cd1416ec3bd84ab4a9306599d24ce30f6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070b5a2f85d6cae20795762c",
+          "url": "https://proceedings.mlr.press/v139/kim21f.html"
+        },
+        "b": {
+          "paper_id": "paper-9c1efa8bc82adada0ccf1fdf",
+          "url": "https://proceedings.mlr.press/v267/li25ay.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "394769808a98278ffd3ae4d950763577c8e0d5bab70f4c10711facd9c129c53d"
+    },
+    {
+      "id": "edge-3b47745144ae7d22abf81ae9",
+      "a": "paper-070b5a2f85d6cae20795762c",
+      "b": "paper-b799b5e8e7e90441c029995e",
+      "state": {
+        "paper_a": {
+          "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth."
+        },
+        "paper_b": {
+          "title": "FC-TTS: Style and Timbre Control in Zero-Shot Text-to-Speech with Disentangled Speech Representations",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "Recent advances in zero-shot text-to-speech (TTS) have enabled accurate imitation of reference speech in terms of both speaking style and speaker timbre. However, achieving disentangled control over these aspects from separate references remains a challenging task. Several studies have proposed disentangled speech representations that decompose speech into interpretable attributes (\\textit{e.g.}, timbre, prosody, and content), providing a promising foundation for TTS with attribute control from separate references. Yet, how to effectively integrate such representations into TTS systems to achieve independent and precise control remains underexplored. In this paper, we present FC-TTS, a zero-shot TTS framework that enables disentangled control of style and timbre by conditioning on two distinct reference utterances. Unlike existing systems that inherit limitations from those pre-trained disentangled representations, FC-TTS introduces key design strategies, including architectural choices, training framework, and auxiliary training objectives, which improve the reliability of attribute separation and dual-reference control. Experiments show that FC-TTS achieves high-fidelity synthesis and competitive zero-shot naturalness, while uniquely supporting consistent and independent manipulation of style and timbre. Audio samples are available at https://qualcomm-ai-research.github.io/fc-tts"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "With recent breakthroughs in text-to-speech (TTS) technology (Kim et al., 2021; Chen et al., 2025, 2024), the focus has expanded from simply generating natural-sounding speech to enabling expressive and personalized synthesis for diverse applications * indicates the corresponding author.\nA common approach is to use labeled datasets with speaker or style annotations (Kim et al., 2021; Cho et al., 2024), which support multi-condition models capable of controlling multiple attributes simultaneously (Liu et al., 2023, 2025; Kang et al., 2023a).\nSupervised models trained on labeled datasets (Kim et al., 2021; Cho et al., 2024; Leng et al., 2024) offer reliable conditioning but scale poorly due to costly annotations.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070b5a2f85d6cae20795762c",
+          "b": "paper-b799b5e8e7e90441c029995e",
+          "input_sha256": "37d9cde1ec86268c1fe351f8b6bc6fd0db43138a17252d6fb486a86406e5d82b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kim21f.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.173/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.173.pdf",
+              "sha256": "8f1e88d608966e21e459a7710a209bc5d1edf290e60a9857df8188456fba1adc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and designing a specialized spectrogram loss to relax lengthmismatch between target and generated speech. However, despite potentially improving performance by utilizing the learned representations, their synthesis quality lags behind two-stage systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Using a variational autoencoder (VAE) (Kingma & Welling, 2014), we connect two modules of TTS systems through latent variables to enable efficient end-to-end learning. To improve the expressive power of our method so that high-quality speech waveforms can be synthesized, we apply normalizing flows to our conditional prior distribution and adversarial training on the waveform domain. In addition to generating fine-grained audio, it is important for TTS systems to express the one-to-many relationship in which text input can be spoken in multiple ways with different variations (e.g., pitch and duration). To tackle the one-to-many problem, we also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method captures speech variations that cannot be represented by text. Our method obtains more natural sounding speech and higher sampling efficiency than the best publicly available TTS system, Glow-TTS (Kim et al., 2020) with HiFiGAN (Kong et al., 2020). We make both our demo page and source-code publicly available.2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Method In this section, we explain our proposed method and the architecture of it. The proposed method is mostly described in the first three subsections: a conditional VAE formulation; alignment estimation derived from variational inference; adversarial training for improving synthesis quality. The overall architecture is described at the end of this section. Figures 1a and 1b show the training and inference procedures of our method, respectively. From now on, we will refer to our method as Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS). 2.1. Variational Inference 2.1.1. OVERVIEW VITS can be expressed as a conditional VAE with the objective of maximizing the variational lower bound, also called the evidence lower bound (ELBO), of the intractable marginal log-likelihood of data log pθ (x|c): 2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "With recent breakthroughs in text-to-speech (TTS) technology (Kim et al., 2021; Chen et al., 2025, 2024), the focus has expanded from simply generating natural-sounding speech to enabling expressive and personalized synthesis for diverse applications * indicates the corresponding author. †",
+              "url": "https://aclanthology.org/2026.acl-long.173.pdf",
+              "document_sha256": "8f1e88d608966e21e459a7710a209bc5d1edf290e60a9857df8188456fba1adc"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "such as virtual assistants, audiobooks, accessibility tools, and interactive media (Xie et al., 2024). This evolution has brought a growing demand for finegrained control over attributes such as speaking style and speaker timbre (Chen et al., 2025; Cho et al., 2025). To support such control, existing TTS systems have explored various strategies. Supervised models trained on labeled datasets (Kim et al., 2021; Cho et al., 2024; Leng et al., 2024) offer reliable conditioning but scale poorly due to costly annotations. In contrast, reference-based zero-shot approaches (Casanova et al., 2022; Chen et al., 2025; Kim et al., 2023; Ji et al., 2024; Chen et al., 2024) offer greater flexibility by conditioning on example utterances, but typically entangle style and timbre in a single reference, hindering independent control. To overcome this limitation, recent studies have explored disentangled speech representations (Choi et al., 2023; Ju et al., 2024), leading to various TTS systems that exploit such factorization. In particular, these systems employ disentangled attributes together with jointly pre-trained decoders to enable more interpretable control and, in principle, the possibility of conditioning on style and timbre separately. Nevertheless, disentanglement is often imperfect in practice, and the decoders inherently bound synthesis quality, with no guarantee of robustness to unseen style-timbre combinations. In this paper, we investigate how to effectively leverage disentangled speech representations to build TTS models that support separate control over style and timbre using distinct references. To this end, we present FC-TTS, which leverages factorized speech representations but adds: (1) a two-stage spectrogram generation pipeline (timbreconditioned blurry",
+              "url": "https://aclanthology.org/2026.acl-long.173.pdf",
+              "document_sha256": "8f1e88d608966e21e459a7710a209bc5d1edf290e60a9857df8188456fba1adc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "rections for developing controllable TTS systems without labeled datasets. NANSY++ (Choi et al., 2023) leverages various information perturbation functions to isolate pitch, linguistic, and timbre features. FACodec (Ju et al., 2024) enforces strong information bottlenecks and uses supervision from phoneme and speaker labels to learn factorized representations. LSCodec (Guo et al., 2024) further improves timbre isolation via speaker perturbation and achieves strong results in voice conversion. Despite progress, most systems are trained in autoencoding setups with paired inputs and targets, meaning they are primarily optimized for naturally co-occurring factors. As a result, their ability to generalize to mismatched conditioning—such as combining timbre and prosody from different references—remains underexplored. 2.3 Reference Speech-based Style and Timbre Control Recently, there have been studies to control the style and timbre of TTS models based on two reference samples. For instance, IndexTTS 2 (Zhou et al., 2025) achieves this by relying on the disentanglement property of semantic codec representations derived from MaskGCT (Wang et al., 2025). EmoSphere++ (Cho et al., 2025) trains a dedicated emotion encoder and introduces a regularization loss to enforce orthogonality between emotion and timbre vectors. Although promising, these methods rely on representations with only empirically observed disentanglement, or on pre-trained encoders that may discard other attributes such as accent. In contrast, our approach builds on systematically factorized representations that preserve reconstruction quality while enabling explicit decomposition, providing a more reliable basis for separate style and timbre control.",
+              "url": "https://aclanthology.org/2026.acl-long.173.pdf",
+              "document_sha256": "8f1e88d608966e21e459a7710a209bc5d1edf290e60a9857df8188456fba1adc"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "3.2 FC-TTS Figure 1 illustrates FC-TTS. Although the timbre condition zspk and the style condition cp are extracted from the same target during training, in principle, the factorized codec allows these attributes to be controlled separately at inference using references from different utterances. Building on this foundation, the following sections describe the architectural innovations that make such disentangled control practical. Concretely, FC-TTS processes the two conditions sequentially across dedicated stages: a timbre stage that anchors timbre characteristics via zspk to produce a blurry spectrogram, followed by a style stage that imprints prosodic characteristics via cp to refine it, ensuring each reference condition influences only its intended step. Additional implementation details are provided in Section 4.1 and Appendix A. 3.2.1 Hierarchical Spectrogram Generation In preliminary experiments, we found that simply reusing the FACodec decoder, as in NaturalSpeech 3 (Ju et al., 2024), was insufficient for independent timbre-prosody control. The main reason is that the imperfect disentanglement provides no guarantee of robust generation on unseen combinations. To address this limitation, we propose a new model design that performs hierarchical logmel spectrogram generation incorporating a jointly trained CFM speech decoder. It first generates a blurry spectrogram h using timbre information, and subsequently refines it into a complete spectrogram x0 using style information through the CFM decoder. These steps are trained jointly using mean-absolute-error (MAE) loss for the blurry spectrogram and CFM loss for the final output. The MAE objective, defined as Lblur = E [∥h − x0 ∥], encourages over-smoothed outputs—a property we exploit to avoid the need for",
+              "url": "https://aclanthology.org/2026.acl-long.173.pdf",
+              "document_sha256": "8f1e88d608966e21e459a7710a209bc5d1edf290e60a9857df8188456fba1adc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070b5a2f85d6cae20795762c",
+          "url": "https://proceedings.mlr.press/v139/kim21f.html"
+        },
+        "b": {
+          "paper_id": "paper-b799b5e8e7e90441c029995e",
+          "url": "https://aclanthology.org/2026.acl-long.173/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "4d7f58a681db2fd39da3493a9b5f6fc423f576e9644b65a863e7366c7f62636b"
+    },
+    {
+      "id": "edge-ea57892728fbe395e3dad7e3",
+      "a": "paper-070b5a2f85d6cae20795762c",
+      "b": "paper-fac9033024b7a84286d91d6d",
+      "state": {
+        "paper_a": {
+          "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Several recent end-to-end text-to-speech (TTS) models enabling single-stage training and parallel sampling have been proposed, but their sample quality does not match that of two-stage TTS systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Our method adopts variational inference augmented with normalizing flows and an adversarial training process, which improves the expressive power of generative modeling. We also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method expresses the natural one-to-many relationship in which a text input can be spoken in multiple ways with different pitches and rhythms. A subjective human evaluation (mean opinion score, or MOS) on the LJ Speech, a single speaker dataset, shows that our method outperforms the best publicly available TTS systems and achieves a MOS comparable to ground truth."
+        },
+        "paper_b": {
+          "title": "Guided-TTS: A Diffusion Model for Text-to-Speech via Classifier Guidance",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "We propose Guided-TTS, a high-quality text-to-speech (TTS) model that does not require any transcript of target speaker using classifier guidance. Guided-TTS combines an unconditional diffusion probabilistic model with a separately trained phoneme classifier for classifier guidance. Our unconditional diffusion model learns to generate speech without any context from untranscribed speech data. For TTS synthesis, we guide the generative process of the diffusion model with a phoneme classifier trained on a large-scale speech recognition dataset. We present a norm-based scaling method that reduces the pronunciation errors of classifier guidance in Guided-TTS. We show that Guided-TTS achieves a performance comparable to that of the state-of-the-art TTS model, Grad-TTS, without any transcript for LJSpeech. We further demonstrate that Guided-TTS performs well on diverse datasets including a long-form untranscribed dataset."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "End-to-end TTS models have recently been proposed, such as Ren et al. (2021), Donahue et al. (2021), Weiss et al. (2021), Kim et al. (2021), and Chen et al. (2021b).\nCorrespondence to: Sungroh Yoon <sryoon@snu.ac.kr>.\nraw waveforms from text at once (Kim et al., 2021; Weiss et al., 2021; Chen et al., 2021b).\nend-to-end TTS models have been proposed that generate raw waveforms from text at once (Kim et al., 2021; Weiss et al., 2021; Chen et al., 2021b).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070b5a2f85d6cae20795762c",
+          "b": "paper-fac9033024b7a84286d91d6d",
+          "input_sha256": "4a84e2ee0b5cf6cecf5d229c0f9b4f3c003a6d7a25ba5f6df4701dcfd727a198",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kim21f.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/kim22d.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/kim22d/kim22d.pdf",
+              "sha256": "fea7047463b2c7e4f3af005a5216c0a30cf7e3f282a5b2bc86ca1a49943bf219"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and designing a specialized spectrogram loss to relax lengthmismatch between target and generated speech. However, despite potentially improving performance by utilizing the learned representations, their synthesis quality lags behind two-stage systems. In this work, we present a parallel end-to-end TTS method that generates more natural sounding audio than current two-stage models. Using a variational autoencoder (VAE) (Kingma & Welling, 2014), we connect two modules of TTS systems through latent variables to enable efficient end-to-end learning. To improve the expressive power of our method so that high-quality speech waveforms can be synthesized, we apply normalizing flows to our conditional prior distribution and adversarial training on the waveform domain. In addition to generating fine-grained audio, it is important for TTS systems to express the one-to-many relationship in which text input can be spoken in multiple ways with different variations (e.g., pitch and duration). To tackle the one-to-many problem, we also propose a stochastic duration predictor to synthesize speech with diverse rhythms from input text. With the uncertainty modeling over latent variables and the stochastic duration predictor, our method captures speech variations that cannot be represented by text. Our method obtains more natural sounding speech and higher sampling efficiency than the best publicly available TTS system, Glow-TTS (Kim et al., 2020) with HiFiGAN (Kong et al., 2020). We make both our demo page and source-code publicly available.2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "2. Method In this section, we explain our proposed method and the architecture of it. The proposed method is mostly described in the first three subsections: a conditional VAE formulation; alignment estimation derived from variational inference; adversarial training for improving synthesis quality. The overall architecture is described at the end of this section. Figures 1a and 1b show the training and inference procedures of our method, respectively. From now on, we will refer to our method as Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS). 2.1. Variational Inference 2.1.1. OVERVIEW VITS can be expressed as a conditional VAE with the objective of maximizing the variational lower bound, also called the evidence lower bound (ELBO), of the intractable marginal log-likelihood of data log pθ (x|c): 2",
+              "url": "https://proceedings.mlr.press/v139/kim21f/kim21f.pdf",
+              "document_sha256": "e327384e50eb17b1464547348313bbf5c48c4aedfb12ebd725fbcfe8ecfd76e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "end-to-end TTS models have been proposed that generate raw waveforms from text at once (Kim et al., 2021; Weiss et al., 2021; Chen et al., 2021b). Despite the high quality and fast inference speed of speech synthesis, most TTS models can only be trained if the transcribed data of the target speaker are provided. Although long-form untranscribed data, such as audiobooks or podcasts, is available on various websites, it is challenging to use these speech data as training datasets for existing TTS models. To utilize these untranscribed data, long-form untranscribed speech data has to be segmented into sentences, and each segmented speech should then be accurately transcribed. Since the existing TTS models directly model the conditional distribution of speech given text, the direct usage of untranscribed data remains a challenge. There have also been approaches using untranscribed speech to adapt the pre-trained multi-speaker TTS model for fewshot TTS synthesis (Jia et al., 2018; Yan et al., 2021). These adaptive TTS models rely heavily on a pre-trained multispeaker TTS model, which is challenging to train and requires high-quality multi-speaker TTS datasets. Also, due to the difficulties of generalization, they underperform in comparison to high-quality single-speaker TTS models such as Glow-TTS and Grad-TTS (Kim et al., 2020; Popov et al., 2021) trained on a large amount of transcribed data. In this work, we propose Guided-TTS, a high-quality TTS model that learns to generate speech with an unconditional DDPM and performs text-to-speech synthesis using classifier guidance. By introducing a phoneme classifier trained on a large-scale speech recognition dataset, Guided-TTS does not use any transcript of the target speaker for TTS. Trained on untranscribed data, our",
+              "url": "https://proceedings.mlr.press/v162/kim22d/kim22d.pdf",
+              "document_sha256": "fea7047463b2c7e4f3af005a5216c0a30cf7e3f282a5b2bc86ca1a49943bf219"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "appropriate guidance to enable speech synthesis using untranscribed data from a target speaker. Text-to-Speech Models Most text-to-speech (TTS) models are composed of two parts: a model that generates intermediate features (e.g., mel-spectrogram) from text (Shen et al., 2018) and a vocoder, which synthesizes raw waveforms from intermediate features (van den Oord et al., 2016). The autoregressive model is used for the text-to-intermediate feature model (Wang et al., 2017; Shen et al., 2018; Ping et al., 2018; Li et al., 2019) and vocoder (van den Oord et al., 2016; Kalchbrenner et al., 2018) to perform high-quality TTS. To improve the sampling speed of the autoregressive models, flow-based generative models (Kingma & Dhariwal, 2018) and feed-forward models have been proposed for text-to-mel-spectrogram models (Ren et al., 2019; 2021; Kim et al., 2020; Shih et al., 2021) and vocoders (Oord et al., 2018; Prenger et al., 2019; Kim et al., 2019). In addition, variational autoencoder based models (Kingma & Welling, 2014; Lee et al., 2020; Liu et al., 2021), diffusion based models (Ho et al., 2020; Chen et al., 2021a; Kong et al., 2021; Popov et al., 2021; Jeong et al., 2021), and GAN based models (Goodfellow et al., 2014; Kumar et al., 2019; Bińkowski et al., 2019; Kong et al., 2020) have been proposed as high-quality speech synthesis models with parallel sampling schemes. End-to-end TTS models have recently been proposed, such as Ren et al. (2021), Donahue et al. (2021), Weiss et al. (2021), Kim et al. (2021), and Chen et al. (2021b). Most previous TTS models perform conditional generation tasks using transcribed data of the target speaker. On the other hand, Guided-TTS models unconditional distribution of speech with untranscribed data and generates conditional samples",
+              "url": "https://proceedings.mlr.press/v162/kim22d/kim22d.pdf",
+              "document_sha256": "fea7047463b2c7e4f3af005a5216c0a30cf7e3f282a5b2bc86ca1a49943bf219"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "2021; Popov et al., 2021) trained with the <speech, text> pair of the target speaker. On the other hand, instead of using a multi-speaker TTS dataset, we utilize an automatic speech recognition (ASR) dataset to build a TTS model, which is relatively easy to collect. By leveraging the phoneme classifier trained on the ASR dataset, Guided-TTS achieves performance comparable to other TTS models (Kim et al., 2020; Ren et al., 2021; Popov et al., 2021) with untranscribed data of the target speaker. There is also an approach that utilizes an untranscribed dataset to extract unsupervised linguistic units and reduces the amount of the paired dataset (Zhang & Lin, 2020). This model focuses on TTS for low-resource languages, while Guided-TTS assumes that a large-scale speech recognition dataset is available and only untranscribed data is given for the target speaker. Diffusion-based Generative Models DDPM (SohlDickstein et al., 2015; Ho et al., 2020) has undergone several theoretical developments (Song et al., 2021b) and produces high quality samples in many domains (Ho et al., 2020; Dhariwal & Nichol, 2021; Chen et al., 2021a; Popov et al., 2021; Luo & Hu, 2021). A continuous version of DDPM, an SDE-based model (Song et al., 2021b; Popov et al., 2021) is also presented. Thanks to many theoretical and practical breakthroughs (Song et al., 2021a; Nichol & Dhariwal, 2021), DDPM has also shown strong performance in speech synthesis (Chen et al., 2021a; Kong et al., 2021; Popov et al., 2021; Jeong et al., 2021). A pre-trained unconditional DDPM can be used for various tasks such as imputation (Song et al., 2021b), and controllable generation (Song et al., 2021b). In particular, the controllable generation allows (Dhariwal & Nichol, 2021) to achieve state-of-the-art performance in",
+              "url": "https://proceedings.mlr.press/v162/kim22d/kim22d.pdf",
+              "document_sha256": "fea7047463b2c7e4f3af005a5216c0a30cf7e3f282a5b2bc86ca1a49943bf219"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose Guided-TTS, a high-quality text-tospeech (TTS) model that does not require any transcript of target speaker using classifier guidance. Guided-TTS combines an unconditional diffusion probabilistic model with a separately trained phoneme classifier for classifier guidance. Our unconditional diffusion model learns to generate speech without any context from untranscribed speech data. For TTS synthesis, we guide the generative process of the diffusion model with a phoneme classifier trained on a large-scale speech recognition dataset. We present a norm-based scaling method that reduces the pronunciation errors of classifier guidance in Guided-TTS. We show that Guided-TTS achieves a performance comparable to that of the state-of-the-art TTS model, Grad-TTS, without any transcript for LJSpeech. We further demonstrate that Guided-TTS performs well on diverse datasets including a longform untranscribed dataset.",
+              "url": "https://proceedings.mlr.press/v162/kim22d/kim22d.pdf",
+              "document_sha256": "fea7047463b2c7e4f3af005a5216c0a30cf7e3f282a5b2bc86ca1a49943bf219"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070b5a2f85d6cae20795762c",
+          "url": "https://proceedings.mlr.press/v139/kim21f.html"
+        },
+        "b": {
+          "paper_id": "paper-fac9033024b7a84286d91d6d",
+          "url": "https://proceedings.mlr.press/v162/kim22d.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Audio and Language Perception and Generation"
+      },
+      "sha256": "405b11772cbca15cc0a661c80c4828376f050106285c39716e01c3698178f0b7"
+    }
+  ]
+}

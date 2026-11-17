@@ -1,0 +1,1014 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Entity and Relation Extraction from Text",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-c2805daf1ed6800d7a66dcf5",
+      "a": "paper-9f887a69e46a337b350b423e",
+      "b": "paper-28532d926363c3d1b9ff293c",
+      "state": {
+        "paper_a": {
+          "title": "Deep Contextualized Word Representations",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new type of deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pre-trained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals."
+        },
+        "paper_b": {
+          "title": "Named Entity Recognition as Dependency Parsing",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Named Entity Recognition (NER) is a fundamental task in Natural Language Processing, concerned with identifying spans of text expressing references to entities. NER research is often focused on flat entities only (flat NER), ignoring the fact that entity references can be nested, as in [Bank of [China]] (Finkel and Manning, 2009). In this paper, we use ideas from graph-based dependency parsing to provide our model a global view on the input via a biaffine model (Dozat and Manning, 2017). The biaffine model scores pairs of start and end tokens in a sentence which we use to explore all spans, so that the model is able to predict named entities accurately. We show that the model works well for both nested and flat NER through evaluation on 8 corpora and achieving SoTA performance on all of them, with accuracy gains of up to 2.2 percentage points."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "These latter models were later extended to use contextdependent embeddings such as ELMo (Peters et al., 2018).\nThe current SoTA models all adopt a neural network architecture without hand-crafted features, which makes them more adaptable to different tasks, languages and domains (Lample et al., 2016; Chiu and Nichols, 2016; Peters et al., 2018; Devlin et al., 2019; Ju et al., 2018; Sohrab and Miwa, 2018; Straková et al., 2019).\n…all adopt a neural network architecture without hand-crafted features, which makes them more adaptable to different tasks, languages and domains (Lample et al., 2016; Chiu and Nichols, 2016; Peters et al., 2018; De-vlin et al., 2019; Ju et al., 2018; Sohrab and Miwa, 2018; Strakov´a et al., 2019).\nStrakov´a et al. (2019) tag the nested named entity by a sequence-to-sequence model exploring combinations of context-based embeddings such as ELMo, BERT, and Flair.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9f887a69e46a337b350b423e",
+          "b": "paper-28532d926363c3d1b9ff293c",
+          "input_sha256": "073f8149decee6f5c7fb6649b5d64c727e572156f4fdce9f40853b772ae90d4f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N18-1202/",
+              "pdf_url": "https://aclanthology.org/N18-1202.pdf",
+              "sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.577/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.577.pdf",
+              "sha256": "34b05ddfe757a4762852def0c79dafddfb4f91f1c0fee6c6e98dc91eecf8bf72"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new type of deep contextualized word representation that models both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). Our word vectors are learned functions of the internal states of a deep bidirectional language model (biLM), which is pretrained on a large text corpus. We show that these representations can be easily added to existing models and significantly improve the state of the art across six challenging NLP problems, including question answering, textual entailment and sentiment analysis. We also present an analysis showing that exposing the deep internals of the pre-trained network is crucial, allowing downstream models to mix different types of semi-supervision signals.",
+              "url": "https://aclanthology.org/N18-1202.pdf",
+              "document_sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Pre-trained word representations (Mikolov et al., 2013; Pennington et al., 2014) are a key component in many neural language understanding models. However, learning high quality representations can be challenging. They should ideally model both (1) complex characteristics of word use (e.g., syntax and semantics), and (2) how these uses vary across linguistic contexts (i.e., to model polysemy). In this paper, we introduce a new type of deep contextualized word representation that directly addresses both challenges, can be easily integrated into existing models, and significantly improves the state of the art in every considered case across a range of challenging language understanding problems. Our representations differ from traditional word type embeddings in that each token is assigned a representation that is a function of the entire input sentence. We use vectors derived from a bidirectional LSTM that is trained with a coupled lan-",
+              "url": "https://aclanthology.org/N18-1202.pdf",
+              "document_sha256": "7539c5dbcabadd66a3096dd59cb4275e5ce1c44a1161d5775cea38bdd0914e23"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "‘Nested Entities’ are named entities containing references to other named entities as in [Bank of [China]], in which both [China] and [Bank of China] are named entities. Such nested entities are frequent in data sets like ACE 2004, ACE 2005 and GENIA (e.g., 17% of NEs in GENIA are nested (Finkel and Manning, 2009), altough the more widely used set such as CONLL 2002, 2003 and ONTONOTES only contain so called flat named entities and nested entities are ignored. The current SoTA models all adopt a neural network architecture without hand-crafted features, which makes them more adaptable to different tasks, languages and domains (Lample et al., 2016; Chiu and Nichols, 2016; Peters et al., 2018; Devlin et al., 2019; Ju et al., 2018; Sohrab and Miwa, 2018; Straková et al., 2019). In this paper, we introduce a method to handle both types of NEs in one system by adopting ideas from the biaffine dependency parsing model of Dozat and Manning",
+              "url": "https://aclanthology.org/2020.acl-main.577.pdf",
+              "document_sha256": "34b05ddfe757a4762852def0c79dafddfb4f91f1c0fee6c6e98dc91eecf8bf72"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "Flat Named Entity Recognition. The majority of flat NER models are based on a sequence labelling approach. Collobert et al. (2011) introduced a neural NER model that uses CNNs to encode tokens combined with a CRF layer for the classification. Many other neural systems followed this approach but used instead LSTMs to encode the input and a CRF for the prediction (Lample et al., 2016; Ma and Hovy, 2016; Chiu and Nichols, 2016). These latter models were later extended to use contextdependent embeddings such as ELMo (Peters et al., 2018). Clark et al. (2018) quite successfully used cross-view training (CVT) paired with multi-task learning. This method yields impressive gains for 1 The code is available at https://github.com/ juntaoy/biaffine-ner",
+              "url": "https://aclanthology.org/2020.acl-main.577.pdf",
+              "document_sha256": "34b05ddfe757a4762852def0c79dafddfb4f91f1c0fee6c6e98dc91eecf8bf72"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9f887a69e46a337b350b423e",
+          "url": "https://aclanthology.org/N18-1202/"
+        },
+        "b": {
+          "paper_id": "paper-28532d926363c3d1b9ff293c",
+          "url": "https://aclanthology.org/2020.acl-main.577/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "b13aea6cca15de4fabad4187748059376edada3f5aab6d6b631a6ab6ce9dec14"
+    },
+    {
+      "id": "edge-d0e9c622fe9988f71c8f8017",
+      "a": "paper-00808edb120bbdd8a795e029",
+      "b": "paper-3e4fc3f2269b8e02450ee65f",
+      "state": {
+        "paper_a": {
+          "title": "Low-Resource Name Tagging Learned with Weakly Labeled Data",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency."
+        },
+        "paper_b": {
+          "title": "TEBNER: Domain Specific Named Entity Recognition with Type Expanded Boundary-aware Network",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "To alleviate label scarcity in Named Entity Recognition (NER) task, distantly supervised NER methods are widely applied to automatically label data and identify entities. Although the human effort is reduced, the generated incomplete and noisy annotations pose new challenges for learning effective neural models. In this paper, we propose a novel dictionary extension method which extracts new entities through the type expanded model. Moreover, we design a multi-granularity boundary-aware network which detects entity boundaries from both local and global perspectives. We conduct experiments on different types of datasets, the results show that our model outperforms previous state-of-the-art distantly supervised systems and even surpasses the supervised models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To alleviate human efforts, distant supervision methods are widely used in NER task (Shang et al., 2018b; Cao et al., 2019; Liu et al., 2020; Xue et al., 2020; Liang et al., 2020; Lison et al., 2020).\n\"Phrase Matching\" Tagging Schema Most of the previous distantly supervised models (Shang et al., 2018b; Cao et al., 2019; Liu et al., 2020) use deep neural network to identify entity boundaries at the word or sentence level.\nPrevious works (Ma and Hovy, 2016; Shang et al., 2018b; Cao et al., 2019; Wang et al., 2020) always jointly model the entity boundary detection and classiﬁcation tasks.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00808edb120bbdd8a795e029",
+          "b": "paper-3e4fc3f2269b8e02450ee65f",
+          "input_sha256": "40bbda0e182f4f09f43db707f14085b6d55f898577fffbd0a5ab4e4258be95cf",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1025/",
+              "pdf_url": "https://aclanthology.org/D19-1025.pdf",
+              "sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.18/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.18.pdf",
+              "sha256": "e540d4787f95bf822649e796ea340125b2b65695cfa27317a8d15e4c9dbf329b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency1 .",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "et al., 2016), which has became a basic architecture due to its superior performance. Nevertheless, NN-CRFs require exhaustive human efforts for training annotations, and may not perform well in low-resource settings (Ni et al., 2017). Many approaches thus focus on transferring cross-domain, cross-task and cross-lingual knowledge into name tagging (Yang et al., 2017; Peng and Dredze, 2016; Mayhew et al., 2017; Pan et al., 2017; Lin et al., 2018; Xie et al., 2018). However, they are usually limited by the extra knowledge resources that are effective only in specific languages or domains. Actually, in many low-resource settings, there are extensive noisy annotations that naturally exist on the web yet to be explored (Ni et al., 2017). In this paper, we propose a novel model for name tagging that maximizes the potential of weakly labeled (WL) data. As shown in Figure 1, s2 is weakly labeled, since only Formula shell and Barangay Ginebra are annotated, leaving the remaining words unannotated. WL data is more practical to obtain, since it is difficult for people to accurately annotate those entities that they do not know or are not interested in. We can construct them from online resources, such as the anchors in Wikipedia. However, the following natures of WL data make learning name tagging from them more challenging: Partially-Labeled Sequence Automatically",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Chiu and Nichols, 2016). Recently, to recognize nested entities, many studies also propose to detect each entity boundaries individually (Wang et al., 2018; Zheng et al., 2019; Li et al., 2020b). With the burgeoning popularity of pre-training methods, large-scale language models such as ELMo (Peters et al., 2018) and BERT (Devlin et al., 2019) are also utilized in NER task, yielding state-of-the-art performances. However, all of above supervised models require a great quantity of manually annotated data, which are usually labor-intensive and time-consuming. To alleviate human efforts, distant supervision methods are widely used in NER task (Shang et al., 2018b; Cao et al., 2019; Liu et al., 2020; Xue et al., 2020; Liang et al., 2020; Lison et al., 2020). For example, Shang et al. (Shang et al., 2018b) marks out-of-dictionary phrases as potential entities with a special \"unknown\" type and propose a neural model AutoNER with a token interaction tagger. However, these untyped phrases are less helpful to identify new entities. HAMNER (Liu et al., 2020) expands the dictionary with headwords and design a span-level model, which predicts entity boundaries by an entity classification model. But for sentences with complex structures, it is difficult to detect boundaries by just using entity type information. Unlike these works, TEBNER annotates phrases with semantic context and distinguishes entity boundaries by fusing multi-granularity information, which can generate labels with high precision and recall rate.",
+              "url": "https://aclanthology.org/2021.emnlp-main.18.pdf",
+              "document_sha256": "e540d4787f95bf822649e796ea340125b2b65695cfa27317a8d15e4c9dbf329b"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "\"BIO\" Tagging Schema It is worth noting that above token interaction tagger cannot detect entities which just contain single token. Moreover, besides the tight internal connection between words, context information is also important for identifying entities. Therefore, we follow the sequence labeling framework using \"BIO\" tagging scheme to detect entities at sentence level. Concretely, we tag the beginning token of an entity by \"B\", the other token of this entity by \"I\", and the non-entity tokens by \"O\". As shown in Figure 2, we first tokenize each word in sentence and pass it through BERT Transformer stacks. Then we use a Dense layer with the softmax activation function as the entity classifier to get probability of the labels from the contextualized representation. Similar to the token interaction tagger mentioned above, we use the cross entropy loss function in the model training process and connect the tokens between \"B\" and \"O\" to form a candidate entity in the inference process. \"Phrase Matching\" Tagging Schema Most of the previous distantly supervised models (Shang et al., 2018b; Cao et al., 2019; Liu et al., 2020) use deep neural network to identify entity boundaries at the word or sentence level. However, the statistical features of domain entities in the corpus are often ignored by them. For example, the part-of-speech tagging, the term frequency, and the probabilities of an entity in quotes and brackets are all helpful to identify boundaries. Therefore, we use a phrase mining tool which can capture multiple features",
+              "url": "https://aclanthology.org/2021.emnlp-main.18.pdf",
+              "document_sha256": "e540d4787f95bf822649e796ea340125b2b65695cfa27317a8d15e4c9dbf329b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "well-designed neural models to recognize entities. Although the human effort is reduced, the labels To alleviate label scarcity in Named Entity generated by the string matching method pose two Recognition (NER) task, distantly supervised challenges. NER methods are widely applied to automatiThe first challenge is incomplete annotations. cally label data and identify entities. Although Because most of existing dictionaries have limthe human effort is reduced, the generated incomplete and noisy annotations pose new ited coverage on domain entities, just using the challenges for learning effective neural modgiven dictionary will make many out-of-dictionary els. In this paper, we propose a novel dictioentities unmatched and generate a large number nary extension method which extracts new enof false-negative labels. By analyzing several tities through the type expanded model. Morecommonly used datasets (e.g., BC5CDR, NCBI, over, we design a multi-granularity boundaryMeSH), we find that the original dictionary only aware network which detects entity boundcovers about 50% of domain entities, which may aries from both local and global perspectives. We conduct experiments on different types of weaken the performance of subsequent NER model. datasets, the results show that our model outTo increase the number of label entities, previous performs previous state-of-the-art distantly suworks (Fries et al., 2017; Liu et al., 2020) attempt to pervised systems and even surpasses the superexpand the dictionary by heuristic rules. However, vised models. these rule-based methods are difficult to migrate to other domains. So, how to extend the dictionary 1 Introduction with more general pattern is the first problem we Named Entity Recognition (NER) is the task of de- need to solve. tecting",
+              "url": "https://aclanthology.org/2021.emnlp-main.18.pdf",
+              "document_sha256": "e540d4787f95bf822649e796ea340125b2b65695cfa27317a8d15e4c9dbf329b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "\"Break or Tie\" Tagging Schema To capture boundary information at word granularity, we construct a token interaction tagger to distinguish whether two adjacent tokens are tied in the same 4.2 Entity Recognizer entity mention or not. The key motivation is that Previous works (Ma and Hovy, 2016; Shang et al., domain entities usually contain the specific words, modeling the connection between adjacent tokens 2018b; Cao et al., 2019; Wang et al., 2020) always can help to find new entities with the same domain jointly model the entity boundary detection and words. For example, in the field of biology, many classification tasks. In general, it is effective for the supervised model using manual annotation data. disease entities may contain kidney, lung and other organ nouns; in the field of finance, many instiHowever, there are many labeling errors in the data tutional entities may contain insurance, bank, etc. annotated by distantly supervised method. The Inspired by this instuition, we utilize a \"Break or joint learning method can easily lead to overfitting Tie\" tagging schema to recognize domain entities. of the NER model, which makes it difficult to idenAs shown in Figure 2, (i) T (Tie) indicates that tify unlabeled entities. With this in mind, we utilize both of the two adjacent tokens belong to the same a pipeline framework which learns entity boundary entity. (ii) B (Break) means that the ties between and entity type separately. The overall structure of adjacent tokens are broken into two parts. our framework is shown in Figure 2. Our entity recognizer contains two components: Specifically, we build a binary classifier to disboundary detector and entity classifier. As the fi- tinguish whether current token is connected to the nal results in NER are only generated from",
+              "url": "https://aclanthology.org/2021.emnlp-main.18.pdf",
+              "document_sha256": "e540d4787f95bf822649e796ea340125b2b65695cfa27317a8d15e4c9dbf329b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00808edb120bbdd8a795e029",
+          "url": "https://aclanthology.org/D19-1025/"
+        },
+        "b": {
+          "paper_id": "paper-3e4fc3f2269b8e02450ee65f",
+          "url": "https://aclanthology.org/2021.emnlp-main.18/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "27d206d4373f94e080c318f910a660354fc6c0cc929f785fcd6a213f2281da98"
+    },
+    {
+      "id": "edge-6b9eb9d7c58ec7dec11ac4bf",
+      "a": "paper-00808edb120bbdd8a795e029",
+      "b": "paper-53163175896f9b6c5e676e2b",
+      "state": {
+        "paper_a": {
+          "title": "Low-Resource Name Tagging Learned with Weakly Labeled Data",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency."
+        },
+        "paper_b": {
+          "title": "PDALN: Progressive Domain Adaptation over a Pre-trained Model for Low-Resource Cross-Domain Named Entity Recognition",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Cross-domain Named Entity Recognition (NER) transfers the NER knowledge from high-resource domains to the low-resource target domain. Due to limited labeled resources and domain shift, cross-domain NER is a challenging task. To address these challenges, we propose a progressive domain adaptation Knowledge Distillation (KD) approach – PDALN. It achieves superior domain adaptability by employing three components: (1) Adaptive data augmentation techniques, which alleviate cross-domain gap and label sparsity simultaneously; (2) Multi-level Domain invariant features, derived from a multi-grained MMD (Maximum Mean Discrepancy) approach, to enable knowledge transfer across domains; (3) Advanced KD schema, which progressively enables powerful pre-trained language models to perform domain adaptation. Extensive experiments on four benchmarks show that PDALN can effectively adapt high-resource domains to low-resource target domains, even if they are diverse in terms and writing styles. Comparison with other baselines indicates the state-of-the-art performance of PDALN."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Besides, those (Liang et al., 2020; Simpson et al., 2020; Cao et al., 2020) exploit external resources to generate pseudo labels for the low-resource domain with the assistance of a pretrained language model.\nBesides, those (Liang et al., 2020; Simpson et al., 2020; Cao et al., 2020) exploit ex-ternal resources to generate pseudo labels for the low-resource domain with the assistance of a pre-trained language model.\nTo tackle both label sparsity and domain shift problem, existing approaches (Liang et al., 2020; Simpson et al., 2020; Cao et al., 2020) exploit external resources to generate pseudo labels for the low-resource domain.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00808edb120bbdd8a795e029",
+          "b": "paper-53163175896f9b6c5e676e2b",
+          "input_sha256": "aa186f11dc6e6380460ce3e84117060d1f39ae9ead4e3dda20da8706ad4187af",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1025/",
+              "pdf_url": "https://aclanthology.org/D19-1025.pdf",
+              "sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.442/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.442.pdf",
+              "sha256": "f5bca0f52e93333d7726469d576e7b289773d22280acb95dcdafe74bc1de0b48"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency1 .",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "et al., 2016), which has became a basic architecture due to its superior performance. Nevertheless, NN-CRFs require exhaustive human efforts for training annotations, and may not perform well in low-resource settings (Ni et al., 2017). Many approaches thus focus on transferring cross-domain, cross-task and cross-lingual knowledge into name tagging (Yang et al., 2017; Peng and Dredze, 2016; Mayhew et al., 2017; Pan et al., 2017; Lin et al., 2018; Xie et al., 2018). However, they are usually limited by the extra knowledge resources that are effective only in specific languages or domains. Actually, in many low-resource settings, there are extensive noisy annotations that naturally exist on the web yet to be explored (Ni et al., 2017). In this paper, we propose a novel model for name tagging that maximizes the potential of weakly labeled (WL) data. As shown in Figure 1, s2 is weakly labeled, since only Formula shell and Barangay Ginebra are annotated, leaving the remaining words unannotated. WL data is more practical to obtain, since it is difficult for people to accurately annotate those entities that they do not know or are not interested in. We can construct them from online resources, such as the anchors in Wikipedia. However, the following natures of WL data make learning name tagging from them more challenging: Partially-Labeled Sequence Automatically",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "specific knowledge to boost their cross-domain NER performance. Wang et al. (2018) introduce a label-aware mechanism into maximum mean discrepancy (MMD) to explicitly reduce domain shift between the same labels across domains in medical data. Lin and Lu (2018) employ projecting learning to obtain a transfer matrix that maps target domain words into the word space of the source domain. On the other hand, diverse sentence patterns are usually caused by various factors, like written styles, publication categories, data quality, etc. The solutions for mitigating the discourse-level discrepancy mainly include multi-level adaptation layers (Lin and Lu, 2018), tensor decomposition (Jia et al., 2019) and multi-task learning with external information (Liu et al., 2020b; Aguilar et al., 2017). As we mentioned before, Lin and Lu (2018) construct the word adaptation component in their model. Besides, they construct another sentence-adaptation layer, which takes in the adapted word embedding to extract another adaptation sentence feature. Jia et al. (2019) use multi-task learning and tensor decomposition to extract latent factors. Through latent factors, knowledge can be transferred across source and target domains. Liu et al. (2020b) employ NER label experts to guide model learning between domains. The label-aware guidance layer is key to enable domain adaptation. Jia and Zhang (2020) a multi-cell compositional LSTM structure for cross-domain NER under the multi-task learning strategy. Besides, those (Liang et al., 2020; Simpson et al., 2020; Cao et al., 2020) exploit external resources to generate pseudo labels for the low-resource domain with the assistance of a pretrained language model. However, those methods either lack the capability to capture expressive text features for",
+              "url": "https://aclanthology.org/2021.emnlp-main.442.pdf",
+              "document_sha256": "f5bca0f52e93333d7726469d576e7b289773d22280acb95dcdafe74bc1de0b48"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "However, it is challenging to build a crossdomain NER component with high precision and Cross-domain Named Entity Recognition recall, due to the domain shift problem (Ben-David (NER) transfers the NER knowledge from et al., 2010). When casting the cross-domain NER high-resource domains to the low-resource as a transfer learning problem, most solutions (He target domain. Due to limited labeled reand Sun, 2017; Yang et al., 2017; Aguilar et al., sources and domain shift, cross-domain NER 2017; Lee et al., 2018; Liu et al., 2020b) require is a challenging task. To address these chalhigh-quality cross-domain features for knowledge lenges, we propose a progressive domain adaptation Knowledge Distillation (KD) aptransfer. Limited labeled data prohibit transfer proach – PDALN. It achieves superior domain learning from extracting informative features. Beadaptability by employing three components: sides, it is hard to find a single training dataset (1) Adaptive data augmentation techniques, covering all the required NER types. Even if words which alleviate cross-domain gap and label overlap across domains, their combination or usage sparsity simultaneously; (2) Multi-level Dois different from each other. main invariant features, derived from a multigrained MMD (Maximum Mean Discrepancy) Domain adaptation (Sun et al., 2015) is widely approach, to enable knowledge transfer across studied to solve the domain shift issue. Existing domains; (3) Advanced KD schema, which approaches mainly introduce either word-level or progressively enables powerful pre-trained landiscourse-level domain adaptations to enable crossguage models to perform domain adaptation. domain NER. To mitigate the word-level discrepExtensive experiments on four benchmarks ancy, previous endeavors propose",
+              "url": "https://aclanthology.org/2021.emnlp-main.442.pdf",
+              "document_sha256": "f5bca0f52e93333d7726469d576e7b289773d22280acb95dcdafe74bc1de0b48"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "PDALN addresses both word- and discourse-level domain adaptation on two low-resource scenarios: unsupervised and semi-supervised cross-domain NER. We first augment mix-domain training data by cross-domain anchor pairs, which alleviates the sparsity of annotated target domain. Next, we enable knowledge transfer across domains through domain invariant features learned from a multigrained MMD adaptation metric. Additionally, we fuse contrastive learning (Hadsell et al., 2006) with a pre-trained model to extract robust features. Finally, instead of directly fine-tuning the model on the augmented adaptive data under the MMD-based metric, we integrate the cross-domain NER model into a sequential KD framework to learn a lowcapacity student model. The low-capacity student can avoid over-fitting on limited annotated data because it progressively only cares about general cross-domain features retrieved by its sequential teachers to increase model confidence over domain invariant features. Our main contributions are summarized as follows: • We propose a low-resource cross-domain NER model, PDALN, to transfer multi-level domain invariant knowledge from high-resource source domain to minimal-resource target domain without external retrieval auxiliary. Besides, PDALN can perform on both zero-resource and minimalresource scenarios. • We design an adaptive data augmentation for the low-resource domains. Moreover, we propose a multi-grained domain adaptation metric on the adaptive data to explore both word-level and discourse-level domain invariant features. We exploit a contrastive-learning fused pre-trained language model in a progressive self-training manner to enhance feature extraction. • We conduct extensive experiments on four benchmarks to show our new state-of-the-art",
+              "url": "https://aclanthology.org/2021.emnlp-main.442.pdf",
+              "document_sha256": "f5bca0f52e93333d7726469d576e7b289773d22280acb95dcdafe74bc1de0b48"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00808edb120bbdd8a795e029",
+          "url": "https://aclanthology.org/D19-1025/"
+        },
+        "b": {
+          "paper_id": "paper-53163175896f9b6c5e676e2b",
+          "url": "https://aclanthology.org/2021.emnlp-main.442/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "f0e17350d5b4004ccd8e2f4baa257c23930c6f9b4fe3cb7d0d34ee635ebf0783"
+    },
+    {
+      "id": "edge-7d7c92142400eadb498bf926",
+      "a": "paper-00808edb120bbdd8a795e029",
+      "b": "paper-5fe1340c5afeec4514c1fcdc",
+      "state": {
+        "paper_a": {
+          "title": "Low-Resource Name Tagging Learned with Weakly Labeled Data",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency."
+        },
+        "paper_b": {
+          "title": "Improving Event Detection via Open-domain Trigger Knowledge",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Event Detection (ED) is a fundamental task in automatically structuring texts. Due to the small scale of training data, previous methods perform poorly on unseen/sparsely labeled trigger words and are prone to overfitting densely labeled trigger words. To address the issue, we propose a novel Enrichment Knowledge Distillation (EKD) model to leverage external open-domain trigger knowledge to reduce the in-built biases to frequent trigger words in annotations. Experiments on benchmark ACE2005 show that our model outperforms nine strong baselines, is especially effective for unseen/sparsely labeled trigger words. The source code is released on https://github.com/shuaiwa16/ekd.git."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Automatically generating more training instances seems to be a solution: expanding more instances by bootstrapping (Fer-guson et al., 2018; Zhang et al., 2019; Cao et al., 2019) and expending more data from distantly supervised methods (Chen et al., 2017; Wang et al., 2019a).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00808edb120bbdd8a795e029",
+          "b": "paper-5fe1340c5afeec4514c1fcdc",
+          "input_sha256": "9d2865daa2907f7c6723aaa42400b0834c0d29c0e3709a3cea1b94bd4e403509",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1025/",
+              "pdf_url": "https://aclanthology.org/D19-1025.pdf",
+              "sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.522/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.522.pdf",
+              "sha256": "7c2b215572a00d15c823f2562c8f69e3196b649243c1a276d1158392e31a0b2a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency1 .",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "et al., 2016), which has became a basic architecture due to its superior performance. Nevertheless, NN-CRFs require exhaustive human efforts for training annotations, and may not perform well in low-resource settings (Ni et al., 2017). Many approaches thus focus on transferring cross-domain, cross-task and cross-lingual knowledge into name tagging (Yang et al., 2017; Peng and Dredze, 2016; Mayhew et al., 2017; Pan et al., 2017; Lin et al., 2018; Xie et al., 2018). However, they are usually limited by the extra knowledge resources that are effective only in specific languages or domains. Actually, in many low-resource settings, there are extensive noisy annotations that naturally exist on the web yet to be explored (Ni et al., 2017). In this paper, we propose a novel model for name tagging that maximizes the potential of weakly labeled (WL) data. As shown in Figure 1, s2 is weakly labeled, since only Formula shell and Barangay Ginebra are annotated, leaving the remaining words unannotated. WL data is more practical to obtain, since it is difficult for people to accurately annotate those entities that they do not know or are not interested in. We can construct them from online resources, such as the anchors in Wikipedia. However, the following natures of WL data make learning name tagging from them more challenging: Partially-Labeled Sequence Automatically",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "total. The long tail issue makes supervised methods (Li et al., 2013; Yang et al., 2019) prone to overfitting and perform poorly on unseen/sparsely labeled triggers (Lu et al., 2019). Automatically generating more training instances seems to be a solution: expanding more instances by bootstrapping (Ferguson et al., 2018; Zhang et al., 2019; Cao et al., 2019) and expending more data from distantly supervised methods (Chen et al., 2017; Wang et al., 2019a). However, the performance of these methods on unseen/sparsely labeled trigger words is still unsatisfied, as shown in Table 1. We argue that these methods either lead to the homogeneity of the generated corpus, or subject to the low coverage of knowledge base. More importantly, the expanded data itself is unevenly distributed, and we cannot expect to alleviate the long tail problem with built-in bias data. In the paper, we empower the model with external knowledge called Open-Domain Trigger Knowledge to provides extra semantic support on unseen/sparsely labeled trigger words and improve trigger identification. Open-Domain Trig-",
+              "url": "https://aclanthology.org/2020.acl-main.522.pdf",
+              "document_sha256": "7c2b215572a00d15c823f2562c8f69e3196b649243c1a276d1158392e31a0b2a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Event Detection (ED) is a fundamental task in automatically structuring texts. Due to the small scale of training data, previous methods perform poorly on unseen/sparsely labeled trigger words and are prone to overfitting densely labeled trigger words. To address the issue, we propose a novel Enrichment Knowledge Distillation (EKD) model to leverage external open-domain trigger knowledge to reduce the in-built biases to frequent trigger words in annotations. Experiments on benchmark ACE2005 show that our model outperforms nine strong baselines, is especially effective for unseen/sparsely labeled trigger words. The source code is released on https://github.com/shuaiwa16/ekd.git.",
+              "url": "https://aclanthology.org/2020.acl-main.522.pdf",
+              "document_sha256": "7c2b215572a00d15c823f2562c8f69e3196b649243c1a276d1158392e31a0b2a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "ger Knowledge is defined as a prior that specifies which words can trigger events without subject to pre-defined event types and the domain of texts. As shown in S1 of Figure 1, open-domain trigger knowledge can identify that hearing and fire as event triggers, even if hearing does not fit into any pre-defined event types in ACE2005. With opendomain trigger knowledge, we are able to discover unseen/sparsely triggers from the large-scale unlabeled corpus, which will improve the recall in trigger words identification. However, it is challenging to incorporate open-domain trigger knowledge into ED: Triggers identified by open-domain trigger knowledge do not always fit well with indomain labels, and thus can not be directly adopted as the trigger identification result. For example in S4 of Figure 1, open-domain trigger knowledge argues that exploded is the trigger word, while under the labeling rules of ACE2005, intifada is the trigger word. Specifically, we propose an Enrichment Knowledge Distillation (EKD) model to efficiently distill open-domain trigger knowledge from both labeled and abundant unlabeled corpora. We first apply a light-weight pipeline to equipment unlabeled sentences with trigger knowledge from WordNet. The method is not limited to specific domains, and thus can guarantee the coverage of trigger words. Then, given the knowledge enhanced data as well as ED annotations, we train a teacher model for better performance; meanwhile, a student model is trained to mimic teacher’s outputs using data without knowledge enhancement, which conforms to the distribution during inference. We further promote the generalization of the model by adding noise to the inputs of the student model. We evaluate our model on the ACE2005 ED benchmark. Our method surpasses nine",
+              "url": "https://aclanthology.org/2020.acl-main.522.pdf",
+              "document_sha256": "7c2b215572a00d15c823f2562c8f69e3196b649243c1a276d1158392e31a0b2a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00808edb120bbdd8a795e029",
+          "url": "https://aclanthology.org/D19-1025/"
+        },
+        "b": {
+          "paper_id": "paper-5fe1340c5afeec4514c1fcdc",
+          "url": "https://aclanthology.org/2020.acl-main.522/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "ad1a5f7b720f85e40b9be3bf6b8a538aa40ffd95fe3fb6f7e40a0aefcdbb70c0"
+    },
+    {
+      "id": "edge-027b259fc9bb3f11672cce01",
+      "a": "paper-00808edb120bbdd8a795e029",
+      "b": "paper-822dd34f028c95b5a7950fba",
+      "state": {
+        "paper_a": {
+          "title": "Low-Resource Name Tagging Learned with Weakly Labeled Data",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency."
+        },
+        "paper_b": {
+          "title": "A Span-Based Model for Joint Overlapped and Discontinuous Named Entity Recognition",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Research on overlapped and discontinuous named entity recognition (NER) has received increasing attention. The majority of previous work focuses on either overlapped or discontinuous entities. In this paper, we propose a novel span-based model that can recognize both overlapped and discontinuous entities jointly. The model includes two major steps. First, entity fragments are recognized by traversing over all possible text spans, thus, overlapped entities can be recognized. Second, we perform relation classification to judge whether a given pair of entity fragments to be overlapping or succession. In this way, we can recognize not only discontinuous entities, and meanwhile doubly check the overlapped entities. As a whole, our model can be regarded as a relation extraction paradigm essentially. Experimental results on multiple benchmark datasets (i.e., CLEF, GENIA and ACE05) show that our model is highly competitive for overlapped and discontinuous NER."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Named entity recognition (NER) (Sang and De Meulder, 2003) is one fundamental task for natural language processing (NLP), due to its wide application in information extraction and data mining (Lin et al., 2019b; Cao et al., 2019).\nIn the NLP domain, NER is usually considered as a sequence labeling problem (Liu et al., 2018; Lin et al., 2019b; Cao et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00808edb120bbdd8a795e029",
+          "b": "paper-822dd34f028c95b5a7950fba",
+          "input_sha256": "644d0878cb7a7c2cf80e26748df2bdd2cd4fd9dc621696767efe9a7379980769",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1025/",
+              "pdf_url": "https://aclanthology.org/D19-1025.pdf",
+              "sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.372/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.372.pdf",
+              "sha256": "95b4f4eb42a7f018b2469ff12338de8ff7b377b362400c3ffb6409a9fb237b08"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency1 .",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "et al., 2016), which has became a basic architecture due to its superior performance. Nevertheless, NN-CRFs require exhaustive human efforts for training annotations, and may not perform well in low-resource settings (Ni et al., 2017). Many approaches thus focus on transferring cross-domain, cross-task and cross-lingual knowledge into name tagging (Yang et al., 2017; Peng and Dredze, 2016; Mayhew et al., 2017; Pan et al., 2017; Lin et al., 2018; Xie et al., 2018). However, they are usually limited by the extra knowledge resources that are effective only in specific languages or domains. Actually, in many low-resource settings, there are extensive noisy annotations that naturally exist on the web yet to be explored (Ni et al., 2017). In this paper, we propose a novel model for name tagging that maximizes the potential of weakly labeled (WL) data. As shown in Figure 1, s2 is weakly labeled, since only Formula shell and Barangay Ginebra are annotated, leaving the remaining words unannotated. WL data is more practical to obtain, since it is difficult for people to accurately annotate those entities that they do not know or are not interested in. We can construct them from online resources, such as the anchors in Wikipedia. However, the following natures of WL data make learning name tagging from them more challenging: Partially-Labeled Sequence Automatically",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Named entity recognition (NER) (Sang and De Meulder, 2003) is one fundamental task for natural language processing (NLP), due to its wide application in information extraction and data mining (Lin et al., 2019b; Cao et al., 2019). Traditionally, NER is presented as a sequence labeling problem and widely solved by conditional random field (CRF) based models (Lafferty et al., 2001). However, this framework is difficult to handle overlapped and discontinuous entities (Lu and Roth, 2015; Muis and Lu, 2016), which we illustrate using two examples as shown in Figure 1. The two entities “Pennsylvania” and “Pennsylvania radio station” are nested with each other,1 and the sec∗ 1",
+              "url": "https://aclanthology.org/2021.acl-long.372.pdf",
+              "document_sha256": "95b4f4eb42a7f018b2469ff12338de8ff7b377b362400c3ffb6409a9fb237b08"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "In the NLP domain, NER is usually considered as a sequence labeling problem (Liu et al., 2018; Lin et al., 2019b; Cao et al., 2019). With well-designed features, CRF-based models have achieved the leading performance (Lafferty et al., 2001; Finkel et al., 2005; Liu et al., 2011). Recently, neural network models have been exploited for feature representations (Chen and Manning, 2014; Zhou et al., 2015). Moreover, contextualized word representations such as ELMo (Peters et al., 2018), Flair (Akbik et al., 2018) and BERT (Devlin et al., 2019) have also achieved great success. As for NER, the end-to-end bi-directional LSTM CRF models (Lample et al., 2016; Ma and Hovy, 2016; Yang et al., 2018) is one representative architecture. These models are only capable of recognizing regular named entities. For overlapped NER, the earliest model to our knowledge is proposed by Finkel and Manning (2009), where they convert overlapped NER as a parsing task. Lu and Roth (2015) propose a hypergraph model to recognize overlapped entities and lead to a number of extensions (Muis and Lu, 2017; Katiyar and Cardie, 2018; Wang and Lu, 2018). Moreover, recurrent neural networks (RNNs) are also used for overlapped NER (Ju et al., 2018; Wang et al., 2018). Other approaches include multi-grained detection (Xia et al., 2019), boundary detection (Zheng et al., 2019), anchorregion network (Lin et al., 2019a) and machine reading comprehension (Li et al., 2020). The stateof-the-art models for overlapped NER include the sequence-to-sequence (seq2seq) model (Straková et al., 2019), where the decoder predicts multiple",
+              "url": "https://aclanthology.org/2021.acl-long.372.pdf",
+              "document_sha256": "95b4f4eb42a7f018b2469ff12338de8ff7b377b362400c3ffb6409a9fb237b08"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Research on overlapped and discontinuous named entity recognition (NER) has received increasing attention. The majority of previous work focuses on either overlapped or discontinuous entities. In this paper, we propose a novel span-based model that can recognize both overlapped and discontinuous entities jointly. The model includes two major steps. First, entity fragments are recognized by traversing over all possible text spans, thus, overlapped entities can be recognized. Second, we perform relation classification to judge whether a given pair of entity fragments to be overlapping or succession. In this way, we can recognize not only discontinuous entities, and meanwhile doubly check the overlapped entities. As a whole, our model can be regarded as a relation extraction paradigm essentially. Experimental results on multiple benchmark datasets (i.e., CLEF, GENIA and ACE05) show that our model is highly competitive for overlapped and discontinuous NER.",
+              "url": "https://aclanthology.org/2021.acl-long.372.pdf",
+              "document_sha256": "95b4f4eb42a7f018b2469ff12338de8ff7b377b362400c3ffb6409a9fb237b08"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "ond example shows a discontinuous entity “mitral leaflets thickened” involving three fragments. There have been several studies to investigate overlapped or discontinuous entities (Finkel and Manning, 2009; Lu and Roth, 2015; Muis and Lu, 2017; Katiyar and Cardie, 2018; Wang and Lu, 2018; Ju et al., 2018; Wang et al., 2018; Fisher and Vlachos, 2019; Luan et al., 2019; Wang and Lu, 2019). The majority of them focus on overlapped NER, with only several exceptions to the best of our knowledge. Muis and Lu (2016) present a hypergraph model that is capable of handling both overlapped and discontinuous entities. Wang and Lu (2019) extend the hypergraph model with long short-term memories (LSTMs) (Hochreiter and Schmidhuber, 1997). Dai et al. (2020) proposed a transition-based neural model for discontinuous NER. By using these models, NER could be conducted universally without any assumption to exclude overlapped or discontinuous entities, which could be more practical in real applications. The hypergraph (Muis and Lu, 2016; Wang and Lu, 2019) and transition-based models (Dai et al., 2020) are flexible to be adapted for different tasks, achieving great successes for overlapped or discontinuous NER. However, these models need to manually define graph nodes, edges and transition actions. Moreover, these models build graphs or generate transitions along the words in the sentences gradually, which may lead to error propagation (Zhang et al., 2016). In contrast, the spanbased scheme might be a good alternative, which is much simpler including only span-level classification. Thus, it needs less manual intervention and meanwhile span-level classification can be fully parallelized without error propagation. Recently, Luan et al. (2019) utilized the span-based model for information",
+              "url": "https://aclanthology.org/2021.acl-long.372.pdf",
+              "document_sha256": "95b4f4eb42a7f018b2469ff12338de8ff7b377b362400c3ffb6409a9fb237b08"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00808edb120bbdd8a795e029",
+          "url": "https://aclanthology.org/D19-1025/"
+        },
+        "b": {
+          "paper_id": "paper-822dd34f028c95b5a7950fba",
+          "url": "https://aclanthology.org/2021.acl-long.372/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "ce9c4351fdd134cbe3a10a23cc5dda088ea8d90369fc5967c10d4e01a6f57809"
+    },
+    {
+      "id": "edge-2da1430195b55ce36de9038c",
+      "a": "paper-00808edb120bbdd8a795e029",
+      "b": "paper-ef2c705a98836dafcbab3099",
+      "state": {
+        "paper_a": {
+          "title": "Low-Resource Name Tagging Learned with Weakly Labeled Data",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency."
+        },
+        "paper_b": {
+          "title": "Automatic Creation of Named Entity Recognition Datasets by Querying Phrase Representations",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Most weakly supervised named entity recognition (NER) models rely on domain-specific dictionaries provided by experts. This approach is infeasible in many domains where dictionaries do not exist. While a phrase retrieval model was used to construct pseudo-dictionaries with entities retrieved from Wikipedia automatically in a recent study, these dictionaries often have limited coverage because the retriever is likely to retrieve popular entities rather than rare ones. In this study, we present a novel framework, HighGEN, that generates NER datasets with high-coverage pseudo-dictionaries. Specifically, we create entity-rich dictionaries with a novel search method, called phrase embedding search, which encourages the retriever to search a space densely populated with various entities. In addition, we use a new verification process based on the embedding distance between candidate entity mentions and entity types to reduce the false-positive noise in weak labels generated by high-coverage dictionaries. We demonstrate that HighGEN outperforms the previous best model by an average F1 score of 4.7 across five NER benchmark datasets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…NER, the weak labels Ŷ are generated using string matching between a domainspecific dictionary, V , built by experts and the unlabeled sentences, X (Yang et al., 2018; Shang et al., 2018; Peng et al., 2019; Cao et al., 2019; Yang and Katiyar, 2020; Liang et al., 2020; Meng et al., 2021).\nWhile supervised learning relies on the human-annotated labels, Y, to train models, in weakly supervised NER, the weak labels Ŷ are generated using string matching between a domainspecific dictionary, V , built by experts and the unlabeled sentences, X (Yang et al., 2018; Shang et al., 2018; Peng et al., 2019; Cao et al., 2019; Yang and Katiyar, 2020; Liang et al., 2020; Meng et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00808edb120bbdd8a795e029",
+          "b": "paper-ef2c705a98836dafcbab3099",
+          "input_sha256": "6f6cbde327a7051c0c2486c95ecbf2b7c8525596f595c2435b81ec7e21c46195",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1025/",
+              "pdf_url": "https://aclanthology.org/D19-1025.pdf",
+              "sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.394/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.394.pdf",
+              "sha256": "a383f70ef732d40cf04b22d6e2ad3712874e9b921f47751a40ad6c8ae21d088f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Name tagging in low-resource languages or domains suffers from inadequate training data. Existing work heavily relies on additional information, while leaving those noisy annotations unexplored that extensively exist on the web. In this paper, we propose a novel neural model for name tagging solely based on weakly labeled (WL) data, so that it can be applied in any low-resource settings. To take the best advantage of all WL sentences, we split them into high-quality and noisy portions for two modules, respectively: (1) a classification module focusing on the large portion of noisy data can efficiently and robustly pretrain the tag classifier by capturing textual context semantics; and (2) a costly sequence labeling module focusing on high-quality data utilizes Partial-CRFs with non-entity sampling to achieve global optimum. Two modules are combined via shared parameters. Extensive experiments involving five low-resource languages and fine-grained food domain demonstrate our superior performance (6% and 7.8% F1 gains on average) as well as efficiency1 .",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "et al., 2016), which has became a basic architecture due to its superior performance. Nevertheless, NN-CRFs require exhaustive human efforts for training annotations, and may not perform well in low-resource settings (Ni et al., 2017). Many approaches thus focus on transferring cross-domain, cross-task and cross-lingual knowledge into name tagging (Yang et al., 2017; Peng and Dredze, 2016; Mayhew et al., 2017; Pan et al., 2017; Lin et al., 2018; Xie et al., 2018). However, they are usually limited by the extra knowledge resources that are effective only in specific languages or domains. Actually, in many low-resource settings, there are extensive noisy annotations that naturally exist on the web yet to be explored (Ni et al., 2017). In this paper, we propose a novel model for name tagging that maximizes the potential of weakly labeled (WL) data. As shown in Figure 1, s2 is weakly labeled, since only Formula shell and Barangay Ginebra are annotated, leaving the remaining words unannotated. WL data is more practical to obtain, since it is difficult for people to accurately annotate those entities that they do not know or are not interested in. We can construct them from online resources, such as the anchors in Wikipedia. However, the following natures of WL data make learning name tagging from them more challenging: Partially-Labeled Sequence Automatically",
+              "url": "https://aclanthology.org/D19-1025.pdf",
+              "document_sha256": "dabc462138281092b47c9c641c85c720d755a38efbd2f76de15a60f4a07a4500"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "The aim of NER is to identify named entities in text and classify them into predefined entity types. Let D = {X, Y} be a dataset, where X = {xn }N n=1 is a list of N unlabeled sentences and Y = {yn }N n=1 is a list of N corresponding token-level label sequences. While supervised learning relies on the human-annotated labels, Y, to train models, in weakly supervised NER, the weak labels Ŷ are generated using string matching between a domainspecific dictionary, V, built by experts and the unlabeled sentences, X (Yang et al., 2018; Shang et al., 2018; Peng et al., 2019; Cao et al., 2019; Yang and Katiyar, 2020; Liang et al., 2020; Meng et al., 2021). Hand-crafted labeling rules are utilized in another line of studies (Fries et al., 2017; Ratner et al., 2017; Safranchik et al., 2020; Zhao et al., 2021); however, these rules are difficult to apply to new entity types. Recently, Kim et al. (2022) proposed GeNER, in which weak labels are generated with a pseudo-dictionary, V̂, created using a phrase retrieval model. We follow their approach but present an advanced framework for addressing the low-coverage problem and obtaining more entity-rich dictionaries and NER datasets. 2.2",
+              "url": "https://aclanthology.org/2023.acl-long.394.pdf",
+              "document_sha256": "a383f70ef732d40cf04b22d6e2ad3712874e9b921f47751a40ad6c8ae21d088f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "tion. Low-coverage dictionaries created from these biased results can cause incomplete annotations (i.e., false-negative entities), which impedes the training of NER models. Unfortunately, increasing the number of retrieved phrases (i.e., larger top-k) is not an appropriate solution because it is computationally inefficient and causes a high falsepositive rate in the dictionary. Therefore, a new search method that can efficiently retrieve diverse entities with a reasonable top-k and a new NER dataset generation framework based on this search method are needed. In this study, we present HighGEN, an advanced framework for generating NER datasets with automatically constructed ‘high-coverage’ dictionaries. Specifically, we first obtain phrases and sentences and constitute an initial dictionary in a similar manner to GeNER. Subsequently, we expand the initial dictionary using a phrase embedding search, in which the embeddings of the retrieved phrases are averaged to re-formulate query vectors. These new queries specify contexts in which different entities of the same type appear, allowing our retriever to search over a vector space in which various entities are densely populated.1 The expanded dictionary is used to annotate the retrieved sentences. Because a larger dictionary can induce more false-positive annotations during rule-based string matching, we introduce a new verification process to ensure that weak labels annotated by the string matching are correct. The verification process is performed by comparing the distance between the embeddings of a candidate entity and the target entity type. We trained recent NER models (Liu et al., 2019; Lee et al., 2020; Liang et al., 2020; Meng et al., 2021) with the datasets generated by HighGEN and evaluated the models on five",
+              "url": "https://aclanthology.org/2023.acl-long.394.pdf",
+              "document_sha256": "a383f70ef732d40cf04b22d6e2ad3712874e9b921f47751a40ad6c8ae21d088f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose a HighGEN framework that generates NER datasets with entity-rich dictionaries that are automatically constructed from unlabeled Wikipedia corpus. • We present two novel methods in HighGEN: (i) phrase embedding search to overcome the limitations of the current open-domain phrase retriever and successfully increase the entity recall rate and (ii) distance-based verification to effectively reduce the false-positive noise in weak labels. • HighGEN outperformed the previous-best weakly-supervised model GeNER by an F1 score of 4.7 on five datasets. In few-shot NER, HighGEN created datasets using few-shot examples as queries and outperformed current few-shot NER models on two datasets.",
+              "url": "https://aclanthology.org/2023.acl-long.394.pdf",
+              "document_sha256": "a383f70ef732d40cf04b22d6e2ad3712874e9b921f47751a40ad6c8ae21d088f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00808edb120bbdd8a795e029",
+          "url": "https://aclanthology.org/D19-1025/"
+        },
+        "b": {
+          "paper_id": "paper-ef2c705a98836dafcbab3099",
+          "url": "https://aclanthology.org/2023.acl-long.394/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "8efb97caa3e2671b084b83d37f27123d13cad361d1c60c8c3c7b207769092f73"
+    },
+    {
+      "id": "edge-5abc694cb828f3a37c518cc7",
+      "a": "paper-013511511f3b15c0617a9d1c",
+      "b": "paper-f47f62189dec78e31b4a8640",
+      "state": {
+        "paper_a": {
+          "title": "Men Are Elected, Women Are Married: Events Gender Bias on Wikipedia",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Human activities can be seen as sequences of events, which are crucial to understanding societies. Disproportional event distribution for different demographic groups can manifest and amplify social stereotypes, and potentially jeopardize the ability of members in some groups to pursue certain goals. In this paper, we present the first event-centric study of gender biases in a Wikipedia corpus. To facilitate the study, we curate a corpus of career and personal life descriptions with demographic information consisting of 7,854 fragments from 10,412 celebrities. Then we detect events with a state-of-the-art event detection model, calibrate the results using strategically generated templates, and extract events that have asymmetric associations with genders. Our study discovers that the Wikipedia pages tend to intermingle personal life events with professional events for females but not for males, which calls for the awareness of the Wikipedia community to formalize guidelines and train the editors to mind the implicit biases that contributors carry. Our work also lays the foundation for future works on quantifying and discovering event biases at the corpus level."
+        },
+        "paper_b": {
+          "title": "DEGREE: A Data-Efficient Generation-Based Event Extraction Model",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Event extraction requires high-quality expert human annotations, which are usually expensive. Therefore, learning a data-efficient event extraction model that can be trained with only a few labeled examples has become a crucial challenge. In this paper, we focus on low-resource end-to-end event extraction and propose DEGREE, a data-efficient model that formulates event extraction as a conditional generation problem. Given a passage and a manually designed prompt, DEGREE learns to summarize the events mentioned in the passage into a natural sentence that follows a predefined pattern. The final event predictions are then extracted from the generated sentence with a deterministic algorithm. DEGREE has three advantages to learn well with less training data. First, our designed prompts provide semantic guidance for DEGREE to leverage DEGREE and thus better capture the event arguments. Moreover, DEGREE is capable of using additional weakly-supervised information, such as the description of events encoded in the prompts. Finally, DEGREE learns triggers and arguments jointly in an end-to-end manner, which encourages the model to better utilize the shared knowledge and dependencies among them. Our experimental results demonstrate the strong performance of DEGREE for low-resource event extraction."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": ", 2021), and other downstream studies (Han et al., 2019a; Hogenboom et al., 2016; Sun and Peng, 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-013511511f3b15c0617a9d1c",
+          "b": "paper-f47f62189dec78e31b4a8640",
+          "input_sha256": "d7b00f2095212e4c2a23aa80d6685574b896d6ce9363a388ff1c614509efc16d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-short.45/",
+              "pdf_url": "https://aclanthology.org/2021.acl-short.45.pdf",
+              "sha256": "53d7f986e7d70274d1911c860bfa9e5ef24af77be408bcbaeee1fab264237e09"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.naacl-main.138/",
+              "pdf_url": "https://aclanthology.org/2022.naacl-main.138.pdf",
+              "sha256": "cc09cc114e8bd12fea24bdbbeb4e8d27a4a30b1654b5a3f63224e727a9c0a3a0"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "could have a significant impact on audiences’ perception of different groups, thus propagating and even amplifying societal biases. Therefore, analyzing potential biases in Wikipedia is imperative. In particular, studying events in Wikipedia is important. An event is a specific occurrence under a certain time and location that involves participants (Yu et al., 2015); human activities are essentially sequences of events. Therefore, the distribution and perception of events shape the understanding of society. Rashkin et al. (2018) discovered implicit gender biases in film scripts using events as a lens. For example, they found that events with female agents are intended to be helpful to other people, while events with male agents are motivated by achievements. However, they focused on the intentions and reactions of events rather than events themselves. In this work, we propose to use events as a lens to study gender biases and demonstrate that events are more efficient for understanding biases in corpora than raw texts. We define gender bias as the",
+              "url": "https://aclanthology.org/2021.acl-short.45.pdf",
+              "document_sha256": "53d7f986e7d70274d1911c860bfa9e5ef24af77be408bcbaeee1fab264237e09"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "asymmetric association of events with females and males,1 which may lead to gender stereotypes. For example, females are more associated with domestic activities than males in many cultures (Leopold, 2018; Jolly et al., 2014). To facilitate the study, we collect a corpus that contains demographic information, personal life description, and career description from Wikipedia.2 We first detect events in the collected corpus using a state-of-the-art event extraction model (Han et al., 2019). Then, we extract gender-distinct events with a higher chance to occur for one group than the other. Next, we propose a calibration technique to offset the potential confounding of gender biases in the event extraction model, enabling us to focus on the gender biases at the corpus level. Our contributions are three-fold: • We contribute a corpus of 7,854 fragments from 10,412 celebrities across 8 occupations including their demographic information and Wikipedia Career and Personal Life sections. • We propose using events as a lens to study gender biases at the corpus level, discover a mixture of personal life and professional life for females but not for males, and demonstrate the efficiency of using events in comparison to directly analyzing the raw texts. • We propose a generic framework to analyze event gender bias, including a calibration technique to offset the potential confounding of gender biases in the event extraction model.",
+              "url": "https://aclanthology.org/2021.acl-short.45.pdf",
+              "document_sha256": "53d7f986e7d70274d1911c860bfa9e5ef24af77be408bcbaeee1fab264237e09"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Fincke et al., 2021) usually divides EE into two subtasks: (1) event detection, which identifies event triggers and their types, and (2) event argument extraction, which extracts the arguments and their roles for given event triggers. EE has been shown to benefit a wide range of applications, e.g., building knowledge graphs (Zhang et al., 2020), question answering (Berant et al., 2014; Han et al., 2021), and other downstream studies (Han et al., 2019a; Hogenboom et al., 2016; Sun and Peng, 2021). Most prior works on EE rely on a large amount of annotated data for training (Nguyen and Grishman, 2015; Nguyen et al., 2016; Han et al., 2019b; Du and Cardie, 2020; Huang et al., 2020; Huang and Peng, 2021; Paolini et al., 2021). However, high-quality event annotations are expensive to obtain. For example, the ACE 2005 corpus (Doddington et al., 2004), one of the most widely used EE datasets, requires two rounds of annotations by linguistics experts. The high annotation costs make these models hard to be extended to new domains and new event types. Therefore, how to learn a data-efficient EE model trained with only a few annotated examples is a crucial challenge. In this paper, we focus on low-resource event extraction, where only a small amount of training examples are available for training. We propose D EGREE (Data-Efficient GeneRation-Based Event Extraction), a generation-based model that takes a passage and a manually designed prompt as the input, and learns to summarize the passage into a",
+              "url": "https://aclanthology.org/2022.naacl-main.138.pdf",
+              "document_sha256": "cc09cc114e8bd12fea24bdbbeb4e8d27a4a30b1654b5a3f63224e727a9c0a3a0"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "ple, previous classification-based models (Nguyen et al., 2016; Wang et al., 2019; Yang et al., 2019b; Wadden et al., 2019; Lin et al., 2020) can hardly encode label semantics and other weak supervision signals. Recently proposed generation-based models for event extraction solved the problem in a pipeline fashion; therefore, they cannot leverage shared knowledge between subtasks (Paolini et al., 2021; Li et al., 2021). Furthermore, their generated outputs are not natural sentences, which hinders the utilization of label semantics (Paolini et al., 2021; Lu et al., 2021). As a result, our model D EGREE can achieve significantly better performance than prior approaches on low-resource event extraction, as we will demonstrate in Section 3. Our contributions can be summarized as follows: • We propose D EGREE, a generation-based event extraction model that learns well with less data by better incorporating label semantics and shared knowledge between subtasks (Section 2). • Experiments on ACE 2005 (Doddington et al., 2004) and ERE-EN (Song et al., 2015) demonstrate the strong performance of D EGREE in the low-resource setting (Section 3). • We present comprehensive ablation studies in both the low-resource and the high-resource setting to better understand the strengths and weaknesses of our model (Section 4). Our code and models can be found at https: //github.com/PlusLabNLP/DEGREE.",
+              "url": "https://aclanthology.org/2022.naacl-main.138.pdf",
+              "document_sha256": "cc09cc114e8bd12fea24bdbbeb4e8d27a4a30b1654b5a3f63224e727a9c0a3a0"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce D EGREE, a generation-based model for low-resource event extraction. Unlike previous works (Yang et al., 2019a; Li et al., 2021), which separate event extraction into two pipelined tasks (event detection and event argument extraction), D EGREE is designed for the end-to-end event extraction and predict event triggers and arguments at the same time. 2.1 The D EGREE Model We formulate event extraction as a conditional generation problem. As illustrated in Figure 2, given a passage and our designed prompt, D EGREE generates an output following a particular format. The final predictions of event triggers and argument roles can be then parsed from the generated output with a deterministic algorithm. Compared to previous classification-based models (Wang et al., 2019; Yang et al., 2019b; Wadden et al., 2019; Lin et al., 2020), the generation framework provides a flexible way to include additional information and guidance. By designing appropriate prompts, we encourage D EGREE to better capture the dependencies between entities and, therefore, to reduce the number of training examples needed. The desired prompt not only provides information but also defines the output format. As shown in Figure 2, it contains the following components: • Event type definition describes the definition for the given event type.1 For example, “The event is related to conflict and some violent physical act.” describes a Conflict:Attack event. • Event keywords presents some words that are semantically related to the given event type. For example, war, attack, and terrorism are three event keywords for the Conflict:Attack event. In practice, we collect three words that appear as the triggers in the example sentences from the annotation guidelines. • E2E template defines the expected",
+              "url": "https://aclanthology.org/2022.naacl-main.138.pdf",
+              "document_sha256": "cc09cc114e8bd12fea24bdbbeb4e8d27a4a30b1654b5a3f63224e727a9c0a3a0"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-013511511f3b15c0617a9d1c",
+          "url": "https://aclanthology.org/2021.acl-short.45/"
+        },
+        "b": {
+          "paper_id": "paper-f47f62189dec78e31b4a8640",
+          "url": "https://aclanthology.org/2022.naacl-main.138/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "1a6eff2fc803683e3e4ddef3d999ae83484a8df088c952dbf83f7d24f4a9eb33"
+    },
+    {
+      "id": "edge-2099ff3f53e82a625c80a2fc",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-ff27de982293b2398df23521",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Best of Both Worlds: Towards Improving Temporal Knowledge Base Question Answering via Targeted Fact Extraction",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Temporal question answering (QA) is a special category of complex question answering task that requires reasoning over facts asserting time intervals of events. Previous works have predominately relied on Knowledge Base Question Answering (KBQA) for temporal QA. One of the major challenges faced by these systems is their inability to retrieve all relevant facts due to factors such as incomplete KB and entity/relation linking errors. A failure to fetch even a single fact will block KBQA from computing the answer. Such cases of KB incompleteness are even more profound in the temporal context. To address this issue, we explore an interesting direction where a targeted temporal fact extraction technique is used to assist KBQA whenever it fails to retrieve temporal facts from the KB. We model the extraction problem as an open-domain question answering task using off-the-shelf language models. This way, we target to extract from textual resources those facts that failed to get retrieved from the KB. Experimental results on two temporal QA benchmarks show promising ~30% & ~10% relative improvements in answer accuracies without any additional training cost."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "A state-of-the-art open-domain-QA system called RAG (Lewis et al., 2020) that answers purely from text.\nRAG consists of a retriever based on Dense Passage retrieval (DPR) and a generator based on BART jointly trained.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-ff27de982293b2398df23521",
+          "input_sha256": "eadccf4f72242328d8d715ed530338d7ac701448efbf52159dd24321f25e8865",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.emnlp-main.287/",
+              "pdf_url": "https://aclanthology.org/2023.emnlp-main.287.pdf",
+              "sha256": "074ecdd29e48d118b4301a986e6a8196a6a9a3eedcea3be10b717d73268b6f67"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "2) KB+TemporalText - extracting temporal facts only from text and the remaining facts from KB, and 3) Open-Domain-QA - A state-of-the-art opendomain-QA system called RAG (Lewis et al., 2020) that answers purely from text. RAG consists of a retriever based on Dense Passage retrieval (DPR) and a generator based on BART jointly trained. We refer the readers to the original paper for more details on this baseline. 3.1",
+              "url": "https://aclanthology.org/2023.emnlp-main.287.pdf",
+              "document_sha256": "074ecdd29e48d118b4301a986e6a8196a6a9a3eedcea3be10b717d73268b6f67"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "For KBQA pipeline, we adopt a modular design as in (Neelam et al., 2022a; Kapanipathi et al., 2021), with two high-level modules: (1) Question Understanding to derive logical semantic representation of the NL question and to further decompose it. (2) KB Linking and Answering to ground the Entity and Relation mentions in the logical representation onto the KB. Both these modules in our approach are similar to (Neelam et al., 2022a) except for the event specific decomposition described next. We use λ-expression constructed from Abstract Meaning Representation (AMR)(Banarescu et al., 2013) for logical semantic representation of the questions (Neelam et al., 2022a). Figure 1 gives an illustration of NL question, its AMR and λexpression. As shown, the λ-expression compactly represents the mentions of events in the question as its sub-components, facts about those events needed from the knowledge source, and the reasoning steps needed to derive the final answer. We decompose λ-expression into two components to help localize the points of KB failures: 1) Main-λ: Part of the λ-expression related to the unknown variable, i.e., main event being questioned. In Figure 1, a is the unknown variable, whose value if found is the answer. 2) Aux-λ: part of the λ-expression not related to the unknown variable, but related to the other events in the question as shown in Figure 1 . This part adds temporal constraints on the answer candidates. We use a simple rule-based approach to perform this decomposition, where unknown variable is used as anchor to segregate the respective components. We provide additional details in A.1. 2.2",
+              "url": "https://aclanthology.org/2023.emnlp-main.287.pdf",
+              "document_sha256": "074ecdd29e48d118b4301a986e6a8196a6a9a3eedcea3be10b717d73268b6f67"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "In this paper, we propose an approach to combine the knowledge resources of KB (structured) and text (unstructured) for temporal QA by using textual resources to aid wherever KBQA fails. In our approach, a semantic representation of the question as λ-expression is used to represent the set of facts and reasoning required to answer a question. Those facts that failed to get fetched from KBQA are extracted from the textual resources using RCQA style fact extraction. This way, we perform targeted extraction of temporal facts to compensate for KBQA failures. The results of experimental evaluation on two temporal QA benchmark show the effectiveness of our approach even without any additional training cost. We additionally conduct error analysis to highlight the scope of improvement in order to guide future work.",
+              "url": "https://aclanthology.org/2023.emnlp-main.287.pdf",
+              "document_sha256": "074ecdd29e48d118b4301a986e6a8196a6a9a3eedcea3be10b717d73268b6f67"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-ff27de982293b2398df23521",
+          "url": "https://aclanthology.org/2023.emnlp-main.287/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "248c68924b5924d1a39eac761db7b1ac5005ce37a540d28fea1a6e9d98dde682"
+    },
+    {
+      "id": "edge-82d8b002627dcbc2cf4e75e8",
+      "a": "paper-02678819c708f5e4ea88fd14",
+      "b": "paper-f4d51e2bdcacb4273e01c803",
+      "state": {
+        "paper_a": {
+          "title": "Uncertainty Estimation Using a Single Deep Deterministic Neural Network",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN."
+        },
+        "paper_b": {
+          "title": "Uncertainty Guided Label Denoising for Document-level Distant Relation Extraction",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Document-level relation extraction (DocRE) aims to infer complex semantic relations among entities in a document. Distant supervision (DS) is able to generate massive auto-labeled data, which can improve DocRE performance. Recent works leverage pseudo labels generated by the pre-denoising model to reduce noise in DS data. However, unreliable pseudo labels bring new noise, e.g., adding false pseudo labels and losing correct DS labels. Therefore, how to select effective pseudo labels to denoise DS data is still a challenge in document-level distant relation extraction. To tackle this issue, we introduce uncertainty estimation technology to determine whether pseudo labels can be trusted. In this work, we propose a Document-level distant Relation Extraction framework with Uncertainty Guided label denoising, UGDRE. Specifically, we propose a novel instance-level uncertainty estimation method, which measures the reliability of the pseudo labels with overlapping relations. By further considering the long-tail problem, we design dynamic uncertainty thresholds for different types of relations to filter high-uncertainty pseudo labels. We conduct experiments on two public datasets. Our framework outperforms strong baselines by 1.91 F1 and 2.28 Ign F1 on the RE-DocRED dataset."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Uncertainty Estimation (UE) is a vital technology for misclassification detection (Vazhentsev et al., 2022), out-of-distribution instances detection (Van Amersfoort et al., 2020), and active learning (Burkhardt et al., 2018).\nFinally, group bilinear (Van Amersfoort et al., 2020) is utilized to obtain the probabilities { p cij } N c c =1 of each class c for the entity pair ( e i , e j ) to predict relation types.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02678819c708f5e4ea88fd14",
+          "b": "paper-f4d51e2bdcacb4273e01c803",
+          "input_sha256": "58b017a7aa662ae71d5ebf3288718d1ef458d2c2c0c4cad723892c18d8150a70",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.889/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.889.pdf",
+              "sha256": "74208d8758b71cc0aea53154736696a86da1238706ef61a4721bf9876b56b204"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "5. Conclusion We introduced DUQ, Deterministic Uncertainty Quantification, a simple method for obtaining uncertainty using a deep neural network in a single forward pass. Evaluations show that our method is better in some scenarios and competitive in others with the more computationally expensive Deep Ensembles. Interesting future work would be to place DUQ in a probabilistic framework, enabling a calibrated notion of uncertainty and a rigorous way of separating out epistemic and aleatoric uncertainty.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Following Zhou et al. (2021), we also apply logsumexp pooling (Jia et al., 2019) to obtain entity representations {ei }qi=1 . Finally, group bilinear (Van Amersfoort et al., 2020) is utilized to obtain c the probabilities {pcij }N c=1 of each class c for the entity pair (ei , ej ) to predict relation types. 3.3 Instance-level Uncertainty Estimation Uncertainty Estimation (UE) is a vital technology for misclassification detection (Vazhentsev et al., 2022), out-of-distribution instances detection (Van Amersfoort et al., 2020), and active learning (Burkhardt et al., 2018). In order to model the uncertainty in pre-denoising DocRE model, we introduce the Monte Carlo (MC) dropout (Gal and Ghahramani, 2016) technology into the DocRE task. As a popular UE technology, MC dropout is formally equivalent to approximate Bayesian inference in deep Gaussian processes (Gal and Ghahramani, 2016). This method requires multiple stochastic forward-pass predictions with activated dropout to capture the model uncertainty.",
+              "url": "https://aclanthology.org/2023.acl-long.889.pdf",
+              "document_sha256": "74208d8758b71cc0aea53154736696a86da1238706ef61a4721bf9876b56b204"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Document-level relation extraction (DocRE) aims to infer complex semantic relations among entities in a document. Distant supervision (DS) is able to generate massive auto-labeled data, which can improve DocRE performance. Recent works leverage pseudo labels generated by the pre-denoising model to reduce noise in DS data. However, unreliable pseudo labels bring new noise, e.g., adding false pseudo labels and losing correct DS labels. Therefore, how to select effective pseudo labels to denoise DS data is still a challenge in document-level distant relation extraction. To tackle this issue, we introduce uncertainty estimation technology to determine whether pseudo labels can be trusted. In this work, we propose a Documentlevel distant Relation Extraction framework with Uncertainty Guided label denoising, UGDRE. Specifically, we propose a novel instancelevel uncertainty estimation method, which measures the reliability of the pseudo labels with overlapping relations. By further considering the long-tail problem, we design dynamic uncertainty thresholds for different types of relations to filter high-uncertainty pseudo labels. We conduct experiments on two public datasets. Our framework outperforms strong baselines by 1.91 F1 and 2.28 Ign F1 on the RE-DocRED dataset. 1",
+              "url": "https://aclanthology.org/2023.acl-long.889.pdf",
+              "document_sha256": "74208d8758b71cc0aea53154736696a86da1238706ef61a4721bf9876b56b204"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "their provided document-level distant relation extraction dataset. Current efforts (Xiao et al., 2020; Tan et al., 2022a) to alleviate the noise problem mainly employ a pre-denoising model. They train a DocRE model on human-annotated data first and then re-label DS data by the trained model. However, the above methods still persist the risk of noise induction in the DS data due to false positive re-labeling. Besides, false negative pseudo labels also lead to the loss of effective labels in DS data. As shown in Figure 1, we obtain an extra false instance (The Last Days of Pompeii, Mario Bonnard, composer) and lose the correct DS instance (Mario Bonnard , Rome, place of birth), when merely relying on pseudo labels. Thus, how to mitigate noise caused by pseudo labels and take full advantage of DS data is still a challenge in document-level distant RE. In this work, we propose a Document-level distant Relation Extraction framework with Uncertainty Guided label denoising, UGDRE. We first train a pre-denoising DocRE model with both DS and human-annotated data to generate pseudo labels. Since false pseudo labels predicted by the pre-denoising model are inevitable, we introduce Uncertainty Estimation (UE) to determine whether model predictions can be trusted or not. As shown in Figure 1, we can remove the false positive pseudo instance (The Last Days of Pompeii, Mario Bonnard, composer) according to its high uncertainty score. In this way, we can abstain from unreliable decisions of the pre-denoising model, which can mitigate the risk of false pseudo labels. Considering there might be multiple relations between an entity pair, we propose an instance-level UE method to capture uncertainty scores for overlapping relations. Moreover, we design a re-labeling strategy with dynamic",
+              "url": "https://aclanthology.org/2023.acl-long.889.pdf",
+              "document_sha256": "74208d8758b71cc0aea53154736696a86da1238706ef61a4721bf9876b56b204"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02678819c708f5e4ea88fd14",
+          "url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html"
+        },
+        "b": {
+          "paper_id": "paper-f4d51e2bdcacb4273e01c803",
+          "url": "https://aclanthology.org/2023.acl-long.889/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "7c4e85f2ee93f37985e56f3f05e2447d4ebe50a4d8105f0900e56b8b8eb5a1ed"
+    },
+    {
+      "id": "edge-6a3100e8583e8621b834eed8",
+      "a": "paper-02c4217fbaf1aeda98c38dd0",
+      "b": "paper-c6387dd2796201cc929fe800",
+      "state": {
+        "paper_a": {
+          "title": "Spectral Clustering with Graph Neural Networks for Graph Pooling",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Spectral clustering (SC) is a popular clustering technique to find strongly connected communities on a graph. SC can be used in Graph Neural Networks (GNNs) to implement pooling operations that aggregate nodes belonging to the same cluster. However, the eigendecomposition of the Laplacian is expensive and, since clustering results are graph-specific, pooling methods based on SC must perform a new optimization for each new sample. In this paper, we propose a graph clustering approach that addresses these limitations of SC. We formulate a continuous relaxation of the normalized minCUT problem and train a GNN to compute cluster assignments that minimize this objective. Our GNN-based implementation is differentiable, does not require to compute the spectral decomposition, and learns a clustering function that can be quickly evaluated on out-of-sample graphs. From the proposed clustering method, we design a graph pooling operator that overcomes some important limitations of state-of-the-art graph pooling techniques and achieves the best performance in several supervised and unsupervised tasks."
+        },
+        "paper_b": {
+          "title": "RelU-Net: Syntax-aware Graph U-Net for Relational Triple Extraction",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Relational triple extraction is a critical task for natural language processing. Existing methods mainly focused on capturing semantic information, but suffered from ignoring the syntactic structure of the sentence, which is proved in the relation classification task to contain rich relational information. This is due to the absence of entity locations, which is the prerequisite for pruning noisy edges from the dependency tree, when extracting relational triples. In this paper, we propose a unified framework to tackle this challenge and incorporate syntactic information for relational triple extraction. First, we propose to automatically contract the dependency tree into a core relational topology and eliminate redundant information with graph pooling operations. Then, we propose a symmetrical expanding path with graph unpooling operations to fuse the contracted core syntactic interactions with the original sentence context. We also propose a bipartite graph matching objective function to capture the reflections between the core topology and golden relational facts. Since our model shares similar contracting and expanding paths with encoder-decoder models like U-Net, we name our model as Relation U-Net (RelU-Net). We conduct experiments on several datasets and the results prove the effectiveness of our method."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Next, we utilize the spectral-clustering MinCut pooling (Bianchi et al., 2020) operations to aggregate nodes with strong syntactic connections and similar semantic features.\nWe utilize MinCut pooling (Bianchi et al., 2020) to cluster similar nodes (words) and hence obtain a core relational topology.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02c4217fbaf1aeda98c38dd0",
+          "b": "paper-c6387dd2796201cc929fe800",
+          "input_sha256": "e14086058539fa1e17ea092789b460317abcb6fac9f90afb5743c2d379e868d5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/bianchi20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/bianchi20a/bianchi20a.pdf",
+              "sha256": "95832efd62d340ef8486d2234a18c8ac728a041336eb1d420cc778858371f3fc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.282/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.282.pdf",
+              "sha256": "ab460c52bbefa87d9e6efef9049a78894a2cf0753afe0771cb06287db5d59917"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Spectral clustering (SC) is a popular clustering technique to find strongly connected communities on a graph. SC can be used in Graph Neural Networks (GNNs) to implement pooling operations that aggregate nodes belonging to the same cluster. However, the eigendecomposition of the Laplacian is expensive and, since clustering results are graph-specific, pooling methods based on SC must perform a new optimization for each new sample. In this paper, we propose a graph clustering approach that addresses these limitations of SC. We formulate a continuous relaxation of the normalized minCUT problem and train a GNN to compute cluster assignments that minimize this objective. Our GNN-based implementation is differentiable, does not require to compute the spectral decomposition, and learns a clustering function that can be quickly evaluated on out-of-sample graphs. From the proposed clustering method, we design a graph pooling operator that overcomes some important limitations of state-of-the-art graph pooling techniques and achieves the best performance in several supervised and unsupervised tasks.",
+              "url": "https://proceedings.mlr.press/v119/bianchi20a/bianchi20a.pdf",
+              "document_sha256": "95832efd62d340ef8486d2234a18c8ac728a041336eb1d420cc778858371f3fc"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "connected communities on a graph. SC can be used to perform pooling in GNNs by aggregating nodes belonging to the same cluster (Bruna et al., 2013; Defferrard et al., 2016), although the approaches based on this technique suffer from the aforementioned issues of model-free pooling methods. In particular, SC does not explicitly account for the node attributes and the eigendecomposition of the Laplacian is a non-differentiable and expensive operation. Additionally, pooling methods based on SC must compute the spectral decomposition even at test time, since the decomposition is unique for each new graph. We propose a graph clustering approach that addresses the limitations that hinder the applicability of SC in GNNs. Specifically, we formulate a continuous relaxation of the normalized minCUT problem and train a GNN to compute cluster assignments by optimizing this objective. Our approach learns the solution found by SC while also accounting explicitly for the node features to identify clusters. At the same time, our GNN-based implementation is differentiable and does not require to compute the expensive spectral decomposition of the Laplacian, since it exploits spatially localized graph convolutions that are fast to compute. This also allows to cluster the nodes of out-of-sample graphs simply by evaluating the learned function. From the proposed clustering method, we derive a modelbased pooling operator called MinCutPool, which overcomes the disadvantages of both model-free and modelbased pooling methods. The parameters in a MinCutPool layer are learned by minimizing the minCUT objective, which can be jointly optimized with a task-specific loss. In the latter case, the minCUT loss acts as a regularization term, which prevents degenerate solutions, and the GNN can find the",
+              "url": "https://proceedings.mlr.press/v119/bianchi20a/bianchi20a.pdf",
+              "document_sha256": "95832efd62d340ef8486d2234a18c8ac728a041336eb1d420cc778858371f3fc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "dependency noise thus leads to an insufficient exploration of syntactic and relational information. In this paper, we propose a unified framework to tackle this challenge and incorporate syntactic information for relational triple extraction. First, we propose to reduce the dependency tree and eliminate syntactic noise with graph pooling operations (Figure 1). We utilize MinCut pooling (Bianchi et al., 2020) to cluster similar nodes (words) and hence obtain a core relational topology. Next, we apply the inductive GraphSAGE algorithm (Hamilton et al., 2017) to propagate cluster information and capture the syntactic interactions underlying the core topology. Then, we propose to symmetrically expand the core topology with graph unpooling operations to integrate the syntactic interactions with the original sentence context. Finally, we propose a bipartite graph matching loss to induce the connections in the core topology to reflect golden relational facts, which is similar to the reflections between the dependency paths and golden facts (e.g. Figure 1) in the RC task. Since our model shares similar contracting and expanding paths with encoder-decoder models like UNet (Ronneberger et al., 2015), we name our model as Relation U-Net (RelU-Net). The main contributions of this paper are: • We propose a unified framework to incorporate syntactic structures of the sentence for relation triple extraction. • To eliminate disturbance caused by irrelevant syntactic information, we propose to automatically contract the dependency tree into a core topology with graph pooling operations. • To fuse the syntactic interactions underlying the core topology with the original sentence context, we propose a symmetrical expanding path with graph unpooling operations. • To establish reflections",
+              "url": "https://aclanthology.org/2022.emnlp-main.282.pdf",
+              "document_sha256": "ab460c52bbefa87d9e6efef9049a78894a2cf0753afe0771cb06287db5d59917"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Given the input sentence {w1 , . . . , wn } and its dependency tree, we first convert the words (nodes) into contextual representations with a text encoder such as BERT (Devlin et al., 2019), whose output denoted as E = [E1 , . . . , En ]. Then, we represent the dependency tree with an adjacency matrix ADep , where (ADep )i,j = 1 if there exists a dependency edge between the i-th and the j-th word otherwise 01 . Next, we utilize the spectral-clustering MinCut pooling (Bianchi et al., 2020) operations to aggregate nodes with strong syntactic connections and similar semantic features. By clustering dependency nodes, we merge all irrelevant edges into the supernodes, guiding our model to focus more on critical syntactic interactions between the supernodes, thus reducing the negative impact of noisy contents. Specifically, MinCut pooling (denoted as gPool) captures syntactic interactions with a Graph Convolution Network (GCN, Section 3.1.2) and 1 Following Zhang et al. (2018), we do not use the dependency types due to their limited discriminative power.",
+              "url": "https://aclanthology.org/2022.emnlp-main.282.pdf",
+              "document_sha256": "ab460c52bbefa87d9e6efef9049a78894a2cf0753afe0771cb06287db5d59917"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Relational triple extraction is a critical task for natural language processing. Existing methods mainly focused on capturing semantic information, but suffered from ignoring the syntactic structure of the sentence, which is proved in the relation classification task to contain rich relational information. This is due to the absence of entity locations, which is the prerequisite for pruning noisy edges from the dependency tree, when extracting relational triples. In this paper, we propose a unified framework to tackle this challenge and incorporate syntactic information for relational triple extraction. First, we propose to automatically contract the dependency tree into a core relational topology and eliminate redundant information with graph pooling operations. Then, we propose a symmetrical expanding path with graph unpooling operations to fuse the contracted core syntactic interactions with the original sentence context. We also propose a bipartite graph matching objective function to capture the reflections between the core topology and golden relational facts. Since our model shares similar contracting and expanding paths with encoder-decoder models like U-Net, we name our model as Relation U-Net (RelU-Net). We conduct experiments on several datasets and the results prove the effectiveness of our method.",
+              "url": "https://aclanthology.org/2022.emnlp-main.282.pdf",
+              "document_sha256": "ab460c52bbefa87d9e6efef9049a78894a2cf0753afe0771cb06287db5d59917"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "error propagation and failed to capture the interactions between the entities and relations. To address these issues, end-to-end models for joint extraction of entities and relations have become the dominant paradigm of this task, including feature-based models (Yu and Lam, 2010; Li and Ji, 2014; Ren et al., 2017) and neural network-based models (Miwa and Sasaki, 2014; Gupta et al., 2016; Miwa and Bansal, 2016; Zheng et al., 2017). For example, Ren et al. (2017) proposed to detect relation mentions and their entity arguments with distant supervision. Gupta et al. (2016) proposed to model the inter-dependencies of entities and relations through the entity-relation table proposed by (Miwa and Sasaki, 2014). Zheng et al. (2017) first formulated this task as a sequence tagging problem, but they failed to extract overlapping triples. More recent work developed several strategies to address the overlapping triple problem, including sequence tagging based models (Wei et al., 2020; Wang et al., 2020; Zheng et al., 2021; Chen et al., 2021) and triple generation based models (Zeng et al., 2018, 2019, 2020; Sui et al., 2020; Huguet Cabot and Navigli, 2021). For example, Wei et al. (2020) proposed a cascade tagging scheme to simultaneously identify all possible overlapping triples. Chen et al. (2021) proposed a binary pointer network to extract overlapping relational triples and introduced a relational network to capture relational reasoning patterns for this task. Zeng et al. (2018) proposed a sequence-tosequence triple generation model with copy mechanism, while Sui et al. (2020) proposed to treat this task as a direct set prediction problem. However, these methods mainly focused on learning semantic information of the sentence and usually suffered from ignoring syntactic",
+              "url": "https://aclanthology.org/2022.emnlp-main.282.pdf",
+              "document_sha256": "ab460c52bbefa87d9e6efef9049a78894a2cf0753afe0771cb06287db5d59917"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02c4217fbaf1aeda98c38dd0",
+          "url": "https://proceedings.mlr.press/v119/bianchi20a.html"
+        },
+        "b": {
+          "paper_id": "paper-c6387dd2796201cc929fe800",
+          "url": "https://aclanthology.org/2022.emnlp-main.282/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Entity and Relation Extraction from Text"
+      },
+      "sha256": "bf7bb3da9aa2056198648416a9ae8e5d7daabaca92f00170ea963b00ca0748de"
+    }
+  ]
+}

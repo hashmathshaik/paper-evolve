@@ -1,0 +1,982 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Image Segmentation and Object Detection with Foundation Models",
+  "area": "Multimodal Understanding & Reasoning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-5950189e29ba804fc2e59f12",
+      "a": "paper-04eda0bb06541ce8b0550844",
+      "b": "paper-6641bebe303afcfcee33a3fc",
+      "state": {
+        "paper_a": {
+          "title": "CyCADA: Cycle-Consistent Adversarial Domain Adaptation",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains."
+        },
+        "paper_b": {
+          "title": "Learning Classifiers for Target Domain with Limited or No Labels",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "In computer vision applications, such as domain adaptation (DA), few shot learning (FSL) and zero-shot learning (ZSL), we encounter new objects and environments, for which insufficient examples exist to allow for training “models from scratch,” and methods that adapt existing models, trained on the presented training environment, to the new scenario are required. We propose a novel visual attribute encoding method that encodes each image as a low-dimensional probability vector composed of prototypical part-type probabilities. The prototypes are learnt to be representative of all training data. At test-time we utilize this encoding as an input to a classifier. At test-time we freeze the encoder and only learn/adapt the classifier component to limited annotated labels in FSL; new semantic attributes in ZSL. We conduct extensive experiments on benchmark datasets. Our method outperforms state-of-art methods trained for the specific contexts (ZSL, FSL, DA)."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04eda0bb06541ce8b0550844",
+          "b": "paper-6641bebe303afcfcee33a3fc",
+          "input_sha256": "2d92733a73d342af8f1fa91020ba74d5af6b6059df0fd99b5da6e1da7f5ab38c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/hoffman18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhu19d.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhu19d/zhu19d.pdf",
+              "sha256": "75ca15e903fd9d45b8c93bf27d43208b57adb36c5dabaf39a2ccd814cdfe3508"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains.",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Liu et al., 2017). Such image-space models have only been shown to work for small image sizes and limited domain shifts. A more recent approach (Bousmalis et al., 2017a) was applied to larger images, but in a controlled environment with visually simple images for robotic applications. Image to Image translation techniques, such as CycleGAN (Zhu et al., 2017), have produced visually appealing results which preserve local content in natural scenes, but are not designed with an end task in mind and so may not always preserve semantics. For example, a model adapting from digits taken from Google Street View to handwritten digits can learn to make a printed 8 look like a hand-written 1. We propose Cycle-Consistent Adversarial Domain Adaptation (CyCADA), which adapts representations at both the pixel-level and feature-level while enforcing semantic consistency. We enforce both structural and semantic consistency during adaptation using a cycle-consistency loss (ie. the source should match the source mapped to target mapped back to source) and semantics losses based on a particular visual recognition task. The semantics losses both guide the overall representation to be discriminative and enforce semantic consistency before and after mapping between domains. Our approach offers a unified domain adversarial learning model which combines the interpretability and low level structural consistency of prior image-level approaches (Liu & Tuzel, 2016a; Bousmalis et al., 2017b; Shrivastava et al., 2017; Zhu et al., 2017; Liu et al., 2017) together with the regularization and strong empirical performance of prior feature-level approaches (Ganin & Lempitsky, 2015; Tzeng et al., 2017), as illustrated in Table 1. We apply our CyCADA model to the task of digit recognition across domains",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Methods M→U U→M S→M CoGAN 91.2 89.1 ADDA 89.4 90.1 76.0 UNIT 96.0 93.6 90.5 CyCADA 95.6 96.5 90.4 MSTN 92.9 91.7 Ours (source π) 94.8 96.1 82.4 Ours (joint π) 98.8 96.8 95.2 Table 3. DA classification results. M = MNIST, U = USPS, S = SVHN. The highest accuracy is in bold",
+              "url": "https://proceedings.mlr.press/v97/zhu19d/zhu19d.pdf",
+              "document_sha256": "75ca15e903fd9d45b8c93bf27d43208b57adb36c5dabaf39a2ccd814cdfe3508"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "4.3. Domain Adaptation Datasets. We evaluate our proposed model in unsupervised domain adaptation task between three digits datasets: MNIST(LeCun et al., 1998), USPS and SVHN(Netzer et al., 2011). Each dataset contains 10 classes of digit numbers (09). MNIST and USPS are handwritten digits while SVHN is obtained from house number in google street view images. Setup. We follow the same protocol in (Tzeng et al., 2017), where the adaptation in three directions are validated: MNIST→USPS, USPS→MNIST, and SVHN→MNIST. In the experiments, two variants of our model are evaluated: (1) Ours(source π): During training, the model is purely learned from source data. In this case, `DA reduces to a standard cross-entropy loss on the source domain. In test time, LDVA encoding for target data is based on the source s visual encoder Pm . This model does not utilize any information from the unlabeled target data in the training. (2) Ours(joint π): This model learns the visual encoder from the joint dataset Ds ∪ Dt as described by Eq.(11). Training Details. Ours (source π) is trained on the source domain dataset, as described above. The learning rate for step.A and step.B is 1e-6 and 1e-5. The training epochs are set to be 40, 20, and 40 on MNIST, USPS, and SVHN, respectively. For joint π, we first initialize with weights from trained on our source-π model. Next, the model is trained on the joint dataset Ds ∪ Dt for 10 epochs. The learning rate for step.B is modified to 1e-6. Competing Models. We compare against several state-ofthe-art UDA methods: ADDA (Tzeng et al., 2017), CoGAN (Liu & Tuzel, 2016), UNIT (Liu et al., 2017), CyCADA (Hoffman et al., 2017), MSTN (Xie et al., 2018), and Self-ensembling(French et al., 2017). Results. The results for DA are shown in Table 3. Specifically,",
+              "url": "https://proceedings.mlr.press/v97/zhu19d/zhu19d.pdf",
+              "document_sha256": "75ca15e903fd9d45b8c93bf27d43208b57adb36c5dabaf39a2ccd814cdfe3508"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In computer vision applications, such as domain adaptation (DA), few shot learning (FSL) and zero-shot learning (ZSL), we encounter new objects and environments, for which insufficient examples exist to allow for training “models from scratch,” and methods that adapt existing models, trained on the presented training environment, to the new scenario are required. We propose a novel visual attribute encoding method that encodes each image as a low-dimensional probability vector composed of prototypical part-type probabilities. The prototypes are learnt to be representative of all training data. At test-time we utilize this encoding as an input to a classifier. At test-time we freeze the encoder and only learn/adapt the classifier component to limited annotated labels in FSL; new semantic attributes in ZSL. We conduct extensive experiments on benchmark datasets. Our method outperforms state-of-art methods trained for the specific contexts (ZSL, FSL, DA).",
+              "url": "https://proceedings.mlr.press/v97/zhu19d/zhu19d.pdf",
+              "document_sha256": "75ca15e903fd9d45b8c93bf27d43208b57adb36c5dabaf39a2ccd814cdfe3508"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "collection viewpoints as exemplified by domain adaptation (DA) (Tzeng et al., 2017). Decomposability and Compositionality: We are motivated to respond to these aforementioned challenges without training “models from scratch,” which requires collecting new labeled data, and yet achieving high-accuracy. We propose a novel framework and DNN architecture that addresses these challenges in a unified manner. Our key insight is based on decomposability of objects into proto-typical primitive parts/part-types and compositionality of proto-typical primitive part/part-types to explain new, unseen or modified object classes. This insight is not new and has been employed in a long-line of work particularly in cognitive science to explain human concept learning such as children making meaningful generalization through one-shot learning, parsing objects into parts, and generating new concepts from parts (see (Lake et al., 2015)). While (Lake et al., 2015) advocates a generative Bayesian Program Learning framework to mimic human concept learning and avoid “data-hungry” DNNs altogether, we advocate use of DNNs and situate our work within a discriminative learning framework and employ novel DNN architectures that also obviates the need for new annotated data and realizes high-accuracy. Our Contributions. We propose a novel approach that encodes an input instance as a collection of probability vectors. Each probability vector is associated with a part and represents the mixture of prototypical part types that makeup the part. To do this we train a Multi-Attention CNN (MACNN), which produces a diverse collection of attention regions and associated features masking out uninteresting regions of the image space. These attention regions are decomposed into a suitably small number of",
+              "url": "https://proceedings.mlr.press/v97/zhu19d/zhu19d.pdf",
+              "document_sha256": "75ca15e903fd9d45b8c93bf27d43208b57adb36c5dabaf39a2ccd814cdfe3508"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04eda0bb06541ce8b0550844",
+          "url": "https://proceedings.mlr.press/v80/hoffman18a.html"
+        },
+        "b": {
+          "paper_id": "paper-6641bebe303afcfcee33a3fc",
+          "url": "https://proceedings.mlr.press/v97/zhu19d.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "338c21578271870f79fa7ceb4e5b913b966dab370a7eb6c513ad9162cd8c0700"
+    },
+    {
+      "id": "edge-b7cbe3bc6b4d9cf1410e60dd",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-e91d1265206d796102bd686b",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "A causal view of compositional zero-shot recognition",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "People easily recognize new visual categories that are new combinations of known components. This compositional generalization capacity is critical for learning in real-world domains like vision and language because the long tail of new combinations dominates the distribution. Unfortunately, learning systems struggle with compositional generalization because they often build on features that are correlated with class labels even if they are not \"essential\" for the class. This leads to consistent misclassification of samples from a new distribution, like new combinations of known components."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-e91d1265206d796102bd686b",
+          "input_sha256": "3e5eceda1d4f7f909bfeec315dec3f2e8bec07e887aa29300aadfb68e85077c2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/1010cedf85f6a7e24b087e63235dc12e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/1010cedf85f6a7e24b087e63235dc12e-Paper.pdf",
+              "sha256": "a25bc273c240b75ebc13f5284ddf358c1682866a9df73dc9c4282b6e777759f5"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "semantic question about what defines the class of an object (cauliflower), and assume that it is given or determined by human observers. The second challenge is that the training samples themselves are often labeled in a compositional way, and disentangling their “elementary” components from examples is often an ill-defined problem [38]. For example, for an image labeled as white cauliflower, it is hard to tell which visual features capture being a cauliflower, and which, being white. In models that learn from data the representation of these terms may be inherently entangled, and it would be hard to separate which visual features represent white and which represent a cauliflower. These two challenges are encountered when learning deep discriminative models from data. For example, consider a simple model that learns the concept “cauliflower”, by training a deep model over all cauliflower images (VisProd [44]), and the same for the concept \"white\". At inference time, simply select the most likely attribute â = arg maxa p(a|x) and, independently, the most likely object ô = arg maxo p(o|x). Unfortunately, this model, while quite powerful, tends to be sensitive to training-specific correlations in its input. Here we propose to address compositional recognition by modelling images as being generated, or caused, by real-world entities (labels) (Figure 1). This model recognizes that the distribution p(Image=x|Attr=a, Obj =o) \u0001 is more likely to be stable across the train and test environments ptest (x|a, o) = ptrn (x|a, o) [54, 49, 57]: it means that unlike objects or attributes by themselves, combinations of objects and attributes generate the same distribution over images in train and test. We propose to consider images of unseen combinations as generated by interventions",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/1010cedf85f6a7e24b087e63235dc12e-Paper.pdf",
+              "document_sha256": "a25bc273c240b75ebc13f5284ddf358c1682866a9df73dc9c4282b6e777759f5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "We present a new causal perspective on the problem of recognizing new attribute-object combinations in images. We propose to view inference in this setup as answering the question “which intervention on attribute and object caused the image”. This perspective gives rise to a causal-inspired embedding model. The model learns disentangled representations of attributes and objects although they are dependent in the training data. It provides better accuracy on two benchmark datasets. The trade-off between seen accuracy and unseen accuracy reflects the fact that prior information about co-occurrence of attributes and objects in the training set is useful and predictive. A related problem has been studied in the setting of (non-compositional) generalized zero-shot learning [8]. We suggest that some of these techniques could be adapted to the compositional setting. Several aspects of the model can be further extended by relaxing its assumptions. First, the assumption that image features are normally distributed may be limiting, and alternative ways to model this distribution may improve the model accuracy. Second, the model is premised on the prior knowledge that the attributes and objects have distinct and stable generation processes. However, this prior knowledge may not always be available, or some attribute may not have an obvious physical meaning. E.g. “cute”, “comfortable” or “sporty”, and in a multi-label setting [47] it is challenging to reveal what are the independent generation mechanisms themselves from confounded training data. This paper focused on the case where attributes and objects are fully disentangled. Clearly, in natural language, many attributes and object are used in a way are that makes them dependent. For example, white wine is actually yellow, and",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/1010cedf85f6a7e24b087e63235dc12e-Paper.pdf",
+              "document_sha256": "a25bc273c240b75ebc13f5284ddf358c1682866a9df73dc9c4282b6e777759f5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "(1) Causal. Our approach as described in Section 5. For Zappos it also learns a single layer network to project the pretrained image features to the feature space X . We also evaluate a variant named Causal λindep=0, which nulls the loss terms that encourage the conditional independence relations (2) VisProd: A common discriminatively-trained baseline [45, 42]. It uses two classifiers over image features to predict the attribute and object independently, and approximates p(a, o|x)∼p(a|x)p(o|x). (3) VisProd&CI: A discriminatively-trained variant of our model. We use VisProd as a vanilla model, regularized by the conditional independence loss Lindep , where we use the top network layer activations of attributes and objects as proxies for φ̂a , φ̂o . (4) LE: Label embedding [45] trains a neural network to embed images and attribute-object labels to a joint feature space. LE is a vanilla baseline because it approximately models p(x|a, o), but without modelling the core-features. (5) ATTOP: Attributes-as-operators [45] views attributes as operators over the embedding space of object label-embeddings. We use the code of [45] to train ATTOP and LE. (6) TMN: Task-modular-networks [50] trains a set of network modules jointly with a gating network. The gate rewires the modules according to embeddings of attributes and objects. We used the implementation provided by the authors and followed their grid for hyperparameter search (details in suppl.). Our results differ on Zappos because we report an average over 5 random initializations rather than a single initialization as reported in [50]. Some random initializations reproduce well their reported AUC metric. We explicitly avoid using prior knowledge in the form of pretrained label embeddings, because we are interested to quantify",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/1010cedf85f6a7e24b087e63235dc12e-Paper.pdf",
+              "document_sha256": "a25bc273c240b75ebc13f5284ddf358c1682866a9df73dc9c4282b6e777759f5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-e91d1265206d796102bd686b",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/1010cedf85f6a7e24b087e63235dc12e-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "32caef33f7ab62e029c8bfd23a290466323dc552d3437f213e72c53c696d9d69"
+    },
+    {
+      "id": "edge-145a96b2b6c0414de705b4aa",
+      "a": "paper-00c9c075b5dd083f50ac13e9",
+      "b": "paper-7904acd5bfff14db25872291",
+      "state": {
+        "paper_a": {
+          "title": "VICRegL: Self-Supervised Learning of Local Visual Features",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Most recent self-supervised methods for learning image representations focus on either producing a global feature with invariance properties, or producing a set of local features. The former works best for classification tasks while the latter is best for detection and segmentation tasks. This paper explores the fundamental trade-off between learning local and global features. A new method called VICRegL is proposed that learns good global and local features simultaneously, yielding excellent performance on detection and segmentation tasks while maintaining good performance on classification tasks. Concretely, two identical branches of a standard convolutional net architecture are fed two differently distorted versions of the same image. The VICReg criterion is applied to pairs of global feature vectors. Simultaneously, the VICReg criterion is applied to pairs of local feature vectors occurring before the last pooling layer. Two local feature vectors are attracted to each other if their l2-distance is below a threshold or if their relative locations are consistent with a known geometric transformation between the two input images. We demonstrate strong performance on linear classification and segmentation transfer tasks. Code and pretrained models are publicly available at: https://github.com/facebookresearch/VICRegL"
+        },
+        "paper_b": {
+          "title": "SANSA: Unleashing the Hidden Semantics in SAM2 for Few-Shot Segmentation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Few-shot segmentation aims to segment unseen categories from just a handful of annotated examples. This requires mechanisms to identify semantically related objects across images and accurately produce masks. We note that Segment Anything 2 (SAM2), with its prompt-and-propagate mechanism, provides strong segmentation capabilities and a built-in feature matching process. However, we show that its representations are entangled with task-specific cues optimized for object tracking, which impairs its use for tasks requiring higher level semantic understanding. Our key insight is that, despite its class-agnostic pretraining, SAM2 already encodes rich semantic structure in its features. We propose SANSA (Semantically AligNed Segment Anything 2), a framework that makes this latent structure explicit, and repurposes SAM2 for few-shot segmentation through minimal task-specific modifications. SANSA achieves state-of-the-art on few-shot segmentation benchmarks designed to assess generalization and outperforms generalist methods in the popular in-context setting. Additionally, it supports flexible promptable interaction via points, boxes, or scribbles, and remains significantly faster and more compact than prior approaches. Code at: https://github.com/ClaudiaCuttano/SANSA."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…this interpretation, based on the observation that SAM2 pretraining, focused on instance matching across frames, shares similarities with self-supervised learning frameworks [77, 76, 29, 5], which are known to elicit semantic understanding by enforcing feature invariance across views [11, 4].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00c9c075b5dd083f50ac13e9",
+          "b": "paper-7904acd5bfff14db25872291",
+          "input_sha256": "5d0251558e5e6c90f7ae8f22cf861091800539c82a79ffaa0197194699663edd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/39cee562b91611c16ac0b100f0bc1ea1-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/39cee562b91611c16ac0b100f0bc1ea1-Paper-Conference.pdf",
+              "sha256": "a6c2afea333b4b98b4769fde5c67c0f3a4e5d769a67b3ed5c891c2c006e6c6f0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac6ab84809cef04dbe11e9b80d63c281-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "segmentation masks [Hénaff et al., 2021], which can be done online [Hénaff et al., 2022], but with an additional computational burden. We argue that more complex reasoning systems should be structured in a hierarchical way, by learning at several scales. To this end, we propose VICRegL, a method that learn features at a global scale, and that additionally uses spatial information, and matches feature vectors that are either pooled from close-by regions in the original input image, or close in the embedding space, therefore learning features at a local scale. In practice, the global VICReg criterion [Bardes et al., 2022] is applied to pairs of feature vectors, before and after the final pooling layer of a convolutional network, thus learning local and global features at the same time. When a segmentation mask is available as in [Hénaff et al., 2021], feature vectors that correspond to the same region in the mask can be pooled together, and compared using a contrastive loss function, which allows spatial vectors far away in the original image to be pooled together if they belong to the same object. In our case, segmentation masks are not available, and we therefore face two challenges: (1) there is no a priori information on how to pool vectors from the same object together, thus long-range matching should be learned in a self-supervised manner, and (2) contrasting negatively feature vectors corresponding to far away locations can have a negative effect, as these vectors could have been pooled from locations that represent the same object in the image. In order to address these issues, VICRegL (1) matches feature vectors according to a l2 nearest-neighbor criterion exploiting both the distances between features and image locations, properly weighted, and (2) uses the",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/39cee562b91611c16ac0b100f0bc1ea1-Paper-Conference.pdf",
+              "document_sha256": "a6c2afea333b4b98b4769fde5c67c0f3a4e5d769a67b3ed5c891c2c006e6c6f0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Global features. Most recent methods for global feature learning are based on a joint embedding architecture that learns representations that are invariant to various views. These methods differ in the way collapsing solutions are avoided. Contrastive methods [Hjelm et al., 2019, Chen et al., 2020a, He et al., 2020, Chen et al., 2020b, Mitrovic et al., 2021, Dwibedi et al., 2021, Chen et al., 2021, Tomasev et al., 2022] uses negative samples to push dissimilar samples apart from each other. Clustering methods [Caron et al., 2018, 2020, 2021] ensure a balanced partition of the samples within a set of clusters. Non-contrastive methods, which are dual to contrastive ones [Garrido et al., 2022], rely on maintaining the informational content of the representations by either explicit regularization [Zbontar et al., 2021, Bardes et al., 2022] or architectural design [Chen and He, 2020, Grill et al., 2020, Richemond et al., 2020, Lee et al., 2021]. Finally, the best performing methods today are based on vision transformers [Caron et al., 2021, Chen et al., 2021, Li et al., 2022, Zhou et al., 2022a,b] and deliver strong results in both downstream classification and segmentation tasks. Local features. In opposition to global methods, local one focus on explicitly learning a set of local features that describe small parts of the image, which global methods do implicitly [Chen et al., 2022], and are therefore better suited for segmentation tasks. Indeed these methods commonly only evaluate on segmentation benchmarks. A contrastive loss function can be applied directly: (1) at the pixel level [Xie et al., 2021], which forces consistency between pixels at similar locations; (2) at the feature map level [Wang et al., 2021], which forces consistency between groups of pixels: (3) at",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/39cee562b91611c16ac0b100f0bc1ea1-Paper-Conference.pdf",
+              "document_sha256": "a6c2afea333b4b98b4769fde5c67c0f3a4e5d769a67b3ed5c891c2c006e6c6f0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "based on visual similarity, we note that this architecture inherently unifies two capabilities central to FSS within a single model: dense feature matching and high-quality mask generation. Building on this analogy, we propose repurposing the prompt-and-propagate framework to address the FSS task, by reinterpreting the temporal dimension of videos as a collection of semantically related images. This raises the central question: instead of limiting SAM2 to object tracking, can it generalize beyond visual similarity to perform semantic tracking based on shared concepts across images? Addressing this inquiry means, in turn, to answer whether SAM2 has implicitly learned semanticaware representations, despite its class agnostic pre-training. To answer this, we conduct a toy experiment in Fig. 1, testing SAM2 performance on FSS datasets with different semantic variability. Interestingly, we observe that in low-semantic-shift scenarios, SAM2 achieves comparable or even higher performance with respect to state-of-the-art methods. However, on challenging datasets with high semantic shift, its performance drops drastically. A straightforward conclusion from these preliminary results would be that SAM2 may not have learned discriminative representations in its class-agnostic pretraining, making it unsuited for tasks requiring semantic alignment. We challenge this interpretation, based on the observation that SAM2 pretraining, focused on instance matching across frames, shares similarities with self-supervised learning frameworks [77, 76, 29, 5], which are known to elicit semantic understanding by enforcing feature invariance across views [11, 4]. Given this analogy, we posit that SAM2 does encode semantic information, which is however entangled with instance-specific features",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "At the core of the feature matching mechanism lie the learned feature representations, central to the Memory Attention mechanism: the reference object representation Ir is constructed from Fr (Eq. (2)), and matching is performed via cross-attention between target features Ft and Ir (Eq. (3)). Our goal is repurposing the Memory Attention to shift from instance-level to semantic-level matching. To achieve this, we introduce minimal architectural changes and instead focus on restructuring the feature space itself. Specifically, we seek to induce a semantic organization of the features, enabling dense correspondences to reflect semantic similarity rather than visual-similarity. We hypothesize that SAM2 features already encode semantic concepts, albeit entangled with signals specific to tracking, such as instance-level details and spatial biases. If such structure exists, then it should be learnable from a set of base classes by training few parameters [1, 32, 57]. Thus, we opt for simple AdaptFormer [14] blocks, although our analysis is not tied to the adaptation method, as we will show in the Experimental Section. We integrate AdaptFormer blocks within the last two layers of the Image Encoder, as these encode higher-level semantic representations. Given down- and ˜ ˜ up-projection matrices Wdown ∈ Rd,d , Wup ∈ Rd,d , an AdaptFormer block operates token-wise: A(x) = σ(x · Wdown ) · Wup ,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Few-shot segmentation aims to segment unseen categories from just a handful of annotated examples. This requires mechanisms to identify semantically related objects across images and accurately produce masks. We note that Segment Anything 2 (SAM2), with its prompt-and-propagate mechanism, provides strong segmentation capabilities and a built-in feature matching process. However, we show that its representations are entangled with task-specific cues optimized for object tracking, which impairs its use for tasks requiring higher level semantic understanding. Our key insight is that, despite its class-agnostic pretraining, SAM2 already encodes rich semantic structure in its features. We propose SANSA (Semantically AligNed SegmentAnything 2), a framework that makes this latent structure explicit, and repurposes SAM2 for few-shot segmentation through minimal task-specific modifications. SANSA achieves state-of-the-art on few-shot segmentation benchmarks designed to assess generalization and outperforms generalist methods in the popular in-context setting. Additionally, it supports flexible promptable interaction via points, boxes, or scribbles, and remains significantly faster and more compact than prior approaches. Code at: https://github.com/ClaudiaCuttano/SANSA.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00c9c075b5dd083f50ac13e9",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/39cee562b91611c16ac0b100f0bc1ea1-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-7904acd5bfff14db25872291",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac6ab84809cef04dbe11e9b80d63c281-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "4eb76f5f8767ac60e2e35709a1ddfd87ee270b9cf9859a2321e684f89c40c393"
+    },
+    {
+      "id": "edge-c6354d853204d72b590b8398",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-1e4d38848e0cf83cbb5ae69a",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "DeiSAM: Segment Anything with Deictic Prompting",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale, pre-trained neural networks have demonstrated strong capabilities in various tasks, including zero-shot image segmentation. To identify concrete objects in complex scenes, humans instinctively rely on deictic descriptions in natural language, i.e., referring to something depending on the context such as \"The object that is on the desk and behind the cup.\". However, deep learning approaches cannot reliably interpret such deictic representations due to their lack of reasoning capabilities in complex scenarios. To remedy this issue, we propose DeiSAM — a combination of large pre-trained neural networks with differentiable logic reasoners — for deictic promptable segmentation. Given a complex, textual segmentation description, DeiSAM leverages Large Language Models (LLMs) to generate first-order logic rules and performs differentiable forward reasoning on generated scene graphs. Subsequently, DeiSAM segments objects by matching them to the logically inferred image regions. As part of our evaluation, we propose the Deictic Visual Genome (DeiVG) dataset, containing paired visual input and complex, deictic textual prompts. Our empirical results demonstrate that DeiSAM is a substantial improvement over purely data-driven baselines for deictic promptable segmentation."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The recent achievements of large language models (LLMs) (Brown et al., 2020) have led to the development of multi-modal models, including vision-language models (Radford et al., 2021; Alayrac et al., 2022; Li et al., 2022a; Liu et al., 2023a), which take visual and textual inputs.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-1e4d38848e0cf83cbb5ae69a",
+          "input_sha256": "61b0d87df26e1c4a016a3285f6872251b80c227ef175318e7c2ffa9045d872dd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5ddcfaad1cb72ce6f1a365e8f1ecf791-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Multi-modal Large Language Models. The recent achievements of large language models (LLMs) (Brown et al., 2020) have led to the development of multi-modal models, including visionlanguage models (Radford et al., 2021; Alayrac et al., 2022; Li et al., 2022a; Liu et al., 2023b), which take visual and textual inputs. However, these large models’ reasoning capabilities are limited (Huang et al., 2024a), often inferring wrong conclusions when confronted with complex reasoning tasks. DeiSAM addresses these issues by combining large models with (differentiable) reasoners. Additionally, DeiSAM is related to prior work using LLMs for program generation. For example, LLMs have been applied to generate probabilistic programs (Wong et al., 2023), Answer Set Programs (Ishay et al., 2023; Yang et al., 2023), and programs for visual reasoning (Surís et al., 2023; Stanić et al., 2024). These works have demonstrated that LLMs are powerful program generators and outperform simple zero-shot reasoning. With DeiSAM we propose the usage of LLMs to generate differentiable logic programs for image segmentation and object detection. Scene Graph Generation. Scene Graph Generators (SGGs) encode complex visual relations to a summary graph using the comprehensive contextual knowledge of relation encoders (Lu et al., 2016; Zellers et al., 2018; Tang et al., 2019). Recently, the focus has shifted to transformer-based SGGs that use attention to capture global context while improving visual and semantic fusion (Lin et al., 2020; Lu et al., 2021; Dong et al., 2022). Lately, attention has also been used to capture object-level relation cues using visual and geometric features (Sudhakaran et al., 2023). The modularity of DeiSAM allows for using any SGG to obtain graph representations of input visual",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale, pre-trained neural networks have demonstrated strong capabilities in various tasks, including zero-shot image segmentation. To identify concrete objects in complex scenes, humans instinctively rely on deictic descriptions in natural language, i.e., referring to something depending on the context, such as “The object that is on the desk and behind the cup”. However, deep learning approaches cannot reliably interpret such deictic representations as they have limited reasoning capabilities, particularly in complex scenarios. Therefore, we propose DeiSAM—a combination of large pre-trained neural networks with differentiable logic reasoners—for deictic promptable segmentation. Given a complex, textual segmentation description, DeiSAM leverages Large Language Models (LLMs) to generate first-order logic rules and performs differentiable forward reasoning on generated scene graphs. Subsequently, DeiSAM segments objects by matching them to the logically inferred image regions. As part of our evaluation, we propose the Deictic Visual Genome (DeiVG) dataset, containing paired visual input and complex, deictic textual prompts. Our empirical results demonstrate that DeiSAM is a substantial improvement over purely data-driven baselines for deictic promptable segmentation.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: DeiSAM segments objects with deictic prompting. Shown are segmentation masks with an input textual prompt. DeiSAM (right) correctly segments the people on the boat holding umbrellas, whereas the neural baselines (left) incorrectly segment the boat instead (Best viewed in color). The DeiSAM pipeline is highly modular and fully differentiable, sophisticatedly integrating large pre-trained networks and neuro-symbolic reasoners. Specifically, we leverage Large Language Models (LLMs) to generate logic rules for a given deictic prompt and perform differentiable forward reasoning (Shindo et al., 2023, 2024) with scene graph generators (Zellers et al., 2018). The reasoner is efficiently combined with neural networks by leveraging forward propagation on computational graphs. The result of this reasoning step is used to ground a segmentation model that reliably identifies the objects best matching the input. In summary, we make the following contributions: 1) We propose DeiSAM2 , a modular, neurosymbolic framework using LLMs and scene graphs for object segmentation with complex textual prompts. 2) We introduce a novel Deictic Visual Genome (DeiVG) benchmark that contains visual scenes paired with deictic representations, i.e., complex textual identifications of objects in the scene. To further investigate the challenging nature of abstract prompts, we curate a new DeiRefCOCO+ benchmark. It is a deictic variant of RefCOCO+, an established reference object detection benchmark. 3) We empirically demonstrate that DeiSAM strongly outperforms neural baselines for deictic segmentation. 4) We showcase that DeiSAM can perform end-to-end training via differentiable reasoning to improve the segmentation quality adapting to complex downstream reasoning tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-1e4d38848e0cf83cbb5ae69a",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/5ddcfaad1cb72ce6f1a365e8f1ecf791-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "0ef77a4b4da334c46bdfb26e21d988134502932e07ab32e27ee59411d7196df1"
+    },
+    {
+      "id": "edge-7739d77f8c10e8d66a32debd",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-7904acd5bfff14db25872291",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "SANSA: Unleashing the Hidden Semantics in SAM2 for Few-Shot Segmentation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Few-shot segmentation aims to segment unseen categories from just a handful of annotated examples. This requires mechanisms to identify semantically related objects across images and accurately produce masks. We note that Segment Anything 2 (SAM2), with its prompt-and-propagate mechanism, provides strong segmentation capabilities and a built-in feature matching process. However, we show that its representations are entangled with task-specific cues optimized for object tracking, which impairs its use for tasks requiring higher level semantic understanding. Our key insight is that, despite its class-agnostic pretraining, SAM2 already encodes rich semantic structure in its features. We propose SANSA (Semantically AligNed Segment Anything 2), a framework that makes this latent structure explicit, and repurposes SAM2 for few-shot segmentation through minimal task-specific modifications. SANSA achieves state-of-the-art on few-shot segmentation benchmarks designed to assess generalization and outperforms generalist methods in the popular in-context setting. Additionally, it supports flexible promptable interaction via points, boxes, or scribbles, and remains significantly faster and more compact than prior approaches. Code at: https://github.com/ClaudiaCuttano/SANSA."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To this end, recent work has turned to visual foundation models (VFMs) [7], which offer rich visual representations and strong generalization capabilities [52, 82].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-7904acd5bfff14db25872291",
+          "input_sha256": "25cfc8d43cb1a6f47795c9aa50abd0ac619be64c1457b6aec9b4fab052630027",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac6ab84809cef04dbe11e9b80d63c281-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Segmenting images is a core problem in Computer Vision, yet achieving high-quality results typically requires extensive human effort to annotate pixel-level masks. Moreover, conventional semantic segmentation methods [13, 26, 34, 16] struggle to generalize to unseen categories. Inspired by the human ability to recognize novel objects from just a few examples, few-shot segmentation (FSS) [38, 69, 41, 59] has emerged as a paradigm that leverages a small set of labeled reference samples to guide the segmentation of target images containing arbitrary, previously unseen classes. To this end, recent work has turned to visual foundation models (VFMs) [7], which offer rich visual representations and strong generalization capabilities [52, 82]. A natural approach [42, 83, 62] is to decouple the few-shot segmentation task into two stages: feature matching followed by promptable segmentation. This is typically achieved by combining DINOv2 [50], known for its strong semantic correspondence capabilities [86, 44, 85, 63], with Segment Anything [35], which excels at producing high-quality segmentation masks [35, 90, 87]. While effective, these modular approaches add computational overhead and require prompt engineering to coordinate multiple VFMs [89]. We observe that Segment Anything 2 (SAM2) [54] offers an alternative paradigm. Designed for Video Object Segmentation, it operates as a prompt-and-propagate framework, where an object is specified via its mask and tracked across frames. To achieve this, SAM2 introduces a Memory Attention mechanism to implicitly match features across video frames and propagate masks over time with high spatial precision. While this feature matching is originally intended for object tracking ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "based on visual similarity, we note that this architecture inherently unifies two capabilities central to FSS within a single model: dense feature matching and high-quality mask generation. Building on this analogy, we propose repurposing the prompt-and-propagate framework to address the FSS task, by reinterpreting the temporal dimension of videos as a collection of semantically related images. This raises the central question: instead of limiting SAM2 to object tracking, can it generalize beyond visual similarity to perform semantic tracking based on shared concepts across images? Addressing this inquiry means, in turn, to answer whether SAM2 has implicitly learned semanticaware representations, despite its class agnostic pre-training. To answer this, we conduct a toy experiment in Fig. 1, testing SAM2 performance on FSS datasets with different semantic variability. Interestingly, we observe that in low-semantic-shift scenarios, SAM2 achieves comparable or even higher performance with respect to state-of-the-art methods. However, on challenging datasets with high semantic shift, its performance drops drastically. A straightforward conclusion from these preliminary results would be that SAM2 may not have learned discriminative representations in its class-agnostic pretraining, making it unsuited for tasks requiring semantic alignment. We challenge this interpretation, based on the observation that SAM2 pretraining, focused on instance matching across frames, shares similarities with self-supervised learning frameworks [77, 76, 29, 5], which are known to elicit semantic understanding by enforcing feature invariance across views [11, 4]. Given this analogy, we posit that SAM2 does encode semantic information, which is however entangled with instance-specific features",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "At the core of the feature matching mechanism lie the learned feature representations, central to the Memory Attention mechanism: the reference object representation Ir is constructed from Fr (Eq. (2)), and matching is performed via cross-attention between target features Ft and Ir (Eq. (3)). Our goal is repurposing the Memory Attention to shift from instance-level to semantic-level matching. To achieve this, we introduce minimal architectural changes and instead focus on restructuring the feature space itself. Specifically, we seek to induce a semantic organization of the features, enabling dense correspondences to reflect semantic similarity rather than visual-similarity. We hypothesize that SAM2 features already encode semantic concepts, albeit entangled with signals specific to tracking, such as instance-level details and spatial biases. If such structure exists, then it should be learnable from a set of base classes by training few parameters [1, 32, 57]. Thus, we opt for simple AdaptFormer [14] blocks, although our analysis is not tied to the adaptation method, as we will show in the Experimental Section. We integrate AdaptFormer blocks within the last two layers of the Image Encoder, as these encode higher-level semantic representations. Given down- and ˜ ˜ up-projection matrices Wdown ∈ Rd,d , Wup ∈ Rd,d , an AdaptFormer block operates token-wise: A(x) = σ(x · Wdown ) · Wup ,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac6ab84809cef04dbe11e9b80d63c281-Paper-Conference.pdf",
+              "document_sha256": "a759bdfcb87971bd3fb67c3b7ad4e79b2b548306ba334eb968788789271d7b33"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-7904acd5bfff14db25872291",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac6ab84809cef04dbe11e9b80d63c281-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "a07a86bf7da1777a6a02a18e993d958cf6a8d577f1a2d4200347439caaf217d5"
+    },
+    {
+      "id": "edge-9ece21e5ada845d113a9bd73",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-9757f78e369e84ccc08d2276",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "RoMA: Scaling up Mamba-based Foundation Models for Remote Sensing",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Recent advances in self-supervised learning for Vision Transformers (ViTs) have fueled breakthroughs in remote sensing (RS) foundation models. However, the quadratic complexity of self-attention poses a significant barrier to scalability, particularly for large models and high-resolution images. While the linear-complexity Mamba architecture offers a promising alternative, existing RS applications of Mamba remain limited to supervised tasks on small, domain-specific datasets. To address these challenges, we propose RoMA, a framework that enables scalable self-supervised pretraining of Mamba-based RS foundation models using large-scale, diverse, unlabeled data. RoMA enhances scalability for high-resolution images through a tailored auto-regressive learning strategy, incorporating two key innovations: 1) a rotation-aware pretraining mechanism combining adaptive cropping with angular embeddings to handle sparsely distributed objects with arbitrary orientations, and 2) multi-scale token prediction objectives that address the extreme variations in object scales inherent to RS imagery. Systematic empirical studies validate that Mamba adheres to RS data and parameter scaling laws, with performance scaling reliably as model and data size increase. Furthermore, experiments across scene classification, object detection, and semantic segmentation tasks demonstrate that RoMA-pretrained Mamba models consistently outperform ViT-based counterparts in both accuracy and computational efficiency. The source code and pretrained models have be released at https://github.com/MiliLab/RoMA."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Following BEiT [53] and CAE [73], the token-space loss was computed using a frozen CLIP [74] teacher, where the student predicted its latent features through a lightweight MIM head.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-9757f78e369e84ccc08d2276",
+          "input_sha256": "9ae66a346e0f6e31008bcb1fd7f506e82d5cd1bd6488764c323911e5a1841742",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/065c00e902f3f0117d1a4da0a9b0e497-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/065c00e902f3f0117d1a4da0a9b0e497-Paper-Conference.pdf",
+              "sha256": "e056b286771f2ea64f87d6ad8b3df7a638e80cf7d39a7e32ecd36b280fbc0192"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "Effectiveness of Top-k Region Selection. To further Table 7: Foreground object capture validate the effectiveness of the top-k token selection rate on SpaceNet V1 [65]. mechanism, we conducted an additional experiment on the Accuracy (%) SpaceNet V1 [65] building segmentation dataset. This ex- Cropping Strategy Random Cropping 38.56 periment aims to examine whether the proposed adaptive Top-k Adaptive Region Selection (Ours) 75.09 region cropping can consistently capture target regions compared with random cropping under the same resolution settings. As shown in Table 7, our method achieves a foreground capture accuracy of 75.09%, significantly higher than the 38.56% of random cropping. These results demonstrate that the top-k strategy effectively preserves informative regions, leading to more reliable semantic representations for autoregressive modeling. Feasibility of Token-space Reconstruction Loss. To Table 8: Comparison between pixelevaluate the flexibility of RoMA, we compared pixel- space and token-space reconstruction space and token-space reconstruction losses. Following loss. BEiT [53] and CAE [73], the token-space loss was com- Pretraining Loss Type UCM-55 (%) AID-55 (%) puted using a frozen CLIP [74] teacher, where the student RoMA-Base (Pixel Space) 52.39 80.34 RoMA-Base (Token Space) 56.67 81.72 predicted its latent features through a lightweight MIM head. As shown in Table 8, token-space loss consistently outperforms pixel-space loss on UCM and AID, indicating its stronger semantic representation capability and the adaptability of the RoMA framework to diverse pretraining objectives.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/065c00e902f3f0117d1a4da0a9b0e497-Paper-Conference.pdf",
+              "document_sha256": "e056b286771f2ea64f87d6ad8b3df7a638e80cf7d39a7e32ecd36b280fbc0192"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "object detection [6], change detection [7], and semantic segmentation [8]. However, training solely on limited task-specific data restricts the scale and generalizability of current RS deep learning models. Recent breakthroughs in self-supervised learning (SSL) [2, 9] have led to the development of RS foundation models (RSFMs) [10, 11, 12, 13, 14, 15, 16] that offer robust feature representations and excel across various remote sensing tasks. However, many of these tasks involve high-resolution imagery—such as the 4,000×4,000 pixel images in the DOTA dataset for object detection. Most RSFMs rely on Vision Transformer (ViT)-based attention architectures, whose quadratic complexity limits their practicality on high-resolution data. To overcome this challenge, researchers are exploring pretraining RSFMs on architectures with linear complexity, with Mamba [17] emerging as a promising alternative. The Mamba architecture is well-regarded in remote sensing for its efficient inference with highresolution images in downstream tasks [18, 19]. However, current Mamba-based studies are limited to small-scale training datasets, restricting their exposure to diverse remote sensing data. This contrasts with trends in ViT-based RSFMs, which use self-supervised pretraining to harness extensive unlabeled data. Therefore, exploring self-supervised learning for Mamba to harness large-scale remote sensing data—and thereby compete with ViT—presents a promising, yet underexplored, direction. Autoregressive pretraining [20, 21] offers a principled solution to Mamba’s sequence continuity challenges by representing images as 1-D sequences and employing next-token prediction. Its causal token dependencies naturally align with Mamba’s unidirectional linear-time scanning, preserving spatial",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/065c00e902f3f0117d1a4da0a9b0e497-Paper-Conference.pdf",
+              "document_sha256": "e056b286771f2ea64f87d6ad8b3df7a638e80cf7d39a7e32ecd36b280fbc0192"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We propose the RoMA autoregressive pretraining framework for the Mamba architecture in RS field. Specially, as shown in the Figure 3, we extend the iGPT [20] series with a KV cache-based prediction method. The Mamba-Encoder processes the entire image to compute the Key and V alue for all tokens. Then we calculate the learnable query vector from the Key and V alue, and compute the loss between the Query and the target ground truth. Building on the autoregressive pretraining structure for natural images, RoMA introduces two key contributions: an adaptive rotation encoding strategy and a multi-scale prediction strategy. 3.2.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/065c00e902f3f0117d1a4da0a9b0e497-Paper-Conference.pdf",
+              "document_sha256": "e056b286771f2ea64f87d6ad8b3df7a638e80cf7d39a7e32ecd36b280fbc0192"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-9757f78e369e84ccc08d2276",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/065c00e902f3f0117d1a4da0a9b0e497-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "e683648dc4708f69e9bd1462772d91fddfb49ab029100debcdbb1094e63ca850"
+    },
+    {
+      "id": "edge-001a293f56ada539e9ea098e",
+      "a": "paper-0e67cfaccaa7b3dfe458b6e8",
+      "b": "paper-1e4d38848e0cf83cbb5ae69a",
+      "state": {
+        "paper_a": {
+          "title": "Flamingo: a Visual Language Model for Few-Shot Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Building models that can be rapidly adapted to novel tasks using only a handful of annotated examples is an open challenge for multimodal machine learning research. We introduce Flamingo, a family of Visual Language Models (VLM) with this ability. We propose key architectural innovations to: (i) bridge powerful pretrained vision-only and language-only models, (ii) handle sequences of arbitrarily interleaved visual and textual data, and (iii) seamlessly ingest images or videos as inputs. Thanks to their flexibility, Flamingo models can be trained on large-scale multimodal web corpora containing arbitrarily interleaved text and images, which is key to endow them with in-context few-shot learning capabilities. We perform a thorough evaluation of our models, exploring and measuring their ability to rapidly adapt to a variety of image and video tasks. These include open-ended tasks such as visual question-answering, where the model is prompted with a question which it has to answer, captioning tasks, which evaluate the ability to describe a scene or an event, and close-ended tasks such as multiple-choice visual question-answering. For tasks lying anywhere on this spectrum, a single Flamingo model can achieve a new state of the art with few-shot learning, simply by prompting the model with task-specific examples. On numerous benchmarks, Flamingo outperforms models fine-tuned on thousands of times more task-specific data."
+        },
+        "paper_b": {
+          "title": "DeiSAM: Segment Anything with Deictic Prompting",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale, pre-trained neural networks have demonstrated strong capabilities in various tasks, including zero-shot image segmentation. To identify concrete objects in complex scenes, humans instinctively rely on deictic descriptions in natural language, i.e., referring to something depending on the context such as \"The object that is on the desk and behind the cup.\". However, deep learning approaches cannot reliably interpret such deictic representations due to their lack of reasoning capabilities in complex scenarios. To remedy this issue, we propose DeiSAM — a combination of large pre-trained neural networks with differentiable logic reasoners — for deictic promptable segmentation. Given a complex, textual segmentation description, DeiSAM leverages Large Language Models (LLMs) to generate first-order logic rules and performs differentiable forward reasoning on generated scene graphs. Subsequently, DeiSAM segments objects by matching them to the logically inferred image regions. As part of our evaluation, we propose the Deictic Visual Genome (DeiVG) dataset, containing paired visual input and complex, deictic textual prompts. Our empirical results demonstrate that DeiSAM is a substantial improvement over purely data-driven baselines for deictic promptable segmentation."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The recent achievements of large language models (LLMs) (Brown et al., 2020) have led to the development of multi-modal models, including vision-language models (Radford et al., 2021; Alayrac et al., 2022; Li et al., 2022a; Liu et al., 2023a), which take visual and textual inputs.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0e67cfaccaa7b3dfe458b6e8",
+          "b": "paper-1e4d38848e0cf83cbb5ae69a",
+          "input_sha256": "cbb9d98d8f97f31aadec9fc7ba46ce81129457cb3c0e51c1133185cc5a2e491c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/960a172bc7fbf0177ccccbb411a7d800-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/960a172bc7fbf0177ccccbb411a7d800-Paper-Conference.pdf",
+              "sha256": "71c0bc08c6fbe4b54c73e9cdc0842985b685f51b7bab63fa456aac10e5737c58"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/5ddcfaad1cb72ce6f1a365e8f1ecf791-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Building models that can be rapidly adapted to novel tasks using only a handful of annotated examples is an open challenge for multimodal machine learning research. We introduce Flamingo, a family of Visual Language Models (VLM) with this ability. We propose key architectural innovations to: (i) bridge powerful pretrained vision-only and language-only models, (ii) handle sequences of arbitrarily interleaved visual and textual data, and (iii) seamlessly ingest images or videos as inputs. Thanks to their flexibility, Flamingo models can be trained on large-scale multimodal web corpora containing arbitrarily interleaved text and images, which is key to endow them with in-context few-shot learning capabilities. We perform a thorough evaluation of our models, exploring and measuring their ability to rapidly adapt to a variety of image and video tasks. These include open-ended tasks such as visual question-answering, where the model is prompted with a question which it has to answer; captioning tasks, which evaluate the ability to describe a scene or an event; and close-ended tasks such as multiple-choice visual question-answering. For tasks lying anywhere on this spectrum, a single Flamingo model can achieve a new state of the art with few-shot learning, simply by prompting the model with task-specific examples. On numerous benchmarks, Flamingo outperforms models fine-tuned on thousands of times more task-specific data.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/960a172bc7fbf0177ccccbb411a7d800-Paper-Conference.pdf",
+              "document_sha256": "71c0bc08c6fbe4b54c73e9cdc0842985b685f51b7bab63fa456aac10e5737c58"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "One key aspect of intelligence is the ability to quickly learn to perform a new task given a short instruction [33, 70]. While initial progress has been made towards a similar capability in computer vision, the most widely used paradigm still consists of first pretraining on a large amount of supervised data, before fine-tuning the model on the task of interest [66, 118, 143]. However, successful finetuning often requires many thousands of annotated data points. In addition, it often requires careful per-task hyperparameter tuning and is also resource intensive. Recently, multimodal vision-language models trained with a contrastive objective [50, 85] have enabled zero-shot adaptation to novel tasks, without the need for fine-tuning. However, because these models simply provide a similarity score between a text and an image, they can only address limited use cases such as classification, where a finite set of outcomes is provided beforehand. They crucially lack the ability to generate language, which makes them less suitable to more open-ended tasks such as captioning or visual questionanswering. Others have explored visually-conditioned language generation [17, 114, 119, 124, 132] but have not yet shown good performance in low-data regimes. We introduce Flamingo, a Visual Language Model (VLM) that sets a new state of the art in few-shot learning on a wide range of open-ended vision and language tasks, simply by being prompted with a few input/output examples, as illustrated in Figure 1. Of the 16 tasks we consider, Flamingo also surpasses the fine-tuned state of the art on 6 tasks, despite using orders of magnitude less task-specific training data (see Figure 2). To achieve this, Flamingo takes inspiration from recent work on large language models (LMs) which are good",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/960a172bc7fbf0177ccccbb411a7d800-Paper-Conference.pdf",
+              "document_sha256": "71c0bc08c6fbe4b54c73e9cdc0842985b685f51b7bab63fa456aac10e5737c58"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Multi-modal Large Language Models. The recent achievements of large language models (LLMs) (Brown et al., 2020) have led to the development of multi-modal models, including visionlanguage models (Radford et al., 2021; Alayrac et al., 2022; Li et al., 2022a; Liu et al., 2023b), which take visual and textual inputs. However, these large models’ reasoning capabilities are limited (Huang et al., 2024a), often inferring wrong conclusions when confronted with complex reasoning tasks. DeiSAM addresses these issues by combining large models with (differentiable) reasoners. Additionally, DeiSAM is related to prior work using LLMs for program generation. For example, LLMs have been applied to generate probabilistic programs (Wong et al., 2023), Answer Set Programs (Ishay et al., 2023; Yang et al., 2023), and programs for visual reasoning (Surís et al., 2023; Stanić et al., 2024). These works have demonstrated that LLMs are powerful program generators and outperform simple zero-shot reasoning. With DeiSAM we propose the usage of LLMs to generate differentiable logic programs for image segmentation and object detection. Scene Graph Generation. Scene Graph Generators (SGGs) encode complex visual relations to a summary graph using the comprehensive contextual knowledge of relation encoders (Lu et al., 2016; Zellers et al., 2018; Tang et al., 2019). Recently, the focus has shifted to transformer-based SGGs that use attention to capture global context while improving visual and semantic fusion (Lin et al., 2020; Lu et al., 2021; Dong et al., 2022). Lately, attention has also been used to capture object-level relation cues using visual and geometric features (Sudhakaran et al., 2023). The modularity of DeiSAM allows for using any SGG to obtain graph representations of input visual",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: DeiSAM segments objects with deictic prompting. Shown are segmentation masks with an input textual prompt. DeiSAM (right) correctly segments the people on the boat holding umbrellas, whereas the neural baselines (left) incorrectly segment the boat instead (Best viewed in color). The DeiSAM pipeline is highly modular and fully differentiable, sophisticatedly integrating large pre-trained networks and neuro-symbolic reasoners. Specifically, we leverage Large Language Models (LLMs) to generate logic rules for a given deictic prompt and perform differentiable forward reasoning (Shindo et al., 2023, 2024) with scene graph generators (Zellers et al., 2018). The reasoner is efficiently combined with neural networks by leveraging forward propagation on computational graphs. The result of this reasoning step is used to ground a segmentation model that reliably identifies the objects best matching the input. In summary, we make the following contributions: 1) We propose DeiSAM2 , a modular, neurosymbolic framework using LLMs and scene graphs for object segmentation with complex textual prompts. 2) We introduce a novel Deictic Visual Genome (DeiVG) benchmark that contains visual scenes paired with deictic representations, i.e., complex textual identifications of objects in the scene. To further investigate the challenging nature of abstract prompts, we curate a new DeiRefCOCO+ benchmark. It is a deictic variant of RefCOCO+, an established reference object detection benchmark. 3) We empirically demonstrate that DeiSAM strongly outperforms neural baselines for deictic segmentation. 4) We showcase that DeiSAM can perform end-to-end training via differentiable reasoning to improve the segmentation quality adapting to complex downstream reasoning tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale, pre-trained neural networks have demonstrated strong capabilities in various tasks, including zero-shot image segmentation. To identify concrete objects in complex scenes, humans instinctively rely on deictic descriptions in natural language, i.e., referring to something depending on the context, such as “The object that is on the desk and behind the cup”. However, deep learning approaches cannot reliably interpret such deictic representations as they have limited reasoning capabilities, particularly in complex scenarios. Therefore, we propose DeiSAM—a combination of large pre-trained neural networks with differentiable logic reasoners—for deictic promptable segmentation. Given a complex, textual segmentation description, DeiSAM leverages Large Language Models (LLMs) to generate first-order logic rules and performs differentiable forward reasoning on generated scene graphs. Subsequently, DeiSAM segments objects by matching them to the logically inferred image regions. As part of our evaluation, we propose the Deictic Visual Genome (DeiVG) dataset, containing paired visual input and complex, deictic textual prompts. Our empirical results demonstrate that DeiSAM is a substantial improvement over purely data-driven baselines for deictic promptable segmentation.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/5ddcfaad1cb72ce6f1a365e8f1ecf791-Paper-Conference.pdf",
+              "document_sha256": "13dd15b50657df2cc55e35e9e0b9991988cc60564e26c9029833f06ce70998ca"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0e67cfaccaa7b3dfe458b6e8",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/960a172bc7fbf0177ccccbb411a7d800-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-1e4d38848e0cf83cbb5ae69a",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/5ddcfaad1cb72ce6f1a365e8f1ecf791-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "0b48741c1a46f5ae36a081b9cd8599e4873aba90d3a5472bda8c3a39592712ea"
+    },
+    {
+      "id": "edge-9f2f0f5142601d402acce223",
+      "a": "paper-13ba90e2a8c8d8aaa0563a91",
+      "b": "paper-c49f7ee3db9fbf19af312b80",
+      "state": {
+        "paper_a": {
+          "title": "Intriguing Properties of Vision Transformers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Vision transformers (ViT) have demonstrated impressive performance across numerous machine vision tasks. These models are based on multi-head self-attention mechanisms that can flexibly attend to a sequence of image patches to encode contextual cues. An important question is how such flexibility (in attending image-wide context conditioned on a given patch) can facilitate handling nuisances in natural images e.g., severe occlusions, domain shifts, spatial permutations, adversarial and natural perturbations. We systematically study this question via an extensive set of experiments encompassing three ViT families and provide comparisons with a high-performing convolutional neural network (CNN). We show and analyze the following intriguing properties of ViT: (a)Transformers are highly robust to severe occlusions, perturbations and domain shifts, e.g., retain as high as 60% top-1 accuracy on ImageNet even after randomly occluding 80% of the image content. (b)The robustness towards occlusions is not due to texture bias, instead we show that ViTs are significantly less biased towards local textures, compared to CNNs. When properly trained to encode shape-based features, ViTs demonstrate shape recognition capability comparable to that of human visual system, previously unmatched in the literature. (c)Using ViTs to encode shape representation leads to an interesting consequence of accurate semantic segmentation without pixel-level supervision. (d)Off-the-shelf features from a single ViT model can be combined to create a feature ensemble, leading to high accuracy rates across a range of classification datasets in both traditional and few-shot learning paradigms. We show effective features of ViTs are due to flexible and dynamic receptive fields possible via self-attention mechanisms. Our code will be publicly released."
+        },
+        "paper_b": {
+          "title": "ReCo: Retrieve and Co-segment for Zero-shot Transfer",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Semantic segmentation has a broad range of applications, but its real-world impact has been significantly limited by the prohibitive annotation costs necessary to enable deployment. Segmentation methods that forgo supervision can side-step these costs, but exhibit the inconvenient requirement to provide labelled examples from the target distribution to assign concept names to predictions. An alternative line of work in language-image pre-training has recently demonstrated the potential to produce models that can both assign names across large vocabularies of concepts and enable zero-shot transfer for classification, but do not demonstrate commensurate segmentation abilities.We leverage the retrieval abilities of one such language-image pre-trained model, CLIP, to dynamically curate training sets from unlabelled images for arbitrary collections of concept names, and leverage the robust correspondences offered by modern image representations to co-segment entities among the resulting collections. The synthetic segment collections are then employed to construct a segmentation model (without requiring pixel labels) whose knowledge of concepts is inherited from the scalable pre-training process of CLIP. We demonstrate that our approach, termed Retrieve and Co-segment (ReCo) performs favourably to conventional unsupervised segmentation approaches while inheriting the convenience of nameable predictions and zero-shot transfer. We also demonstrate ReCo’s ability to generate specialist segmenters for extremely rare objects."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We conjecture that this is related to the stride of the image encoder used for ReCo, which is 16 × 16 for the case of DeiT-S/16-SIN [59].\n…line of research has shown that modern deep architectures (most notably vision transformers [17]) develop the ability to infer the spatial extent of objects without pixel supervision [7, 59, 80, 87, 78, 54] and moreover can establish semantically consistent correspondences across images [13, 24].\n3 (right) we illustrate the effect of using different pre-trained architectures, e.g. MoCov2 [25], DINO [7], CLIP [72], DeiT-SIN [59], as the archive size (and thus the number of images used for co-segmentation) changes.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-13ba90e2a8c8d8aaa0563a91",
+          "b": "paper-c49f7ee3db9fbf19af312b80",
+          "input_sha256": "b92bc4a66d9c40315c1e2a9e08001c24197854645277cc5fce55dc2000677f1a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/c404a5adbf90e09631678b13b05d9d7a-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/c404a5adbf90e09631678b13b05d9d7a-Paper.pdf",
+              "sha256": "c8f1d6d8be153e488949032dc34676f921b670c6382966189c6064fa89915de9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/daabe43c3e1d06980aa23880bfbe1f45-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this paper, we analyze intriguing properties of ViTs in terms of robustness and generalizability. We test with a variety of ViT models on fifteen vision datasets. All the models are trained on 4 V100 GPUs. We demonstrate favorable merits of ViTs over CNNs for occlusion handling, robustness to distributional shifts and patch permutations, automatic segmentation without pixel supervision, and robustness against adversarial patches, sample specific adversarial attacks and common corruptions. Moreover, we demonstrate strong transferability of off-the-shelf ViT features to a number of downstream tasks with the proposed feature ensemble from a single ViT model. An interesting future research direction is to explore how the diverse range of cues modeled within a single ViT using separate tokens can be effectively combined to complement each other. Similarly, we found that ViTs auto-segmentation property stems from their ability to encode shape information. We believe that integrating our approach and DINO [23] is worth exploring in the future. To highlight few open research questions: a) Can self-supervision on stylized ImageNet (SIN) improve segmentation ability of DINO?, and b) Can a modified DINO training scheme with texture (IN) based local views and shape (SIN) based global views enhance (and generalize) its auto-segmentation capability? Our current set of experiments are based on ImageNet (ILSVRC’12) pre-trained ViTs, which pose the risk of reflecting potential biases in the learned representations. The data is mostly Western, and encodes several gender/ethnicity stereotypes with under-representation of certain groups [47]. This version of the ImageNet also poses privacy risks, due to the unblurred human faces. In future, we will use a recent ImageNet version which",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/c404a5adbf90e09631678b13b05d9d7a-Paper.pdf",
+              "document_sha256": "c8f1d6d8be153e488949032dc34676f921b670c6382966189c6064fa89915de9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "relations between distant object parts) [5, 6]. Given a query embedding, self-attention finds its interactions with the other embeddings in the sequence, thereby conditioning on the local content while modeling global relationships [7]. In contrast, convolutions are content-independent as the same filter weights are applied to all inputs regardless of their distinct nature. Given the content-dependent long-range interaction modeling capabilities, our analysis shows that ViTs can flexibly adjust their receptive field to cope with nuisances in data and enhance expressivity of the representations. Our systematic experiments and novel design choices lead to the following interesting findings: • ViTs demonstrate strong robustness against severe occlusions for foreground objects, non-salient background regions and random patch locations, when compared with state-of-the-art CNNs. For instance, with a significant random occlusion of up to 80%, DeiT [3] can maintain top-1 accuracy up to ⇠60% where CNN has zero accuracy, on ImageNet [8] val. set. • When presented with texture and shape of the same object, CNN models often make decisions based on texture [9]. In contrast, ViTs perform better than CNNs and comparable to humans on shape recognition. This highlights robustness of ViTs to deal with significant distribution shifts e.g., recognizing object shapes in less textured data such as paintings. • Compared to CNNs, ViTs show better robustness against other nuisance factors such as spatial patch-level permutations, adversarial perturbations and common natural corruptions (e.g., noise, blur, contrast and pixelation artefacts). However, similar to CNNs [10], a shape-focused training process renders them vulnerable against adversarial attacks and common corruptions. • Apart from",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/c404a5adbf90e09631678b13b05d9d7a-Paper.pdf",
+              "document_sha256": "c8f1d6d8be153e488949032dc34676f921b670c6382966189c6064fa89915de9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Figure 2: In this work, we propose ReCo, a framework for open vocabulary semantic segmentation zero-shot transfer utilising a language-image pre-training model (i.e., CLIP). Top: (1) Given a large-scale unlabelled dataset and a category to segment, we first curate an archive of k images from the unlabelled collection using CLIP [71]. (2) Using a pre-trained visual encoder (e.g., MoCov2 [25], DeiT-S/16-SIN [60]), we extract dense features from the archive images, which are used to generate a reference image embedding for the given category via a co-segmentation process. Bottom: (3) During inference, the reference image embedding is employed to produce an initial segmentation of the target concept which is refined with DenseCLIP. ⊗ and ⊙ denote inner product and Hadamard product, respectively. See Sec. 3 for details. collection, ReCo constructs a segmenter for the given concepts on the fly. During inference, this segmenter is applied without fine-tuning to images from a target distribution of interest, thus supporting the zero-shot transfer. The interaction of these three stages is illustrated in Fig. 2 and discussed in more detail below. Curating exemplars through image retrieval. The first hypothesis underpinning our approach is that it is possible to construct a sufficiently large and diverse unlabelled image collection that contains examples (or closely related examples) of any concept we wish to segment. We consider this hypothesis to be reasonable in light of the fact that recent research has produced a number of diverse datasets spanning billions of images [53, 22, 35, 75]. To make use of this hypothesis for segmentation, we employ a vision-language model to curate an archive of images for each concept of interest. In this work, we use CLIP [71], a model",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Ability of CLIP to curate archives. We begin by assessing the validity of our second hypothesis— namely that CLIP is capable of achieving high purity archives from unlabelled images. To this end, we evaluate the retrieval performance of different CLIP models on the ImageNet1K validation set when constructing different archive sizes. In detail, for each archive size, k, we compute the precision of the top-k retrieved images based on whether the the ground-truth image-labels match the query text. As can be seen in Fig. 4 (left), all CLIP models achieve solid retrieval performance, suggesting their potential for curating high purity archives as part of ReCo. Since ViT-L/14@336px performs best, we employ this as our retrieval model in the remaining experiments. Influence of archive size and visual encoder used for co-segmentation. In Fig. 4 (right) we illustrate the effect of using different pre-trained architectures, e.g. MoCov2 [25], DINO [7], CLIP [71], DeiTSIN [60], as the archive size (and thus the number of images used for co-segmentation) changes. The y-axis depicts segmentation performance for ReCo with these configurations on the PASCAL-Context benchmark. We observe that using larger archives tends to improve performance (likely due to their reasonably high purity) albeit non-monotonically, and that features from DeiT-SIN perform best. We 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: We propose ReCo, a new framework for semantic segmentation zero-shot transfer without pixel supervision. The figure depicts ReCo segmentations for COCO-Stuff [6], indicating promising results in the challenging zero-shot transfer setting. We also illustrate results with unsupervised adaptation to the target distribution (ReCo+), trading flexibility for improved segmentation quality. shown that modern deep architectures (most notably vision transformers [18]) develop the ability to infer the spatial extent of objects without pixel supervision [7, 60, 79, 86, 77, 55] and moreover can establish semantically consistent correspondences across images [13, 24]. The second line of research has demonstrated that large-scale visual-language pre-training [71, 35] produces models that possess both a large vocabulary and remarkable zero-shot transfer potential—the ability to recognise concepts on target datasets without access to the target data distribution during training. In this work, we target a synthesis of these two approaches that draws on their respective strengths for the semantic segmentation task. We first employ CLIP [71] to curate training sets from unlabelled images for any desired list of concepts. We then exploit the robust semantic correspondences offered by modern vision backbones to co-segment concepts among the resulting curated collections. Finally, we use these co-segmented concepts to construct a segmentation model for the given concepts, without requiring training. This framework, which we term Retrieve and Co-segment (ReCo), performs favourably to existing unsupervised segmentation approaches while preserving the benefits of a wide vocabulary, named predictions and zero-shot transfer exemplified by CLIP. Since ReCo utilises a pre-trained",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "the weak annotation to be attached to the data used to train the segmentation model—by contrast, ReCo can in principle train a segmenter from any unlabelled collection of images. ReCo also bears a conceptual similarity with webly-supervised approaches [20] for semantic segmentation [36, 76]. These methods employ an image search engine such as Google to provide training samples for concepts. However, their flexibility is limited (this approach cannot be applied to private or commercially sensitive data, for example) and they lack the ability to leverage the knowledge of the search engine itself during inference (we demonstrate that integrating the vision-language model into the inference procedure brings significant gains in performance). Zero-shot semantic segmentation with pretrained language/vision-language embeddings. A diverse body of work has explored zero-shot semantic segmentation, broadly defined as the task of segmenting categories for which no labels were provided during training (often termed zerolabel semantic segmentation [89]). The key idea underlying many of these works is to leverage relationships encoded in pretrained word embeddings (such as word2vec [56] or GloVe [68]) to enable generalisation to unseen categories [94, 5, 23, 89, 40, 29, 47, 65]. More recent work has sought to leverage the vision-language embedding space learned by CLIP [71] to improve dense prediction in various settings [96, 72, 46, 91, 17, 52]. We adopt a variation of DenseCLIP [96] as a component of our framework. Additionally, differently from the above, we pursue the formulation of zero-shot transfer popularised by CLIP [71] which evaluates performance on unseen datasets rather than unseen categories. Consequently, unlike these works, our model has no access to either labelled",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-13ba90e2a8c8d8aaa0563a91",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/c404a5adbf90e09631678b13b05d9d7a-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c49f7ee3db9fbf19af312b80",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/daabe43c3e1d06980aa23880bfbe1f45-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "eab6d387a377062d6121b29cff241b7dd11d338a67d07ae6ec490ba337e59679"
+    },
+    {
+      "id": "edge-1fbbc937409273e7f2cf59b4",
+      "a": "paper-1a20c66525555a22acfd417e",
+      "b": "paper-c49f7ee3db9fbf19af312b80",
+      "state": {
+        "paper_a": {
+          "title": "Self-Supervised Visual Representation Learning from Hierarchical Grouping",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "We create a framework for bootstrapping visual representation learning from a primitive visual grouping capability. We operationalize grouping via a contour detector that partitions an image into regions, followed by merging of those regions into a tree hierarchy. A small supervised dataset suffices for training this grouping primitive. Across a large unlabeled dataset, we apply this learned primitive to automatically predict hierarchical region structure. These predictions serve as guidance for self-supervised contrastive feature learning: we task a deep network with producing per-pixel embeddings whose pairwise distances respect the region hierarchy. Experiments demonstrate that our approach can serve as state-of-the-art generic pre-training, benefiting downstream tasks. We additionally explore applications to semantic region search and video-based object instance tracking."
+        },
+        "paper_b": {
+          "title": "ReCo: Retrieve and Co-segment for Zero-shot Transfer",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Semantic segmentation has a broad range of applications, but its real-world impact has been significantly limited by the prohibitive annotation costs necessary to enable deployment. Segmentation methods that forgo supervision can side-step these costs, but exhibit the inconvenient requirement to provide labelled examples from the target distribution to assign concept names to predictions. An alternative line of work in language-image pre-training has recently demonstrated the potential to produce models that can both assign names across large vocabularies of concepts and enable zero-shot transfer for classification, but do not demonstrate commensurate segmentation abilities.We leverage the retrieval abilities of one such language-image pre-trained model, CLIP, to dynamically curate training sets from unlabelled images for arbitrary collections of concept names, and leverage the robust correspondences offered by modern image representations to co-segment entities among the resulting collections. The synthetic segment collections are then employed to construct a segmentation model (without requiring pixel labels) whose knowledge of concepts is inherited from the scalable pre-training process of CLIP. We demonstrate that our approach, termed Retrieve and Co-segment (ReCo) performs favourably to conventional unsupervised segmentation approaches while inheriting the convenience of nameable predictions and zero-shot transfer. We also demonstrate ReCo’s ability to generate specialist segmenters for extremely rare objects."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Learning objectives based on maximising mutual information between views [34, 61], metric learning across proposals [93, 82], equivariance and invariance constraints [12], distillation of self-supervised feature correspondences [24] and cross modal cues (vision and LiDAR) [85] have all shown their potential for this task.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1a20c66525555a22acfd417e",
+          "b": "paper-c49f7ee3db9fbf19af312b80",
+          "input_sha256": "fedb4d459ba325a87ea219a28f358436e49915215350f765c5c9315eedad69f5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c1502ae5a4d514baec129f72948c266e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c1502ae5a4d514baec129f72948c266e-Paper.pdf",
+              "sha256": "2a50820742d41609b195cec742cb462eb0d71ec083bf8d44ad808e325ef5596b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/daabe43c3e1d06980aa23880bfbe1f45-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We create a framework for bootstrapping visual representation learning from a primitive visual grouping capability. We operationalize grouping via a contour detector that partitions an image into regions, followed by merging of those regions into a tree hierarchy. A small supervised dataset suffices for training this grouping primitive. Across a large unlabeled dataset, we apply this learned primitive to automatically predict hierarchical region structure. These predictions serve as guidance for self-supervised contrastive feature learning: we task a deep network with producing per-pixel embeddings whose pairwise distances respect the region hierarchy. Experiments demonstrate that our approach can serve as state-of-theart generic pre-training, benefiting downstream tasks. We additionally explore applications to semantic region search and video-based object instance tracking.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c1502ae5a4d514baec129f72948c266e-Paper.pdf",
+              "document_sha256": "2a50820742d41609b195cec742cb462eb0d71ec083bf8d44ad808e325ef5596b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "where P os(i), N eg(i) denote the pixels in the same or different semantic categories as pixel i. Unlike the supervised setting, where annotations determine P os(i), N eg(i), we must automate estimation of these relationships. In designing such a procedure, we operate under stringent assumptions: (1) the network is initialized from scratch, and (2) training images may contain complex scenes. Grouping Primitive. We deriving guidance from a visual grouping primitive to sample P os(i) and N eg(i). Specifically, we adopt a contour detector φE , which, acting on image I, produces an edge strength map E = φE (I). We then convert E into a region map R using a hierarchical merging process which repeatedly removes the weakest edge separating two regions. The real-valued edge strength at which two distinct regions merge defines a distance metric, which we extend to a notion of distance between pixels. This is precisely the procedure for constructing an ultrametric contour map (UCM) [1], which can equivalently be regarded as as both a reweighted edge map, and a tree T defining a region hierarchy. The leaves of T are the initial, finest-scale, regions; interior nodes represent larger regions formed by merging their children and have a real-valued height in the hierarchy equal to the distance between their child regions. Figure 1 (top, center) shows an example. As remarked upon earlier, we utilize the structured forest edge detector of Dollár and Zitnick [11], trained on a small dataset (BSDS [34]). In constructing the region tree, we follow Arbeláez et al. [2], applying their variant of the oriented watershed transform (OWT) prior to computing the UCM. Pixel Sampling from Region Metric. Denote the distance between regions R1 and R2 defined by the UCM-derived region tree T as dT",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c1502ae5a4d514baec129f72948c266e-Paper.pdf",
+              "document_sha256": "2a50820742d41609b195cec742cb462eb0d71ec083bf8d44ad808e325ef5596b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Our work is connected to several themes in the literature, which we describe next. Unsupervised semantic segmentation. There has been considerable recent progress towards unsupervised semantic segmentation with deep neural networks by leveraging ideas from selfsupervised learning. Learning objectives based on maximising mutual information between views [34, 61], metric learning across proposals [93, 82], equivariance and invariance constraints [12], distillation of self-supervised feature correspondences [24] and cross modal cues (vision and LiDAR) [85] have all shown their potential for this task. One drawback of these approaches is a reliance on either nearest neighbour search on a held-out set with pixel level annotations or the Hungarian algorithm [45] (optimally matching predictions against ground-truth semantic masks) to produce segments with names. In contrast, by leveraging the ability of a language-image model to name concepts, ReCo is independent of labelled examples during both training and inference. Weakly-supervised semantic segmentation. To reduce annotation costs, a number of works have explored weaker cues such eye tracking [63], pointing [4, 70, 11], sparse pixel labels [78], scribbles [49], web-queried samples [36], boxes [15, 42, 80], extreme clicks [64, 54], image-level labels [95, 88, 19, 1, 8, 67, 69] and free-form text [90]. However, such approaches still require 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: We propose ReCo, a new framework for semantic segmentation zero-shot transfer without pixel supervision. The figure depicts ReCo segmentations for COCO-Stuff [6], indicating promising results in the challenging zero-shot transfer setting. We also illustrate results with unsupervised adaptation to the target distribution (ReCo+), trading flexibility for improved segmentation quality. shown that modern deep architectures (most notably vision transformers [18]) develop the ability to infer the spatial extent of objects without pixel supervision [7, 60, 79, 86, 77, 55] and moreover can establish semantically consistent correspondences across images [13, 24]. The second line of research has demonstrated that large-scale visual-language pre-training [71, 35] produces models that possess both a large vocabulary and remarkable zero-shot transfer potential—the ability to recognise concepts on target datasets without access to the target data distribution during training. In this work, we target a synthesis of these two approaches that draws on their respective strengths for the semantic segmentation task. We first employ CLIP [71] to curate training sets from unlabelled images for any desired list of concepts. We then exploit the robust semantic correspondences offered by modern vision backbones to co-segment concepts among the resulting curated collections. Finally, we use these co-segmented concepts to construct a segmentation model for the given concepts, without requiring training. This framework, which we term Retrieve and Co-segment (ReCo), performs favourably to existing unsupervised segmentation approaches while preserving the benefits of a wide vocabulary, named predictions and zero-shot transfer exemplified by CLIP. Since ReCo utilises a pre-trained",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "the weak annotation to be attached to the data used to train the segmentation model—by contrast, ReCo can in principle train a segmenter from any unlabelled collection of images. ReCo also bears a conceptual similarity with webly-supervised approaches [20] for semantic segmentation [36, 76]. These methods employ an image search engine such as Google to provide training samples for concepts. However, their flexibility is limited (this approach cannot be applied to private or commercially sensitive data, for example) and they lack the ability to leverage the knowledge of the search engine itself during inference (we demonstrate that integrating the vision-language model into the inference procedure brings significant gains in performance). Zero-shot semantic segmentation with pretrained language/vision-language embeddings. A diverse body of work has explored zero-shot semantic segmentation, broadly defined as the task of segmenting categories for which no labels were provided during training (often termed zerolabel semantic segmentation [89]). The key idea underlying many of these works is to leverage relationships encoded in pretrained word embeddings (such as word2vec [56] or GloVe [68]) to enable generalisation to unseen categories [94, 5, 23, 89, 40, 29, 47, 65]. More recent work has sought to leverage the vision-language embedding space learned by CLIP [71] to improve dense prediction in various settings [96, 72, 46, 91, 17, 52]. We adopt a variation of DenseCLIP [96] as a component of our framework. Additionally, differently from the above, we pursue the formulation of zero-shot transfer popularised by CLIP [71] which evaluates performance on unseen datasets rather than unseen categories. Consequently, unlike these works, our model has no access to either labelled",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/daabe43c3e1d06980aa23880bfbe1f45-Paper-Conference.pdf",
+              "document_sha256": "030476c552d403b08af8eaa3bb76663874821780d7c12378ea204331b0e9dc2d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1a20c66525555a22acfd417e",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c1502ae5a4d514baec129f72948c266e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c49f7ee3db9fbf19af312b80",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/daabe43c3e1d06980aa23880bfbe1f45-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "d4bc79b3aad5b2c7530ae2441e0f5e5d4e87eae32939314487bab1eb0ba22af9"
+    },
+    {
+      "id": "edge-93087f5e2179aac47b51c003",
+      "a": "paper-1f636f1ea849d04f293fd4f5",
+      "b": "paper-6b11b9c6aa04e02bb091b56d",
+      "state": {
+        "paper_a": {
+          "title": "DetCLIP: Dictionary-Enriched Visual-Concept Paralleled Pre-training for Open-world Detection",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Open-world object detection, as a more general and challenging goal, aims to recognize and localize objects described by arbitrary category names. The recent work GLIP formulates this problem as a grounding problem by concatenating all category names of detection datasets into sentences, which leads to inefficient interaction between category names. This paper presents DetCLIP, a paralleled visual-concept pre-training method for open-world detection by resorting to knowledge enrichment from a designed concept dictionary. To achieve better learning efficiency, we propose a novel paralleled concept formulation that extracts concepts separately to better utilize heterogeneous datasets (i.e., detection, grounding, and image-text pairs) for training. We further design a concept dictionary (with descriptions) from various online sources and detection datasets to provide prior knowledge for each concept. By enriching the concepts with their descriptions,we explicitly build the relationships among various concepts to facilitate the open-domain learning. The proposed concept dictionary is further used to provide sufficient negative concepts for the construction of the word-region alignment loss, and to complete labels for objects with missing descriptions in captions of image-text pair data. The proposed framework demonstrates strong zero-shot detection performances, e.g., on the LVIS dataset, our DetCLIP-T outperforms GLIP-T by 9.9% mAP and obtains a 13.5% improvement on rare categories compared to the fully-supervised model with the same backbone as ours."
+        },
+        "paper_b": {
+          "title": "VL-SAM-V2: Open-World Object Detection with General and Specific Query Fusion",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Current perception models have achieved remarkable success by leveraging large-scale labeled datasets, but still face challenges in open-world environments with novel objects. To address this limitation, researchers introduce open-set perception models to detect or segment arbitrary test-time user-input categories. However, open-set models rely on human involvement to provide predefined object categories as input during inference. More recently, researchers have framed a more realistic and challenging task known as open-ended perception that aims to discover unseen objects without requiring any category-level input from humans at inference time. Nevertheless, open-ended models suffer from low performance compared to open-set models. In this paper, we present VL-SAM-V2, an open-world object detection framework that is capable of discovering unseen objects while achieving favorable performance. To achieve this, we combine queries from open-set and open-ended models and propose a general and specific query fusion module to allow different queries to interact. By adjusting queries from open-set models, we enable VL-SAM-V2 to be evaluated in the open-set or open-ended mode. In addition, to learn more diverse queries, we introduce ranked learnable queries to match queries with proposals from open-ended models by sorting. Moreover, we design a denoising point training strategy to facilitate the training process. Experimental results on LVIS show that our method surpasses the previous open-set and open-ended methods, especially on rare objects."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "DetCLIP [39] separates the texts in GLIP into a parallel concept and regards each object category as an individual input.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1f636f1ea849d04f293fd4f5",
+          "b": "paper-6b11b9c6aa04e02bb091b56d",
+          "input_sha256": "27a6a9f478e9b5142761b6e5f936166ef8bc38e9bb8215643f0ed001407f62b7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/3ba960559212691be13fa81d9e5e0047-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/3ba960559212691be13fa81d9e5e0047-Paper-Conference.pdf",
+              "sha256": "12871d66cb7a1a93c89f6cedfb1689ca308f859c04103a894be3a6dae4531c61"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/c3532dd633e600e9f6db57aa7ae0c858-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/c3532dd633e600e9f6db57aa7ae0c858-Paper-Conference.pdf",
+              "sha256": "a9cd177d1cadbee318c2defa52f4202e8426d88c8c3a8ee10f0db60f14f0e0d3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Task definition of open-world detection. In this paper, DetCLIP aims to develop a new pre-training pipeline with datasets from different domains (including detection dataset, grounding dataset and image-text pair dataset) as input, to deal with the open-world detection problem. detector by distilling the learned image embeddings of the cropped proposal regions from a pretrained VL model. However, this paradigm requires costly feature extraction from cropped images. There also exists discrepancy between instance-level features and conventional image-level features extracted from VL models. [14] proposes a self-training pipeline with pseudo labels (i.e., noun phrases in caption) generated by a pre-trained VL model [26] while the phrases in caption are always too limited to cover all the objects in an image. Moreover, their open-domain ability is determined by the performance of the pre-trained VL models. Another line of work, GLIP [28] further proposes a grounding formulation of open-world detection by directly utilizing both detection and grounding data for pre-training. Specially for detection data, GLIP takes an image and a text prompt sentence that concatenates all the category names as input (i.e., sequential formulation). A text encoder will output features for this sentence and then GLIP aligns them with the region features extracted from the image encoder. However, restricted by the max length of the input token size of the text encoder, it is difficult for GLIP to operate on a large number of categories or extend to more detailed description of the categories. Furthermore, full attention matrix upon all the categories has to be learned in the text encoder, which is unnecessary and low-efficient for detection especially when the size of input categories",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/3ba960559212691be13fa81d9e5e0047-Paper-Conference.pdf",
+              "document_sha256": "12871d66cb7a1a93c89f6cedfb1689ca308f859c04103a894be3a6dae4531c61"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Open-world object detection, as a more general and challenging goal, aims to recognize and localize objects described by arbitrary category names. The recent work GLIP formulates this problem as a grounding problem by concatenating all category names of detection datasets into sentences, which leads to inefficient interaction between category names. This paper presents DetCLIP, a paralleled visual-concept pre-training method for open-world detection by resorting to knowledge enrichment from a designed concept dictionary. To achieve better learning efficiency, we propose a novel paralleled concept formulation that extracts concepts separately to better utilize heterogeneous datasets (i.e., detection, grounding, and image-text pairs) for training. We further design a concept dictionary (with descriptions) from various online sources and detection datasets to provide prior knowledge for each concept. By enriching the concepts with their descriptions, we explicitly build the relationships among various concepts to facilitate the open-domain learning. The proposed concept dictionary is further used to provide sufficient negative concepts for the construction of the word-region alignment loss and to complete labels for objects with missing descriptions in captions of image-text pair data. The proposed framework demonstrates strong zero-shot detection performances, e.g., on the LVIS dataset, our DetCLIP-T outperforms GLIP-T by 9.9% mAP and obtains a 13.5% improvement on rare categories compared to the fully-supervised model with the same backbone as ours.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/3ba960559212691be13fa81d9e5e0047-Paper-Conference.pdf",
+              "document_sha256": "12871d66cb7a1a93c89f6cedfb1689ca308f859c04103a894be3a6dae4531c61"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "often transform the open-set detection task into a vision-language alignment task, allowing detectors to match unseen object categories with visual information through the alignment process. With the advent of contrastive learning [15, 3], vision-language alignment models (e.g., CLIP [33]) achieve favorable zero-shot alignment performance for unseen objects. Based on this, many open-set object detection methods use a proposal network to obtain foreground object bounding boxes and embeddings, and then use CLIP as the open-set classification module to predict their categories. However, CLIP is trained to align the whole image and texts, while the open-set object detection task favors region-level feature alignment. To address this, GLIP [24] proposes an object-aware vision-language region-level alignment task with phrase grounding to pre-train open-world object detectors. DetCLIP [40] separates the texts in GLIP into a parallel concept and regards each object category as an individual input. GLIPv2 [44] further improves on GLIP by introducing a deep fusion block for better vision-language fusion and intra- and inter-image-text contrastive losses. GroundingDINO [29] follows the idea of GLIP to present image-text cross-modality fusion, and proposes object queries by text information. OWL [32] scales the training dataset to 10M examples with pseudo-annotation and a self-training strategy. YOLO-World [7] adopts the efficient YOLO-series backbone to achieve real-time open-set object detection. More recently, due to the emergence of large language models and vision-language models, many open-set methods try to adopt them for additional supervision. DetCLIPv3 [41] combines the object-level and image-level generation tasks with the open-set object detection task. LLMDet [11]",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/c3532dd633e600e9f6db57aa7ae0c858-Paper-Conference.pdf",
+              "document_sha256": "a9cd177d1cadbee318c2defa52f4202e8426d88c8c3a8ee10f0db60f14f0e0d3"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "GLIP [24] GLIPv2 [44] Grounding-DINO [29] OWL-ST [32] DetCLIP [40] DetCLIPv2 [39] DetCLIPv3 [41] LLMDet [11]",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/c3532dd633e600e9f6db57aa7ae0c858-Paper-Conference.pdf",
+              "document_sha256": "a9cd177d1cadbee318c2defa52f4202e8426d88c8c3a8ee10f0db60f14f0e0d3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Current perception models have achieved remarkable success by leveraging largescale labeled datasets, but still face challenges in open-world environments with novel objects. To address this limitation, researchers introduce open-set perception models to detect or segment arbitrary test-time user-input categories. However, open-set models rely on human involvement to provide predefined object categories as input during inference. More recently, researchers have framed a more realistic and challenging task known as open-ended perception that aims to discover unseen objects without requiring any category-level input from humans at inference time. Nevertheless, open-ended models suffer from low performance compared to openset models. In this paper, we present VL-SAM-V2, an open-world object detection framework that is capable of discovering unseen objects while achieving favorable performance. To achieve this, we combine queries from open-set and open-ended models and propose a general and specific query fusion module to allow different queries to interact. By adjusting queries from open-set models, we enable VLSAM-V2 to be evaluated in the open-set or open-ended mode. In addition, to learn more diverse queries, we introduce ranked learnable queries to match queries with proposals from open-ended models by sorting. Moreover, we design a denoising point training strategy to facilitate the training process. Experimental results on LVIS show that our method surpasses the previous open-set and open-ended methods, especially on rare objects.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/c3532dd633e600e9f6db57aa7ae0c858-Paper-Conference.pdf",
+              "document_sha256": "a9cd177d1cadbee318c2defa52f4202e8426d88c8c3a8ee10f0db60f14f0e0d3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Illustration of VL-SAM-V2. VL-SAM-V2 combines the general queries from VL-SAM and the specific queries of an open-set model with a query fusion module. predefined object category list only contains vehicles and pedestrians, the open-set models still cannot detect drones or wild animals in the input images. Therefore, they need humans to intervene by providing a more comprehensive list including these objects. Additionally, although open-set models perform well on frequent objects, they often struggle with rare objects [29]. In contrast, open-ended models aim to identify and categorize all objects in given images without requiring a predefined object category list provided by humans [25]. This capability is usually achieved by incorporating large vision-language models. However, open-ended models suffer from low performance [43, 27], especially when dealing with crowded objects, which typically appear in frequent object categories. To this end, we introduce VL-SAM-V2, an open-world object detection framework that combines the strengths of open-set and open-ended methods to achieve favorable performance in both rare and frequent object categories while equipped with the ability to discover novel objects, as shown in Figure 1. Specifically, we treat object queries from open-set models as specific queries, since they specialize in frequent objects. Meanwhile, we adopt the VL-SAM pipeline to generate object queries in an open-ended manner and view them as general queries, because of the generalization of large vision-language models. Then, we propose a general and specific query fusion module to fuse two distinct types of queries with the attention mechanism in a lightweight manner. Since the VL-SAM only provides point prompts, we present ranked learnable queries",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/c3532dd633e600e9f6db57aa7ae0c858-Paper-Conference.pdf",
+              "document_sha256": "a9cd177d1cadbee318c2defa52f4202e8426d88c8c3a8ee10f0db60f14f0e0d3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1f636f1ea849d04f293fd4f5",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/3ba960559212691be13fa81d9e5e0047-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-6b11b9c6aa04e02bb091b56d",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/c3532dd633e600e9f6db57aa7ae0c858-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Image Segmentation and Object Detection with Foundation Models"
+      },
+      "sha256": "91730821e0731d70a79b9ab2a2113bc7cddca8a12c944ef915ea2fa1b5061197"
+    }
+  ]
+}

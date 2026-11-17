@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Learning to Optimize Combinatorial Problems",
+  "area": "Online Learning and Bandits",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-33abfa6a6203ae8cd8b5fa43",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-69ef929ab53ceb7bf8d94eb2",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Impartial Multi-task Representation Learning via Variance-invariant Probabilistic Decoding",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Multi-task learning (MTL) enhances efficiency by sharing representations across tasks, but task dissimilarities often cause partial learning, where some tasks dominate while others are neglected. Existing methods mainly focus on balancing loss or gradients but fail to fundamentally address this issue due to the representation discrepancy in latent space. In this paper, we propose variance-invariant probabilistic decoding for multi-task learning (VIP-MTL), a framework that ensures impartial learning by harmonizing representation spaces across tasks. VIP-MTL decodes shared representations into task-specific probabilistic distributions and applies variance normalization to constrain these distributions to a consistent scale. Experiments on two language benchmarks show that VIP-MTL outperforms 12 representative methods under the same multi-task settings, especially in heterogeneous task combinations and data-constrained scenarios. Further analysis shows that VIP-MTL is robust to sampling distributions, efficient on optimization process, and scale-invariant to task losses. Additionally, the learned task-specific representations are more informative, enhancing the language understanding abilities of pre-trained language models under the multi-task paradigm."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We report the detailed hyperparameter settings of VIP-MTL with RoBERTa and BERT backbone models on two benchmarks in Table 8.\nWe use pre-trained language models BERT (Devlin et al., 2019) and RoBERTa (Liu et al., 2019c) as the backbone model.\nFor example, with the RoBERTa backbone, VIP-MTL improves the average relative improvement ( ∆ p ) by +5.06% on TweetEval and +7.66% on AffectEval, and improves the average performance (Avg.) by +2.92% on TweetEval and +3.76% on AffectEval, compared to the EW baseline.\nSpecifically, we use bert-base-uncased 2 and roberta-base 2 to initialize BERT and RoBERTa for fine-tuning.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-69ef929ab53ceb7bf8d94eb2",
+          "input_sha256": "06ae71583a09bcffe7f436a9f8a6590cd7728e0b0310be24889aa643ac0796a4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.acl-long.975/",
+              "pdf_url": "https://aclanthology.org/2025.acl-long.975.pdf",
+              "sha256": "f70c8e2c4c7bf5ad171b0a51acdeddaeea70ba5dddbf984cbc382e6676464018"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "them, MT-VIB, VMTL, and Hierarchical MTL are probabilistic MTL series. For fair comparison, we reproduce each method under the same experimental setups (e.g., the network backbone). We use pre-trained language models BERT (Devlin et al., 2019) and RoBERTa (Liu et al., 2019c) as the backbone model. Specifically, we use bert-baseuncased2 and roberta-base2 to initialize BERT and RoBERTa for fine-tuning. We also compare with large language model (LLM) GPT-3.53 and single task learning (STL) baseline. Please see Appendix B.2 for details of comparison methods. Evaluation Metrics We utilize the same evaluation metrics as those used in the original tasks. For classification tasks, the macro-averaged F1 over all classes is employed with three exceptions: stance (macro-averaged of F1 of favor and against classes), irony (F1 of ironic class), and sentiment analysis (macro-averaged recall). For regression tasks, we compute Pearson correlation for each VAD dimension on EmoBank, and use both Pearson and Spearman correlation coefficients on EI-Reg. Following Barbieri et al. (2020), we report a global metric (Avg.) based on the average of all task-specific metrics. Following Maninis et al. (2019); Liu et al. (2021a), we also report the average relative improvement of each method over the EW baseline as the multi-task performance measure, denoted as ∆p. See Appendix B.3 for details of metrics. Additionally, we use t-test (Kim, 2015) to verify the statistical significance of differences between results of VIP-MTL and the baseline on the task. Implementation Details All experiments are conducted on a single NVIDIA Tesla A100 80GB card. The validation sets are used to tune hyperparameters and choose the optimal model. For each method, we run three random seeds and report the average",
+              "url": "https://aclanthology.org/2025.acl-long.975.pdf",
+              "document_sha256": "f70c8e2c4c7bf5ad171b0a51acdeddaeea70ba5dddbf984cbc382e6676464018"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "tic distributions, where each point in the distribution corresponds to a potential task-specific representation. Unlike prior methods that focus on loss or gradient balancing, VIP-MTL operates at the level of representation balancing, ensuring impartial learning on representation spaces for all tasks. To address the issue of scale variance across tasks, we apply variance normalization on probabilistic distributions, adaptively constraining them to a consistent scale. By aligning the representation distributions, VIP-MTL prevents any single task from dominating the shared representation space and ensures that the influence of each task remains balanced during training. We conduct experiments on two multi-task benchmarks, TweetEval and AffectEval for language understanding. The former includes 6 classification tasks, while the latter involves 2 classification tasks and 2 regression tasks in a heterogeneous multi-task setting. The results show that our VIP-MTL consistently surpasses 12 representative methods across different pre-trained language models (PLMs) under the same multi-task settings. For example, with the RoBERTa backbone, VIP-MTL improves the average relative improvement (∆p) by +5.06% on TweetEval and +7.66% on AffectEval, and improves the average performance (Avg.) by +2.92% on TweetEval and +3.76% on AffectEval, compared to the EW baseline. Compared to single task learning baselines, VIP-MTL also achieves better results on most tasks with the same scale of model parameters. Further analysis shows that our method is robust to sampling distributions, efficient on optimization process, and scale-invariant to task losses. Extensive experiments demonstrate that VIP-MTL offers significant advantages in heterogeneous task combinations and data-constrained",
+              "url": "https://aclanthology.org/2025.acl-long.975.pdf",
+              "document_sha256": "f70c8e2c4c7bf5ad171b0a51acdeddaeea70ba5dddbf984cbc382e6676464018"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Multi-task learning (MTL) enhances efficiency by sharing representations across tasks, but task dissimilarities often cause partial learning, where some tasks dominate while others are neglected. Existing methods mainly focus on balancing loss or gradients but fail to fundamentally address this issue due to the representation discrepancy in latent space. In this paper, we propose variance-invariant probabilistic decoding for multi-task learning (VIP-MTL), a framework that ensures impartial learning by harmonizing representation spaces across tasks. VIP-MTL decodes shared representations into task-specific probabilistic distributions and applies variance normalization to constrain these distributions to a consistent scale. Experiments on two language benchmarks show that VIPMTL outperforms 12 representative methods under the same multi-task settings, especially in heterogeneous task combinations and dataconstrained scenarios. Further analysis shows that VIP-MTL is robust to sampling distributions, efficient on optimization process, and scale-invariant to task losses. Additionally, the learned task-specific representations are more informative, enhancing the language understanding abilities of pre-trained language models under the multi-task paradigm.",
+              "url": "https://aclanthology.org/2025.acl-long.975.pdf",
+              "document_sha256": "f70c8e2c4c7bf5ad171b0a51acdeddaeea70ba5dddbf984cbc382e6676464018"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "ments on two language understanding benchmarks show that our method outperforms 12 representative methods under the same multi-task settings, especially in heterogeneous and data-constrained scenarios. Further analysis shows that VIP-MTL is distribution-robust, efficient, scale-invariant, and the learned task-specific representations are more informative for all tasks.1",
+              "url": "https://aclanthology.org/2025.acl-long.975.pdf",
+              "document_sha256": "f70c8e2c4c7bf5ad171b0a51acdeddaeea70ba5dddbf984cbc382e6676464018"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-69ef929ab53ceb7bf8d94eb2",
+          "url": "https://aclanthology.org/2025.acl-long.975/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "a21294f3759dceff9b3533f48e20295f949fde597cf5e2302ef6504908919528"
+    },
+    {
+      "id": "edge-710e775c6bdb3a60e46367c2",
+      "a": "paper-013235cdea8726b460bfcce2",
+      "b": "paper-0b46ff2dbd5e23761f12aaa2",
+      "state": {
+        "paper_a": {
+          "title": "Adversarially Robust Optimization with Gaussian Processes",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "In this paper, we consider the problem of Gaussian process (GP) optimization with an added robustness requirement: The returned point may be perturbed by an adversary, and we require the function value to remain as high as possible even after this perturbation. This problem is motivated by settings in which the underlying functions during optimization and implementation stages are different, or when one is interested in finding an entire region of good inputs rather than only a single point. We show that standard GP optimization algorithms do not exhibit the desired robustness properties, and provide a novel confidence-bound based algorithm StableOpt for this purpose. We rigorously establish the required number of samples for StableOpt to find a near-optimal point, and we complement this guarantee with an algorithm-independent lower bound. We experimentally demonstrate several potential applications of interest using real-world data sets, and we show that StableOpt consistently succeeds in finding a stable maximizer where several baseline methods fail."
+        },
+        "paper_b": {
+          "title": "Risk-averse Heteroscedastic Bayesian Optimization",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Many black-box optimization tasks arising in high-stakes applications require risk-averse decisions. The standard Bayesian optimization (BO) paradigm, however, optimizes the expected value only. We generalize BO to trade mean and input-dependent variance of the objective, both of which we assume to be unknown a priori. In particular, we propose a novel risk-averse heteroscedastic Bayesian optimization algorithm (RAHBO) that aims to identify a solution with high return and low noise variance, while learning the noise distribution on the fly. To this end, we model both expectation and variance as (unknown) RKHS functions, and propose a novel risk-aware acquisition function. We bound the regret for our approach and provide a robust rule to report the final decision point for applications where only a single solution must be identified. We demonstrate the effectiveness of RAHBO on synthetic benchmark functions and hyperparameter tuning tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "They study various notions including worst-case robustness [9], distributional robustness [19, 30], robust mixed strategies [33] and other notions of risk-aversion [11, 18, 29], and while some of them report robust regret guarantees, their focus is primarily on the robustness in the homoscedastic GP setting.\nWe consider standard smoothness assumptions [9, 35] when it comes to the unknown function f : X → R.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-013235cdea8726b460bfcce2",
+          "b": "paper-0b46ff2dbd5e23761f12aaa2",
+          "input_sha256": "6ae1ebf5325e4403b5859ad01d40da257bb50d77ab499c903ae8056016295829",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/8f97d1d7e02158a83ceb2c14ff5372cd-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "While the above problem formulation seeks robustness within an ✏-ball corresponding to the distance function d(·, ·), our algorithm and theory apply to a variety of seemingly distinct settings. We outline a few such settings here; in the supplementary material, we give details of their derivations. Robust Bayesian optimization. Algorithm 1 and Theorem 1 extend readily to the Bayesian setting in which f ⇠ GP(0, k(x, x0 )). In particular, since the proof of Theorem 1 is based on confidence bounds, the only change required is selecting t to be that used for the Bayesian setting in [31]. As a result, our framework also captures the novel problem of adversarially robust Bayesian optimization. All of the variations outlined below similarly apply to both the Bayesian and non-Bayesian settings. Robustness to unknown parameters. Consider the scenario where an unknown function f : D ⇥ ⇥ ! R has a bounded RKHS norm under some composite kernel k((x, ✓), (x0 , ✓ 0 )). Some special cases include k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 ) + k(✓, ✓ 0 ) and k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 )k(✓, ✓ 0 ) [20]. The posterior mean µt (x, ✓) and variance t2 (x, ✓) conditioned on the previous observations (x1 , ✓ 1 , y1 ), ..., (xt 1 , ✓ t 1 , yt 1 ) are computed analogously to (5) [20]. A robust optimization formulation in this setting is to seek x that solves (18)",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Related work. Numerous algorithms have been developed for GP optimization in recent years [7, 16, 17, 26, 28, 31, 35]. Beyond the standard setting, several important extensions have been considered, including batch sampling [11, 12, 14], contextual and time-varying settings [6, 20], safety requirements [33], and high dimensional settings [18, 25, 36], just to name a few. Various forms of robustness in GP optimization have been considered previously. A prominent example is that of outliers [22], in which certain function values are highly unreliable; however, this is a separate issue from that of the present paper, since in [22] the returned point does not undergo any perturbation. Another related recent work is [2], which assumes that the sampled points (rather than the returned one) are subject to uncertainty. In addition to this difference, the uncertainty in [2] is random rather than adversarial, which is complementary but distinct from our work. The same is true of a setting called unscented Bayesian optimization in [23]. Moreover, no theoretical results are given in [2, 23]. In [8], a robust form of batch optimization is considered, but with yet another form of robustness, namely, some experiments in the batch may fail to produce an outcome. Level-set estimation [7, 15] is another approach to finding regions of good points rather than a single point. Our problem formulation is also related to other works on non-convex robust optimization, particularly those of Bertsimas et al. [3, 4]. In these works, a stable design x is sought that solves minx2D max 2U f (x + ). Here, resides in some uncertainty set U , and represents the perturbation against which the design x needs to be protected. Related problems have also recently been considered in the context of",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Figure 1: When there is a choice between identical optima with different noise level, standard BO tends to query points corresponding to higher noise. (a) Unknown objective with 3 global maxima marked as (A, B, C); (b) Heteroscedastic noise variance over the same domain: the noise level at (A, B, C) varies according to the sigmoid function; (c) Empirical variance distribution at all points acquired during BO procedure (over 9 experiments with different seeds). The three bumps correspond to the three global optima with different noise variance. RAHBO dominates in choosing the risk-averse optimum, consequently yielding lower risk-averse regret in Figure 5a. Related work. Bayesian optimization (BO) [26] refers to approaches for optimizing a noisy blackbox objective that is typically expensive to evaluate. A great number of BO methods have been developed over the years, including a significant number of variants of popular algorithms such as GP-UCB [35], Expected Improvement [26], and Thompson Sampling [14]. While the focus of standard BO approaches is mainly on trading-off exploration vs. exploitation and optimizing for the expected performance, in this work, we additionally focus on the risk that is involved when working with noisy objectives, as illustrated in Figure 1. The vast majority of previous BO works assume (sub-) Gaussian and homoscedastic noise (i.e., input independent and of some known fixed level). Both assumptions can be restrictive in practice. For example, as demonstrated in [15], the majority of hyperparameter tuning tasks exhibit heteroscedasticity. A few works relax the first assumption and consider, e.g., heavy-tailed noise models [31] and adversarially corrupted observations [8]. The second assumption is typically generalized via heteroscedastic",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Both metrics are important for choosing risk-averse solutions and which one is preferred depends on the application at hand. For example, risk-averse cumulative regret RT might be of a greater interest in online recommendation systems, while reporting a single point with high MV value might be more suitable when tuning machine learning hyperparameters. We consider both performance metrics in our experiments. Regularity assumptions. We consider standard smoothness assumptions [9, 35] when it comes to the unknown function f : X → R. In particular, we assume that f (·) belongs to a reproducing kernel Hilbert space (RKHS) Hκ (a space of smooth and real-valued functions defined on X ), i.e., f ∈ Hκ , induced by a kernel function κ(·, ·). We also assume that κ(x, x0 ) ≤ 1 for every x, x0 ∈ X . Moreover, the RKHS norm of f (·) is assumed to be bounded kf kκ ≤ Bf for some fixed constant Bf > 0. We assume that the noise ξ(x) is ρ(x)–sub-Gaussian with variance-proxy ρ2 (x) uniformly bounded ρ(x) ∈ [%, %̄] for some constant values %̄ ≥ % > 0. 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Many black-box optimization tasks arising in high-stakes applications require riskaverse decisions. The standard Bayesian optimization (BO) paradigm, however, optimizes the expected value only. We generalize BO to trade mean and inputdependent variance of the objective, both of which we assume to be unknown a priori. In particular, we propose a novel risk-averse heteroscedastic Bayesian optimization algorithm (RAHBO) that aims to identify a solution with high return and low noise variance, while learning the noise distribution on the fly. To this end, we model both expectation and variance as (unknown) RKHS functions, and propose a novel risk-aware acquisition function. We bound the regret for our approach and provide a robust rule to report the final decision point for applications where only a single solution must be identified. We demonstrate the effectiveness of RAHBO on synthetic benchmark functions and hyperparameter tuning tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "In this section, we experimentally validate RAHBO on two synthetic examples and two real hyperparameter tuning tasks, and compare it with the baselines. We provide an open-source implementation of our method.1 Baselines. We compare against two baselines: As the first baseline, we use GP-UCB with heteroscedastic noise as a standard risk-neutral algorithm that optimizes the unknown f (x). As the second one, we consider a risk-averse baseline that uniformly learns variance-proxy ρ2 (x) before the optimization procedure, in contrast to RAHBO which learns the variance-proxy on the fly. We call it RAHBO-US, standing for RAHBO with uncertainty sampling. It consists of two stages: (i) uniformly learning ρ2 (x) via uncertainty sampling, (ii) GP-UCB applied to the mean-variance objective, in which instead of the unknown ρ2 (x) we use the mean of the learned model. Note that RAHBO-US is the closest to the contextual BO setting [18], where the context distribution is assumed to be known. Experimental setup. At each iteration t, an algorithm queries a point xt and observes sample mean and sample variance of k observations {yi (xt )}ki=1 . We use a heteroscedastic GP for modelling f (x) and a homoscedastic GP for ρ2 (x). We set λ = 1 and βt = 2, which is commonly used in practice to improve performance over the theoretical results. Before the BO procedure, we determine the GP hyperparameters maximizing the marginal likelihood. To this end, we use initial points that are same for all the baselines and are chosen via Sobol sequence that generates low discrepancy quasi-random samples. We repeat each experiment several times, generating new initial points for every repetition. We use two metrics: (a) risk-averse cumulative regret Rt computed for the acquired inputs; (b) simple regret",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-013235cdea8726b460bfcce2",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-0b46ff2dbd5e23761f12aaa2",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8f97d1d7e02158a83ceb2c14ff5372cd-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "6985eaa54f9f9b38a873274ae4cb3d3df2f773b656341f7125eacea088659d9d"
+    },
+    {
+      "id": "edge-839c9de7d780c7d16693de9e",
+      "a": "paper-013235cdea8726b460bfcce2",
+      "b": "paper-93d06c84ca48540c8469311a",
+      "state": {
+        "paper_a": {
+          "title": "Adversarially Robust Optimization with Gaussian Processes",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "In this paper, we consider the problem of Gaussian process (GP) optimization with an added robustness requirement: The returned point may be perturbed by an adversary, and we require the function value to remain as high as possible even after this perturbation. This problem is motivated by settings in which the underlying functions during optimization and implementation stages are different, or when one is interested in finding an entire region of good inputs rather than only a single point. We show that standard GP optimization algorithms do not exhibit the desired robustness properties, and provide a novel confidence-bound based algorithm StableOpt for this purpose. We rigorously establish the required number of samples for StableOpt to find a near-optimal point, and we complement this guarantee with an algorithm-independent lower bound. We experimentally demonstrate several potential applications of interest using real-world data sets, and we show that StableOpt consistently succeeds in finding a stable maximizer where several baseline methods fail."
+        },
+        "paper_b": {
+          "title": "Gaussian Process Upper Confidence Bound Achieves Nearly-Optimal Regret in Noise-Free Gaussian Process Bandits",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "We study the noise-free Gaussian Process (GP) bandit problem, in which a learner seeks to minimize regret through noise-free observations of a black-box objective function that lies in a known reproducing kernel Hilbert space (RKHS). The Gaussian Process Upper Confidence Bound (GP-UCB) algorithm is a well-known approach for GP bandits, where query points are adaptively selected based on the GP-based upper confidence bound score. While several existing works have reported the practical success of GP-UCB, its theoretical performance remains suboptimal. However, GP-UCB often empirically outperforms other nearly-optimal noise-free algorithms that use non-adaptive sampling schemes. This paper resolves the gap between theoretical and empirical performance by establishing a nearly-optimal regret upper bound for noise-free GP-UCB. Specifically, our analysis provides the first constant cumulative regret bounds in the noise-free setting for both the squared exponential kernel and the Matérn kernel with some degree of smoothness."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This is counterintuitive, since, as shown in existing analyses for noisy settings [Scarlett, 2018, Srinivas et al., 2010], Bayesian regret often achieves smaller values than the worst-case regret in the frequentist setting.\n…2017], GP-UCB and GP-TS under Bayesian setting [Russo and Van Roy, 2014a, Srinivas et al., 2010], contextual setting [Krause and Ong, 2011], GP-based level-set estimation [Gotovos et al., 2013], multi-objective setting [Zuluaga et al., 2016], robust formulation [Bogunovic et al., 2018], and so on.\n…function is fixed, our core results (Lemmas 3–5) are also applicable to the regret analysis in the Bayesian setting, whose underlying function is drawn from a known GP [De Freitas et al., 2012, Gr¨unew¨alder et al., 2010, Russo and Van Roy, 2014a,b, Scarlett, 2018, Srinivas et al., 2010].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-013235cdea8726b460bfcce2",
+          "b": "paper-93d06c84ca48540c8469311a",
+          "input_sha256": "1d026f238d2f2852f97e2d231f50569f56b16d4523d98325f890a7d49332c13e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/5f1eee2509599faeeb3570a887016a64-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/5f1eee2509599faeeb3570a887016a64-Paper-Conference.pdf",
+              "sha256": "6c12fe87846f85b8647e795a261ee7375a3cdfcb166e68c4a2ab86e3b6bbdbe8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "While the above problem formulation seeks robustness within an ✏-ball corresponding to the distance function d(·, ·), our algorithm and theory apply to a variety of seemingly distinct settings. We outline a few such settings here; in the supplementary material, we give details of their derivations. Robust Bayesian optimization. Algorithm 1 and Theorem 1 extend readily to the Bayesian setting in which f ⇠ GP(0, k(x, x0 )). In particular, since the proof of Theorem 1 is based on confidence bounds, the only change required is selecting t to be that used for the Bayesian setting in [31]. As a result, our framework also captures the novel problem of adversarially robust Bayesian optimization. All of the variations outlined below similarly apply to both the Bayesian and non-Bayesian settings. Robustness to unknown parameters. Consider the scenario where an unknown function f : D ⇥ ⇥ ! R has a bounded RKHS norm under some composite kernel k((x, ✓), (x0 , ✓ 0 )). Some special cases include k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 ) + k(✓, ✓ 0 ) and k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 )k(✓, ✓ 0 ) [20]. The posterior mean µt (x, ✓) and variance t2 (x, ✓) conditioned on the previous observations (x1 , ✓ 1 , y1 ), ..., (xt 1 , ✓ t 1 , yt 1 ) are computed analogously to (5) [20]. A robust optimization formulation in this setting is to seek x that solves (18)",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Related work. Numerous algorithms have been developed for GP optimization in recent years [7, 16, 17, 26, 28, 31, 35]. Beyond the standard setting, several important extensions have been considered, including batch sampling [11, 12, 14], contextual and time-varying settings [6, 20], safety requirements [33], and high dimensional settings [18, 25, 36], just to name a few. Various forms of robustness in GP optimization have been considered previously. A prominent example is that of outliers [22], in which certain function values are highly unreliable; however, this is a separate issue from that of the present paper, since in [22] the returned point does not undergo any perturbation. Another related recent work is [2], which assumes that the sampled points (rather than the returned one) are subject to uncertainty. In addition to this difference, the uncertainty in [2] is random rather than adversarial, which is complementary but distinct from our work. The same is true of a setting called unscented Bayesian optimization in [23]. Moreover, no theoretical results are given in [2, 23]. In [8], a robust form of batch optimization is considered, but with yet another form of robustness, namely, some experiments in the batch may fail to produce an outcome. Level-set estimation [7, 15] is another approach to finding regions of good points rather than a single point. Our problem formulation is also related to other works on non-convex robust optimization, particularly those of Bertsimas et al. [3, 4]. In these works, a stable design x is sought that solves minx2D max 2U f (x + ). Here, resides in some uncertainty set U , and represents the perturbation against which the design x needs to be protected. Related problems have also recently been considered in the context of",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "of [Bull, 2011] up to polylogarithmic factors in the Matérn kernel. Regarding cumulative regret, our analysis shows that GP-UCB achieves the constant 𝑂 (1) regret under the squared exponential and Matérn kernel with 𝑑 > 𝜈. The results are summarized in Tables 1 and 2. • Our key theoretical contribution is the new algorithm-independent upper bounds for the observed posterior standard deviations (Lemmas 3–5) by bridging the information gainbased analysis in the noisy regime to the noise-free setting. Furthermore, as discussed in Section 3, these results have the potential to translate existing confidence bound-based algorithms for noisy settings into nearly-optimal noise-free variants beyond the analysis of GP-UCB. Related works. Various existing works study the theory for the noisy GP bandits [Chowdhury and Gopalan, 2017, Li and Scarlett, 2022, Scarlett et al., 2017, Srinivas et al., 2010, Valko et al., 2013]. Regarding noise-free settings, to our knowledge, [Bull, 2011] is the first work that shows both the upper bound and the lower bound for simple regret via the expected improvement (EI) strategy. After that, the analysis of the cumulative regret is shown in [Lyu et al., 2019] with GPUCB. Recently, Vakili [2022] conjectures the lower bound of the cumulative regret in the noise-free setting, suggesting a superior algorithm exists in the noise-free setting. Later, the following work [Li and Scarlett, 2024] formally validates the conjectured lower bound of [Vakili, 2022] 1 . Motivated by the lower bounds, several works [Flynn and Reeb, 2024, Kim and Sanz-Alonso, 2024, Iwazaki and Takeno, 2025a, Salgia et al., 2024] studied the improved algorithm to achieve superior regret to the result of [Lyu et al., 2019]. Although some of them propose the nearly-optimal algorithms",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5f1eee2509599faeeb3570a887016a64-Paper-Conference.pdf",
+              "document_sha256": "6c12fe87846f85b8647e795a261ee7375a3cdfcb166e68c4a2ab86e3b6bbdbe8"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Relation to the existing research in noise-free setting. Lemma 3 resolves the open problem raised by the existing noise-free setting literature [Li and Scarlett, 2024, Vakili, 2022]. First, Vakili [2022] Í conjectured that the quantity 𝑇𝑡=1 𝜎(x𝑡 ; X𝑡 −1 ) under 𝑘 = 𝑘 Matérn can attain the following upper bound: \u0010 𝑑−𝜈 \u0011   𝑑 if 𝑑 > 𝜈, 𝑇  ∑︁ 𝑂 𝑇  (14) 𝜎(x𝑡 ; X𝑡 −1 ) = 𝑂 (ln 𝑇) if 𝑑 = 𝜈,   𝑡=1 𝑂 (1) if 𝑑 < 𝜈.  Although the above conjecture is partially validated under a specific non-adaptive algorithm [Li and Scarlett, 2024, Iwazaki and Takeno, 2025a, Salgia et al., 2024], the correctness of this conjecture under a general algorithm has been an open problem [Li and Scarlett, 2024]. Lemma 3 answers this open problem with Eq. (13), which matches conjectured upper bound up to polylogarithmic factors. Generality of Lemma 3. We would like to highlight that Lemma 3 always holds for any input sequence, in contrast to the existing algorithm-specific upper bounds [Iwazaki and Takeno, 2025a, Salgia et al., 2024]. Since the existing noisy GP bandits theory often leverage the upper bound of Í min𝑡 ∈ [𝑇 ] 𝜎(x𝑡 ; X𝑡 −1 ) or 𝑇𝑡=1 𝜎(x𝑡 ; X𝑡 −1 ) from [Srinivas et al., 2010], we expect that many existing theoretical results in the noisy setting can be extended to the corresponding noise-free setting by directly replacing the existing noisy upper bounds of [Srinivas et al., 2010] with Lemma 3. For example, the analysis for GP-Thompson sampling (GP-TS) [Chowdhury and Gopalan, 2017], GPUCB and GP-TS under Bayesian setting [Russo and Van Roy, 2014a, Srinivas et al., 2010], contextual setting [Krause and Ong, 2011], GP-based level-set estimation [Gotovos et al., 2013], multi-objective setting [Zuluaga et al., 2016], robust formulation [Bogunovic et al., 2018], and so on. Extension to",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/5f1eee2509599faeeb3570a887016a64-Paper-Conference.pdf",
+              "document_sha256": "6c12fe87846f85b8647e795a261ee7375a3cdfcb166e68c4a2ab86e3b6bbdbe8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-013235cdea8726b460bfcce2",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-93d06c84ca48540c8469311a",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/5f1eee2509599faeeb3570a887016a64-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "f9616ca4e012f793f1ee9563317f946cca01ea4157557596196610c1d6bcef66"
+    },
+    {
+      "id": "edge-afe0f16637c38fb3ac9c5389",
+      "a": "paper-013235cdea8726b460bfcce2",
+      "b": "paper-b5a617b6198b5595cc18c494",
+      "state": {
+        "paper_a": {
+          "title": "Adversarially Robust Optimization with Gaussian Processes",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "In this paper, we consider the problem of Gaussian process (GP) optimization with an added robustness requirement: The returned point may be perturbed by an adversary, and we require the function value to remain as high as possible even after this perturbation. This problem is motivated by settings in which the underlying functions during optimization and implementation stages are different, or when one is interested in finding an entire region of good inputs rather than only a single point. We show that standard GP optimization algorithms do not exhibit the desired robustness properties, and provide a novel confidence-bound based algorithm StableOpt for this purpose. We rigorously establish the required number of samples for StableOpt to find a near-optimal point, and we complement this guarantee with an algorithm-independent lower bound. We experimentally demonstrate several potential applications of interest using real-world data sets, and we show that StableOpt consistently succeeds in finding a stable maximizer where several baseline methods fail."
+        },
+        "paper_b": {
+          "title": "Adversarial Attacks on Gaussian Process Bandits",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Gaussian processes (GP) are a widely-adopted tool used to sequentially optimize black-box functions, where evaluations are costly and potentially noisy. Recent works on GP bandits have proposed to move beyond random noise and devise algorithms robust to adversarial attacks. This paper studies this problem from the attacker’s perspective, proposing various adversarial attack methods with differing assumptions on the attacker’s strength and prior information. Our goal is to understand adversarial attacks on GP bandits from theoretical and practical perspectives. We focus primarily on targeted attacks on the popular GP-UCB algorithm and a related elimination-based algorithm, based on adversarially perturbing the function f to produce another function f whose optima are in some target region. Based on our theoretical analysis, we devise both white-box attacks (known f) and black-box attacks (unknown f), with the former including a Subtraction attack and Clipping attack, and the latter including an Aggressive subtraction attack. We demonstrate that adversarial attacks on GP bandits can succeed in forcing the algorithm towards the target region even with a low attack budget, and we test our attacks’ effectiveness on a diverse range of objective functions."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "• Adversarial perturbations to the final point, where the final recommendation x may be perturbed up to some level δ (Bertsimas et al., 2010; Bogunovic et al., 2018).\n• Adversarial perturbations to the ﬁnal point , where the ﬁnal recommendation x may be perturbed up to some level δ (Bertsimas et al., 2010; Bogunovic et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-013235cdea8726b460bfcce2",
+          "b": "paper-b5a617b6198b5595cc18c494",
+          "input_sha256": "c7e611692e8d2964f070abec9f7b948cf988becf37809c7bb6ad8e0999e61a43",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/han22f.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/han22f/han22f.pdf",
+              "sha256": "18b5387f743e5c21de4bc74ed55c30557dcd2ee06b5e58f0b386cc949540d327"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "While the above problem formulation seeks robustness within an ✏-ball corresponding to the distance function d(·, ·), our algorithm and theory apply to a variety of seemingly distinct settings. We outline a few such settings here; in the supplementary material, we give details of their derivations. Robust Bayesian optimization. Algorithm 1 and Theorem 1 extend readily to the Bayesian setting in which f ⇠ GP(0, k(x, x0 )). In particular, since the proof of Theorem 1 is based on confidence bounds, the only change required is selecting t to be that used for the Bayesian setting in [31]. As a result, our framework also captures the novel problem of adversarially robust Bayesian optimization. All of the variations outlined below similarly apply to both the Bayesian and non-Bayesian settings. Robustness to unknown parameters. Consider the scenario where an unknown function f : D ⇥ ⇥ ! R has a bounded RKHS norm under some composite kernel k((x, ✓), (x0 , ✓ 0 )). Some special cases include k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 ) + k(✓, ✓ 0 ) and k((x, ✓), (x0 , ✓ 0 )) = k(x, x0 )k(✓, ✓ 0 ) [20]. The posterior mean µt (x, ✓) and variance t2 (x, ✓) conditioned on the previous observations (x1 , ✓ 1 , y1 ), ..., (xt 1 , ✓ t 1 , yt 1 ) are computed analogously to (5) [20]. A robust optimization formulation in this setting is to seek x that solves (18)",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Related work. Numerous algorithms have been developed for GP optimization in recent years [7, 16, 17, 26, 28, 31, 35]. Beyond the standard setting, several important extensions have been considered, including batch sampling [11, 12, 14], contextual and time-varying settings [6, 20], safety requirements [33], and high dimensional settings [18, 25, 36], just to name a few. Various forms of robustness in GP optimization have been considered previously. A prominent example is that of outliers [22], in which certain function values are highly unreliable; however, this is a separate issue from that of the present paper, since in [22] the returned point does not undergo any perturbation. Another related recent work is [2], which assumes that the sampled points (rather than the returned one) are subject to uncertainty. In addition to this difference, the uncertainty in [2] is random rather than adversarial, which is complementary but distinct from our work. The same is true of a setting called unscented Bayesian optimization in [23]. Moreover, no theoretical results are given in [2, 23]. In [8], a robust form of batch optimization is considered, but with yet another form of robustness, namely, some experiments in the batch may fail to produce an outcome. Level-set estimation [7, 15] is another approach to finding regions of good points rather than a single point. Our problem formulation is also related to other works on non-convex robust optimization, particularly those of Bertsimas et al. [3, 4]. In these works, a stable design x is sought that solves minx2D max 2U f (x + ). Here, resides in some uncertainty set U , and represents the perturbation against which the design x needs to be protected. Related problems have also recently been considered in the context of",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/60243f9b1ac2dba11ff8131c8f4431e0-Paper.pdf",
+              "document_sha256": "204efe9b014ecc12a43a9fec359c588e1e70f80ecdb4510daeaed27f0586a4f8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "tuning (Snoek et al., 2012; Swersky et al., 2013), robotics (Jaquier et al., 2020), recommender systems (Vanchinathan et al., 2014) and more. In many of these applications, corruptions in the measurements are not sufficiently well captured by random noise alone. For instance, one may be faced with rare outliers (e.g., due to equipment failures), or bad actors may influence the observations (e.g., malicious users in recommender systems). These uncertainties have been addressed via the consideration of an adversary in the GP bandit optimization problem; function observations are not only subject to random noise, but also adversarial noise. With this additional requirement, the optimization not only becomes more robust to uncertainty, but can also maintain robustness in the presence of malicious adversaries. The notion of adversarial attacks on bandit algorithms appears to have been inspired by the extensive literature on adversarial attacks on deep neural networks (Szegedy et al., 2014), although the associated approaches are generally different. 1.1. Related Work A myriad of GP optimization methods have been developed in the literature to overcome the various forms of uncertainty, and achieve some associated notion of robustness: • Presence of outliers, where some function evaluations are highly unreliable (Martinez-Cantin et al., 2018). • Random perturbations to sampled points, where the sampled points are subject to random uncertainty (Beland & Nair, 2017; Nogueira et al., 2016). • Adversarial perturbations to the final point, where the final recommendation x may be perturbed up to some level δ (Bertsimas et al., 2010; Bogunovic et al., 2018). • Adversarial perturbations to samples, where the observations are adversarially corrupted up to some maximum budget",
+              "url": "https://proceedings.mlr.press/v162/han22f/han22f.pdf",
+              "document_sha256": "18b5387f743e5c21de4bc74ed55c30557dcd2ee06b5e58f0b386cc949540d327"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Approach 2. In view of the above discussion, we propose a more aggressive approach that seeks to push the function values downward equally (or approximately equally) for all points outside Rtarget . This can be done by taking a convolved bump function that covers the entire domain with some height hmax (i.e., hpxq “ ´hmax ), but then “readding” a bump that covers Rtarget . Depending on which is more convenient, the transition region could lie either inside or outside Rtarget . See Fig. 5 for an illustration. Once again, the preceding attack can be applied while maintaining the conditions Thm. 1 in cases where Rtarget contains a local maximum, provided that the bumps used in its construction do not exceed the RKHS norm budget.",
+              "url": "https://proceedings.mlr.press/v162/han22f/han22f.pdf",
+              "document_sha256": "18b5387f743e5c21de4bc74ed55c30557dcd2ee06b5e58f0b386cc949540d327"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "4. Attack Methods 4.1. Overview In this section, we introduce our main proposed adversarial attacks on GP bandits. Based on Thm. 1, we adopt the idea of perturbing the function f to construct another function f˜ such that ideally the following properties hold for some set R0 Ď Rtarget (often taking the full set, R0 “ Rtarget ): (i) f˜pxq “ f pxq for all x P R0 ; (ii) All maximizers of f˜ lie inside R0 , and ideally all points outside Rtarget are suboptimal by at some strictly positive value ∆ ą 0; (iii) f˜ satisfies the RKHS norm constraint, i.e., }f˜}k ď B.",
+              "url": "https://proceedings.mlr.press/v162/han22f/han22f.pdf",
+              "document_sha256": "18b5387f743e5c21de4bc74ed55c30557dcd2ee06b5e58f0b386cc949540d327"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-013235cdea8726b460bfcce2",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/60243f9b1ac2dba11ff8131c8f4431e0-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b5a617b6198b5595cc18c494",
+          "url": "https://proceedings.mlr.press/v162/han22f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "380514b70e71c3624d94d368bda9d438fd8f39f91fd3718ba550710c537fc13b"
+    },
+    {
+      "id": "edge-920a6e06e35aa194e6c41fad",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-831cadbfc4fd9a7c4b030a74",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Memory-Enhanced Neural Solvers for Routing Problems",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Routing Problems are central to many real-world applications, yet remain challenging due to their (NP-)hard nature. Amongst existing approaches, heuristics often offer the best trade-off between quality and scalability, making them suitable for industrial use. While Reinforcement Learning (RL) offers a flexible framework for designing heuristics, its adoption over handcrafted heuristics remains incomplete. Existing learned methods still lack the ability to adapt to specific instances and fully leverage the available computational budget. Current best methods either rely on a collection of pre-trained policies, or on RL fine-tuning; hence failing to fully utilize newly available information within the constraints of the budget. In response, we present MEMENTO, an approach that leverages memory to improve the search of neural solvers at inference. MEMENTO updates the action distribution dynamically based on the outcome of previous decisions. We validate its effectiveness on Traveling Salesman and Capacitated Vehicle Routing problems, demonstrating its superiority over tree-search and policy-gradient fine-tuning; and showing that it can be zero-shot combined with diversity-based solvers. We successfully train all RL auto-regressive solvers on large instances, and verify MEMENTO's scalability and data-efficiency: pushing the state-of-the-art on 11 out of 12 evaluated tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Meanwhile, the use of memory has grown in modern deep learning, demonstrated by the success of retrieval augmented approaches in Natural Language Processing (Lewis et al., 2020), and to a smaller extent, its use in RL (Humphreys et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-831cadbfc4fd9a7c4b030a74",
+          "input_sha256": "495e8d2bc0b2fe93f65f6c411d51543ddecc3be25c322fad2ea3d7b2feed0b54",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/2f888eaccece0de24cc29d3ed02fd54b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Combinatorial Optimization (CO) encompasses a vast range of applications, ranging from transportation (J-F Audy and Rousseau, 2011) and logistics (Dincbas et al., 1992) to energy management (Froger et al., 2016). These problems involve finding optimal orderings or labels to optimize given objective functions. Real-world CO problems are typically NP-hard with a solution space growing exponentially with the problem size, making it intractable to find the optimal solution. Hence, industrial solvers rely on sophisticated heuristic approaches to solve them in practice. Reinforcement Learning (RL) provides a versatile framework for learning such heuristics and has demonstrated remarkable success in tackling CO tasks (Mazyavkina et al., 2021). Traditionally, RL methods train policies to incrementally construct solutions. However, achieving optimality in a single attempt for NP-hard problems is impractical. Therefore, pre-trained policies are often combined with search procedures. The literature introduces a range of these procedures, from stochastic sampling (Kool et al., 2019; Kwon et al., 2020; Grinsztajn et al., 2023), beam search (Steinbiss et al., 1994; Choo et al., 2022), Monte Carlo Tree Search (MCTS) (Browne et al., 2012) to online fine-tuning (Bello et al., 2016; Hottung et al., 2022) and searching a space of diverse pre-trained policies (Chalumeau et al., 2023b). One popular online fine-tuning strategy, Efficient Active Search (EAS) (Hottung et al., 2022), uses transitions from generated solutions to derive policy gradient updates. However, it suffers from the inherent drawbacks of back-propagation, in particular having each data point only impacting the update as much as what is enabled by the learning rate. The leading strategy, COMPASS (Chalumeau et al., 2023b),",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Construction methods for CO These refer to methods that incrementally build a solution one action after the other. Hopfield and Tank (1985) was the first to use a neural network to solve TSP, followed by Bello et al. (2016) and Deudon et al. (2018) who respectively added an RL loss and an attention-based encoder. These works were further extended by Kool et al. (2019) and Kwon et al. (2020) to use a general transformer architecture (Vaswani et al., 2017), which has become the standard model choice that we also leverage in this paper. These works have given rise to several variants, improving the architecture (Xin et al., 2021; Luo et al., 2023) or the loss (Kim et al., 2021, 2022; Drakulic et al., 2023; Sun et al., 2024). These improvements are orthogonal to our work and could a priori be combined with our method. Construction approaches are not restricted to routing problems: numerous works have tackled various CO problems, especially on graphs, like Maximum Cut (Dai et al., 2017; Barrett et al., 2020), or Job Shop Scheduling Problem (JSSP) (Zhang et al., 2020; Park et al., 2021). 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Overview To this end, we introduce ME MENTO , a method that dynamically adapts the action distribution of the neural solver using online collected data. This approach, illustrated on Fig. 2, achieves the four desiderata: it stores light-weight data about past attempts, and uses an auxiliary model to update the action logits based on the previous outcomes. It can be used on top of any pre-trained policy (architectureFigure 3: Building a new action distribution using agnostic). In principle, MEMENTO can be the memory. Relevant data is retrieved and processed combined with existing construction RL by a MLP to derive logits for each possible action. algorithms: Attention-Model (Kool et al., 2019), POMO (Kwon et al., 2020), POPPY (Grinsztajn et al., 2023), COMPASS (Chalumeau et al., 2023b), which we confirm experimentally. It learns an update rule during training, enabling data-efficient adaptation compared to policy gradient methods. The data retrieved from the memory and used by the auxiliary model to compute the new action logits contains more than the typical information used to derive a policy gradient update. For instance, the budget remaining, enabling to calibrate the exploration/exploitation trade-off and discover superior update rules. We show in Appendix F that MEMENTO has capacity to at least rediscover REINFORCE, and we show empirically in Section 4.1 that we outperform the leading policy-gradient updates adaptation method. Problem Instance 1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-831cadbfc4fd9a7c4b030a74",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/2f888eaccece0de24cc29d3ed02fd54b-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "7fc38aee469699ed5e0ea448ea12aaedb63cdc6a49a135eaecbed01a0bf1aad2"
+    },
+    {
+      "id": "edge-5a129c3c2ea00f8d22f0da76",
+      "a": "paper-04eda0bb06541ce8b0550844",
+      "b": "paper-e6fadbab96498498b5973353",
+      "state": {
+        "paper_a": {
+          "title": "CyCADA: Cycle-Consistent Adversarial Domain Adaptation",
+          "year": 2018,
+          "venue": "ICML",
+          "abstract": "Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains."
+        },
+        "paper_b": {
+          "title": "Just Pick a Sign: Optimizing Deep Multitask Models with Gradient Sign Dropout",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The vast majority of deep models use multiple gradient signals, typically corresponding to a sum of multiple loss terms, to update a shared set of trainable weights. However, these multiple updates can impede optimal training by pulling the model in conflicting directions. We present Gradient Sign Dropout (GradDrop), a probabilistic masking procedure which samples gradients at an activation layer based on their level of consistency. GradDrop is implemented as a simple deep layer that can be used in any deep net and synergizes with other gradient balancing approaches. We show that GradDrop outperforms the state-of-the-art multiloss methods within traditional multitask and transfer learning settings, and we discuss how GradDrop reveals links between optimal multiloss training and gradient stochasticity."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Domain adaptation and transfer learning [9, 12, 43], topics in which many powerful specialized techniques have been developed, still often rely on multiple losses and thus can beneﬁt from general multitask approaches.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04eda0bb06541ce8b0550844",
+          "b": "paper-e6fadbab96498498b5973353",
+          "input_sha256": "72de34d0cc76f0aa80d4f1c56c666d1056b6bc31b12bb1c9df7e6fb0ceff90ee",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v80/hoffman18a.html",
+              "pdf_url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/16002f7a455a94aa4e91cc34ebdb9f2d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/16002f7a455a94aa4e91cc34ebdb9f2d-Paper.pdf",
+              "sha256": "69ae9be58c619d6a20215706c480b475f155b68e80d5941459bc7e5f5755dea6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Domain adaptation is critical for success in new, unseen environments. Adversarial adaptation models have shown tremendous progress towards adapting to new environments by focusing either on discovering domain invariant representations or by mapping between unpaired image domains. While feature space methods are difficult to interpret and sometimes fail to capture pixel-level and low-level domain shifts, image space methods sometimes fail to incorporate high level semantic knowledge relevant for the end task. We propose a model which adapts between domains using both generative image space alignment and latent representation space alignment. Our approach, Cycle-Consistent Adversarial Domain Adaptation (CyCADA), guides transfer between domains according to a specific discriminatively trained task and avoids divergence by enforcing consistency of the relevant semantics before and after adaptation. We evaluate our method on a variety of visual recognition and prediction settings, including digit classification and semantic segmentation of road scenes, advancing state-of-the-art performance for unsupervised adaptation from synthetic to real world driving domains.",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Liu et al., 2017). Such image-space models have only been shown to work for small image sizes and limited domain shifts. A more recent approach (Bousmalis et al., 2017a) was applied to larger images, but in a controlled environment with visually simple images for robotic applications. Image to Image translation techniques, such as CycleGAN (Zhu et al., 2017), have produced visually appealing results which preserve local content in natural scenes, but are not designed with an end task in mind and so may not always preserve semantics. For example, a model adapting from digits taken from Google Street View to handwritten digits can learn to make a printed 8 look like a hand-written 1. We propose Cycle-Consistent Adversarial Domain Adaptation (CyCADA), which adapts representations at both the pixel-level and feature-level while enforcing semantic consistency. We enforce both structural and semantic consistency during adaptation using a cycle-consistency loss (ie. the source should match the source mapped to target mapped back to source) and semantics losses based on a particular visual recognition task. The semantics losses both guide the overall representation to be discriminative and enforce semantic consistency before and after mapping between domains. Our approach offers a unified domain adversarial learning model which combines the interpretability and low level structural consistency of prior image-level approaches (Liu & Tuzel, 2016a; Bousmalis et al., 2017b; Shrivastava et al., 2017; Zhu et al., 2017; Liu et al., 2017) together with the regularization and strong empirical performance of prior feature-level approaches (Ganin & Lempitsky, 2015; Tzeng et al., 2017), as illustrated in Table 1. We apply our CyCADA model to the task of digit recognition across domains",
+              "url": "https://proceedings.mlr.press/v80/hoffman18a/hoffman18a.pdf",
+              "document_sha256": "3bb04a2c00ba83e6711b8ff97078b2974d6d3e68bb4fd13e3cea76b08350a492"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Optimization via gradient descent is one of the key pillars of deep learning. Apart from the traditional optimization methods [8; 19; 32; 33; 49], there has been a research thrust on developing different ways to apply gradients to deep networks [2; 7; 10; 15; 36; 45; 50]. The success of such methods comes in part because optimization in single-task models generally converges to high-quality minima [4]. Also important is the relationship between stochasticity and model robustness; as with GradDrop, noisy gradients help repel poor local minima in favor of wider, more robust critical points [18; 39; 40]. These insights are crucial and worth revisiting for multitask environments. Multitask learning presents a challenging problem for optimization, as the loss surface now consists of many smaller loss surfaces. As a subject of study, multitask learning predates deep learning [1; 6], but its power in helping model generalization and transferring information between correlated tasks [30; 48] make it especially relevant in the deep learning era. Although a large part of multitask research focuses on developing new network architectures [16; 20; 23; 25; 28; 29; 31] or new loss functions [17], we focus on methods that explicitly interact with the gradients, which tend to be more lightweight and modular. GradNorm [3] modifies gradient magnitudes to ensure that tasks train at approximately the same rate. MGDA, the Multiple Gradient Descent Algorithm [6; 37], finds a linear combination of gradients that reduces every loss function simultaneously. PCGrad [47] projects conflicting gradients to each other, which achieves a similar simultaneous descent effect as MGDA. Many other applications which are not traditionally considered multitask can benefit from this work. Vision applications",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/16002f7a455a94aa4e91cc34ebdb9f2d-Paper.pdf",
+              "document_sha256": "69ae9be58c619d6a20215706c480b475f155b68e80d5941459bc7e5f5755dea6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "network weight settings, which results in many poor minima of the sum loss. Such undesirable minima are avoided if we encourage the network to seek out critical points that are joint minima – i.e. critical points that lie near a local minimum of all the constituent loss functions. To generally address such issues, deep multitask learning studies properties of models with multiple outputs and has given birth to methods to balance relative gradient magnitudes [3; 17] or tune the full gradient tensor [38]. Still, methods that explicitly tackle joint loss optimization are rare. Works such as [37; 47] do so by finding a common gradient descent direction for all losses, but such methods operate by removing suboptimal gradient components. Such reductive processes are still susceptible to local minima and discourage inter-task competition – competition which evidence suggests can be beneficial [6; 46]. Our proposed method not only provides theoretical guarantees of joint loss minima but also allows gradients to compete, and thus avoids the same pitfalls as reductive gradient algorithms. To the best of our knowledge our method is the first with this set of desirable properties. We motivate our method, Gradient Sign Dropout (GradDrop), by noting that when multiple gradient values try to update the same scalar within a deep network, conflicts arise through differences in sign between the gradient values. Following these gradients blindly leads to gradient tug-of-wars and to critical points where constituent gradients can still be large (and thus some tasks perform poorly). To alleviate this issue, we demand that all gradient updates are pure in sign at every update position. Given a list of (possibly) conflicting gradient values, we algorithmically select one sign (positive or",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/16002f7a455a94aa4e91cc34ebdb9f2d-Paper.pdf",
+              "document_sha256": "69ae9be58c619d6a20215706c480b475f155b68e80d5941459bc7e5f5755dea6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04eda0bb06541ce8b0550844",
+          "url": "https://proceedings.mlr.press/v80/hoffman18a.html"
+        },
+        "b": {
+          "paper_id": "paper-e6fadbab96498498b5973353",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/16002f7a455a94aa4e91cc34ebdb9f2d-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "ea579730d01044c360e226b24aaa6eb1ea3e3efe8677f3ccd30fcf0747ec2b24"
+    },
+    {
+      "id": "edge-02d037d116da02dc6f221e7e",
+      "a": "paper-06925ede8706462b61854e44",
+      "b": "paper-3ace01784eedfdbd31c0eb98",
+      "state": {
+        "paper_a": {
+          "title": "Reinforcement Learning for Integer Programming: Learning to Cut",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Integer programming is a general optimization framework with a wide variety of applications, e.g., in scheduling, production planning, and graph optimization. As Integer Programs (IPs) model many provably hard to solve problems, modern IP solvers rely on heuristics. These heuristics are often human-designed, and tuned over time using experience and data. The goal of this work is to show that the performance of those solvers can be greatly enhanced using reinforcement learning (RL). In particular, we investigate a specific methodology for solving IPs, known as the Cutting Plane Method. This method is employed as a subroutine by all modern IP solvers. We present a deep RL formulation, network architecture, and algorithms for intelligent adaptive selection of cutting planes (aka cuts). Across a wide range of IP tasks, we show that our trained RL agent significantly outperforms human-designed heuristics, and effectively generalizes to larger instances and across IP problem classes. The trained agent is also demonstrated to benefit the popular downstream application of cutting plane methods in Branch-and-Cut algorithm, which is the backbone of state-of-the-art commercial IP solvers."
+        },
+        "paper_b": {
+          "title": "Searching Large Neighborhoods for Integer Linear Programs with Contrastive Learning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Integer Linear Programs (ILPs) are powerful tools for modeling and solving a large number of combinatorial optimization problems. Recently, it has been shown that Large Neighborhood Search (LNS), as a heuristic algorithm, can find high-quality solutions to ILPs faster than Branch and Bound. However, how to find the right heuristics to maximize the performance of LNS remains an open problem. In this paper, we propose a novel approach, CL-LNS, that delivers state-of-the-art anytime performance on several ILP benchmarks measured by metrics including the primal gap, the primal integral, survival rates and the best performing rate. Specifically, CL-LNS collects positive and negative solution samples from an expert heuristic that is slow to compute and learns a more efficient one with contrastive learning. We use graph attention networks and a richer set of features to further improve its performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "There are also works on learning to schedule and run primal heuristics (Khalil et al., 2017; Chmiela et al., 2021) and to select cutting planes (Tang et al., 2020; Paulus et al., 2022; Huang et al., 2022c).\nMulamba et al. (2021) derive a contrastive loss for decision-focused learning to solve COPs with uncertain inputs that can be learned from historical data, where they view non-optimal solutions as negative samples.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06925ede8706462b61854e44",
+          "b": "paper-3ace01784eedfdbd31c0eb98",
+          "input_sha256": "1f27dfa0ec8f4c7019e56dc73e792c827029f9ccc2723cc43eaef4067bdedde8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/tang20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/tang20a/tang20a.pdf",
+              "sha256": "5066629352e55cbd1a38ee284707676f98d7ea5a7495f266167a307be36a69fb"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/huang23g.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/huang23g/huang23g.pdf",
+              "sha256": "0c19d3c4f319315790add320bfbc15506bff6e7249ba29b516cda0ba2cdc2d90"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "sical results in polyhedral theory (see e.g. Conforti et al. (2014)) imply that any combinatorial optimization problem with finite feasible region can be formulated as an IP. Hence, IP is a natural model for many graph optimization problems, such as the celebrated Traveling Salesman Problem (TSP). Due to the their generality, IPs can be very hard to solve in theory (NP-hard) and in practice. There is no polynomial time algorithm with guaranteed solutions for all IPs. It is therefore crucial to develop efficient heuristics for solving specific classes of IPs. Machine learning (ML) arises as a natural tool for tuning those heuristics. Indeed, the application of ML to discrete optimization has been a topic of significant interest in recent years, with a range of different approaches in the literature (Bengio et al., 2018) One set of approaches focus on directly learning the mapping from an IP instance to an approximate optimal solution (Vinyals et al., 2015; Bello et al., 2017; Nowak et al., 2017; Kool and Welling, 2018). These methods implicitly learn a solution procedure for a problem instance as a function prediction. These approaches are attractive for their blackbox nature and wide applicability. At the other end of the spectrum are approaches which embed ML agents as subroutines in a problem-specific, human-designed algorithms (Dai et al., 2017; Li et al., 2018). ML is used to improve some heuristic parts of that algorithm. These approaches can benefit from algorithm design know-how for many important and difficult classes of problems, but their applicability is limited by the specific (e.g. greedy) algorithmic techniques. In this paper, we take an approach with the potential to combine the benefits of both lines of research described above. We design a",
+              "url": "https://proceedings.mlr.press/v119/tang20a/tang20a.pdf",
+              "document_sha256": "5066629352e55cbd1a38ee284707676f98d7ea5a7495f266167a307be36a69fb"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "Our last set of experiments gives a “reinforcement learning validation” of those cuts. We show in fact that RL, with the same reward scheme as in Experiment #2, produces many more cuts that “almost look like” lifted cover inequalities than the baselines. More precisely, we define three increasingly looser criteria for deciding when a cut is “close” to a lifted cover inequality (the plurality of criteria is due to the fact that lifted cover inequalities can be strengthened in many ways). We then check which percentage of the inequalities produced by the RL (resp. the other baselines) satisfy each of these criteria. This is reported in the first three figures in Figure 6, together with the number of cuts added before the optimal solution is reached (rightmost figure in Figure 6). More details on the experiments and a description of the three criteria are reported in the appendix. These experiments suggest that our approach could be useful to aid researchers in the discovery of strong family of cuts for IPs, and provide yet another empirical evaluation of known ones.",
+              "url": "https://proceedings.mlr.press/v119/tang20a/tang20a.pdf",
+              "document_sha256": "5066629352e55cbd1a38ee284707676f98d7ea5a7495f266167a307be36a69fb"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "3.3. Contrastive Learning for COPs While contrastive learning of visual representations (Hjelm et al., 2019; He et al., 2020; Chen et al., 2020) and graph representations (You et al., 2020; Tong et al., 2021) have been studied extensively, it has not been explored much for COPs. Mulamba et al. (2021) derive a contrastive loss for decisionfocused learning to solve COPs with uncertain inputs that can be learned from historical data, where they view nonoptimal solutions as negative samples. Duan et al. (2022) use contrastive pre-training to learn good representations for the boolean satisfiability problem.",
+              "url": "https://proceedings.mlr.press/v202/huang23g/huang23g.pdf",
+              "document_sha256": "0c19d3c4f319315790add320bfbc15506bff6e7249ba29b516cda0ba2cdc2d90"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Integer Linear Programs (ILPs) are powerful tools for modeling and solving a large number of combinatorial optimization problems. Recently, it has been shown that Large Neighborhood Search (LNS), as a heuristic algorithm, can find highquality solutions to ILPs faster than Branch and Bound. However, how to find the right heuristics to maximize the performance of LNS remains an open problem. In this paper, we propose a novel approach, CL-LNS, that delivers state-of-the-art anytime performance on several ILP benchmarks measured by metrics including the primal gap, the primal integral, survival rates and the best performing rate. Specifically, CL-LNS collects positive and negative solution samples from an expert heuristic that is slow to compute and learns a more efficient one with contrastive learning. We use graph attention networks and a richer set of features to further improve its performance.",
+              "url": "https://proceedings.mlr.press/v202/huang23g/huang23g.pdf",
+              "document_sha256": "0c19d3c4f319315790add320bfbc15506bff6e7249ba29b516cda0ba2cdc2d90"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we propose a novel ML-based LNS for ILPs, namely CL-LNS, that uses contrastive learning (CL) (Chen et al., 2020; Khosla et al., 2020) to learn efficient and effective destroy heuristics. Similar to IL-LNS (Sonnerat et al., 2021), we learn to imitate the Local Branching (LB) heuristic, a destroy heuristic that selects the optimal subset of variables within the Hamming ball of the incumbent solutions. LB requires solving another ILP with the same size as the original problem and thus is computationally expensive. We not only use the optimal subsets provided by LB as the expert demonstration (as in IL-LNS) but also leverage intermediate solutions and perturbations. When solving the ILP for LB, intermediate solutions are found and those that are close to optimal in terms of effectiveness become positive samples. We also collect negative samples by randomly perturbing the optimal subset. With both positive and negative samples, instead of a classification loss as in IL-LNS, we use a contrastive loss that encourages the model to predict the subset similar to the positive samples but dissimilar to the negative ones with similarity measured by dot products (Oord et al., 2018; He et al., 2020). Finally, we also use a richer set of features and graph attention networks (GAT) instead of GCN to further boost performance.",
+              "url": "https://proceedings.mlr.press/v202/huang23g/huang23g.pdf",
+              "document_sha256": "0c19d3c4f319315790add320bfbc15506bff6e7249ba29b516cda0ba2cdc2d90"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06925ede8706462b61854e44",
+          "url": "https://proceedings.mlr.press/v119/tang20a.html"
+        },
+        "b": {
+          "paper_id": "paper-3ace01784eedfdbd31c0eb98",
+          "url": "https://proceedings.mlr.press/v202/huang23g.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "6f91ecc234e57be07c67f221940d89df4e3f77e3256e248659e50e56affb256a"
+    },
+    {
+      "id": "edge-4145c8e1e3390de4fcc8e79e",
+      "a": "paper-0ae3bb366a13d024d6a4d5ef",
+      "b": "paper-3bac4b6d40d49a6146e2eb43",
+      "state": {
+        "paper_a": {
+          "title": "Weisfeiler and Leman go sparse: Towards scalable higher-order graph embeddings",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Graph kernels based on the $1$-dimensional Weisfeiler-Leman algorithm and corresponding neural architectures recently emerged as powerful tools for (supervised) learning with graphs. However, due to the purely local nature of the algorithms, they might miss essential patterns in the given data and can only handle binary relations. The $k$-dimensional Weisfeiler-Leman algorithm addresses this by considering $k$-tuples, defined over the set of vertices, and defines a suitable notion of adjacency between these vertex tuples. Hence, it accounts for the higher-order interactions between vertices. However, it does not scale and may suffer from overfitting when used in a machine learning setting. Hence, it remains an important open problem to design WL-based graph learning methods that are simultaneously expressive, scalable, and non-overfitting. Here, we propose local variants and corresponding neural architectures, which consider a subset of the original neighborhood, making them more scalable, and less prone to overfitting. The expressive power of (one of) our algorithms is strictly higher than the original algorithm, in terms of ability to distinguish non-isomorphic graphs. Our experimental study confirms that the local algorithms, both kernel and neural architectures, lead to vastly reduced computation times, and prevent overfitting. The kernel version establishes a new state-of-the-art for graph classification on a wide range of benchmark datasets, while the neural version shows promising performance on large-scale molecular regression tasks."
+        },
+        "paper_b": {
+          "title": "Rethinking the Capacity of Graph Neural Networks for Branching Strategy",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Graph neural networks (GNNs) have been widely used to predict properties and heuristics of mixed-integer linear programs (MILPs) and hence accelerate MILP solvers. This paper investigates the capacity of GNNs to represent strong branching (SB), the most effective yet computationally expensive heuristic employed in the branch-and-bound algorithm. In the literature, message-passing GNN (MP-GNN), as the simplest GNN structure, is frequently used as a fast approximation of SB and we find that not all MILPs's SB can be represented with MP-GNN. We precisely define a class of \"MP-tractable\" MILPs for which MP-GNNs can accurately approximate SB scores. Particularly, we establish a universal approximation theorem: for any data distribution over the MP-tractable class, there always exists an MP-GNN that can approximate the SB score with arbitrarily high accuracy and arbitrarily high probability, which lays a theoretical foundation of the existing works on imitating SB with MP-GNN. For MILPs without the MP-tractability, unfortunately, a similar result is impossible, which can be illustrated by two MILP instances with different SB scores that cannot be distinguished by any MP-GNN, regardless of the number of parameters. Recognizing this, we explore another GNN structure called the second-order folklore GNN (2-FGNN) that overcomes this limitation, and the aforementioned universal approximation theorem can be extended to the entire MILP space using 2-FGNN, regardless of the MP-tractability. A small-scale numerical experiment is conducted to directly validate our theoretical findings."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To mitigate such computational challenges, one could explore the use of sparse or local variants of high-order GNNs that enjoy cheaper information aggregation with strictly stronger separation power than GNNs associated with the original high-order WL test [41].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0ae3bb366a13d024d6a4d5ef",
+          "b": "paper-3bac4b6d40d49a6146e2eb43",
+          "input_sha256": "17939c9088b07ab1c4e162d5ca59694d86c57b6e65dd6631df8515b55f28aaf7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/f81dee42585b3814de199b2e88757f5c-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/f81dee42585b3814de199b2e88757f5c-Paper.pdf",
+              "sha256": "975feaf708086d6228fa2cb691a17e4861723d0f62649be0cb16f5871b55ac68"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/dff528ce3e1390c88f10bbf5e722a241-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/dff528ce3e1390c88f10bbf5e722a241-Paper-Conference.pdf",
+              "sha256": "07977b48e988141819971eecf34f9d024605f3843b07d7fa736dfedbaeb8f79b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Graph kernels based on the 1-dimensional Weisfeiler-Leman algorithm and corresponding neural architectures recently emerged as powerful tools for (supervised) learning with graphs. However, due to the purely local nature of the algorithms, they might miss essential patterns in the given data and can only handle binary relations. The k-dimensional Weisfeiler-Leman algorithm addresses this by considering k-tuples, defined over the set of vertices, and defines a suitable notion of adjacency between these vertex tuples. Hence, it accounts for the higher-order interactions between vertices. However, it does not scale and may suffer from overfitting when used in a machine learning setting. Hence, it remains an important open problem to design WL-based graph learning methods that are simultaneously expressive, scalable, and non-overfitting. Here, we propose local variants and corresponding neural architectures, which consider a subset of the original neighborhood, making them more scalable, and less prone to overfitting. The expressive power of (one of) our algorithms is strictly higher than the original algorithm, in terms of ability to distinguish non-isomorphic graphs. Our experimental study confirms that the local algorithms, both kernel and neural architectures, lead to vastly reduced computation times, and prevent overfitting. The kernel version establishes a new state-of-the-art for graph classification on a wide range of benchmark datasets, while the neural version shows promising performance on large-scale molecular regression tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f81dee42585b3814de199b2e88757f5c-Paper.pdf",
+              "document_sha256": "975feaf708086d6228fa2cb691a17e4861723d0f62649be0cb16f5871b55ac68"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "vertices of a given graph. Hence, the running time of each iteration does not take the sparsity of a given graph into account. Further, new neural architectures [77, 78] that possess the same power as the k-WL in terms of separating non-isomorphic graphs suffer from the same drawbacks, i.e., they have to resort to dense matrix multiplications. Moreover, when used in a machine learning setting with real-world graphs, the k-WL may capture the isomorphism type, which is the complete structural information inherent in a graph, after only a couple of iterations, which may lead to overfitting, see [82], and the experimental section of the present work. Present work To address this, we propose a local version of the k-WL, the local δ-k-dimensional Weisfeiler-Leman algorithm (δ-k-LWL), which considers a subset of the original neighborhood in each iteration. The cardinality of the local neighborhood depends on the sparsity of the graph, i.e., the degrees of the vertices of a given k-tuple. We theoretically analyze the strength of a variant of our local algorithm and prove that it is strictly more powerful in distinguishing non-isomorphic graphs compared to the k-WL. Moreover, we devise a hierarchy of pairs of non-isomorphic graphs that a variant of the δ-k-LWL can separate while the k-WL cannot. On the neural side, we devise a higher-order graph neural network architecture, the δ-k-LGNN, and show that it has the same expressive power as the δ-k-LWL. Moreover, we connect it to recent advancements in learning theory for GNNs [41], which show that the δ-k-LWL architecture has better generalization abilities compared to dense architectures based on the k-WL. See Figure 1 for an overview of the proposed algorithms. Experimentally, we apply the discrete algorithms (or kernels) and",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f81dee42585b3814de199b2e88757f5c-Paper.pdf",
+              "document_sha256": "975feaf708086d6228fa2cb691a17e4861723d0f62649be0cb16f5871b55ac68"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "the fact that calculations of 2-FGNNs reply on pairs of nodes instead of nodes, as we discussed in Section 2. To mitigate such computational challenges, one could explore the use of sparse or local variants of high-order GNNs that enjoy cheaper information aggregation with strictly stronger separation power than GNNs associated with the original high-order WL test [41]. 4.4",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dff528ce3e1390c88f10bbf5e722a241-Paper-Conference.pdf",
+              "document_sha256": "07977b48e988141819971eecf34f9d024605f3843b07d7fa736dfedbaeb8f79b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Related works and our contributions. While the capacity of GNNs for general graph tasks, such as node and link prediction or function approximation on graphs, has been extensively studied [4, 10, 22, 28, 37, 39, 47, 55, 59], their capacities in approximating SB remains largely unexplored. The closest studies [11, 12] have explored GNNs’ ability to represent properties of linear programs (LPs) and MILPs, such as feasibility, boundedness, or optimal solutions, but have not specifically focused on branching strategies. Recognizing this gap, our paper makes the following contributions: • In the context of L2B using GNNs, we first focus on the most widely used type: message-passing GNNs (MP-GNNs). Our study reveals that MP-GNNs can reliably predict SB results, but only for a specific class of MILPs that we introduce as message-passing-tractable (MP-tractable). We prove that for any distribution of MP-tractable MILPs, there exists an MP-GNN capable of accurately predicting their SB results. This finding establishes a theoretical basis for the widespread use of MP-GNNs to approximate SB results in current research. • Through a counter-example, we demonstrate that MP-GNNs are incapable of predicting SB results beyond the class of MP-tractable MILPs. The counter-example consists of two MILPs with distinct SB results to which all MP-GNNs, however, yield identical branching predictions. • For general MILPs, we explore the capabilities of second-order folklore GNNs (2-FGNNs), a type of higher-order GNN with enhanced expressive power. Our results show that 2-FGNNs can reliably answer question (1.1) positively, effectively replicating SB results across any distribution of MILP problems, surpassing the capabilities of standard MP-GNNs. Overall, as a series of works have empirically",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dff528ce3e1390c88f10bbf5e722a241-Paper-Conference.pdf",
+              "document_sha256": "07977b48e988141819971eecf34f9d024605f3843b07d7fa736dfedbaeb8f79b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "In this section, we present some observations and mathematical concepts underlying the imitation of strong branching by GNNs. This line of research, which aims to replicate SB strategies through GNNs, has shown promising empirical results across a spectrum of studies [19, 24, 25, 35, 48, 56, 58], yet it still lacks theoretical foundations. Its motivation stems from two key observations introduced earlier in Section 1, which we elaborate on here in detail. Observation I: SB is notably effective in reducing the size of the BnB search space. This size is measured by the size of the BnB tree. Here, a \"tree\" refers to a hierarchical structure of \"nodes\", each representing a decision point or a subdivision of the problem. The tree’s size corresponds to the number of these nodes. For instance, consider the instance \"neos-3761878-oglio\" from MIPLIB [23]. When solved using SCIP [7, 8] under standard configurations, the BnB tree size is 851, and it takes 61.04 seconds to attain optimality. However, disabling SB, along with all branching rules dependent on SB, results in an increased BnB tree size to 35548 and an increased runtime to 531.0 seconds. Observation II: SB itself is computationally expensive. In the above experiment under standard settings, SB consumes an average of 70.40% of the total runtime, 42.97 out of 61.04 seconds in total. Therefore, there is a clear need of approximating SB with efficient ML models. Ideally, if we can substantially reduce the SB calculation time from 42.97 seconds to a negligible duration while maintaining its effectiveness, the remaining runtime of 61.04−42.97 = 18.07 seconds would become significantly more efficient. To move forward, we introduce some basic concepts related to SB. Concepts for SB. SB begins by identifying candidate variables",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dff528ce3e1390c88f10bbf5e722a241-Paper-Conference.pdf",
+              "document_sha256": "07977b48e988141819971eecf34f9d024605f3843b07d7fa736dfedbaeb8f79b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0ae3bb366a13d024d6a4d5ef",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/f81dee42585b3814de199b2e88757f5c-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-3bac4b6d40d49a6146e2eb43",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/dff528ce3e1390c88f10bbf5e722a241-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "7c1a819b830ef9262d530c031bf274790ebd2c83ed25c6b97f81dfb100ac1c5f"
+    },
+    {
+      "id": "edge-3411271db19b604c64742fab",
+      "a": "paper-0b46ff2dbd5e23761f12aaa2",
+      "b": "paper-b076d2719038e2e01f0e3345",
+      "state": {
+        "paper_a": {
+          "title": "Risk-averse Heteroscedastic Bayesian Optimization",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Many black-box optimization tasks arising in high-stakes applications require risk-averse decisions. The standard Bayesian optimization (BO) paradigm, however, optimizes the expected value only. We generalize BO to trade mean and input-dependent variance of the objective, both of which we assume to be unknown a priori. In particular, we propose a novel risk-averse heteroscedastic Bayesian optimization algorithm (RAHBO) that aims to identify a solution with high return and low noise variance, while learning the noise distribution on the fly. To this end, we model both expectation and variance as (unknown) RKHS functions, and propose a novel risk-aware acquisition function. We bound the regret for our approach and provide a robust rule to report the final decision point for applications where only a single solution must be identified. We demonstrate the effectiveness of RAHBO on synthetic benchmark functions and hyperparameter tuning tasks."
+        },
+        "paper_b": {
+          "title": "Learning Regions of Interest for Bayesian Optimization with Adaptive Level-Set Estimation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We study Bayesian optimization (BO) in high-dimensional and non-stationary scenarios. Existing algorithms for such scenarios typically require extensive hyperparameter tuning, which limits their practical effectiveness. We propose a framework, called BALLET, which adaptively filters for a high-confidence region of interest (ROI) as a superlevel-set of a nonparametric probabilistic model such as a Gaussian process (GP). Our approach is easy to tune, and is able to focus on local region of the optimization space that can be tackled by existing BO methods. The key idea is to use two probabilistic models: a coarse GP to identify the ROI, and a localized GP for optimization within the ROI. We show theoretically that BALLET can efficiently shrink the search space, and can exhibit a tighter regret bound than standard BO without ROI filtering. We demonstrate empirically the effectiveness of BALLET on both synthetic and real-world optimization tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Partition-based Bayesian active learning and optimization Partition-based methods are common in BO with safety constraints (Sazanovich et al., 2021; Sui et al., 2018; Makarova et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b46ff2dbd5e23761f12aaa2",
+          "b": "paper-b076d2719038e2e01f0e3345",
+          "input_sha256": "8034a846fc0cf2bf37bf12a4ca60e943cb56f29c4a6779bd542b615408f01494",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/8f97d1d7e02158a83ceb2c14ff5372cd-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/zhang23aj.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/zhang23aj/zhang23aj.pdf",
+              "sha256": "f98a7e5de00a6f870cdd1d52c5697a8ea77db161e757fa9c152ead05ac148a8a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Many black-box optimization tasks arising in high-stakes applications require riskaverse decisions. The standard Bayesian optimization (BO) paradigm, however, optimizes the expected value only. We generalize BO to trade mean and inputdependent variance of the objective, both of which we assume to be unknown a priori. In particular, we propose a novel risk-averse heteroscedastic Bayesian optimization algorithm (RAHBO) that aims to identify a solution with high return and low noise variance, while learning the noise distribution on the fly. To this end, we model both expectation and variance as (unknown) RKHS functions, and propose a novel risk-aware acquisition function. We bound the regret for our approach and provide a robust rule to report the final decision point for applications where only a single solution must be identified. We demonstrate the effectiveness of RAHBO on synthetic benchmark functions and hyperparameter tuning tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: When there is a choice between identical optima with different noise level, standard BO tends to query points corresponding to higher noise. (a) Unknown objective with 3 global maxima marked as (A, B, C); (b) Heteroscedastic noise variance over the same domain: the noise level at (A, B, C) varies according to the sigmoid function; (c) Empirical variance distribution at all points acquired during BO procedure (over 9 experiments with different seeds). The three bumps correspond to the three global optima with different noise variance. RAHBO dominates in choosing the risk-averse optimum, consequently yielding lower risk-averse regret in Figure 5a. Related work. Bayesian optimization (BO) [26] refers to approaches for optimizing a noisy blackbox objective that is typically expensive to evaluate. A great number of BO methods have been developed over the years, including a significant number of variants of popular algorithms such as GP-UCB [35], Expected Improvement [26], and Thompson Sampling [14]. While the focus of standard BO approaches is mainly on trading-off exploration vs. exploitation and optimizing for the expected performance, in this work, we additionally focus on the risk that is involved when working with noisy objectives, as illustrated in Figure 1. The vast majority of previous BO works assume (sub-) Gaussian and homoscedastic noise (i.e., input independent and of some known fixed level). Both assumptions can be restrictive in practice. For example, as demonstrated in [15], the majority of hyperparameter tuning tasks exhibit heteroscedasticity. A few works relax the first assumption and consider, e.g., heavy-tailed noise models [31] and adversarially corrupted observations [8]. The second assumption is typically generalized via heteroscedastic",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/8f97d1d7e02158a83ceb2c14ff5372cd-Paper.pdf",
+              "document_sha256": "d5ed51a0d8c4dd297c224803d3b7bfb20b0ab4cd3d03ff92f6c7e2a991093ad2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Partition-based Bayesian active learning and optimization Partition-based methods are common in BO with safety constraints (Sazanovich et al., 2021; Sui et al., 2018; Makarova et al., 2021). These methods use LCB from GPs to partition the input space into safe and unsafe subspaces. Subsequent optimizaton queries are restricted to the safe subspaces only. Another related work is the level set estimation (LSE) method by Gotovos et al. (2013), where the authors use both UCB and LCB to narrow down regions where a particular function value is likely to exist. A unified framework TRUVAR for BO and LSE task (Bogunovic et al., 2016) proposes a similar filtering method but does not learn a local surrogate model. Instead, the filtering is used to constrain its acquisition function. Our method inherits the spirit of LSE to leverage the confidence interval to adaptively partition the search space.",
+              "url": "https://proceedings.mlr.press/v202/zhang23aj/zhang23aj.pdf",
+              "document_sha256": "f98a7e5de00a6f870cdd1d52c5697a8ea77db161e757fa9c152ead05ac148a8a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We study Bayesian optimization (BO) in highdimensional and non-stationary scenarios. Existing algorithms for such scenarios typically require extensive hyperparameter tuning, which limits their practical effectiveness. We propose a framework, called BALLET, which adaptively filters for a high-confidence region of interest (ROI) as a superlevel-set of a nonparametric probabilistic model such as a Gaussian process (GP). Our approach is easy to tune, and is able to focus on local region of the optimization space that can be tackled by existing BO methods. The key idea is to use two probabilistic models: a coarse GP to identify the ROI, and a localized GP for optimization within the ROI. We show theoretically that BALLET can efficiently shrink the search space, and can exhibit a tighter regret bound than standard BO without ROI filtering. We demonstrate empirically the effectiveness of BALLET on both synthetic and real-world optimization tasks.",
+              "url": "https://proceedings.mlr.press/v202/zhang23aj/zhang23aj.pdf",
+              "document_sha256": "f98a7e5de00a6f870cdd1d52c5697a8ea77db161e757fa9c152ead05ac148a8a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Our contribution Following the above insight, we propose the novel Bayesian optimization framework with adaptive estimation of regions of interest. As illustrated in Figure 1, The algorithm partitions the search space based on confidence intervals and identifies the superlevel-set as the ROIs of high confidence contain the global optimum. We propose a novel acquisition function that relies on both the global model and the ROI model to capture the locality while not sacrificing global knowledge through optimization. We further provide rigorous theoretical analyses showing that the proposed acquisition function can, in a principled way, exhibit an improved regret bound compared to its canonical BO counterpart without the filtering component. We demonstrate the effectiveness of the proposed framework with an empirical study on several synthetic and real-world optimization tasks.",
+              "url": "https://proceedings.mlr.press/v202/zhang23aj/zhang23aj.pdf",
+              "document_sha256": "f98a7e5de00a6f870cdd1d52c5697a8ea77db161e757fa9c152ead05ac148a8a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b46ff2dbd5e23761f12aaa2",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/8f97d1d7e02158a83ceb2c14ff5372cd-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b076d2719038e2e01f0e3345",
+          "url": "https://proceedings.mlr.press/v202/zhang23aj.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "fef9e6095f2b6d917f59ac19a67f81f9bc3b58d8edf755938c6f17cbd742a62f"
+    },
+    {
+      "id": "edge-330de094b2710f893e3265c0",
+      "a": "paper-0b874047e2e1b5152002799d",
+      "b": "paper-831cadbfc4fd9a7c4b030a74",
+      "state": {
+        "paper_a": {
+          "title": "Large-Scale Retrieval for Reinforcement Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Effective decision making involves flexibly relating past experiences and relevant contextual information to a novel situation. In deep reinforcement learning (RL), the dominant paradigm is for an agent to amortise information that helps decision-making into its network weights via gradient descent on training losses. Here, we pursue an alternative approach in which agents can utilise large-scale context-sensitive database lookups to support their parametric computations. This allows agents to directly learn in an end-to-end manner to utilise relevant information to inform their outputs. In addition, new information can be attended to by the agent, without retraining, by simply augmenting the retrieval dataset. We study this approach for offline RL in 9x9 Go, a challenging game for which the vast combinatorial state space privileges generalisation over direct matching to past experiences. We leverage fast, approximate nearest neighbor techniques in order to retrieve relevant data from a set of tens of millions of expert demonstration states. Attending to this information provides a significant boost to prediction accuracy and game-play performance over simply using these demonstrations as training trajectories, providing a compelling demonstration of the value of large-scale retrieval in offline RL agents."
+        },
+        "paper_b": {
+          "title": "Memory-Enhanced Neural Solvers for Routing Problems",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Routing Problems are central to many real-world applications, yet remain challenging due to their (NP-)hard nature. Amongst existing approaches, heuristics often offer the best trade-off between quality and scalability, making them suitable for industrial use. While Reinforcement Learning (RL) offers a flexible framework for designing heuristics, its adoption over handcrafted heuristics remains incomplete. Existing learned methods still lack the ability to adapt to specific instances and fully leverage the available computational budget. Current best methods either rely on a collection of pre-trained policies, or on RL fine-tuning; hence failing to fully utilize newly available information within the constraints of the budget. In response, we present MEMENTO, an approach that leverages memory to improve the search of neural solvers at inference. MEMENTO updates the action distribution dynamically based on the outcome of previous decisions. We validate its effectiveness on Traveling Salesman and Capacitated Vehicle Routing problems, demonstrating its superiority over tree-search and policy-gradient fine-tuning; and showing that it can be zero-shot combined with diversity-based solvers. We successfully train all RL auto-regressive solvers on large instances, and verify MEMENTO's scalability and data-efficiency: pushing the state-of-the-art on 11 out of 12 evaluated tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Meanwhile, the use of memory has grown in modern deep learning, demonstrated by the success of retrieval augmented approaches in Natural Language Processing (Lewis et al., 2020), and to a smaller extent, its use in RL (Humphreys et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b874047e2e1b5152002799d",
+          "b": "paper-831cadbfc4fd9a7c4b030a74",
+          "input_sha256": "0219e3621aca62e1515ae10b2525f1b5cedcf216eb37152bf2f443ff02ceca10",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/7eca17ef54789b0663cab421f2e9dbf5-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/7eca17ef54789b0663cab421f2e9dbf5-Paper-Conference.pdf",
+              "sha256": "ab8e53dacf446e4bbb0dfefebbf27fc410a9887fe9dfba0217e67efcbf85e130"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/2f888eaccece0de24cc29d3ed02fd54b-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Our approach and empirical results highlight how reinforcement learning agents can benefit from direct access to a large collection of raw interaction data at inference time, through a retrieval mechanism, in addition to their already effective parametric representation. We showed this was the case even 1) when the domain is large enough to require generalisation in how to interpret past data, 2) when there is significant distribution shift when acting, and 3) at a scale where only approximate nearest-neighbors can be retrieved. We believe this already demonstrates the potential of this approach for many possible scenarios and applications. We show that retrieval can be effectively combined with model-based search. We find that the benefits from retrieval and search are synergistic, with increasing numbers of retrieved neighbors and increasing simulations both leading to performance increases in almost all contexts we investigated. Furthermore, empirical evidence suggests that search significantly improves agent robustness to distributional shift as compared to playing with the policy prior. In Appendix Fig. 10, we compare the boost in performance as a function of parametric-model compute cost for increasing MCTS simulations versus increasing the number of retrieved neighbors processed by the model. This provides a tentative indication that retrieval is also a compute efficient means of improving performance. A key future direction is to investigate the online learning scenario in which recent experience of the agent is rapidly made available for retrieval, hence progressively growing the retrieval dataset over the course of training. While there are additional challenges associated with the online paradigm (e.g., it may be desirable to update the queries and/or keys",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7eca17ef54789b0663cab421f2e9dbf5-Paper-Conference.pdf",
+              "document_sha256": "ab8e53dacf446e4bbb0dfefebbf27fc410a9887fe9dfba0217e67efcbf85e130"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Before introducing the details of our method, \u001b\u001a\u0019 \u0018\u0017\u0019\u0016\u0017\u0019\u0015 \u0010\u0018\u0013\u000f \u0013\u000e \u0018 \u0016\u0017\u0019 \u0019\u0011\u0018\u001a let us first present its high-level ingredients. \u0013 \u000e\u0011\u001b\u001a\u0019\u0015 We train a model-based agent [36] that predicts future policies and values conditioned Learn end-to-end how on future actions in a given state. This semito use retrieved information parametric model incorporates a retrieval mecha– retrieved neighbors nism, which allows it to utilise information from and associated metadata a large-scale dataset to inform its predictions. We train the agent in a supervised offline RL setting, which allows us to directly evaluate the Nearest-neighbor retrieval degree to which retrieval improves the quality of the model predictions. We subsequently evaluate the resulting model, augmented by MonteCarlo tree search, against a reference opponent. This allows us to determine how these improve- \u001b\u001a\u0019 \u0018\u0014\u0015\u001b\u0013\u0012 \u0019\u0011\u0018\u001a – large-scale dataset ments translate to an effective acting policy for out-of-training-distribution situations. Figure 1: Retrieving information to support deciTo effectively improve model predictions using sion making. The agent observation ot is used to auxiliary information, we need 1) a scalable way generate a query to retrieve relevant information to select and retrieve relevant data and 2) a ro- from a large-scale dataset Dr . This information bust way of leveraging that data in our model. is used to inform network outputs ŷt . The agent As with many successful attention mechanisms, is trained end-to-end to use this information to we establish relevance for 1) through an inner inform its decisions. product in an appropriate key-query space and select the top N relevant results. Choosing the relevant key-query space is critical, since performing nearest-neighbor on the raw observations will only",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/7eca17ef54789b0663cab421f2e9dbf5-Paper-Conference.pdf",
+              "document_sha256": "ab8e53dacf446e4bbb0dfefebbf27fc410a9887fe9dfba0217e67efcbf85e130"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Combinatorial Optimization (CO) encompasses a vast range of applications, ranging from transportation (J-F Audy and Rousseau, 2011) and logistics (Dincbas et al., 1992) to energy management (Froger et al., 2016). These problems involve finding optimal orderings or labels to optimize given objective functions. Real-world CO problems are typically NP-hard with a solution space growing exponentially with the problem size, making it intractable to find the optimal solution. Hence, industrial solvers rely on sophisticated heuristic approaches to solve them in practice. Reinforcement Learning (RL) provides a versatile framework for learning such heuristics and has demonstrated remarkable success in tackling CO tasks (Mazyavkina et al., 2021). Traditionally, RL methods train policies to incrementally construct solutions. However, achieving optimality in a single attempt for NP-hard problems is impractical. Therefore, pre-trained policies are often combined with search procedures. The literature introduces a range of these procedures, from stochastic sampling (Kool et al., 2019; Kwon et al., 2020; Grinsztajn et al., 2023), beam search (Steinbiss et al., 1994; Choo et al., 2022), Monte Carlo Tree Search (MCTS) (Browne et al., 2012) to online fine-tuning (Bello et al., 2016; Hottung et al., 2022) and searching a space of diverse pre-trained policies (Chalumeau et al., 2023b). One popular online fine-tuning strategy, Efficient Active Search (EAS) (Hottung et al., 2022), uses transitions from generated solutions to derive policy gradient updates. However, it suffers from the inherent drawbacks of back-propagation, in particular having each data point only impacting the update as much as what is enabled by the learning rate. The leading strategy, COMPASS (Chalumeau et al., 2023b),",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Construction methods for CO These refer to methods that incrementally build a solution one action after the other. Hopfield and Tank (1985) was the first to use a neural network to solve TSP, followed by Bello et al. (2016) and Deudon et al. (2018) who respectively added an RL loss and an attention-based encoder. These works were further extended by Kool et al. (2019) and Kwon et al. (2020) to use a general transformer architecture (Vaswani et al., 2017), which has become the standard model choice that we also leverage in this paper. These works have given rise to several variants, improving the architecture (Xin et al., 2021; Luo et al., 2023) or the loss (Kim et al., 2021, 2022; Drakulic et al., 2023; Sun et al., 2024). These improvements are orthogonal to our work and could a priori be combined with our method. Construction approaches are not restricted to routing problems: numerous works have tackled various CO problems, especially on graphs, like Maximum Cut (Dai et al., 2017; Barrett et al., 2020), or Job Shop Scheduling Problem (JSSP) (Zhang et al., 2020; Park et al., 2021). 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Overview To this end, we introduce ME MENTO , a method that dynamically adapts the action distribution of the neural solver using online collected data. This approach, illustrated on Fig. 2, achieves the four desiderata: it stores light-weight data about past attempts, and uses an auxiliary model to update the action logits based on the previous outcomes. It can be used on top of any pre-trained policy (architectureFigure 3: Building a new action distribution using agnostic). In principle, MEMENTO can be the memory. Relevant data is retrieved and processed combined with existing construction RL by a MLP to derive logits for each possible action. algorithms: Attention-Model (Kool et al., 2019), POMO (Kwon et al., 2020), POPPY (Grinsztajn et al., 2023), COMPASS (Chalumeau et al., 2023b), which we confirm experimentally. It learns an update rule during training, enabling data-efficient adaptation compared to policy gradient methods. The data retrieved from the memory and used by the auxiliary model to compute the new action logits contains more than the typical information used to derive a policy gradient update. For instance, the budget remaining, enabling to calibrate the exploration/exploitation trade-off and discover superior update rules. We show in Appendix F that MEMENTO has capacity to at least rediscover REINFORCE, and we show empirically in Section 4.1 that we outperform the leading policy-gradient updates adaptation method. Problem Instance 1",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/2f888eaccece0de24cc29d3ed02fd54b-Paper-Conference.pdf",
+              "document_sha256": "b3fad03b38b013314e20e0eee4091ea0646f26ed2074408de45c612ee396a405"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b874047e2e1b5152002799d",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/7eca17ef54789b0663cab421f2e9dbf5-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-831cadbfc4fd9a7c4b030a74",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/2f888eaccece0de24cc29d3ed02fd54b-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Learning to Optimize Combinatorial Problems"
+      },
+      "sha256": "328e16ff704dd41281006407eb91de02bff9573713e2b5da53d98890c5674431"
+    }
+  ]
+}

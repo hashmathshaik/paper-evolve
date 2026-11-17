@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Multilingual Neural Language Modeling and Embedding",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-38bc06c734e95ea53590bdc7",
+      "a": "paper-9fddba4d6ced110374ca7ed3",
+      "b": "paper-0fb7da4c7ccc105ebcaedb6f",
+      "state": {
+        "paper_a": {
+          "title": "Sequence-to-Action: End-to-End Semantic Graph Generation for Semantic Parsing",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "This paper proposes a neural semantic parsing approach – Sequence-to-Action, which models semantic parsing as an end-to-end semantic graph generation process. Our method simultaneously leverages the advantages from two recent promising directions of semantic parsing. Firstly, our model uses a semantic graph to represent the meaning of a sentence, which has a tight-coupling with knowledge bases. Secondly, by leveraging the powerful representation learning and prediction ability of neural network models, we propose a RNN model which can effectively map sentences to action sequences for semantic graph generation. Experiments show that our method achieves state-of-the-art performance on Overnight dataset and gets competitive performance on Geo and Atis datasets."
+        },
+        "paper_b": {
+          "title": "Unsupervised Dual Paraphrasing for Two-stage Semantic Parsing",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "One daunting problem for semantic parsing is the scarcity of annotation. Aiming to reduce nontrivial human labor, we propose a two-stage semantic parsing framework, where the first stage utilizes an unsupervised paraphrase model to convert an unlabeled natural language utterance into the canonical utterance. The downstream naive semantic parser accepts the intermediate output and returns the target logical form. Furthermore, the entire training process is split into two phases: pre-training and cycle learning. Three tailored self-supervised tasks are introduced throughout training to activate the unsupervised paraphrase model. Experimental results on benchmarks Overnight and GeoGranno demonstrate that our framework is effective and compatible with supervised training."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We hypothesize that a semantic parser utilizes the input utterance in a way different from that of a denoising auto-encoder,\nMethod Bas Blo Cal Hou Pub Rec Res Soc Avg Supervised\nPrevious\nSPO (Wang et al., 2015) 46.3 41.9 74.4 54.0 59.0 70.8 75.9 48.2 58.8 DSP-C (Xiao et al., 2016) 80.5 55.6 75.0 61.9 75.8 80.1 80.0 72.7 NORECOMB* (Jia and Liang, 2016) 85.2 58.1 78.0 71.4 76.4 79.6 76.2 81.4 75.8 CROSSDOMAIN* (Su and Yan, 2017) 86.2 60.2 79.8 71.4 78.9 84.7 81.6 82.9 78.2 SEQ2ACTION (Chen et al., 2018) 88.2 61.4 81.5 74.1 80.7 82.9 80.7 82.1 79.0 DUAL* (Cao et al., 2019) 87.5 63.7 79.8 73.0 81.4 81.5 81.6 83.0 78.9\nOurs One-stage 85.2 61.9 73.2 72.0 76.4 80.1 78.6 80.8 76.0Two-stage 84.9 61.2 78.6 67.2 78.3 80.6 78.9 81.3 76.4 Unsupervised\nOne-stage EMBED + GLOVE6B 22.3 23.6 9.5 26.5 18.0 24.5 24.7 8.4 19.7 + ELMO 36.8 21.1 20.2 21.2 23.6 36.1 37.7 12.8 26.2 + BERT 40.4 31.6 23.2 35.5 37.9 30.1 44.0 19.2 32.7\nWMDSAMPLES 34.5 33.8 29.2 37.6 36.7 41.7 56.6 37.0 38.4 MULTITASKDAE 44.0 25.8 16.1 34.4 29.2 46.3 43.7 15.5 31.9\nTwo-stage\nWMDSAMPLES 31.9 29.0 36.1 47.9 34.2 41.0 53.8 35.8 38.7 COMPLETEMODEL 64.7 53.4 58.3 59.3 60.3 68.1 73.2 48.4 60.7\n- CYCLELEARNING 32.5 43.1 36.9 48.2 53.4 49.1 58.7 36.9 44.9 - SHAREDENCODER 63.4 46.4 58.9 61.9 56.5 65.3 64.8 42.9 57.5\nSemi-supervised DUAL (Cao et al., 2019) + 50% labeled data 83.6 62.2 72.6 61.9 71.4 75.0 76.5 80.4 73.0 COMPLETEMODEL + 5% labeled data 83.6 57.4 66.1 63.0 60.3 68.1 75.3 73.1 68.4\n+ 15% labeled data 84.4 59.4 79.2 57.1 65.2 79.2 77.4 76.9 72.4 + 30% labeled data 85.4 64.9 77.4 69.3 67.1 78.2 79.2 78.3 75.0 + 50% labeled data 85.9 64.4 81.5 66.1 74.5 82.4 79.8 81.6 77.0 + 100% labeled data 87.2 65.7 80.4 75.7 80.1 86.1 82.8 82.7 80.1\nTable 4: Denotation level accuracy of logical forms on dataset OVERNIGHT.\n…Liang, 2016) 85.2 58.1 78.0 71.4 76.4 79.6 76.2 81.4 75.8 CROSSDOMAIN* (Su and Yan, 2017) 86.2 60.2 79.8 71.4 78.9 84.7 81.6 82.9 78.2 SEQ2ACTION (Chen et al., 2018) 88.2 61.4 81.5 74.1 80.7 82.9 80.7 82.1 79.0 DUAL* (Cao et al., 2019) 87.5 63.7 79.8 73.0 81.4 81.5 81.6 83.0 78.9\nOurs One-stage…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9fddba4d6ced110374ca7ed3",
+          "b": "paper-0fb7da4c7ccc105ebcaedb6f",
+          "input_sha256": "ba253640cdb62924a7879ef1789a38883b115d94695d15b12d38efa6b91f90cd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/P18-1071/",
+              "pdf_url": "https://aclanthology.org/P18-1071.pdf",
+              "sha256": "d19375b8ab2c806304750e7bd903fa3a47bbd64430a0d4503f0608a8fba98251"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.608/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.608.pdf",
+              "sha256": "e572387c89acd23132eee76adeafe1bab85d0bee1b2600e2bb35178e7c7b581e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This paper proposes a neural semantic parsing approach – Sequence-to-Action, which models semantic parsing as an endto-end semantic graph generation process. Our method simultaneously leverages the advantages from two recent promising directions of semantic parsing. Firstly, our model uses a semantic graph to represent the meaning of a sentence, which has a tight-coupling with knowledge bases. Secondly, by leveraging the powerful representation learning and prediction ability of neural network models, we propose a RNN model which can effectively map sentences to action sequences for semantic graph generation. Experiments show that our method achieves state-of-the-art performance on OVERNIGHT dataset and gets competitive performance on G EO and ATIS datasets.",
+              "url": "https://aclanthology.org/P18-1071.pdf",
+              "document_sha256": "d19375b8ab2c806304750e7bd903fa3a47bbd64430a0d4503f0608a8fba98251"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Compared with the previous Seq2Seq semantic parsing methods, our sequence-to-action model predicts a sequence of semantic graph generation actions, rather than linearized logical forms. We find that the action sequence encoding can better capture structure and semantic information, and is more compact. And the parsing can be enhanced by exploiting structure and semantic constraints. For example, in G EO dataset, the action add edge:next to must subject to the semantic constraint that its arguments must be of type state and state, and the structure constraint that the edge next to must connect two nodes to form a valid graph. We evaluate our approach on three standard datasets: G EO (Zelle and Mooney, 1996), ATIS (He and Young, 2005) and OVERNIGHT (Wang et al., 2015b). The results show that our method achieves state-of-the-art performance on OVERNIGHT dataset and gets competitive performance on G EO and ATIS datasets. The main contributions of this paper are summarized as follows:",
+              "url": "https://aclanthology.org/P18-1071.pdf",
+              "document_sha256": "d19375b8ab2c806304750e7bd903fa3a47bbd64430a0d4503f0608a8fba98251"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "As Table 4 and 5 demonstrate, in unsupervised settings: (1) two-stage semantic parser is superior to one-stage, which bridges the vast discrepancy between natural language utterances and logical forms by utilizing canonical utterances. Even in supervised experiments, this pipeline is still competitive (76.4% compared to 76.0%, 71.6% to 71.9%). (2) Not surprisingly, model performance is sensitive to the word embedding initialization. On OVERNIGHT, directly using raw Glove6B word vectors, the performance is the worst among all baselines (19.7%). Benefiting from pre-trained embeddings ELMo or Bert, the accuracy is dramatically improved (26.2% and 32.7%). (3) When we share the encoder module in a one-stage parser for multi-tasking (M ULTI TASK DAE), the performance is not remarkably improved, even slightly lower than E MBED +B ERT (31.9% compared to 32.7%, 38.1% to 40.7%). We hypothesize that a semantic parser utilizes the input utterance in a way different from that of a denoising auto-encoder,",
+              "url": "https://aclanthology.org/2020.acl-main.608.pdf",
+              "document_sha256": "e572387c89acd23132eee76adeafe1bab85d0bee1b2600e2bb35178e7c7b581e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Table 4: Denotation level accuracy of logical forms on dataset OVERNIGHT. Previous supervised methods with superscript * means cross-domain or extra data sources are not taken into account. Method Supervised C OPY N ET +ELM O (Herzig Previous and Berant, 2019) One-stage Ours Two-stage Unsupervised E MBED + G LOVE 6B + ELM O One-stage + B ERT W MD S AMPLES M ULTI TASK DAE W MD S AMPLES C OMPLETE M ODEL Two-stage - C YCLE L EARNING - S HARED E NCODER Semi-supervised C OMPLETE M ODEL + 5% labeled data + 30% labeled data + 100% labeled data",
+              "url": "https://aclanthology.org/2020.acl-main.608.pdf",
+              "document_sha256": "e572387c89acd23132eee76adeafe1bab85d0bee1b2600e2bb35178e7c7b581e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Unsupervised Dual Paraphrasing for Two-stage Semantic Parsing Ruisheng Cao Su Zhu Chenyu Yang Chen Liu Rao Ma Yanbin Zhao Lu Chen Kai Yu∗ MoE Key Lab of Artificial Intelligence SpeechLab, Department of Computer Science and Engineering AI Institute, Shanghai Jiao Tong University, China {211314,paul2204,yangcy,chris-chen,rm1031,zhaoyb}@sjtu.edu.cn {chenlusz,kai.yu}@sjtu.edu.cn Abstract One daunting problem for semantic parsing is the scarcity of annotation. Aiming to reduce nontrivial human labor, we propose a two-stage semantic parsing framework, where the first stage utilizes an unsupervised paraphrase model to convert an unlabeled natural language utterance into the canonical utterance. The downstream naive semantic parser accepts the intermediate output and returns the target logical form. Furthermore, the entire training process is split into two phases: pre-training and cycle learning. Three tailored self-supervised tasks are introduced throughout training to activate the unsupervised paraphrase model. Experimental results on benchmarks OVERNIGHT and G E O G RANNO demonstrate that our framework is effective and compatible with supervised training.",
+              "url": "https://aclanthology.org/2020.acl-main.608.pdf",
+              "document_sha256": "e572387c89acd23132eee76adeafe1bab85d0bee1b2600e2bb35178e7c7b581e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Canonical utterances are pseudo-language utterances automatically generated from grammar rules, which can be understandable to people, but do not sound natural. Though effective, the paraphrasing paradigm suffers from two drawbacks: (1) dependency on nontrivial human labor and (2) low utilization of canonical utterances. Annotators may struggle to understand the exact meanings of canonical utterances. Some canonical utterances even incur ambiguity, which enhances the difficulty of annotation. Furthermore, Wang et al. (2015) and Herzig and Berant (2019) only exploit them during data collection. Once the semantic parsing dataset is constructed, canonical utterances are thrown away, which leads to insufficient utilization. While Berant and Liang (2014) and Su and Yan (2017) have reported the effectiveness of leveraging them as intermediate outputs, they experiment in a completely supervised way, where the human annotation is indispensable. In this work, inspired by unsupervised neural machine translation (Lample et al., 2017; Artetxe et al., 2017), we propose a two-stage semantic parsing framework. The first stage uses a paraphrase model to convert natural language utterances into corre-",
+              "url": "https://aclanthology.org/2020.acl-main.608.pdf",
+              "document_sha256": "e572387c89acd23132eee76adeafe1bab85d0bee1b2600e2bb35178e7c7b581e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9fddba4d6ced110374ca7ed3",
+          "url": "https://aclanthology.org/P18-1071/"
+        },
+        "b": {
+          "paper_id": "paper-0fb7da4c7ccc105ebcaedb6f",
+          "url": "https://aclanthology.org/2020.acl-main.608/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "9da21c84ac61c77aa90f992e6de14e173e0f45a3bdc28b92d16048e1ca893c1c"
+    },
+    {
+      "id": "edge-4d7de8efa86498c4c4e2555b",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-7c0ec1b3a4c9cc4b62d130a6",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "A Graph-Based Neural Model for End-to-End Frame Semantic Parsing",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Frame semantic parsing is a semantic analysis task based on FrameNet which has received great attention recently. The task usually involves three subtasks sequentially: (1) target identification, (2) frame classification and (3) semantic role labeling. The three subtasks are closely related while previous studies model them individually, which ignores their intern connections and meanwhile induces error propagation problem. In this work, we propose an end-to-end neural model to tackle the task jointly. Concretely, we exploit a graph-based method, regarding frame semantic parsing as a graph construction problem. All predicates and roles are treated as graph nodes, and their relations are taken as graph edges. Experiment results on two benchmark datasets of frame semantic parsing show that our method is highly competitive, resulting in better performance than pipeline models."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Our model ﬁrst encodes the input sentence for span representations with BERT, and then constructs the graph nodes and edges incrementally.\nGiven a sentence X = { w 1 , w 2 , ..., w n } , BERT converts each word w i into word pieces, and feed them into deep trans-former encoders to get the piece-level representation.\n(Sarawagi and Cohen, 2005) model for semantic role labeling which is borrowed from Swayamdipta et al. (2018), where the only difference is that we use BERT as the representation layer for fair comparisons.\n5 In particular, Bastianelli et al. (2020) report the best performance of the previous studies in the literature, which is based on BERT representations.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-7c0ec1b3a4c9cc4b62d130a6",
+          "input_sha256": "0d351c00c5f528413814723bb7ed2bc5e81595443c56765708da49c72ffefeaa",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.314/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.314.pdf",
+              "sha256": "0e45cccc45a7d99c46e5a800c922bfbe2af2ba59a4c79ae07e2eb5dfdba25f02"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Due to the strong capability of BERT (Devlin et al., 2019) for represent learning, we adopt it as the backbone of our model. Given a sentence X = {w1 , w2 , ..., wn }, BERT converts each word wi into word pieces, and feed them into deep transformer encoders to get the piece-level representation. To obtain word-level representation, we average all piece vectors of word wi as its final representation ei . For further feature abstraction, we exploit BiHLSTM (Srivastava et al., 2015) to compose high-level features based on word-level output e1 , · · · , en , following Swayamdipta et al. (2018): h1 , · · · , hn = BiHLSTM(e1 , · · · , en ),",
+              "url": "https://aclanthology.org/2021.emnlp-main.314.pdf",
+              "document_sha256": "0e45cccc45a7d99c46e5a800c922bfbe2af2ba59a4c79ae07e2eb5dfdba25f02"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "and Frame, which is implemented by excluding the role node generation and predicaterole edge building in our final model. • Frame◦Role, a joint model of Frame and Role, which is implemented by excluding the predicate node generation and predicatepredicate edge building in our final model. • Semi-CRF, a span-level semi-Markov CRF (Sarawagi and Cohen, 2005) model for semantic role labeling which is borrowed from Swayamdipta et al. (2018), where the only difference is that we use BERT as the representation layer for fair comparisons.3 Note that the above derived models are trained individually. Based on these models, we can build five pipeline systems: (1) Predicate + Frame + Role, (2) Predicate◦Frame + Role, (3) Predicate + Frame◦Role, (4) Predicate◦Frame + Semi-CRF, and (5) Node + Edge, which are exploited for comparisons with our graph-based end-to-end model.",
+              "url": "https://aclanthology.org/2021.emnlp-main.314.pdf",
+              "document_sha256": "0e45cccc45a7d99c46e5a800c922bfbe2af2ba59a4c79ae07e2eb5dfdba25f02"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "works focus on either one or two of the three subtasks, treating them separately (Yang and Mitchell, 2017; Botschen et al., 2018; Swayamdipta et al., 2018; Peng et al., 2018). The above formalization has two weaknesses. First, the individual modeling of the three subtasks is inefficient to utilize the relationship among them. Apparently, the earlier subtasks can not exploit the 1 Introduction information from their future subtasks. Second, the Frame semantic parsing (Gildea and Jurafsky, pipeline strategy can suffer from the error propa2002) aims to analyze all sentential predicates as gation problem, where the errors occurring in the well as their FrameNet roles as a whole, which has previous subtasks can influence the later subtasks received great interest recently. This task can be as well. To address the two weaknesses, end-to-end helpful for a number of tasks, including informa- modeling is one promising alternative, which has tion extraction (Surdeanu et al., 2003), question been widely adopted in natural language processanswering (Shen and Lapata, 2007), machine trans- ing (NLP) (Cai et al., 2018; He et al., 2018; Sun lation (Liu and Gildea, 2010) and others (Coyne et al., 2019; Fu et al., 2019; Fei et al., 2020). et al., 2012; Chen et al., 2013; Agarwal et al., 2014). In this work, we propose a novel graph-based Figure 1 shows an example, where all predicates model to tackle frame semantic parsing in an endas well as their semantic frame and roles in the to-end way, using a single model to perform the sentence are depicted. three subtasks jointly. We organize all predicates Previous studies (Das et al., 2014; Swayamdipta and their FrameNet semantic by a graph, and then et al., 2017; Bastianelli et al., 2020) usually divide design an end-to-end neural model to",
+              "url": "https://aclanthology.org/2021.emnlp-main.314.pdf",
+              "document_sha256": "0e45cccc45a7d99c46e5a800c922bfbe2af2ba59a4c79ae07e2eb5dfdba25f02"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Frame semantic parsing is a semantic analysis task based on FrameNet which has received great attention recently. The task usually involves three subtasks sequentially: (1) target identification, (2) frame classification and (3) semantic role labeling. The three subtasks are closely related while previous studies model them individually, which ignores their intern connections and meanwhile induces error propagation problem. In this work, we propose an end-to-end neural model to tackle the task jointly. Concretely, we exploit a graphbased method, regarding frame semantic parsing as a graph construction problem. All predicates and roles are treated as graph nodes, and their relations are taken as graph edges. Experiment results on two benchmark datasets of frame semantic parsing show that our method is highly competitive, resulting in better performance than pipeline models.",
+              "url": "https://aclanthology.org/2021.emnlp-main.314.pdf",
+              "document_sha256": "0e45cccc45a7d99c46e5a800c922bfbe2af2ba59a4c79ae07e2eb5dfdba25f02"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-7c0ec1b3a4c9cc4b62d130a6",
+          "url": "https://aclanthology.org/2021.emnlp-main.314/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "f37a3d236e34bec051dbab7648fc739f7cde106b60e69e7c5fa073fa28b24484"
+    },
+    {
+      "id": "edge-6fcdfd394d57ab210f27dace",
+      "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+      "b": "paper-7b501fa88664d7a3c8a9a2f7",
+      "state": {
+        "paper_a": {
+          "title": "Parameter-Efficient Transfer Learning for NLP",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Fine-tuning large pretrained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to $26$ diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within $0.8%$ of the performance of full fine-tuning, adding only $3.6%$ parameters per task. By contrast, fine-tuning trains $100%$ of the parameters per task."
+        },
+        "paper_b": {
+          "title": "MLAS-LoRA: Language-Aware Parameters Detection and LoRA-Based Knowledge Transfer for Multilingual Machine Translation",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Large language models (LLMs) have achieved remarkable progress in multilingual machine translation (MT), demonstrating strong performance even with limited parallel data. However, effectively fine-tuning LLMs for MT is challenging due to parameter interference, which arises from the conflicting demands of different language pairs and the risk of overwriting pre-trained knowledge. To address this issue, we propose MLAS-LoRA, a novel multiple language-aware LoRA knowledge transfer framework. MLAS-LoRA efficiently adapts LLMs to MT by selectively transferring knowledge from a large teacher to a small student model. Our approach first evaluates the awareness of neurons and extracts linguistic knowledge in the teacher model to both the general MT task and specific language pairs.We then propose a multiple language-specific LoRA architecture to inject the extracted knowledge into the student model. During fine-tuning, only the parameters of the relevant language-general and language-specific LoRA modules are updated. Experimental results on diverse multilingual language pairs demonstrate that MLAS-LoRA significantly outperforms strong baselines by +1.7 BLEU on average, including standard fine-tuning and other parameter-efficient methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Methods like standard LoRA, MELoRA, AFLoRA, and Adapter do not explicitly distinguish between language-general and language-specific knowledge.\n• MELoRA (Mini-Ensemble Low-Rank Adapters) (Ren et al., 2024) is an extension of the LoRA method designed to improve parameter-efficient fine-tuning (PEFT) of large pre-trained language models.\nPfeiffer et al. (2021) extend this with AdapterFusion, combining knowledge from multiple adapters trained on different tasks.\n• Adapter tuning (Houlsby et al., 2019b) is a parameter - efficient transfer learning method for NLP. Adapter modules are added between layers of a pre - trained network.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "b": "paper-7b501fa88664d7a3c8a9a2f7",
+          "input_sha256": "7160606a2593fce12c85a44c729a7f37c7d175474599d01f4b87161c855480ad",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/houlsby19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.acl-long.762/",
+              "pdf_url": "https://aclanthology.org/2025.acl-long.762.pdf",
+              "sha256": "a850540fd1c1d15553a83398305d1765c6ae2664192b84a64bb3e41e0b25ea3e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Both feature-based transfer and fine-tuning require a new set of weights for each task. Fine-tuning is more parameter efficient if the lower layers of a network are shared between tasks. However, our proposed adapter tuning method is even more parameter efficient. Figure 1 demonstrates this tradeoff. The x-axis shows the number of parameters trained per task; this corresponds to the marginal increase in the model size required to solve each additional task. Adapter-based tuning requires training two orders of magnitude fewer parameters to fine-tuning, while attaining similar performance. Adapters are new modules added between layers of a pre-trained network. Adapter-based tuning differs from feature-based transfer and fine-tuning in the following way. Consider a function (neural network) with parameters w: φw (x). Feature-based transfer composes φw with a new function, χv , to yield χv (φw (x)). Only the new, taskspecific, parameters, v, are then trained. Fine-tuning involves adjusting the original parameters, w, for each new task, limiting compactness. For adapter tuning, a new function, ψw,v (x), is defined, where parameters w are copied over from pre-training. The initial parameters v0 are set such that the new function resembles the original: ψw,v0 (x) ≈ φw (x). During training, only v are tuned. For deep networks, defining ψw,v typically involves adding new layers to the original network, φw . If one chooses |v| |w|, the resulting model requires ∼ |w| parameters for many tasks. Since w is fixed, the model can be extended to new tasks without affecting previous ones. Adapter-based tuning relates to multi-task and continual learning. Multi-task learning also results in compact models. However, multi-task learning requires simultaneous access to all tasks, which",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fine-tuning large pre-trained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to 26 diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within 0.4% of the performance of full fine-tuning, adding only 3.6% parameters per task. By contrast, fine-tuning trains 100% of the parameters per task.",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "LLMs have shown remarkable success on a wide range of NLP tasks, including multilingual MT (Chowdhery et al., 2023; Touvron et al., 2023). Recent years have witnessed growing research interest in fine-tuning LLMs for domain-specific applications. Prominent examples include adapter-based methods (Pfeiffer et al., 2021; Nguyen and Le, 2024). Houlsby et al. (2019a) introduce adapter modules, which are small bottleneck layers inserted between layers of a pre-trained Transformer, allowing for task-specific adaptation with minimal parameter updates. Pfeiffer et al. (2021) extend this with AdapterFusion, combining knowledge from multiple adapters trained on different tasks. Another approach is LoRA (Hu et al., 2022), which updates a low-rank decomposition of the weight matrices. Other approaches include prompt tuning (Lester et al., 2021), which prepends trainable soft prompts to the input, and prefix tuning (Li and Liang, 2021), which prepends trainable continuous prefixes to each layer’s activations. Guo et al. (2021) find that fine-tuning multilingual LLMs do not always bring about improvements, and sometimes even undermine translation quality due to catastrophic forgetting. Another significant body of work explores knowledge distillation (KD) for transferring capabilities and knowledge from a teacher LLM to a smaller student model (Hinton et al., 2015; Liao et al., 2025). Jain et al. (2023) develop a method for selecting the most informative multilingual data for distillation, focusing on high-resource languages to improve low-resource performance. Recentlly, Xu et al. (2024) explore weight selection for uniformly selecting parameters from a larger teacher model to initialize a smaller variant. Other studies concentrate on function-preserving methods (Honovich et al.,",
+              "url": "https://aclanthology.org/2025.acl-long.762.pdf",
+              "document_sha256": "a850540fd1c1d15553a83398305d1765c6ae2664192b84a64bb3e41e0b25ea3e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "0-shot row establishes the baseline performance of the untuned Gemma-2-2b-it model, revealing its inherent, yet limited, multilingual MT. BLEU range considerably (e.g., 24.26 for cs-en, but only 6.41 for en-et), indicating that while the LLM possesses some cross-lingual understanding, it’s far from optimized for translation. For fine-tuning methods, we observe a clear improvement across all approaches compared to the zero-shot and in-context baselines. However, significant differences emerge among the fine-tuning techniques themselves, revealing the importance of how knowledge is adapted. Methods like standard LoRA, MELoRA, AFLoRA, and Adapter do not explicitly distinguish between languagegeneral and language-specific knowledge. They apply parameter updates within a shared parameter space for all languages. This can lead to parameter interference, where updates that benefit one language pair may degrade performance on others (we will demonstrate this in section 5.2). In contrast, ours consistently outperforms all baselines across every reported language pair and direction. This substantial and consistent improvement demonstrates the effectiveness of our core innovations: the explicit separation and targeted transfer of language-specific and language-general knowledge. By identifying neurons relevant to the overall MT task and further categorizing them based on their language awareness, ours avoids the pitfalls of indiscriminate parameter updates. The use of multiple language-specific LoRA modules allows for focused adaptation to each language pair, minimizing interference and maximizing the positive transfer of knowledge from the teacher model. The results strongly suggest that a language-aware approach, which considers both the shared and unique aspects of different",
+              "url": "https://aclanthology.org/2025.acl-long.762.pdf",
+              "document_sha256": "a850540fd1c1d15553a83398305d1765c6ae2664192b84a64bb3e41e0b25ea3e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "et al., 2024; Zhu et al., 2024b; Tang et al., 2024). These studies demonstrate that certain neurons appear to be specialized for particular languages, while others are language-agnostic, contributing to general linguistic processing (Liu et al., 2024a; Huang et al., 2024). This specialization can also lead to parameter interference, potentially causing two key issues for KD and LoRA approaches: (1) Distilling the entire teacher model’s parameters to a student model often leads to performance degradation in some tasks within a multi-task setting (Zhong et al., 2024). (2) Applying LoRA indiscriminately across different languages during finetuning can result in a sub-optimal configuration (Cao et al., 2024; Tian et al., 2025). This is because the fine-tuning process may inadvertently disrupt the beneficial language-specific representations learned during pre-training. To address these issues, we propose MLASLoRA, a novel multiple language-aware LoRA knowledge transfer framework for extracting language-specific parameters from a teacher LLM and subsequently injecting them into a student model via LoRA for multilingual machine translation. Specifically, we first evaluate the MT awareness of each neuron in the LLM’s layers, identifying neurons that are significantly involved in the overall MT task. For those MT-relevant neurons, we further assess and extract the linguistic knowledge of each neuron to each individual language pair. Then, we propose a multiple language awareness LoRA architecture. This acts as a bridge to inject the knowledge extracted from both language awareness parameters of the teacher model into the student model. This facilitates efficient fine-tuning of the student on multilingual MT, achieving the knowledge transfer process. During fine-tuning, only",
+              "url": "https://aclanthology.org/2025.acl-long.762.pdf",
+              "document_sha256": "a850540fd1c1d15553a83398305d1765c6ae2664192b84a64bb3e41e0b25ea3e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Tianyu Dong1 , Bo Li2,3† , Jingsong Liu4 , Shaolin Zhu1 * , Deyi Xiong1 * TJUNLP Lab, College of Intelligence and Computing, Tianjin University, Tianjin, China 2 School of Software, Tsinghua University, Beijing, China 3 Baidu APP Technology and Platform R&D Department, Baidu Inc, Beijing, China 4 NewTranx Co., Ltd, Beijing, China {tydong, zhushaolin, dyxiong}@tju.edu.cn {li-b19}@mails.tsinghua.edu.cn {jinsong.liu}@newtranx.com improved zero-shot and few-shot learning for transAbstract Large language models (LLMs) have achieved remarkable progress in multilingual machine translation (MT), demonstrating strong performance even with limited parallel data. However, effectively fine-tuning LLMs for MT is challenging due to parameter interference, which arises from the conflicting demands of different language pairs and the risk of overwriting pre-trained knowledge. To address this issue, we propose MLAS-LoRA, a novel multiple language-aware LoRA knowledge transfer framework. MLAS-LoRA efficiently adapts LLMs to MT by selectively transferring knowledge from a large teacher to a small student model. Our approach first evaluates the awareness of neurons and extracts linguistic knowledge in the teacher model to both the general MT task and specific language pairs. We then propose a multiple language-specific LoRA architecture to inject the extracted knowledge into the student model. During fine-tuning, only the parameters of the relevant languagegeneral and language-specific LoRA modules are updated. Experimental results on diverse multilingual language pairs demonstrate that MLAS-LoRA significantly outperforms strong baselines by +1.7 BLEU on average, including standard fine-tuning and other parameterefficient methods.",
+              "url": "https://aclanthology.org/2025.acl-long.762.pdf",
+              "document_sha256": "a850540fd1c1d15553a83398305d1765c6ae2664192b84a64bb3e41e0b25ea3e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "url": "https://proceedings.mlr.press/v97/houlsby19a.html"
+        },
+        "b": {
+          "paper_id": "paper-7b501fa88664d7a3c8a9a2f7",
+          "url": "https://aclanthology.org/2025.acl-long.762/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "86cd65d07952889276b9081f934d0d2941f6cee50844af58dafc0820ee6f9288"
+    },
+    {
+      "id": "edge-b6047ae28a10dad05524472c",
+      "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+      "b": "paper-78729af0b993900d383cd811",
+      "state": {
+        "paper_a": {
+          "title": "Parameter-Efficient Transfer Learning for NLP",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Fine-tuning large pretrained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to $26$ diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within $0.8%$ of the performance of full fine-tuning, adding only $3.6%$ parameters per task. By contrast, fine-tuning trains $100%$ of the parameters per task."
+        },
+        "paper_b": {
+          "title": "Zero-shot Cross-lingual Transfer With Learned Projections Using Unlabeled Target-Language Data",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Adapters have emerged as a parameter-efficient Transformer-based framework for cross-lingual transfer by inserting lightweight language-specific modules (language adapters) and task-specific modules (task adapters) within pretrained multilingual models. Zero-shot transfer is enabled by pairing the language adapter in the target language with an appropriate task adapter in a source language. If our target languages are known apriori, we explore how zero-shot transfer can be further improved within the adapter framework by utilizing unlabeled text during task-specific finetuning. We construct language-specific subspaces using standard linear algebra constructs and selectively project source-language representations into the target language subspace during task-specific finetuning using two schemes. Our experiments on three cross-lingual tasks, Named Entity Recognition (NER), Question Answering (QA) and Natural Language Inference (NLI) yield consistent benefits compared to adapter baselines over a wide variety of target languages with up to 11% relative improvement in NER, 2% relative improvement in QA and 5% relative improvement in NLI."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Adapters (Houlsby et al., 2019) are feedforward layer blocks inserted within each Transformer layer to selectively learn taskspecific and language-specific capabilities via task adapters and language adapters, respectively.\nAdapters for language models (Houlsby et al., 2019) are bottleneck feedforward modules, typically inserted in each Transformer layer of a multilingual model before layer normalization.\nAdapters for language models (Houlsby et al., 2019) are bottleneck feed-forward modules, typically inserted in each Trans-former layer of a multilingual model before layer normalization.\nAdapters (Houlsby et al., 2019) are feedforward layer blocks inserted within each Transformer layer to selectively learn task-specific and language-specific capabilities via task adapters and language adapters, respectively.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "b": "paper-78729af0b993900d383cd811",
+          "input_sha256": "1c8643b470b4cb8d6aeb52ddf37b7fd0a1f0c229df7590f256165ba4c96ed4c8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/houlsby19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-short.39/",
+              "pdf_url": "https://aclanthology.org/2023.acl-short.39.pdf",
+              "sha256": "0129d08a03b806699a91a35fb26164844cb3d9b5f6e35f73cd75add5c17c806a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Both feature-based transfer and fine-tuning require a new set of weights for each task. Fine-tuning is more parameter efficient if the lower layers of a network are shared between tasks. However, our proposed adapter tuning method is even more parameter efficient. Figure 1 demonstrates this tradeoff. The x-axis shows the number of parameters trained per task; this corresponds to the marginal increase in the model size required to solve each additional task. Adapter-based tuning requires training two orders of magnitude fewer parameters to fine-tuning, while attaining similar performance. Adapters are new modules added between layers of a pre-trained network. Adapter-based tuning differs from feature-based transfer and fine-tuning in the following way. Consider a function (neural network) with parameters w: φw (x). Feature-based transfer composes φw with a new function, χv , to yield χv (φw (x)). Only the new, taskspecific, parameters, v, are then trained. Fine-tuning involves adjusting the original parameters, w, for each new task, limiting compactness. For adapter tuning, a new function, ψw,v (x), is defined, where parameters w are copied over from pre-training. The initial parameters v0 are set such that the new function resembles the original: ψw,v0 (x) ≈ φw (x). During training, only v are tuned. For deep networks, defining ψw,v typically involves adding new layers to the original network, φw . If one chooses |v| |w|, the resulting model requires ∼ |w| parameters for many tasks. Since w is fixed, the model can be extended to new tasks without affecting previous ones. Adapter-based tuning relates to multi-task and continual learning. Multi-task learning also results in compact models. However, multi-task learning requires simultaneous access to all tasks, which",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fine-tuning large pre-trained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to 26 diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within 0.4% of the performance of full fine-tuning, adding only 3.6% parameters per task. By contrast, fine-tuning trains 100% of the parameters per task.",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "scaffolds on multilingual pretrained models to combine task-specific and language-specific modules in a plug-and-play manner. Adapters (Houlsby et al., 2019) are feedforward layer blocks inserted within each Transformer layer to selectively learn taskspecific and language-specific capabilities via task adapters and language adapters, respectively. Language adapters are trained using self-supervised objectives like masked language modeling (MLM) and task adapters are trained using task-specific objectives. To enable task transfer to a target language, the relevant language and task adapters are combined at test-time. In the zero-shot setting, we assume access to unlabeled text in the target languages. In MADX, this text is only used to train target language adapters and not further used during finetuning. Given knowledge of which languages we want to target, can we make effective use of unlabeled text in the target languages even during task-specific finetuning? This is the main question we tackle in this work. We propose a general adapter-based technique to inject target language bias into task-specific finetuning. Using the unlabeled text in each target language, we construct an affine subspace from contextualized representations for every Transformer layer in the multilingual model. These subspaces are defined using singular value decomposition (SVD) and only need to be computed once per target language. During task-specific finetuning using labeled data in the source language, we project the source representations onto the target language subspaces. This projection can be invoked randomly using a projection probability defined as a hyperparameter. Projections can also be triggered depending on whether the current source representations are closer to the mean",
+              "url": "https://aclanthology.org/2023.acl-short.39.pdf",
+              "document_sha256": "0129d08a03b806699a91a35fb26164844cb3d9b5f6e35f73cd75add5c17c806a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Adapters and MAD-X. Adapters for language models (Houlsby et al., 2019) are bottleneck feedforward modules, typically inserted in each Transformer layer of a multilingual model before layer normalization. Instead of finetuning the entire model, only adapters are tuned for a specific task. Pfeiffer et al. (2020b) extended adapterbased fine tuning to support cross-lingual transfer. Their framework called MAD-X (Multiple Adapters for Cross-lingual transfer) comprises of language adapters and task adapters. Language adapters are pretrained using masked language modeling to learn language-specific features. Task adapters are stacked on top of language adapters during downstream task finetuning to learn taskspecific information. To achieve zero-shot transfer, the model is trained with a frozen source-language language adapter and a task adapter. During test time, the source-language adapter is replaced with the target-language adapter and evaluated on test instances in the target language. Overview of our technique. We are interested in the setting where we have apriori knowledge of which languages we want to target at test time. We aim to bias cross-lingual transfer towards known target languages during task-specific finetuning. We start with MAD-X as our underlying framework and adopt the following 3-step approach: • We construct layer-specific subspaces for each of the target languages. This is done by computing SVD on contextualized token representations extracted from each layer. See §2.1 for more details. • During task-specific training, we selectively project output representations from the language adapter of a chosen layer onto the target language subspace. These projections are triggered based on two policies: Random projection (§2.2) and Mean Cosine Distance",
+              "url": "https://aclanthology.org/2023.acl-short.39.pdf",
+              "document_sha256": "0129d08a03b806699a91a35fb26164844cb3d9b5f6e35f73cd75add5c17c806a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "url": "https://proceedings.mlr.press/v97/houlsby19a.html"
+        },
+        "b": {
+          "paper_id": "paper-78729af0b993900d383cd811",
+          "url": "https://aclanthology.org/2023.acl-short.39/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "6d0cefe797d5861798a6debe95f84288069e3f972db11d3880caf40c68d91d65"
+    },
+    {
+      "id": "edge-bdfbb822d68f7a91e8bf5945",
+      "a": "paper-07f112f1e8f8187c57822264",
+      "b": "paper-6a6b7148a99087a148ccb06a",
+      "state": {
+        "paper_a": {
+          "title": "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Most existing work on adversarial data generation focuses on English. For example, PAWS (Paraphrase Adversaries from Word Scrambling) consists of challenging English paraphrase identification pairs from Wikipedia and Quora. We remedy this gap with PAWS-X, a new dataset of 23,659 human translated PAWS evaluation pairs in six typologically distinct languages: French, Spanish, German, Chinese, Japanese, and Korean. We provide baseline numbers for three models with different capacity to capture non-local context and sentence structure, and using different multilingual training and evaluation regimes. Multilingual BERT fine-tuned on PAWS English plus machine-translated data performs the best, with a range of 83.1-90.8 accuracy across the non-English languages and an average accuracy gain of 23% over the next best model. PAWS-X shows the effectiveness of deep, multilingual pre-training while also leaving considerable headroom as a new challenge to drive multilingual research that better captures structure and contextual information."
+        },
+        "paper_b": {
+          "title": "mT6: Multilingual Pretrained Text-to-Text Transformer with Translation Pairs",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Multilingual T5 pretrains a sequence-to-sequence model on massive monolingual texts, which has shown promising results on many cross-lingual tasks. In this paper, we improve multilingual text-to-text transfer Transformer with translation pairs (mT6). Specifically, we explore three cross-lingual text-to-text pre-training tasks, namely, machine translation, translation pair span corruption, and translation span corruption. In addition, we propose a partially non-autoregressive objective for text-to-text pre-training. We evaluate the methods on seven multilingual benchmark datasets, including sentence classification, named entity recognition, question answering, and abstractive summarization. Experimental results show that the proposed mT6 improves cross-lingual transferability over mT5."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07f112f1e8f8187c57822264",
+          "b": "paper-6a6b7148a99087a148ccb06a",
+          "input_sha256": "fd36d02bb1a850a5fa769f0a606dd1b96e267ad0af14c42021ffaa5ced9fb40c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1382/",
+              "pdf_url": "https://aclanthology.org/D19-1382.pdf",
+              "sha256": "99913bba2a9ee22c10357e0ee2499ac4f7de5149878f110f408c503f374274e9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.125/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.125.pdf",
+              "sha256": "1618a26e12f93be93a43a85383527d74175e421ce425bed6fc1962712a7fcfbe"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "We introduce PAWS-X, a challenging paraphrase identification dataset with 23,659 human translated evaluation pairs in six languages. Our experimental results showed that PAWS-X effectively measures sensitivity of models to word order and the efficacy of cross-lingual learning approaches. It also leaves considerable headroom as a new challenging benchmark to drive multilingual research on the problem of paraphrase identification.",
+              "url": "https://aclanthology.org/D19-1382.pdf",
+              "document_sha256": "99913bba2a9ee22c10357e0ee2499ac4f7de5149878f110f408c503f374274e9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "To validate the performance of M T6, we evaluate the pretrained models on XTREME (Hu et al., 2020b), which is a widely used benchmark for cross-lingual understanding. Following M T5 (Xue et al., 2020), we consider six downstream tasks included by XTREME: the named entity recognition (NER) task on the WikiAnn (Pan et al., 2017; Rahimi et al., 2019) dataset in 40 languages, the question answering (QA) task on MLQA (Lewis et al., 2020b), XQuAD (Artetxe et al., 2020), and TyDiQA-GoldP (Clark et al., 2020), the cross-lingual natural language inference task on XNLI (Conneau et al., 2018), and crosslingual paraphrase adversaries on PAWS-X (Yang et al., 2019). The models are evaluated under the cross-lingual transfer setting (Conneau et al., 2020; Hu et al., 2020b). Under this setting, the models should be fine-tuned only on English training data but evaluated on all target languages. Moreover, for each pretrained model, only one model is used for all languages rather than selecting fine-tuned models separately. Details of the fine-tuning hyperparameters are described in Appendix. As shown in Table 1, we present the evaluation results of the pretrained models on the XTREME benchmark. We observe that M T6 achieves the best performance on XTREME, improving the average score from 45.0 to 50.4, as we go from M T5 to M T6. It is worth mentioning that pre-training the",
+              "url": "https://aclanthology.org/2021.emnlp-main.125.pdf",
+              "document_sha256": "1618a26e12f93be93a43a85383527d74175e421ce425bed6fc1962712a7fcfbe"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "Table 3: ROUGE-2 scores on Wikilingua cross-lingual summarization. Results are averaged over three runs. Model XQuAD MLQA TyDiQA XNLI PAWS-X M T5 M T6",
+              "url": "https://aclanthology.org/2021.emnlp-main.125.pdf",
+              "document_sha256": "1618a26e12f93be93a43a85383527d74175e421ce425bed6fc1962712a7fcfbe"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2019), cross-lingual contrast (Chi et al., 2021a), and bidirectional word alignment (Hu et al., 2020a). Multilingual T5 (M T5; Xue et al. 2020) preThanks to the translation data, the pretrained modtrains a sequence-to-sequence model on masels produce better-aligned cross-lingual representasive monolingual texts, which has shown promising results on many cross-lingual tasks. tions and obtain better cross-lingual transferability. In this paper, we improve multilingual textRecently, the multilingual text-to-text transfer to-text transfer Transformer with translation Transformer (M T5; Xue et al. 2020) achieves statepairs (M T6). Specifically, we explore three of-the-art performance on several cross-lingual uncross-lingual text-to-text pre-training tasks, derstanding benchmarks. M T5 inherits the benefits namely, machine translation, translation pair of T5 (Raffel et al., 2020) that treats every text prospan corruption, and translation span corrupcessing problem as a text-to-text problem, i.e., the tion. In addition, we propose a partially nonautoregressive objective for text-to-text preproblem of generating some target text conditioned training. We evaluate the methods on eight on the input text. Despite the effectiveness of M T5, multilingual benchmark datasets, including how to improve M T5 with translation data is still sentence classification, named entity recognian open problem. tion, question answering, and abstractive sumIn this paper, we present M T6, standing for marization. Experimental results show that the improving multilingual text-to-text transfer Transproposed M T6 improves cross-lingual transferability over M T5. former with translation data. M T6 differs from M T5 in terms of both pre-training tasks and the 1 Introduction training objective. We present",
+              "url": "https://aclanthology.org/2021.emnlp-main.125.pdf",
+              "document_sha256": "1618a26e12f93be93a43a85383527d74175e421ce425bed6fc1962712a7fcfbe"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Moreover, our analysis indicates that the representations produced by M T6 are more cross-lingual transferable and better-aligned than M T5. The contributions are summarized as follows: • We introduce three cross-lingual tasks for textto-text Transformer pre-training, which improves M T5 with translation data. • We propose a partially non-autoregressive objective that pretrains the decoder to use more information from the source sequence. • We provide extensive evaluation results of various pre-training tasks and training objectives.",
+              "url": "https://aclanthology.org/2021.emnlp-main.125.pdf",
+              "document_sha256": "1618a26e12f93be93a43a85383527d74175e421ce425bed6fc1962712a7fcfbe"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07f112f1e8f8187c57822264",
+          "url": "https://aclanthology.org/D19-1382/"
+        },
+        "b": {
+          "paper_id": "paper-6a6b7148a99087a148ccb06a",
+          "url": "https://aclanthology.org/2021.emnlp-main.125/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "8be4020499b1c960c091e5dcb0719e6598b2b2cd54ba013e4ac021b94d60d657"
+    },
+    {
+      "id": "edge-cbdd101483e39f0b0be51d7c",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-bfbb395c003aed3f38bcdf23",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Model Selection for Cross-lingual Transfer",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Transformers that are pre-trained on multilingual corpora, such as, mBERT and XLM-RoBERTa, have achieved impressive cross-lingual transfer capabilities. In the zero-shot transfer setting, only English training data is used, and the fine-tuned model is evaluated on another target language. While this works surprisingly well, substantial variance has been observed in target language performance between different fine-tuning runs, and in the zero-shot setup, no target-language development data is available to select among multiple fine-tuned models. Prior work has relied on English dev data to select among models that are fine-tuned with different learning rates, number of steps and other hyperparameters, often resulting in suboptimal choices. In this paper, we show that it is possible to select consistently better models when small amounts of annotated data are available in auxiliary pivot languages. We propose a machine learning approach to model selection that uses the fine-tuned model’s own internal representations to predict its cross-lingual capabilities. In extensive experiments we find that this method consistently selects better models than English validation data across twenty five languages (including eight low-resource languages), and often achieves results that are comparable to model selection using target language development data."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Pre-trained Transformers (Vaswani et al., 2017; Devlin et al., 2019) have achieved state-of-the-art results on a range of NLP tasks, often approaching human inter-rater agreement (Joshi et al.\nPre-trained Transformers (Vaswani et al., 2017; De-vlin et al., 2019) have achieved state-of-the-art re-sults on a range of NLP tasks, often approaching human inter-rater agreement (Joshi et al., 2020a).\nThe only difference from the monolingual approach to contextual word representations (Peters et al., 2018; Devlin et al., 2019) is the pre-training corpus, which contains text written in multiple languages; for example, mBERT is trained on Wikipedia data from 104 languages.\nLauscher et al. (2020) present a number of challenges in transferring to languages with few resources us-ing pre-trained Transformers.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-bfbb395c003aed3f38bcdf23",
+          "input_sha256": "41d5a04abb142c5835403542f60c1cf0c0df585a446a05e917d0c23e1c273d2b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.emnlp-main.459/",
+              "pdf_url": "https://aclanthology.org/2021.emnlp-main.459.pdf",
+              "sha256": "7ff897a5c99fa2ae355d5eabe655cea7187aac75a42711d29ac3a98c78d220e1"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Pre-trained Transformers (Vaswani et al., 2017; Devlin et al., 2019) have achieved state-of-the-art results on a range of NLP tasks, often approaching human inter-rater agreement (Joshi et al., 2020a). These models have also been demonstrated to learn effective cross-lingual representations, even without access to parallel text or bilingual lexicons (Wu and Dredze, 2019; Pires et al., 2019). 1 Our code and data is available at: https://github. com/edchengg/model_selection",
+              "url": "https://aclanthology.org/2021.emnlp-main.459.pdf",
+              "document_sha256": "7ff897a5c99fa2ae355d5eabe655cea7187aac75a42711d29ac3a98c78d220e1"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Transformers that are pre-trained on multilingual corpora, such as, mBERT and XLMRoBERTa, have achieved impressive crosslingual transfer capabilities. In the zero-shot transfer setting, only English training data is used, and the fine-tuned model is evaluated on another target language. While this works surprisingly well, substantial variance has been observed in target language performance between different fine-tuning runs, and in the zero-shot setup, no target-language development data is available to select among multiple fine-tuned models. Prior work has relied on English dev data to select among models that are fine-tuned with different learning rates, number of steps and other hyperparameters, often resulting in suboptimal choices. In this paper, we show that it is possible to select consistently better models when small amounts of annotated data are available in auxiliary pivot languages. We propose a machine learning approach to model selection that uses the finetuned model’s own internal representations to predict its cross-lingual capabilities. In extensive experiments we find that this method consistently selects better models than English validation data across twenty five languages (including eight low-resource languages), and often achieves results that are comparable to model selection using target language development data.1",
+              "url": "https://aclanthology.org/2021.emnlp-main.459.pdf",
+              "document_sha256": "7ff897a5c99fa2ae355d5eabe655cea7187aac75a42711d29ac3a98c78d220e1"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "In the zero-shot transfer learning, training and development data are only assumed in a high resource source language (e.g. English), and performance is evaluated on another target language. Because no target language annotations are assumed, source language data is typically used to select among models that are fine-tuned with different hyperparameters and random seeds. However, recent work has shown that English dev accuracy does not always correlate well with target language performance (Keung et al., 2020). In this paper, we propose an alternative strategy for model selection in zero-shot transfer. Our approach, dubbed Learned Model Selection (LMS), learns a function that scores the compatibility between a fine-tuned multilingual Transformer, and a target language. The compatibility score is calculated based on features of the multilingual model’s learned representations. This is done by aggregating representations over an unlabeled target language text corpus after fine-tuning on source language data. We show that these modelspecific features effectively capture information about how the cross-lingual representations will transfer. We also make use of language embeddings from the lang2vec package (Malaviya et al., 2017),2 which have been shown to encode typological information that may help inform how a multilingual model will transfer to a particular target. These model and language features are combined in a bilinear layer to compute a ranking on the fine-tuned models. Parameters of the ranking function are optimized to minimize a pairwise loss on a set of held-out models, using one or more auxiliary pivot languages. Our method assumes training data in English, in addition to small amounts of auxiliary language data. This corresponds to a scenario where the",
+              "url": "https://aclanthology.org/2021.emnlp-main.459.pdf",
+              "document_sha256": "7ff897a5c99fa2ae355d5eabe655cea7187aac75a42711d29ac3a98c78d220e1"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-bfbb395c003aed3f38bcdf23",
+          "url": "https://aclanthology.org/2021.emnlp-main.459/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "2244e01dcacc866770ac1324a6a1a9f05fe6d902e48387c89f3eb266c19eb7a0"
+    },
+    {
+      "id": "edge-f11bf18b05ff362b323c2cb4",
+      "a": "paper-9be466d3035e90bec223b601",
+      "b": "paper-205bef1955d771aeb5c9f731",
+      "state": {
+        "paper_a": {
+          "title": "Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Few-shot in-context learning (ICL) enables pre-trained language models to perform a previously-unseen task without any gradient-based training by feeding a small number of training examples as part of the input. ICL incurs substantial computational, memory, and storage costs because it involves processing all of the training examples every time a prediction is made. Parameter-efficient fine-tuning (PEFT) (e.g. adapter modules, prompt tuning, sparse update methods, etc.) offers an alternative paradigm where a small set of parameters are trained to enable a model to perform the new task. In this paper, we rigorously compare few-shot ICL and PEFT and demonstrate that the latter offers better accuracy as well as dramatically lower computational costs. Along the way, we introduce a new PEFT method called (IA)^3 that scales activations by learned vectors, attaining stronger performance while only introducing a relatively tiny amount of new parameters. We also propose a simple recipe based on the T0 model called T-Few that can be applied to new tasks without task-specific tuning or modifications. We validate the effectiveness of T-Few on completely unseen tasks by applying it to the RAFT benchmark, attaining super-human performance for the first time and outperforming the state-of-the-art by 6% absolute. All of the code used in our experiments will be publicly available."
+        },
+        "paper_b": {
+          "title": "BLOOM+1: Adding Language Support to BLOOM for Zero-Shot Prompting",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "The BLOOM model is a large publicly available multilingual language model, but its pretraining was limited to 46 languages. To extend the benefits of BLOOM to other languages without incurring prohibitively large costs, it is desirable to adapt BLOOM to new languages not seen during pretraining. In this work, we apply existing language adaptation strategies to BLOOM and benchmark its zero-shot prompting performance on eight new languages in a resource-constrained setting. We find language adaptation to be effective at improving zero-shot performance in new languages. Surprisingly, we find that adapter-based finetuning is more effective than continued pretraining for large models. In addition, we discover that prompting performance is not significantly affected by language specifics, such as the writing system. It is primarily determined by the size of the language adaptation data. We also add new languages to BLOOMZ, which is a multitask finetuned version of BLOOM capable of following task instructions zero-shot. We find including a new language in the multitask fine-tuning mixture to be the most effective method to teach BLOOMZ a new language. We conclude that with sufficient training data language adaptation can generalize well to diverse languages. Our code is available at https://github.com/bigscience-workshop/multilingual-modeling."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "(IA) 3 (IA) 3 is a parameter-efficient finetuning method that performs element-wise rescaling of inner Transformer block activations through learnable vectors (Liu et al., 2022).\n, 2020), as well as a state-of-the-art parameterefficient transfer learning method, (IA)3 (Liu et al., 2022).\nWe benchmark existing language adaptation methods, such as continued pretraining and MAD-X (Pfeiffer et al., 2020), as well as a state-of-the-art parameter-efficient transfer learning method, (IA) 3 (Liu et al., 2022).\nWe experimented with various parameter-efficient finetuning strategies for language adaptation, including BitFit (Ben Zaken et al., 2022), (IA) 3 (Liu et al., 2022), LoRA (Hu et al., 2022), and FishMask (Guo et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9be466d3035e90bec223b601",
+          "b": "paper-205bef1955d771aeb5c9f731",
+          "input_sha256": "d30a0fccdb0a3e4993a27f462c586cea89e0e957f7e904c8713ec76f3f5dad0b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/0cde695b83bd186c1fd456302888454c-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/0cde695b83bd186c1fd456302888454c-Paper-Conference.pdf",
+              "sha256": "9c107aa36f127ca0eabb6fd139a3b4e050601a0f1e4c14783cdfa8525a9af3ed"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.653/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.653.pdf",
+              "sha256": "dbf92693e3a7e2151d8cb9b88449c3b456e988e13c0e8ccba73ff7ab49ce5afa"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Few-shot in-context learning (ICL) enables pre-trained language models to perform a previously-unseen task without any gradient-based training by feeding a small number of training examples as part of the input. ICL incurs substantial computational, memory, and storage costs because it involves processing all of the training examples every time a prediction is made. Parameter-efficient fine-tuning (PEFT) (e.g. adapter modules, prompt tuning, sparse update methods, etc.) offers an alternative paradigm where a small set of parameters are trained to enable a model to perform the new task. In this paper, we rigorously compare few-shot ICL and PEFT and demonstrate that the latter offers better accuracy as well as dramatically lower computational costs. Along the way, we introduce a new PEFT method called (IA)3 that scales activations by learned vectors, attaining stronger performance while only introducing a relatively tiny amount of new parameters. We also propose a simple recipe based on the T0 model [1] called T-Few that can be applied to new tasks without task-specific tuning or modifications. We validate the effectiveness of T-Few on completely unseen tasks by applying it to the RAFT benchmark [2], attaining super-human performance for the first time and outperforming the state-of-the-art by 6% absolute. All of the code used in our experiments is publicly available.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/0cde695b83bd186c1fd456302888454c-Paper-Conference.pdf",
+              "document_sha256": "9c107aa36f127ca0eabb6fd139a3b4e050601a0f1e4c14783cdfa8525a9af3ed"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Finally, it must allow for mixed-task batches, since that is a capability of ICL. In order to easily enable mixed-task batches, a PEFT method should ideally not modify the model itself. Otherwise, each example in a batch would effectively need to be processed by a different model or computational graph. A more convenient alternative is provided by methods that directly modify the activations of the model since this can be done independently and cheaply to each example in the batch according to which task the example corresponds to. Prompt tuning and prefix tuning methods [14, 29] work by concatenating learned vectors to activation or embedding sequences and are therefore examples of activation-modifying PEFT methods that allow for mixed-task batches. However, as we will discuss later, we were unable to attain reasonable accuracy with prompt tuning and found that the more performant PEFT methods did not allow for mixed-task batches. We therefore developed a new PEFT method that meets our desiderata. As an alternative, we explored element-wise multiplication (i.e. rescaling) of the model’s activations against a learned vector. Specifically, we consider adaptation of the form l ⊙ x where l ∈ Rd is a learned task-specific vector, ⊙ represents element-wise multiplication, and x ∈ RT ×d is a length-T sequence of activations. We use “broadcasting notation” [46] so that the (i, j)th entry of l ⊙x is lj xi,j . In preliminary experiments, we found it was not necessary to introduce a learned rescaling vector for each set of activations in the Transformer model. Instead, we found it was sufficient to introduce rescaling vectors on the keys and values in self-attention and encoder-decoder attention mechanisms and on the intermediate activation of the position-wise feed-forward",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/0cde695b83bd186c1fd456302888454c-Paper-Conference.pdf",
+              "document_sha256": "9c107aa36f127ca0eabb6fd139a3b4e050601a0f1e4c14783cdfa8525a9af3ed"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "We hypothesize that language adaptation scenario is especially interesting for low-resource languages that would benefit from knowledge transfer. Therefore, we adapt BLOOM models to support eight new languages (German, Russian, Bulgarian, Thai, Turkish, Greek, Korean, and Guarani) in the resource-constrained settings, where we only use a limited amount of samples (maximum 100K samples) for each language. We evaluate their zeroshot prompting on various NLU tasks after adaptation. The new languages cover both seen and unseen scripts in the pretraining data, and they differ in their language families and word orders. We benchmark existing language adaptation methods, such as continued pretraining and MAD-X (Pfeiffer et al., 2020), as well as a state-of-the-art parameterefficient transfer learning method, (IA)3 (Liu et al., 2022).",
+              "url": "https://aclanthology.org/2023.acl-long.653.pdf",
+              "document_sha256": "dbf92693e3a7e2151d8cb9b88449c3b456e988e13c0e8ccba73ff7ab49ce5afa"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "We carry out three language adaptation strategies to analyze their effects on zero-shot prompting. 1 Continued Pretraining Continued pretraining strategy refers to continually training the BLOOM model with its causal language modeling pretraining objective on monolingual text of the new language (Chau et al., 2020; Ebrahimi and Kann, 2021; Muller et al., 2021). MAD-X We use the language adapter and the invertible adapter of the MAD-X configuration (Pfeiffer et al., 2020) to adapt BLOOM to new languages. Language adapter refers to the bottleneck adapter with down- and up-projection feedforward layers (Houlsby et al., 2019; Pfeiffer et al., 2021a) that are inserted into each Transformer block. The invertible adapter is used in the embedding layers to mitigate the mismatch between the original and new language vocabularies. (IA)3 (IA)3 is a parameter-efficient finetuning method that performs element-wise rescaling of inner Transformer block activations through learnable vectors (Liu et al., 2022). These vectors can be merged with the original pretrained weights of a model at inference to reduce latency by avoiding passing the activations through additional adapter modules. We experiment with (IA)3 since it outperforms bottleneck adapters, which are used in MAD-X, and other parameter-efficient finetuning methods such as BitFit (Ben Zaken et al., 2022), LoRA (Hu et al., 2022), and FishMask (Sung et al., 2021) on English NLU tasks (Liu et al., 2022). Our preliminary experiments show that (IA)3 performs better 1",
+              "url": "https://aclanthology.org/2023.acl-long.653.pdf",
+              "document_sha256": "dbf92693e3a7e2151d8cb9b88449c3b456e988e13c0e8ccba73ff7ab49ce5afa"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9be466d3035e90bec223b601",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/0cde695b83bd186c1fd456302888454c-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-205bef1955d771aeb5c9f731",
+          "url": "https://aclanthology.org/2023.acl-long.653/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "0ab90e9e90683aa7c22d2d940903937a157ec760e008e33825ad1640b62025c6"
+    },
+    {
+      "id": "edge-a1c4a5717ce72272067b54b5",
+      "a": "paper-01913df292f2486c62f5e2f3",
+      "b": "paper-a71284532b86befc018b58f1",
+      "state": {
+        "paper_a": {
+          "title": "Latent Alignment and Variational Attention",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "Neural attention has become central to many state-of-the-art models in natural language processing and related domains. Attention networks are an easy-to-train and effective method for softly simulating alignment; however, the approach does not marginalize over latent alignments in a probabilistic sense. This property makes it difficult to compare attention to other alignment approaches, to compose it with probabilistic models, and to perform posterior inference conditioned on observed data. A related latent approach, hard attention, fixes these issues, but is generally harder to train and less accurate. This work considers variational attention networks, alternatives to soft and hard attention for learning latent variable alignment models, with tighter approximation bounds based on amortized variational inference. We further propose methods for reducing the variance of gradients to make these approaches computationally feasible. Experiments show that for machine translation and visual question answering, inefficient exact latent variable models outperform standard neural attention, but these gains go away when using hard attention based training. On the other hand, variational attention retains most of the performance gain but with training speed comparable to neural attention."
+        },
+        "paper_b": {
+          "title": "Unsupervised Recurrent Neural Network Grammars",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Recurrent neural network grammars (RNNG) are generative models of language which jointly model syntax and surface structure by incrementally generating a syntax tree and sentence in a top-down, left-to-right order. Supervised RNNGs achieve strong language modeling and parsing performance, but require an annotated corpus of parse trees. In this work, we experiment with unsupervised learning of RNNGs. Since directly marginalizing over the space of latent trees is intractable, we instead apply amortized variational inference. To maximize the evidence lower bound, we develop an inference network parameterized as a neural CRF constituency parser. On language modeling, unsupervised RNNGs perform as well their supervised counterparts on benchmarks in English and Chinese. On constituency grammar induction, they are competitive with recent neural language models that induce tree structures from words through attention mechanisms."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This control variate worked better than alternatives such as estimates of baselines from an auxiliary network (Mnih and Gregor, 2014; Deng et al., 2018) or a language model (Yin et al.\nThis control variate worked better than alternatives such as estimates of baselines from an auxiliary network (Mnih and Gregor, 2014; Deng et al., 2018) or a language model (Yin et al., 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01913df292f2486c62f5e2f3",
+          "b": "paper-a71284532b86befc018b58f1",
+          "input_sha256": "4805e731184d89efa566dc688c41438ac711eab009c8264d0dba1735a96f74e1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1114/",
+              "pdf_url": "https://aclanthology.org/N19-1114.pdf",
+              "sha256": "f0664decbe3e8f9582609a735a863a75d32c32ae60859f3d9be8c777094be49b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The aim of this work is to quantify the issues with attention and propose alternatives based on recent developments in variational inference. While the connection between variational inference and hard attention has been noted in the literature [4, 41], the space of possible bounds and optimization methods has not been fully explored and is growing quickly. These tools allow us to better quantify whether the general underperformance of hard attention models is due to modeling issues (i.e. soft attention imbues a better inductive bias) or optimization issues. Our main contribution is a variational attention approach that can effectively fit latent alignx1:T ments while remaining tractable to train. We consider two variants of variational attention: Mary did not slap the green witch categorical and relaxed. The categorical method is fit with amortized variational inference using a learned inference network and policy gradient p(z|x,x̃) z q(z;x,x̃,y) with a soft attention variance reduction baseline. With an appropriate inference network (which conditions on the entire source/target), it can be Maria no daba una bofetada a la bruja verda used at training time as a drop-in replacement for hard attention. The relaxed version assumes y3 x̃ that the alignment is sampled from a Dirichlet distribution and hence allows attention over mul- Figure 1: Sketch of variational attention applied to tiple source elements. machine translation. Two alignment distributions are Experiments describe how to implement this shown, the blue prior p, and the red variational posterior approach for two major attention-based models: q taking into account future observations. Our aim is to neural machine translation and visual question use q to improve estimates of p and to support improved inference",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/b691334ccf10d4ab144d672f7783c8a3-Paper.pdf",
+              "document_sha256": "f99725e3988d62bac6001a9989293279eda2b3899b9aee3e541e18be0de494a4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "1 X (log pθ (x, z(k) ) − r(k) )∇φ log qφ (z(k) | x), K k=1 1 P (j) where r(k) = K−1 j6=k log pθ (x, z ). This control variate worked better than alternatives such as estimates of baselines from an auxiliary network (Mnih and Gregor, 2014; Deng et al., 2018) or a language model (Yin et al., 2018).",
+              "url": "https://aclanthology.org/N19-1114.pdf",
+              "document_sha256": "f0664decbe3e8f9582609a735a863a75d32c32ae60859f3d9be8c777094be49b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "is highly nonzero. (See equation (1) for definitions of log pθ (x | z) and log pθ (z | x<z )). This indicates that the latent space is being used in a meaningful way and that there is no posterior collapse (Bowman et al., 2016). As expected, the entropy of the variational posterior is much lower than the entropy of the conditional prior, but there is still some uncertainty in the posterior. 4.4 Syntactic Evaluation We perform a syntactic evaluation of the different models based on the setup from Marvin and Linzen (2018): the model is given two minimally different sentences, one grammatical and one ungrammatical, and must identify the grammatical sentence by assigning it higher probability.21 Table 6 shows the accuracy results. Overall the supervised RNNG significantly outperforms the other models, indicating opportunities for further work in unsupervised modeling. While the URNNG does slightly outperform an RNNLM, the distribution of errors made from both models are similar, and thus it is not clear whether the outperformance is simply due to better perplexity or learning different structural biases. 4.5 Limitations There are several limitations to our approach. For one, the URNNG takes considerably more time/memory to train than a standard language model due to the O(T 3 ) dynamic program in the inference network, multiple samples to obtain low-variance gradient estimators, and dynamic computation graphs that make efficient batching 21 We modify the publicly available dataset from https:// github.com/BeckyMarvin/LM syneval to only keep sentence pairs that did not have any unknown words with respect to our vocabulary, resulting in 80K sentence pairs for evaluation.",
+              "url": "https://aclanthology.org/N19-1114.pdf",
+              "document_sha256": "f0664decbe3e8f9582609a735a863a75d32c32ae60859f3d9be8c777094be49b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Thus, φ is trained to match the variational posterior qφ (z | x) to the true posterior pθ (z | x), but θ is also trained to match the true posterior to the variational posterior. Indeed, there is some evidence to suggest that generative models trained with amortized variational inference (i.e. variational autoencoders) learn posterior distributions that are close to the variational family (Cremer et al., 2018). We can use this to our advantage with an inference network that injects inductive bias. We propose to do this by using a context-free model for the inference network, in particular, a neural CRF parser (Durrett and Klein, 2015). This choice",
+              "url": "https://aclanthology.org/N19-1114.pdf",
+              "document_sha256": "f0664decbe3e8f9582609a735a863a75d32c32ae60859f3d9be8c777094be49b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01913df292f2486c62f5e2f3",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b691334ccf10d4ab144d672f7783c8a3-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-a71284532b86befc018b58f1",
+          "url": "https://aclanthology.org/N19-1114/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "f2781c36d71b48f89f0dce0d0d955bf41d090bb1a0cdd38bd123a3086ef6c26b"
+    },
+    {
+      "id": "edge-7246ffa590a3323851891b7b",
+      "a": "paper-01f7b89e8e4f60ff995d591e",
+      "b": "paper-5a9d2993a8936cff7068d7ce",
+      "state": {
+        "paper_a": {
+          "title": "Language-aware Interlingua for Multilingual Neural Machine Translation",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Multilingual neural machine translation (NMT) has led to impressive accuracy improvements in low-resource scenarios by sharing common linguistic information across languages. However, the traditional multilingual model fails to capture the diversity and specificity of different languages, resulting in inferior performance compared with individual models that are sufficiently trained. In this paper, we incorporate a language-aware interlingua into the Encoder-Decoder architecture. The interlingual network enables the model to learn a language-independent representation from the semantic spaces of different languages, while still allowing for language-specific specialization of a particular language-pair. Experiments show that our proposed method achieves remarkable improvements over state-of-the-art multilingual NMT baselines and produces comparable performance with strong individual models."
+        },
+        "paper_b": {
+          "title": "Exploring the Impact of Layer Normalization for Zero-shot Neural Machine Translation",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "This paper studies the impact of layer normalization (LayerNorm) on zero-shot translation (ZST). Recent efforts for ZST often utilize the Transformer architecture as the backbone, with LayerNorm at the input of layers (PreNorm) set as the default. However, Xu et al. (2019) has revealed that PreNorm carries the risk of overfitting the training data. Based on this, we hypothesize that PreNorm may overfit supervised directions and thus have low generalizability for ZST. Through experiments on OPUS, IWSLT, and Europarl datasets for 54 ZST directions, we demonstrate that the original Transformer setting of LayerNorm after residual connections (PostNorm) consistently outperforms PreNorm by up to 12.3 BLEU points. We then study the performance disparities by analyzing the differences in off-target rates and structural variations between PreNorm and PostNorm. This study highlights the need for careful consideration of the LayerNorm setting for ZST."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": ", 2021), and novel training objectives (Al-Shedivat and Parikh, 2019; Pham et al., 2019; Arivazhagan et al., 2019; Gu et al., 2019; Zhu et al., 2020; Zhang et al., 2020; Wang et al., 2021; Yang et al., 2021) for improving ZST.\n…such as language tags (Wu et al., 2021), residual connections (Liu et al., 2021), and novel training objectives (Al-Shedivat and Parikh, 2019; Pham et al., 2019; Arivazhagan et al., 2019; Gu et al., 2019; Zhu et al., 2020; Zhang et al., 2020; Wang et al., 2021; Yang et al., 2021) for improving ZST.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01f7b89e8e4f60ff995d591e",
+          "b": "paper-5a9d2993a8936cff7068d7ce",
+          "input_sha256": "e51833ae4ae9ecc79a9d09221c61632f82200c3ccd537ca37c04f8be37878832",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.150/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.150.pdf",
+              "sha256": "0e992d371eb18092ab0d7d7d4162dcbe867262c3152e9d9b3b20ccdba6f570a7"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-short.112/",
+              "pdf_url": "https://aclanthology.org/2023.acl-short.112.pdf",
+              "sha256": "e969dc81b1996c5a9162e637439192c1b4bb9ea40f8d5c96b1d727c03a866d72"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "As shown in Figure 1, we propose a universal Encoder-Interlingua-Decoder architecture for multilingual NMT. The Encoder and Decoder are identical to the generic self-attention TRANS FORMER (Vaswani et al., 2017), except some modifications in the positional embedding. The Interlingua is shared across languages, but with language-specific embedding as input, so we call it language-aware Interlingua. The Interlingua module is composed of a stack of N identical layers. Each layer has a multi-head attention sub-layer and a feed-forward sub-layer. 2.1",
+              "url": "https://aclanthology.org/2020.acl-main.150.pdf",
+              "document_sha256": "0e992d371eb18092ab0d7d7d4162dcbe867262c3152e9d9b3b20ccdba6f570a7"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To examine whether our language-aware Interlingua can help cross-lingual knowledge transfer, we perform zero-shot translation on WMT data. The Fr-Es and Es-Fr translation directions are the zeroshot translations. As shown in Table 1, our method yields more than 10 BLEU points improvement compared with the universal Encoder-Decoder approach and significantly shortens the gap with sufficiently trained individual models.",
+              "url": "https://aclanthology.org/2020.acl-main.150.pdf",
+              "document_sha256": "0e992d371eb18092ab0d7d7d4162dcbe867262c3152e9d9b3b20ccdba6f570a7"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Multilingual neural machine translation (MNMT) enables translation between unseen language pairs, i.e., zero-shot translation (ZST) (Johnson et al., 2017; Firat et al., 2017). Prior studies have explored techniques such as language tags (Wu et al., 2021), residual connections (Liu et al., 2021), and novel training objectives (Al-Shedivat and Parikh, 2019; Pham et al., 2019; Arivazhagan et al., 2019; Gu et al., 2019; Zhu et al., 2020; Zhang et al., 2020; Wang et al., 2021; Yang et al., 2021) for improving ZST. They primarily used the Transformer architecture (Vaswani et al., 2017), which has two variations depending on the position of layer normalization (LayerNorm) (Ba et al., 2016), namely, PreNorm (applied at the input of layers) (Baevski and Auli, 2019) and PostNorm (applied after residual connections), as shown in Fig. 1. As previous studies showed that PreNorm can result in more stable training and faster convergence compared to",
+              "url": "https://aclanthology.org/2023.acl-short.112.pdf",
+              "document_sha256": "e969dc81b1996c5a9162e637439192c1b4bb9ea40f8d5c96b1d727c03a866d72"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "To better understand the performance differences, we introduce a novel analysis approach called layer-wise language recognition (LLR), which tracks the off-target rates for each encoder and decoder layer by training token-level classifiers to recognize the source or target language. This analysis shows that PreNorm is more sensitive to language tag settings than PostNorm, negatively impacting ZST performance. Additionally, by examining the unraveled view of PreNorm (Fig. 1) inspired by Veit et al. (2016), we reveal structural flaws in PreNorm for ZST. Our analysis demonstrates that the order of LayerNorm and selfattention/feed-forward network in PreNorm is the main factor affecting its ZST performance. Given the prevalent use of PreNorm as the default setting in ZST baselines and frameworks such as Fairseq (Ott et al., 2019)1 and Tensor2Tensor (Vaswani et al., 2018), our study emphasizes the importance of careful consideration in the LayerNorm setting for ZST.",
+              "url": "https://aclanthology.org/2023.acl-short.112.pdf",
+              "document_sha256": "e969dc81b1996c5a9162e637439192c1b4bb9ea40f8d5c96b1d727c03a866d72"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "stead, LCA trains a classifier to inspect the hidden states on top of the encoder, but it does not simulate the training of a ZST system, which may introduce bias in the analysis for ZST.3 In this work, we propose a novel approach for ZST based on LCA: LLR tailors classifiers for each layer to recognize the source or target language. We train a tokenlevel linear classifier for each layer to utilize hidden states in each layer as features to identify the source or target language. We use hidden states obtained by feeding sentence pairs in supervised directions to simulate the training of ZST. We then test each layer’s classifer’s ability to recognize the source or target language for supervised or zeroshot directions. This approach enables the trained classifier to best represent the language recognition ability of hidden states in a ZST system. We train two types of linear classifiers for each encoder and decoder layer. One is for recognizing the source language, and the other is for the target language. Each linear classifier is a linear transformation from the dimension of the hidden states (512 or 1, 024) to the number of source or target languages (e.g., 7 for OPUS). We use the validation set of all supervised directions to obtain the hidden 3",
+              "url": "https://aclanthology.org/2023.acl-short.112.pdf",
+              "document_sha256": "e969dc81b1996c5a9162e637439192c1b4bb9ea40f8d5c96b1d727c03a866d72"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01f7b89e8e4f60ff995d591e",
+          "url": "https://aclanthology.org/2020.acl-main.150/"
+        },
+        "b": {
+          "paper_id": "paper-5a9d2993a8936cff7068d7ce",
+          "url": "https://aclanthology.org/2023.acl-short.112/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "cf5433daf13c414c5c2eb80aef1c684c637d4979151067cb1412534aef0ae258"
+    },
+    {
+      "id": "edge-3c095330af3f545f36d546f3",
+      "a": "paper-02069a5533b0c9a889f3a500",
+      "b": "paper-37bc4732552d5081e360cc92",
+      "state": {
+        "paper_a": {
+          "title": "Auto-Encoding Dictionary Definitions into Consistent Word Embeddings",
+          "year": 2018,
+          "venue": "ACL Anthology",
+          "abstract": "Monolingual dictionaries are widespread and semantically rich resources. This paper presents a simple model that learns to compute word embeddings by processing dictionary definitions and trying to reconstruct them. It exploits the inherent recursivity of dictionaries by encouraging consistency between the representations it uses as inputs and the representations it produces as outputs. The resulting embeddings are shown to capture semantic similarity better than regular distributional methods and other dictionary-based methods. In addition, our method shows strong performance when trained exclusively on dictionary data and generalizes in one shot."
+        },
+        "paper_b": {
+          "title": "Moving Down the Long Tail of Word Sense Disambiguation with Gloss Informed Bi-encoders",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "A major obstacle in Word Sense Disambiguation (WSD) is that word senses are not uniformly distributed, causing existing models to generally perform poorly on senses that are either rare or unseen during training. We propose a bi-encoder model that independently embeds (1) the target word with its surrounding context and (2) the dictionary definition, or gloss, of each sense. The encoders are jointly optimized in the same representation space, so that sense disambiguation can be performed by finding the nearest sense embedding for each target word embedding. Our system outperforms previous state-of-the-art models on English all-words WSD; these gains predominantly come from improved performance on rare senses, leading to a 31.1% error reduction on less frequent senses over prior work. This demonstrates that rare senses can be more effectively disambiguated by modeling their definitions."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Other work has shown that neural models capture useful semantic information about words from their definitions, and has used them to encode lexical representations (Bahdanau et al., 2017; Bosc and Vincent, 2018).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02069a5533b0c9a889f3a500",
+          "b": "paper-37bc4732552d5081e360cc92",
+          "input_sha256": "63ac5583f5b13f239bf44b5980314287940b6c7c4b61fdd8193d16d11b70831f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D18-1181/",
+              "pdf_url": "https://aclanthology.org/D18-1181.pdf",
+              "sha256": "f80810c4ed18b5574bb3a06a18d2530a2a11db2e361bdbd8d698665ac5b96adb"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.95/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.95.pdf",
+              "sha256": "479fa80256790dfea6553fb2884c60580e179aa193c94e140f6baaf824b9d0c9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "ilarity and especially in distinguishing it from relatedness (Hill et al., 2016). It is useful to specialize word embeddings to focus on either relation in order to improve performance on specific downstream tasks. For instance, Kiela et al. (2015) report that improvements on relatedness benchmarks also yield improvements on document classification. In the other direction, embeddings learned by neural machine translation models capture similarity better than distributional unsupervised objectives (Hill et al., 2014). There is a wealth of methods that postprocess embeddings to improve or specialize them, such as retrofitting (Faruqui et al., 2014). On similarity benchmarks, they are able to reach correlation coefficients close to inter-annotator agreements. But these methods rely on additional resources such as paraphrase databases (Wieting et al., 2016) or graphs of lexical relations such as synonymy, hypernymy, and their converse (Mrkšić et al., 2017). Rather than relying on such curated lexical resources that are not readily available for the majority of languages, we propose a method capable of improving embeddings by leveraging the more common resource of monolingual dictionaries.1 Lexical databases such as WordNet (Fellbaum, 1998) are often built from dictionary definitions, as was proposed earlier by Amsler (1980). We propose to bypass the process of explicitly building a lexical database – during which information is structured but information is also lost – and instead directly use its detailed source: dictionary definitions. The goal is to obtain better representations for more languages with less effort. The ability to process new definitions is also desirable for future natural language understanding systems. In a dialogue, a human might want to explain a",
+              "url": "https://aclanthology.org/D18-1181.pdf",
+              "document_sha256": "f80810c4ed18b5574bb3a06a18d2530a2a11db2e361bdbd8d698665ac5b96adb"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "and the chatbot should understand it. Similarly, question-answering systems should also be able to grasp definitions of technical terms that often occur in scientific writing. We expect the embedding of a word to represent its meaning compactly. For interpretability purposes, it would be desirable to be able to generate a definition from that embedding, as a way to verify what information it captured. Case in point: to analyse word embeddings, Noraset et al. (2017) used RNNs to produce definitions from pretrained embeddings, manually annotated the errors in the generated definitions, and found out that more than half of the wrong definitions fit either the antonyms of the defined words, their hypernyms, or related but different words. This points in the same direction as the results of intrinsic evaluations of word embeddings: lexical relationships such as lexical entailment, similarity and relatedness are conflated in these embeddings. It also suggests a new criterion for evaluating word representations, or even learning them: they should contain the necessary information to reproduce their definition (to some degree). In this work, we propose a simple model that exploits this criterion. The model consists of a definition autoencoder: an LSTM processes the definition of a word to yield its corresponding word embedding. Given this embedding, the decoder attempts to reconstruct the bag-of-words representation of the definition. Importantly, to address and leverage the recursive nature of dictionaries – the fact that words that are used inside a definition have their own associated definition – we train this model with a consistency penalty that ensures proximity of the embeddings produced by the LSTM and those that are used by the LSTM. Our approach is self-contained:",
+              "url": "https://aclanthology.org/D18-1181.pdf",
+              "document_sha256": "f80810c4ed18b5574bb3a06a18d2530a2a11db2e361bdbd8d698665ac5b96adb"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Definitions of senses, or glosses, have been shown to be a valuable resource for improving WSD. Lesk (1986) used the overlap between the definitions of senses and the context of the target word to predict the target sense. This approach was later extended to incorporate WordNet graph structure (Banerjee and Pedersen, 2003) and to incorporate word embeddings (Basile et al., 2014). More recently, Luo et al. (2018a,b) added sense glosses as additional inputs into their neural WSD system, significantly improving overall performance. Most similar to our work, Kumar et al. (2019) represented senses as continuous representations learned from encoded glosses. However, they took a pipelined approach and supervised the gloss encoder with knowledge graph embeddings; they then froze the sense representations to use them as static supervision for training the WSD system. This approach requires an additional form of supervision (for which they used knowledge graph embeddings), making it more difficult to generalize to new data without that source of supervision. In comparison, our model is trained in an end-to-end manner and learns to embed gloss text without additional supervision. Other work has shown that neural models capture useful semantic information about words from their definitions, and has used them to encode lexical representations (Bahdanau et al., 2017; Bosc and Vincent, 2018). While they focused on representing words, rather than specific senses, their modeling approaches could be extended to sense representations. 2.2",
+              "url": "https://aclanthology.org/2020.acl-main.95.pdf",
+              "document_sha256": "479fa80256790dfea6553fb2884c60580e179aa193c94e140f6baaf824b9d0c9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A major obstacle in Word Sense Disambiguation (WSD) is that word senses are not uniformly distributed, causing existing models to generally perform poorly on senses that are either rare or unseen during training. We propose a bi-encoder model that independently embeds (1) the target word with its surrounding context and (2) the dictionary definition, or gloss, of each sense. The encoders are jointly optimized in the same representation space, so that sense disambiguation can be performed by finding the nearest sense embedding for each target word embedding. Our system outperforms previous state-of-the-art models on English all-words WSD; these gains predominantly come from improved performance on rare senses, leading to a 31.1% error reduction on less frequent senses over prior work. This demonstrates that rare senses can be more effectively disambiguated by modeling their definitions.",
+              "url": "https://aclanthology.org/2020.acl-main.95.pdf",
+              "document_sha256": "479fa80256790dfea6553fb2884c60580e179aa193c94e140f6baaf824b9d0c9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "(2019) uses BERT’s contextualized outputs to create sense embeddings for each sense in WordNet. Another approach to using pretrained models for WSD is to formulate the task as a sentencepair classification problem, in which (context sentence, gloss) pairs are concatenated and crossencoded with the pretrained model. This reduces the WSD task to a binary classification problem where the model is trained to predict whether the gloss matches the sense of the target word in the context sentence (Huang et al., 2019). Given that transformer compute scales polynomially in the input length, our approach of independently encoding the contexts and sense glosses is more computationally efficient, and we also show that it performs better on the all-words WSD task (Section 5.1).",
+              "url": "https://aclanthology.org/2020.acl-main.95.pdf",
+              "document_sha256": "479fa80256790dfea6553fb2884c60580e179aa193c94e140f6baaf824b9d0c9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02069a5533b0c9a889f3a500",
+          "url": "https://aclanthology.org/D18-1181/"
+        },
+        "b": {
+          "paper_id": "paper-37bc4732552d5081e360cc92",
+          "url": "https://aclanthology.org/2020.acl-main.95/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Multilingual Neural Language Modeling and Embedding"
+      },
+      "sha256": "6fc1590728fa04506d29a024d7e701dfad3b380833da5601354f6d4a6f05e22c"
+    }
+  ]
+}

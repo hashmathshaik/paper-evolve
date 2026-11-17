@@ -1,0 +1,1724 @@
+{
+  "version": "paper-evolve-review-v1",
+  "packs": [
+    {
+      "id": "3d-scene-reconstruction-and-representation-with-neural-methods-cc646d9ad8",
+      "path": "tasks/3d-scene-reconstruction-and-representation-with-neural-methods-cc646d9ad8.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "13f973ecd6d5078d2ff7056428bb54da3fb28c3f62922dbd893915e0dacbfd2d",
+      "topic": "3D Scene Reconstruction and Representation with Neural Methods",
+      "area": "3D Generation & Reconstruction",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-9ccafa721d4c7dd735bab828",
+        "edge-0aeb321062ce19d01719df48",
+        "edge-0d87c9d3e2decfc6ce345c33",
+        "edge-052883462d0eb6966ac6140a",
+        "edge-5c5f5700a9803aad96162275",
+        "edge-c9d93a4dc0edb881800992f4",
+        "edge-29eb893bff189cbf32d1bff8",
+        "edge-0127e0d0ef86b1d9e7ecef1a",
+        "edge-ebc985ebf3eae36c1a1c8f87",
+        "edge-81c66af8344b1c3422218d68"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-3d-scene-reconstruction-and-representation-with-neural-methods-cc646d9ad8.zip",
+      "sample": [
+        "Differentiable Euler Characteristic Transforms for Shape Classification",
+        "Point Cloud Synthesis Using Inner Product Transforms"
+      ]
+    },
+    {
+      "id": "adversarial-robustness-in-neural-networks-f0dd9e771f",
+      "path": "tasks/adversarial-robustness-in-neural-networks-f0dd9e771f.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "cad026780c7808ed1f665296fbde16533b1af092c9b14ad57082449e51342041",
+      "topic": "Adversarial Robustness in Neural Networks",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-39867ea7e6697fd2b41e675b",
+        "edge-14fffd5347f4d0a53dd74e01",
+        "edge-31eab1e8dbce24f6c5334359",
+        "edge-41c323aa5fa82831e3f054d8",
+        "edge-658e23b6a0dc233d37fc9c33",
+        "edge-4f01e6e5044b0c180b2e840e",
+        "edge-9fed921bc59ba74f2709e062",
+        "edge-3018697a715358c7cca8da00",
+        "edge-ae46cba8db9cf0d5826e6414",
+        "edge-011ebc4fbd2fc6d197942c81"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-adversarial-robustness-in-neural-networks-f0dd9e771f.zip",
+      "sample": [
+        "Demystifying the Adversarial Robustness of Random Transformation Defenses",
+        "Preprocessors Matter! Realistic Decision-Based Attacks on Machine Learning Systems"
+      ]
+    },
+    {
+      "id": "algorithms-for-efficient-inference-on-graphs-and-relational-data-f83b938571",
+      "path": "tasks/algorithms-for-efficient-inference-on-graphs-and-relational-data-f83b938571.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "14e6a3c0e812c7dcd6aba29729c9d98f0a27b3396edad25eeff9fcd0597c7062",
+      "topic": "Algorithms for Efficient Inference on Graphs and Relational Data",
+      "area": "Optimization & Federated Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-e748d957a9e56b5d3d007dda",
+        "edge-53e985f5363cb38391cf4bbc",
+        "edge-aec98b25f9d068c5eaf35a79",
+        "edge-94cb93e32fc5fad6a72d5f91",
+        "edge-e5e6c7f3f86385bce2706ba5",
+        "edge-aa87c714479ad301fbf82770",
+        "edge-ae599a3d8579c2ea4db8a2c1",
+        "edge-b58036a45dcfc3df42406709",
+        "edge-9d22f16caa51e05bef03f906",
+        "edge-12834c34d7ee6b6f0dcca950"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-algorithms-for-efficient-inference-on-graphs-and-relational-data-f83b938571.zip",
+      "sample": [
+        "Continual Learning via Sequential Function-Space Variational Inference",
+        "Function Space Bayesian Pseudocoreset for Bayesian Neural Networks"
+      ]
+    },
+    {
+      "id": "algorithms-for-matrix-and-tensor-estimation-10ad3ecd01",
+      "path": "tasks/algorithms-for-matrix-and-tensor-estimation-10ad3ecd01.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "702bc6c54cdb0a6b6ede2c81668b0ed0dc4068e78d8705113abbb1e9da4e95f9",
+      "topic": "Algorithms for Matrix and Tensor Estimation",
+      "area": "Optimization & Federated Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-796569cce77db045522543c5",
+        "edge-2b8408ac8df80ee25ee7067a",
+        "edge-90f182e0ab534317da0f971a",
+        "edge-fd025c9c8c0de28773c1a9bc",
+        "edge-57c0ebd84a423bee48b2285c",
+        "edge-dbf5a98d0ce20354fb03e955",
+        "edge-edf374fd0e14354f1c0a63c3",
+        "edge-db010371ec2312b48da7753d",
+        "edge-c41aaf9ff2eca24fef758efa",
+        "edge-bc6122c264c2434082978845"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-algorithms-for-matrix-and-tensor-estimation-10ad3ecd01.zip",
+      "sample": [
+        "On Learning Mixture of Linear Regressions in the Non-Realizable Setting",
+        "Efficient List-Decodable Regression using Batches"
+      ]
+    },
+    {
+      "id": "attention-and-context-in-large-language-models-a2351ddd00",
+      "path": "tasks/attention-and-context-in-large-language-models-a2351ddd00.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "9007c8514b4a13306202bd821b7f2243d6a8d30525c703aa063232b77b169025",
+      "topic": "Attention and Context in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 0,
+      "available_task_ids": [],
+      "fulltext_tasks": 0,
+      "bundle": "bundles/paper-evolve-attention-and-context-in-large-language-models-a2351ddd00.zip",
+      "sample": [
+        "On Layer Normalization in the Transformer Architecture",
+        "Transformers need glasses! Information over-squashing in language tasks"
+      ]
+    },
+    {
+      "id": "audio-and-language-perception-and-generation-4de1d04699",
+      "path": "tasks/audio-and-language-perception-and-generation-4de1d04699.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "3710e94fefab884ea3b5778ec13f9c195e9d37ce4441ed4a304a9637e1e56046",
+      "topic": "Audio and Language Perception and Generation",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-b771d5466e3ad0c53d499cf9",
+        "edge-2b3d5d93986b3e4ecdc67988",
+        "edge-a4aad50acd9764d08eb80f27",
+        "edge-d27948ef75881b54dcf0b087",
+        "edge-0bfccb97625d446daa8329a6",
+        "edge-edb6cb9998f878147fcc3e42",
+        "edge-e1864f01ab2a929c887ecc5b",
+        "edge-b75b86b90217a4ce2c2b9dda",
+        "edge-3b47745144ae7d22abf81ae9",
+        "edge-ea57892728fbe395e3dad7e3"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-audio-and-language-perception-and-generation-4de1d04699.zip",
+      "sample": [
+        "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "Audio Flamingo: A Novel Audio Language Model with Few-Shot Learning and Dialogue Abilities"
+      ]
+    },
+    {
+      "id": "causal-inference-with-latent-variables-and-observational-data-848446d005",
+      "path": "tasks/causal-inference-with-latent-variables-and-observational-data-848446d005.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "521b99d8be49df195c51b7dd81174385419804b774f3cd97f64ba47f35f2ada7",
+      "topic": "Causal Inference with Latent Variables and Observational Data",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-6501455dec86472da0fb599a",
+        "edge-f1660704e8746d5b1f35a81e",
+        "edge-e1ba44f5dbf6f43d60b2e94c",
+        "edge-2cb2a70f6ce45a16e630dfe8",
+        "edge-f7e56b9b5e401bbac77f5848",
+        "edge-c6fd3f7f71b643c64f8298a4",
+        "edge-04ac4625a84dbaac1b5ca6d5",
+        "edge-2598e9c31fec674c523cfa51",
+        "edge-11a1ab0b7ebb5101c5ffbaec",
+        "edge-d78a8427968e42b2bddbeeea"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-causal-inference-with-latent-variables-and-observational-data-848446d005.zip",
+      "sample": [
+        "Deep Structural Causal Models for Tractable Counterfactual Inference",
+        "Diffusion Counterfactual Generation with Semantic Abduction"
+      ]
+    },
+    {
+      "id": "continual-learning-with-memory-and-plasticity-bea604ff75",
+      "path": "tasks/continual-learning-with-memory-and-plasticity-bea604ff75.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "babbc98d803a8bf5e93731394563f81a555050eda906e3aa3fdcbd4f053e8cbc",
+      "topic": "Continual Learning with Memory and Plasticity",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-b3de9bb963fe79a482cff8a5",
+        "edge-f598b1492c869518fa72182f",
+        "edge-5fdcb101116c16075fc1d824",
+        "edge-d02dff501e538162bbda8496",
+        "edge-49eabebfd98c89db48df0d4a",
+        "edge-a784461a3f6d0736b4d8da57",
+        "edge-bc18dccaf01fc0b7ef18f431",
+        "edge-d8e88b72e7080ee8a9b9c65d",
+        "edge-ce64f787bcea60ebb48c6597",
+        "edge-084d021ccffe8909b5f93224"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-continual-learning-with-memory-and-plasticity-bea604ff75.zip",
+      "sample": [
+        "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification",
+        "Learning to Solve NLP Tasks in an Incremental Number of Languages"
+      ]
+    },
+    {
+      "id": "conversational-ai-systems-and-response-generation-29547fa131",
+      "path": "tasks/conversational-ai-systems-and-response-generation-29547fa131.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "ed4dbc2f21f47729acbb62ad1136e30a5f825f837e2c2539021fdebcc45de87e",
+      "topic": "Conversational AI Systems and Response Generation",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-72a1e7d65abe82f5bf5eed51",
+        "edge-c818de5de764c11c0bca8dc9",
+        "edge-07010d29fa79093882304c86",
+        "edge-70e08ff05777c2e5db2c1c0d",
+        "edge-437b0013e76178dfae3a9634",
+        "edge-98fe4abaf63c035a512e9804",
+        "edge-5944f790ea5fd8720207dcd1",
+        "edge-bdb6924f8c6f6572dcf80047",
+        "edge-6c42a93d652f170982c2767b",
+        "edge-fbf271fad9b98559415ba873"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-conversational-ai-systems-and-response-generation-29547fa131.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Knowledge-Aware Graph-Enhanced GPT-2 for Dialogue State Tracking"
+      ]
+    },
+    {
+      "id": "detecting-and-mitigating-harmful-language-in-ai-systems-92886bbff0",
+      "path": "tasks/detecting-and-mitigating-harmful-language-in-ai-systems-92886bbff0.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "8418a6c934586ed943ce380e07001542262c4d66f4f5e41f6f0dd53a8d204b69",
+      "topic": "Detecting and Mitigating Harmful Language in AI Systems",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-090b2680520037542d2de322",
+        "edge-489ddd678aa60ca9b5744aa8",
+        "edge-426cb56fbc0c78d402197673",
+        "edge-d33a98f15ffc82962db61ba1",
+        "edge-3cfde06b69cab6ddfb2f66dd",
+        "edge-1ea7dfea12cb16d96b7a414b",
+        "edge-9da1ba1552999e97fdce6db2",
+        "edge-5706192f6ce66334f940d9d8",
+        "edge-95ac0c8446a237745fae79a6",
+        "edge-9b503b1172ad93567e0fe164"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-detecting-and-mitigating-harmful-language-in-ai-systems-92886bbff0.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "WatClaimCheck: A new Dataset for Claim Entailment and Inference"
+      ]
+    },
+    {
+      "id": "differential-privacy-in-machine-learning-algorithms-ee74f7ffac",
+      "path": "tasks/differential-privacy-in-machine-learning-algorithms-ee74f7ffac.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "1873f749f384796ff533289287e4810d29a1c9a28652ccda2124bef4f94214b5",
+      "topic": "Differential Privacy in Machine Learning Algorithms",
+      "area": "Optimization & Federated Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-97a4c9804597788c2f05ca50",
+        "edge-63b03eba5a53dd9fe791bdc0",
+        "edge-de230d6815a2236689767e6c",
+        "edge-c5ac122e36a9e7719e33f39d",
+        "edge-56fc5bb7ed41d632c8fdf924",
+        "edge-642b15a23472fca06e57be22",
+        "edge-adf0d96997a731d0789686ba",
+        "edge-d90f0b122544d0df28104eee",
+        "edge-f991312a1e7f3b0bc32f6990",
+        "edge-ecb3ef70b1e0f4b829355c95"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-differential-privacy-in-machine-learning-algorithms-ee74f7ffac.zip",
+      "sample": [
+        "Robust Federated Learning: The Case of Affine Distribution Shifts",
+        "CRFL: Certifiably Robust Federated Learning against Backdoor Attacks"
+      ]
+    },
+    {
+      "id": "efficient-neural-network-compression-and-training-optimization-7a9609c4f7",
+      "path": "tasks/efficient-neural-network-compression-and-training-optimization-7a9609c4f7.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "47e33e5656e58e76b97499e131fe9108e11190c7eb56dac9b10a550538ab590b",
+      "topic": "Efficient Neural Network Compression and Training Optimization",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-07c88eb9ff1c6bd77222ef76",
+        "edge-0f5075e608a4b44bfce86f98",
+        "edge-a5366083c73498441370dbe0",
+        "edge-8bfb08ae701d1181494d28ef",
+        "edge-41aec8a50349bbe1ce72c99c",
+        "edge-2d972558fe95e037b0030aaf",
+        "edge-74b074ed82ea283470d75694",
+        "edge-ed42521aa45698705524484d",
+        "edge-a3c5f680bcba17d5cbe4b1ff",
+        "edge-21d31b6ee3205d60d435c1c2"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-efficient-neural-network-compression-and-training-optimization-7a9609c4f7.zip",
+      "sample": [
+        "DeeBERT: Dynamic Early Exiting for Accelerating BERT Inference",
+        "LLM-Pruner: On the Structural Pruning of Large Language Models"
+      ]
+    },
+    {
+      "id": "entity-and-relation-extraction-from-text-fea32e25ca",
+      "path": "tasks/entity-and-relation-extraction-from-text-fea32e25ca.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "1812992a9b38f632170d50da123bfb317b9ad4c8e9b19b143dff977122ccf57a",
+      "topic": "Entity and Relation Extraction from Text",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-c2805daf1ed6800d7a66dcf5",
+        "edge-d0e9c622fe9988f71c8f8017",
+        "edge-6b9eb9d7c58ec7dec11ac4bf",
+        "edge-7d7c92142400eadb498bf926",
+        "edge-027b259fc9bb3f11672cce01",
+        "edge-2da1430195b55ce36de9038c",
+        "edge-5abc694cb828f3a37c518cc7",
+        "edge-2099ff3f53e82a625c80a2fc",
+        "edge-82d8b002627dcbc2cf4e75e8",
+        "edge-6a3100e8583e8621b834eed8"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-entity-and-relation-extraction-from-text-fea32e25ca.zip",
+      "sample": [
+        "Deep Contextualized Word Representations",
+        "Named Entity Recognition as Dependency Parsing"
+      ]
+    },
+    {
+      "id": "federated-learning-with-heterogeneous-clients-and-communication-e-d3e4e571ba",
+      "path": "tasks/federated-learning-with-heterogeneous-clients-and-communication-e-d3e4e571ba.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "2a66b0ae63587e6ec9a3b2527f5e44ee26f7bc0570874e200cb0a51eafc1270a",
+      "topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency",
+      "area": "Optimization & Federated Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-b70f67d5a49905cf84deafb4",
+        "edge-f5e06d57590f332490bb774c",
+        "edge-fe715f4b7a6f9ed14e40e3a4",
+        "edge-100138545645d8d09edddc5a",
+        "edge-2bb72af2caf977b76b3307a2",
+        "edge-d6103f35344e1b634837d3ee",
+        "edge-0b40d7091e98be73e479caf7",
+        "edge-f8a41e0338de69461255aac8",
+        "edge-d2fe2d0a28f66387c194da1c",
+        "edge-df1f8f69caef01f4adf9bb0b"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-federated-learning-with-heterogeneous-clients-and-communication-e-d3e4e571ba.zip",
+      "sample": [
+        "Error Feedback Fixes SignSGD and other Gradient Compression Schemes",
+        "ProgFed: Effective, Communication, and Computation Efficient Federated Learning by Progressive Training"
+      ]
+    },
+    {
+      "id": "generalization-and-adaptation-across-distributions-3353500235",
+      "path": "tasks/generalization-and-adaptation-across-distributions-3353500235.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "36f1f44b4a155396da434a0f9219fcded542304ea1bfca6c14ca51f46bb70c87",
+      "topic": "Generalization and Adaptation Across Distributions",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-8ff19247fc21581991a374d5",
+        "edge-eb952ba72a9544bf2fb4a3a9",
+        "edge-2353bc43cd29e7c3845d2466",
+        "edge-d26dd0e6357125171ca3fa4c",
+        "edge-dd5760f56dfcc605df0fb44e",
+        "edge-183074c62947bd4f914c7554",
+        "edge-f86177542b4dd818487fd0bd",
+        "edge-8dc72fbb971253983f88892b",
+        "edge-a1c5b52d803832d1084b3e51",
+        "edge-9ce4ddda107386b529b0a024"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-generalization-and-adaptation-across-distributions-3353500235.zip",
+      "sample": [
+        "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+        "Learning Causal Semantic Representation for Out-of-Distribution Prediction"
+      ]
+    },
+    {
+      "id": "generative-modeling-and-inference-methods-a5c3b711bc",
+      "path": "tasks/generative-modeling-and-inference-methods-a5c3b711bc.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "76b976a717a340b7cc3c58b2ff10078ff5d2221f303716d15cd4ff6d72df195a",
+      "topic": "Generative Modeling and Inference Methods",
+      "area": "Generative Modeling and Inference",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-02f2e388db2d384788193099",
+        "edge-9a733baa28697dd83f4ca26d",
+        "edge-ad416a6cd44d9c2737484066",
+        "edge-b3c7c32464d95dfdc2ce1a74",
+        "edge-78228ecfd02c24c3bef5517d",
+        "edge-bd1eabf612d1e704db340833",
+        "edge-588bd820b052874d64383f9f",
+        "edge-bdbaa649fbb98ed38a546a44",
+        "edge-6320c578fc1a73ce8160dfbc",
+        "edge-f300c0966b9a80bcb242f651"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-generative-modeling-and-inference-methods-a5c3b711bc.zip",
+      "sample": [
+        "Dirichlet Diffusion Score Model for Biological Sequence Generation",
+        "Bridging Model-Based Optimization and Generative Modeling via Conservative Fine-Tuning of Diffusion Models"
+      ]
+    },
+    {
+      "id": "gradient-based-learning-and-optimization-in-neural-networks-5ab2c41fb3",
+      "path": "tasks/gradient-based-learning-and-optimization-in-neural-networks-5ab2c41fb3.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "c45ce1fddebf4a7f5f18cb42bc5ec3dd0352bfa103b18fc2afaa62265be64eeb",
+      "topic": "Gradient-Based Learning and Optimization in Neural Networks",
+      "area": "Optimization & Federated Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-791a96de6ec3c6769817aa7b",
+        "edge-8bf6ffb8a8aba63f6bf6910b",
+        "edge-a321d67ae57e881fbec11b5a",
+        "edge-be6c34611caa22f25834775e",
+        "edge-c9d1aaddc94e04feb7ab4ad6",
+        "edge-d8005a6cfe18beec4b07d380",
+        "edge-12b568d2a94f995ec774f2b1",
+        "edge-e360dcc63b0ccbb08565d6b7",
+        "edge-4c53df64eb8c3277c8075a22",
+        "edge-8c6cac3a381771adbc8c1f46"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-gradient-based-learning-and-optimization-in-neural-networks-5ab2c41fb3.zip",
+      "sample": [
+        "On the Proof of Global Convergence of Gradient Descent for Deep ReLU Networks with Linear Widths",
+        "Learning Provably Improves the Convergence of Gradient Descent"
+      ]
+    },
+    {
+      "id": "graph-neural-networks-and-graph-based-deep-learning-0278fb16ad",
+      "path": "tasks/graph-neural-networks-and-graph-based-deep-learning-0278fb16ad.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "1ca43ae34490349e9d10cd0fc3a4d99a9c7e49b398cd0bf5de0df34b150441e2",
+      "topic": "Graph Neural Networks and Graph-Based Deep Learning",
+      "area": "Graph Neural Networks & Molecular AI",
+      "available_tasks": 0,
+      "available_task_ids": [],
+      "fulltext_tasks": 0,
+      "bundle": "bundles/paper-evolve-graph-neural-networks-and-graph-based-deep-learning-0278fb16ad.zip",
+      "sample": [
+        "Training Graph Neural Networks with 1000 Layers",
+        "Graph Ladling: Shockingly Simple Parallel GNN Training without Intermediate Communication"
+      ]
+    },
+    {
+      "id": "image-segmentation-and-object-detection-with-foundation-models-988c78b7f0",
+      "path": "tasks/image-segmentation-and-object-detection-with-foundation-models-988c78b7f0.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "a474c09b64981d20ba06bc05c61e4796e74df3ad8ca4b8ad9c302ccd9b61171c",
+      "topic": "Image Segmentation and Object Detection with Foundation Models",
+      "area": "Multimodal Understanding & Reasoning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-5950189e29ba804fc2e59f12",
+        "edge-b7cbe3bc6b4d9cf1410e60dd",
+        "edge-145a96b2b6c0414de705b4aa",
+        "edge-c6354d853204d72b590b8398",
+        "edge-7739d77f8c10e8d66a32debd",
+        "edge-9ece21e5ada845d113a9bd73",
+        "edge-001a293f56ada539e9ea098e",
+        "edge-9f2f0f5142601d402acce223",
+        "edge-1fbbc937409273e7f2cf59b4",
+        "edge-93087f5e2179aac47b51c003"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-image-segmentation-and-object-detection-with-foundation-models-988c78b7f0.zip",
+      "sample": [
+        "CyCADA: Cycle-Consistent Adversarial Domain Adaptation",
+        "Learning Classifiers for Target Domain with Limited or No Labels"
+      ]
+    },
+    {
+      "id": "interpretability-and-explanation-methods-for-ai-models-35e648a6ae",
+      "path": "tasks/interpretability-and-explanation-methods-for-ai-models-35e648a6ae.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "0fc7cbeb423d1c87538f1a02d630de39be68595cc3508a0021881057996413c5",
+      "topic": "Interpretability and Explanation Methods for AI Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-6eb4294676f224438d16ccaa",
+        "edge-8b8eb9f982219529278573bb",
+        "edge-993286e8ca13e1aa3b6e792d",
+        "edge-ad1dd34e4293bb0eb54797c2",
+        "edge-3de364965e45a99290b4853d",
+        "edge-82848b5eb7f9f65b426cb71d",
+        "edge-318b7192a697524ec5298083",
+        "edge-735125935014a4ff604edc6a",
+        "edge-850ce9d2beafb09f24d700fd",
+        "edge-bd1a480cac151fd4a1ca9c0e"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-interpretability-and-explanation-methods-for-ai-models-35e648a6ae.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Relative Importance in Sentence Processing"
+      ]
+    },
+    {
+      "id": "knowledge-graph-reasoning-with-large-language-models-36c37008e9",
+      "path": "tasks/knowledge-graph-reasoning-with-large-language-models-36c37008e9.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "0eb17893b6bfccb4ebf83183801347a34adb374ed3d7df7c90d68ef04a1800bc",
+      "topic": "Knowledge Graph Reasoning with Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-e15a342d07f680eb2acabed7",
+        "edge-b344f3bfae1f076962630a94",
+        "edge-5bd3e7847e3fd4e7be7a1cf3",
+        "edge-47efc04bf19a895830b0f29f",
+        "edge-f6ee8224c12ee0040817d5ff",
+        "edge-282af28630fccfe7b47f70a3",
+        "edge-58f942be0412cb44eac9ffde",
+        "edge-60f68762838cafd6a1559624",
+        "edge-374a82555ea20d5b5e2e3367",
+        "edge-b4a44880392be382466f7768"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-knowledge-graph-reasoning-with-large-language-models-36c37008e9.zip",
+      "sample": [
+        "CLUTRR: A Diagnostic Benchmark for Inductive Reasoning from Text",
+        "Systematic Relational Reasoning With Epistemic Graph Neural Networks"
+      ]
+    },
+    {
+      "id": "learning-physical-dynamics-with-neural-differential-equations-557d1457f7",
+      "path": "tasks/learning-physical-dynamics-with-neural-differential-equations-557d1457f7.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "ac61a2228154ce2901d92253cd64d49c18e303be1272aa363ea5532181c69495",
+      "topic": "Learning Physical Dynamics with Neural Differential Equations",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-09b4bf805a765306510c3854",
+        "edge-6df86ed07c55d1d042b5a0bd",
+        "edge-4700faec44d3713ae5710025",
+        "edge-44e35bcf850e599f750083f7",
+        "edge-16cf133c7e568acc9ed7c532",
+        "edge-aa158864bcd04f9fdf8a4b47",
+        "edge-879817aba4c63f77c06fbae1",
+        "edge-52c01c196811f74071884088",
+        "edge-5ba7bb98bc1e9480ef7ee051",
+        "edge-bb91ffca1c18e1576aba06bf"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-learning-physical-dynamics-with-neural-differential-equations-557d1457f7.zip",
+      "sample": [
+        "Combining Differentiable PDE Solvers and Graph Neural Networks for Fluid Flow Prediction",
+        "Efficient Learning of Mesh-Based Physical Simulation with Bi-Stride Multi-Scale Graph Neural Network"
+      ]
+    },
+    {
+      "id": "learning-to-optimize-combinatorial-problems-bbbf53fc06",
+      "path": "tasks/learning-to-optimize-combinatorial-problems-bbbf53fc06.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "8c4ccf60e0e763db9586326b86390aa8878c2ee6d0e97ac406ed6e6b385d3e69",
+      "topic": "Learning to Optimize Combinatorial Problems",
+      "area": "Online Learning and Bandits",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-33abfa6a6203ae8cd8b5fa43",
+        "edge-710e775c6bdb3a60e46367c2",
+        "edge-839c9de7d780c7d16693de9e",
+        "edge-afe0f16637c38fb3ac9c5389",
+        "edge-920a6e06e35aa194e6c41fad",
+        "edge-5a129c3c2ea00f8d22f0da76",
+        "edge-02d037d116da02dc6f221e7e",
+        "edge-4145c8e1e3390de4fcc8e79e",
+        "edge-3411271db19b604c64742fab",
+        "edge-330de094b2710f893e3265c0"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-learning-to-optimize-combinatorial-problems-bbbf53fc06.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Impartial Multi-task Representation Learning via Variance-invariant Probabilistic Decoding"
+      ]
+    },
+    {
+      "id": "molecular-and-protein-design-with-ai-01b2274a15",
+      "path": "tasks/molecular-and-protein-design-with-ai-01b2274a15.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "92923203bfd38ec6cb852cf4498e5538340852d42afad3cc1944e44170c4940d",
+      "topic": "Molecular and Protein Design with AI",
+      "area": "Graph Neural Networks & Molecular AI",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-9f8035bca3dc9f5845a55ae9",
+        "edge-5d55c05135f99d1561972728",
+        "edge-898a82bd6f4190f76e4b047a",
+        "edge-cb877915432959665b39bd9b",
+        "edge-bcb957c232132046415e2777",
+        "edge-c8a061252a8aa35c0aeec79d",
+        "edge-ab55673fe5e2fc7a8ea32f85",
+        "edge-4a2a03d79be22a05c58c4d89",
+        "edge-9e88df401505e5fa2482c24a",
+        "edge-2a3680f5b42265a3d6ad45a7"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-molecular-and-protein-design-with-ai-01b2274a15.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Motif-based Graph Self-Supervised Learning for Molecular Property Prediction"
+      ]
+    },
+    {
+      "id": "multi-agent-reinforcement-learning-in-game-theoretic-settings-00a75e05be",
+      "path": "tasks/multi-agent-reinforcement-learning-in-game-theoretic-settings-00a75e05be.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "ef939d71026332bc5f68e5c6c5ad0c92ca16bb7745f6236e19eeaa5516640c0e",
+      "topic": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings",
+      "area": "Reinforcement Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-74c27fd38823d848fcd10bda",
+        "edge-710769aedec7a5ae5b760bba",
+        "edge-947e198d7b244444a9b2c85a",
+        "edge-debc59dabfea5869a1c6417b",
+        "edge-82d7c9e01d0b7ea506be1cd6",
+        "edge-43e89f97fc11485ac22fb1c8",
+        "edge-2101a5b04c7b95ad1bc33950",
+        "edge-b8a200784fcfa40185506d27",
+        "edge-bfe973558917d565f75e4eff",
+        "edge-436dd5ca359e2ebe9af762e5"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-multi-agent-reinforcement-learning-in-game-theoretic-settings-00a75e05be.zip",
+      "sample": [
+        "Machine Theory of Mind",
+        "Partner Modelling Emerges in Recurrent Agents (But Only When It Matters)"
+      ]
+    },
+    {
+      "id": "multilingual-neural-language-modeling-and-embedding-6165dd02d9",
+      "path": "tasks/multilingual-neural-language-modeling-and-embedding-6165dd02d9.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "90b4f950cf60f63fba788680980c95653acb43004835213f8f2057a84b15aa95",
+      "topic": "Multilingual Neural Language Modeling and Embedding",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-38bc06c734e95ea53590bdc7",
+        "edge-4d7de8efa86498c4c4e2555b",
+        "edge-6fcdfd394d57ab210f27dace",
+        "edge-b6047ae28a10dad05524472c",
+        "edge-bdfbb822d68f7a91e8bf5945",
+        "edge-cbdd101483e39f0b0be51d7c",
+        "edge-f11bf18b05ff362b323c2cb4",
+        "edge-a1c4a5717ce72272067b54b5",
+        "edge-7246ffa590a3323851891b7b",
+        "edge-3c095330af3f545f36d546f3"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-multilingual-neural-language-modeling-and-embedding-6165dd02d9.zip",
+      "sample": [
+        "Sequence-to-Action: End-to-End Semantic Graph Generation for Semantic Parsing",
+        "Unsupervised Dual Paraphrasing for Two-stage Semantic Parsing"
+      ]
+    },
+    {
+      "id": "neural-networks-inspired-by-brain-dynamics-d859639ad3",
+      "path": "tasks/neural-networks-inspired-by-brain-dynamics-d859639ad3.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "e28a2c763a8aa3190bf6e52105e043e75ab2f2cbf53cdb1be97647bd4b8dc28a",
+      "topic": "Neural Networks Inspired by Brain Dynamics",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-045bf2894547fafe82b21884",
+        "edge-2264c133cf404a29a97ca8fe",
+        "edge-b9392f2ccba6d74dde0ebf10",
+        "edge-1acb7626a581e1923d521d7e",
+        "edge-a341bad91a45b062b91968c6",
+        "edge-cf5761860629b5092b108d17",
+        "edge-d28127fa3b101c69a2254fbf",
+        "edge-7fce0e6a882716d8ae250fd7",
+        "edge-613a53c225ec93daf2fcb829",
+        "edge-c0c81077008e4d7fa5b3a279"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-neural-networks-inspired-by-brain-dynamics-d859639ad3.zip",
+      "sample": [
+        "Non-normal Recurrent Neural Network (nnRNN): learning long time dependencies while improving expressivity with transient dynamics",
+        "UnICORNN: A recurrent model for learning very long time dependencies"
+      ]
+    },
+    {
+      "id": "online-decision-making-with-strategic-agents-and-predictions-8fd4799bb9",
+      "path": "tasks/online-decision-making-with-strategic-agents-and-predictions-8fd4799bb9.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "efb6dda0ae3e1322a7f51dd8bfbbd9b51a82270a9c9ff66d910e63987bce1b7d",
+      "topic": "Online Decision Making with Strategic Agents and Predictions",
+      "area": "Online Learning and Bandits",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-03efb91567e9d82afe5145e3",
+        "edge-562e0626b112d7edc90d58d4",
+        "edge-9556686b614a8aafe428390e",
+        "edge-b830b31620010d71e172e1ba",
+        "edge-30109bee64b1b6ff6eb24d20",
+        "edge-af75edc61f377bd3993e39f8",
+        "edge-80e2e52feeb596eccff34b79",
+        "edge-cd58c8760c7aef636c9e38fa",
+        "edge-527eba2c4801ba99b952b956",
+        "edge-3991dd8060f5babff8e60e3c"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-online-decision-making-with-strategic-agents-and-predictions-8fd4799bb9.zip",
+      "sample": [
+        "No-Regret and Incentive-Compatible Online Learning",
+        "Information Discrepancy in Strategic Learning"
+      ]
+    },
+    {
+      "id": "online-learning-with-bandit-feedback-304caeaf2a",
+      "path": "tasks/online-learning-with-bandit-feedback-304caeaf2a.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "ad0967476304437aea40b87b144e73e06c7a0ac9b923549cd00e9dd18653a609",
+      "topic": "Online Learning with Bandit Feedback",
+      "area": "Online Learning and Bandits",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-bf2ef6d52f9dfb1fa06887ec",
+        "edge-67b0888d65c7fb14055e2b7b",
+        "edge-64720c8b2d3f85c49ca6d30e",
+        "edge-0d9171f9fb0b34b5853b5204",
+        "edge-42edad4103949505cf52357e",
+        "edge-350bb7a3ff7212efe0184ff1",
+        "edge-04504fb0a4fc5186b091f953",
+        "edge-ae101b47cc8e248b51861d2b",
+        "edge-d2463bd89cd5da8f5d5356f2",
+        "edge-99268547efe1ccd18c566994"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-online-learning-with-bandit-feedback-304caeaf2a.zip",
+      "sample": [
+        "Adversarial Combinatorial Bandits with General Non-linear Reward Functions",
+        "Offline Learning for Combinatorial Multi-armed Bandits"
+      ]
+    },
+    {
+      "id": "optimizing-language-model-training-through-instruction-and-data-s-5e4d02c45f",
+      "path": "tasks/optimizing-language-model-training-through-instruction-and-data-s-5e4d02c45f.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "d63991d3c0f8ab41b905e32ab950e7934c9341676f7de6e78e65cb64dc2c3841",
+      "topic": "Optimizing Language Model Training Through Instruction and Data Selection",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-0592cc0a9d36316608f3571f",
+        "edge-32702c4489aa8f333bdfd8db",
+        "edge-8531b8d3512b3013e99027a8",
+        "edge-98e6994baf57c042d52591b7",
+        "edge-f041abeb26ce8c796c627bae",
+        "edge-f21bc5e9828abe216d102392",
+        "edge-97f0664642bc1f28e89e231f",
+        "edge-5c3ebb97edafc4ead493f79f",
+        "edge-2a6e919af30610687288e5bf",
+        "edge-ccddd1c1bc4ae4b1999ec53b"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-optimizing-language-model-training-through-instruction-and-data-s-5e4d02c45f.zip",
+      "sample": [
+        "Data and Parameter Scaling Laws for Neural Machine Translation",
+        "Beyond neural scaling laws: beating power law scaling via data pruning"
+      ]
+    },
+    {
+      "id": "parameter-efficient-adaptation-in-language-models-cd9b6c8a01",
+      "path": "tasks/parameter-efficient-adaptation-in-language-models-cd9b6c8a01.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "43d1343ee590877a8466271c5b7c5fa6def9e6dd231221f352c9776e5e50b05a",
+      "topic": "Parameter Efficient Adaptation in Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-076315f64f4f3b3b678124af",
+        "edge-44120c8b65103482bdb08ea2",
+        "edge-92d5b7ae43b62e0b34193fe2",
+        "edge-b280cfcfd5d13c3d15ad625c",
+        "edge-ed866eecfe70b4ae5c35ff6b",
+        "edge-c450c3571f414d477a61e6f2",
+        "edge-1c4b8b654e6335884d927dd8",
+        "edge-01500f76ceb22d09d917ed79",
+        "edge-75fe360f0f0ea24c5ea75da6",
+        "edge-c576b171cfa81508a0883a57"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-parameter-efficient-adaptation-in-language-models-cd9b6c8a01.zip",
+      "sample": [
+        "TWEETQA: A Social Media Focused Question Answering Dataset",
+        "CrossFit: A Few-shot Learning Challenge for Cross-task Generalization in NLP"
+      ]
+    },
+    {
+      "id": "privacy-and-security-in-language-models-eda6e2bbf4",
+      "path": "tasks/privacy-and-security-in-language-models-eda6e2bbf4.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "667417d059cfec3bdc51d09bbbafb5c56d1d21c6c1fbdd830d12ce23a1e0957f",
+      "topic": "Privacy and Security in Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-ad9a17f17bd81e53d232723a",
+        "edge-b5305454c88ddeb765a48ee6",
+        "edge-6a3e83af66d67e15ec1a74e1",
+        "edge-0e720ebefeb48133eb46c492",
+        "edge-de3fb6b9a3da3bc5300b2b99",
+        "edge-6a26547e783505c14e7de8c4",
+        "edge-485fbd7dfd0a95e645ca43a3",
+        "edge-a8f93ffbe79d8e9c89488ece",
+        "edge-4e26a3615877978cc2d78278",
+        "edge-20898cd29e7533c41ab40af0"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-privacy-and-security-in-language-models-eda6e2bbf4.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Privacy Attacks on Image AutoRegressive Models"
+      ]
+    },
+    {
+      "id": "programming-with-large-language-models-c86aa3b948",
+      "path": "tasks/programming-with-large-language-models-c86aa3b948.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "92525b8450ef2d2da610bb232f5dc53192f02d6437ae03cc36bf0e14ecb72425",
+      "topic": "Programming with Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-cf56e27f3dc788e7a9f27649",
+        "edge-616f3882be0d12d228a1c0f4",
+        "edge-65563bd52dae8c9e9034ee70",
+        "edge-d2d0f76f59dcb7a221b93292",
+        "edge-0f3807ad123b64b796db81bb",
+        "edge-a0d30ef09e2126efbc6eb64d",
+        "edge-33b15759fa1e3df6344039dd",
+        "edge-3b1472827c5fcdabf4db333a",
+        "edge-e063c350f8afe0a995c3c004",
+        "edge-cc326ae4c1103928164ab9d2"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-programming-with-large-language-models-c86aa3b948.zip",
+      "sample": [
+        "Neural-Symbolic VQA: Disentangling Reasoning from Vision and Language Understanding",
+        "Leveraging Language to Learn Program Abstractions and Search Heuristics"
+      ]
+    },
+    {
+      "id": "reasoning-and-reward-in-large-language-models-e7ca5c5465",
+      "path": "tasks/reasoning-and-reward-in-large-language-models-e7ca5c5465.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "67a89458d3dd8a5c04b34b9786998476b06215db2d05615b316886e00d22266b",
+      "topic": "Reasoning and Reward in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-1264768cba742c0a4d0186af",
+        "edge-3cd562c2f902a83ce0acb2ef",
+        "edge-5a45dbe0080ad90352758880",
+        "edge-c40b6989699150787acde8f9",
+        "edge-d490f3f78a76375bbd7f2927",
+        "edge-cb7bf843fe791daa07b8ec59",
+        "edge-433318c895e724e089beb3bc",
+        "edge-6db78a4c43cdc44da6341569",
+        "edge-61a2f45cca62691f7d4340d6",
+        "edge-cba89dc3a34ec4fa6ff7d33a"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-reasoning-and-reward-in-large-language-models-e7ca5c5465.zip",
+      "sample": [
+        "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+        "QUARK: Controllable Text Generation with Reinforced Unlearning"
+      ]
+    },
+    {
+      "id": "reinforcement-learning-methods-and-policies-19ae3a526b",
+      "path": "tasks/reinforcement-learning-methods-and-policies-19ae3a526b.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "c2ba135ce3a30aaf97f469396e69d09e6ed9f263f379c9bd3dd62c8dc2b38359",
+      "topic": "Reinforcement Learning Methods and Policies",
+      "area": "Reinforcement Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-19c553c8c47cc52898f1e791",
+        "edge-1c62207422d61b293b71be6c",
+        "edge-43ff7afa1a200f80abc31fa9",
+        "edge-6b3420446fc289ffd74ce930",
+        "edge-6c4dab0384b07f2b021486c4",
+        "edge-94b84af34aec259d50ec9cd4",
+        "edge-abdcc7e19ba20b0569517f59",
+        "edge-b228f53755eaa15004ae83ad",
+        "edge-e1bfc4284cece3db6bc5a3d8",
+        "edge-cdd2ed91152be0a16b095d16"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-reinforcement-learning-methods-and-policies-19ae3a526b.zip",
+      "sample": [
+        "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+        "What Matters for Adversarial Imitation Learning?"
+      ]
+    },
+    {
+      "id": "retrieval-augmented-language-understanding-and-generation-ba63e3d2ac",
+      "path": "tasks/retrieval-augmented-language-understanding-and-generation-ba63e3d2ac.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "2eba149fc575c1f76680eaba679163e8a1669c2b7c212ed7dfa0c2babd1141de",
+      "topic": "Retrieval-Augmented Language Understanding and Generation",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-53b922d521820917f4d178bc",
+        "edge-9a0893f9924eebeac32d5b04",
+        "edge-cf3bde13fd879f42e0c21ef4",
+        "edge-9df8073ea5fc73d223903504",
+        "edge-140ff7bdc7044c4842fe3b10",
+        "edge-d0732c8fb1209b79dc859d8d",
+        "edge-791cecdc2b39815b1ab1c496",
+        "edge-91a7f8eaa364c1f506245d08",
+        "edge-9f15dcff2eb6aa2b724e2418",
+        "edge-50967d7d85926bae930edfe2"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-retrieval-augmented-language-understanding-and-generation-ba63e3d2ac.zip",
+      "sample": [
+        "DuoRC: Towards Complex Language Understanding with Paraphrased Reading Comprehension",
+        "Multi-style Generative Reading Comprehension"
+      ]
+    },
+    {
+      "id": "safety-and-adversarial-risks-in-large-language-models-ac5ef9929e",
+      "path": "tasks/safety-and-adversarial-risks-in-large-language-models-ac5ef9929e.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "a4523d4cb1c04b9afaf44225f0aac8a193d2737d33b0ccf77f9c2736f845889b",
+      "topic": "Safety and Adversarial Risks in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-cfc4e63f8f62486cd733fce8",
+        "edge-ab9a6e64dcae4d62171d7bad",
+        "edge-4cf727594203a8fac8ce5b40",
+        "edge-881c2312dac8a3ac0a913185",
+        "edge-a5a06bdecec9b43b90aee997",
+        "edge-6c6e8228373b876d69376167",
+        "edge-30e5a1bccf5d25137f440e8b",
+        "edge-b2a9b31de32c53377ccde971",
+        "edge-5692da8848ee3b7246e4c428",
+        "edge-e06b685c598ce4efdaf75c84"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-safety-and-adversarial-risks-in-large-language-models-ac5ef9929e.zip",
+      "sample": [
+        "Safety Fine-Tuning at (Almost) No Cost: A Baseline for Vision Large Language Models",
+        "Shape it Up! Restoring LLM Safety during Finetuning"
+      ]
+    },
+    {
+      "id": "self-supervised-representation-learning-b4f8e399d8",
+      "path": "tasks/self-supervised-representation-learning-b4f8e399d8.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "98049901a5f694a3bde5f06f8e29cd3d95450f30effa41ae5d958122162c1034",
+      "topic": "Self-Supervised Representation Learning",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-ba4005a65711d8eb0f8a83b7",
+        "edge-dc306874deb74ffa965f9496",
+        "edge-5e3b0ba6069970d0b8aff65f",
+        "edge-d928d07e034df3e002db86cf",
+        "edge-25467679c03b1fef7f676fe6",
+        "edge-a31a998afc407e6b9d906811",
+        "edge-7204c40e5862777cb0fbd4b2",
+        "edge-784d0011372fe2f6e039f3af",
+        "edge-4693b885146af22fbba432ab",
+        "edge-9e6c740f5d21fabca2981233"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-self-supervised-representation-learning-b4f8e399d8.zip",
+      "sample": [
+        "Theoretically Principled Trade-off between Robustness and Accuracy",
+        "Unleashing the Power of Contrastive Self-Supervised Visual Models via Contrast-Regularized Fine-Tuning"
+      ]
+    },
+    {
+      "id": "specialized-niche-topics-3ee6be7cbc",
+      "path": "tasks/specialized-niche-topics-3ee6be7cbc.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "1debe9eae43b704e2aa232872ad8bfa312231885cfd33096e69f07afcc2bbc5d",
+      "topic": "Specialized / Niche Topics",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-08e7009ef92b481d7aea74ba",
+        "edge-0cf59b45cba0af5404f2e6a4",
+        "edge-0e75bf6f2d2f1871240d0020",
+        "edge-1a7775cd13596d52ef755751",
+        "edge-20103c6149cfcf85aea84999",
+        "edge-3370c7682896426206d8b318",
+        "edge-41466e0671b1dff2126be6c4",
+        "edge-45f6a536c94a0da4850746ae",
+        "edge-4893cf0613d572b82c73718d",
+        "edge-5137a528bd4a6cb7e21a1af9"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-specialized-niche-topics-3ee6be7cbc.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "CTRLEval: An Unsupervised Reference-Free Metric for Evaluating Controlled Text Generation"
+      ]
+    },
+    {
+      "id": "starter-001",
+      "path": "tasks/starter-001.json",
+      "tasks": 100,
+      "legacy": true,
+      "sha256": "d6d21f7449357614ff868d943df7ec034928d6ae1685b2d770d5e24d33a35a6a",
+      "topic": "Starter collection",
+      "area": "Across research areas",
+      "available_tasks": 100,
+      "available_task_ids": [
+        "edge-70aa5ce5a2de1168d3688cf7",
+        "edge-2d84305005e0dc76ab9c266f",
+        "edge-b1cac46739074339f4495c04",
+        "edge-fdb78be2d13af0a92a2b70b1",
+        "edge-0cac2375f15ccf04aedf8578",
+        "edge-7f1145578f74f3e2b386898e",
+        "edge-989ca7e3298e3b9168556d44",
+        "edge-1049a111756726a8b87ce3f3",
+        "edge-0c6d74dcffd20673ad3144cb",
+        "edge-8659cdebdba9c782bee811d6",
+        "edge-3fef2ba08532b66f625e51c2",
+        "edge-29fd5dce9228cb4cbeafafeb",
+        "edge-9192288e79f56d1d49800151",
+        "edge-58f6d302a3c5983d7d78bd7e",
+        "edge-d5aae107a93705abaff10b9d",
+        "edge-2682ede64812e85976b13df3",
+        "edge-06ab17c634f7e7e2e01705be",
+        "edge-6cd3cbd63db2b96f38afa96c",
+        "edge-8b935f2cd5ca50aa5c87b255",
+        "edge-7d6398e1585f870dfb1965da",
+        "edge-b3a8df4a4f8040ae50e764ba",
+        "edge-1159c7afcb341551d1c3b124",
+        "edge-e02c5a33e070e23b834fbebe",
+        "edge-9f21ed3f8b147ed1d692e8a3",
+        "edge-003bb8caacfdae6c5baed4b1",
+        "edge-f085895666287dd63cee4095",
+        "edge-e9aa1f3ea57ecc13a80454cf",
+        "edge-a916d61ac44854084ff9c4ac",
+        "edge-081116bf72c3917f237f2cc2",
+        "edge-99bc179500cd6c34fad18712",
+        "edge-45f1be72c10e066d23997e7a",
+        "edge-5c117466eaf936228f6f6e69",
+        "edge-e4e311d0d5b36fce225204a9",
+        "edge-5067754a698da71af306127f",
+        "edge-e5254261e5f5d465f0d51184",
+        "edge-9b854497fa5b696d44d92e67",
+        "edge-665df4d3b48480034ba96148",
+        "edge-694b68d1074086dea32a02e3",
+        "edge-4e0956bbd14b1311f5df226d",
+        "edge-3d2dd5a14523b7da029a901f",
+        "edge-941b580c991f095f85b45860",
+        "edge-052d9783a59cfdc9ee9d9c2a",
+        "edge-a24ab6fde000807668a6dc96",
+        "edge-8b0045a140fd7b27c585737c",
+        "edge-368d198141c6f0a44491af84",
+        "edge-0a02317d9b74d00c2adf09fc",
+        "edge-e1b1cccc250a3e4544feee9c",
+        "edge-607fb25d125a2a101736e9ad",
+        "edge-5469661f8ba8a460b8f62caf",
+        "edge-efac2c50523d061c03654f2d",
+        "edge-1d28d432914dc8c682cfd29f",
+        "edge-543d5fda069256ad3602e19f",
+        "edge-5c453ff2f55d6768c9273e58",
+        "edge-c4ba2928477904a5bd73f7ef",
+        "edge-473976aeee4f474d1b62538c",
+        "edge-0f73cc3f511ebb9744906e8d",
+        "edge-3b444a54522568fa6558679a",
+        "edge-a93ad05467fd3672d7e46854",
+        "edge-6fa31a69016d32015ce84dc6",
+        "edge-c9512c5bca0392f42df365ab",
+        "edge-2f1fb48166ba8b3198b75ecc",
+        "edge-9e4e8abfee3f3fbd5f8fecd5",
+        "edge-9ae80657a999b925431ecefd",
+        "edge-e937c4f78443eff69a323bce",
+        "edge-c0bb789e1ef580f554f9a989",
+        "edge-224935fb26114fd9f3111fd5",
+        "edge-1347f5e0039c2aef51924585",
+        "edge-e24c1173dbd0f4f63062ab95",
+        "edge-41bef7e2cedab7c9de0701ea",
+        "edge-46ee78c0b48dbc56662d82eb",
+        "edge-cc6cdb7fa86ec9a930e779f9",
+        "edge-50ad42c1250a601c6f815bd7",
+        "edge-0e515b5f32981a61039f9756",
+        "edge-8c992b5937d5d9cb6294a867",
+        "edge-04f8a23bb1dba5cfa2966718",
+        "edge-6790c19d5ee62c229325e8c4",
+        "edge-859f7ba1b01d3e2ff6514d5a",
+        "edge-ae96f5b3e891640b30ca1af6",
+        "edge-696a08692534685ba3f343f6",
+        "edge-715ec5ace7c4ad3f2c3d2a31",
+        "edge-9197fde764b67575514c701a",
+        "edge-51a43d76d1a27856c818153a",
+        "edge-6ccca9273c704e22c11ffb9f",
+        "edge-75b7db3f399254ec779b8120",
+        "edge-c3326d4327be7d53b9e6790e",
+        "edge-524c084455c0aaa802f99bb0",
+        "edge-4a9d4b0dbe01ba865748f4ab",
+        "edge-4a0d3b704e43448027d0ea6d",
+        "edge-f08245605ffad3700f36d55f",
+        "edge-98bd35bb5580cb89b61e21ee",
+        "edge-20d58cc500084734d6427d59",
+        "edge-c9f4fe909d450e4754a69947",
+        "edge-f07c3e613a7bdc0eee0d0054",
+        "edge-c0eab628d67c8dc01c078717",
+        "edge-61824b6917c38c96ad50b289",
+        "edge-97b9d7273250be79b9a404ce",
+        "edge-4bbbe65ebb97efd166d722f5",
+        "edge-51a6d4777a2ecc30cbaf5ce3",
+        "edge-e7d7f3a14336d828bb6be572",
+        "edge-e6aecbdce130fa771a5cefcc"
+      ],
+      "fulltext_tasks": 2,
+      "bundle": "bundles/paper-evolve-starter-001.zip",
+      "sample": [
+        "Smooth Normalizing Flows",
+        "Rigid Body Flows for Sampling Molecular Crystal Structures"
+      ]
+    },
+    {
+      "id": "text-summarization-research-18fa114f01",
+      "path": "tasks/text-summarization-research-18fa114f01.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "25715cf710a769e02514db6c71e06e0619ee987c5bff1ea8f2c461be314d7ef2",
+      "topic": "Text Summarization Research",
+      "area": "Natural Language Processing & LLMs",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-5d66ee01d6f49f7384490931",
+        "edge-812577d3143aa5f7e2299f2c",
+        "edge-5e91c39683e37b785ef9a069",
+        "edge-9e2299bf1a900ec7567b494f",
+        "edge-0327ac0cc760d8924d863c5e",
+        "edge-9b747b18f35fbe99ccec1d40",
+        "edge-e66c92f8d23bfdb2bacc50ff",
+        "edge-17a50c99053a8e4b91458cc4",
+        "edge-3671ece0268d5e13b8ff900a",
+        "edge-33ceaffb6fb468022a6796b6"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-text-summarization-research-18fa114f01.zip",
+      "sample": [
+        "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "Mask-to-Correct^+: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction"
+      ]
+    },
+    {
+      "id": "time-series-forecasting-and-temporal-analysis-7efa4e052f",
+      "path": "tasks/time-series-forecasting-and-temporal-analysis-7efa4e052f.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "3d15f02cf5c8393f992940fb20c888de54e88b5c423a9e4c88f408d7c8d71837",
+      "topic": "Time Series Forecasting and Temporal Analysis",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-6977bdc529d27c5f1f8b30a5",
+        "edge-8a2ece50a098c5a34ac81805",
+        "edge-a504c9d80c1b50ec3b70e692",
+        "edge-e42f1a754fb097cdcd001f57",
+        "edge-044e057599ff33b59c1b512b",
+        "edge-6b3f1aed7e77921a46fedeb0",
+        "edge-cd4aaf6a552c771ffade951b",
+        "edge-450abec283f42cb6e9c2d053",
+        "edge-3bcc5c0131b06c4e1deceda9",
+        "edge-b8da8026ca6aab4ddcedb313"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-time-series-forecasting-and-temporal-analysis-7efa4e052f.zip",
+      "sample": [
+        "xLSTM: Extended Long Short-Term Memory",
+        "xLSTM-Mixer: Multivariate Time Series Forecasting by Mixing via Scalar Memories"
+      ]
+    },
+    {
+      "id": "uncertainty-quantification-and-calibration-in-deep-learning-be3973d227",
+      "path": "tasks/uncertainty-quantification-and-calibration-in-deep-learning-be3973d227.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "0e4f8e3f459f6cb060fe87b2d0874400492adc15d91ba38b45a107a18237f4c6",
+      "topic": "Uncertainty Quantification and Calibration in Deep Learning",
+      "area": "Cross-Cutting & Specialized Research",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-48c85dfb2c4c0b9a2afb86d2",
+        "edge-cc1c580887c17dd67117139a",
+        "edge-ec1985ae84f7f915168eceb5",
+        "edge-26f45c2276c009d60fa3659c",
+        "edge-02fccdfc06162572d4df5a11",
+        "edge-7cb931b67dda1e0e03ebe9c7",
+        "edge-d6d4aea5350c40c4d6be2103",
+        "edge-34a820a7a8b6fb550720fceb",
+        "edge-02464da5a2dd0c6b13cf48a8",
+        "edge-9b7594f09e364980797cac4f"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-uncertainty-quantification-and-calibration-in-deep-learning-be3973d227.zip",
+      "sample": [
+        "EfficientNetV2: Smaller Models and Faster Training",
+        "Asymmetric Duos: Sidekicks Improve Uncertainty"
+      ]
+    },
+    {
+      "id": "unclustered-56305eadaa",
+      "path": "tasks/unclustered-56305eadaa.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "afc0d1554660173279cd019c07acdaceda43e04f1f7aee583e4334ac047f78b3",
+      "topic": "Unclustered",
+      "area": "Reinforcement Learning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-0182de55a7934fdeb18a96f6",
+        "edge-41b14d20ceaa0679166ce73c",
+        "edge-4d220cb84e9097e44e9e5f91",
+        "edge-81f1e20ef4d276252ee011cb",
+        "edge-8860902b1f9ed2bfbc257b55",
+        "edge-b9df6ffd75222d2432be880a",
+        "edge-bc2dfd668c6b53d9b6cf017a",
+        "edge-d3bc334cef70c09c4390c3f0",
+        "edge-d7f4b7be3bb6df70dc1af38d",
+        "edge-39b3d0543682b1d027efeab5"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-unclustered-56305eadaa.zip",
+      "sample": [
+        "On Learning Intrinsic Rewards for Policy Gradient Methods",
+        "Online Meta-Critic Learning for Off-Policy Actor-Critic Methods"
+      ]
+    },
+    {
+      "id": "video-generation-with-diffusion-and-motion-modeling-4f97becc3e",
+      "path": "tasks/video-generation-with-diffusion-and-motion-modeling-4f97becc3e.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "f88e9037fbe4c5683d52bd5a821cd139fe436d952a7a5e56f5509a7802bb0ef4",
+      "topic": "Video Generation with Diffusion and Motion Modeling",
+      "area": "3D Generation & Reconstruction",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-bfaf61e85c5e602e2d162810",
+        "edge-f5c052abfd9542dd1a83ee5e",
+        "edge-59e1036f72ea79d725e248ec",
+        "edge-f15079dd5a875e0457911e3d",
+        "edge-189e7ced0e7272cf29460d95",
+        "edge-a7881338de16f16142c8c153",
+        "edge-40c39e3c16aef49b69653d77",
+        "edge-c75721cdd44b908426706bc3",
+        "edge-8621652a3052f2fbf0fd38de",
+        "edge-29962979a64227fbcb552bc8"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-video-generation-with-diffusion-and-motion-modeling-4f97becc3e.zip",
+      "sample": [
+        "MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention",
+        "Sparse Video-Gen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity"
+      ]
+    },
+    {
+      "id": "video-language-understanding-with-temporal-reasoning-c9b98b785d",
+      "path": "tasks/video-language-understanding-with-temporal-reasoning-c9b98b785d.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "283ba426219207108e98aa4714c2b728a4268d919ce0d85d08e360f8e30f5d48",
+      "topic": "Video Language Understanding with Temporal Reasoning",
+      "area": "Multimodal Understanding & Reasoning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-683ca8cbbad655485ce1a534",
+        "edge-6ac40df52d4e936bd6f20b33",
+        "edge-e5ce0ed0f467e4607fffa10c",
+        "edge-1a796c1896580b8c6ef0662f",
+        "edge-eb1890a4ca095b2845b5251f",
+        "edge-8e7ac94cbaabfece40ce33b4",
+        "edge-e517023182c1052cab826fb8",
+        "edge-a6b174bd84ed316406d8d271",
+        "edge-6eb5b3e8fff674a8a3fbe212",
+        "edge-c3c6c40a48501af8d810d054"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-video-language-understanding-with-temporal-reasoning-c9b98b785d.zip",
+      "sample": [
+        "COOT: Cooperative Hierarchical Transformer for Video-Text Representation Learning",
+        "DeCEMBERT: Learning from Noisy Instructional Videos via Dense Captions and Entropy Minimization"
+      ]
+    },
+    {
+      "id": "vision-language-foundation-models-and-multimodal-reasoning-bdf9dad7d2",
+      "path": "tasks/vision-language-foundation-models-and-multimodal-reasoning-bdf9dad7d2.json",
+      "tasks": 10,
+      "legacy": false,
+      "sha256": "0be295a7677a0a57f3a40a5fd1649e66b3faa74ef78441901047d722ee1cd95d",
+      "topic": "Vision-Language Foundation Models and Multimodal Reasoning",
+      "area": "Multimodal Understanding & Reasoning",
+      "available_tasks": 10,
+      "available_task_ids": [
+        "edge-bf24bce7b94fb3abd9e4243a",
+        "edge-c0e65cc6d9eaa8da66ff9162",
+        "edge-d1c40bf9775c3f4b7a5dfc6a",
+        "edge-f6bd65e0f241f2194c17f3b1",
+        "edge-f7a14e4c0ed71a148d3f0311",
+        "edge-cad112162612078a21662da4",
+        "edge-6eb93a33c00bf6dc0ed43864",
+        "edge-76b79f39bc7b0685f45e9791",
+        "edge-c43258361787b46cf3831065",
+        "edge-eb560a2a0ad966a4a1c61f2c"
+      ],
+      "fulltext_tasks": 10,
+      "bundle": "bundles/paper-evolve-vision-language-foundation-models-and-multimodal-reasoning-bdf9dad7d2.zip",
+      "sample": [
+        "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+        "Systematic Reward Gap Optimization for Mitigating VLM Hallucinations"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "name": "3D Scene Reconstruction and Representation with Neural Methods",
+      "area": "3D Generation & Reconstruction",
+      "papers": 1556,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Adversarial Robustness in Neural Networks",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 1244,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Algorithms for Efficient Inference on Graphs and Relational Data",
+      "area": "Optimization & Federated Learning",
+      "papers": 412,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Algorithms for Matrix and Tensor Estimation",
+      "area": "Optimization & Federated Learning",
+      "papers": 741,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Attention and Context in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 1833,
+      "packs": 1,
+      "available_tasks": 0
+    },
+    {
+      "name": "Audio and Language Perception and Generation",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 1083,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Causal Inference with Latent Variables and Observational Data",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 1234,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Continual Learning with Memory and Plasticity",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 521,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Conversational AI Systems and Response Generation",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 644,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Detecting and Mitigating Harmful Language in AI Systems",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 1316,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Differential Privacy in Machine Learning Algorithms",
+      "area": "Optimization & Federated Learning",
+      "papers": 708,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Efficient Neural Network Compression and Training Optimization",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 1179,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Entity and Relation Extraction from Text",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 1006,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Federated Learning with Heterogeneous Clients and Communication Efficiency",
+      "area": "Optimization & Federated Learning",
+      "papers": 660,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Generalization and Adaptation Across Distributions",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 1151,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Generative Modeling and Inference Methods",
+      "area": "Generative Modeling and Inference",
+      "papers": 3733,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Gradient-Based Learning and Optimization in Neural Networks",
+      "area": "Optimization & Federated Learning",
+      "papers": 2281,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Graph Neural Networks and Graph-Based Deep Learning",
+      "area": "Graph Neural Networks & Molecular AI",
+      "papers": 1387,
+      "packs": 1,
+      "available_tasks": 0
+    },
+    {
+      "name": "Image Segmentation and Object Detection with Foundation Models",
+      "area": "Multimodal Understanding & Reasoning",
+      "papers": 422,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Interpretability and Explanation Methods for AI Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 980,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Knowledge Graph Reasoning with Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 500,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Learning Physical Dynamics with Neural Differential Equations",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 841,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Learning to Optimize Combinatorial Problems",
+      "area": "Online Learning and Bandits",
+      "papers": 913,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Molecular and Protein Design with AI",
+      "area": "Graph Neural Networks & Molecular AI",
+      "papers": 919,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Multi-Agent Reinforcement Learning in Game-Theoretic Settings",
+      "area": "Reinforcement Learning",
+      "papers": 789,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Multilingual Neural Language Modeling and Embedding",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 3104,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Neural Networks Inspired by Brain Dynamics",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 1285,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Online Decision Making with Strategic Agents and Predictions",
+      "area": "Online Learning and Bandits",
+      "papers": 477,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Online Learning with Bandit Feedback",
+      "area": "Online Learning and Bandits",
+      "papers": 869,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Optimizing Language Model Training Through Instruction and Data Selection",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 486,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Parameter Efficient Adaptation in Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 712,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Privacy and Security in Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 882,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Programming with Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 605,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Reasoning and Reward in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 3893,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Reinforcement Learning Methods and Policies",
+      "area": "Reinforcement Learning",
+      "papers": 4564,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Retrieval-Augmented Language Understanding and Generation",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 872,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Safety and Adversarial Risks in Large Language Models",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 800,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Self-Supervised Representation Learning",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 413,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Specialized / Niche Topics",
+      "area": "Unclustered",
+      "papers": 12664,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Text Summarization Research",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 619,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Time Series Forecasting and Temporal Analysis",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 467,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Uncertainty Quantification and Calibration in Deep Learning",
+      "area": "Cross-Cutting & Specialized Research",
+      "papers": 625,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Unclustered",
+      "area": "Natural Language Processing & LLMs",
+      "papers": 6615,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Video Generation with Diffusion and Motion Modeling",
+      "area": "3D Generation & Reconstruction",
+      "papers": 412,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Video Language Understanding with Temporal Reasoning",
+      "area": "Multimodal Understanding & Reasoning",
+      "papers": 444,
+      "packs": 1,
+      "available_tasks": 10
+    },
+    {
+      "name": "Vision-Language Foundation Models and Multimodal Reasoning",
+      "area": "Multimodal Understanding & Reasoning",
+      "papers": 2000,
+      "packs": 1,
+      "available_tasks": 10
+    }
+  ],
+  "summary": {
+    "topics": 46,
+    "packs": 47,
+    "tasks": 560,
+    "available_tasks": 540,
+    "fulltext_tasks": 442,
+    "approved_pairs": 0,
+    "topic_tasks": 440,
+    "topic_fulltext_tasks": 440
+  },
+  "availability": "Snapshot at site build. Coordinate on the pull request to avoid overlapping work."
+}

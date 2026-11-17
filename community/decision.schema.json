@@ -1,0 +1,97 @@
+{
+  "type": "object",
+  "properties": {
+    "related": {
+      "type": "boolean"
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "explicit_statement",
+        "contribution_comparison",
+        "insufficient_evidence"
+      ]
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Extends",
+              "Challenges",
+              "Combines",
+              "Transfers",
+              "Revives"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.85,
+            "maximum": 1,
+            "description": "Self-assessed confidence, not calibrated accuracy."
+          }
+        },
+        "required": [
+          "type",
+          "confidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "reason": {
+      "type": "string"
+    },
+    "inherited": {
+      "type": "string"
+    },
+    "changed": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "anyOf": [{"enum": [
+              "a_abstract",
+              "b_abstract",
+              "citing_sentence",
+              "a_passage_1",
+              "a_passage_2",
+              "b_citation_1",
+              "b_citation_2",
+              "b_passage_1",
+              "b_passage_2"
+            ]}, {"type":"string","pattern":"^(a_passage|b_passage|b_citation)_research_[1-9][0-9]?$"}]
+          },
+          "quote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "quote"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 16
+    }
+  },
+  "required": [
+    "related",
+    "basis",
+    "relations",
+    "reason",
+    "inherited",
+    "changed",
+    "evidence"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paper Evolve source-backed contribution decision"
+}

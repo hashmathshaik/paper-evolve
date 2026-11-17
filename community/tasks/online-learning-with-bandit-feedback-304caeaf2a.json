@@ -1,0 +1,1014 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Online Learning with Bandit Feedback",
+  "area": "Online Learning and Bandits",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-bf2ef6d52f9dfb1fa06887ec",
+      "a": "paper-9ee4f652b7ef59b858515dab",
+      "b": "paper-ddd37c1a49a86ffb301e22f4",
+      "state": {
+        "paper_a": {
+          "title": "Adversarial Combinatorial Bandits with General Non-linear Reward Functions",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "In this paper we study the adversarial combinatorial bandit with a known non-linear reward function, extending existing work on adversarial linear combinatorial bandit. {The adversarial combinatorial bandit with general non-linear reward is an important open problem in bandit literature, and it is still unclear whether there is a significant gap from the case of linear reward, stochastic bandit, or semi-bandit feedback.} We show that, with $N$ arms and subsets of $K$ arms being chosen at each of $T$ time periods, the minimax optimal regret is $\\widetilde\\Theta_{d}(\\sqrt{N^d T})$ if the reward function is a $d$-degree polynomial with $d < K$, and $\\Theta_K(\\sqrt{N^K T})$ if the reward function is not a low-degree polynomial. {Both bounds are significantly different from the bound $O(\\sqrt{\\mathrm{poly}(N,K)T})$ for the linear case, which suggests that there is a fundamental gap between the linear and non-linear reward structures.} Our result also finds applications to adversarial assortment optimization problem in online recommendation. We show that in the worst-case of adversarial assortment problem, the optimal algorithm must treat each individual $\\binom{N}{K}$ assortment as independent."
+        },
+        "paper_b": {
+          "title": "Offline Learning for Combinatorial Multi-armed Bandits",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "The combinatorial multi-armed bandit (CMAB) is a fundamental sequential decision-making framework, extensively studied over the past decade. However, existing work primarily focuses on the online setting, overlooking the substantial costs of online interactions and the readily available offline datasets. To overcome these limitations, we introduce Off-CMAB, the first offline learning framework for CMAB. Central to our framework is the combinatorial lower confidence bound (CLCB) algorithm, which combines pessimistic reward estimations with combinatorial solvers. To characterize the quality of offline datasets, we propose two novel data coverage conditions and prove that, under these conditions, CLCB achieves a near-optimal suboptimality gap, matching the theoretical lower bound up to a logarithmic factor. We validate Off-CMAB through practical applications, including learning to rank, large language model (LLM) caching, and social influence maximization, showing its ability to handle nonlinear reward functions, general feedback models, and out-of-distribution action samples that excludes optimal or even feasible actions. Extensive experiments on synthetic and real-world datasets further highlight the superior performance of CLCB."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…al., 2019; Liu et al., 2022; 2024b), adversarial CMAB (Gy¨orgy et al., 2007; Uchiya et al., 2010; Cesa-Bianchi & Lugosi, 2012; Bubeck et al., 2012; Audibert et al., 2014; Neu, 2015; Han et al., 2021), and hybrid best-of-both-worlds settings (Zimmert et al., 2019; Ito, 2021; Tsuchiya et al., 2023).\n…respectively; † m,k,C 1 denote the number of LLM queries, the size of cache, and the lower bound of the query cost, respectively; ∗∗ Similar to Chen et al. (2021), we depend directly on assumption for seed sampling probability bound γ and the activation probability bound η ; ‡ V,d max ,σ ( S…\nSimilar to (Chen et al., 2021), we also need an additional Assumption 1.\nWe also relax the assumption of Chen et al. (2021) for the seed sampling probability and activation probability, owing to the usage of LCBs, rather than directly using the empirical mean of edge weight p uv .",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9ee4f652b7ef59b858515dab",
+          "b": "paper-ddd37c1a49a86ffb301e22f4",
+          "input_sha256": "ac958cdda1078e25bfad9c8563ef7edc0531ca5946d4029b08841c59b8b31a3a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/han21b.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/han21b/han21b.pdf",
+              "sha256": "c8739f02e789364b3fa3407ddf4f91329cb1e6c0cbde822913b3cf5238c78bb5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/liu25i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25i/liu25i.pdf",
+              "sha256": "46bfd0a33e341594cd67bf8b43031b2a4cc447bcd4bc66ad6b41ef737e3af89e"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "m, k, µ1 , µk denote the number of items, the length of the ranked list, and click probability for 1-st and k-th items, respectively; † m, k, C1 denote the number of LLM queries, the size of cache, and the lower bound of the query cost, respectively; ∗∗ Similar to Chen et al. (2021), we depend directly on assumption for seed sampling probability bound γ and the activation probability bound η; ‡ V, dmax , σ(S ∗ ; G), k denote the number of nodes, the max out-degree, optimal influence spread, and the number of seed nodes, respectively.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25i/liu25i.pdf",
+              "document_sha256": "46bfd0a33e341594cd67bf8b43031b2a4cc447bcd4bc66ad6b41ef737e3af89e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": ", which improves the existing result by a \u0011 factor of Õ k2 dV2 η , owing to our variance-adaptive LCB max construction and the tight CMAB-T analysis. We also relax the assumption of Chen et al. (2021) for the seed sampling probability and activation probability, owing to the usage of LCBs, rather than directly using the empirical mean of edge weight puv . See Appendix C for the detailed discussion.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25i/liu25i.pdf",
+              "document_sha256": "46bfd0a33e341594cd67bf8b43031b2a4cc447bcd4bc66ad6b41ef737e3af89e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The combinatorial multi-armed bandit (CMAB) is a fundamental sequential decision-making framework, extensively studied over the past decade. However, existing work primarily focuses on the online setting, overlooking the substantial costs of online interactions and the readily available offline datasets. To overcome these limitations, we introduce Off-CMAB, the first offline learning framework for CMAB. Central to our framework is the combinatorial lower confidence bound (CLCB) algorithm, which combines pessimistic reward estimations with combinatorial solvers. To characterize the quality of offline datasets, we propose two novel data coverage conditions and prove that, under these conditions, CLCB achieves a near-optimal suboptimality gap, matching the theoretical lower bound up to a logarithmic factor. We validate Off-CMAB through practical applications, including learning to rank, large language model (LLM) caching, and social influence maximization, showing its ability to handle nonlinear reward functions, general feedback models, and out-of-distribution action samples that exclude optimal or even feasible actions. Extensive experiments on synthetic and real-world datasets for these applications further highlight the superior performance of CLCB.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25i/liu25i.pdf",
+              "document_sha256": "46bfd0a33e341594cd67bf8b43031b2a4cc447bcd4bc66ad6b41ef737e3af89e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Algorithm Design: To address the first question, we propose a novel combinatorial lower confidence bound (CLCB) algorithm that addresses the uncertainty inherent in passively collected datasets by leveraging the pessimism principle. At the base arm level, CLCB constructs high-probability lower confidence bounds (LCBs), penalizing arms with insufficient observations. At the combinatorial action level, CLCB utilizes an approximate combinatorial solver to handle nonlinear reward functions, effectively translating basearm pessimism to action-level pessimism. This design prevents the selection of actions with high-fluctuation base arms, ensuring robust decision-making.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25i/liu25i.pdf",
+              "document_sha256": "46bfd0a33e341594cd67bf8b43031b2a4cc447bcd4bc66ad6b41ef737e3af89e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9ee4f652b7ef59b858515dab",
+          "url": "https://proceedings.mlr.press/v139/han21b.html"
+        },
+        "b": {
+          "paper_id": "paper-ddd37c1a49a86ffb301e22f4",
+          "url": "https://proceedings.mlr.press/v267/liu25i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "369efdefdb4e6f8649479ea1273717709d3638c2b37956e7464cd71505f50657"
+    },
+    {
+      "id": "edge-67b0888d65c7fb14055e2b7b",
+      "a": "paper-03df2c08f03813efd8b1dbf2",
+      "b": "paper-14bee9781d1eb1c2cae9eba8",
+      "state": {
+        "paper_a": {
+          "title": "Corruption-Robust Algorithms with Uncertainty Weighting for Nonlinear Contextual Bandits and Markov Decision Processes",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Despite the significant interest and progress in reinforcement learning (RL) problems with adversarial corruption, current works are either confined to the linear setting or lead to an undesired $\\tilde{\\mathcal O}(\\sqrt{T}\\zeta)$ regret bound, where $T$ is the number of rounds and $\\zeta$ is the total amount of corruption. In this paper, we consider contextual bandits with general function approximation and propose a computationally efficient algorithm to achieve a regret of $\\tilde{\\mathcal O}(\\sqrt{T}+\\zeta)$. The proposed algorithm relies on the recently developed uncertainty-weighted least-squares regression from linear contextual bandits (He et al., 2022) and a new weighted estimator of uncertainty for the general function class. In contrast to the existing analysis for the sum of uncertainty that is heavily based on the linear structure, we develop a novel technique to control the sum of weighted uncertainty, thus establishing the final regret bound. We then generalize our algorithm to the episodic MDP and first achieve an additive dependence on the corruption level $\\zeta$ in the scenario of general function approximation. Notably, our algorithms achieve regret bounds that either nearly match the lower bound or improve the performance of existing methods for all the corruption levels in both known and unknown $\\zeta$ cases."
+        },
+        "paper_b": {
+          "title": "Nearly Optimal Algorithms for Contextual Dueling Bandits from Adversarial Feedback",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Learning from human feedback plays an important role in aligning generative models, such as large language models (LLM). However, the effectiveness of this approach can be influenced by adversaries, who may intentionally provide misleading preferences to manipulate the output in an undesirable or harmful direction. To tackle this challenge, we study a specific model within this problem domain–contextual dueling bandits with adversarial feedback, where the true preference label can be flipped by an adversary. We propose an algorithm namely robust contextual dueling bandits ($\\texttt{RCDB}$), which is based on uncertainty-weighted maximum likelihood estimation. Our algorithm achieves an $\\tilde O(d\\sqrt{T}/\\kappa+dC/\\kappa)$ regret bound, where $T$ is the number of rounds, $d$ is the dimension of the context, $\\kappa$ is the lower bound of the derivative of the link function, and $ 0 \\le C \\le T$ is the total number of adversarial feedback. We also prove a lower bound to show that our regret bound is nearly optimal, both in scenarios with and without ($C=0$) adversarial feedback. Our work is the first to achieve nearly minimax optimal regret for dueling bandits in the presence of adversarial preference feedback. Additionally, for the sigmoid link function, we develop a novel algorithm that takes into account the effect of local derivatives into maximum likelihood estimation (MLE) analysis through a refined method for estimating the link function’s derivative. This method helps us to eliminate the $\\kappa$ dependence in the leading term with respect to $T$, which reduces the exponential dependence on the parameter radius $B$ to a polynomial dependence. We conduct experiments to evaluate our proposed algorithm $\\texttt{RCDB}$ against various types of adversarial feedback. Experimental results demonstrate its superiority over the state-of-the-art dueling bandit algorithms in the presence of adversarial feedback."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "He et al. (2022) proposed an algorithm for known corruption level C to remove the polynomial dependency on T in the corruption term, which only has a linear dependency on C .",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03df2c08f03813efd8b1dbf2",
+          "b": "paper-14bee9781d1eb1c2cae9eba8",
+          "input_sha256": "671cc0eacb724888da515b222ade525100a6c05b38e2897610704ee791202edf",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/ye23d.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/ye23d/ye23d.pdf",
+              "sha256": "9db03ba6386fd7517f6bf601351a6c1f69503c22a8d969bfd6e336fbae6652f3"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/di25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "2.1. Nonlinear Contextual Bandits with Corruption In a contextual bandit problem with T rounds, the agent observes a context xt ∈ X at each round t ∈ [T ] and takes action at ∈ A. After the decision, the environment generates a reward rt (xt , at ) = f∗ (xt , at ) + ϵt (xt , at ), where ϵt (xt , at ) is a mean-zero noise. Finally, the agent receives the reward rt , and the next step begins. To model the adversarial corruption, assume that we have access to a known function class F : X × A → R but f∗ ∈ / F due to corruption. Specifically, we introduce the following notion of cumulative corruption for contextual bandits. Definition 2.1 (Cumulative Corruption for Bandits). The",
+              "url": "https://proceedings.mlr.press/v202/ye23d/ye23d.pdf",
+              "document_sha256": "9db03ba6386fd7517f6bf601351a6c1f69503c22a8d969bfd6e336fbae6652f3"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To summarize, our contributions are threefold. • For contextual bandits under adversarial corruption and with general function approximation, we propose an algorithm based on optimism and uncertainty-weighted regression, which is computationally efficient when the weighted regression problem can be efficiently solved. We characterize the uncertainty of each data point by its diversity from history samples. Moreover, we demonstrate that the total level of uncertainty in the weighted version can be controlled by the eluder dimension (Russo & Van Roy, 2013).",
+              "url": "https://proceedings.mlr.press/v202/ye23d/ye23d.pdf",
+              "document_sha256": "9db03ba6386fd7517f6bf601351a6c1f69503c22a8d969bfd6e336fbae6652f3"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "same problem and proposed an algorithm with near-optimal regret in the non-corrupted case. Lee et al. (2021) studied this problem in a different setting, where the adversarial corruptions are generated through the inner product of a corrupted vector and the context vector. For linear contextual bandits, Bogunovic et al. (2021) proved that under an additional context diversity assumption, the regret of a simple greedy algorithm is nearly optimal with an additive corruption term. Zhao et al. (2021) and Ding et al. (2022) extended the OFUL algorithm (Abbasi-Yadkori et al., 2011) and proved a regret with a corruption term polynomially dependent on the total number of rounds T . He et al. (2022) proposed an algorithm for known corruption level C to remove the polynomial dependency on T in the corruption term, which only has a linear dependency on C. They also proved a lower bound showing the optimality of linear dependency on C for linear contextual bandits with a known corruption level. Additionally, He et al. (2022) extended the proposed algorithm to an unknown corruption level and provided a near-optimal performance guarantee that matches the lower bound. For more extensions, Kuroki et al. (2023) studied best-of-both-worlds algorithms for linear contextual bandits. Ye et al. (2023) proposed a corruption robust algorithm for nonlinear contextual bandits. Dueling Bandits and Logistic Bandits. The dueling bandit model was first proposed in Yue et al. (2012). Compared with bandits, the agent will select two arms and receive the preference feedback between the two arms from the environment. For general preference, there may not exist the “best” arm that always wins in the pairwise comparison. Therefore, various alternative winners are considered, including Condorcet winner",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Learning from human feedback plays an important role in aligning generative models, such as large language models (LLM). However, the effectiveness of this approach can be influenced by adversaries, who may intentionally provide misleading preferences to manipulate the output in an undesirable or harmful direction. To tackle this challenge, we study a specific model within this problem domain–contextual dueling bandits with adversarial feedback, where the true preference label can be flipped by an adversary. We propose an algorithm namely robust contextual dueling bandits (RCDB), which is based on uncertaintyweighted maximum likelihood √ estimation. Our e algorithm achieves an O(d T /κ + dC/κ) regret bound, where T is the number of rounds, d is the dimension of the context, κ is the lower bound of the derivative of the link function, and 0 ≤ C ≤ T is the total number of adversarial feedback. We also prove a lower bound to show that our regret bound is nearly optimal, both in scenarios with and without (C = 0) adversarial feedback. Our work is the first to achieve nearly minimax optimal regret for dueling bandits in the presence of adversarial preference feedback. Additionally, for the sigmoid link function, we develop a novel algorithm that takes into account the effect of local derivatives into maximum likelihood estimation (MLE) analysis through a refined method for estimating the link function’s derivative. This method helps us to eliminate the κ dependence in the leading term with respect to T , which reduces the exponential dependence on the parameter radius B to a polynomial dependence. We conduct experiments to evaluate our proposed algorithm RCDB against various types of adversar-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose a new algorithm called robust contextual dueling bandits (RCDB), which integrates uncertaintydependent weights into the Maximum Likelihood Estimator (MLE). Intuitively, our choice of weight is designed to induce a higher degree of skepticism about potentially “untrustworthy” feedback. The agent is encouraged to focus more on feedback that is more likely to be genuine, effectively diminishing the impact of any adversarial feedback.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03df2c08f03813efd8b1dbf2",
+          "url": "https://proceedings.mlr.press/v202/ye23d.html"
+        },
+        "b": {
+          "paper_id": "paper-14bee9781d1eb1c2cae9eba8",
+          "url": "https://proceedings.mlr.press/v267/di25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "f5f0d7b86b37788071bc5eea55109092f7367667e6c94f567ac6be76802481fd"
+    },
+    {
+      "id": "edge-64720c8b2d3f85c49ca6d30e",
+      "a": "paper-04d61c76d97dd6f15ef91bd1",
+      "b": "paper-890edf215ba8b32d8a573128",
+      "state": {
+        "paper_a": {
+          "title": "Estimating the Optimal Covariance with Imperfect Mean in Diffusion Probabilistic Models",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Diffusion probabilistic models (DPMs) are a class of powerful deep generative models (DGMs). Despite their success, the iterative generation process over the full timesteps is much less efficient than other DGMs such as GANs. Thus, the generation performance on a subset of timesteps is crucial, which is greatly influenced by the covariance design in DPMs. In this work, we consider diagonal and full covariances to improve the expressive power of DPMs. We derive the optimal result for such covariances, and then correct it when the mean of DPMs is imperfect. Both the optimal and the corrected ones can be decomposed into terms of conditional expectations over functions of noise. Building upon it, we propose to estimate the optimal covariance and its correction given imperfect mean by learning these conditional expectations. Our method can be applied to DPMs with both discrete and continuous timesteps. We consider the diagonal covariance in our implementation for computational efficiency. For an efficient practical implementation, we adopt a parameter sharing scheme and a two-stage training process. Empirically, our method outperforms a wide variety of covariance design on likelihood results, and improves the sample quality especially on a small number of timesteps."
+        },
+        "paper_b": {
+          "title": "Thompson Sampling with Diffusion Generative Prior",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "In this work, we initiate the idea of using denoising diffusion models to learn priors for online decision making problems. We specifically focus on bandit meta-learning, aiming to learn a policy that performs well across bandit tasks of a same class. To this end, we train a diffusion model that learns the underlying task distribution and combine Thompson sampling with the learned prior to deal with new tasks at test time. Our posterior sampling algorithm carefully balances between the learned prior and the noisy observations that come from the learner’s interaction with the environment. To capture realistic bandit scenarios, we propose a novel diffusion model training procedure that trains from incomplete and noisy data, which could be of independent interest. Finally, our extensive experiments clearly demonstrate the potential of the proposed approach."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Note that we opt for a simple model where the covariance matrices are the same at all points, whereas Bao et al. (2022) predicted the mean squared residual at every xℓ using a neural network.\nTo remedy this, we follow Bao et al. (2022) and calibrate the variances of the reverse process with a calibration set Dcal = {xi,0}i∈[ncal].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04d61c76d97dd6f15ef91bd1",
+          "b": "paper-890edf215ba8b32d8a573128",
+          "input_sha256": "a1320a8fb545ec0c9e9688cde46528fe19cb1c39a2eb392e63f5b776dbd62c76",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/bao22d.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/bao22d/bao22d.pdf",
+              "sha256": "ac2104e16f7c1c59eb8aefe89c06fee8bed16e5c4a5b5e3a7d61db9621e646ad"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/hsieh23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/hsieh23a/hsieh23a.pdf",
+              "sha256": "5e9d2161d09d3076da23f7297a98bdeeca4dc757a3a50f8eaf6b8d695124310f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion probabilistic models (DPMs) are a class of powerful deep generative models (DGMs). Despite their success, the iterative generation process over the full timesteps is much less efficient than other DGMs such as GANs. Thus, the generation performance on a subset of timesteps is crucial, which is greatly influenced by the covariance design in DPMs. In this work, we consider diagonal and full covariances to improve the expressive power of DPMs. We derive the optimal result for such covariances, and then correct it when the mean of DPMs is imperfect. Both the optimal and the corrected ones can be decomposed into terms of conditional expectations over functions of noise. Building upon it, we propose to estimate the optimal covariance and its correction given imperfect mean by learning these conditional expectations. Our method can be applied to DPMs with both discrete and continuous timesteps. We consider the diagonal covariance in our implementation for computational efficiency. For an efficient practical implementation, we adopt a parameter sharing scheme and a two-stage training process. Empirically, our method outperforms a wide variety of covariance design on likelihood results, and improves the sample quality especially on a small number of timesteps.",
+              "url": "https://proceedings.mlr.press/v162/bao22d/bao22d.pdf",
+              "document_sha256": "ac2104e16f7c1c59eb8aefe89c06fee8bed16e5c4a5b5e3a7d61db9621e646ad"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We consider diagonal and full covariances to improve the expressive power of DPMs. We derive the optimal mean and covariance in terms of the maximum likelihood, and also correct it given an imperfect mean. Both the optimal and the corrected ones can be decomposed into terms of conditional expectations over functions of noise, which can be estimated by minimizing MSE losses. We consider diagonal covariances in our implementation for computational efficiency. Besides, we adopt a parameter sharing scheme for inference efficiency and a two-stage training process motivated by our theory. Our method is applicable to DPMs with both discrete and continuous timesteps. Empirically, our method consistently outperforms a wide variety of baselines on likelihood estimation, and improves the sample quality especially on a small number of timesteps.",
+              "url": "https://proceedings.mlr.press/v162/bao22d/bao22d.pdf",
+              "document_sha256": "ac2104e16f7c1c59eb8aefe89c06fee8bed16e5c4a5b5e3a7d61db9621e646ad"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "3.1. Variance Calibration While Ho et al. (2020) fixed the variance of pθ (Xℓ | xℓ+1 ) to that of q(Xℓ | xℓ+1 , x0 ) in (1), Bao et al. (2021) recently showed that this choice was sub-optimal. This is critical when we use diffusion model as a prior in online decision making, as it prevents us from quantifying the right level of uncertainty. To remedy this, we follow Bao et al. (2022) and calibrate the variances of the reverse process with a calibration set Dcal = {xi,0 }i∈[ncal ] . Here xi,0 ∈ RK is a K-dimensional vector, ncal is the number of calibration samples, and we use subscript i to denote data point i.",
+              "url": "https://proceedings.mlr.press/v202/hsieh23a/hsieh23a.pdf",
+              "document_sha256": "5e9d2161d09d3076da23f7297a98bdeeca4dc757a3a50f8eaf6b8d695124310f"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "where τ = τ1:L represents the estimated variance parameter 2 and p′θ,τ (X0 | xℓ+1 ) = N (hθ (xℓ+1 , ℓ + 1), diag(τℓ+1 )) is the aforementioned Gaussian approximation of X0 | xℓ+1 . Compared to (1), the variance of the reverse step gets en2 larged by an additive constant of w12 diag(τℓ+1 ) to reflect the uncertainty in the denoiser output. Note that we opt for a simple model where the covariance matrices are the same at all points, whereas Bao et al. (2022) predicted the mean squared residual at every xℓ using a neural network.",
+              "url": "https://proceedings.mlr.press/v202/hsieh23a/hsieh23a.pdf",
+              "document_sha256": "5e9d2161d09d3076da23f7297a98bdeeca4dc757a3a50f8eaf6b8d695124310f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "Overall Training Procedure. In presence of perfect data, diffusion model training optimizes the denoising objective (2). However, neither x0 nor xℓ are available when we only have an imperfect dataset Ďtr . To tackle these challenges, we propose an expectation-maximization (EM) procedure, which we illustrate in Figure 2 and summarize in Algorithm 4. The success of our method hinges on the following two observations.",
+              "url": "https://proceedings.mlr.press/v202/hsieh23a/hsieh23a.pdf",
+              "document_sha256": "5e9d2161d09d3076da23f7297a98bdeeca4dc757a3a50f8eaf6b8d695124310f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Standard training procedure of diffusion models requires access to a dataset of clean samples Dtr = {xi,0 }i∈[ntr ] . Nonetheless, in most bandit applications, it is nearly impossible to obtain such dataset as the exact mean reward vector µ of a task is never directly observed. Instead, one can collect imperfect observations of these vectors, either through previous bandit interactions or forced exploration. Taking this into account, we propose a systematic procedure to train diffusion models from imperfect data. Importantly, the application scope of our methodology goes beyond the bandit setup and covers any situation with imperfect data. As an example, we apply our approach to train from imperfect images (corrupted MNIST and Fashion-MNIST datasets, Xiao et al., 2017) and obtain promising results (details are provided in Appendix F.3).",
+              "url": "https://proceedings.mlr.press/v202/hsieh23a/hsieh23a.pdf",
+              "document_sha256": "5e9d2161d09d3076da23f7297a98bdeeca4dc757a3a50f8eaf6b8d695124310f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04d61c76d97dd6f15ef91bd1",
+          "url": "https://proceedings.mlr.press/v162/bao22d.html"
+        },
+        "b": {
+          "paper_id": "paper-890edf215ba8b32d8a573128",
+          "url": "https://proceedings.mlr.press/v202/hsieh23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "ed90f6cc0b7f2126ccf5e555b4dd762a27cf116f1b460fc04cdd7dd107ca1246"
+    },
+    {
+      "id": "edge-0d9171f9fb0b34b5853b5204",
+      "a": "paper-079760e38189ee55c7d50cb0",
+      "b": "paper-a15209e9e50da2aa73654c8a",
+      "state": {
+        "paper_a": {
+          "title": "Logarithmic Regret for Adversarial Online Control",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We introduce a new algorithm for online linear-quadratic control in a known system subject to adversarial disturbances. Existing regret bounds for this setting scale as $\\sqrt{T}$ unless strong stochastic assumptions are imposed on the disturbance process. We give the first algorithm with logarithmic regret for arbitrary adversarial disturbance sequences, provided the state and control costs are given by known quadratic functions. Our algorithm and analysis use a characterization for the optimal offline control law to reduce the online control problem to (delayed) online learning with approximate advantage functions. Compared to previous techniques, our approach does not need to control movement costs for the iterates, leading to logarithmic regret."
+        },
+        "paper_b": {
+          "title": "Online Convex Optimization with Unbounded Memory",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Online convex optimization (OCO) is a widely used framework in online learning. In each round, the learner chooses a decision in a convex set and an adversary chooses a convex loss function, and then the learner suffers the loss associated with their current decision. However, in many applications the learner's loss depends not only on the current decision but on the entire history of decisions until that point. The OCO framework and its existing generalizations do not capture this, and they can only be applied to many settings of interest after a long series of approximation arguments. They also leave open the question of whether the dependence on memory is tight because there are no non-trivial lower bounds. In this work we introduce a generalization of the OCO framework, ``Online Convex Optimization with Unbounded Memory'', that captures long-term dependence on past decisions. We introduce the notion of $p$-effective memory capacity, $H_p$, that quantifies the maximum influence of past decisions on present losses. We prove an $O(\\sqrt{H_p T})$ upper bound on the policy regret and a matching (worst-case) lower bound. As a special case, we prove the first non-trivial lower bound for OCO with finite memory~\\citep{anavaHM2015online}, which could be of independent interest, and also improve existing upper bounds. We demonstrate the broad applicability of our framework by using it to derive regret bounds, and to improve and simplify existing regret bound derivations, for a variety of online learning problems including online linear control and an online variant of performative prediction."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "There is a growing body of work on online linear control and its variants that rely on OCO with finite memory [Hazan et al., 2020, Agarwal et al., 2019c, Foster and Simchowitz, 2020, Cassel and Koren, 2020, Gradu et al., 2020, Li et al., 2021, Minasyan et al., 2021].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079760e38189ee55c7d50cb0",
+          "b": "paper-a15209e9e50da2aa73654c8a",
+          "input_sha256": "9d996cda8f11d2c231689b682124a3441248b383a682a9f9e8f3ccfd332122da",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/foster20b.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/foster20b/foster20b.pdf",
+              "sha256": "e9cffb70554a84244b22e55b7fc62269e7f9fd0341fc2e64076fe7014a98cfaf"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/531230cfac80c65017ad0f85d3031edc-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/531230cfac80c65017ad0f85d3031edc-Paper-Conference.pdf",
+              "sha256": "044311b85ec269c3616b9f9da53a2af6556e3103c70c7075113bb67bb643ae3b"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new algorithm for online linearquadratic control in a known system subject to adversarial disturbances. √ Existing regret bounds for this setting scale as T unless strong stochastic assumptions are imposed on the disturbance process. We give the first algorithm with logarithmic regret for arbitrary adversarial disturbance sequences, provided the state and control costs are given by known quadratic functions. Our algorithm and analysis use a characterization for the optimal offline control law to reduce the online control problem to (delayed) online learning with approximate advantage functions. Compared to previous techniques, our approach does not need to control movement costs for the iterates, leading to logarithmic regret.",
+              "url": "https://proceedings.mlr.press/v119/foster20b/foster20b.pdf",
+              "document_sha256": "e9cffb70554a84244b22e55b7fc62269e7f9fd0341fc2e64076fe7014a98cfaf"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "controller K ∈ K on the specific, realized noise sequence. While the class K contains the optimal H∞ and H2 control policies, we also develop algorithms to compete with a more general class of stabilizing linear controllers, which may fare better for certain noise sequences (Appendix B). Logarithmic regret in online control. Agarwal et al. (2019a) introduced the adversarial LQR setting we study √ and provided an efficient algorithm with T -regret. Subsequent works (Agarwal et al., 2019b; Simchowitz et al., 2020) have shown that logarithmic regret is possible when the disturbances follow a semi-adversarial process with persistent excitation. Our main result is to achieve logarithmic regret for fully adversarial disturbances, provided that costs are known and quadratic. 1.1. Contributions We introduce Riccatitron (Algorithm 1), a new algorithm for online linear control with adversarial disturbances which attains polylogarithmic regret. Theorem 1 (informal). Riccatitron attains regret O(log3 T ), where O hides factors polynomial in relevant problem parameters. Riccatitron has comparable computational efficiency to previous methods. We show in Appendix B that the algorithm also extends to a more general benchmark class of linear controllers with internal state, and to “tracking” loss functions of the form `t (x, u) ∶= `(x − at , u − bt ). Some conceptual contributions are as follows.",
+              "url": "https://proceedings.mlr.press/v119/foster20b/foster20b.pdf",
+              "document_sha256": "e9cffb70554a84244b22e55b7fc62269e7f9fd0341fc2e64076fe7014a98cfaf"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "In this paper we introduced a generalization of the OCO framework, “Online Convex Optimization with Unbounded Memory”, that allows the loss in the current round to depend on the entire history of decisions until that point. We proved matching upper and lower bounds on the policy regret in terms of the time horizon, the p-effective memory capacity (a quantitative measure of the influence of past decisions on present losses), and other problem parameters (Theorems 3.1 and 3.2). As a special case, we proved the first non-trivial lower bound for OCO with finite memory (Theorem 3.4), which could be of independent interest, and also improved existing upper bounds (Theorem 3.3). We illustrated the power of our framework by bringing together the regret analysis of two seemingly disparate problems under the same umbrella: online linear control (Theorem 4.1), where we improve and simplify existing regret bounds, and online performative prediction (Theorem 4.2). There are a number of directions for future research. A natural follow-up is to consider unknown dynamics (i.e., when the learner does not know the operators A and B) and/or the case of bandit feedback (i.e., when the learner only observes ft (ht )). The extension to bandit feedback has been considered in the OCO and OCO with finite memory literature [Hazan and Li, 2016, Bubeck et al., 2021, Zhao et al., 2021, Gradu et al., 2020, Cassel and Koren, 2020]. It is tempting to think about a version where the history is a nonlinear, but decaying, function of the past decisions. The obvious challenge is that the nonlinearity would lead to non-convex losses. It is unclear how to deal with such issues, e.g., restricted classes of nonlinearities for which the OCO with unbounded memory perspective is still relevant [Zhang et al.,",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/531230cfac80c65017ad0f85d3031edc-Paper-Conference.pdf",
+              "document_sha256": "044311b85ec269c3616b9f9da53a2af6556e3103c70c7075113bb67bb643ae3b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "However, in many applications the loss of the learner depends not only on the current decisions but on the entire history of decisions until that point. For example, in online linear control [Agarwal et al., 2019b], in each round the learner chooses a “control policy” (i.e., decision), suffers a loss that is a function of the action taken by this policy and the current state of the system, and the system’s state evolves according to linear dynamics. The current state depends on the entire history of actions and, therefore, the current loss depends not only on the current decision but the entire history of decisions. The OCO framework cannot capture such long-term dependence of the current loss on the past decisions and neither can existing generalizations that allow the loss to depend on a constant number of past decisions [Anava et al., 2015]. Although a series of approximation arguments can be used to apply finite memory generalizations of OCO to the online linear control problem, there is no OCO framework that captures the complete long-term dependence of current losses on past decisions. Furthermore, there are no non-trivial lower bounds for OCO in the memory setting,1 which leaves open the question whether the dependence on memory is tight. Contributions. In this paper we introduce a generalization of the OCO framework, “Online Convex Optimization with Unbounded Memory” (Section 2), that allows the loss in the current round to depend on the entire history of decisions until that point. We introduce the notion of p-effective memory capacity, p Hp , that quantifies the maximum influence of past decisions on present losses. We prove an O( Hp T ) upper bound on the policy regret (Theorem 3.1) and a matching (worst-case) lower bound (Theorem 3.2). As a special case, we",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/531230cfac80c65017ad0f85d3031edc-Paper-Conference.pdf",
+              "document_sha256": "044311b85ec269c3616b9f9da53a2af6556e3103c70c7075113bb67bb643ae3b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "Figure 1: An illustration of the loss functions ft for the OCO with finite memory lower bound. Comparison of upper bound with prior work. The algorithmic ideas and analysis for our regret upper bound are influenced by Anava et al. [2015]. However, an important innovation in our work is the use of weighted norms in the case of linear sequence dynamics. This is a simple but powerful way of encoding prior knowledge about a problem, and allows us to derive non-trivial regret bounds in the case of unbounded-length histories. The technical complications that arise are captured in bounding the relevant quantities of interest, e.g., the Lipschitz constant L̃, the operator norm ∥Ak ∥, etc. Furthermore, using weighted norms even leads to improved regret bounds for some applications. Indeed, consider the application to online linear control with adversarial disturbances (Section 4.1). Our framework and upper bound applied to this problem (Theorem 4.1) improve upon the existing upper bound, which used a finite memory approximation. See Lemmas E.2 and E.6 for an illustration of the technical details involved when using weighted norms.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/531230cfac80c65017ad0f85d3031edc-Paper-Conference.pdf",
+              "document_sha256": "044311b85ec269c3616b9f9da53a2af6556e3103c70c7075113bb67bb643ae3b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079760e38189ee55c7d50cb0",
+          "url": "https://proceedings.mlr.press/v119/foster20b.html"
+        },
+        "b": {
+          "paper_id": "paper-a15209e9e50da2aa73654c8a",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/531230cfac80c65017ad0f85d3031edc-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "5e63ddd3cc360284482c2a545c89b536b42ca2a0eb67518da22a90259ee704db"
+    },
+    {
+      "id": "edge-42edad4103949505cf52357e",
+      "a": "paper-08452d7e729b7fbcc6441a8d",
+      "b": "paper-1e360ef994774333812b0c38",
+      "state": {
+        "paper_a": {
+          "title": "Nearly Optimal Algorithms for Linear Contextual Bandits with Adversarial Corruptions",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "We study the linear contextual bandit problem in the presence of adversarial corruption, where the reward at each round is corrupted by an adversary, and the corruption level (i.e., the sum of corruption magnitudes over the horizon) is $C\\geq 0$. The best-known algorithms in this setting are limited in that they either are computationally inefficient or require a strong assumption on the corruption, or their regret is at least $C$ times worse than the regret without corruption. In this paper, to overcome these limitations, we propose a new algorithm based on the principle of optimism in the face of uncertainty. At the core of our algorithm is a weighted ridge regression where the weight of each chosen action depends on its confidence up to some threshold. We show that for both known $C$ and unknown $C$ cases, our algorithm with proper choice of hyperparameter achieves a regret that nearly matches the lower bounds. Thus, our algorithm is nearly optimal up to logarithmic factors for both cases. Notably, our algorithm achieves the near-optimal regret for both corrupted and uncorrupted cases ($C=0$) simultaneously."
+        },
+        "paper_b": {
+          "title": "Linear Bandits with Partially Observable Features",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "We study the linear bandit problem that accounts for partially observable features. Without proper handling, unobserved features can lead to linear regret in the decision horizon $T$, as their influence on rewards is unknown. To tackle this challenge, we propose a novel theoretical framework and an algorithm with sublinear regret guarantees. The core of our algorithm consists of (i) feature augmentation, by appending basis vectors that are orthogonal to the row space of the observed features; and (ii) the introduction of a doubly robust estimator. Our approach achieves a regret bound of $\\tilde{O}(\\sqrt{(d + d_h)T})$, where $d$ is the dimension of the observed features and $d_h$ depends on the extent to which the unobserved feature space is contained in the observed one, thereby capturing the intrinsic difficulty of the problem. Notably, our algorithm requires no prior knowledge of the unobserved feature space, which may expand as more features become hidden. Numerical experiments confirm that our algorithm outperforms both non-contextual multi-armed bandits and linear bandit algorithms depending solely on observed features."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "A more detailed and comprehensive literature review is provided in Appendix A.\nThis lack of structural information presents a fundamental challenge, as it prevents the agent from explicitly modeling or compensating for the unobserved components when selecting an appropriate learning strategy.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08452d7e729b7fbcc6441a8d",
+          "b": "paper-1e360ef994774333812b0c38",
+          "input_sha256": "e8543afecd18560f68ef731beba2fbabe70babe70baa120f981998600f6d0d0e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/df5f94d6ac6e13d830d70536cde9f0d2-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/df5f94d6ac6e13d830d70536cde9f0d2-Paper-Conference.pdf",
+              "sha256": "ad4940ea31bcd1b6d828aea9ef76cac3c36ad5b924961ea7c5082365f479b94a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/kim25af.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25af/kim25af.pdf",
+              "sha256": "6e152994a35f2e5cdddf629e11305c8428545d42bc50a7b0532f52d981cc55f1"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Regret(K) = o(K) + O(C). The lower bound proved in Gupta et al. (2019a) suggests that the linear dependence on C is near-optimal. Such a regret structure reveals an desirable property of corruption-robust bandit algorithms, that is, the algorithm should perform nearly the same as the bandit algorithms without corruption when the corruption level C is small or diminishes. Based on the above observation, a natural question arises: Can we design computationally efficient algorithms for linear contextual bandits with corruption that can attain the best possible regret, similar to those in multi-armed bandits? Some previous works have attempted to answer this question for the simpler stochastic linear bandit setting, where the decision sets at each round are identical and finite. Li et al. (2019) studied the stochastic linear bandits and proposed an instance-dependent regret bound. Later on, Bogunovic et al. (2021) studied the same problem and proposed an algorithm that achieves a regret with the corruption term depending on C linearly and on K logarithmically. However, these algorithms are limited to the stochastic linear bandit setting since their algorithm design highly relies on the experiment design and arm-elimination techniques that require a multiple selection of the same action and can only handle fixed decision set. They are not applicable to contextual bandits, where the decision set is changing over time and can even be infinite. For the more general linear contextual bandit setting, Bogunovic et al. (2021) proved that a simple greedy algorithm based on linear regression can attain an ideal corruption term that has a linear dependence on C and a logarithmic dependence on K, under a stringent diversity assumption on the contexts. Lee et al. (2021) proposed an",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/df5f94d6ac6e13d830d70536cde9f0d2-Paper-Conference.pdf",
+              "document_sha256": "ad4940ea31bcd1b6d828aea9ef76cac3c36ad5b924961ea7c5082365f479b94a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study the linear contextual bandit problem in the presence of adversarial corruption, where the reward at each round is corrupted by an adversary, and the corruption level (i.e., the sum of corruption magnitudes over the horizon) is C ≥ 0. The best-known algorithms in this setting are limited in that they either are computationally inefficient or require a strong assumption on the corruption, or their regret is at least C times worse than the regret without corruption. In this paper, to overcome these limitations, we propose a new algorithm based on the principle of optimism in the face of uncertainty. At the core of our algorithm is a weighted ridge regression where the weight of each chosen action depends on its confidence up to some threshold. We show that for both known C and unknown C cases, our algorithm with proper choice of hyperparameter achieves a regret that nearly matches the lower bounds. Thus, our algorithm is nearly optimal up to logarithmic factors for both cases. Notably, our algorithm achieves the near-optimal regret for both corrupted and uncorrupted cases (C = 0) simultaneously.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/df5f94d6ac6e13d830d70536cde9f0d2-Paper-Conference.pdf",
+              "document_sha256": "ad4940ea31bcd1b6d828aea9ef76cac3c36ad5b924961ea7c5082365f479b94a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Second, in bandit problems with partially observable features, prior works often rely on structural assumptions. For example, Park & Faradonbeh (2022; 2024); Kim et al. (2023a) assume the true features are drawn from a Gaussian distribution, while Zeng et al. (2025) model them as evolving according to a linear dynamical system with additive Gaussian noise, where observed features are generated via a known linear mapping, also corrupted by Gaussian noise. These methods typically aim to recover the true features— via decoders (Park & Faradonbeh, 2022; 2024), Bayesian oracles (Kim et al., 2023a), or Kalman filtering (Zeng et al., 2025). In contrast, our approach makes no structural assumptions about the relationship between observed and unobserved features and does not attempt to recover the latter. Instead, we mitigate the information loss from partial observability by projecting the latent part of the reward using only the observed features. A more detailed and comprehensive literature review is provided in Appendix A.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25af/kim25af.pdf",
+              "document_sha256": "6e152994a35f2e5cdddf629e11305c8428545d42bc50a7b0532f52d981cc55f1"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "For clarity, we highlight the observed components in blue and the unobserved components in red. Note that the dimensions of the latent feature vector, du = dz − d, and the true feature vector, dz , are both unknown to the agent. As a result, the agent is unaware of how many features, if any, are unobserved, or even whether partial observability exists at all. This lack of structural information presents a fundamental challenge, as it prevents the agent from explicitly modeling or compensating for the unobserved components when selecting an appropriate learning strategy.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25af/kim25af.pdf",
+              "document_sha256": "6e152994a35f2e5cdddf629e11305c8428545d42bc50a7b0532f52d981cc55f1"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We study the linear bandit problem that accounts for partially observable features. Without proper handling, unobserved features can lead to linear regret in the decision horizon T , as their influence on rewards is unknown. To tackle this challenge, we propose a novel theoretical framework and an algorithm with sublinear regret guarantees. The core of our algorithm consists of (i) feature augmentation, by appending basis vectors that are orthogonal to the row space of the observed features; and (ii) the introduction of a doubly robust estimator. p Our approach achieves a regret bound e (d + dh )T ), where d is the dimension of of O( the observed features and dh depends on the extent to which the unobserved feature space is contained in the observed one, thereby capturing the intrinsic difficulty of the problem. Notably, our algorithm requires no prior knowledge of the unobserved feature space, which may expand as more features become hidden. Numerical experiments confirm that our algorithm outperforms both noncontextual multi-armed bandits and linear bandit algorithms depending solely on observed features.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25af/kim25af.pdf",
+              "document_sha256": "6e152994a35f2e5cdddf629e11305c8428545d42bc50a7b0532f52d981cc55f1"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Our main contributions are summarized as follows: • We propose a linear bandit problem with partially observable features. Our problem setting is more general and challenging than those in the existing literature on linear bandits with latent features, which often rely on specific structural assumptions governing the relationship between observed and latent features. In contrast, our approach assumes no additional structure for the unobserved features beyond the linearity of the reward function, which is commonly adopted in the linear bandit literature (Section 3).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25af/kim25af.pdf",
+              "document_sha256": "6e152994a35f2e5cdddf629e11305c8428545d42bc50a7b0532f52d981cc55f1"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08452d7e729b7fbcc6441a8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/df5f94d6ac6e13d830d70536cde9f0d2-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-1e360ef994774333812b0c38",
+          "url": "https://proceedings.mlr.press/v267/kim25af.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "1dab69834580ee790dc79d6f3e94dc8a4e17e397c7b5333d1ba93a4c26b8c496"
+    },
+    {
+      "id": "edge-350bb7a3ff7212efe0184ff1",
+      "a": "paper-08f5d9ca80bcc119084fd7b2",
+      "b": "paper-96f6c5e6d93449165eefe94a",
+      "state": {
+        "paper_a": {
+          "title": "Differentially-Private Federated Linear Bandits",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The rapid proliferation of decentralized learning systems mandates the need for differentially-private cooperative learning. In this paper, we study this in context of the contextual linear bandit: we consider a collection of agents cooperating to solve a common contextual bandit, while ensuring that their communication remains private. For this problem, we devise FedUCB, a multiagent private algorithm for both centralized and decentralized (peer-to-peer) federated learning. We provide a rigorous technical analysis of its utility in terms of regret, improving several results in cooperative bandit learning, and provide rigorous privacy guarantees as well. Our algorithms provide competitive performance both in terms of pseudoregret bounds and empirical benchmark performance in various multi-agent settings."
+        },
+        "paper_b": {
+          "title": "Near-Optimal Collaborative Learning in Bandits",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "This paper introduces a general multi-agent bandit model in which each agent is facing a finite set of arms and may communicate with other agents through a central controller in order to identify -in pure exploration- or play -in regret minimization- its optimal arm. The twist is that the optimal arm for each agent is the arm with largest expected mixed reward, where the mixed reward of an arm is a weighted sum of the rewards of this arm for all agents. This makes communication between agents often necessary. This general setting allows to recover and extend several recent models for collaborative bandit learning, including the recently proposed federated learning with personalization [Shi et al., 2021]. In this paper, we provide new lower bounds on the sample complexity of pure exploration and on the regret. We then propose a near-optimal algorithm for pure exploration. This algorithm is based on phased elimination with two novel ingredients: a data-dependent sampling scheme within each phase, aimed at matching a relaxation of the lower bound."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In our setting, we do not put constraints on the type of information that is exchanged in each communication round –which can be interesting when we consider privacy issues [11, 36]– nor on the lengths of the messages.\nA possible solution to overcome this problem would be to carefully combine our algorithm with a data privacy-preserving method, for instance by adding some noise to the data [11].\nWhile some works do not deal with personalization [11, 31, 26], others have for instance studied the integration of arm features in a modified setting with personalization [19].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08f5d9ca80bcc119084fd7b2",
+          "b": "paper-96f6c5e6d93449165eefe94a",
+          "input_sha256": "add3cf8dc976ead5d838470a288de3775dfec9c5ec50814d731b9b7435d23390",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/4311359ed4969e8401880e3c1836fbe1-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/4311359ed4969e8401880e3c1836fbe1-Paper.pdf",
+              "sha256": "bfc298743f0b3b927b16c79160a7a88e4ec8c14976339a6fc7b7fda090ceed9a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/5b9bef4eae0f574cedbf9f4bf29d8ae7-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/5b9bef4eae0f574cedbf9f4bf29d8ae7-Paper-Conference.pdf",
+              "sha256": "32e31c9389ad0c187bc3f93e603f21a8fdf165968f67861fea868c73eee413dd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In this section, we introduce our algorithm for federated learning with differential privacy. For the remainder of this section, for exposition, we consider the single-agent setting and drop an additional index subscript we use in the actual algorithm (e.g., we refer to the action at time t as xt and not xi,t for agent i). We build on the celebrated LinUCB algorithm, an application of the optimism heuristic to the linear bandit case [33, 1], designed for the single-agent problem. The central idea of the algorithm is, at every round t, to construct a confidence set Et that contains θ ∗ with high probability, followed by computing an upper confidence bound on the reward of 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/4311359ed4969e8401880e3c1836fbe1-Paper.pdf",
+              "document_sha256": "bfc298743f0b3b927b16c79160a7a88e4ec8c14976339a6fc7b7fda090ceed9a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We first consider the centralized communciation environment where there exists a controller that coordinates communication between different agents, as is typical in large-scale distributed learning. We consider a set of M agents that each are interacting with the contextual bandit, and periodically communicate with the controller, that synchronizes them with other agents. We present the algorithm C ENTRALIZED F ED UCB in Algorithm 1 that details our approach. Algorithm 1 works as follows. Consider an agent i, and assume that synchronization had last taken place at instant t0 . At any instant t > t0 , the agent has two sets of parameters - (A) the first being all observations up to instant t0 for all M agents (including itself) and (B) the second being its own observations from instant t0 to t. Since (A) includes samples from other agents, these 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/4311359ed4969e8401880e3c1836fbe1-Paper.pdf",
+              "document_sha256": "bfc298743f0b3b927b16c79160a7a88e4ec8c14976339a6fc7b7fda090ceed9a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "weight matrix W for which the best mixed arm of each agent coincides with its local best arm, ⋆ i.e. km = arg maxk∈[K] µk,m for any agent m, then solving best arm identification in the weighted collaborative bandit could have a much smaller sample complexity due to the sharing of information, while allowing the different clinical centers to communicate only once in a while. A first possibility to build such a weight matrix is to rely on a clustering of the different sub-populations so that the µk,m is supposed to be close to µk,m′ (but not necessarily equal) for all k and all agents m, m′ in the same cluster. Denoting by Cm the cluster to which agent m belongs, by setting wm,n = 1(Cm = Cn )/∣Cm ∣ we would have the mixed mean of each agent be very close to their local means. Another possibility is to rely on a similarity function S between sub-populations and define for all n, m wm,n to be proportional to S(m, n). This similarity function could be obtained prior to the learning phase by computing the similarities between subpopulation biomarkers, for instance. Related work Collaborative bandit learning has recently sparked wide interest in the multi-armed bandit literature. While some works do not deal with personalization [11, 31, 26], others have for instance studied the integration of arm features in a modified setting with personalization [19]. An interesting kernelized collaborative pure exploration problem was recently studied by [10]. In their model, both agents and arms are described by feature vectors, and there is a known kernel encoding the similarity between the mean reward of each (agent,arm) pair. This independent work follows a similar approach as ours and also propose a near-optimal phased elimination algorithm inspired by a lower bound, but the models",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5b9bef4eae0f574cedbf9f4bf29d8ae7-Paper-Conference.pdf",
+              "document_sha256": "32e31c9389ad0c187bc3f93e603f21a8fdf165968f67861fea868c73eee413dd"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "where It is the event that some information is shared between agents at round t. In our setting, we do not put constraints on the type of information that is exchanged in each communication round –which can be interesting when we consider privacy issues [11, 36]– nor on the lengths of the messages. Each communication round has a unit cost. In a communication round, all agents send messages to the central server (e.g., estimates of their local means) and the server can send back arbitrary quantities or instructions (e.g., how many times each arm should be sampled in the next exploration phase, and when to communicate next). Moreover, contrary to the works of [18, 32] on collaborative learning, we do not look at strategies explicitly minimizing for the number of communication rounds. Instead, our approach consists in proving a lower bound on the smallest possible exploration cost of a δ-correct algorithm which would communicate at every round ; and then, finding an algorithm for which exploration cost matches this lower bound, while suffering a reasonable communication cost.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5b9bef4eae0f574cedbf9f4bf29d8ae7-Paper-Conference.pdf",
+              "document_sha256": "32e31c9389ad0c187bc3f93e603f21a8fdf165968f67861fea868c73eee413dd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "assumed unique. Besides the degenerated case in which wn,m = 1(n = m), in which each agent is solving their own bandit problem in isolation, the agents need to communicate ; i.e., to share information about their local rewards to other agents for everyone to be able to estimate their expected mixed rewards. A strategy for an agent is defined as follows: at each time t, each agent m samples an arm πm (t), based on the available information, and then observes a noisy local reward from this arm. She has also the option to communicate information (e.g., empirical means of past local observations) to a central controller (or server), which will broadcast this information to all other agents. Just like in any multi-armed bandit model, several objectives may be considered, either related to maximizing (mixed) rewards –or, equivalently, minimizing regret– or identifying the best arms, while maintaining a reasonably small communication cost. The weighted collaborative bandit model encompasses different frameworks previously studied in the literature. Notably, the paper [30] studies a special case in which, given a level of personalization α ∈ [0, 1], the mixed reward is an interpolation between µk,m and the average of local rewards M 1 and wn,m = 1−α for n ≠ m . The authors µ which amounts to choosing wm,m = α + 1−α M ∑n=1 k,n M M consider the objective of minimizing the regret while minimizing for the number of communication rounds, under the name federated multi-armed bandit with personalization2 . In this paper, we mainly focus on the counterpart pure exploration problem in which agents should collaboratively identify their own optimal arm in terms of expected mixed reward, with high confidence, and using as few exploration rounds as possible. This extends the well-studied",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5b9bef4eae0f574cedbf9f4bf29d8ae7-Paper-Conference.pdf",
+              "document_sha256": "32e31c9389ad0c187bc3f93e603f21a8fdf165968f67861fea868c73eee413dd"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Collaborative learning is a general machine learning paradigm in which a group of agents collectively train a learning algorithm. Some recent works have investigated how agents can efficiently perform sequential decision making in a collaborative context [36]. In particular, Shi et al. propose an interesting setting to tackle collaborative bandit learning when some level of personalization is required [30]. Personalization leads to the twist that each agent should play the best arm in a mixed model which is obtained as a combination of her local model with the local model of other agents. In this work, we introduce a more general model retaining this idea, that we call the weighted collaborative bandit model. In this model, there are M agents and a finite number of K arms. When agent m samples arm k at time t, she gets to observe a local reward Xk,m (t) , which is drawn from a 1-sub-Gaussian 1 distribution of mean µk,m , independently from past observations and from other agents’ observations. However, this agent does not necessarily seek to maximize her local reward, but rather some notion of mixed reward, related to the utility of that arm for other agents. More specifically, we assume that agents share a known weight matrix W ∶= (wn,m )n,m ∈ [0, 1]M ×M , such that ∑n∈[M ] wn,m = 1 1",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/5b9bef4eae0f574cedbf9f4bf29d8ae7-Paper-Conference.pdf",
+              "document_sha256": "32e31c9389ad0c187bc3f93e603f21a8fdf165968f67861fea868c73eee413dd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08f5d9ca80bcc119084fd7b2",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/4311359ed4969e8401880e3c1836fbe1-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-96f6c5e6d93449165eefe94a",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/5b9bef4eae0f574cedbf9f4bf29d8ae7-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "d158b90d11ad92725618884614ff67b26a0a95e6aef8bedade5e4e3891ef6227"
+    },
+    {
+      "id": "edge-04504fb0a4fc5186b091f953",
+      "a": "paper-0b82a2e70e705d2205674c1f",
+      "b": "paper-dfd3623d01f557d63de583d9",
+      "state": {
+        "paper_a": {
+          "title": "Policy Teaching via Environment Poisoning: Training-time Adversarial Attacks against Reinforcement Learning",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We study a security threat to reinforcement learning where an attacker poisons the learning environment to force the agent into executing a target policy chosen by the attacker. As a victim, we consider RL agents whose objective is to find a policy that maximizes average reward in undiscounted infinite-horizon problem settings. The attacker can manipulate the rewards or the transition dynamics in the learning environment at training-time and is interested in doing so in a stealthy manner. We propose an optimization framework for finding an \\emph{optimal stealthy attack} for different measures of attack cost. We provide sufficient technical conditions under which the attack is feasible and provide lower/upper bounds on the attack cost. We instantiate our attacks in two settings: (i) an \\emph{offline} setting where the agent is doing planning in the poisoned environment, and (ii) an \\emph{online} setting where the agent is learning a policy using a regret-minimization framework with poisoned feedback. Our results show that the attacker can easily succeed in teaching any target policy to the victim under mild conditions and highlight a significant security threat to reinforcement learning agents in practice."
+        },
+        "paper_b": {
+          "title": "When Are Linear Stochastic Bandits Attackable?",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "We study adversarial attacks on linear stochastic bandits: by manipulating the rewards, an adversary aims to control the behaviour of the bandit algorithm. Perhaps surprisingly, we first show that some attack goals can never be achieved. This is in a sharp contrast to context-free stochastic bandits, and is intrinsically due to the correlation among arms in linear stochastic bandits. Motivated by this finding, this paper studies the attackability of a $k$-armed linear bandit environment. We first provide a complete necessity and sufficiency characterization of attackability based on the geometry of the arms’ context vectors. We then propose a two-stage attack method against LinUCB and Robust Phase Elimination. The method first asserts whether the given environment is attackable; and if yes, it poisons the rewards to force the algorithm to pull a target arm linear times using only a sublinear cost. Numerical experiments further validate the effectiveness and cost-efficiency of the proposed attack method."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "There are also several recent works on reward poisoning attacks against reinforcement learning (Yu and Sra, 2019; Zhang et al., 2020; Rakhsha et al., 2021, 2020), but with quite diﬀerent focus as ours.\nThis is also called the oracle attack in previous works (Jun et al., 2018; Rakhsha et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b82a2e70e705d2205674c1f",
+          "b": "paper-dfd3623d01f557d63de583d9",
+          "input_sha256": "8dbbfb53d1463e71d379c70f8175656a1ebfc8583b410128faf2e1556beada56",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/rakhsha20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/rakhsha20a/rakhsha20a.pdf",
+              "sha256": "477473dccf4b7be8058fb1420af4d0bebca0ee2a462a4f1fa89092a3d182bc36"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/wang22ai.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/wang22ai/wang22ai.pdf",
+              "sha256": "de4c083491d27640daa2a6457c388c6f9f440ca4447164f14c592cf7f7d52449"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We study a security threat to reinforcement learning where an attacker poisons the learning environment to force the agent into executing a target policy chosen by the attacker. As a victim, we consider RL agents whose objective is to find a policy that maximizes average reward in undiscounted infinite-horizon problem settings. The attacker can manipulate the rewards or the transition dynamics in the learning environment at training-time and is interested in doing so in a stealthy manner. We propose an optimization framework for finding an optimal stealthy attack for different measures of attack cost. We provide sufficient technical conditions under which the attack is feasible and provide lower/upper bounds on the attack cost. We instantiate our attacks in two settings: (i) an offline setting where the agent is doing planning in the poisoned environment, and (ii) an online setting where the agent is learning a policy using a regret-minimization framework with poisoned feedback. Our results show that the attacker can easily succeed in teaching any target policy to the victim under mild conditions and highlight a significant security threat to reinforcement learning agents in practice.",
+              "url": "https://proceedings.mlr.press/v119/rakhsha20a/rakhsha20a.pdf",
+              "document_sha256": "477473dccf4b7be8058fb1420af4d0bebca0ee2a462a4f1fa89092a3d182bc36"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "4. Attacks in Offline Setting In this section, we introduce and analyze attacks against an offline planing agent that derives its policy using a poic. The attacker tries to minimally change the soned MDP M",
+              "url": "https://proceedings.mlr.press/v119/rakhsha20a/rakhsha20a.pdf",
+              "document_sha256": "477473dccf4b7be8058fb1420af4d0bebca0ee2a462a4f1fa89092a3d182bc36"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "ization about when a linear stochastic bandit environment is attackable. As Example 1 shows, the attackability of a bandit environment depends on the arm set A = {xi }ki=1 , the target arm x̃, and the underlying bandit parameter θ ∗ . For clarity of presentation, in this section, we shall always assume that the adversary knows exactly the ground-truth bandit parameter θ ∗ and thus the true expected reward of each arm. This is also called the oracle attack in previous works (Jun et al., 2018; Rakhsha et al., 2020). But in the next section, we will show that this assumption is not necessary: when the bandit environment is indeed attackable, we can design provably successful attacks even if the adversary does not know the underlying bandit parameter θ ∗ .",
+              "url": "https://proceedings.mlr.press/v162/wang22ai/wang22ai.pdf",
+              "document_sha256": "de4c083491d27640daa2a6457c388c6f9f440ca4447164f14c592cf7f7d52449"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "non-target arms in the null space of x̃ by θ̃, which might not be always feasible. We prove the feasibility of the resulting convex quadratic program is both sufficient and necessary for attacking a linear stochastic bandit environment. Inspired by our attackability analysis, we propose a twostage attack framework against linear stochastic bandit algorithms and demonstrate its application against LinUCB (Li et al., 2010) and Robust Phase Elimination (Bogunovic et al., 2021): the former is one of the most widely used linear contextual bandit algorithms, and the latter is a robust version designed for settings with adversarial corruptions. In the first stage, our method collects a carefully calibrated amount of rewards on the target arm to assess whether the given environment is attackable. The decision is based on an “empirical” version of our feasibility characterization. If attackable, i.e., there exists a feasible solution θ̃, in the second stage the method depresses the rewards the bandit algorithm receives on non-target arms based on θ̃, to fool the bandit algorithm to recognize the target arm as optimal. We prove that in an attackable environment, both algorithms can be successfully manipulated with only a sublinear cost. Our main contributions can be summarized as follows: • We characterize the sufficient and necessary conditions about when a stochastic linear bandit environment is attackable as the feasibility of a convex quadratic program. En route to proving the sufficiency, we also provide an oracle attack method that can attack any no-regret learning algorithm given the knowledge of ground-truth bandit parameter θ ∗ . If the environment is unattackable, i.e., the program is infeasible, our necessity proof implies that even the vanilla LinUCB algorithm cannot",
+              "url": "https://proceedings.mlr.press/v162/wang22ai/wang22ai.pdf",
+              "document_sha256": "de4c083491d27640daa2a6457c388c6f9f440ca4447164f14c592cf7f7d52449"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "4. Effective Attacks without Knowledge of True Model Parameters In the previous section, we characterized the attackability of a linear stochastic bandit environment by assuming the knowledge of ground-truth bandit parameter θ ∗ . We now show that such prior knowledge is not needed when designing practical attacks. Towards this end, we propose provably effective attacks against two representative bandit algorithms: the most well-known LinUCB and a state-ofthe-art robust linear stochastic bandit algorithm, Robust Phase Elimination (Bogunovic et al., 2021). We remark that the optimal attacks to these algorithms depend on the characteristics of algorithms themselves and are generally different, due to their different levels of robustness. This also resonates the important message mentioned in the introduction, i.e., the attackability analysis often goes hand-in-hand with the understanding of robustness of different algorithms, as reflected in various parts of our analysis. However, we point out that it is an intriguing open question to understand whether there is a single attack strategy that can manipulate any no-regret algorithm in an attackable environment. Two-stage Null Space Attack. Our proposed attack method is presented in Algorithm 1. The method spends",
+              "url": "https://proceedings.mlr.press/v162/wang22ai/wang22ai.pdf",
+              "document_sha256": "de4c083491d27640daa2a6457c388c6f9f440ca4447164f14c592cf7f7d52449"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b82a2e70e705d2205674c1f",
+          "url": "https://proceedings.mlr.press/v119/rakhsha20a.html"
+        },
+        "b": {
+          "paper_id": "paper-dfd3623d01f557d63de583d9",
+          "url": "https://proceedings.mlr.press/v162/wang22ai.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "34b7c4c46fa12d0b35c213f3aa3118461f548b38af626a9e716ce478256a2d58"
+    },
+    {
+      "id": "edge-ae101b47cc8e248b51861d2b",
+      "a": "paper-0c7821b85f465df0e59e9d22",
+      "b": "paper-f5cb47f0936e2e17912ced50",
+      "state": {
+        "paper_a": {
+          "title": "DAdaQuant: Doubly-adaptive quantization for communication-efficient Federated Learning",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Federated Learning (FL) is a powerful technique to train a model on a server with data from several clients in a privacy-preserving manner. FL incurs significant communication costs because it repeatedly transmits the model between the server and clients. Recently proposed algorithms quantize the model parameters to efficiently compress FL communication. We find that dynamic adaptations of the quantization level can boost compression without sacrificing model quality. We introduce DAdaQuant as a doubly-adaptive quantization algorithm that dynamically changes the quantization level across time and different clients. Our experiments show that DAdaQuant consistently improves client$\\rightarrow$server compression, outperforming the strongest non-adaptive baselines by up to $2.8\\times$."
+        },
+        "paper_b": {
+          "title": "Distributed Linear Bandits under Communication Constraints",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We consider distributed linear bandits where $M$ agents learn collaboratively to minimize the overall cumulative regret incurred by all agents. Information exchange is facilitated by a central server, and both the uplink and downlink communications are carried over channels with fixed capacity, which limits the amount of information that can be transmitted in each use of the channels. We investigate the regret-communication trade-off by (i) establishing information-theoretic lower bounds on the required communications (in terms of bits) for achieving a sublinear regret order; (ii) developing an efficient algorithm that achieves the minimum sublinear regret order offered by centralized learning using the minimum order of communications dictated by the information-theoretic lower bounds. For sparse linear bandits, we show a variant of the proposed algorithm offers better regret-communication trade-off by leveraging the sparsity of the problem."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Developing communication efficient FL algorithms is an active area of research (see Konečný et al. (2016); Liu et al. (2019); Sun et al. (2019); Reisizadeh et al. (2020); Haddadpour et al. (2021); Jhunjhunwala et al. (2021); Hönig et al. (2022) and references therein).\nThe objective is to best approximate the information being exchanged via techniques such as quantization and sparsification (see, for example, Konečný et al. (2016); Hanna et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0c7821b85f465df0e59e9d22",
+          "b": "paper-f5cb47f0936e2e17912ced50",
+          "input_sha256": "2b33ee1f215714ae5a15648763a538151389a45efa7181ef2d3e7426b5c9ae40",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/honig22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/honig22a/honig22a.pdf",
+              "sha256": "fc6c9a7695657177323443498e4b3fed03741107de6438d7851e281997a764fd"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/salgia23b.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/salgia23b/salgia23b.pdf",
+              "sha256": "d6769869995d0618ed9618f9b8a38d8a1c5e3a52d75bae1d63260e1100da5796"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "to their local dataset sizes. Figure 1 illustrates how clientadaptive quantization can minimize the quantization error. Intuitively, FL clients with greater weighting should have a greater communication budget and our proposed clientadaptive quantization achieves this in a principled way. To this end, we introduce the expected variance P of an accumulation of quantized parameters, E[Var( Q(p))], as a measure of the quantization error. Our client-adaptive quantization algorithm then assigns clients P minimal quantization levels, subject to a fixed E[Var( Q(p))]. This lowers the amount of data communicated from clients to the server, without increasing the quantization error. DAdaQuant (Doubly Adaptive Quantization) combines time- and client-adaptive quantization with an adaptation of the QSGD fixed-point quantization algorithm to achieve state-of-the-art FL uplink compression. In this paper, we make the following contributions: • We introduce the concept of client-adaptive quantization and develop algorithms for time- and client-adaptive quantization that are computationally efficient, empirically superior to existing algorithms, and compatible",
+              "url": "https://proceedings.mlr.press/v162/honig22a/honig22a.pdf",
+              "document_sha256": "fc6c9a7695657177323443498e4b3fed03741107de6438d7851e281997a764fd"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated Learning (FL) is a powerful technique to train a model on a server with data from several clients in a privacy-preserving manner. FL incurs significant communication costs because it repeatedly transmits the model between the server and clients. Recently proposed algorithms quantize the model parameters to efficiently compress FL communication. We find that dynamic adaptations of the quantization level can boost compression without sacrificing model quality. We introduce DAdaQuant as a doublyadaptive quantization algorithm that dynamically changes the quantization level across time and different clients. Our experiments show that DAdaQuant consistently improves client→server compression, outperforming the strongest nonadaptive baselines by up to 2.8×.",
+              "url": "https://proceedings.mlr.press/v162/honig22a/honig22a.pdf",
+              "document_sha256": "fc6c9a7695657177323443498e4b3fed03741107de6438d7851e281997a764fd"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "In the context of developing communication-efficient algorithm, another line of related work is Federated Learning (FL) (McMahan et al., 2017). FL aims to collaboratively learn a model by leveraging the data available at all the agents with a focus on ensuring privacy of the data for the participating agents. Developing communication efficient FL algorithms is an active area of research (see Konečný et al. (2016); Liu et al. (2019); Sun et al. (2019); Reisizadeh et al. (2020); Haddadpour et al. (2021); Jhunjhunwala et al. (2021); Hönig et al. (2022) and references therein). Detailed surveys can be found in Tang et al. (2020) and Zhao et al. (2022). These studies focus on the first-order stochastic optimization, which is different from the (zeroth-order) stochastic linear bandits considered in this work, in terms of both action selection strategies and the relevant information that needs to be exchanged.",
+              "url": "https://proceedings.mlr.press/v202/salgia23b/salgia23b.pdf",
+              "document_sha256": "d6769869995d0618ed9618f9b8a38d8a1c5e3a52d75bae1d63260e1100da5796"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "6. Leveraging Sparsity We now consider a variant of the original problem where the underlying reward vector θ∗ is known to satisfy an additional sparsity constraint. In particular, it is known that the number of non-zero elements in θ∗ are no more than s ≪ d, i.e., ∥θ∗ ∥0 ≤ s. For this setup, we propose Sparse-PLS, a variant of PLS, to leverage the sparsity of θ∗ to further reduce the communication cost.",
+              "url": "https://proceedings.mlr.press/v202/salgia23b/salgia23b.pdf",
+              "document_sha256": "d6769869995d0618ed9618f9b8a38d8a1c5e3a52d75bae1d63260e1100da5796"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0c7821b85f465df0e59e9d22",
+          "url": "https://proceedings.mlr.press/v162/honig22a.html"
+        },
+        "b": {
+          "paper_id": "paper-f5cb47f0936e2e17912ced50",
+          "url": "https://proceedings.mlr.press/v202/salgia23b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "9e9655b49068eb5ab10cba4ea1f42c611367b2ed41dbedef63e0a6c53bbf81a6"
+    },
+    {
+      "id": "edge-d2463bd89cd5da8f5d5356f2",
+      "a": "paper-0d8183f68a73e980c62c22e3",
+      "b": "paper-14bee9781d1eb1c2cae9eba8",
+      "state": {
+        "paper_a": {
+          "title": "Feel-Good Thompson Sampling for Contextual Dueling Bandits",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Contextual dueling bandits, where a learner compares two options based on context and receives feedback indicating which was preferred, extends classic dueling bandits by incorporating contextual information for decision-making and preference learning. Several algorithms based on the upper confidence bound (UCB) have been proposed for linear contextual dueling bandits. However, no algorithm based on posterior sampling has been developed in this setting, despite the empirical success observed in traditional contextual bandits. In this paper, we propose a Thompson sampling algorithm, named FGTS.CDB, for linear contextual dueling bandits. At the core of our algorithm is a new Feel-Good exploration term specifically tailored for dueling bandits. This term leverages the independence of the two selected arms, thereby avoiding a cross term in the analysis. We show that our algorithm achieves nearly minimax-optimal regret, i.e., $\\tilde{\\mathcal{O}}(d\\sqrt T)$, where $d$ is the model dimension and $T$ is the time horizon. Finally, we evaluate our algorithm on synthetic data and observe that FGTS.CDB outperforms existing algorithms by a large margin."
+        },
+        "paper_b": {
+          "title": "Nearly Optimal Algorithms for Contextual Dueling Bandits from Adversarial Feedback",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Learning from human feedback plays an important role in aligning generative models, such as large language models (LLM). However, the effectiveness of this approach can be influenced by adversaries, who may intentionally provide misleading preferences to manipulate the output in an undesirable or harmful direction. To tackle this challenge, we study a specific model within this problem domain–contextual dueling bandits with adversarial feedback, where the true preference label can be flipped by an adversary. We propose an algorithm namely robust contextual dueling bandits ($\\texttt{RCDB}$), which is based on uncertainty-weighted maximum likelihood estimation. Our algorithm achieves an $\\tilde O(d\\sqrt{T}/\\kappa+dC/\\kappa)$ regret bound, where $T$ is the number of rounds, $d$ is the dimension of the context, $\\kappa$ is the lower bound of the derivative of the link function, and $ 0 \\le C \\le T$ is the total number of adversarial feedback. We also prove a lower bound to show that our regret bound is nearly optimal, both in scenarios with and without ($C=0$) adversarial feedback. Our work is the first to achieve nearly minimax optimal regret for dueling bandits in the presence of adversarial preference feedback. Additionally, for the sigmoid link function, we develop a novel algorithm that takes into account the effect of local derivatives into maximum likelihood estimation (MLE) analysis through a refined method for estimating the link function’s derivative. This method helps us to eliminate the $\\kappa$ dependence in the leading term with respect to $T$, which reduces the exponential dependence on the parameter radius $B$ to a polynomial dependence. We conduct experiments to evaluate our proposed algorithm $\\texttt{RCDB}$ against various types of adversarial feedback. Experimental results demonstrate its superiority over the state-of-the-art dueling bandit algorithms in the presence of adversarial feedback."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This exponential dependence on B is frequently observed in the literature of dueling bandits and RLHF (Zhu et al., 2023; Xiong et al., 2023; Li et al., 2024).\nAlthough this setting is common in the literature, we observe that some recent works on dueling bandits can deal with nonlinear rewards (Li et al., 2024; Verma et al., 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0d8183f68a73e980c62c22e3",
+          "b": "paper-14bee9781d1eb1c2cae9eba8",
+          "input_sha256": "8d046ebdead90688c4de90292d2500fabaf7be61948445f1183b743c2c80480a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/li24co.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/li24co/li24co.pdf",
+              "sha256": "275eb0f406296df999b2d5a2a6411812d50179f7ec69cd2bceb601f29e4eaff9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/di25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Contextual dueling bandits, where a learner compares two options based on context and receives feedback indicating which was preferred, extends classic dueling bandits by incorporating contextual information for decision-making and preference learning. Several algorithms based on the upper confidence bound (UCB) have been proposed for linear contextual dueling bandits. However, no algorithm based on posterior sampling has been developed in this setting, despite the empirical success observed in traditional contextual bandits. In this paper, we propose a Thompson sampling algorithm, named FGTS.CDB, for linear contextual dueling bandits. At the core of our algorithm is a new Feel-Good exploration term specifically tailored for dueling bandits. This term leverages the independence of the two selected arms, thereby avoiding a cross term in the analysis. We show that our algorithm achieves nearly √ O(d T ), where d minimax-optimal regret, i.e., e is the model dimension and T is the time horizon. Finally, we evaluate our algorithm on synthetic data and observe that FGTS.CDB outperforms existing algorithms by a large margin.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/li24co/li24co.pdf",
+              "document_sha256": "275eb0f406296df999b2d5a2a6411812d50179f7ec69cd2bceb601f29e4eaff9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Is it possible to design an efficient algorithm for contextual dueling bandits based on Feel-Good Thompson sampling? In this paper, we affirmatively answer this question by solving the problem of linear contextual dueling bandits under the framework of Feel-Good Thompson sampling. We summarize our contributions as follows: • We propose a new algorithm named FGTS.CDB for the problem of linear contextual dueling bandits, which is based on Feel-Good Thompson sampling. Compared with existing FGTS algorithms for standard contextual dueling bandits (Zhang, 2022), we introduce a new Feel-Good exploration term designed specially for the comparison of two actions. Compared with UCB-based approaches, our algorithm can handle the case of large action spaces more efficiently. enjoys a minimax-optimal • We prove that our algorithm √ e regret bound of O(d T ) in expectation, where d is the feature dimensionality and T is the number of rounds. The new Feel-Good exploration term plays a crucial role in the proof by eliminating cross terms that arise from the comparison of actions. • We extend our analysis to the setting of general reward functions, and manage to recover the regret bound for several cases of interest, including the cases of finite action sets and finite model sets. • We conduct experiments to compare our algorithms with several strong baselines, including MaxInP, MaxPairUCB (Saha, 2021), CoLSTIM (Bengs et al., 2022) and VACDB (Di et al., 2023). We observe that the performance of FGTS.CDB is significantly better than all baselines. Notation. We use plain case letters to denote scalars and lowercase boldface letters to denote vectors. We use ⟨·, ·⟩ to denote the inner product of vectors. For a vector x, ∥x∥2 denotes its ℓ2 -norm. We use [N ] as a shorthand for the set",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/li24co/li24co.pdf",
+              "document_sha256": "275eb0f406296df999b2d5a2a6411812d50179f7ec69cd2bceb601f29e4eaff9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "1/κ, which translates to an exponential dependence on B. This exponential dependence on B is frequently observed in the literature of dueling bandits and RLHF (Zhu et al., 2023; Xiong et al., 2023; Li et al., 2024). To improve the dependency on κ, we present a new algorithm that exploits the structure of the sigmoid link function. In Section 6.1, we outline the key ideas behind our algorithm design. Subsequently, in Section 6.2, we provide a theoretical analysis to establish the regret guarantee of our algorithm.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "κ dependence in the leading term with respect to T . Limitations and Future Works. We assume that the reward is linear with respect to some known feature maps. Although this setting is common in the literature, we observe that some recent works on dueling bandits can deal with nonlinear rewards (Li et al., 2024; Verma et al., 2024). Recently, Verma et al. (2024) studied the problem of approximating reward models using neural networks, addressing nonlinear rewards for dueling bandits. It is an interesting future direction to design robust algorithms for nonlinear reward functions, such as with neural networks. Another promising direction is to design a more computationally efficient algorithm that avoids computing the MLE in each round (Jun et al., 2017; Zhang & Sugiyama, 2024; Sawarni et al., 2024).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Learning from human feedback plays an important role in aligning generative models, such as large language models (LLM). However, the effectiveness of this approach can be influenced by adversaries, who may intentionally provide misleading preferences to manipulate the output in an undesirable or harmful direction. To tackle this challenge, we study a specific model within this problem domain–contextual dueling bandits with adversarial feedback, where the true preference label can be flipped by an adversary. We propose an algorithm namely robust contextual dueling bandits (RCDB), which is based on uncertaintyweighted maximum likelihood √ estimation. Our e algorithm achieves an O(d T /κ + dC/κ) regret bound, where T is the number of rounds, d is the dimension of the context, κ is the lower bound of the derivative of the link function, and 0 ≤ C ≤ T is the total number of adversarial feedback. We also prove a lower bound to show that our regret bound is nearly optimal, both in scenarios with and without (C = 0) adversarial feedback. Our work is the first to achieve nearly minimax optimal regret for dueling bandits in the presence of adversarial preference feedback. Additionally, for the sigmoid link function, we develop a novel algorithm that takes into account the effect of local derivatives into maximum likelihood estimation (MLE) analysis through a refined method for estimating the link function’s derivative. This method helps us to eliminate the κ dependence in the leading term with respect to T , which reduces the exponential dependence on the parameter radius B to a polynomial dependence. We conduct experiments to evaluate our proposed algorithm RCDB against various types of adversar-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose a new algorithm called robust contextual dueling bandits (RCDB), which integrates uncertaintydependent weights into the Maximum Likelihood Estimator (MLE). Intuitively, our choice of weight is designed to induce a higher degree of skepticism about potentially “untrustworthy” feedback. The agent is encouraged to focus more on feedback that is more likely to be genuine, effectively diminishing the impact of any adversarial feedback.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/di25a/di25a.pdf",
+              "document_sha256": "11f11581222ed5e4b6c8e0be03bfc9d0289bf10de034eca36f874a480b7613fa"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0d8183f68a73e980c62c22e3",
+          "url": "https://proceedings.mlr.press/v235/li24co.html"
+        },
+        "b": {
+          "paper_id": "paper-14bee9781d1eb1c2cae9eba8",
+          "url": "https://proceedings.mlr.press/v267/di25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "cfc4272e67fc67427a4be9bc694ef88423397868b271616674af6ff968f56225"
+    },
+    {
+      "id": "edge-99268547efe1ccd18c566994",
+      "a": "paper-124f1e5d1856de073d7de4ff",
+      "b": "paper-df3d65fb25ae2f1ff4c10e7f",
+      "state": {
+        "paper_a": {
+          "title": "Delayed Bandits: When Do Intermediate Observations Help?",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We study a $K$-armed bandit with delayed feedback and intermediate observations. We consider a model, where intermediate observations have a form of a finite state, which is observed immediately after taking an action, whereas the loss is observed after an adversarially chosen delay. We show that the regime of the mapping of states to losses determines the complexity of the problem, irrespective of whether the mapping of actions to states is stochastic or adversarial. If the mapping of states to losses is adversarial, then the regret rate is of order $\\sqrt{(K+d)T}$ (within log factors), where $T$ is the time horizon and $d$ is a fixed delay. This matches the regret rate of a $K$-armed bandit with delayed feedback and without intermediate observations, implying that intermediate observations are not helpful. However, if the mapping of states to losses is stochastic, we show that the regret grows at a rate of $\\sqrt{\\bigl(K+\\min\\{|\\mathcal{S}|,d\\}\\bigr)T}$ (within log factors), implying that if the number $|\\mathcal{S}|$ of states is smaller than the delay, then intermediate observations help. We also provide refined high-probability regret upper bounds for non-uniform delays, together with experimental validation of our algorithms."
+        },
+        "paper_b": {
+          "title": "Contextual Linear Bandits with Delay as Payoff",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "A recent work by Schlisselberg et al. (2025) studies a delay-as-payoff model for stochastic multi-armed bandits, where the payoff (either loss or reward) is delayed for a period that is proportional to the payoff. While this captures many real-world applications, the simple multi-armed bandit setting limits the practicality of their results. In this paper, we address this limitation by studying the delay-as-payoff model for contextual linear bandits. Specifically, we start from the case with a fixed action set and propose an efficient algorithm whose regret overhead compared to the standard no-delay case is only of order $D\\Delta_{\\max}\\log T$, where $T$ is the total horizon, $D$ is the maximum delay, and $\\Delta_{\\max}$ is the maximum suboptimality gap. When payoff is loss, we also show further improvement of the bound, demonstrating a separation between reward and loss similar to Schlisselberg et al. (2025). Contrary to standard linear bandit algorithms that construct least squares estimator and confidence ellipsoid, the main novelty of our algorithm is to apply a phased arm elimination procedure by only picking the volumetric spanners of the action set, which addresses challenges arising from both payoff-dependent delays and large action sets. We further extend our results to the case with varying action sets by adopting the reduction from Hanna et al. (2023). Finally, we implement our algorithm and showcase its effectiveness and superior performance in experiments."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…include proving matching regret lower bounds and extending our results to general payoff-dependent delays (Lancewicki et al., 2021) and other even more challenging settings, such as those with intermediate observations (Esposito et al., 2023) or evolving observations (Bar-On & Mansour, 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-124f1e5d1856de073d7de4ff",
+          "b": "paper-df3d65fb25ae2f1ff4c10e7f",
+          "input_sha256": "9f42035016d12f0f24552d1f9839ec6caaf2b9e7bec4febf02e126b15686d498",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/esposito23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/esposito23a/esposito23a.pdf",
+              "sha256": "13e5cddad0db508399f7bdfbe4cd358307220f5b55c8728175f4803511e92b25"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/zhang25ca.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25ca/zhang25ca.pdf",
+              "sha256": "8981fe01a139cc670800db42829d19b767dd9710b02697083d2e7bc16335e618"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Paper structure In Section 2 we provide a formal problem definition. In Section 3 we introduce two algorithms, MetaBIO and MetaAdaBIO, for the model of bandits with intermediate observations. In Section 4 we analyze both algorithms and prove high-probability regret bounds for the setting of adversarial action-state mappings and stochastic losses. In Section 5 we provide the lower bounds, and in Section 6 experimental evaluation, concluding with a discussion in Section 7.",
+              "url": "https://proceedings.mlr.press/v202/esposito23a/esposito23a.pdf",
+              "document_sha256": "13e5cddad0db508399f7bdfbe4cd358307220f5b55c8728175f4803511e92b25"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Algorithm In this section we introduce MetaBIO (Algorithm 1) that transforms any algorithm B tailored for the delayed setting without intermediate observations into an algorithm for our setting. We then propose MetaAdaBIO, a modification of MetaBIO that delivers an improved regret bound for our setting. The idea of MetaBIO is to reduce the impact of delays using the information we get from intermediate observations. More precisely, if we have enough observations for the current state St at time t, we immediately feed to B the estimate of the mean loss of this state as if it were the actual loss at time t; otherwise, we wait for dt time steps and refine our estimate using the additional loss observations.",
+              "url": "https://proceedings.mlr.press/v202/esposito23a/esposito23a.pdf",
+              "document_sha256": "13e5cddad0db508399f7bdfbe4cd358307220f5b55c8728175f4803511e92b25"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Blanchet, J., Xu, R., and Zhou, Z. Delay-adaptive learning in generalized linear contextual bandits. Mathematics of Operations Research, 49(1):326–345, 2024. Dudı́k, M., Hsu, D. J., Kale, S., Karampatziakis, N., Langford, J., Reyzin, L., and Zhang, T. Efficient optimal learning for contextual bandits. In Conference on Uncertainty in Artificial Intelligence, 2011. Esposito, E., Masoudian, S., Qiu, H., Van Der Hoeven, D., Cesa-Bianchi, N., and Seldin, Y. Delayed bandits: when do intermediate observations help? International Conference on Machine Learning, 2023.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25ca/zhang25ca.pdf",
+              "document_sha256": "8981fe01a139cc670800db42829d19b767dd9710b02697083d2e7bc16335e618"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Contributions. Motivated by this limitation, in this work, we extend the delay-as-payoff model from MAB to contextual linear bandits, a practical framework that is widely used in real-world applications. Specifically, our contributions are as follows.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25ca/zhang25ca.pdf",
+              "document_sha256": "8981fe01a139cc670800db42829d19b767dd9710b02697083d2e7bc16335e618"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Next, in Section 4, we extend our results to the contextual case where the action set is varying and drawn i.i.d. from an unknown distribution. Using a variant of our noncontextual algorithm (that can handle misspecification) as a subroutine, we apply the contextual to non-contextual reduction recently proposed by (Hanna et al., 2023) and show that the resulting algorithm enjoys a similar regret guarantee despite having varying action sets, establishing the first regret guarantee for contextual linear bandits with delay-as-payoff.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25ca/zhang25ca.pdf",
+              "document_sha256": "8981fe01a139cc670800db42829d19b767dd9710b02697083d2e7bc16335e618"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-124f1e5d1856de073d7de4ff",
+          "url": "https://proceedings.mlr.press/v202/esposito23a.html"
+        },
+        "b": {
+          "paper_id": "paper-df3d65fb25ae2f1ff4c10e7f",
+          "url": "https://proceedings.mlr.press/v267/zhang25ca.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Learning with Bandit Feedback"
+      },
+      "sha256": "5648c0d678d3e15df4bc79b11d900e2a77e6e3c553fdb91df6846bd1f6f7f296"
+    }
+  ]
+}

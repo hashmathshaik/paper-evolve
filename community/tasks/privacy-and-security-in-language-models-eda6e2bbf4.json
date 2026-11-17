@@ -1,0 +1,1014 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Privacy and Security in Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-ad9a17f17bd81e53d232723a",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-8d7b119c59203f9083aad742",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "Privacy Attacks on Image AutoRegressive Models",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Image AutoRegressive generation has emerged as a new powerful paradigm with image autoregressive models (IARs) matching state-of-the-art diffusion models (DMs) in image quality (FID: 1.48 vs. 1.58) while allowing for a higher generation speed. However, the privacy risks associated with IARs remain unexplored, raising concerns regarding their responsible deployment. To address this gap, we conduct a comprehensive privacy analysis of IARs, comparing their privacy risks to the ones of DMs as reference points. Concretely, we develop a novel membership inference attack (MIA) that achieves a remarkably high success rate in detecting training images (with a True Positive Rate at False Positive Rate = 1% of 86.38% vs. 6.38% for DMs with comparable attacks). We leverage our novel MIA to provide dataset inference (DI) for IARs, and show that it requires as few as 6 samples to detect dataset membership (compared to 200 for DI in DMs), confirming a higher information leakage in IARs. Finally, we are able to extract hundreds of training data points from an IAR (e.g., 698 from VAR- d 30). Our results suggest a fundamental privacy-utility trade-off: while IARs excel in image generation quality and speed, they are empirically significantly more vulnerable to privacy attacks compared to DMs that achieve similar performance. We release the code at https://github.com/sprintml/privacy_attacks_against_iars for reproducibility."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In our work we show that the success of this transferability is limited (see Section 5.1), hence, we design novel MIAs, by exploiting unique properties of IARs.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-8d7b119c59203f9083aad742",
+          "input_sha256": "1d9268eadd767aab17969bda12268de9177f92f223da83b431f5899ffe77d01c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/kowalczuk25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kowalczuk25a/kowalczuk25a.pdf",
+              "sha256": "34722fc5eb7ffc65ed841a0dac3042253707c7e28ebfbb3d87e869cdc1844f94"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "troduce the M IN - K % P ROB metric, which computes the mean of lowest k%-log-likelihoods in the sequence, where k is a hyper-parameter. Zlib (Carlini et al., 2021) leverages the compression ratio of predicted tokens using the zlib library (Gailly & Adler, 2004) to adjust the metric to the level of complexity of the input sequence. Hinge (Bertran et al., 2024) metric computes the mean distance between tokens’ log-likelihood and the maximum of the remaining log-likelihoods. SURP (Zhang & Wu, 2024) computes the mean of log-likelihood of the tokens with the lowest k%-log-likelihoods in the sequence, where k is some predefined threshold. M IN - K %++ (Zhang et al., 2024b) is based on M IN - K % P ROB, but the per-token log-likelihoods are normalized by the mean and standard deviation of the log-likelihoods of preceding tokens. CAMIA (Chang et al., 2024) computes the mean of log-likelihoods that are smaller than the mean log-likelihood, and the mean of log-likelihoods that are smaller than the mean of the log-likelihoods of preceding tokens, as well as the slope of log-likelihoods. More detailed description of MIAs can be found in Appendix D.2. While LLM MIAs seem to be a natural choice for membership inference on IARs, it is completely unclear whether approaches from the language domain transfer to IARs. In our work we show that the success of this transferability is limited (see Section 5.1), hence, we design novel MIAs, by exploiting unique properties of IARs. Our methods achieve significant improvements over initial MIAs with up to 69% higher TPR@FPR=1% compared to the baselines.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kowalczuk25a/kowalczuk25a.pdf",
+              "document_sha256": "34722fc5eb7ffc65ed841a0dac3042253707c7e28ebfbb3d87e869cdc1844f94"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "RAR (Yu et al., 2024) introduces bidirectional context modeling into IAR. Building on findings from language modeling, specifically BERT (Devlin et al., 2019), RAR highlights the limitations of unidirectional approach, and enhances training by randomly permuting token sequences and utilizing bidirectional attention. RAR optimizes Equation (2) over all possible permutations, enabling the model to capture bidirectional dependencies, resulting in higher quality generations.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kowalczuk25a/kowalczuk25a.pdf",
+              "document_sha256": "34722fc5eb7ffc65ed841a0dac3042253707c7e28ebfbb3d87e869cdc1844f94"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In summary, we make the following contributions: • Our new MIA for IARs achieves extremely strong performance of even 86.38% TPR@FPR=1%, improving over naive application of MIAs by up to 69% • We provide a potent DI method for IARs, which requires as few as 6 samples to assess dataset membership signal. • We propose an efficient method of training data extraction from IARs, and successfully extract up to 698 images. • IARs can outperform DMs in generation efficiency and quality but suffer order-of-magnitude higher privacy leakage in MIAs, DI, and data extraction compared to DMs that demonstrate similar FID.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kowalczuk25a/kowalczuk25a.pdf",
+              "document_sha256": "34722fc5eb7ffc65ed841a0dac3042253707c7e28ebfbb3d87e869cdc1844f94"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "However, learning pixel-level dependencies directly is computationally expensive. To address the issue, VQGAN (Esser et al., 2020) transforms the task from nextpixel to next-token prediction. First, the VQ-GAN’s encoder maps an image into (lower resolution) latent feature vector, which is then quantized into a sequence of tokens, by a learnable codebook. In effect, the sequence length is short, which enables higher-resolution and high-quality generation. Then, tokens are generated and projected back to the image space by VQ-GAN’s decoder. All the subsequent IARs we introduce, utilize tokens from VQ-GAN. This tokenbased formulation aligns image generation more closely with natural language processing. Additionally, similarly to autoregressive language models such as GPT-2 (Radford et al.), which generate text by sequentially predicting tokens, modern IARs also employ transformer-based (Vaswani et al., 2017) architectures to model dependencies between image tokens. We focus on the recent state-of-the-art IARs.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kowalczuk25a/kowalczuk25a.pdf",
+              "document_sha256": "34722fc5eb7ffc65ed841a0dac3042253707c7e28ebfbb3d87e869cdc1844f94"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-8d7b119c59203f9083aad742",
+          "url": "https://proceedings.mlr.press/v267/kowalczuk25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "a33cbb547d1468766e17cd28c637b8126cf78b7b3d3cd365f779d9af623f7092"
+    },
+    {
+      "id": "edge-b5305454c88ddeb765a48ee6",
+      "a": "paper-0336b33db25645d4dfe6ddfa",
+      "b": "paper-ed569bf9fa6f86ef56e7c0f1",
+      "state": {
+        "paper_a": {
+          "title": "Theoretically Principled Trade-off between Robustness and Accuracy",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "We identify a trade-off between robustness and accuracy that serves as a guiding principle in the design of defenses against adversarial examples. Although this problem has been widely studied empirically, much remains unknown concerning the theory underlying this trade-off. In this work, we decompose the prediction error for adversarial examples (robust error) as the sum of the natural (classification) error and boundary error, and provide a differentiable upper bound using the theory of classification-calibrated loss, which is shown to be the tightest possible upper bound uniform over all probability distributions and measurable predictors. Inspired by our theoretical analysis, we also design a new defense method, TRADES, to trade adversarial robustness off against accuracy. Our proposed algorithm performs well experimentally in real-world datasets. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge in which we won the 1st place out of 2,000 submissions, surpassing the runner-up approach by 11.41% in terms of mean L_2 perturbation distance."
+        },
+        "paper_b": {
+          "title": "Defensive Unlearning with Adversarial Training for Robust Concept Erasure in Diffusion Models",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion models (DMs) have achieved remarkable success in text-to-image generation, but they also pose safety risks, such as the potential generation of harmful content and copyright violations. The techniques of machine unlearning, also known as concept erasing, have been developed to address these risks. However, these techniques remain vulnerable to adversarial prompt attacks, which can prompt DMs post-unlearning to regenerate undesired images containing concepts (such as nudity) meant to be erased. This work aims to enhance the robustness of concept erasing by integrating the principle of adversarial training (AT) into machine unlearning, resulting in the robust unlearning framework referred to as AdvUnlearn. However, achieving this effectively and efficiently is highly nontrivial. First, we find that a straightforward implementation of AT compromises DMs’ image generation quality post-unlearning. To address this, we develop a utility-retaining regularization on an additional retain set, optimizing the trade-off between concept erasure robustness and model utility in AdvUnlearn. Moreover, we identify the text encoder as a more suitable module for robustification compared to UNet, ensuring unlearning effectiveness. And the acquired text encoder can serve as a plug-and-play robust unlearner for various DM types. Empirically, we perform extensive experiments to demonstrate the robustness advantage of AdvUnlearn across various DM unlearning scenarios, including the erasure of nudity, objects, and style concepts. In addition to robustness, AdvUnlearn also achieves a balanced tradeoff with model utility. To our knowledge, this is the first work to systematically explore robust DM unlearning through AT, setting it apart from existing methods that overlook robustness in concept erasing. Codes are available at https://github.com/OPTML-Group/AdvUnlearn.Warning: This paper contains model outputs that may be offensive in nature."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0336b33db25645d4dfe6ddfa",
+          "b": "paper-ed569bf9fa6f86ef56e7c0f1",
+          "input_sha256": "23b5138ae253689590471aa02e66c7a96fd413c80bf1871f7d18119cbb662398",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhang19p.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/40954ac18a457dd5f11145bae6454cdf-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/40954ac18a457dd5f11145bae6454cdf-Paper-Conference.pdf",
+              "sha256": "28bd9b60152ea9ae206b1cbd3a798d671b933884aa8a02587f5e4b4228acfb2c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Theoretically, we characterize the trade-off between accuracy and robustness for classification problems via decomposing the robust error as the sum of the natural error and the boundary error. We provide differentiable upper bounds on both terms using the theory of classification-calibrated loss, which are shown to be the tightest upper bounds uniform over all probability distributions and measurable predictors. • Algorithmically, inspired by our theoretical analysis, we propose a new formulation of adversarial defense, TRADES, as optimizing a regularized surrogate loss. The loss consists of two terms: the term of empirical risk minimization encourages the algorithm to maximize the natural accuracy, while the regularization term encourages the algorithm to push the decision boundary away from the data, so as to improve adversarial robustness (see Figure 1). • Experimentally, we show that our proposed algorithm outperforms state-of-the-art methods under both blackbox and white-box threat models. In particular, the methodology won the final round of the NeurIPS 2018 Adversarial Vision Challenge.",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Our methodology and results We begin with an example that illustrates the trade-off between accuracy and adversarial robustness in Section 2.4, a phenomenon which has been demonstrated by Tsipras et al. (2019), but without theoretical guarantees. We constructed a toy example where the Bayes optimal classifier achieves natural error 0% and robust error 100%, while the trivial all-one classifier achieves both natural error and robust error 50% (Table 1). Despite a large literature on the analysis of robust error in terms of generalization (Schmidt et al., 2018; Cullina et al., 2018; Yin et al., 2018) and computational complexity (Bubeck et al., 2018b;a), the trade-off between the natural error and the robust error has not been a focus of theoretical study. We show that the robust error can in general be bounded tightly using two terms: one corresponds to the natural error measured by a surrogate loss function, and the other corresponds to how likely the input features are close to the ✏-extension of the decision boundary, termed as the boundary error. We then minimize the differentiable upper bound. Our theoretical analysis naturally leads to a new formulation of adversarial defense which has several appealing properties; in particular, it inherits the benefits of scalability to large datasets exhibited by Tiny ImageNet, and the algorithm achieves state-of-the-art performance on a range of benchmarks while providing theoretical guarantees. For example, while the defenses overviewed in (Athalye et al., 2018) achieve robust accuracy no higher than ~47% under white-box attacks, our method achieves robust accuracy as high as ~57% in the same setting. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge where we won first place",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Machine unlearning for concept erasing in DMs. Generating visually authentic images from textual descriptions remains a compelling challenge in generative AI. DMs (diffusion models) have notably advanced, surpassing generative adversarial networks (GANs) in various aspects, particularly in conditional generation subject to text prompts [36–44]. Despite their success, DMs also present safety and ethics concerns, especially in generating images with harmful content when conditioned on inappropriate prompts [9, 10]. To address these concerns, several approaches have been proposed, including post-image filtering [9], modifying inference guidance [10], and retraining with curated datasets [7]. However, lightweight interventions like the first two may not fully address the model’s inherent propensity to generate controversial content [10, 45, 46]. MU (machine unlearning) [14, 47, 48] is another emerging approach for ensuring safe image generation by erasing the influence of undesired concepts, also referred to as concept erasing in DMs. Leveraging MU principles, various strategies for designing unlearned DMs have been explored, focusing on refining fine-tuning methods such as those by [19–22, 27, 28, 30, 49–56]. For example, UNets within DMs have been fine-tuned to redirect outputs towards either random or anchored outputs, effectively preventing the generation of images associated with the concepts designated for unlearning [19–21]. Additional efforts [27, 54] have employed gradient-based techniques to map out the weight saliency within UNet related to the concept to be unlearned, concentrating fine-tuning efforts on these salient weights. To enhance the efficiency of unlearning, UCE [22] introduces a method of closed-form parameter editing specifically for DM unlearning.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/40954ac18a457dd5f11145bae6454cdf-Paper-Conference.pdf",
+              "document_sha256": "28bd9b60152ea9ae206b1cbd3a798d671b933884aa8a02587f5e4b4228acfb2c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "Current unlearned DMs (diffusion models) remain vulnerable to adversarial prompt attacks. Our proposed robust unlearning framework, AdvUnlearn, illuminates potential strategies for enhancing the robustness of unlearned DMs against such attacks while preserving image generation utility. Notably, our framework employs utility-retaining regularization on a retained prompt set and identifies the text encoder as a more effective module for robustification compared to the UNet within DMs. Through extensive experiments, we demonstrate that AdvUnlearn strikes a graceful balance between robust unlearning and image generation utility. Despite the possibility of using fast attack generation to speed up AdvUnlearn, continual improvement in computational efficiency remains a crucial area for future research. Limitations and broader impacts are further discussed in Appx. G and Appx. H.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/40954ac18a457dd5f11145bae6454cdf-Paper-Conference.pdf",
+              "document_sha256": "28bd9b60152ea9ae206b1cbd3a798d671b933884aa8a02587f5e4b4228acfb2c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "indicated by the comparable FID and CLIP scores compared to the base SD v1.4. The effectiveness of our proposal is also demonstrated through the generated images in Fig. 5 under adversarial prompt attack and ‘Van Gogh’-irrelevant benign prompt, respectively. Effectiveness in object unlearn- Table 7: Performance summary of unlearning the object Church in ing. Tab. 7 compares the perfor- DM generation, following a format similar to Tab. 5. mance of AdvUnlearn with baseSD v1.4 AdvUnlearn lines when unlearning the object con- Metrics (Base) FMN SPM SalUn ESD ED SH (Ours) Church - Visualization cept ‘Church’. As we can see, simi- ASR (↓) 100% 96% 94% 62% 60% 52% 6% 6% FID (↓) 16.70 16.49 16.76 17.38 20.95 17.46 68.02 18.06 lar to style unlearning, our approach CLIP (↑) 0.311 0.308 0.310 0.312 0.300 0.310 0.277 0.305 achieves the highest robustness in Church unlearning, significantly preSPM SalUn ESD SH AdvUnlearn SD v1.4 FMN ED serving the original DM utility com- “Church with snowy pared to the unlearning baseline SH, background” which attains similar robustness gain. “cassette The superiority of AdvUnlearn can player” also be visualized in Fig. 6, showing DM generation examples. More Figure 6: Examples of generated images by DMs when unlearning detailed results and visualizations of the object church, following Fig. 4’s format with attack in 1st row. other object unlearning can be found in Appx. E. Plug-and-play capability of adver- Table 8: Plug-in performance of text encoder obtained from sarially unlearned text encoder. AdvUnlearn when applied to other DMs, including SD v1.5, Given the modular nature of the text DreamShaper, and Protogen, in the task of nudity unlearning. ‘Origiencoder in DMs, we further explore nal’ refers to the text encoder originally associated",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/40954ac18a457dd5f11145bae6454cdf-Paper-Conference.pdf",
+              "document_sha256": "28bd9b60152ea9ae206b1cbd3a798d671b933884aa8a02587f5e4b4228acfb2c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0336b33db25645d4dfe6ddfa",
+          "url": "https://proceedings.mlr.press/v97/zhang19p.html"
+        },
+        "b": {
+          "paper_id": "paper-ed569bf9fa6f86ef56e7c0f1",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/40954ac18a457dd5f11145bae6454cdf-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "1dd27fc4af2d7fb47ffee0f2ad56391a28777e408384442249501d6aaaa15523"
+    },
+    {
+      "id": "edge-6a3e83af66d67e15ec1a74e1",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-52fef9131dba7e1ce0c37891",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "Privacy-Preserving Instructions for Aligning Large Language Models",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Service providers of large language model (LLM) applications collect user instructions in the wild and use them in further aligning LLMs with users’ intentions. These instructions, which potentially contain sensitive information, are annotated by human workers in the process. This poses a new privacy risk not addressed by the typical private optimization. To this end, we propose using synthetic instructions to replace real instructions in data annotation and model fine-tuning. Formal differential privacy is guaranteed by generating those synthetic instructions using privately fine-tuned generators. Crucial in achieving the desired utility is our novel filtering algorithm that matches the distribution of the synthetic instructions to that of the real ones. In both supervised fine-tuning and reinforcement learning from human feedback, our extensive experiments demonstrate the high utility of the final set of synthetic instructions by showing comparable results to real instructions. In supervised fine-tuning, models trained with private synthetic instructions outperform leading open-source models such as Vicuna."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We use two representations of text distributions to compute the MAUVE scores: the unigram distribution, and the distribution of quantized text embeddings (Pillutla et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-52fef9131dba7e1ce0c37891",
+          "input_sha256": "a3bc72e4a4f79e519a08a72812ba56053778344e0eec7c9f49a7ee4019761b57",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/yu24e.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yu24e/yu24e.pdf",
+              "sha256": "42163b4619531791d96277bbcf429925a2e7eceb1e4cd8f499f58aa8e7328d3a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "from real instructions sum up to N , a large K reduces the number of votes per-cluster. Therefore, adding proper noise to the histogram for meaningful DP guarantees would result in an inaccurate estimation of the real instruction distribution due to poor signal-to-noise ratio. One good practice for determining the value of K is to ensure that the average number of votes per cluster is sufficiently robust to DP noise. In our experiments, we investigate the quality of resampled synthetic data, measured by MAUVE, for varying K. As depicted in Figure 5 of Section 4.2, while the resampling process enhances the quality of synthetic data for all choices of K, the improvement initially increases with K but beyond a certain point, it begins to either plateau or decline.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yu24e/yu24e.pdf",
+              "document_sha256": "42163b4619531791d96277bbcf429925a2e7eceb1e4cd8f499f58aa8e7328d3a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "Algorithm 2 reduces the gap between real and synthetic datasets by aligning their histograms. The idea of clustering samples in a dataset into a histogram is inspired by MAUVE (Pillutla et al., 2021; 2022). MAUVE is a metric designed to quantify the discrepancy between synthetic and real data. It first selects methods to represent the distributions of both synthetic and real datasets and then measures the divergence frontiers (Djolonga et al., 2020). One specific method involves clustering the samples in a dataset into a histogram and using this histogram as the approximated distribution.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yu24e/yu24e.pdf",
+              "document_sha256": "42163b4619531791d96277bbcf429925a2e7eceb1e4cd8f499f58aa8e7328d3a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Service providers of large language model (LLM) applications collect user instructions in the wild and use them in further aligning LLMs with users’ intentions. These instructions, which potentially contain sensitive information, are annotated by human workers in the process. This poses a new privacy risk not addressed by the typical private optimization. To this end, we propose using synthetic instructions to replace real instructions in data annotation and model fine-tuning. Formal differential privacy is guaranteed by generating those synthetic instructions using privately finetuned generators. Crucial in achieving the desired utility is our novel filtering algorithm that matches the distribution of the synthetic instructions to that of the real ones. In both supervised fine-tuning and reinforcement learning from human feedback, our extensive experiments demonstrate the high utility of the final set of synthetic instructions by showing comparable results to real instructions. In supervised fine-tuning, models trained with private synthetic instructions outperform leading open-source models such as Vicuna.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yu24e/yu24e.pdf",
+              "document_sha256": "42163b4619531791d96277bbcf429925a2e7eceb1e4cd8f499f58aa8e7328d3a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "The standard method for fine-tuning LLMs on private data is to replace standard optimizers with their DP variants (Yu et al., 2021; Li et al., 2022b; Bu et al., 2022; Wu et al., 2024a). However, merely ensuring that the fine-tuned model satisfies DP can only address the risk of memorization; there is no protection in the data collection stage when the user instructions are exposed to annotators. To simultaneously address both privacy risks, human annotators and model memorization, we propose using synthetic instructions (generated from privately fine-tuned language models) as substitutes for real user instructions in the alignment pipeline.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yu24e/yu24e.pdf",
+              "document_sha256": "42163b4619531791d96277bbcf429925a2e7eceb1e4cd8f499f58aa8e7328d3a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-52fef9131dba7e1ce0c37891",
+          "url": "https://proceedings.mlr.press/v235/yu24e.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "7cc20c5091673d961e39d44f4ddce94b03a460125eb3e88041d1d397121c3ae4"
+    },
+    {
+      "id": "edge-0e720ebefeb48133eb46c492",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-bb313e07be300744bef4eaf9",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "Optimizing Adaptive Attacks against Watermarks for Language Models",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Large Language Models (LLMs) can be misused to spread unwanted content at scale. Content watermarking deters misuse by hiding messages in content, enabling its detection using a secret watermarking key . Robustness is a core security property, stating that evading detection requires (significant) degradation of the content’s quality. Many LLM watermarking methods have been proposed, but robustness is tested only against non-adaptive attackers who lack knowledge of the watermarking method and can find only suboptimal attacks. We formulate watermark robustness as an objective function and use preference-based optimization to tune adaptive attacks against the specific watermarking method. Our evaluation shows that (i) adaptive attacks evade detection against all surveyed watermarks, (ii) training against any watermark succeeds in evading unseen watermarks, and (iii) optimization-based attacks are cost-effective. Our findings underscore the need to test robustness against adaptively tuned attacks. We release our adaptively tuned paraphrasers at https://github.com/nilslukas/ada-wm-evasion."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Due to the lack of a gold-standard metric to assess text quality, we measure quality with multiple metrics: LLM-Judge, LLM-CoT, and LLM-Compare from Piet et al. (2023), Mauve (Pillutla et al., 2021), and Perplexity (PPL) with Llama3-8B-Instruct .\nTherefore, we employ multiple surrogate metrics from the literature: LLM-Judge, LLM-CoT, and LLM-Compare from (Piet et al., 2023), Mauve (Pillutla et al., 2021), and Perplexity (PPL) with Llama3-8B-Instruct .\nIt correlates with human evaluations over baseline metrics for open-ended text generation (Pillutla et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-bb313e07be300744bef4eaf9",
+          "input_sha256": "9205ddef997a7c497e97760afc726518e4745ff8101ec7dcd3bfdd8a771641a8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/diaa25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/diaa25a/diaa25a.pdf",
+              "sha256": "13a8bff9f21bed71ff93252978a77dac4efed3fdbe4502239c1c5e239764c15f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "the watermark is not present in the content can be rejected with a given p-value specified by the provider. The evasion rate is calculated as the fraction of watermarked text that does not retain the watermark after applying the paraphrasing attack. Due to the lack of a gold-standard metric to assess text quality, we measure quality with multiple metrics: LLM-Judge, LLM-CoT, and LLM-Compare from Piet et al. (2023), Mauve (Pillutla et al., 2021), and Perplexity (PPL) with Llama3-8B-Instruct. To enhance clarity, we only report the LLM-Judge metric in the main paper following Piet et al. (2023). Full descriptions of all quality metrics are provided in Section A.1. Unless otherwise specified, we use a p-value threshold of ρ = 0.01.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/diaa25a/diaa25a.pdf",
+              "document_sha256": "13a8bff9f21bed71ff93252978a77dac4efed3fdbe4502239c1c5e239764c15f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We propose a method to curate preference datasets and adaptively optimize an attack against known content watermarking algorithms. Optimization is challenging due to (i) the complexity of optimizing within the discrete textual domain and (ii) the limited computational resources available to attackers. We demonstrate that adaptively tuned, openweight LLMs such as Llama2-7b (Touvron et al., 2023) evade detection at negligible impact on text quality against Llama3.1-70b (Dubey et al., 2024). Our attacker spends",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/diaa25a/diaa25a.pdf",
+              "document_sha256": "13a8bff9f21bed71ff93252978a77dac4efed3fdbe4502239c1c5e239764c15f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We make the following contributions. (1) We propose methods to curate preference-based datasets using LLMs, enabling us to adaptively fine-tune watermark evasion attacks against state-of-the-art language watermarks. (2) Adaptively tuned paraphrasers with 0.5-7 billion parameters evade detection from all tested watermarks at a negligible impact on text quality. We demonstrate their Pareto optimality for evasion rates greater than 90%1 . Optimization against models with 46× more parameters requires less than seven GPU hours, which challenges security assumptions, as even adversaries with limited resources can reliably evade detection using our attacks. (3) We test our attacks in the non-adaptive setting against unseen watermarks and demonstrate that they remain Pareto optimal compared to other non-adaptive attacks. Our results underscore the necessity of using optimizable, adaptive attacks to test robustness. (4) We publicly release our adaptively tuned paraphrasers to facilitate further research on robustness against adaptive attackers.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/diaa25a/diaa25a.pdf",
+              "document_sha256": "13a8bff9f21bed71ff93252978a77dac4efed3fdbe4502239c1c5e239764c15f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-bb313e07be300744bef4eaf9",
+          "url": "https://proceedings.mlr.press/v267/diaa25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "2af6f0d224534223771cdf4efdce8ce19859da93b712e20bde1c82acf28de8de"
+    },
+    {
+      "id": "edge-de3fb6b9a3da3bc5300b2b99",
+      "a": "paper-04dc6d84145046380521afbb",
+      "b": "paper-2486a10562aee08a0008e2bc",
+      "state": {
+        "paper_a": {
+          "title": "Privacy Auditing with One (1) Training Run",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We propose a scheme for auditing differentially private machine learning systems with a single training run. This exploits the parallelism of being able to add or remove multiple training examples independently. We analyze this using the connection between differential privacy and statistical generalization, which avoids the cost of group privacy. Our auditing scheme requires minimal assumptions about the algorithm and can be applied in the black-box or white-box setting. We demonstrate the effectiveness of our framework by applying it to DP-SGD, where we can achieve meaningful empirical privacy lower bounds by training only one model. In contrast, standard methods would require training hundreds of models."
+        },
+        "paper_b": {
+          "title": "User Inference Attacks on Large Language Models",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Text written by humans makes up the vast majority of the data used to pre-train and fine-tune large language models (LLMs). Many sources of this data—like code, forum posts, personal websites, and books—are easily attributed to one or a few “users”. In this paper, we ask if it is possible to infer if any of a user’s data was used to train an LLM. Not only would this constitute a breach of privacy, but it would also enable users to detect when their data was used for training. We develop the first effective attacks for user inference—at times, with near-perfect success—against LLMs. Our attacks are easy to employ, requiring only black-box access to an LLM and a few samples from the user, which need not be the ones that were trained on. We find, both theoretically and empirically, that certain properties make users more susceptible to user inference: being an outlier, having highly correlated examples, and contributing a larger fraction of data. Based on these findings, we identify several methods for mitigating user inference including training with example-level differential privacy, removing within-user duplicate examples, and reducing a user’s contribution to the training data. Though these provide partial mitigation, our work highlights the need to develop methods to fully protect LLMs from user inference."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Finally, leveraging user inference attacks to audit user-level DP, like membership inference attacks for example-level DP (Jagielski et al., 2020; Pillutla et al., 2023; Steinke et al., 2023), is a promising future direction.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04dc6d84145046380521afbb",
+          "b": "paper-2486a10562aee08a0008e2bc",
+          "input_sha256": "7930829c3655c0a00ffdb44d6a626d3fd6ff1a69e6aeb0efbea92179de2e4b41",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/9a6f6e0d6781d1cb8689192408946d73-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.emnlp-main.1014/",
+              "pdf_url": "https://aclanthology.org/2024.emnlp-main.1014.pdf",
+              "sha256": "f05957d2b529e1e2bd693685b00590564d341a4253bafa48dfbaefd5298474d0"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a scheme for auditing differentially private machine learning systems with a single training run. This exploits the parallelism of being able to add or remove multiple training examples independently. We analyze this using the connection between differential privacy and statistical generalization, which avoids the cost of group privacy. Our auditing scheme requires minimal assumptions about the algorithm and can be applied in the black-box or white-box setting. We demonstrate the effectiveness of our framework by applying it to DP-SGD, where we can achieve meaningful empirical privacy lower bounds by training only one model. In contrast, standard methods would require training hundreds of models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "document_sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "on the output of the algorithm, the auditor “guesses” whether or not each data point was included or excluded (or it can abstain from guessing for some data points). We obtain a lower bound on the privacy parameters from the fraction of guesses that were correct. Intuitively, if the algorithm is (ε, 0)-DP, then the auditor can correctly guess each inclusion/exclusion ε coin flip with probability ≤ eεe+1 . That is, the highest possible accuracy is attained by randomized response [War65]. Thus DP implies a high-probability upper bound on the fraction of correct guesses and, conversely, the fraction of correct guesses implies a high-probability lower bound on the privacy parameters. Our analysis: Naı̈vely, analyzing the addition or removal of multiple data elements would rely on group privacy; but this does not exploit the fact that the data items were included or excluded independently. Instead, we leverage the connection between DP and generalization [DFHPRR15b; DFHPRR15a; BNSSSU16; RRST16; JLNRSMS19; SZ20]. Our main theoretical contribution is an improved analysis of this connection that is tailored to yield nearly tight bounds in our setting. Informally, if we run a DP algorithm on i.i.d. samples from some distribution, then, conditioned on the output of the algorithm, the samples are still “close” to being i.i.d. samples from that distribution. There is some technicality in making this precise, but, roughly speaking, we show that including or excluding m data points independently for one run is essentially as good as having m independent runs (as long as δ is small). Our results: As an application of our new auditing framework, we audit DP-SGD training on a WideResNet model, trained on the CIFAR10 dataset across multiple configurations. Our approach successfully",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "document_sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Other Threat Models. Our black-box threat model assumes that the likelihood (or equivalently, its loss) of a sequence under the model can be queried. However, some LLMs are only accessible via an API; it is interesting to consider user inference attacks in this setting. Some APIs expose the model’s logits (or log-probabilities) from which likelihoods can be reconstructed (Finlayson et al., 2024); this allows for a variant of our user inference attack to be mounted. Designing user inference attacks for APIs that do not expose model likelihoods/losses is an open question. In fact, defining membership inference attacks in this setting, or defining the equivalent of label-only membership inference attacks (Choquette-Choo et al., 2021) for LLMs are also open questions. Our work provides a recipe to lift future progress on such membership inference attacks to user inference: if T (x) is a membership inference test statistic for x, then Pa sequence (i) ) can be T (x T̂ (x(1) , . . . , x(m) ) = (1/m) m i=1 used a user inference test statistic; see §3. We leave this as a promising direction for future work. Mitigating Attacks with User-Level DP. Userlevel DP is the gold standard defense against privacy attacks that aim to expose user participation in training. Implementing user-level DP as a defense in our experimental setup presents many challenges, ranging from fundamental dataset size limitations, software/systems challenges to allow user-level DP training to scale to LLMs, and a lack of understanding of the empirical tradeoffs needed to train performant user-level DP models. For a more thorough discussion of user-level DP and the challenges preventing its use in this setting, see Appendix F. The follow-up works of Charles et al. (2024) and Chua et al. (2024) show some",
+              "url": "https://aclanthology.org/2024.emnlp-main.1014.pdf",
+              "document_sha256": "f05957d2b529e1e2bd693685b00590564d341a4253bafa48dfbaefd5298474d0"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04dc6d84145046380521afbb",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/9a6f6e0d6781d1cb8689192408946d73-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-2486a10562aee08a0008e2bc",
+          "url": "https://aclanthology.org/2024.emnlp-main.1014/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "a74407d49bfcf89acba91fd311c0b147728de9adecc1e2f366ffac988b150fc4"
+    },
+    {
+      "id": "edge-6a26547e783505c14e7de8c4",
+      "a": "paper-06a107a7d39721405bb97a9f",
+      "b": "paper-559b107a4a5c4602213b69b2",
+      "state": {
+        "paper_a": {
+          "title": "Inverting Gradients - How easy is it to break privacy in federated learning?",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The idea of federated learning is to collaboratively train a neural network on a server. Each user receives the current weights of the network and in turns sends parameter updates (gradients) based on local data. This protocol has been designed not only to train neural networks data-efficiently, but also to provide privacy benefits for users, as their input data remains on device and only parameter gradients are shared. But how secure is sharing parameter gradients? Previous attacks have provided a false sense of security, by succeeding only in contrived settings - even for a single image. However, by exploiting a magnitude-invariant loss along with optimization strategies based on adversarial attacks, we show that is is actually possible to faithfully reconstruct images at high resolution from the knowledge of their parameter gradients, and demonstrate that such a break of privacy is possible even for trained deep networks. We analyze the effects of architecture as well as parameters on the difficulty of reconstructing an input image and prove that any input to a fully connected layer can be reconstructed analytically independent of the remaining architecture. Finally we discuss settings encountered in practice and show that even averaging gradients over several iterations or several images does not protect the user's privacy in federated learning applications."
+        },
+        "paper_b": {
+          "title": "Marksman Backdoor: Backdoor Attacks with Arbitrary Target Class",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "In recent years, machine learning models have been shown to be vulnerable to backdoor attacks. Under such attacks, an adversary embeds a stealthy backdoor into the trained model such that the compromised models will behave normally on clean inputs but will misclassify according to the adversary's control on maliciously constructed input with a trigger. While these existing attacks are very effective, the adversary's capability is limited: given an input, these attacks can only cause the model to misclassify toward a single pre-defined or target class. In contrast, this paper exploits a novel backdoor attack with a much more powerful payload, denoted as Marksman, where the adversary can arbitrarily choose which target class the model will misclassify given any input during inference. To achieve this goal, we propose to represent the trigger function as a class-conditional generative model and to inject the backdoor in a constrained optimization framework, where the trigger function learns to generate an optimal trigger pattern to attack any target class at will while simultaneously embedding this generative backdoor into the trained model. Given the learned trigger-generation function, during inference, the adversary can specify an arbitrary backdoor attack target class, and an appropriate trigger causing the model to classify toward this target class is created accordingly. We show empirically that the proposed framework achieves high attack performance (e.g., 100% attack success rates in several experiments) while preserving the clean-data performance in several benchmark datasets, including MNIST, CIFAR10, GTSRB, and TinyImageNet. The proposed Marksman backdoor attack can also easily bypass existing backdoor defenses that were originally designed against backdoor attacks with a single target class. Our work takes another significant step toward understanding the extensive risks of backdoor attacks in practice."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Prior research has shown deep learning algorithms are vulnerable to a wide range of attacks, including adversarial examples [3, 31], poisoning attacks [33, 38, 17], backdoor attacks [30, 28, 15, 11], and privacy leakages [39, 14].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06a107a7d39721405bb97a9f",
+          "b": "paper-559b107a4a5c4602213b69b2",
+          "input_sha256": "291766633cae42b4c520b0ad1d64f1b6631a12f3681567cc506f1b6bf5bc9614",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/fa0126bb7ebad258bf4ffdbbac2dd787-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/fa0126bb7ebad258bf4ffdbbac2dd787-Paper-Conference.pdf",
+              "sha256": "17d625732326110f8aee76f4cb1b0aa598ce951a0d8420c2351565b54e94a212"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Similar to previous works on breaking privacy in a federated learning setting, we first focus in the reconstruction of a single input image x ∈ Rn from the gradient ∇θ Lθ (x, y) ∈ Rp . This setting serves as a proof of concept as well as an upper bound on the reconstruction quality for the multi-image distributed learning settings we consider in Sec. 6. While previous works have already shown that a break of privacy is possible for single images, their experiments have been limited to rather shallow, smooth, and untrained networks. In the following, we compare our proposed approach to prior works, and conduct detailed experiments on the effect that architectural- as well as training-related choices have on the reconstruction. All hyperparameter settings and more visual results for each experiment are provided in the supp. material. Comparison to previous approaches. We first validate our approach by comparison to the Euclidean loss (3) optimized via L-BFGS considered in [31, 35, 34]. This approach can often fail due to a bad initialization, so we allow a generous setting of 16 restarts of the L-BFGS solver. For a quantitative comparison we measure the mean PSNR of the reconstruction of 32 × 32 CIFAR-10 images over the first 100 images from the validation set using the same shallow and smooth CNN as in [35], which we denote as \"LeNet (Zhu)\" as well as a ResNet architecture, both with trained and untrained parameters. Table 1 compares the reconstruction quality of euclidean loss (3) with L-BFGS optimization (as in [31, 35, 34]) with the proposed approach. The former works extremely well for 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "the untrained, smooth, shallow architecture, but completely fails on the trained ResNet. We note that [31] applied a GAN to enhance image quality from the LBFGS reconstruction, which, however, fails, when the representative is too distorted to be enhanced. Our approach provides recognizable images and works particularly well on the realistic setting of a trained ResNet as we can see in Figure 2. Interestingly, the reconstructions on the trained ResNet have a better visual quality than those of the untrained ResNet, despite their lower PSNR values according to table 1. Let us study the effect of trained network parameters in an even more realistic setting, i.e., for reconstructing ImageNet images from a ResNet-152. Trained vs. untrained networks. If a network is trained and has sufficient capacity for the gradient of the loss function Lθ to be zero for different inputs, it is obvious that they can never be distinguished from their gradient. In practical settings, however, owing to stochastic gradient descent, data augmentation and a finite number of training epochs, the gradient of images is rarely entirely zero. While we do observe that image gradients have a much smaller magnitude in a trained network than in an untrained one, our magnitude-oblivious approach of (4) still recovers important visual information based only on the direction of the trained gradients. We observe two general effects on trained networks that we illustrate with our ImageNet reconstructions in Fig. 3: First, reconstructions seem to become implicitly biased to typical features of the same class in the training data, e.g., the more blueish feathers of the capercaillie in the 5th image, or the large eyes of the owl in the inset figure. Thus, although the overall privacy of most images is clearly",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Machine learning, especially deep neural networks (DNN), rapidly advances and transforms our daily lives in various fields and applications. Such intelligence is becoming prevalent and pervasive, embedded ubiquitously from centralized servers to fully distributed Internet-of-Things (IoT). Unfortunately, since well-trained models are now viewed as high-value assets that demand extensive computer resources, annotated data, and machine learning expertise, they are becoming increasingly attractive targets for cyberattacks [20, 51, 52]. Prior research has shown deep learning algorithms are vulnerable to a wide range of attacks, including adversarial examples [3, 31], poisoning attacks [33, 38, 17], backdoor attacks [30, 28, 15, 11], and privacy leakages [39, 14]. Among these, backdoor attacks expose the vulnerability in the model building supply chain that seeks to inject a stealthy backdoor into a model by poisoning the data or manipulating the training process [30, 28, 15]. Ideally, the model with injected backdoor should behave normally with clean inputs, but the input will be misclassified into the target class whenever the trigger is present. 36th Conference on Neural Information Processing Systems (NeurIPS 2022).",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa0126bb7ebad258bf4ffdbbac2dd787-Paper-Conference.pdf",
+              "document_sha256": "17d625732326110f8aee76f4cb1b0aa598ce951a0d8420c2351565b54e94a212"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In recent years, machine learning models have been shown to be vulnerable to backdoor attacks. Under such attacks, an adversary embeds a stealthy backdoor into the trained model such that the compromised models will behave normally on clean inputs but will misclassify according to the adversary’s control on maliciously constructed input with a trigger. While these existing attacks are very effective, the adversary’s capability is limited: given an input, these attacks can only cause the model to misclassify toward a single pre-defined or target class. In contrast, this paper exploits a novel backdoor attack with a much more powerful payload, denoted as Marksman, where the adversary can arbitrarily choose which target class the model will misclassify given any input during inference. To achieve this goal, we propose to represent the trigger function as a class-conditional generative model and to inject the backdoor in a constrained optimization framework, where the trigger function learns to generate an optimal trigger pattern to attack any target class at will while simultaneously embedding this generative backdoor into the trained model. Given the learned trigger-generation function, during inference, the adversary can specify an arbitrary backdoor attack target class, and an appropriate trigger causing the model to classify toward this target class is created accordingly. We show empirically that the proposed framework achieves high attack performance (e.g., 100% attack success rates in several experiments) while preserving the cleandata performance in several benchmark datasets, including MNIST, CIFAR10, GTSRB, and TinyImageNet. The proposed Marksman backdoor attack can also easily bypass existing backdoor defenses that were originally designed against",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa0126bb7ebad258bf4ffdbbac2dd787-Paper-Conference.pdf",
+              "document_sha256": "17d625732326110f8aee76f4cb1b0aa598ce951a0d8420c2351565b54e94a212"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "performance and the number of channels (i.e., 3 in RGB images). The work of DeepPayload [25] attempts to directly inject the malicious logic through reverse-engineering instead of training the backdoor into the model, which does not consider varying the target backdoor class as in this paper. Our contributions are summarized below: • We propose a new type of backdoor attack where the adversary can flexibly attack any target label during inference. This attack maliciously modifies the model by establishing a causal link between the trigger function and all output classes. • We propose a class-condition generative trigger function that, given the target label, can generate an imperceptible trigger pattern to cause the model to predict the target label. We then propose a constrained optimization objective that can effectively and efficiently learn the trigger function and poison the model. • Finally, we empirically demonstrate the effectiveness of the proposed method and its robustness against several representative defensive mechanisms. We show that the proposed method can achieve high attack success rates with any arbitrarily chosen target class while preserving the behavior of the model under normal conditions. The rest of the paper is organized as follows. We review the background of DNN backdoor attacks in Section 2. The threat model is defined in Section 3. We present the details of the proposed methodology in Section 4, and evaluate the performance and compare to prior works in Section 5. Finally, Section 6 concludes this paper. We present more details about experimental settings and additional results in the supplementary material.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa0126bb7ebad258bf4ffdbbac2dd787-Paper-Conference.pdf",
+              "document_sha256": "17d625732326110f8aee76f4cb1b0aa598ce951a0d8420c2351565b54e94a212"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06a107a7d39721405bb97a9f",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-559b107a4a5c4602213b69b2",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/fa0126bb7ebad258bf4ffdbbac2dd787-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "43f6a0a1b1600dabe8fd688b58a9fbfee460fb3ef31a979e4086157dddc55b49"
+    },
+    {
+      "id": "edge-485fbd7dfd0a95e645ca43a3",
+      "a": "paper-0708528678da4855b2c66f7a",
+      "b": "paper-9d9cd948732f22267f342f3e",
+      "state": {
+        "paper_a": {
+          "title": "Does Localization Inform Editing? Surprising Differences in Causality-Based Localization vs. Knowledge Editing in Language Models",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Language models learn a great quantity of factual information during pretraining, and recent work localizes this information to specific model weights like mid-layer MLP weights. In this paper, we find that we can change how a fact is stored in a model by editing weights that are in a different location than where existing methods suggest that the fact is stored. This is surprising because we would expect that localizing facts to specific model parameters would tell us where to manipulate knowledge in models, and this assumption has motivated past work on model editing methods. Specifically, we show that localization conclusions from representation denoising (also known as Causal Tracing) do not provide any insight into which model MLP layer would be best to edit in order to override an existing stored fact with a new one. This finding raises questions about how past work relies on Causal Tracing to select which model layers to edit. Next, we consider several variants of the editing problem, including erasing and amplifying facts. For one of our editing problems, editing performance does relate to localization results from representation denoising, but we find that which layer we edit is a far better predictor of performance. Our results suggest, counterintuitively, that better mechanistic understanding of how pretrained language models work may not always translate to insights about how to best change their behavior."
+        },
+        "paper_b": {
+          "title": "Private Memorization Editing: Turning Memorization into a Defense to Strengthen Data Privacy in Large Language Models",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Large Language Models (LLMs) memorize, and thus, among huge amounts of uncontrolled data, may memorize Personally Identifiable Information (PII), which should not be stored and, consequently, not leaked. In this paper, we introduce Private Memorization Editing (PME), an approach for preventing private data leakage that turns an apparent limitation, that is, the LLMs’ memorization ability, into a powerful privacy defense strategy. While attacks against LLMs have been performed exploiting previous knowledge regarding their training data, our approach aims to exploit the same kind of knowledge in order to make a model more robust. We detect a memorized PII and then mitigate the memorization of PII by editing a model knowledge of its training data. We verify that our procedure does not affect the underlying language model while making it more robust against privacy Training Data Extraction attacks. We demonstrate that PME can effectively reduce the number of leaked PII in a number of configurations, in some cases even reducing the accuracy of the privacy attacks to zero."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "While this is a substantial computational overhead, it has also been discussed that the localization techniques developed so far do not actually inform the edit (Chang et al., 2024; Hase et al., 2023).\n…other techniques that identified a subset of layers, had a higher computational cost, and did not inform the edit procedure (Chang et al., 2024; Hase et al., 2023): PME is more efficient in identifying responsible layers, since it only requires an additional forward pass to compute the…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0708528678da4855b2c66f7a",
+          "b": "paper-9d9cd948732f22267f342f3e",
+          "input_sha256": "fd2e4e33d7cabc8271c9d52e0fa71b985d2ba0ac21a5301236374f47dbfd8da9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/3927bbdcf0e8d1fa8aa23c26f358a281-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/3927bbdcf0e8d1fa8aa23c26f358a281-Paper-Conference.pdf",
+              "sha256": "845586a7198cf824049bf31dc2bb46cd098bdff09fe177b0b8515bce12c6e457"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.acl-long.810/",
+              "pdf_url": "https://aclanthology.org/2025.acl-long.810.pdf",
+              "sha256": "8411af2186667ba7e1b7c2545ad27a8292881da4493db20be7358637b8d7b020"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In the face of this result, we attempt to recover the connection between tracing-based localization and editing by introducing four variants of the default model editing problem. Each variant differs in terms of the input, target, or objective used in the editing problem. One variant we introduce, called Fact Forcing, is designed to match Causal Tracing along these three factors. Specifically, Fact Forcing uses a noised input and involves maximizing the probability of the correct target output, just like Causal Tracing. We find that tracing results are related to edit success for Fact Forcing. However, even for this variant, it is still better to ignore the tracing results and always choose an early-to-mid-layer MLP weight for editing. We conclude that, although Causal Tracing is a reasonable localization method that has yielded insight into how models store factual information, this insight does not actually indicate which model layers we should edit in order to manipulate what facts are stored in language models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/3927bbdcf0e8d1fa8aa23c26f358a281-Paper-Conference.pdf",
+              "document_sha256": "845586a7198cf824049bf31dc2bb46cd098bdff09fe177b0b8515bce12c6e457"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To summarize, our conclusions are as follows: 1. We find that model edit success is essentially unrelated to where factual information is stored in models, as measured by Causal Tracing. Robustness experiments generalize this result across causal localization methods, editing methods, editing metrics, models, and datasets. 2. To reconnect localization with editing performance, we introduce four variants of a standard model editing problem, including Tracing Reversal, Fact Erasure, Fact Amplification, and Fact Forcing. 3. Edit success and tracing effects correlate best in the Fact Forcing setting. However, tracing effects explain only a small fraction of the variance in editing performance, while the choice of edit layer is a much more important factor. This suggests that, surprisingly, localization insights from Causal Tracing are not useful for choosing which model layer to edit.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/3927bbdcf0e8d1fa8aa23c26f358a281-Paper-Conference.pdf",
+              "document_sha256": "845586a7198cf824049bf31dc2bb46cd098bdff09fe177b0b8515bce12c6e457"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "where t∗ is a dummy PII, which, unlike t, causes no privacy leakage if generated but preserves the semantics of the training example – that is for example mail@domain.com for mails and phone_number for phone numbers. Therefore, it is necessary to find, at each layer that needs to be edited, the correct representation for the set of keys – K0 and K ∗ – and values – V0∗ and V ∗ . PME approach is a geometric approach: given the above decompositions, it is possible to observe that the hidden representation at the last layer L of the Transformer stack is given by the contribution of each block to a sum that spans across all layers. The PME then initially optimizes the last hidden representation so that it is predictive of the privacy-preserving dummy PII, t∗ , rather than the original t. Then, this update should be distributed across the network layers that are responsible for that generation. Previous work tried to identify those layers in advance, for a batch of examples, via Causal Analysis, and then edit the identified layers (Meng et al., 2023b). While this is a substantial computational overhead, it has also been discussed that the localization techniques developed so far do not actually inform the edit (Chang et al., 2024; Hase et al., 2023). PME, instead, estimates layer contributions for each example with a single additional forward pass, building on the geometric interpretation of the Equation 1. Hence, to find the correct representation for the set of keys – K0 and K ∗ – and values – V0∗ and V ∗ at each layer, we first find the optimal representation at layer L and then estimate the contribution for each layer.",
+              "url": "https://aclanthology.org/2025.acl-long.810.pdf",
+              "document_sha256": "8411af2186667ba7e1b7c2545ad27a8292881da4493db20be7358637b8d7b020"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 10,
+              "text": "The generation of a PII informs the edit in PME: each layer contribution is estimated and the edit is performed accordingly. Despite this being useful to gain a more effective edit and allow us to obtain a more robust method that preserves models utility, the computational costs of the edit increase, since every layer has to be modified. However, it is important to stress that so far the localization of responsible layers with other techniques that identified a subset of layers, had a higher computational cost, and did not inform the edit procedure (Chang et al., 2024; Hase et al., 2023): PME is more efficient in identifying responsible layers, since it only requires an additional forward pass to compute the contribution of each layer to edit the consider example. Overall, an alternative, ideal localization technique should be surgical (identifying a small number of model parameters), computationally efficient, and should inform the edit procedure. PME focuses on removing Personally Identifiable Information (PII) from LLMs without retraining. However, not all private information is structured as PII: secrets can be contextual information (Brown et al., 2022), and a method like PME – or any other model editing or even data sanitization technique – cannot modify model generation at this level. Additionally, if one wants to frame the lifecylce of an LLM also as a function of an iterative editing phase, a greater exploration of the effect of editing information sequentially should be performed: the update of model parameters, while from our experiment is not affecting other privacy issues or model performance, may cause additional effects (Carlini et al., 2022). Similarly, greater details on other effects causing leakages – with more complex decoding strategies than greedy",
+              "url": "https://aclanthology.org/2025.acl-long.810.pdf",
+              "document_sha256": "8411af2186667ba7e1b7c2545ad27a8292881da4493db20be7358637b8d7b020"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large Language Models (LLMs) memorize, and thus, among huge amounts of uncontrolled data, may memorize Personally Identifiable Information (PII), which should not be stored and, consequently, not leaked. In this paper, we introduce Private Memorization Editing (PME), an approach for preventing private data leakage that turns an apparent limitation, that is, the LLMs’ memorization ability, into a powerful privacy defense strategy. While attacks against LLMs have been performed exploiting previous knowledge regarding their training data, our approach aims to exploit the same kind of knowledge in order to make a model more robust. We detect a memorized PII and then mitigate the memorization of PII by editing a model knowledge of its training data. We verify that our procedure does not affect the underlying language model while making it more robust against privacy Training Data Extraction attacks. We demonstrate that PME can effectively reduce the number of leaked PII in a number of configurations, in some cases even reducing the accuracy of the privacy attacks to zero.",
+              "url": "https://aclanthology.org/2025.acl-long.810.pdf",
+              "document_sha256": "8411af2186667ba7e1b7c2545ad27a8292881da4493db20be7358637b8d7b020"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Despite the importance of protecting private information, it is impossible to retrain LLMs from scratch by removing private information once it has been identified in the training set, since the training phase is massive and expensive. Therefore, methods that can alter the knowledge of an LLM without further training may help to protect users privacy: machine unlearning techniques (Yao et al., 2024b; Kassem et al., 2023) have been successfully applied to preserve users privacy. Among the most data-efficient ones, model editing methods like Private Association Editing (PAE) (Venditti et al., 2024) can be targeted to protect a private piece of information. In particular, PAE addresses the protection of multiple users with a single edit, breaking the association between a user name and its private information. Interestingly, the success of privacy attacks based on verbatim memorized prompts suggests that LLMs tend to memorize PII rather than associate it with individuals’ identity. Indeed, Training Data Extraction attacks (Carlini et al., 2021, 2023; Huang et al., 2022; Nasr et al., 2023) or attacks based on other measures of overfitting like Membership Inference Attacks (Mireshghallah et al., 2022; Mattern et al., 2023) are incredibly effective. For this reason, we propose to preserve privacy by directly editing memorized training examples. In this paper, we propose Private Memorization Editing (PME) that turns the memorization of training examples with PII into an effective defense strategy 1 . Unlike previous works that try to break an association between a user name and some piece of private information (Venditti et al., 2024), we propose to directly edit the memorized training sequence to avoid privacy leakage and to minimally impact the general language modeling",
+              "url": "https://aclanthology.org/2025.acl-long.810.pdf",
+              "document_sha256": "8411af2186667ba7e1b7c2545ad27a8292881da4493db20be7358637b8d7b020"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0708528678da4855b2c66f7a",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/3927bbdcf0e8d1fa8aa23c26f358a281-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-9d9cd948732f22267f342f3e",
+          "url": "https://aclanthology.org/2025.acl-long.810/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "1a31de799085663abaa49c9df9bef76c9e8a4135d8ff88aa29226b882d0d17ed"
+    },
+    {
+      "id": "edge-a8f93ffbe79d8e9c89488ece",
+      "a": "paper-070a3cd08924fd52dd815ac8",
+      "b": "paper-26b05b469341c8ec62c80611",
+      "state": {
+        "paper_a": {
+          "title": "CyCLIP: Cyclic Contrastive Language-Image Pretraining",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Recent advances in contrastive representation learning over paired image-text data have led to models such as CLIP that achieve state-of-the-art performance for zero-shot classification and distributional robustness. Such models typically require joint reasoning in the image and text representation spaces for downstream inference tasks. Contrary to prior beliefs, we demonstrate that the image and text representations learned via a standard contrastive objective are not interchangeable and can lead to inconsistent downstream predictions. To mitigate this issue, we formalize consistency and propose CyCLIP, a framework for contrastive representation learning that explicitly optimizes for the learned representations to be geometrically consistent in the image and text space. In particular, we show that consistent representations can be learned by explicitly symmetrizing (a) the similarity between the two mismatched image-text pairs (cross-modal consistency); and (b) the similarity between the image-image pair and the text-text pair (in-modal consistency). Empirically, we show that the improved consistency in CyCLIP translates to significant gains over CLIP, with gains ranging from 10%-24% for zero-shot classification on standard benchmarks (CIFAR-10, CIFAR-100, ImageNet1K) and 10%-27% for robustness to various natural distribution shifts."
+        },
+        "paper_b": {
+          "title": "Robust Contrastive Language-Image Pretraining against Data Poisoning and Backdoor Attacks",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Contrastive vision-language representation learning has achieved state-of-the-art performance for zero-shot classification, by learning from millions of image-caption pairs crawled from the internet. However, the massive data that powers large multimodal models such as CLIP, makes them extremely vulnerable to various types of targeted data poisoning and backdoor attacks. Despite this vulnerability, robust contrastive vision-language pre-training against such attacks has remained unaddressed. In this work, we propose RoCLIP, the first effective method for robust pre-training multimodal vision-language models against targeted data poisoning and backdoor attacks. RoCLIP effectively breaks the association between poisoned image-caption pairs by considering a relatively large and varying pool of random captions, and matching every image with the text that is most similar to it in the pool instead of its own caption, every few epochs.It also leverages image and text augmentations to further strengthen the defense and improve the performance of the model. Our extensive experiments show that RoCLIP renders state-of-the-art targeted data poisoning and backdoor attacks ineffective during pre-training CLIP models. In particular, RoCLIP decreases the success rate for targeted data poisoning attacks from 93.75% to 12.5% and that of backdoor attacks down to 0%, while improving the model's linear probe performance by 10% and maintains a similar zero shot performance compared to CLIP. By increasing the frequency of matching, RoCLIP is able to defend strong attacks, which add up to 1% poisoned examples to the data, and successfully maintain a low attack success rate of 12.5%, while trading off the performance on some tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "CyCLIP (Goel et al., 2022) improves the representations by symmetrization of the similarity between the two mismatched image-text pairs, as well as the similarity between the image-image pair and the text-text pair.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070a3cd08924fd52dd815ac8",
+          "b": "paper-26b05b469341c8ec62c80611",
+          "input_sha256": "0a51636f14f7f8c59c5551af06fd45f8328a387c5eb9532f84569d19c3867d84",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/2cd36d327f33d47b372d4711edd08de0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/2232e8fee69b150005ac420bfa83d705-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/2232e8fee69b150005ac420bfa83d705-Paper-Conference.pdf",
+              "sha256": "24dc5e55c9177ff121c04819182fb24c67a05bf1e5f4db54a0bf38a4a025d6ce"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "pairs and pairs within the same modality. In Figure 1 (a), we illustrate this effect where matched image-text pairs, (Idog , Tdog ) and (Icat , Tcat ), get close to each other but the overall geometry of pairwise distances can be highly irregular (see e.g., (Idog , Tcat ) and (Icat , Tdog )). If we use such representations for downstream inference, such irregularities can translate into inconsistent reasoning in the image and text spaces. For example, CLIP designs proxy captions for class labels and uses the most similar class caption to perform zero-shot classification for images; using the default captions in Figure 1 (a), this would imply that a test image Itest gets classified as a dog in the image space even when a simple nearest neighbor classifier in the text space would correctly infer the label to be a cat. To mitigate these challenges, we propose Cyclic Contrastive Language-Image Pretraining (C Y CLIP), a framework that imposes additional geometric structure on the learned representations. Specifically, given two image-text pairs, we augment the contrastive learning objective with two symmetrization terms. The first term provides for in-modal consistency by encouraging the distance between the two image embeddings to be close to the distance between the corresponding text embeddings. The second term for the cross-modal consistency that encourages the distance between the image and text embedding from the first and second pairs respectively to be close to the distance between the text and image embeddings from the first and second pairs respectively. As shown in Figure 1 (b), if representations of any two image-text pairs, (Idog , Tdog ) and (Icat , Tcat ) exactly satisfy both forms of cyclic consistency, then we can guarantee that any test image Itest",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "document_sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We showed that the visual representations learned by CLIP could be inconsistent when used for inference in the image and text spaces. To mitigate this problem, we propose C Y CLIP, a learning framework that builds upon CLIP by augmenting the contrastive loss in Eq. 1 with additional geometric consistency regularizers. The intuition follows directly from Figure 1 (b), where we showed that inconsistency in the image and text spaces could be eliminated if we symmetrize the similarity between the two mismatched image-text pairs and the similarity between the image-image pair and the text-text pair. We formalize this intuition with two consistency regularizers. (1) The cross-modal consistency regularizer reduces the gap in the similarity scores between the embeddings of all the mismatched image-text pairs in a batch, two at a time: N",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "document_sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Contrastive Representation Learning. Contrastive learning was originally proposed for self supervised representation learning from unimodal data. Self-supervised contrastive learning works by maximizing agreement between differently augmented views of the same example and minimizing agreement between differently augmented views of different examples (Chen et al., 2020; Chen & He, 2021; He et al., 2020). Several works improved the performance of contrastive-learning on downstream tasks by imposing additional constraints to remove redundancy between components of the representation vectors and prevent collapse of the representations (Bardes et al., 2021; Zbontar et al., 2021), or using nearest-neighbor as positive pairs in the contrastive loss (Dwibedi et al., 2021; Van Gansbeke et al., 2021). Contrastive Language-Image Pretraining. Multimodal vision-language models like CLIP (Radford et al., 2021) and ALIGN (Jia et al., 2021) are pre-trained on 400M/1B image-text pairs, by maximizing the agreement between image and text representations of every image-caption pairs and minimizing those of different pairs. A recent line of work aims at improving the data efficiency and quality of CLIP representations, by leveraging image and text augmentations. DeCLIP (Li et al., 2021) improves data-efficiency of CLIP by maximizing the similarity between two augmented image features using SimSiam (Chen & He, 2021), two augmented text features using Masked Language Modeling (MLM) (Devlin et al., 2018), and matching augmented image features with their augmented text pairs and other similar text features. SLIP (Mu et al., 2022) improves the performance by maximizing the agreement between two augmented image features using SimCLR (Chen et al., 2020), and matching the augmented image features",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/2232e8fee69b150005ac420bfa83d705-Paper-Conference.pdf",
+              "document_sha256": "24dc5e55c9177ff121c04819182fb24c67a05bf1e5f4db54a0bf38a4a025d6ce"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Contrastive vision-language representation learning has achieved state-of-the-art performance for zero-shot classification, by learning from millions of imagecaption pairs crawled from the internet. However, the massive data that powers large multimodal models such as CLIP, makes them extremely vulnerable to various types of targeted data poisoning and backdoor attacks. Despite this vulnerability, robust contrastive vision-language pre-training against such attacks has remained unaddressed. In this work, we propose RO CLIP, the first effective method for robust pre-training multimodal vision-language models against targeted data poisoning and backdoor attacks. RO CLIP effectively breaks the association between poisoned image-caption pairs by considering a relatively large and varying pool of random captions, and matching every image with the text that is most similar to it in the pool instead of its own caption, every few epochs.It also leverages image and text augmentations to further strengthen the defense and improve the performance of the model. Our extensive experiments show that RO CLIP renders state-of-the-art targeted data poisoning and backdoor attacks ineffective during pre-training CLIP models. In particular, RO CLIP decreases the success rate for targeted data poisoning attacks from 93.75% to 12.5% and that of backdoor attacks down to 0%, while improving the model’s linear probe performance by 10% and maintains a similar zero shot performance compared to CLIP. By increasing the frequency of matching, RO CLIP is able to defend strong attacks, which add up to 1% poisoned examples to the data, and successfully maintain a low attack success rate of 12.5%, while trading off the performance on some tasks 1 .",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/2232e8fee69b150005ac420bfa83d705-Paper-Conference.pdf",
+              "document_sha256": "24dc5e55c9177ff121c04819182fb24c67a05bf1e5f4db54a0bf38a4a025d6ce"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Targeted data poisoning attacks on multimodal models add mismatched image-caption pairs to the pre-training data, to change the prediction of particular images at the test time. Similarly, backdoor attacks overlay a small patch on a subset of training data to cause the model to misclassify test images with the same patch. Notably, poisoning just 0.0001% of the pre-training examples can lead to success of a targeted poisoning attack. Similarly, poisoning 0.01% of pre-training examples can makes a backdoor attack successful (Carlini & Terzis, 2021). Compared to clean-label data poisoning and backdoor attacks in the supervised settings which require poisoning on average 1% of training data (Turner et al., 2018; Geiping et al., 2021), attacking multimodal contrastive models requires orders of magnitude fewer poisoned examples. Interestingly, the larger the model, the more vulnerable it is against adversarial attacks (Carlini & Terzis, 2021). Despite this vulnerability, robust pre-training of multimodal vision-language models against targeted data poisoning and backdoor attacks has remained unaddressed. The recent work of Yang et al. (2022) studied poison identification during fine-tuning of CLIP, by using another CLIP model pre-trained on clean data to remove dissimilar image-caption pairs. Furthermore, Bansal et al. (2023) proposed CleanCLIP to eliminate the effect of backdoor attacks from a pre-trained CLIP model, by fine-tuning on a large subset of the clean pre-training data with in-modality contrastive loss on both vision and language modalities. However, such approaches are not applicable to pre-training, as we also confirm experimentally in Appendix 7.1. In this work, we propose the first effective method, namely RO CLIP, for robust pre-training of multimodal",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/2232e8fee69b150005ac420bfa83d705-Paper-Conference.pdf",
+              "document_sha256": "24dc5e55c9177ff121c04819182fb24c67a05bf1e5f4db54a0bf38a4a025d6ce"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070a3cd08924fd52dd815ac8",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/2cd36d327f33d47b372d4711edd08de0-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-26b05b469341c8ec62c80611",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/2232e8fee69b150005ac420bfa83d705-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "93ea5acb81796e9a412c651e101a076efa635b2e7bee0b466ad2bcc03a76565c"
+    },
+    {
+      "id": "edge-4e26a3615877978cc2d78278",
+      "a": "paper-070a3cd08924fd52dd815ac8",
+      "b": "paper-2d718375980b8ed33b45b592",
+      "state": {
+        "paper_a": {
+          "title": "CyCLIP: Cyclic Contrastive Language-Image Pretraining",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Recent advances in contrastive representation learning over paired image-text data have led to models such as CLIP that achieve state-of-the-art performance for zero-shot classification and distributional robustness. Such models typically require joint reasoning in the image and text representation spaces for downstream inference tasks. Contrary to prior beliefs, we demonstrate that the image and text representations learned via a standard contrastive objective are not interchangeable and can lead to inconsistent downstream predictions. To mitigate this issue, we formalize consistency and propose CyCLIP, a framework for contrastive representation learning that explicitly optimizes for the learned representations to be geometrically consistent in the image and text space. In particular, we show that consistent representations can be learned by explicitly symmetrizing (a) the similarity between the two mismatched image-text pairs (cross-modal consistency); and (b) the similarity between the image-image pair and the text-text pair (in-modal consistency). Empirically, we show that the improved consistency in CyCLIP translates to significant gains over CLIP, with gains ranging from 10%-24% for zero-shot classification on standard benchmarks (CIFAR-10, CIFAR-100, ImageNet1K) and 10%-27% for robustness to various natural distribution shifts."
+        },
+        "paper_b": {
+          "title": "Better Safe than Sorry: Pre-training CLIP against Targeted Data Poisoning and Backdoor Attacks",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Contrastive Language-Image Pre-training (CLIP) on large image-caption datasets has achieved remarkable success in zero-shot classification and enabled transferability to new domains. However, CLIP is extremely more vulnerable to targeted data poisoning and backdoor attacks compared to supervised learning. Perhaps surprisingly, poisoning 0.0001% of CLIP pre-training data is enough to make targeted data poisoning attacks successful. This is four orders of magnitude smaller than what is required to poison supervised models. Despite this vulnerability, existing methods are very limited in defending CLIP models during pre-training. In this work, we propose a strong defense, SAFECLIP, to safely pre-train CLIP against targeted data poisoning and backdoor attacks. SAFECLIP warms up the model by applying unimodal contrastive learning (CL) on image and text modalities separately. Then, it divides the data into safe and risky sets by applying a Gaussian Mixture Model to the cosine similarity of image-caption pair representations. SAFECLIP pre-trains the model by applying the CLIP loss to the safe set and applying unimodal CL to image and text modalities of the risky set separately. By gradually increasing the size of the safe set during pre-training, SAFECLIP effectively breaks targeted data poisoning and backdoor attacks without harming the CLIP performance. Our extensive experiments on CC3M, Visual Genome, and MSCOCO demonstrate that SAFECLIP significantly reduces the success rate of targeted data poisoning attacks from 93.75% to 0% and that of various backdoor attacks from up to 100% to 0%, without harming CLIP’s performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "CyCLIP (Goel et al., 2022) emphasizes the importance of in-modal consistency and cross-modal consistency between text and image modality.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-070a3cd08924fd52dd815ac8",
+          "b": "paper-2d718375980b8ed33b45b592",
+          "input_sha256": "870e6ac9aa83f9865d250a0e31f82f14499645484fae241ccda9bafd43c4cbac",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/2cd36d327f33d47b372d4711edd08de0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/yang24i.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24i/yang24i.pdf",
+              "sha256": "c36461735144bbb8260354d21ae32231b895ff77cc8bf291ce65427a9cdf0d88"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "pairs and pairs within the same modality. In Figure 1 (a), we illustrate this effect where matched image-text pairs, (Idog , Tdog ) and (Icat , Tcat ), get close to each other but the overall geometry of pairwise distances can be highly irregular (see e.g., (Idog , Tcat ) and (Icat , Tdog )). If we use such representations for downstream inference, such irregularities can translate into inconsistent reasoning in the image and text spaces. For example, CLIP designs proxy captions for class labels and uses the most similar class caption to perform zero-shot classification for images; using the default captions in Figure 1 (a), this would imply that a test image Itest gets classified as a dog in the image space even when a simple nearest neighbor classifier in the text space would correctly infer the label to be a cat. To mitigate these challenges, we propose Cyclic Contrastive Language-Image Pretraining (C Y CLIP), a framework that imposes additional geometric structure on the learned representations. Specifically, given two image-text pairs, we augment the contrastive learning objective with two symmetrization terms. The first term provides for in-modal consistency by encouraging the distance between the two image embeddings to be close to the distance between the corresponding text embeddings. The second term for the cross-modal consistency that encourages the distance between the image and text embedding from the first and second pairs respectively to be close to the distance between the text and image embeddings from the first and second pairs respectively. As shown in Figure 1 (b), if representations of any two image-text pairs, (Idog , Tdog ) and (Icat , Tcat ) exactly satisfy both forms of cyclic consistency, then we can guarantee that any test image Itest",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "document_sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We showed that the visual representations learned by CLIP could be inconsistent when used for inference in the image and text spaces. To mitigate this problem, we propose C Y CLIP, a learning framework that builds upon CLIP by augmenting the contrastive loss in Eq. 1 with additional geometric consistency regularizers. The intuition follows directly from Figure 1 (b), where we showed that inconsistency in the image and text spaces could be eliminated if we symmetrize the similarity between the two mismatched image-text pairs and the similarity between the image-image pair and the text-text pair. We formalize this intuition with two consistency regularizers. (1) The cross-modal consistency regularizer reduces the gap in the similarity scores between the embeddings of all the mismatched image-text pairs in a batch, two at a time: N",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2cd36d327f33d47b372d4711edd08de0-Paper-Conference.pdf",
+              "document_sha256": "64456d700b7f64cab9e4b8b0994fd03aae22a4d3342adaedb3dc058c7ac6746a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "of the representation vectors (Zbontar et al., 2021). Most relevant to our work is NNCLR, which enriches the learned representations by keeping a memory bank of augmented representations and using each example’s nearest neighbor in it as its positive pair (Dwibedi et al., 2021). Contrastive Language-Image pre-training (CLIP) Large vision-language models like CLIP (Radford et al., 2021) and ALIGN (Jia et al., 2021) achieved a remarkable success by contrastive pre-training on 400M and 1B image-caption pairs crawled from the web. Recent work tried to improve the data efficiency and performance of CLIP. Specifically, DeCLIP (Li et al., 2021) uses SimSiam (Chen & He, 2021) and Masked Language Modeling (Devlin et al., 2018) to match the augmented views of the image representations and the augmented views of the text representations, to improve the data efficiency of CLIP. CyCLIP (Goel et al., 2022) emphasizes the importance of in-modal consistency and cross-modal consistency between text and image modality. SLIP (Mu et al., 2022) improves the performance by including unimodal contrastive learning on images using SimCLR, which maximizes the agreement between different views of the same augmented image while minimizing agreement between augmented views of different images.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24i/yang24i.pdf",
+              "document_sha256": "c36461735144bbb8260354d21ae32231b895ff77cc8bf291ce65427a9cdf0d88"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Contrastive Language-Image Pre-training (CLIP) on large image-caption datasets has achieved remarkable success in zero-shot classification and enabled transferability to new domains. However, CLIP is extremely more vulnerable to targeted data poisoning and backdoor attacks, compared to supervised learning. Perhaps surprisingly, poisoning 0.0001% of CLIP pre-training data is enough to make targeted data poisoning attacks successful. This is four orders of magnitude smaller than what is required to poison supervised models. Despite this vulnerability, existing methods are very limited in defending CLIP models during pre-training. In this work, we propose a strong defense, S AFE C LIP, to safely pre-train CLIP against targeted data poisoning and backdoor attacks. S AFE C LIP warms up the model by applying unimodal contrastive learning (CL) on image and text modalities separately. Then, it divides the data into safe and risky sets, by applying a Gaussian Mixture Model to the cosine similarity of image-caption pair representations. S AFE C LIP pre-trains the model by applying the CLIP loss to the safe set and applying unimodal CL to image and text modalities of the risky set separately. By gradually increasing the size of the safe set during pre-training, S AFE C LIP effectively breaks targeted data poisoning and backdoor attacks without harming the CLIP performance. Our extensive experiments on CC3M, Visual Genome and MSCOCO demonstrate that S AFE C LIP significantly reduces the success rate of targeted data poisoning attacks from 93.75% to 0% and that of various backdoor attacks from up to 100% to 0%, without harming CLIP’s performance1 .",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24i/yang24i.pdf",
+              "document_sha256": "c36461735144bbb8260354d21ae32231b895ff77cc8bf291ce65427a9cdf0d88"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this work, we propose an effective defense, S AFE C LIP, against strong targeted data poisoning and backdoor attacks during pre-training CLIP, without compromising its performance. S AFE C LIP warms up the model by applying separate unimodal contrastive losses to image and caption modalities to reduce the initial similarity of poisoned imagecaption representations. Then, it applies the CLIP loss once to all pairs with a low learning rate to initially associate the image-caption representations, while maintaining a low similarity for poisoned pairs. Subsequently, S AFE C LIP employs a Gaussian Mixture Model (GMM) on cosine similarity of image-caption representations to divide the examples into safe and risky sets. S AFE C LIP pre-trains the model using the CLIP loss on the safe set and unimodal contrastive losses on image and caption modalities of the risky set. Throughout training, S AFE C LIP updates and expands the safe set. In doing so, it effectively prevents the poisoned image-caption pairs to be associated and successfully breaks the attack. At the same time, it maintains model performance with the increasing training data size.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24i/yang24i.pdf",
+              "document_sha256": "c36461735144bbb8260354d21ae32231b895ff77cc8bf291ce65427a9cdf0d88"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-070a3cd08924fd52dd815ac8",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/2cd36d327f33d47b372d4711edd08de0-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-2d718375980b8ed33b45b592",
+          "url": "https://proceedings.mlr.press/v235/yang24i.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "e6122bd251ab1f29604da72faa26cf0f130b2e2b00924a6c9673de6967b3588e"
+    },
+    {
+      "id": "edge-20898cd29e7533c41ab40af0",
+      "a": "paper-07a1eb3b1988af43e401c2b7",
+      "b": "paper-735ec6aeaebd64ba4e8ce379",
+      "state": {
+        "paper_a": {
+          "title": "DeeBERT: Dynamic Early Exiting for Accelerating BERT Inference",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in real-time applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ~40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/DeeBERT."
+        },
+        "paper_b": {
+          "title": "TextFusion: Privacy-Preserving Pre-trained Model Inference via Token Fusion",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Recently, more and more pre-trained language models are released as a cloud service. It allows users who lack computing resources to perform inference with a powerful model by uploading data to the cloud. The plain text may contain private information, as the result, users prefer to do partial computations locally and upload intermediate representations to the cloud for subsequent inference.However, recent studies have shown that intermediate representations can also be recovered to plain text with reasonable accuracy, thus the risk of privacy leakage still exists. To address this issue, we propose TextFusion, a novel method for preserving inference privacy.Specifically, we train a Fusion Predictor to dynamically fuse token representations, which hides multiple private token representations behind an unrecognizable one.Furthermore, an adversarial training regime is employed to privatize these representations. In this way, the cloud only receives incomplete and perturbed representations, making it difficult to accurately recover the complete plain text.The experimental results on diverse classification tasks show that our approach can effectively preserve inference privacy without significantly sacrificing performance in different scenarios."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "To avoid this problem, we draw inspiration from early exiting mechanism (Xin et al., 2020; Li et al., 2021), which assumes that the representations at an earlier layer of PLMs are adequate to make a correct prediction.\nTo solve this problem, we draw inspiration from early exiting (Xin et al., 2020; Li et al., 2021), which gets predictions for confident tokens in earlier layers.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07a1eb3b1988af43e401c2b7",
+          "b": "paper-735ec6aeaebd64ba4e8ce379",
+          "input_sha256": "742ce43e54ea215c50ab7a6f890cfa2e5b87ed1347f389da68ec3caa2864146a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.204/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.572/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.572.pdf",
+              "sha256": "c76226ce01ea4a831dcd396c9aae5276553200a3f8dc268c88210f91322bcc07"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pre-trained language models such as ELMo (Peters et al., 2018), GPT (Radford et al., 2019), BERT (Devlin et al., 2019), XLNet (Yang et al., 2019), and RoBERTa (Liu et al., 2019) have brought significant improvements to natural language processing (NLP) applications. Despite their power, they are notorious for being enormous in size and slow in both training and inference. Their long inference latencies present challenges to deployment in real-time applications and hardwareconstrained edge devices such as mobile phones and smart watches. To accelerate inference for BERT, we propose DeeBERT: Dynamic early exiting for BERT. The inspiration comes from a well-known observation in the computer vision community: in deep convolutional neural networks, higher layers typically produce more detailed and finer-grained features (Zeiler and Fergus, 2014). Therefore, we",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in realtime applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ∼40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/ DeeBERT.",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "during training. However, privacy attackers can train a text reconstruction model that directly uses privatized representations to recover raw words because these learned representations and related raw words are accessible to attackers in inference phase (Song and Raghunathan, 2020; Höhmann et al., 2021). The risk of privacy leakage still exists. In this paper, we propose TextFusion to preserve inference privacy. Our method directly widens the gap between intermediate representations and plain text in the inference phase. Specifically, we train a fusion predictor to identify which token representations are suitable to be fused into one representation. For each forward inference, we fuse these representations at the target layer and output reorganized token representations that cannot be aligned with the raw words in plain text. Meanwhile, a misleading training scheme is adopted to make both fused and unfused representations not similar to the related words. In this way, we break the one-to-one relationship between token representation and raw words. The incomplete and scrambled representation sequence makes it difficult for an attacker to recover the plain text. Additionally, token fusion cannot be directly applied to token classification tasks such as named entity recognition, because these tasks require predictions of each token. To solve this problem, we draw inspiration from early exiting (Xin et al., 2020; Li et al., 2021), which gets predictions for confident tokens in earlier layers. We only fuse these token representations and keep others unchanged. Thus, we can still preserve privacy while getting predictions of all tokens. Our codes are publicly available at https:// github.com/xzhou20/TextFusion. Our contribution can be summarized as follows: • We propose",
+              "url": "https://aclanthology.org/2022.emnlp-main.572.pdf",
+              "document_sha256": "c76226ce01ea4a831dcd396c9aae5276553200a3f8dc268c88210f91322bcc07"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "where i means the i-th region in the sequence, σ(.) is sigmoid activation function to ensure the score is between 0 and 1, {W1 , W2 , b1 , b2 } are trainable parameters of fusion predictor and s(.) ∈ R. We apply the score as the weight of the fused representation and get final fused representation h′ = s(ĥ) ∗ ĥ for subsequent inference. Token Classification. The goal of token classification is to predict the labels Y = [y1 , y2 , ..., yn ] with the equal length n as plain text X. The token fusion reduces the sequence length, which makes it impossible to get predictions for fused tokens. As the result, we cannot perform token fusion directly in token classification tasks. To avoid this problem, we draw inspiration from early exiting mechanism (Xin et al., 2020; Li et al., 2021), which assumes that the representations at an earlier layer of PLMs are adequate to make a correct prediction. We can only fuse the token representations that are confident to get labels locally, leaving unlabeled token representations to the cloud server. In this way, token fusion is still be done dynamically and does not affect the completion of token classification. In token classification, the fusion predictor aims to predict whether the current token representation can get a correct label. For the l-th layer of local (l) encoder, we calculate the entropy si for each (l) representation hi to indicate how confident it is to get the label: (l)",
+              "url": "https://aclanthology.org/2022.emnlp-main.572.pdf",
+              "document_sha256": "c76226ce01ea4a831dcd396c9aae5276553200a3f8dc268c88210f91322bcc07"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Recently, more and more pre-trained language models are released as a cloud service. It allows users who lack computing resources to perform inference with a powerful model by uploading data to the cloud. The plain text may contain private information, as the result, users prefer to do partial computations locally and upload intermediate representations to the cloud for subsequent inference. However, recent studies have shown that plain text can also be recovered by intermediate representations with reasonable accuracy, thus the risk of privacy leakage still exists. To address this issue, we propose TextFusion, a novel method for preserving inference privacy. Specifically, we train a Fusion Predictor to dynamically fuse token representations, which hides multiple private token representations behind an unrecognizable one. Furthermore, a misleading training scheme is employed to privatize these representations. In this way, the cloud only receives incomplete and perturbed representations, making it difficult to accurately recover the complete plain text. The experimental results on diverse classification tasks show that our approach can effectively preserve inference privacy without substantially sacrificing performance in different scenarios.",
+              "url": "https://aclanthology.org/2022.emnlp-main.572.pdf",
+              "document_sha256": "c76226ce01ea4a831dcd396c9aae5276553200a3f8dc268c88210f91322bcc07"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Achilles’ Heel of Token Fusion. With the obstacle of token fusion, a privacy attacker cannot get ideal training data, i.e., the one-to-one token representation and its original word. This makes it difficult for an attacker to train a specific text reconstruction model for TextFusion. Despite the privacy of the fused token being guaranteed, the unfused token representations are still at risk of attack. To further protect privacy, we need to promote irrelevance in the token representation with respect to the original word. Misleading Loss. The representations we deal with come from very shallow layers of the PLM and usually represent the foundational features of the data (Jawahar et al., 2019). A good shallow representation is decisive for the subsequent model inference, as the result, unconstrained perturbations on these representations can be fatal to performance. Therefore, we propose to mislead the attacker by making the token representation more predictable to a similar but different word. Specifically, we calculate the Euclidean distance between each representation and the embedding matrix in the target layer, and select the word with the closest distance and not included in the input as the misleading word. We involve training a secondary objective to predict the misleading words for both fused and unfused token representations: Lmislead = −",
+              "url": "https://aclanthology.org/2022.emnlp-main.572.pdf",
+              "document_sha256": "c76226ce01ea4a831dcd396c9aae5276553200a3f8dc268c88210f91322bcc07"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07a1eb3b1988af43e401c2b7",
+          "url": "https://aclanthology.org/2020.acl-main.204/"
+        },
+        "b": {
+          "paper_id": "paper-735ec6aeaebd64ba4e8ce379",
+          "url": "https://aclanthology.org/2022.emnlp-main.572/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Privacy and Security in Language Models"
+      },
+      "sha256": "2e3a58741db4f69c13718a4c818fe95170de74a10d07181bfd7eb0b316f51566"
+    }
+  ]
+}

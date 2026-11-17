@@ -1,0 +1,351 @@
+{
+  "topic": "KV-cache reuse & repair",
+  "coverage": "Curated research slice · 7 papers · not a field survey",
+  "papers": [
+    {
+      "id": "cachegen",
+      "name": "CacheGen",
+      "title": "CacheGen: KV Cache Compression and Streaming for Fast Large Language Model Serving",
+      "arxiv_id": "2310.07240",
+      "year": 2023,
+      "date": "2023-10-11",
+      "authors": "Liu et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2310.07240",
+      "versions": [
+        {
+          "id": "2310.07240",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Store & stream",
+      "col": 0,
+      "lane": 0,
+      "abstract": "As large language models (LLMs) take on complex tasks, their inputs are supplemented with longer contexts that incorporate domain knowledge. Yet using long contexts is challenging, as nothing can be generated until the whole context is processed by the LLM. While the context-processing delay can be reduced by reusing the KV cache of a context across different inputs, fetching the KV cache, which contains large tensors, over the network can cause high extra network delays. CacheGen is a fast context-loading module for LLM systems. First, CacheGen uses a custom tensor encoder, leveraging KV cache's distributional properties to encode a KV cache into more compact bitstream representations with negligible decoding overhead, to save bandwidth usage. Second, CacheGen adapts the compression level of different parts of a KV cache to cope with changes in available bandwidth, in order to maintain low context-loading delay and high generation quality. % When available bandwidth drops, CacheGen may raise the compression level for a part of the context or recompute its KV cache on the fly. We test CacheGen on popular LLMs and datasets. Compared to the recent systems that reuse the KV cache, CacheGen reduces the KV cache size by 3.5-4.3x and the total delay in fetching and processing contexts by 3.2-3.7x with negligible impact on the LLM response quality. Our code is at: https://github.com/UChi-JCL/CacheGen.",
+      "abstract_source_url": "https://arxiv.org/abs/2310.07240",
+      "abstract_retrieved_at": "2026-11-12T05:32:41.621205+00:00"
+    },
+    {
+      "id": "prompt",
+      "name": "Prompt Cache",
+      "title": "Prompt Cache: Modular Attention Reuse for Low-Latency Inference",
+      "arxiv_id": "2311.04934",
+      "year": 2023,
+      "date": "2023-11-07",
+      "authors": "Gim et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2311.04934",
+      "versions": [
+        {
+          "id": "2311.04934",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Modular reuse",
+      "col": 0,
+      "lane": 1,
+      "abstract": "We present Prompt Cache, an approach for accelerating inference for large language models (LLM) by reusing attention states across different LLM prompts. Many input prompts have overlapping text segments, such as system messages, prompt templates, and documents provided for context. Our key insight is that by precomputing and storing the attention states of these frequently occurring text segments on the inference server, we can efficiently reuse them when these segments appear in user prompts. Prompt Cache employs a schema to explicitly define such reusable text segments, called prompt modules. The schema ensures positional accuracy during attention state reuse and provides users with an interface to access cached states in their prompt. Using a prototype implementation, we evaluate Prompt Cache across several LLMs. We show that Prompt Cache significantly reduce latency in time-to-first-token, especially for longer prompts such as document-based question answering and recommendations. The improvements range from 8x for GPU-based inference to 60x for CPU-based inference, all while maintaining output accuracy and without the need for model parameter modifications.",
+      "abstract_source_url": "https://arxiv.org/abs/2311.04934",
+      "abstract_retrieved_at": "2026-11-12T05:32:43.197238+00:00"
+    },
+    {
+      "id": "sglang",
+      "name": "SGLang",
+      "title": "SGLang: Efficient Execution of Structured Language Model Programs",
+      "arxiv_id": "2312.07104",
+      "year": 2023,
+      "date": "2023-12-12",
+      "authors": "Zheng et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2312.07104",
+      "versions": [
+        {
+          "id": "2312.07104",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Prefix sharing",
+      "col": 0,
+      "lane": 2,
+      "abstract": "Large language models (LLMs) are increasingly used for complex tasks that require multiple generation calls, advanced prompting techniques, control flow, and structured inputs/outputs. However, efficient systems are lacking for programming and executing these applications. We introduce SGLang, a system for efficient execution of complex language model programs. SGLang consists of a frontend language and a runtime. The frontend simplifies programming with primitives for generation and parallelism control. The runtime accelerates execution with novel optimizations like RadixAttention for KV cache reuse and compressed finite state machines for faster structured output decoding. Experiments show that SGLang achieves up to 6.4x higher throughput compared to state-of-the-art inference systems on various large language and multi-modal models on tasks including agent control, logical reasoning, few-shot learning benchmarks, JSON decoding, retrieval-augmented generation pipelines, and multi-turn chat. The code is publicly available at https://github.com/sgl-project/sglang",
+      "abstract_source_url": "https://arxiv.org/abs/2312.07104",
+      "abstract_retrieved_at": "2026-11-12T05:32:44.766212+00:00"
+    },
+    {
+      "id": "hydragen",
+      "name": "Hydragen",
+      "title": "Hydragen: High-Throughput LLM Inference with Shared Prefixes",
+      "arxiv_id": "2402.05099",
+      "year": 2024,
+      "date": "2024-02-07",
+      "authors": "Juravsky et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2402.05099",
+      "versions": [
+        {
+          "id": "2402.05099",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Prefix sharing",
+      "col": 1,
+      "lane": 2,
+      "abstract": "Transformer-based large language models (LLMs) are now deployed to hundreds of millions of users. LLM inference is commonly performed on batches of sequences that share a prefix, such as few-shot examples or a chatbot system prompt. Decoding in this large-batch setting can be bottlenecked by the attention operation, which reads large key-value (KV) caches from memory and computes inefficient matrix-vector products for every sequence in the batch. In this work, we introduce Hydragen, a hardware-aware exact implementation of attention with shared prefixes. Hydragen computes attention over the shared prefix and unique suffixes separately. This decomposition enables efficient prefix attention by batching queries together across sequences, reducing redundant memory reads and enabling the use of hardware-friendly matrix multiplications. Our method can improve end-to-end CodeLlama-13b throughput by up to 32x against competitive baselines, with speedup growing with the batch size and shared prefix length. Hydragen also enables the use of very long shared contexts: with a large batch size, increasing the prefix length from 1K to 16K tokens decreases Hydragen throughput by less than 15%, while the throughput of baselines drops by over 90%. Hydragen generalizes beyond simple prefix-suffix decomposition and can be applied to tree-based prompt sharing patterns, allowing us to further reduce inference time on competitive programming problems by 55%.",
+      "abstract_source_url": "https://arxiv.org/abs/2402.05099",
+      "abstract_retrieved_at": "2026-11-12T05:32:46.359728+00:00"
+    },
+    {
+      "id": "blend",
+      "name": "CacheBlend",
+      "title": "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion",
+      "arxiv_id": "2405.16444",
+      "year": 2024,
+      "date": "2024-05-26",
+      "authors": "Yao et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2405.16444",
+      "versions": [
+        {
+          "id": "2405.16444",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Reuse & repair",
+      "col": 1,
+      "lane": 1,
+      "abstract": "Large language models (LLMs) often incorporate multiple text chunks in their inputs to provide the necessary contexts. To speed up the prefill of the long LLM inputs, one can pre-compute the KV cache of a text and re-use the KV cache when the context is reused as the prefix of another LLM input. However, the reused text chunks are not always the input prefix, which makes precomputed KV caches not directly usable since they ignore the text's cross-attention with the preceding texts. Thus, the benefits of reusing KV caches remain largely unrealized. This paper tackles just one challenge: when an LLM input contains multiple text chunks, how to quickly combine their precomputed KV caches in order to achieve the same generation quality as the expensive full prefill (i.e., without reusing KV cache)? This challenge naturally arises in retrieval-augmented generation (RAG) where the input is supplemented with multiple retrieved texts as the context. We present CacheBlend, a scheme that reuses the precomputed KV caches, regardless prefix or not, and selectively recomputes the KV values of a small subset of tokens to partially update each reused KV cache. In the meantime, the small extra delay for recomputing some tokens can be pipelined with the retrieval of KV caches within the same job, allowing CacheBlend to store KV caches in slower devices with more storage capacity while retrieving them without increasing the inference delay. By comparing CacheBlend with the state-of-the-art KV cache reusing schemes on three open-source LLMs of various sizes and four popular benchmark datasets of different tasks, we show that CacheBlend reduces time-to-first-token (TTFT) by 2.2-3.3x and increases the inference throughput by 2.8-5x from full KV recompute without compromising generation quality. The code is available at https://github.com/LMCache/LMCache.",
+      "abstract_source_url": "https://arxiv.org/abs/2405.16444",
+      "abstract_retrieved_at": "2026-11-12T05:32:47.931521+00:00"
+    },
+    {
+      "id": "preble",
+      "name": "Preble",
+      "title": "Preble: Efficient Distributed Prompt Scheduling for LLM Serving",
+      "arxiv_id": "2407.00023",
+      "year": 2024,
+      "date": "2024-05-08",
+      "authors": "Srivatsa et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2407.00023",
+      "versions": [
+        {
+          "id": "2407.00023",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Prefix sharing",
+      "col": 2,
+      "lane": 2,
+      "abstract": "Prompts to large language models (LLMs) have evolved beyond simple user questions. For LLMs to solve complex problems, today's practices are to include domain-specific instructions, illustration of tool usages, and/or long context such as textbook chapters in prompts. As such, many parts of prompts are repetitive across requests. Recent works propose to cache and reuse KV state of prompts. However, they are all confined to a single-GPU optimization, while production LLM serving systems are distributed by nature. This paper proposes Preble, the first distributed LLM serving platform that targets and optimizes for prompt sharing. We designed a distributed scheduling system that co-optimizes KV state reuse and computation load-balancing with a new scheduling algorithm and a hierarchical scheduling mechanism. Our evaluation of Preble with real workloads and request arrival patterns on two open-source LLMs shows that Preble outperforms the SOTA serving systems by 1.5X to 14.5X on average latency and 2X to 10X on p99 latency.",
+      "abstract_source_url": "https://arxiv.org/abs/2407.00023",
+      "abstract_retrieved_at": "2026-11-12T05:32:49.504435+00:00"
+    },
+    {
+      "id": "kvlink",
+      "name": "KVLink",
+      "title": "KVLink: Accelerating Large Language Models via Efficient KV Cache Reuse",
+      "arxiv_id": "2502.16002",
+      "year": 2025,
+      "date": "2025-02-21",
+      "authors": "Yang et al.",
+      "venue": "Preprint",
+      "venue_verified": false,
+      "source_url": "https://arxiv.org/abs/2502.16002",
+      "versions": [
+        {
+          "id": "2502.16002",
+          "kind": "preprint"
+        }
+      ],
+      "retrieved_at": "2026-11-11",
+      "updated_at": "2026-11-11",
+      "branch": "Reuse & repair",
+      "col": 3,
+      "lane": 1,
+      "abstract": "We describe KVLink, an approach for efficient key-value (KV) cache reuse in large language models (LLMs). In many LLM applications, different inputs can share overlapping context, such as the same retrieved document appearing in multiple queries. However, the LLMs still need to encode the entire context for each query, leading to redundant computation. In this paper, we investigate a new strategy to eliminate such inefficiency, where the KV cache of each document is precomputed independently. During inference, the KV caches of retrieved documents are concatenated, allowing the model to reuse cached representations instead of recomputing them. To mitigate the performance degradation when using KV caches computed independently for each document, KVLink introduces two key techniques: adjusting positional embeddings of the KV cache at inference to match the global position after concatenation, and using trainable special tokens to restore self-attention across independently encoded documents. Experiments across 7 datasets demonstrate that KVLink improves question answering accuracy by an average of 4% over state-of-the-art methods. Furthermore, by leveraging precomputed KV caches, our approach reduces time-to-first-token by up to 96% compared to standard LLM inference, making it a scalable and efficient solution for context reuse. Additionally, KVLink can be combined with KV cache compression to further save cache loading and storage overhead while outperforming the baselines.",
+      "abstract_source_url": "https://arxiv.org/abs/2502.16002",
+      "abstract_retrieved_at": "2026-11-12T05:32:51.077986+00:00"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "cachegen-c1",
+      "paper_id": "cachegen",
+      "label": "Compress cached context for bandwidth-adaptive loading."
+    },
+    {
+      "id": "prompt-c1",
+      "paper_id": "prompt",
+      "label": "Define reusable prompt modules with position-aware attention states."
+    },
+    {
+      "id": "sglang-c1",
+      "paper_id": "sglang",
+      "label": "Use RadixAttention to reuse KV cache across structured generation calls."
+    },
+    {
+      "id": "hydragen-c1",
+      "paper_id": "hydragen",
+      "label": "Separate shared-prefix attention from unique suffixes to improve batched decoding."
+    },
+    {
+      "id": "blend-c1",
+      "paper_id": "blend",
+      "label": "Selectively recompute cached tokens to restore cross-chunk attention."
+    },
+    {
+      "id": "preble-c1",
+      "paper_id": "preble",
+      "label": "Schedule distributed requests by balancing reuse and GPU load."
+    },
+    {
+      "id": "kvlink-c1",
+      "paper_id": "kvlink",
+      "label": "Reconnect independently encoded documents using trainable link tokens."
+    }
+  ],
+  "edges": [
+    {
+      "id": "modular-repair",
+      "source": "prompt-c1",
+      "target": "blend-c1",
+      "type": "Extends",
+      "status": "explicit",
+      "inherited": "Independently precomputed KV states for reusable text chunks.",
+      "changed": "Recompute selected tokens to recover cross-chunk attention.",
+      "motivation": "Full reuse omits attention to earlier chunks.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2405.16444v2#S1",
+          "section": "Introduction; Figure 1",
+          "passage": "this method ignores the important cross-attention"
+        }
+      ],
+      "historical": true
+    },
+    {
+      "id": "learned-repair",
+      "source": "blend-c1",
+      "target": "kvlink-c1",
+      "type": "Challenges",
+      "status": "explicit",
+      "inherited": "Reuse independently encoded document caches.",
+      "changed": "Use positional re-encoding and learned link tokens rather than selective token repair.",
+      "motivation": "KVLink reports quality degradation and recomputation costs for CacheBlend.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2502.16002v1#S4",
+          "section": "Related work, KV cache reuse",
+          "passage": "the non-trivial cost of recomputing 10%–20% of tokens"
+        }
+      ],
+      "historical": true
+    },
+    {
+      "id": "distributed",
+      "source": "sglang-c1",
+      "target": "preble-c1",
+      "type": "Extends",
+      "status": "explicit",
+      "inherited": "SGLang as a serving backend with prefix reuse.",
+      "changed": "Add a distributed scheduler balancing reuse and load.",
+      "motivation": "Single-device reuse does not address distributed scheduling.",
+      "evidence": [
+        {
+          "url": "https://escholarship.org/uc/item/1bm0k1w0",
+          "section": "Implementation, §5.1",
+          "passage": "we currently support vLLM [21] and SGLang [64] as two backends."
+        }
+      ],
+      "historical": true
+    },
+    {
+      "id": "stream-fusion",
+      "source": "cachegen-c1",
+      "target": "blend-c1",
+      "type": "Combines",
+      "status": "inferred",
+      "inherited": "Stored KV caches can avoid repeated context computation.",
+      "changed": "Overlap retrieval with selective recomputation.",
+      "motivation": "Cache transfer can be overlapped with repair; direct inheritance is not established.",
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2405.16444v2#S1",
+          "section": "Introduction; conceptual interpretation only",
+          "passage": null
+        }
+      ],
+      "historical": true
+    }
+  ],
+  "similarities": [
+    {
+      "id": "sim-cachegen-blend",
+      "a": "cachegen",
+      "b": "blend",
+      "score": 0.2881,
+      "terms": [
+        "cached",
+        "fast",
+        "model",
+        "serving",
+        "large"
+      ],
+      "method": "tfidf-cosine"
+    },
+    {
+      "id": "sim-prompt-preble",
+      "a": "prompt",
+      "b": "preble",
+      "score": 0.1214,
+      "terms": [
+        "prompt",
+        "reuse"
+      ],
+      "method": "tfidf-cosine"
+    },
+    {
+      "id": "sim-sglang-kvlink",
+      "a": "sglang",
+      "b": "kvlink",
+      "score": 0.1652,
+      "terms": [
+        "kv",
+        "efficient",
+        "reuse",
+        "language",
+        "cache"
+      ],
+      "method": "tfidf-cosine"
+    },
+    {
+      "id": "sim-prompt-hydragen",
+      "a": "prompt",
+      "b": "hydragen",
+      "score": 0.1058,
+      "terms": [
+        "attention",
+        "inference"
+      ],
+      "method": "tfidf-cosine"
+    }
+  ]
+}

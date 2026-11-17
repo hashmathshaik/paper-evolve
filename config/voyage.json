@@ -1,0 +1,12 @@
+{
+  "model": "voyage-4-large",
+  "output_dimension": 2048,
+  "input_type": null,
+  "price_per_million_tokens": 0.12,
+  "budget_usd": 20.0,
+  "batch_size": 32,
+  "max_batch_token_bound": 100000,
+  "max_document_token_bound": 31000,
+  "requests_per_minute": 6,
+  "max_attempts": 4
+}

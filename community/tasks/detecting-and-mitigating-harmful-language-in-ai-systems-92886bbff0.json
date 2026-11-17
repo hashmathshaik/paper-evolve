@@ -1,0 +1,990 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Detecting and Mitigating Harmful Language in AI Systems",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-090b2680520037542d2de322",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-e0db3c3ff258f023e1278ea8",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "WatClaimCheck: A new Dataset for Claim Entailment and Inference",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "We contribute a new dataset for the task of automated fact checking and an evaluation of state of the art algorithms. The dataset includes claims (from speeches, interviews, social media and news articles), review articles published by professional fact checkers and premise articles used by those professional fact checkers to support their review and verify the veracity of the claims. An important challenge in the use of premise articles is the identification of relevant passages that will help to infer the veracity of a claim. We show that transferring a dense passage retrieval model trained with review articles improves the retrieval quality of passages in premise articles. We report results for the prediction of claim veracity by inference from premise articles."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Each encoder is implemented using BERT (Devlin et al., 2018).\nIn order to reduce the computational resources and memory requirements, we implement the encoders in the dense passage retrieval model using Distil-RoBERTa (Dis).\nThe input sequence is encoded using the RoBERTa-base model and passed through a dense linear layer followed by a softmax to obtain the predicted claim veracity label distribution.\nThe best performance when doing the claim veracity inference is obtained by using the DPR model in the ﬁrst stage and the RoBERTa-base model in the second stage.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-e0db3c3ff258f023e1278ea8",
+          "input_sha256": "05891656cb9568ae53dba741edd3e3553935ef3d1e54b6df7957898392d53965",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.92/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.92.pdf",
+              "sha256": "b4f5799c9460c7d432e1ed6837f0f268e3bff16f5d916ae98643489b04e3f6df"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "true, partly true/false or false based on the text of the claim, the claimant and the evidence sentences extracted in stage 1. 4.3.1 Bi-LSTM and Bi-GRU We first consider bi-directional long short term memory (Bi-LSTM) networks and bi-directional gated recurrent units (Bi-GRUs). The evidence sentences of each premise article are concatenated with the claim and claimant, and then encoded by a Bi-LSTM or Bi-GRU into a latent vector. For N premise articles, the resulting N vectors are then averaged and passed through a softmax layer with 3 outputs corresponding to the predicted probabilities of true, partly true/false and false. 4.3.2 HAN Instead of concatenating the evidence sentences of each premise article into a long sequence, we can also use hierarchical attention networks (HANs) (Yang et al., 2016; Mishra and Setty, 2019) to compute sentence level embeddings that are then combined into article level embeddings. A HAN is used to embed each premise article with the claim as follows. Each sentence (claimant with claim text or each evidence sentence of the premise article) is embedded as a sequence of hidden vectors (one per word) by a bi-directional recurrent network (BiLSTM or Bi-GRU). Then, a word-level attention layer computes a sentence level embedding. Next, those embeddings are fed to another bi-directional recurrent network (Bi-LSTM or Bi-GRU) that computes a sequence of hidden vectors (one per sentence) and a sentence level attention layer computes an embedding for the document-claim pair. Finally, the embeddings of the document-claim pairs are averaged and passed through a softmax over the labels true, partly true/false and false. 4.3.3 Transformer We finetune a RoBERTa-base (Liu et al., 2019) model to perform claim veracity inference using the claim and the",
+              "url": "https://aclanthology.org/2022.acl-long.92.pdf",
+              "document_sha256": "b4f5799c9460c7d432e1ed6837f0f268e3bff16f5d916ae98643489b04e3f6df"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "In order to reduce the computational resources and memory requirements, we implement the encoders in the dense passage retrieval model using DistilRoBERTa (Dis). We use a batch size of 64 and the in-batch negatives technique as described in (Karpukhin et al., 2020). We evaluate the stage-1 methods by comparing their performance using the top-k recall rate metric. The claim text is used to retrieve the ground truth review article sentences from the corpus containing all the sentences of all the review articles in the test set. The test contains a total of 114, 290 sentences and 3, 373 claims. We report the top-k recall rate for k = 10, 25, 50, 100 in Table 2. The results clearly show that the DPR (dense passage retrieval) method outperforms the method based on TF-IDF. Top-k Recall Top-10 Recall Top-25 Recall Top-50 Recall Top-100 Recall",
+              "url": "https://aclanthology.org/2022.acl-long.92.pdf",
+              "document_sha256": "b4f5799c9460c7d432e1ed6837f0f268e3bff16f5d916ae98643489b04e3f6df"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "We develop a two-stage system to perform evidence based veracity detection. The first stage selects relevant sentence level evidence from the premise articles associated with a claim and the second stage performs claim veracity inference using the claim text and selected evidence sentences. For the first stage, we evaluate two different approaches. The first approach is term frequency inverse document frequency (TF-IDF), which is typically used by fact checking methods for sentence based retrieval (Aly et al., 2021). For the second approach, we propose a novel way to adapt dense passage retrieval techniques using the review articles for evidence sentence selection. In our experiments, the aforementioned dense passage retrieval technique outperforms TF-IDF text retrieval and leads to overall system performance improvements. The second stage consists of training deep learning models to",
+              "url": "https://aclanthology.org/2022.acl-long.92.pdf",
+              "document_sha256": "b4f5799c9460c7d432e1ed6837f0f268e3bff16f5d916ae98643489b04e3f6df"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We propose a novel way of adapting the dense passage retrieval method proposed by Karpukhin et al. (2020) for open domain question answering to the",
+              "url": "https://aclanthology.org/2022.acl-long.92.pdf",
+              "document_sha256": "b4f5799c9460c7d432e1ed6837f0f268e3bff16f5d916ae98643489b04e3f6df"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-e0db3c3ff258f023e1278ea8",
+          "url": "https://aclanthology.org/2022.acl-long.92/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "146908118cf19307da91072ac6ee50fbd994216fc2c65191beaafea75b49d77a"
+    },
+    {
+      "id": "edge-489ddd678aa60ca9b5744aa8",
+      "a": "paper-a1ea757999d762ffe2975d6f",
+      "b": "paper-c6d27638bf6cfefbd4b2a947",
+      "state": {
+        "paper_a": {
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5 (7.7 point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)."
+        },
+        "paper_b": {
+          "title": "On the Intrinsic and Extrinsic Fairness Evaluation Metrics for Contextualized Language Representations",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Multiple metrics have been introduced to measure fairness in various natural language processing tasks. These metrics can be roughly categorized into two categories: 1) extrinsic metrics for evaluating fairness in downstream applications and 2) intrinsic metrics for estimating fairness in upstream contextualized language representation models. In this paper, we conduct an extensive correlation study between intrinsic and extrinsic metrics across bias notions using 19 contextualized language models. We find that intrinsic and extrinsic metrics do not necessarily correlate in their original setting, even when correcting for metric misalignments, noise in evaluation datasets, and confounding factors such as experiment configuration for extrinsic metrics."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To better understand the relationship between intrinsic and extrinsic fairness metrics, we conduct extensive experiments on 19 pre-trained language models (BERT, GPT-2 GPT-2, Similar to the observations in static embeddings (Goldfarb-Tarrant et al., 2021), we ﬁnd that these metrics correlate poorly.\nAdditionally, for stereotype, we train a stereotype classiﬁer by ﬁnetuning the BERT model with Stere-oSet (Nadeem et al., 2020), CrowS-Pairs (Nangia et al., 2020), and Social Bias Frames (Sap et al., 2020) datasets, and use this classiﬁer to evaluate BOLD generations on stereotype (B-S TEREO ) 3 .\nThese models consist of ALBERT (Lan et al., 2020) (base-v2, large-v2, xlarge-v2, xxlarge-v2), BERT (Devlin et al., 2019) (base-cased,large-cased), RoBERTa (base, large), Dis-tilRoBERTa (Sanh et al., 2019), GPT2 (Radford et al., 2019) (base, medium, large, xl), DistilGPT2, EleutherAI/gpt-neo (Black et al., 2021) (125M, 1.3B, 2.7B), and XLNet (Yang et al., 2019) (base-cased, large-cased) 5 .\nWe ﬁne-tune BERT-base-uncased model on three datasets: (Nadeem et al., 2020), CrowS-Pairs (Nangia et al., 2020), and Social Bias Frames (Sap et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a1ea757999d762ffe2975d6f",
+          "b": "paper-c6d27638bf6cfefbd4b2a947",
+          "input_sha256": "41c9cba53fe46f03cae54c59093b9c9db453ec14778d6ee41300f000d14a063a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1423/",
+              "pdf_url": "https://aclanthology.org/N19-1423.pdf",
+              "sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-short.62/",
+              "pdf_url": "https://aclanthology.org/2022.acl-short.62.pdf",
+              "sha256": "274d72f2e7b98be7d88726bff5d2a0ca48eaaf603ebb81dcace40182d8c1201e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a; Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial taskspecific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "We introduce BERT and its detailed implementation in this section. There are two steps in our framework: pre-training and fine-tuning. During pre-training, the model is trained on unlabeled data over different pre-training tasks. For finetuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks. Each downstream task has separate fine-tuned models, even though they are initialized with the same pre-trained parameters. The question-answering example in Figure 1 will serve as a running example for this section. A distinctive feature of BERT is its unified architecture across different tasks. There is mini-",
+              "url": "https://aclanthology.org/N19-1423.pdf",
+              "document_sha256": "987545ffb087f1ece898142c403a516baeabeb70ce19089397fac6f7db12c3d4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "quality of the sentences finished by the language model. We focus on the sentiment (B-S ENT) metric for sentiment, toxicity (B-T OX) metric for toxicity, and regard (B-R EGARD) metric for stereotype. Additionally, for stereotype, we train a stereotype classifier by finetuning the BERT model with StereoSet (Nadeem et al., 2020), CrowS-Pairs (Nangia et al., 2020), and Social Bias Frames (Sap et al., 2020) datasets, and use this classifier to evaluate BOLD generations on stereotype (B-S TEREO)3 . The bias score for each protected group is calculated as the average toxicity, sentiment, regard, and stereotype score on the generations from the prompts with that protected group.",
+              "url": "https://aclanthology.org/2022.acl-short.62.pdf",
+              "document_sha256": "274d72f2e7b98be7d88726bff5d2a0ca48eaaf603ebb81dcace40182d8c1201e"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Experiment Setup We conduct a study on gender, race, and religion domains (see the Appendix A for the list of protected groups on each domain). We conduct correlation analysis on the variance of group metric scores across protected groups, as it captures score disparities across protected groups for each domain. For example, for M = CEAT, we define SMrace = Var(sAsian , sWhite , sBlack , ...). A less-biased model would have smaller variance score. Thus, if two metrics are correlated, we would see a positive correlation, as reducing the disparity between groups in one metric, as measured by variance would reduce that in the other. We evaluate 19 popular pre-trained language models4 . These models consist of ALBERT (Lan et al., 2020) (base-v2, large-v2, xlarge-v2, xxlarge-v2), BERT (Devlin et al., 2019) (basecased,large-cased), RoBERTa (base, large), DistilRoBERTa (Sanh et al., 2019), GPT2 (Radford et al., 2019) (base, medium, large, xl), DistilGPT2, EleutherAI/gpt-neo (Black et al., 2021) (125M, 1.3B, 2.7B), and XLNet (Yang et al., 2019) (basecased, large-cased)5 . For intrinsic metrics, we simply measure the corresponding metric scores on the language models6 . For extrinsic metrics, we 3 The stereotype classifier reaches a F1 score of 0.80 on the validation dataset. See Appendix B for training details. 4 Code are available at https://github.com/ pruksmhc/fairness-metrics-correlations 5 We pick the most popular models for both masked language models and generative language models from Huggingface https://huggingface.co/models. 6 We use the same experiment settings, such as testing word choices, testing dataset, etc., as proposed in the papers where these metrics are introduced. CEAT does not cover groups in religion, so we adopt the protected group list from Sotnikova",
+              "url": "https://aclanthology.org/2022.acl-short.62.pdf",
+              "document_sha256": "274d72f2e7b98be7d88726bff5d2a0ca48eaaf603ebb81dcace40182d8c1201e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "model and for each prompt, generate 100 sentences. We use two temperature settings (T = 0.5 and T = 1.0) and compute the average sentiment over the generated sentences. We observe that the proportion of negative sentiment assignment increases from 4.6% to 15.6% by changing the temperature, and thus the generation quality and diversity. Impact of noise in generated outputs on classifier based metrics We introduce noise to 500 BOLD generations through word swaps or deletions (examples shown in Appendix H)10 . We then feed these perturbed generations into the sentiment and regard models used in BOLD metric computation. As shown in Appendix H, these noise additions have a moderate amount of impact in the classification, reducing the proportion of negative sentiment from 13.6% to 12.18% and proportion of negative sentiment from 25.2% to 22.86%. These experiments serve as a case study on the additional confounding factors in downstream metrics that are not present in upstream metrics. Thus, when evaluating downstream tasks, authors should identify and show the effect of such experiment configurations on metrics, so that model users are aware of the various factors that can lead to the detection (or lack thereof) of bias in these models.",
+              "url": "https://aclanthology.org/2022.acl-short.62.pdf",
+              "document_sha256": "274d72f2e7b98be7d88726bff5d2a0ca48eaaf603ebb81dcace40182d8c1201e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a1ea757999d762ffe2975d6f",
+          "url": "https://aclanthology.org/N19-1423/"
+        },
+        "b": {
+          "paper_id": "paper-c6d27638bf6cfefbd4b2a947",
+          "url": "https://aclanthology.org/2022.acl-short.62/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "ef5d1a809d21bb7810185954c094c704110c20149f7b235003ba4d9f9ea3a7ff"
+    },
+    {
+      "id": "edge-426cb56fbc0c78d402197673",
+      "a": "paper-01d7815d883a1e7234bb5df6",
+      "b": "paper-5c8356e70c197bd72690ebfb",
+      "state": {
+        "paper_a": {
+          "title": "Will-They-Won’t-They: A Very Large Dataset for Stance Detection on Twitter",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "We present a new challenging stance detection dataset, called Will-They-Won’t-They (WT–WT), which contains 51,284 tweets in English, making it by far the largest available dataset of the type. All the annotations are carried out by experts; therefore, the dataset constitutes a high-quality and reliable benchmark for future research in stance detection. Our experiments with a wide range of recent state-of-the-art stance detection systems show that the dataset poses a strong challenge to existing models in this domain."
+        },
+        "paper_b": {
+          "title": "Topic-Guided Sampling For Data-Efficient Multi-Domain Stance Detection",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "The task of Stance Detection is concerned with identifying the attitudes expressed by an author towards a target of interest. This task spans a variety of domains ranging from social media opinion identification to detecting the stance for a legal claim. However, the framing of the task varies within these domains in terms of the data collection protocol, the label dictionary and the number of available annotations. Furthermore, these stance annotations are significantly imbalanced on a per-topic and inter-topic basis. These make multi-domain stance detection challenging, requiring standardization and domain adaptation. To overcome this challenge, we propose Topic Efficient StancE Detection (TESTED), consisting of a topic-guided diversity sampling technique used for creating a multi-domain data efficient training set and a contrastive objective that is used for fine-tuning a stance classifier using the produced set. We evaluate the method on an existing benchmark of 16 datasets with in-domain, i.e. all topics seen and out-of-domain, i.e. unseen topics, experiments. The results show that the method outperforms the state-of-the-art with an average of 3.5 F1 points increase in-domain and is more generalizable with an averaged 10.2 F1 on out-of-domain evaluation while using <10% of the training data. We show that our sampling technique mitigates both inter- and per-topic class imbalances. Finally, our analysis demonstrates that the contrastive learning objective allows the model for a more pronounced segmentation of samples with varying labels."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…2018; Hardalov et al., 2022a), public health pol-icymaking (Glandt et al., 2021; Hossain et al., 2020; Osnabrügge et al., 2023), news recommendation (Reuver et al., 2021) to investigating attitudes voiced on social media (Qazvinian et al., 2011; Au-genstein et al., 2016; Conforti et al., 2020).\n…mtsd (Sobhani et al., 2017), rumour (Qazvinian et al., 2011), semeval2016t6 (Mohammad et al., 2016), semeval2019t7 (Derczynski et al., 2017), wtwt (Conforti et al., 2020) and datasets that cover a variety of diverse topics like argmin (Stab et al., 2018), ibmcs (Bar-Haim et al., 2017) and vast…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01d7815d883a1e7234bb5df6",
+          "b": "paper-5c8356e70c197bd72690ebfb",
+          "input_sha256": "3207fd948cfe3f4e19e61b4388f8225a89a319aa991e81a6800837a35e796689",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.157/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.157.pdf",
+              "sha256": "5a056c926a5c5c1a58b39df22c835d04bee6c6066be1d47da501391235bc7484"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.752/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.752.pdf",
+              "sha256": "aaa0d5db13772eb31809e4113dfd33d247962fd17c641ef0f1dd9977d1ecb6f2"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "2018; Hardalov et al., 2022a), public health policymaking (Glandt et al., 2021; Hossain et al., 2020; Osnabrügge et al., 2023), news recommendation (Reuver et al., 2021) to investigating attitudes voiced on social media (Qazvinian et al., 2011; Augenstein et al., 2016; Conforti et al., 2020). However, in most domains, and even more so for crossdomain stance detection, the exact formalisation of the task gets blurry, with varying label sets and their corresponding definitions, data collection protocols and available annotations. Furthermore, this is accompanied by significant changes in the topicspecific vocabulary (Somasundaran and Wiebe, 2010; Wei and Mao, 2019), text style (Pomerleau and Rao, 2017; Ferreira and Vlachos, 2016) and topics mentioned either explicitly (Qazvinian et al., 2011; Walker et al., 2012) or implicitly (Hasan and Ng, 2013; Derczynski et al., 2017). Recently, a benchmark of 16 datasets (Hardalov et al., 2021) covering a variety of domains and topics has been proposed for testing stance detection models across multiple domains. It must be noted that these datasets are highly imbalanced, with an imbalanced label distribution between the covered topics, i.e. inter-topic and within each topic, i.e. per-topic, as can be seen in Figure 2 and Figure 3. This further complicates the creation of a robust stance detection classifier.",
+              "url": "https://aclanthology.org/2023.acl-long.752.pdf",
+              "document_sha256": "aaa0d5db13772eb31809e4113dfd33d247962fd17c641ef0f1dd9977d1ecb6f2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Our study uses an existing multi-domain dataset benchmark (Hardalov et al., 2021), consisting of 16 individual datasets split into four source groups: Debates, News, Social Media, Various. The categories include datasets about debating and political claims including arc (Hanselowski et al., 2018; Habernal et al., 2018), iac1 (Walker et al., 2012), perspectum (Chen et al., 2019), poldeb (Somasundaran and Wiebe, 2010), scd (Hasan and Ng, 2013), news like emergent (Ferreira and Vlachos, 2016), fnc1 (Pomerleau and Rao, 2017), snopes (Hanselowski et al., 2019), social media like mtsd (Sobhani et al., 2017), rumour (Qazvinian et al., 2011), semeval2016t6 (Mohammad et al., 2016), semeval2019t7 (Derczynski et al., 2017), wtwt (Conforti et al., 2020) and datasets that cover a variety of diverse topics like argmin (Stab et al., 2018), ibmcs (Bar-Haim et al., 2017) and vast (Allaway and McKeown, 2020). Overall statistics for all of the datasets can be seen in Appendix C. 3.1 Data Standardisation As the above-mentioned stance datasets from different domains possess different label inventories, the stance detection benchmark by Hardalov et al. (2021) introduce a mapping strategy to make the class inventory homogeneous. We adopt that same mapping for a fair comparison with prior work, shown in Appendix C.",
+              "url": "https://aclanthology.org/2023.acl-long.752.pdf",
+              "document_sha256": "aaa0d5db13772eb31809e4113dfd33d247962fd17c641ef0f1dd9977d1ecb6f2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Given the inherent skew present within the dataset and variances within each domain, we propose a topic-guided diversity sampling method, which produces a data-efficient representative subset while mitigating label imbalances. These samples are used for fine-tuning a Pre-trained Language Model (PLM), using a contrastive learning objective to create a robust stance detection model. These two components form our Topic Efficient StancE Detection (TESTED) framework, as seen in Figure 1, and are analysed separately to pinpoint the factors impacting model performance and robustness. We test our method on",
+              "url": "https://aclanthology.org/2023.acl-long.752.pdf",
+              "document_sha256": "aaa0d5db13772eb31809e4113dfd33d247962fd17c641ef0f1dd9977d1ecb6f2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "the multi-domain stance detection benchmark by Hardalov et al. (2021), achieving state-of-the-art results with both in-domain, i.e. all topics seen and out-of-domain, i.e. unseen topics evaluations. Note though that TESTED could be applied to any text classification setting. In summary, our contributions are: • We propose a novel framework (TESTED) for predicting stances across various domains, with data-efficient sampling and contrastive learning objective; • Our proposed method achieves SOTA results both in-domain and out-of-domain; • Our analysis shows that our topic-guided sampling method mitigates dataset imbalances while accounting for better performance than other sampling techniques; • The analysis shows that the contrastive learning objective boosts the ability of the classifier to differentiate varying topics and stances.",
+              "url": "https://aclanthology.org/2023.acl-long.752.pdf",
+              "document_sha256": "aaa0d5db13772eb31809e4113dfd33d247962fd17c641ef0f1dd9977d1ecb6f2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01d7815d883a1e7234bb5df6",
+          "url": "https://aclanthology.org/2020.acl-main.157/"
+        },
+        "b": {
+          "paper_id": "paper-5c8356e70c197bd72690ebfb",
+          "url": "https://aclanthology.org/2023.acl-long.752/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "4822134524436fd43851425896b7a6309039c2760d0caa823e2cae02065edee3"
+    },
+    {
+      "id": "edge-d33a98f15ffc82962db61ba1",
+      "a": "paper-01d7815d883a1e7234bb5df6",
+      "b": "paper-74847d53ae382fa6e83d0900",
+      "state": {
+        "paper_a": {
+          "title": "Will-They-Won’t-They: A Very Large Dataset for Stance Detection on Twitter",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "We present a new challenging stance detection dataset, called Will-They-Won’t-They (WT–WT), which contains 51,284 tweets in English, making it by far the largest available dataset of the type. All the annotations are carried out by experts; therefore, the dataset constitutes a high-quality and reliable benchmark for future research in stance detection. Our experiments with a wide range of recent state-of-the-art stance detection systems show that the dataset poses a strong challenge to existing models in this domain."
+        },
+        "paper_b": {
+          "title": "Cross-Lingual Cross-Target Stance Detection with Dual Knowledge Distillation Framework",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Stance detection aims to identify the user’s attitude toward specific targets from text, which is an important research area in text mining and benefits a variety of application domains. Existing studies on stance detection were conducted mainly in English. Due to the low-resource problem in most non-English languages, cross-lingual stance detection was proposed to transfer knowledge from high-resource (source) language to low-resource (target) language. However, previous research has ignored the practical issue of no labeled training data available in target language. Moreover, target inconsistency in cross-lingual stance detection brings about the additional issue of unseen targets in target language, which in essence requires the transfer of both language and target-oriented knowledge from source to target language. To tackle these challenging issues, in this paper, we propose the new task of cross-lingual cross-target stance detection and develop the first computational work with dual knowledge distillation. Our proposed framework designs a cross-lingual teacher and a cross-target teacher using the source language data and a dual distillation process that transfers the two types of knowledge to target language. To bridge the target discrepancy between languages, cross-target teacher mines target category information and generalizes it to the unseen targets in target language via category-oriented learning. Experimental results on multilingual stance datasets demonstrate the effectiveness of our method compared to the competitive baselines."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Monolingual Stance Detection Stance detection has been well studied on English datasets (Moham-mad et al., 2016; Sobhani et al., 2017; Conforti et al., 2020; Allaway and Mckeown, 2020; Schiller et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01d7815d883a1e7234bb5df6",
+          "b": "paper-74847d53ae382fa6e83d0900",
+          "input_sha256": "0708d1e6bd51cd7cde90cdfc7965e139715d6033c61bff8b6fcdffdfcedcdd25",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.157/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.157.pdf",
+              "sha256": "5a056c926a5c5c1a58b39df22c835d04bee6c6066be1d47da501391235bc7484"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.emnlp-main.666/",
+              "pdf_url": "https://aclanthology.org/2023.emnlp-main.666.pdf",
+              "sha256": "35259b835c31b1d3f0f9416a97881e0121f3fee8583f737a51cce3b23ae16474"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Monolingual Stance Detection Stance detection has been well studied on English datasets (Mohammad et al., 2016; Sobhani et al., 2017; Conforti et al., 2020; Allaway and Mckeown, 2020; Schiller et al., 2021). The mainstream research is mainly as follows: (1) Stance detection for pre-defined targets, which trains a classifier for several predefined targets. Previous methods mainly learn target-specific representations with attention (Du et al., 2017; Wei et al., 2018; Siddiqua et al., 2019; Sun et al., 2018; Li and Caragea, 2019). (2) Cross-target stance detection, which transfers knowledge from one target to another related target. Existing work learns target-independent representations (Augenstein et al., 2016; Xu et al., 2018) and mines transferrable features such as topic words (Wei and Mao, 2019) and semantic-emotion knowledge (Zhang et al., 2020). (3) Zero/few-shot stance detection, which transfers knowledge from known targets to unseen tar-",
+              "url": "https://aclanthology.org/2023.emnlp-main.666.pdf",
+              "document_sha256": "35259b835c31b1d3f0f9416a97881e0121f3fee8583f737a51cce3b23ae16474"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "Further, we establish three different target settings on the two datasets: (1) All: All the targets in source language and target language are the same; (2) Partial: Part of the targets in source language and target language are the same. We randomly select 50% overlap of all the targets between source and target languages; (3) None: None of the targets in source language and target language are the same. We randomly select 50% of the targets in source language and remaining 50% for target language. Thus, we get 6 different experimental settings (i.e., 2 datasets with 3 target settings) to verify the effectiveness of our method. SemEval2016 (Mohammad et al., 2016) is an English stance dataset on Twitter, which contains 4163 samples with 5 targets “Atheism”, “Climate Change is a real Concern”, “Feminist Movement”, “Hillary Clinton” and “Legalization of Abortion”. We use its “favor” and “against” samples as the target language data, and German data in Politics (P) and Society (S) as the source language data respectively, to establish two additional experimental settings “P-Sem-None” and “S-Sem-None”. R-ita is an Italian dataset of multilingual political corpus (Lai et al., 2020), which contains 833 samples about “Constitutional Reform”. All the data are randomly split into the training and test set with a proportion of 80%-20%. Similar to SemEval2016, “favor” and “against” samples are used as the target language data and German data in Politics (P) and Society (S) are the source language data respectively, which forms two additional experimental settings in Italian “P-Rita-None” and “S-Rita-None”. Czech (Hercig et al., 2017) contains 1455 samples in Czech with targets of “Miloš Zeman” and “Smoking Ban in Restaurants”. We split all the data into the training set and the",
+              "url": "https://aclanthology.org/2023.emnlp-main.666.pdf",
+              "document_sha256": "35259b835c31b1d3f0f9416a97881e0121f3fee8583f737a51cce3b23ae16474"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "trained language model. Besides, CLKD also has competitive performances, demonstrating the effectiveness of cross-lingual knowledge distillation with no labeled data in target language. We can also see from the left half of Tables 1 and 2 that the performance of each comparison method decreases greatly from “All” to “Partial” and “None”, showing that target inconsistency between languages degrades the model performance for cross-lingual stance detection. To further verify the effectiveness of CCSD when no targets are the same between languages, we conduct experiments using three additional datasets as the target language data. The experimental results are given in the right half of the two tables. We can see that even though both the language and target gaps are large, our method still outperforms the baseline methods in general, further demonstrating the effectiveness of our dual distillation method for cross-lingual cross-target stance detection.",
+              "url": "https://aclanthology.org/2023.emnlp-main.666.pdf",
+              "document_sha256": "35259b835c31b1d3f0f9416a97881e0121f3fee8583f737a51cce3b23ae16474"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01d7815d883a1e7234bb5df6",
+          "url": "https://aclanthology.org/2020.acl-main.157/"
+        },
+        "b": {
+          "paper_id": "paper-74847d53ae382fa6e83d0900",
+          "url": "https://aclanthology.org/2023.emnlp-main.666/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "edbcca4e4448db4f14644ea1c54d50a82b5de043435a32772d987bf84851752e"
+    },
+    {
+      "id": "edge-3cfde06b69cab6ddfb2f66dd",
+      "a": "paper-01d7815d883a1e7234bb5df6",
+      "b": "paper-c7def3fdaaa36cea70f3a3c1",
+      "state": {
+        "paper_a": {
+          "title": "Will-They-Won’t-They: A Very Large Dataset for Stance Detection on Twitter",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "We present a new challenging stance detection dataset, called Will-They-Won’t-They (WT–WT), which contains 51,284 tweets in English, making it by far the largest available dataset of the type. All the annotations are carried out by experts; therefore, the dataset constitutes a high-quality and reliable benchmark for future research in stance detection. Our experiments with a wide range of recent state-of-the-art stance detection systems show that the dataset poses a strong challenge to existing models in this domain."
+        },
+        "paper_b": {
+          "title": "A New Direction in Stance Detection: Target-Stance Extraction in the Wild",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Stance detection aims to detect the stance toward a corresponding target. Existing works use the assumption that the target is known in advance, which is often not the case in the wild. Given a text from social media platforms, the target information is often unknown due to implicit mentions in the source text and it is infeasible to have manual target annotations at a large scale. Therefore, in this paper, we propose a new task Target-Stance Extraction (TSE) that aims to extract the (target, stance) pair from the text. We benchmark the task by proposing a two-stage framework that first identifies the relevant target in the text and then detects the stance given the predicted target and text. Specifically, we first propose two different settings: Target Classification and Target Generation, to identify the potential target from a given text. Then we propose a multi-task approach that takes target prediction as the auxiliary task to detect the stance toward the predicted target. We evaluate the proposed framework on both in-target stance detection in which the test target is always seen in the training stage and zero-shot stance detection that needs to detect the stance for the targets that are unseen during the training phase. The new TSE task can facilitate future research in the field of stance detection."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "We collect 500 samples for each of the following targets from its original dataset: 1) Creationism (Somasundaran and Wiebe, 2010), 2) Gay Rights (Somasundaran and Wiebe, 2010), 3) Climate Change is a Concern (Mohammad et al., 2016a), 4) MeToo Movement (Gautam et al., 2020), 5) Merger of Disney and Fox (Conforti et al., 2020), 6) Lockdown in New York State (Miao et al., 2020).\n…1) Creationism (Somasundaran and Wiebe, 2010), 2) Gay Rights (Somasundaran and Wiebe, 2010), 3) Climate Change is a Concern (Mohammad et al., 2016a), 4) MeToo Movement (Gautam et al., 2020), 5) Merger of Disney and Fox (Conforti et al., 2020), 6) Lockdown in New York State (Miao et al., 2020).\nFurther, we extend our framework to zero-shot stance detection and test it on six targets of diverse domains (Somasundaran and Wiebe, 2010; Mohammad et al., 2016a; Conforti et al., 2020; Miao et al., 2020; Gautam et al., 2020).\n, 2021a), a hot topic such as gun control (Hasan and Ng, 2014; Mohammad et al., 2016a; Stab et al., 2018; Vamvas and Sennrich, 2020; Conforti et al., 2020; Glandt et al., 2021) or a claim (Rao and Pomerleau, 2017; Derczynski et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01d7815d883a1e7234bb5df6",
+          "b": "paper-c7def3fdaaa36cea70f3a3c1",
+          "input_sha256": "f0b91baae37629e97fefad93ce0c350c21c8a94da22cb9280a5392b8407386ec",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.157/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.157.pdf",
+              "sha256": "5a056c926a5c5c1a58b39df22c835d04bee6c6066be1d47da501391235bc7484"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.560/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.560.pdf",
+              "sha256": "7a9198b5b3895c1b3a3101bd4531524f1bcf8b299f438ecd77a6842e4fa745c5"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "SemEval-2016, train and test sets are provided and we split the train set into train and validation sets. We remove the target Climate Change of SemEval2016 from training for the usage of zero-shot setting. Data statistics and examples of these datasets are shown in Tables 1 and 2. Zero-Shot TSE We also curate a new zero-shot dataset from existing datasets to test the model performance on unseen targets during the inference stage. We collect 500 samples for each of the following targets from its original dataset: 1) Creationism (Somasundaran and Wiebe, 2010), 2) Gay Rights (Somasundaran and Wiebe, 2010), 3) Climate Change is a Concern (Mohammad et al., 2016a), 4) MeToo Movement (Gautam et al., 2020), 5) Merger of Disney and Fox (Conforti et al., 2020), 6) Lockdown in New York State (Miao et al., 2020). To mimic the real-world scenario that a text may contain no targets of interest, we consider an additional target label Unrelated in both in-target and zero-shot settings. We provide the details about the curation of such samples in the Appendix A. We maintain a ratio of 5:1 for interested targets vs. the Unrelated category in the final datasets for both intarget and zero-shot TSE. The numbers of targets for in-target and zero-shot datasets are 182 and 6, respectively, and we add the Unrelated category in each dataset.",
+              "url": "https://aclanthology.org/2023.acl-long.560.pdf",
+              "document_sha256": "7a9198b5b3895c1b3a3101bd4531524f1bcf8b299f438ecd77a6842e4fa745c5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "task is more challenging because it includes both target identification and stance detection. To tackle this task, we propose a two-step framework that first identifies the relevant target in the text and then detects the stance given the predicted target and the text, as shown in Figure 1. In the first stage, we propose two different settings to identify the target discussed in a text: (1) Target Classification, where we train a text classifier (Schuster and Paliwal, 1997; Devlin et al., 2019; Nguyen et al., 2020) to predict the target as one of the pre-defined targets, and (2) Target Generation, where we leverage BART (Lewis et al., 2020) model that is pretrained on a keyphrase generation dataset (Xiong et al., 2019; Gallina et al., 2019; Garg et al., 2022) to generate keyphrases (e.g., “Christianity” in Figure 1), and then map them to one of the pre-defined targets (e.g., “Atheism”). In the second stage, we propose a multi-task framework that takes the target prediction as the auxiliary task for stance detection. We expect the stance detection model to better capture the target-related features and to develop a better understanding of the text itself with the auxiliary task. Our proposed two-step framework can not only be applied to in-target stance detection, but also zero-shot stance detection in which targets of test examples are not seen in the train set. We evaluate the proposed framework on the combined set of four stance datasets (Mohammad et al., 2016a; Stab et al., 2018; Glandt et al., 2021; Li et al., 2021a) for in-target stance detection. Further, we extend our framework to zero-shot stance detection and test it on six targets of diverse domains (Somasundaran and Wiebe, 2010; Mohammad et al., 2016a; Conforti et al., 2020; Miao et al., 2020; Gautam et al.,",
+              "url": "https://aclanthology.org/2023.acl-long.560.pdf",
+              "document_sha256": "7a9198b5b3895c1b3a3101bd4531524f1bcf8b299f438ecd77a6842e4fa745c5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Stance detection aims to detect the stance toward a corresponding target. Existing works have achieved promising progress on stance detection tasks in which the goal is to predict the stance given both a target and a text. However, they all work under the assumption that the target is known in advance, which is often not the case in the wild. Given a text from social media platforms, the target information is often unknown due to implicit mentions in the source text and it is infeasible to have manual target annotations at a large scale. Therefore, in this paper, we propose a new task Target-Stance Extraction (TSE) that aims to extract the (target, stance) pair from the text. We benchmark the task by proposing a two-stage framework that first identifies the relevant target in the text and then detects the stance given the predicted target and text. Specifically, we first propose two different settings: Target Classification and Target Generation, to identify the potential target from a given text. Then we propose a multitask approach that takes target prediction as the auxiliary task to detect the stance toward the predicted target. We evaluate the proposed framework on both in-target stance detection in which the test target is always seen in the training stage and zero-shot stance detection that needs to detect the stance for the unseen target during the inference stage. The new TSE task can facilitate future research in the field of stance detection. We publicly release our code.1",
+              "url": "https://aclanthology.org/2023.acl-long.560.pdf",
+              "document_sha256": "7a9198b5b3895c1b3a3101bd4531524f1bcf8b299f438ecd77a6842e4fa745c5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Social media platforms like Twitter, Facebook and other debate forums have become an integral way of opinion dissemination these days (Khan et al., 2021). The peculiar characteristics of these platforms are that the information is usually scattered across texts and the opinionated text could be expressed toward target entities in an implicit way. Existing methods have achieved promising performance on in-target stance detection in which same targets are seen in both train and test sets (Mohammad et al., 2016a; Sobhani et al., 2017; Li and Caragea, 2019, 2021a) and cross-target stance detection that aims to transfer the knowledge from a source target to a destination target (Augenstein et al., 2016; Xu et al., 2018; Zhang et al., 2020). However, almost all previous methods work under the assumption that the target is known or manually identified, which is often not the case in the wild. In practice, the target is unknown given a text and it is usually implicitly mentioned in the text, as can be seen from the example shown in Figure 1. Therefore, instead of detecting the stance given both the target and text, we propose a more challenging task Target-Stance Extraction (TSE) in the context of stance detection that aims to extract the (target, stance) pair from the text. The new TSE",
+              "url": "https://aclanthology.org/2023.acl-long.560.pdf",
+              "document_sha256": "7a9198b5b3895c1b3a3101bd4531524f1bcf8b299f438ecd77a6842e4fa745c5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01d7815d883a1e7234bb5df6",
+          "url": "https://aclanthology.org/2020.acl-main.157/"
+        },
+        "b": {
+          "paper_id": "paper-c7def3fdaaa36cea70f3a3c1",
+          "url": "https://aclanthology.org/2023.acl-long.560/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "08b442b256df5646c8c11b67aef844c11c235cf290b8d36f28ad880b47e3e825"
+    },
+    {
+      "id": "edge-1ea7dfea12cb16d96b7a414b",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-26a5f00d9f4c36b5ea0fd422",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "MIND: A Multi-agent Framework for Zero-shot Harmful Meme Detection",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "The rapid expansion of memes on social media has highlighted the urgent need for effective approaches to detect harmful content. However, traditional data-driven approaches struggle to detect new memes due to their evolving nature and the lack of up-to-date annotated data. To address this issue, we propose MIND, a multi-agent framework for zero-shot harmful meme detection that does not rely on annotated data. MIND implements three key strategies: 1) We retrieve similar memes from an unannotated reference set to provide contextual information. 2) We propose a bi-directional insight derivation mechanism to extract a comprehensive understanding of similar memes. 3) We then employ a multi-agent debate mechanism to ensure robust decision-making through reasoned arbitration. Extensive experiments on three meme datasets demonstrate that our proposed framework not only outperforms existing zero-shot approaches but also shows strong generalization across different model architectures and parameter scales, providing a scalable solution for harmful meme detection."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Inspired by retrieval-augmented generation (Guu et al., 2020; Lewis et al., 2020), we focus on retrieving memes similar to the target one, which enables us to utilize these similar memes as a source of insights, providing context and understanding that enhance our assessment of a meme’s harmfulness.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-26a5f00d9f4c36b5ea0fd422",
+          "input_sha256": "1b3228a6a18a7c161061e23bd87329d37fc1f3e9f4ec4ac7e8e20ac12ce377c8",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.acl-long.46/",
+              "pdf_url": "https://aclanthology.org/2025.acl-long.46.pdf",
+              "sha256": "8d1a5eb78dd28eca2461bf0c4cd5c37dbf82abb96f766b1221d63a0895125c15"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Internet memes continuously evolve, yet they often display common underlying patterns (Sharma et al., 2022; Qu et al., 2023). Inspired by retrievalaugmented generation (Guu et al., 2020; Lewis et al., 2020), we focus on retrieving memes similar to the target one, which enables us to utilize these similar memes as a source of insights, providing context and understanding that enhance our assessment of a meme’s harmfulness. For a meme sample M = {V, T }, we derive a multimodal embedding by integrating visual and textual features: E = λv · Venc (V) + λt · Tenc (T ),",
+              "url": "https://aclanthology.org/2025.acl-long.46.pdf",
+              "document_sha256": "8d1a5eb78dd28eca2461bf0c4cd5c37dbf82abb96f766b1221d63a0895125c15"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "ural language generation paradigm, where both visual and textual inputs are collaboratively processed by LMM agents to determine the harmfulness of a given meme. The scarcity of high-quality labeled data has become a critical challenge in harmful meme detection, particularly given the rapid evolution and emergence of new memes (Sharma et al., 2022). To address this challenge, we propose MI N D, a multiagent framework that utilizes a training set Strain , accessing only the images and text content without using their true labels to detect harmful memes in a test set Stest . Since our method is gradientfree, we denote Strain as the reference set Sref . This approach enables robust detection in real-world scenarios where labeled data is scarce or unavailable. Our proposed framework coordinates multiple LMM agents to collaboratively analyze memes through three interconnected stages: 1) Similar Sample Retrieval(§3.2), which discovers contextually relevant memes from the unlabeled reference set Sref , 2) Relevant Insight Derivation(§3.3), where agents engage in forward and backward reasoning to derive relevant insight from similar memes, and 3) Insight-Augmented Inference(§3.4), where specialized debater and judge agents deliberate to reach a well-reasoned conclusion about memes’ harmfulness. Through this multi-agent collaboration, MI N D achieves robust harmful meme detection without relying on annotated data. The overview of our framework is shown in Figure 2. 3.2",
+              "url": "https://aclanthology.org/2025.acl-long.46.pdf",
+              "document_sha256": "8d1a5eb78dd28eca2461bf0c4cd5c37dbf82abb96f766b1221d63a0895125c15"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "lenge in low-resource scenarios (Cao et al., 2024; Huang et al., 2024), these approaches still fundamentally depend on annotated examples, making them insufficient for detecting harmful memes during emerging events where annotated data is scarce. In this work, we leverage LMMs to derive insights from similar memes and subsequently employ a multi-agent debate to arrive at comprehensive judgments on meme harmfulness. Without modifying models’ weights or requiring annotated data, our approach offers a significant advantage in adapting to real-world scenarios. 2.2 LLM-Based Multi-Agent Frameworks The integration of Large Language Models (LLMs) as agents spans various domains, showcasing their robust planning and reasoning capabilities in diverse settings (Wang et al., 2023a; Yao et al., 2022; Shen et al., 2023; Mu et al., 2023; Hong et al., 2023; Liu et al., 2023b; Zhao et al., 2024; Sun et al., 2023; Song et al., 2023; Miao et al., 2023; Madaan et al., 2024). These advancements underscore the ability of LLMs to tackle complex tasks with minimal supervision. Building on the success of singleagent, multi-agent frameworks (Park et al., 2023; Hong et al., 2023; Du et al., 2023; Liang et al., 2023; Wang et al., 2024; Qian et al., 2024; Tao et al., 2024; Zeng et al., 2024; D’Arcy et al., 2024; Huang et al., 2023) facilitate complex interactions and collaborative problem solving, simulating environments where multiple agents work in unison. However, existing frameworks often rely on environmental feedback to iteratively refine their decisions, which becomes impractical for zero-shot binary classification tasks like harmful meme detection, where receiving feedback would effectively reveal the correct answer. In this work, we propose a novel framework that leverages",
+              "url": "https://aclanthology.org/2025.acl-long.46.pdf",
+              "document_sha256": "8d1a5eb78dd28eca2461bf0c4cd5c37dbf82abb96f766b1221d63a0895125c15"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-26a5f00d9f4c36b5ea0fd422",
+          "url": "https://aclanthology.org/2025.acl-long.46/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "8429c47657be636611bdaa59d4c4a9bbc2d5aed5d4ab74e689306ea1bf7a7b48"
+    },
+    {
+      "id": "edge-9da1ba1552999e97fdce6db2",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-6c05d6b71466d23b50069fd2",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "LLM Bias Detection and Mitigation through the Lens of Desired Distributions",
+          "year": 2025,
+          "venue": "ACL Anthology",
+          "abstract": "Although prior work on bias mitigation has focused on promoting social equality and demographic parity, less attention has been given to aligning LLM’s outputs to desired distributions. For example, we might want to align a model with real-world distributions to support factual grounding. Thus, we define bias as deviation from a desired distribution, which may be an equal or real-world distribution, depending on application goals. We propose a weighted adaptive loss based fine-tuning method that aligns LLM’s gender–profession output distribution with the desired distribution, while preserving language modeling capability. Using 3 profession sets—male-dominated, female-dominated, and gender-balanced—derived from U.S. labor statistics (2024), we assess both our adaptive method for reflecting reality and a non-adaptive variant for equality. Across three masked language models, bias is observed under both distributions. We achieve near-complete mitigation under equality and 30–75% reduction under real-world settings. Autoregressive LLMs show no bias under equality but notable bias under real-world settings, with the Llama Instruct models (3.2-3B, 3.1-8B) achieving a 50–62% reduction."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Recent techniques such as Retrieval Augmentation Retrieval (RAG) (Lewis et al., 2020) and Reinforcement Learning with Human Feedback (RLHF) (Ouyang et al., 2022; Ziegler et al., 2019) are designed to guide models toward producing outputs grounded in factual information and real-world context.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-6c05d6b71466d23b50069fd2",
+          "input_sha256": "33c6bc9a2e06649fc4a1868ea01afd85e227c0f4e5d1878cebfa5db8168e526e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2025.emnlp-main.76/",
+              "pdf_url": "https://aclanthology.org/2025.emnlp-main.76.pdf",
+              "sha256": "9cf4388c3e16bce2163ee3efb79c55ee640098dac93b3cbc5b79430aa139aa0c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "yond the training templates. In contrast, our work shifts focus to a coarser, distributional perspective: we analyze the gender distribution across professions, for example, for dental assistant it is: 8% male, 92% female, and aim to align these distributions to assess and mitigate bias. Fairness with the second bias viewpoint requires more attention. When models do not reflect reality —whether factual or perceptual— they are likely to generate misleading information and hallucinations it is critically important to address such hallucinations (Sahoo et al., 2024; Niu et al., 2024; Su et al., 2024). Aligning LLMs with real-world trends also enhances fairness in fact-checking, thus, increasing model reliability and trustworthiness. Recent techniques such as Retrieval Augmentation Retrieval (RAG) (Lewis et al., 2020) and Reinforcement Learning with Human Feedback (RLHF) (Ouyang et al., 2022; Ziegler et al., 2019) are designed to guide models toward producing outputs grounded in factual information and real-world context. Our second view of bias and fairness aligns with these. Based on the selected bias viewpoint, we propose a bias mitigation strategy that fine-tunes the LLMs using a tailored loss function to recalibrate their output distribution towards a desired target. While existing methods often focus on reducing task-specific disparities, less attention is given to the foundational prediction behavior of pre-trained LLMs. In contrast, we align LLM’s output distribution with a desired target distribution during finetuning while preserving performance—measured by MLM loss and downstream GLUE evaluation for masked language models (MLMs) and by perplexity and the LM Evaluation Harness on 5 benchmarks for auto-regressive language models (ALMs). To promote balanced and",
+              "url": "https://aclanthology.org/2025.emnlp-main.76.pdf",
+              "document_sha256": "9cf4388c3e16bce2163ee3efb79c55ee640098dac93b3cbc5b79430aa139aa0c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "training to certain parameters (e.g., attention head, adapter layers (Yang et al., 2025; Masoudian et al., 2024; Gaci et al., 2022; Attanasio et al., 2022)), to isolate and suppress biased representations while preserving general knowledge. Another strategy modifies the loss function to encode fairness during training (Xu et al., 2025; Gallegos et al., 2024; Zheng et al., 2023; Yogarajan et al., 2023; Garimella et al., 2021). E.g., Guo et al. (2022) uses Jensen-Shannon Divergence to enforce uniformity in gender-conditioned output distribution. Woo et al. (2023) introduce KL-based regularization to reduce gender bias in stereotypical sentence representations, while preserving linguistic integrity on non-stereotypical content. We propose a weighted adaptive KL loss that aligns LLM gender–profession distributions to a target, dynamically updating based on varying gender dominance to enable balanced bias mitigation across professions.",
+              "url": "https://aclanthology.org/2025.emnlp-main.76.pdf",
+              "document_sha256": "9cf4388c3e16bce2163ee3efb79c55ee640098dac93b3cbc5b79430aa139aa0c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Although prior work on bias mitigation has focused on promoting social equality and demographic parity, less attention has been given to aligning LLM’s outputs to desired distributions. For example, we might want to align a model with real-world distributions to support factual grounding. Thus, we define bias as deviation from a desired distribution, which may be an equal or real-world distribution, depending on application goals. We propose a weighted adaptive loss1 based fine-tuning method that aligns LLM’s gender–profession output distribution with the desired distribution, while preserving language modeling capability. Using 3 profession sets—male-dominated, female-dominated, and gender-balanced—derived from U.S. labor statistics (2024), we assess both our adaptive method for reflecting reality and a non-adaptive variant for equality. Across three masked language models, bias is observed under both distributions. We achieve near-complete mitigation under equality and 30–75% reduction under real-world settings. Autoregressive LLMs show no bias under equality but notable bias under real-world settings, with the Llama Instruct models (3.2-3B, 3.1-8B) achieving a 50–62% reduction.",
+              "url": "https://aclanthology.org/2025.emnlp-main.76.pdf",
+              "document_sha256": "9cf4388c3e16bce2163ee3efb79c55ee640098dac93b3cbc5b79430aa139aa0c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6c05d6b71466d23b50069fd2",
+          "url": "https://aclanthology.org/2025.emnlp-main.76/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "bad398c852a688e38fa549810742b08c1784ed22180ab4140745407743185907"
+    },
+    {
+      "id": "edge-5706192f6ce66334f940d9d8",
+      "a": "paper-0681e477217cac6e9b1a6e11",
+      "b": "paper-028800a3a34bcfa87eccb134",
+      "state": {
+        "paper_a": {
+          "title": "BanditMTL: Bandit-based Multi-task Learning for Text Classification",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "Task variance regularization, which can be used to improve the generalization of Multi-task Learning (MTL) models, remains unexplored in multi-task text classification. Accordingly, to fill this gap, this paper investigates how the task might be effectively regularized, and consequently proposes a multi-task learning method based on adversarial multi-armed bandit. The proposed method, named BanditMTL, regularizes the task variance by means of a mirror gradient ascent-descent algorithm. Adopting BanditMTL in the multi-task text classification context is found to achieve state-of-the-art performance. The results of extensive experiments back up our theoretical analysis and validate the superiority of our proposals."
+        },
+        "paper_b": {
+          "title": "Improving Multi-task Stance Detection with Multi-task Interaction Network",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Stance detection aims to identify people’s standpoints expressed in the text towards a target, which can provide powerful information for various downstream tasks.Recent studies have proposed multi-task learning models that introduce sentiment information to boost stance detection.However, they neglect to explore capturing the fine-grained task-specific interaction between stance detection and sentiment tasks, thus degrading performance.To address this issue, this paper proposes a novel multi-task interaction network (MTIN) for improving the performance of stance detection and sentiment analysis tasks simultaneously.Specifically, we construct heterogeneous task-related graphs to automatically identify and adapt the roles that a word plays with respect to a specific task. Also, a multi-task interaction module is designed to capture the word-level interaction between tasks, so as to obtain richer task representations.Extensive experiments on two real-world datasets show that our proposed approach outperforms state-of-the-art methods in both stance detection and sentiment analysis tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "• Multi-task learning (MTL) methods: There are a few multi-task learning methods for stance detection here, AT-JSS (Li and Caragea, 2019), Tchebycheff (Mao et al., 2020), and BanditMTL (Mao et al., 2021).\nMao et al. (2021) solved poor generalization performance of MTL, which caused uncontrolled task variance by jointly minimizing the empirical losses and regularizing the task variance.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0681e477217cac6e9b1a6e11",
+          "b": "paper-028800a3a34bcfa87eccb134",
+          "input_sha256": "9b77d5b37c7d9fdc82dfdb9123673e3e649c0d6aee02888b5a54aab325452a66",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-long.428/",
+              "pdf_url": "https://aclanthology.org/2021.acl-long.428.pdf",
+              "sha256": "e04129df7db3c2e17dba5e984b653d5ea15a3bd50a64f51fe78c6b21dcf675c2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.emnlp-main.193/",
+              "pdf_url": "https://aclanthology.org/2022.emnlp-main.193.pdf",
+              "sha256": "09ea78ca98c2f15be5914b5a47a12f20c7f4621ef242ef1f9168ef97f6cf8c74"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "To avoid uncontrolled task variance, we need to develop a learning method that regularizes the task variance during training. Regularized Loss Minimization (RLM) is a learning method that jointly minimizes the empirical risk and a regularization function, and is thus a natural choice. While RLM is widely used in Single-task Learning, it cannot be directly used in Multi-task Learning to regularize the task variance. In this section, we propose a surrogate for RLM in MTL and accordingly develop a novel MTL method, namely BanditMTL. 4.1 Regularizing the Task Variance RLM is a natural choice for regularizing the task variance. RLM for task-variance-regularized MTL can be formulated as in equation (3): 1 \u0003 t sh t min L̂ (θ , θ ) + θ T T",
+              "url": "https://aclanthology.org/2021.acl-long.428.pdf",
+              "document_sha256": "e04129df7db3c2e17dba5e984b653d5ea15a3bd50a64f51fe78c6b21dcf675c2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "In this paper, we propose a task-varianceregularized multi-task learning algorithm based on mirror gradient ascent-descent, dubbed BanditMTL. The proposed method is presented in algorithmic form in Algorithm 1. We assume that the training procedure has K learning iterations. In each learning iteration 1 ≤ k < K, the player and the adversary update via mirror gradient ascent and descent. 4.3.1 Mirror Gradient Ascent for the Player For the player, considering the constraint in Pρ,T , we choose the Legendre function Φp (p) = \u0002T t=1 pt log pt . Based on the Legendre function, we propose the update rule of p in (6) (see the",
+              "url": "https://aclanthology.org/2021.acl-long.428.pdf",
+              "document_sha256": "e04129df7db3c2e17dba5e984b653d5ea15a3bd50a64f51fe78c6b21dcf675c2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "comparison, including: • Single-task learning (STL) methods: For ST task, we use KEMLM (Kawintiranon and Singh, 2021), BERT (Devlin et al., 2019), SCN (Yang et al., 2020a), TextGCN (Yao et al., 2019), and TextING (Zhang et al., 2020) for comparison methods. Also, we compared three best methods from the semantic evaluation challenge SemEval-2016 (Mohammad et al., 2016), SVM-ngram, MITRE, and pkudblab. For SE task, we use BERT (Devlin et al., 2019), ABCDM (Basiri et al., 2021), ISA (Barnes et al., 2021), TextGCN (Yao et al., 2019), and TextING (Zhang et al., 2020) for comparison. • Multi-task learning (MTL) methods: There are a few multi-task learning methods for stance detection here, AT-JSS (Li and Caragea, 2019), Tchebycheff (Mao et al., 2020), and BanditMTL (Mao et al., 2021). • Our methods: MTIN is our multi-task interaction network. MTIN-BiLSTM is our MTIN with the BERT replaced by Glove+BiLSTM. MTIN w/o ST and MTIN w/o SE are the model that removes the stance detection (ST)",
+              "url": "https://aclanthology.org/2022.emnlp-main.193.pdf",
+              "document_sha256": "09ea78ca98c2f15be5914b5a47a12f20c7f4621ef242ef1f9168ef97f6cf8c74"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Multi-task learning Multi-task learning (MTL) methods (Caruana, 1997; Thung and Wee, 2018; Liao et al., 2021b; Yang et al., 2021) aims at solving multiple tasks simultaneously via modeling the relationship between some learning tasks to improve the generalization of MTL models, which have gained much popularity in a variety of Natural Language Processing (NLP) downstream tasks (Liu et al., 2015; Luong et al., 2016). Li and Caragea (2019) proposed a MTL framework that takes sentiment analysis task as auxiliary task and incorporates target-specific attention mechanism to achieve promising performance of stance detection. Mao et al. (2020) proposed a novel Tchebycheff procedure to improve the performance of multi-task text classification. Mao et al. (2021) solved poor generalization performance of MTL, which caused uncontrolled task variance by jointly minimizing the empirical losses and regularizing the task variance. Different from the methods mentioned above, we study the relationship between joint learning tasks via task-related pragmatics weight of words and capture the word-level task interaction information through a proposed multi-task interaction module.",
+              "url": "https://aclanthology.org/2022.emnlp-main.193.pdf",
+              "document_sha256": "09ea78ca98c2f15be5914b5a47a12f20c7f4621ef242ef1f9168ef97f6cf8c74"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "ment polarities. As such, it is desirable to leverage the task-related pragmatics relationship at the word level to capture the difference between tasks, with target of improving the performance of all tasks. In this work, inspired by some graph neural network models proposed in other tasks (Ding et al., 2019; Zhang et al., 2020; Wu et al., 2021), we explore novel task-related pragmatics graphs to model the relationship between tasks at the word level. Based on it, we propose a novel Multi-Task Interaction Network (MTIN) framework with a word-level task interaction to automatically identify and adapt the roles that a word plays in different tasks, so as to obtain the richer task representation and thus improve the overall performance of all learning tasks. In summary, the main contributions of our work are three-fold: • We construct novel stance-related and sentiment-related graphs (dubbed st-graph and se-graph respectively) based on taskrelated pragmatics weights of words. • A novel multi-task interaction network is explored to capture the significant task-related information for each task from the word-level interaction between task-related graphs. • Experimental results on a number of benchmark datasets verify the advantages of the proposed MTIN in both stance detection and sentiment analysis tasks.",
+              "url": "https://aclanthology.org/2022.emnlp-main.193.pdf",
+              "document_sha256": "09ea78ca98c2f15be5914b5a47a12f20c7f4621ef242ef1f9168ef97f6cf8c74"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "In this paper, we propose a novel multi-task learning model to improve the performance on both the stance detection and sentiment analysis task. We first construct heterogeneous task-related pragmatics graphs to capture more fine-grained task representation. Besides, a multi-task interaction module is designed to capture the word-level interaction between tasks, so as to improve the overall performance of model. Experimental results show the effectiveness of our proposed model.",
+              "url": "https://aclanthology.org/2022.emnlp-main.193.pdf",
+              "document_sha256": "09ea78ca98c2f15be5914b5a47a12f20c7f4621ef242ef1f9168ef97f6cf8c74"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0681e477217cac6e9b1a6e11",
+          "url": "https://aclanthology.org/2021.acl-long.428/"
+        },
+        "b": {
+          "paper_id": "paper-028800a3a34bcfa87eccb134",
+          "url": "https://aclanthology.org/2022.emnlp-main.193/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "94583d5dab59da091fbdaebce58f2450b6e1ce5c6eea28bac4e1c6bb2660a7a3"
+    },
+    {
+      "id": "edge-95ac0c8446a237745fae79a6",
+      "a": "paper-08cec1ceb9affb5279303835",
+      "b": "paper-acb375a9affe555f3fda385a",
+      "state": {
+        "paper_a": {
+          "title": "TRAK: Attributing Model Behavior at Scale",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The goal of data attribution is to trace model predictions back to training data. Despite a long line of work towards this goal, existing approaches to data attribution tend to force users to choose between computational tractability and efficacy. That is, computationally tractable methods can struggle with accurately attributing model predictions in non-convex settings (e.g., in the context of deep neural networks), while methods that are effective in such regimes require training thousands of models, which makes them impractical for large models or datasets. In this work, we introduce TRAK (Tracing with the Randomly-projected After Kernel), a data attribution method that is both effective and computationally tractable for large-scale, differentiable models. In particular, by leveraging only a handful of trained models, TRAK can match the performance of attribution methods that require training thousands of models. We demonstrate the utility of TRAK across various modalities and scales: image classifiers trained on ImageNet, vision-language models (CLIP), and language models (BERT and mT5). We provide code for using TRAK (and reproducing our work) at https://github.com/MadryLab/trak ."
+        },
+        "paper_b": {
+          "title": "IF-Guide: Influence Function-Guided Detoxification of LLMs",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "We study how training data contributes to the emergence of toxic behaviors in large language models. Most prior work on reducing model toxicity adopts *reactive* approaches, such as fine-tuning pre-trained (and potentially toxic) models to align them with human values. In contrast, we propose a *proactive* approach—IF-Guide—that leverages influence functions to identify and suppress harmful tokens in the training data. To this end, we first show that standard influence functions are ineffective at discovering harmful training records. We then present a novel adaptation that measures token-level attributions from training data to model toxicity, along with techniques for selecting toxic training documents and a learning objective that can be integrated into both pre-training and fine-tuning. Moreover, IF-Guide does not rely on human-preference data, which is typically required by existing alignment methods. In our evaluation, we demonstrate that IF-Guide substantially reduces both explicit and implicit toxicity—by up to 10$\\times$ compared to uncensored models, and up to 3$\\times$ compared to baseline alignment methods such as DPO and RAD—across both pre-training and fine-tuning scenarios. IF-Guide is computationally efficient: a billion-parameter model is *not necessary* for computing influence scores; a million-parameter model—with 7.5$\\times$ fewer parameters—can effectively serve as a proxy for identifying harmful data."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We focus on an emerging technique for analyzing the relationship between training data and model behavior— influence functions [9, 25, 35, 40, 61, 70] This approach has the potential to fundamentally reduce a model’s propensity to produce harmful outputs, regardless of prompting.\nInfluence functions outperform methods based on representation or gradient similarity [9, 25, 61], with applications including identifying harmful training examples [35, 40, 45, 70], constructing high-quality datasets [68, 70, 78, 84], and interpreting outputs [9, 25, 61].\nWhile several approaches have been proposed for efficient influence approximation, most do not scale to modern LLMs [35, 61, 70] or require storage exceeding typical academic computing budgets [9].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08cec1ceb9affb5279303835",
+          "b": "paper-acb375a9affe555f3fda385a",
+          "input_sha256": "978e47b80972610e13aa9455b33764102946103ddb5c0ba781bdf413f39cab94",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/park23c.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/715dbde23573722874c20e25cfe91ac3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The goal of data attribution is to trace model predictions back to training data. Despite a long line of work towards this goal, existing approaches to data attribution tend to force users to choose between computational tractability and efficacy. That is, computationally tractable methods can struggle with accurately attributing model predictions in non-convex settings (e.g., in the context of deep neural networks), while methods that are effective in such regimes require training thousands of models, which makes them impractical for large models or datasets. In this work, we introduce TRAK (Tracing with the Randomly-projected After Kernel), a data attribution method that is both effective and computationally tractable for large-scale, differentiable models. In particular, by leveraging only a handful of trained models, TRAK can match the performance of attribution methods that require training thousands of models. We demonstrate the utility of TRAK across various modalities and scales: image classifiers trained on ImageNet, vision-language models (CLIP), and language models (BERT and mT5). We provide code for using TRAK (and reproducing our work) at https://github.com/MadryLab/trak.",
+              "url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "document_sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "2.1. The linear datamodeling score (LDS) Motivated by the above shortcomings of existing methodologies, we propose a new metric for evaluating data attribution methods. At the heart of our metric is the perspective that an effective data attribution method should be able to make accurate counterfactual predictions about how model outputs change when the training set is modified.",
+              "url": "https://proceedings.mlr.press/v202/park23c/park23c.pdf",
+              "document_sha256": "9a3aa5c2b83511ddac253b2368daf808590e9c8714089a51be5cf4bfe069b96e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "where θ is the model’s parameters, L(xi ; θ) the training loss, and H = N i=1 ∇2θ L(xi ; θ) the Hessian over the training distribution. Influence functions outperform methods based on representation or gradient similarity [9, 25, 61], with applications including identifying harmful training examples [35, 40, 45, 70], constructing high-quality datasets [68, 70, 78, 84], and interpreting outputs [9, 25, 61]. However, these works primarily focus on the effect of removing training data. We study a new application: identifying influential data that can be directly suppressed during training. Influence functions for LLMs. For language tasks, we wish to attribute training data to the loglikelihood of the model generating a completion c given some prompt p: f (θ) = log Pr(c | p; θ),",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "with Pr denoting the model’s softmax output over its vocabulary. Let xi = (xi1 , . . . , xin ) denote the sequence of tokens in the ith training example. Then the influence of xi on the query q = (p, c) is: Iθ (xi , q) = −∇θ [log Pr(c | p; θ)]⊤ H−1 ∇θ L(xi ; θ), (3) Pn where L(xi ; θ) = − j=1 log Pr(xij |xi,<j ; θ) is the standard next-token prediction loss. A larger influence implies that upweighting xi during training would increase the likelihood of the model generating c when prompted with p, providing a counterfactual estimate of xi ’s importance. Prior work on influence functions for LLMs falls broadly into two categories. Method-oriented approaches [9, 25, 48, 83] focus on improving attribution accuracy or scalability (e.g., addressing fitting errors), while application-oriented approaches [59, 68, 78, 84] use attribution to curate training data or select examples for improving general model utility. Our work is orthogonal to both: we introduce a suppression-based training objective that uses attribution not as an end, but as a means to proactively reduce toxicity. Unlike token- or document-level filtering, which often removes only isolated instances, IF-G UIDE identifies toxicity-promoting contexts and modulates their gradient contributions, yielding substantially greater reductions in both explicit and implicit toxicity. Efficient influence function computation. In practice, Eq. 3 is intractable for LLMs, as computing the inverse Hessian scales cubically with model size [35]. While several approaches have been proposed for efficient influence approximation, most do not scale to modern LLMs [35, 61, 70] or require storage exceeding typical academic computing budgets [9]. To address this, we use Eigenvalue-Corrected Kronecker-Factored Approximate Curvature",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "This approach has the potential to fundamentally reduce a model’s propensity to produce harmful outputs, regardless of prompting. However, this task is challenging at scale: manual identification of toxic content across hundreds of billions of records is infeasible [88]. Moreover, existing automated data filtering methods [20, 56, 66]—typically based on keyword lists or heuristics—often fail to capture subtle, context-dependent toxic patterns and may over-filter benign content. To address this challenge, we propose IF-G UIDE—a novel approach that leverages influence functions to identify and suppress training examples responsible for toxic behavior in LLMs. We first show that a straightforward adaptation of existing influence function methods, primarily designed for analyzing model performance [25], falls short in accurately tracing toxic behaviors to their data sources. We thus introduce a novel influence score designed to capture both explicit and implicit toxicity signals, enabling the identification of training tokens that attribute to such behaviors. We also propose a new training objective that hinders models from learning these tokens without degrading the model’s language generation capabilities. Moreover, our implementation includes a suite of techniques that ensure scalability by reducing the cost to compute influence functions by up to 19×. In our evaluation across datasets and models in both pre-training and fine-tuning scenarios, IF-G UIDE consistently outperforms existing filtering techniques (e.g., dictionary-based [20, 66] and language model red-teaming [56]) as well as alignment mechanisms like DPO and RAD [13] in reducing model toxicity. IF-G UIDE also preserves the model’s fluency and task performance. Moreover, when combined with existing alignment",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "To motivate our method, we first evaluate whether standard influence functions are effective at finding toxic training data and reducing model toxicity. Identifying toxic training data. Eq. 3 computes the influence of a training example xi on a query q = (p, c). However, toxicity spans a range of semantic patterns that a single query cannot capture. To address this, we construct a diverse set of toxic queries and aggregate their gradients. This approach is common for attributing data to general behaviors versus particular outputs [68, 84]. 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08cec1ceb9affb5279303835",
+          "url": "https://proceedings.mlr.press/v202/park23c.html"
+        },
+        "b": {
+          "paper_id": "paper-acb375a9affe555f3fda385a",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/715dbde23573722874c20e25cfe91ac3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "3a0158fed935bc0a2c00de0a209b629f4d8d1005e2f93434d912f6e7547708c1"
+    },
+    {
+      "id": "edge-9b503b1172ad93567e0fe164",
+      "a": "paper-08ffda935c4dcb1554725927",
+      "b": "paper-acb375a9affe555f3fda385a",
+      "state": {
+        "paper_a": {
+          "title": "QUARK: Controllable Text Generation with Reinforced Unlearning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO, while relying only on standard language modeling primitives."
+        },
+        "paper_b": {
+          "title": "IF-Guide: Influence Function-Guided Detoxification of LLMs",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "We study how training data contributes to the emergence of toxic behaviors in large language models. Most prior work on reducing model toxicity adopts *reactive* approaches, such as fine-tuning pre-trained (and potentially toxic) models to align them with human values. In contrast, we propose a *proactive* approach—IF-Guide—that leverages influence functions to identify and suppress harmful tokens in the training data. To this end, we first show that standard influence functions are ineffective at discovering harmful training records. We then present a novel adaptation that measures token-level attributions from training data to model toxicity, along with techniques for selecting toxic training documents and a learning objective that can be integrated into both pre-training and fine-tuning. Moreover, IF-Guide does not rely on human-preference data, which is typically required by existing alignment methods. In our evaluation, we demonstrate that IF-Guide substantially reduces both explicit and implicit toxicity—by up to 10$\\times$ compared to uncensored models, and up to 3$\\times$ compared to baseline alignment methods such as DPO and RAD—across both pre-training and fine-tuning scenarios. IF-Guide is computationally efficient: a billion-parameter model is *not necessary* for computing influence scores; a million-parameter model—with 7.5$\\times$ fewer parameters—can effectively serve as a proxy for identifying harmful data."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We now evaluate IF-G UIDE using the standard toxicity evaluation framework.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08ffda935c4dcb1554725927",
+          "b": "paper-acb375a9affe555f3fda385a",
+          "input_sha256": "36ed1c376881debed07111a0a2f0a802afb674cda9ea0cb377e3b5cb6d6ed795",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/715dbde23573722874c20e25cfe91ac3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this work, we show that Quark can steer language models away from unwanted properties as specified by reward functions, without sacrificing general language understanding/generation capabilities. We foresee two primary dual use concerns for this method. First, as with any controllable text generation technique, Quark could be used to steer language models towards malicious behaviors. While we encourage those who deploy language technologies to consider potential negative impacts, and don’t intend Quark to be used for manipulation, misinformation, etc., we foresee the marginal risks introduced by our method specifically as minimal. Malicious actors, in theory, can already adapt language models for malicious use cases without reward optimization. Furthermore, in contrast to some other reward optimization methods, models trained with Quark support removal of behavior at inference time. Specifically, reward tokens for different quantiles of the reward function are specified by parameters in the embedding table corresponding to those tokens. Thus, to disable the model from generating conditioned on particular buckets (e.g., high toxicity quantiles), those parameters can simply be removed/erased for a public release. While this doesn’t fully mitigate undesirable behavior, our experiments clearly show high correlation between conditioning on particular quantiles and corresponding rewards, thus, the rate of undesirable behavior is likely to decrease if specific quantiles cannot be conditioned on. Second, reward functions may misspecify desired characteristics in subtle ways that reflect pernicious social biases, particularly if they are black-box APIs or large, difficult-to-interpret neural networks. For example, for the task of unlearning toxicity, since the toxicity",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO [66], while relying only on standard language modeling primitives.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "We now evaluate IF-G UIDE using the standard toxicity evaluation framework. To construct query gradients, we filter the RTP training set (disjoint from evaluation) with Detoxify, defining toxic queries as scoring above 0.75 and non-toxic below 0.25. The proxy model is set to match the target model; we explore alternative proxy choices in §4.5. We also sweep over IF-G UIDE’s hyperparameters to find the best configuration (due to space limitations, we present these results in Appendix D.4). For each model architecture, we train four variants: a base (undefended) model, a model trained with IF-G UIDE, and models trained on the word- and toxicity-filtered data. For a fair comparison, filtered examples are replaced with clean text. We then apply DPO and RAD to both the base and IF-G UIDE models to assess their standalone effectiveness and compatibility with our method. We additionally test the impact of DPO and RAD combined with the filtering baselines in Appendix D.2, and conduct an ablation study on the novel components of IF-G UIDE in Appendix D.5. Results. Table 1 shows the toxicity and fluency results for RTP on four models. Full results are in Appendix D.1. We do not report PPL for RAD as it masks portions of the model’s output distribution. We note that PPL values may appear higher than expected for larger models due to our academic-scale dataset being ∼20× smaller than compute-optimal [29]. Nevertheless, our results are consistent with prior works using comparable models and dataset sizes (e.g., GPT-2) [41, 49]. IF-G UIDE outperforms the baselines, reducing EMT by 4.2–5.5× and TP by 6.8–10.4× across all models on the full set of prompts. DPO and filtering demonstrate limited effectiveness, only reducing EMT and TP by up to 1.6× and 1.8×. RAD is the strongest",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "This approach has the potential to fundamentally reduce a model’s propensity to produce harmful outputs, regardless of prompting. However, this task is challenging at scale: manual identification of toxic content across hundreds of billions of records is infeasible [88]. Moreover, existing automated data filtering methods [20, 56, 66]—typically based on keyword lists or heuristics—often fail to capture subtle, context-dependent toxic patterns and may over-filter benign content. To address this challenge, we propose IF-G UIDE—a novel approach that leverages influence functions to identify and suppress training examples responsible for toxic behavior in LLMs. We first show that a straightforward adaptation of existing influence function methods, primarily designed for analyzing model performance [25], falls short in accurately tracing toxic behaviors to their data sources. We thus introduce a novel influence score designed to capture both explicit and implicit toxicity signals, enabling the identification of training tokens that attribute to such behaviors. We also propose a new training objective that hinders models from learning these tokens without degrading the model’s language generation capabilities. Moreover, our implementation includes a suite of techniques that ensure scalability by reducing the cost to compute influence functions by up to 19×. In our evaluation across datasets and models in both pre-training and fine-tuning scenarios, IF-G UIDE consistently outperforms existing filtering techniques (e.g., dictionary-based [20, 66] and language model red-teaming [56]) as well as alignment mechanisms like DPO and RAD [13] in reducing model toxicity. IF-G UIDE also preserves the model’s fluency and task performance. Moreover, when combined with existing alignment",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Language model toxicity. Many methods have been proposed to detoxify LLMs, which broadly fall into four categories. Training data modification filters toxic examples [20, 56, 66, 76] or labels them as dispreferred [20, 36, 63], but have generally proven less effective than other interventions [20]. We take a stronger approach by actively penalizing toxicity-promoting training examples. Decoding-time defenses modify the output distribution during generation to favor safer completions [6, 11–13, 23, 34, 38, 39, 49, 62, 69, 71, 80, 82, 85], e.g., using a reward model to score and re-weight top tokens [13]. While effective, these methods can incur significant inference-time latency [12, 13, 34, 38], which we avoid by intervening during training. Activation and weight editing reduce toxicity with controlled and targeted interventions on a model’s internals [31, 43, 44, 47, 73, 75, 77, 87], e.g., approximating a toxic feature and removing it from the activation space [31]. These approaches serve as lightweight alternatives to fine-tuning, but are brittle and can reduce model quality [10, 26]. In contrast, we proactively prevent toxic behaviors from being learned. Post-training alignment like RLHF [18, 58] or DPO [46, 65] optimizes models to human preferences. These techniques can produce safer outputs, but are costly [24], annotation-heavy [88], and preference data is vulnerable to biased or adversarial annotators [8]. Our method does not require human-annotated preferences, yet it identifies training samples that contribute to a model’s toxic behaviors and suppresses their influence during training. Moreover, most existing toxicity-mitigation methods are reactive—intervening only after toxic behaviors emerge—or proactive, but limited to coarse-grained data filtering. IF-G",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/715dbde23573722874c20e25cfe91ac3-Paper-Conference.pdf",
+              "document_sha256": "2c3f963a70feb4e3b67537c8b129b69f8360bd048568cc612eaf4e6045ff01ac"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08ffda935c4dcb1554725927",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-acb375a9affe555f3fda385a",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/715dbde23573722874c20e25cfe91ac3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Detecting and Mitigating Harmful Language in AI Systems"
+      },
+      "sha256": "08d65cebbbe748fe756cc5d57d74a5ba1aab4c67484493ae06e79a610e68b97d"
+    }
+  ]
+}

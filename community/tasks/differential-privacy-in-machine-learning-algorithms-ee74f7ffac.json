@@ -1,0 +1,998 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Differential Privacy in Machine Learning Algorithms",
+  "area": "Optimization & Federated Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-97a4c9804597788c2f05ca50",
+      "a": "paper-07bee6f9a76ec42a5bbdc5b7",
+      "b": "paper-c88b74ab680b979a59e40ba2",
+      "state": {
+        "paper_a": {
+          "title": "Robust Federated Learning: The Case of Affine Distribution Shifts",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Federated learning is a distributed paradigm that aims at training models using samples distributed across multiple users in a network while keeping the samples on users’ devices with the aim of efficiency and protecting users privacy. In such settings, the training data is often statistically heterogeneous and manifests various distribution shifts across users, which degrades the performance of the learnt model. The primary goal of this paper is to develop a robust federated learning algorithm that achieves satisfactory performance against distribution shifts in users' samples. To achieve this goal, we first consider a structured affine distribution shift in users' data that captures the device-dependent data heterogeneity in federated settings. This perturbation model is applicable to various federated learning problems such as image classification where the images undergo device-dependent imperfections, e.g. different intensity, contrast, and brightness. To address affine distribution shifts across users, we propose a Federated Learning framework Robust to Affine distribution shifts (FLRA) that is provably robust against affine Wasserstein shifts to the distribution of observed samples. To solve the FLRA's distributed minimax optimization problem, we propose a fast and efficient optimization method and provide convergence and performance guarantees via a gradient Descent Ascent (GDA) method. We further prove generalization error bounds for the learnt classifier to show proper generalization from empirical distribution of samples to the true underlying distribution. We perform several numerical experiments to empirically support FLRA. We show that an affine distribution shift indeed suffices to significantly decrease the performance of the learnt classifier in a new test user, and our proposed algorithm achieves a significant gain in comparison to standard federated learning and adversarial training methods."
+        },
+        "paper_b": {
+          "title": "CRFL: Certifiably Robust Federated Learning against Backdoor Attacks",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Federated Learning (FL) as a distributed learning paradigm that aggregates information from diverse clients to train a shared global model, has demonstrated great success. However, malicious clients can perform poisoning attacks and model replacement to introduce backdoors into the trained global model. Although there have been intensive studies designing robust aggregation methods and empirical robust federated training protocols against backdoors, existing approaches lack robustness certification. This paper provides the first general framework, Certifiably Robust Federated Learning (CRFL), to train certifiably robust FL models against backdoors. Our method exploits clipping and smoothing on model parameters to control the global model smoothness, which yields a sample-wise robustness certification on backdoors with limited magnitude. Our certification also specifies the relation to federated learning parameters, such as poisoning ratio on instance level, number of attackers, and training iterations. Practically, we conduct comprehensive experiments across a range of federated datasets, and provide the first benchmark for certified robustness against backdoor attacks in federated learning. Our code is publicaly available at https://github.com/AI-secure/CRFL."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07bee6f9a76ec42a5bbdc5b7",
+          "b": "paper-c88b74ab680b979a59e40ba2",
+          "input_sha256": "7938d1cbfbece71fc7f10aa5caadc5e350dbfe9b963eb40c2d23232cc4a34098",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/f5e536083a438cec5b64a4954abc17f1-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/xie21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/xie21a/xie21a.pdf",
+              "sha256": "1fb23c51bf694f70f22ee0f5a0f7f0e0702af5db10e1a018f1d0adfad19b42ab"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated learning is a distributed paradigm for training models using samples distributed across multiple users in a network, while keeping the samples on users’ devices with the aim of efficiency and protecting users privacy. In such settings, the training data is often statistically heterogeneous and manifests various distribution shifts across users, which degrades the performance of the learnt model. The primary goal of this paper is to develop a robust federated learning algorithm that achieves satisfactory performance against distribution shifts in users’ samples. To achieve this goal, we first consider a structured affine distribution shift in users’ data that captures the device-dependent data heterogeneity in federated settings. This perturbation model is applicable to various federated learning problems such as image classification where the images undergo device-dependent imperfections, e.g. different intensity, contrast, and brightness. To address affine distribution shifts across users, we propose a Federated Learning framework Robust to Affine distribution shifts (FLRA) that is robust against affine distribution shifts to the distribution of observed samples. To solve the FLRA’s distributed minimax optimization problem, we propose a fast and efficient optimization method and provide convergence and performance guarantees via a gradient Descent Ascent (GDA) method. We further prove generalization error bounds for the learnt classifier to show proper generalization from empirical distribution of samples to the true underlying distribution. We perform several numerical experiments to empirically support FLRA. We show that an affine distribution shift indeed suffices to significantly decrease the performance of the learnt classifier in a new test",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "document_sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "learning, one needs to depart from the classical setting of distributed learning in which updated local models are communicated to the central server at each iteration, and communicate less frequently. Another major challenge in federated learning is the statistical heterogeneity of training data [1, 2]. As mentioned above, a federated setting involves many devices, each generating or storing personal data such as images, text messages or emails. Each user’s data samples can have a (slightly) different underlying distribution which is another key distinction between federated learning and classical learning problems. Indeed, it has been shown that standard federated methods such as FedAvg [3] which are designed for i.i.d. data significantly suffer in statistical accuracy or even diverge if deployed over non-i.i.d. samples [4]. Device-dependency of local data along with privacy concerns in federated tasks does not allow learning the distribution of individual users and necessitates novel algorithmic approaches to learn a classifier robust to distribution shifts across users. Specifically, statistical heterogeneity of training samples in federated learning can be problematic for generalizing to the distribution of a test node unseen in training time. We show through various numerical experiments that even a simple linear filter applied to the test samples will suffice to significantly degrade the performance of a model learned by FedAvg in standard image recognition tasks. To address the aforementioned challenges, we propose a new federated learning scheme called FLRA, a Federated Learning framework with Robustness to Affine distribution shifts. FLRA has a small communication overhead and a low computation complexity. The key insight in FLRA is model the heterogeneity of",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/f5e536083a438cec5b64a4954abc17f1-Paper.pdf",
+              "document_sha256": "f4c18d29848165e65b15da44d09a673d239d8f70bf9b1de821a967ccec53fb8a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Federated Learning (FL) as a distributed learning paradigm that aggregates information from diverse clients to train a shared global model, has demonstrated great success. However, malicious clients can perform poisoning attacks and model replacement to introduce backdoors into the trained global model. Although there have been intensive studies designing robust aggregation methods and empirical robust federated training protocols against backdoors, existing approaches lack robustness certification. This paper provides the first general framework, Certifiably Robust Federated Learning (CRFL), to train certifiably robust FL models against backdoors. Our method exploits clipping and smoothing on model parameters to control the global model smoothness, which yields a sample-wise robustness certification on backdoors with limited magnitude. Our certification also specifies the relation to federated learning parameters, such as poisoning ratio on instance level, number of attackers, and training iterations. Practically, we conduct comprehensive experiments across a range of federated datasets, and provide the first benchmark for certified robustness against backdoor attacks in federated learning. Our code is publicaly available at https://github.com/AI-secure/CRFL.",
+              "url": "https://proceedings.mlr.press/v139/xie21a/xie21a.pdf",
+              "document_sha256": "1fb23c51bf694f70f22ee0f5a0f7f0e0702af5db10e1a018f1d0adfad19b42ab"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "Wang et al., 2020; Xie et al., 2019). Such attacks raise great security concerns and have become the roadblocks towards the real-world deployment of federated learning. Although there have been intensive studies on robust FL by designing robust aggregation methods (Fung et al., 2020; Pillutla et al., 2019; Fu et al., 2019; Blanchard et al., 2017; El Mhamdi et al., 2018; Chen et al., 2017; Yin et al., 2018), developing empirically robust federated training protocols (e.g., gradient clipping (Sun et al., 2019), leveraging noisy perturbation (Sun et al., 2019) and additional evaluation during training (Andreina et al., 2020)), current defense approaches lack robustness guarantees against the backdoor attacks under certain conditions. To the best of our knowledge, certified robustness analysis and algorithms for FL against backdoor attacks remain elusive. To bridge this gap, in this work we propose a certifiably robust federated learning (CRFL) framework as illustrated in Figure 1. In particular, during training, we allow the local agent to update their model parameters to the center server, and the server will: 1) aggregate the collected model updates, 2) clip the norm of the aggregated model parameters, 3) add a random noise to the clipped model, and finally 4) send the new model parameters back to each agent. Note that all of the operations are conducted on the server side to reduce the load for local clients and to prevent malicious clients. During testing, the server will smooth the final global model with randomized parameter smoothing and make the final prediction based on the parameter-smoothed model.",
+              "url": "https://proceedings.mlr.press/v139/xie21a/xie21a.pdf",
+              "document_sha256": "1fb23c51bf694f70f22ee0f5a0f7f0e0702af5db10e1a018f1d0adfad19b42ab"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Comparison with Certifiably Robust Models in Centralized Setting Our method is different from previous certifiably robust models in centralized learning against evasion attacks (Cohen et al., 2019) and backdoors (Weber et al., 2020). Once the M noisy models (at round T , with σT ) are generated, they are fixed and used for every test sample during test time, just like RAB (Weber et al., 2020) in the centralized setting. However, RAB actually trains M models using M noise-corrupted datasets, while we just train one model through FL and finally generated M noisecorrupted copies of it. For every test sample, randomized smoothing (Cohen et al., 2019) generates M noisy samples. Suppose the test set size is m. Then during testing, there are m · M times noise addition on test samples for randomized smoothing, and M times noises addition on",
+              "url": "https://proceedings.mlr.press/v139/xie21a/xie21a.pdf",
+              "document_sha256": "1fb23c51bf694f70f22ee0f5a0f7f0e0702af5db10e1a018f1d0adfad19b42ab"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "Defend against Other Potential Attack Here we discuss the potentials to generalize our method against other training-time attacks. 1) Our method can naturally extend to fixed-frequency attack by applying our analysis for each attack period. In particular, we can repeatedly apply our Theorem 2 to analyze model closeness for each attack period, and the different initializations of each period can be bounded based on its last period. Then Theorem 3 can be applied to connect model closeness to certify the prediction consistency. 2) (Wang et al., 2020) introduce edge-case adversarial training samples to enforce the model to misclassify inputs on the tail of input distribution. The edge-case attack essentially conducts a special semantic attack (Bagdasaryan et al., 2020) by selecting rare images instead of directly adding backdoor patterns. It is possible to apply our framework against such attack by viewing it as the whole sample manipulation.",
+              "url": "https://proceedings.mlr.press/v139/xie21a/xie21a.pdf",
+              "document_sha256": "1fb23c51bf694f70f22ee0f5a0f7f0e0702af5db10e1a018f1d0adfad19b42ab"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07bee6f9a76ec42a5bbdc5b7",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/f5e536083a438cec5b64a4954abc17f1-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c88b74ab680b979a59e40ba2",
+          "url": "https://proceedings.mlr.press/v139/xie21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "0b316989197871d8910162c12ea54e7ceffbe9467bcffd9847801d3f4fa5cc67"
+    },
+    {
+      "id": "edge-63b03eba5a53dd9fe791bdc0",
+      "a": "paper-0271662a8994b4b80c6b1625",
+      "b": "paper-0abdd96c0d4defaf8ffef61f",
+      "state": {
+        "paper_a": {
+          "title": "Same Pre-training Loss, Better Downstream: Implicit Bias Matters for Language Models",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Language modeling on large-scale datasets improves performance of various downstream tasks. The validation pre-training loss is often used as the evaluation metric for language models since the pre-training loss tends to be well-correlated with downstream performance (which is itself hard to evaluate comprehensively). Contrary to the conventional wisdom, this paper shows that 1) pre-training loss cannot fully explain downstream performance and 2) flatness of the model is well-correlated with downstream performance where pre-training loss is not. We identify three ways to produce models with the same pre-training loss but different downstream performance: continue pre-training after convergence, increasing the model size, and changing the pre-training algorithms. These experiments demonstrate the existence of implicit bias of pre-training algorithms—among models with the same minimal pre-training loss, they implicitly prefer more transferable ones. Toward understanding this implicit bias, we prove that SGD with standard mini-batch noise implicitly prefers flatter minima of pre-training loss in language models, and empirically observe a strong correlation between flatness (measured by the trace of Hessian) and downstream performance among models with the same pre-training loss. We also prove in a synthetic language setting that among models with the minimal pre-training loss, the flattest model transfers to downstream tasks."
+        },
+        "paper_b": {
+          "title": "Pre-training Differentially Private Models with Limited Public Data",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "The superior performance of large foundation models can be attributed to the use of massive amounts of high-quality data. However, such datasets often contain sensitive, private and copyrighted material that requires formal protection. While differential privacy (DP) is a prominent method used to gauge the degree of security provided to large foundation models, its application in large foundation models has been met with limited success because there are often significant performance compromises when applying DP during the pre-training phase. Consequently, DP is more commonly implemented during the model fine-tuning stage, hence not capable of protecting a substantial portion of the data used during the initial pre-training process. In this work, we first provide a theoretical understanding of the efficacy of DP training by analyzing the per-iteration improvement of loss through the lens of the Hessian. We observe that DP optimizers' deceleration can be significantly mitigated by the use of limited public data, and thus propose the DP continual pre-training strategy. Our DP continual pre-training on vision models, using only 10% of public data, have achieved DP accuracy of 41.5% on ImageNet-21k (with epsilon=8) and non-DP accuracy of 55.7% on Places365 and 60.0% on iNaturalist-2021, which are on par with state-of-the-art standard pre-training and outperform existing DP pertained models. Our DP pre-trained models are released in fastDP library (https://github.com/awslabs/fast-differential-privacy/releases/tag/v2.1)"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We note that tr ( H ) in (8) characterizes the curvature (i.e. sharpness or flatness) of the loss landscape, which strongly correlates with the downstream performance [51, 45, 96, 31].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0271662a8994b4b80c6b1625",
+          "b": "paper-0abdd96c0d4defaf8ffef61f",
+          "input_sha256": "c0ebbca47fe7feec4bb938b4e206d8563dd890cb4f7c98a5b8e240d0491d779f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/liu23ao.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/liu23ao/liu23ao.pdf",
+              "sha256": "4933bc244bc4af81cdb65be62bb82d2107036ba269ac27fc87d76ace2feed419"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/ac04e54e0a2d1927d60709019e4e7870-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Datasets. We introduce three datasets produced by generative models. With the knowledge of the true generative models, we can compute the true conditional probability and scale up the models until they approach the saturation regime to ensure they have almost the same pre-training loss. We also consider two real-world large language modeling corpora, with which we can demonstrate our findings in practical setups. 1) PCFG-generated dataset. PCFG (Chomsky, 1956) generates sentences with probabilistic trees and is widely used to understand natural language (Roark & Bacchiani, 2003; Kim et al., 2019). The symbols in the parse trees are intrinsic quantities of the sentences such as syntax. We design three downstream tasks A, B, and C to classify symbols at different positions of the parse trees. HMM samples hidden 2) HMM-generated dataset. variables from the transition probabilities and tokens from the emission probabilities, which is used to analyze the properties of pre-trained language models (Wei et al., 2021b; Xie et al., 2021). The downstream task is classifying hidden variables in the sentences. We use task-k to refer to classifying the k-th hidden variable. 3) OPT-generated dataset. OPT is an autoregressive language model (Zhang et al., 2022a). Starting from the bos token, we sample tokens from the output of OPT. For computational feasibility we only allow the top-2000 frequent tokens in the OPT vocabulary. We use QNLI and SST-2 from GLUE (Wang et al., 2018) as downstream tasks. 4) OpenWebText. OpenWebText (Gokaslan et al., 2019) is an open version of the large language corpus used to train GPT-2 (Radford et al., 2019). It contains 40GB of text. 5) BookCorpus. BookCorpus (Zhu et al., 2015) is a 4GB collection of novel books used to train BERT (Devlin et al., 2018).",
+              "url": "https://proceedings.mlr.press/v202/liu23ao/liu23ao.pdf",
+              "document_sha256": "4933bc244bc4af81cdb65be62bb82d2107036ba269ac27fc87d76ace2feed419"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Saturation regime. In order to factor out the impact of the pre-training loss, we introduce the saturation regime, a family of models with the same (optimal) pre-training loss. We say a model is in the saturation regime if its output equals the true conditional probability, fθ (x−t ) = Pr(· | x−t ), and the MLM loss equals the entropy of the true conditional probability PT L(θ) = Ex,t [− log(Pr (xt | x−t ))] = T1 t=1 H(xt | x−t ), which is also the lower bound of the pre-training loss. Thus, all models in the saturation regime have the same optimal pre-training loss. When the architectures are sufficiently expressive, multiple parameter configurations can compute the true conditional probability and thus be in the saturation regime. As will be shown in Section 2.3, interestingly, models in the saturation regime can still have varying downstream performance (which is not caused by the pre-training loss because it is the same.) Perhaps more interestingly, this phenomenon also holds with linear probing on contextualized presentations instead of fine-tuning. Thus, even though the predicted conditional probabilities of two models are the same (and correct), the contextualized representations can behave differently. We also conduct experiments on real large-scale data which are typically not in the saturation regime due to limited training time and architecture size, which validate our findings in the setup that is more representative of real-world use. 2.2. Experimental Setup We design controlled experiments to study the correlation between pre-training loss and downstream performance. 3",
+              "url": "https://proceedings.mlr.press/v202/liu23ao/liu23ao.pdf",
+              "document_sha256": "4933bc244bc4af81cdb65be62bb82d2107036ba269ac27fc87d76ace2feed419"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "In this section, we examine the effects of per-sample gradient clipping and noising on the DP training, leveraging the per-iteration per-sample loss improvement derived in Section 2. Specifically, we define and analyze a “decelerator” term that characterizes the slowdown by DP optimizers. Comparing DP-SGD to SGD, we can attribute the slow convergence of DP optimization to the term σ 2 tr(H)/(Bc2 ) in (6), which is not present in the standard training (7). We refer to such a term as σ 2 tr(H) σ 2 tr(H)E|gi |2 ≈ , (8) Bc2 B which couples the effects of per-sample gradient clipping and noise through the trace of Hessian. We note that tr(H) in (8) characterizes the curvature (i.e. sharpness or flatness) of the loss landscape, which strongly correlates with the downstream performance [51, 45, 96, 31]. decelerator:",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Our main contributions are listed below. We emphasize that we have taken the privacy accounting and the convergence (i.e. the dependence of loss on σ(B, T, ϵ) and B) jointly into consideration. (1) We provide a new perspective of analyzing the loss improvement in DP training with different optimizers. Specifically, in Section 2, we propose a Hessian-based framework to analyze the periteration improvement on the generalization loss and the effects of per-sample gradient clipping, noising, and hyperparameter choices (e.g., batch size, learning rate). (2) Based on the framework, we can analyze the effect that DP mechanisms, especially the DP noise but less so the DP clipping, have on pre-training and fine-tuning stages. This leads to some theoretical justifications about why pre-training is more vulnerable to DP noise; see Figure 1 for some empirical comparisons, and Section 3 for some in-depth discussion. (3) Our analysis suggests that the deceleration due to DP mechanisms can be mitigated by using a certain amount of public data. We then propose a DP continual pre-training strategy that continues the pre-training privately from a non-DP initialization. Our strategy is easily implementable, automatic and effective, obtaining accuracy on upstream and downstream tasks that is on par with its non-DP variants, while significantly outperforming state-of-the-art DP pretraining algorithms (see Figure 2). 100",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "Motivated by Section 3 and Remark 4.1, we propose a two-phase DP continual pre-training strategy in Appendix D: public pre-training for sT steps followed by private continual pre-training for (1 − s)T steps, which is equivalent to setting αt = I(t < sT ) and the constant 0 < s < 1 controls the portion of steps of public training. Remark 4.2. Although (10) suggests that the optimal αt ∈ (0, 1), we only set binary αt ∈ {0, 1} so as to not implement two data loaders and two back-propagation mechanisms simultaneously (one for DP and one for standard). Note the methods in Table 2 are difficult to scale and not yet openly implemented on distributed systems due to memory and synchronization issues. We highlight that DP continual pre-training is as distinct from DP fine-tuning as their non-DP counter-parts, despite both methods extending the learning from a pre-trained phase: the continual pre-training learns common knowledge without adapting to a specific task and serves a richer foundation for many downstream tasks (see more discussion in Appendix C). In fact, we show in Appendix A.7 that the loss improvement of DP continual pre-training can be almost as fast as non-DP pre-training on the full data (FullyPublic), thus closing the utility gap. 24",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0271662a8994b4b80c6b1625",
+          "url": "https://proceedings.mlr.press/v202/liu23ao.html"
+        },
+        "b": {
+          "paper_id": "paper-0abdd96c0d4defaf8ffef61f",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/ac04e54e0a2d1927d60709019e4e7870-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "758ca391ccb54f67a8cd8f6b68c8987f7c76b576e6d10ddbaef0683f570ecba1"
+    },
+    {
+      "id": "edge-de230d6815a2236689767e6c",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-d214f707fb972da6b2cf3c11",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "Privacy-Preserving Domain Adaptation of Semantic Parsers",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Task-oriented dialogue systems often assist users with personal or confidential matters. For this reason, the developers of such a system are generally prohibited from observing actual usage. So how can they know where the system is failing and needs more training data or new functionality? In this work, we study ways in which realistic user utterances can be generated synthetically, to help increase the linguistic and functional coverage of the system, without compromising the privacy of actual users. To this end, we propose a two-stage Differentially Private (DP) generation method which first generates latent semantic parses, and then generates utterances based on the parses. Our proposed approach improves MAUVE by 2.5X and parse tree function-type overlap by 1.3X relative to current approaches for private synthetic data generation, improving both on fluency and semantic coverage. We further validate our approach on a realistic domain adaptation task of adding new functionality from private user data to a semantic parser, and show overall gains of 8.5% points on its accuracy with the new feature."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We also observe that for the SMCalFlow dataset, MAUVE doesn’t improve much as we increase the privacy budget.\nMAUVE and Function overlap tend to be very high on some grammatically incorrect sentences with diverse vocabulary.\nManual investigation revealed that the shuffled model’s generations are grammatically correct but are more repetitive across utterances, compared to other models, and MAUVE fails to sufficiently penalize these issues.\nMAUVE (Pillutla et al., 2021) is a comparison measure for open-ended text generation, which directly compares the learned distribution from a text generation model to the distribution of human-written text using divergence frontiers.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-d214f707fb972da6b2cf3c11",
+          "input_sha256": "d5b05519fbe9a928de820beb0984359832926001babe92f0dd3a2cd442f2781b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.271/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.271.pdf",
+              "sha256": "1f1061021a8914cd0b1bc66e4fadec1aa9d4205aa838d45303ebc8bbf28e5f99"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "of function types for TreeDST (303 for TreeDST vs. 524 for SMCalFlow), making it easier for both methods to capture these types. One counterintuitive observation is that for some metrics, for the 1-stage baseline, the performance with ϵ = 16 is actually higher than ϵ = ∞. We hypothesize that this could be due to the regularization effect that small amounts of noise has on the training (Smith et al., 2020), therefore the DP model with a high budget can generalize better (overfits less). We also observe that for the SMCalFlow dataset, MAUVE doesn’t improve much as we increase the privacy budget. We relate this to the complexity of the hyperparameter search/optimization in DP-mechanisms, and that we were not optimizing for improving MAUVE. A more extensive hyperparameter search could yield better results on ϵ = 16. We provide more fine-grained comparisons on the parse tree distribution matching with ground truth (such as the top-10, 25, 50 and 100 most common function coverage in Appendix B.4). We explore the reasons behind the superior performance of the proposed method in the next section.",
+              "url": "https://aclanthology.org/2023.acl-long.271.pdf",
+              "document_sha256": "1f1061021a8914cd0b1bc66e4fadec1aa9d4205aa838d45303ebc8bbf28e5f99"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "We compare the synthesized datasets to human utterances on a distribution level, as there is no one-to-one mapping between them. We report two sets of metrics here: (1) Language and (2) Parse metrics. Language metrics (MAUVE and word overlap) are measured from the generated utterances themselves, whereas parse metrics (chi-square distance and function overlap) are measured from parse trees corresponding to the synthesized utterances, produced using a high-resource parser.2 All the results are reported over 14, 751 and 22, 897 synthesized utterances, compared to the same number of human utterances, for SMCalFlow and TreeDST datasets respectively. MAUVE (Pillutla et al., 2021) is a comparison measure for open-ended text generation, which directly compares the learned distribution from",
+              "url": "https://aclanthology.org/2023.acl-long.271.pdf",
+              "document_sha256": "1f1061021a8914cd0b1bc66e4fadec1aa9d4205aa838d45303ebc8bbf28e5f99"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Task-oriented dialogue systems often assist users with personal or confidential matters. For this reason, the developers of such a system are generally prohibited from observing actual usage. So how can they know where the system is failing and needs more training data or new functionality? In this work, we study ways in which realistic user utterances can be generated synthetically, to help increase the linguistic and functional coverage of the system, without compromising the privacy of actual users. To this end, we propose a two-stage Differentially Private (DP) generation method which first generates latent semantic parses, and then generates utterances based on the parses. Our proposed approach improves MAUVE by 2.5× and parse tree function type overlap by 1.3× relative to current approaches for private synthetic data generation, improving both on fluency and semantic coverage. We further validate our approach on a realistic domain adaptation task of adding new functionality from private user data to a semantic parser, and show overall gains of 8.5% points in accuracy with the new feature.",
+              "url": "https://aclanthology.org/2023.acl-long.271.pdf",
+              "document_sha256": "1f1061021a8914cd0b1bc66e4fadec1aa9d4205aa838d45303ebc8bbf28e5f99"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "rapidly teach the semantic parser that words like “hop” and ”jump” should invoke the leg API). Recent concurrent work (Yue et al., 2022; Mattern et al., 2022) has attempted to generate synthetic labeled data to train a text classifier. They sample labels from a given distribution and sample corresponding text strings from a differentially private language model, conditioning each string on its label. This approach does not directly apply to our setting, as our distribution over labels is private and one of our goals is to learn it. We cannot even substitute a uniform distribution for the sake of generation, since no such distribution exists over the infinitely many labels of the semantic parsing task. To meet the unique requirements of our setting, a simple baseline is to ignore the classes and simply train a differentially private language model on all the private utterances, applying DP-SGD to the usual log-likelihood objective (Figure 1). We could then sample synthetic utterances for inspection and annotation. However, we find that when we enforce privacy with budget ϵ = 3, this baseline’s top-25 most common function types1 only have 64% overlap with the top-25 most common function types in the private utterances (see Section 5.1 and Table 6 for full experimental details and results). In other words, the baseline model does not accurately capture the distribution of the private training data, over a limited number of synthesized samples. To ensure sufficient coverage of how users invoke different function types, we propose a 2-stage method (Figure 2) that exploits the structure of the output space, by privately (using DP-SGD) modeling the parse trees (bottom of the figure) and the conditional distribution of the utterances given a parse tree (top of the figure),",
+              "url": "https://aclanthology.org/2023.acl-long.271.pdf",
+              "document_sha256": "1f1061021a8914cd0b1bc66e4fadec1aa9d4205aa838d45303ebc8bbf28e5f99"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-d214f707fb972da6b2cf3c11",
+          "url": "https://aclanthology.org/2023.acl-long.271/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "d0af18764c58d2548d0193d483e859ecc17534075ddf6ca689bf91430e86275d"
+    },
+    {
+      "id": "edge-c5ac122e36a9e7719e33f39d",
+      "a": "paper-04dc6d84145046380521afbb",
+      "b": "paper-4a39127d6846451b4f4bc758",
+      "state": {
+        "paper_a": {
+          "title": "Privacy Auditing with One (1) Training Run",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We propose a scheme for auditing differentially private machine learning systems with a single training run. This exploits the parallelism of being able to add or remove multiple training examples independently. We analyze this using the connection between differential privacy and statistical generalization, which avoids the cost of group privacy. Our auditing scheme requires minimal assumptions about the algorithm and can be applied in the black-box or white-box setting. We demonstrate the effectiveness of our framework by applying it to DP-SGD, where we can achieve meaningful empirical privacy lower bounds by training only one model. In contrast, standard methods would require training hundreds of models."
+        },
+        "paper_b": {
+          "title": "Adaptive Data Analysis for Growing Data",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Reuse of data in adaptive workflows poses challenges regarding overfitting and the statistical validity of results. Previous work has demonstrated that interacting with data via differentially private algorithms can mitigate overfitting, achieving worst-case generalization guarantees with asymptotically optimal data requirements. However, such past work assumes data is static and cannot accommodate situations where data grows over time. In this paper we address this gap, presenting the first generalization bounds for adaptive analysis on dynamic data. We allow the analyst to adaptively schedule their queries conditioned on the current size of the data, in addition to previous queries and responses. We also incorporate time-varying empirical accuracy bounds and mechanisms, allowing for tighter guarantees as data accumulates. In a batched query setting, the asymptotic data requirements of our bound grows with the square-root of the number of adaptive queries, matching prior works' improvement over data splitting for the static setting. We instantiate our bound for statistical queries with the clipped Gaussian mechanism, where it empirically outperforms baselines composed from static bounds."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Steinke, Nasr, and Jagielski [53] develop a method for privacy auditing that runs the algorithm under audit once on a single dataset rather than many times on adjacent datasets.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04dc6d84145046380521afbb",
+          "b": "paper-4a39127d6846451b4f4bc758",
+          "input_sha256": "6bc4da887d87f686cd9f7c0ec0f3a0ab46d21cc5acfe03dc5d7c06bcf18d11e7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/9a6f6e0d6781d1cb8689192408946d73-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/8a79b3038a95f0d92d00d4e35874ada0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/8a79b3038a95f0d92d00d4e35874ada0-Paper-Conference.pdf",
+              "sha256": "b13f5ecd0e1f9c392beae8a8a578deb425ce0cdac85f00e103181dfaed3f2d56"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a scheme for auditing differentially private machine learning systems with a single training run. This exploits the parallelism of being able to add or remove multiple training examples independently. We analyze this using the connection between differential privacy and statistical generalization, which avoids the cost of group privacy. Our auditing scheme requires minimal assumptions about the algorithm and can be applied in the black-box or white-box setting. We demonstrate the effectiveness of our framework by applying it to DP-SGD, where we can achieve meaningful empirical privacy lower bounds by training only one model. In contrast, standard methods would require training hundreds of models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "document_sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "on the output of the algorithm, the auditor “guesses” whether or not each data point was included or excluded (or it can abstain from guessing for some data points). We obtain a lower bound on the privacy parameters from the fraction of guesses that were correct. Intuitively, if the algorithm is (ε, 0)-DP, then the auditor can correctly guess each inclusion/exclusion ε coin flip with probability ≤ eεe+1 . That is, the highest possible accuracy is attained by randomized response [War65]. Thus DP implies a high-probability upper bound on the fraction of correct guesses and, conversely, the fraction of correct guesses implies a high-probability lower bound on the privacy parameters. Our analysis: Naı̈vely, analyzing the addition or removal of multiple data elements would rely on group privacy; but this does not exploit the fact that the data items were included or excluded independently. Instead, we leverage the connection between DP and generalization [DFHPRR15b; DFHPRR15a; BNSSSU16; RRST16; JLNRSMS19; SZ20]. Our main theoretical contribution is an improved analysis of this connection that is tailored to yield nearly tight bounds in our setting. Informally, if we run a DP algorithm on i.i.d. samples from some distribution, then, conditioned on the output of the algorithm, the samples are still “close” to being i.i.d. samples from that distribution. There is some technicality in making this precise, but, roughly speaking, we show that including or excluding m data points independently for one run is essentially as good as having m independent runs (as long as δ is small). Our results: As an application of our new auditing framework, we audit DP-SGD training on a WideResNet model, trained on the CIFAR10 dataset across multiple configurations. Our approach successfully",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/9a6f6e0d6781d1cb8689192408946d73-Paper-Conference.pdf",
+              "document_sha256": "d5b697fceeb0db7cd6049f9183483643f6a7ad523564748cff55c92eeee24e56"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Various methods have been proposed in the statistics community for adaptive analysis of static data. For instance, α-investing and related methods can be used to control false discovery rates for sequential hypothesis testing [39, 40]. Another line of work aims to ensure statistical validity when model selection and significance testing are performed on the same dataset [41–43]. However, these methods are specialized and place restrictions on the analyst [9]. Our paper builds on a body of work exploiting a connection between stable algorithms and generalization for adaptive data analysis [5, 9–18]. Dwork et al. [9] were first to establish a transfer theorem showing that differentially private algorithms are sufficient to guarantee high-probability bounds on the worst-case error of an adaptive analysis. In subsequent work [10, 15], simpler proofs of the transfer theorem were given that achieve sharper bounds, while covering a broader range of queries. Recent work has obtained bounds that improve on the worst case, by conditioning on data/queries [11, 14, 18] or constraining the analyst [22]. In a similar spirit, concurrent work also constrains the analyst’s queries, which in turn allows them to provide guarantees for certain classes of correlated, non-i.i.d. data [24]. Lower bounds have also been studied exploiting connections to cryptography [20, 21, 44]. However, all of this prior work is limited to static data. While there is no prior work on adaptive analysis of dynamic data, this setting has been studied in differential privacy. One line of work is known as differential privacy under continual observation [27, 28], where the goal is to repeatedly estimate a fixed function of a dataset whenever new data arrives. An elementary task in this setting is estimating the",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8a79b3038a95f0d92d00d4e35874ada0-Paper-Conference.pdf",
+              "document_sha256": "b13f5ecd0e1f9c392beae8a8a578deb425ce0cdac85f00e103181dfaed3f2d56"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "distribution and a worst-case analyst, who is actively trying to overfit. More recently, variations of this setting have been studied in an attempt to better reflect how data is used in practice [14, 18, 22, 23]. This includes replacing the assumption of i.i.d. data with weakly correlated data [23], or replacing a worst-case analyst by a dynamic model [22]. Concurrent work has also made progress on the former, providing generalization guarantees for correlated data by constraining the analyst to a class of “concentrated” queries [24]. A limitation of all prior work is the assumption that data is collected before the analysis begins, and remains static thereafter. However, it is common in practice for data to grow over time, and it may be undesirable to wait for all data to arrive or to ignore data that arrives after an analysis has begun. This growing data setting has been studied in the differential privacy literature, both for adaptive queries [25, 26] and for updating a fixed query whenever a dataset changes [27–30]. In this paper, we bridge the gap, obtaining the first generalization guarantees for adaptive data analysis (ADA) in the growing setting. We consider a fully adaptive analyst, who can determine not only the content of their queries, but also the timing and frequency of their submissions on-the-fly. This schedule can be conditioned on the current size of the data, as well as all past queries and responses. To tackle the growing data setting, we introduce definitions and techniques that extend beyond existing ADA frameworks. A key innovation is our approach to bounding query error, which, following Jung et al. [15], incorporates a term comparing the query results evaluated on a posterior data distribution and the true data distribution. Our insight is that",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8a79b3038a95f0d92d00d4e35874ada0-Paper-Conference.pdf",
+              "document_sha256": "b13f5ecd0e1f9c392beae8a8a578deb425ce0cdac85f00e103181dfaed3f2d56"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "This paper extends the current understanding of generalization in adaptive data analysis to dynamic scenarios where data arrives incrementally over time, a setting increasingly relevant in many datadriven fields. Our approach builds on and extends the tightest known worst-case generalization guarantees for static data [15] by incorporating time-varying accuracy bounds and addressing the additional complexity introduced by data growth. Compared with bounds for static data, our bounds incorporate an additional factor proportional to the data growth, associated with the stability of the analysis as measured by differential privacy. We instantiate our bounds for three query classes and demonstrate an empirical improvement over baselines for adaptive statistical queries answered with the clipped Gaussian mechanism. There are various opportunities to extend our work. While it is conventional to assume i.i.d. data when studying generalization, as we have done here, it would be interesting to consider non-i.i.d. growing data where the data distribution evolves over time. This may require bounds that depend on the rate of evolution, akin to bounds that depend on the correlation for non-i.i.d. data in the static setting [23]. Another practical direction is to tighten our (mostly) worst-case bounds by conditioning on the actual queries and data realized in the analysis. This could be informed by similar work for the static setting [11, 14, 18]. Finally, we believe there are opportunities to design new differentially private mechanisms for different kinds of adaptive queries on dynamic data, as there has been limited work in this area to date [25, 26].",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8a79b3038a95f0d92d00d4e35874ada0-Paper-Conference.pdf",
+              "document_sha256": "b13f5ecd0e1f9c392beae8a8a578deb425ce0cdac85f00e103181dfaed3f2d56"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04dc6d84145046380521afbb",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/9a6f6e0d6781d1cb8689192408946d73-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-4a39127d6846451b4f4bc758",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/8a79b3038a95f0d92d00d4e35874ada0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "c197c69e14e0f4b72d9b5abd68abca14058c0a61862d9c5908f08a2984b875c6"
+    },
+    {
+      "id": "edge-56fc5bb7ed41d632c8fdf924",
+      "a": "paper-06233b6defe38327243de0ec",
+      "b": "paper-002b7b90ca88f02a0867db84",
+      "state": {
+        "paper_a": {
+          "title": "The Distributed Discrete Gaussian Mechanism for Federated Learning with Secure Aggregation",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "We consider training models on private data that are distributed across user devices. To ensure privacy, we add on-device noise and use secure aggregation so that only the noisy sum is revealed to the server. We present a comprehensive end-to-end system, which appropriately discretizes the data and adds discrete Gaussian noise before performing secure aggregation. We provide a novel privacy analysis for sums of discrete Gaussians and carefully analyze the effects of data quantization and modular summation arithmetic. Our theoretical guarantees highlight the complex tension between communication, privacy, and accuracy. Our extensive experimental results demonstrate that our solution is essentially able to match the accuracy to central differential privacy with less than 16 bits of precision per value."
+        },
+        "paper_b": {
+          "title": "On Privacy and Personalization in Cross-Silo Federated Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "While the application of differential privacy (DP) has been well-studied in cross-device federated learning (FL), there is a lack of work considering DP and its implications for cross-silo FL, a setting characterized by a limited number of clients each containing many data subjects. In cross-silo FL, usual notions of client-level DP are less suitable as real-world privacy regulations typically concern the in-silo data subjects rather than the silos themselves. In this work, we instead consider an alternative notion of silo-specific sample-level DP, where silos set their own privacy targets for their local examples. Under this setting, we reconsider the roles of personalization in federated learning. In particular, we show that mean-regularized multi-task learning (MR-MTL), a simple personalization framework, is a strong baseline for cross-silo FL: under stronger privacy requirements, silos are incentivized to federate more with each other to mitigate DP noise, resulting in consistent improvements relative to standard baseline methods. We provide an empirical study of competing methods as well as a theoretical characterization of MR-MTL for mean estimation, highlighting the interplay between privacy and cross-silo data heterogeneity. Our work serves to establish baselines for private cross-silo FL as well as identify key directions of future work in this area."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In contrast, client-level DP under a non-local model necessitates some trust on the server, even for distributed DP methods (e.g. [29, 21, 48, 4, 20, 18]).\nPast work on differentially private FL has concentrated on client-level DP and cross-device FL (e.g. [32, 74, 44, 34, 49, 48, 6]), and the application of DP in cross-silo FL, particularly where each silo deﬁnes its own DP targets for records of its own dataset, is relatively underexplored.\nTo obtain formal privacy guarantees, there has thus been extensive work applying differential privacy (DP) [27, 28] to various parts of the FL pipeline (e.g. [32, 73, 41, 48, 4, 63, 44, 83, 34]).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06233b6defe38327243de0ec",
+          "b": "paper-002b7b90ca88f02a0867db84",
+          "input_sha256": "02792d23916549e4aa264fb4bffe086b603a3e92b07b77b8f1d9cf0d811a622e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/kairouz21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/kairouz21a/kairouz21a.pdf",
+              "sha256": "032c2e1b3361017b54b7c1716c2147d2edd08a93f4245c367e555948b71dab6a"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/2788b4cdf421e03650868cc4184bfed8-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/2788b4cdf421e03650868cc4184bfed8-Paper-Conference.pdf",
+              "sha256": "8d398511a2f52e48070d8fee2c12b75007b325d969e1ef4ac264245b6f19e44f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "learning (FL) to ensure that raw data never leaves users’ devices (McMahan et al., 2017; Kairouz et al., 2019), cryptographic secure aggregation (SecAgg) to prevent a server from inspecting individual user updates (Bonawitz et al., 2017; Bell et al., 2020), and differentially private stochastic gradient descent (DP-SGD) to train models with provably limited information leakage (Abadi et al., 2016; Tramèr & Boneh, 2020). While these technologies have been extremely well studied in a separate fashion, little work has focused on understanding precisely how they can be combined in a rigorous and principled fashion. Towards this end, we present a comprehensive end-to-end system where each client appropriately discretizes their model update and adds discrete Gaussian noise to it before sending it for modular secure summation using SecAgg. This provides the first concrete step towards building a communication-efficient FL system with distributed DP1 and SecAgg guarantees. Organization The remainder of the paper is organized as follows. We present some preliminaries in Section 2, summarize our main results in Section 3, and review related works in Section 4. In Section 5, we introduce the distributed discrete Gaussian mechanism, analyze its privacy guarantees, and show how to apply it in federated learning. We present experiments in Section 6 and conclude with a few interesting extensions in Section 7. All formal definitions, proofs, algorithmic details, extensions, and additional experiments are deferred to the supplementary material.",
+              "url": "https://proceedings.mlr.press/v139/kairouz21a/kairouz21a.pdf",
+              "document_sha256": "032c2e1b3361017b54b7c1716c2147d2edd08a93f4245c367e555948b71dab6a"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "To\u0010interpret Theorem 6, note that mean squared error \u0011 c2 d O ε2 is, up to constants, exactly the error we would expect to attain for differential privacy in the central model. Our analysis attains reasonably sharp constants (at the expense of many lower order terms that we suppress here in the introduction). However, to truly gauge the practicality of our method, we perform an empirical evaluation. Experiments To investigate the interplay between communication, accuracy, and privacy under our proposed protocol in practice, we empirically evaluate our protocol and compare it to the commonly used centralized continuous Gaussian mechanism on two canonical tasks: distributed mean estimation (DME) and federated learning (FL). For DME, each client holds a vector and the server’s goal is to obtain a differentially private mean estimate of the vectors. We show that 16 bits per coordinate are sufficient to nearly match the utility of the Gaussian baseline for regimes of interest. For FL, we show on Federated EMNIST (Caldas et al., 2018) and Stack Overflow (Authors, 2019) that our approach gives good performance under tight privacy budgets, despite using generic RDP amplification via sampling (Zhu & Wang, 2019) for our methods and the precise RDP analysis for the subsampled Gaussian mechanism (Mironov et al., 2019). We provide an open-source implementation of our methods in TensorFlow Privacy (Andrew et al., 2019) and TensorFlow Federated (Ingerman & Ostrowski, 2019).4",
+              "url": "https://proceedings.mlr.press/v139/kairouz21a/kairouz21a.pdf",
+              "document_sha256": "032c2e1b3361017b54b7c1716c2147d2edd08a93f4245c367e555948b71dab6a"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "queries (e.g. DP-SGD steps). In contrast, local training without communication can be kept noise-free under client-level DP, but participation in FL requires privatization. Two immediate consequences of the above are that (1) local training and FedAvg now have identical privacy costs, and (2) local finetuning for model personalization may no longer work as expected (Fig. 2). 2. Less reliance on a trusted server. As a corollary of the above, all model updates of silo k satisfy (at least) (εk , δk )-DP against external adversaries, including all other silos and the orchestrating server [28, 109]. In contrast, client-level DP under a non-local model necessitates some trust on the server, even for distributed DP methods (e.g. [29, 21, 48, 4, 20, 18]). 3. Tradeoff emerges between costs from privacy and heterogeneity. As privacy-perserving noises are added independently on each silo, they are reflected in silos’ model updates and can thus be mitigated when the model updates are aggregated (e.g. via FedAvg), leading to a smaller utility drop due to DP for the shared model. On the other hand, federation also means that the shared model may suffer from client heterogeneity (non-iid data across silos). This intuition is observed in Fig. 2: while local training may outperform FedAvg without privacy (as a result of heterogeneity), the opposite can be true when privacy is added (as a result of noise variance reduction). The first and last in the above are of particular interest because they suggest that model personalization can play a key and distinct role in our privacy setting. Specifically, local training (no FL participation) and FedAvg (full FL participation) can be viewed as two ends of a personalization spectrum with identical privacy costs; if local training minimizes the",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2788b4cdf421e03650868cc4184bfed8-Paper-Conference.pdf",
+              "document_sha256": "8d398511a2f52e48070d8fee2c12b75007b325d969e1ef4ac264245b6f19e44f"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "Recent advances in machine learning often rely on large, centralized datasets [84, 23, 65], but curating such data may not always be viable, particularly when the data contains private information and must remain siloed across clients (e.g. mobile devices or hospitals). Recently, federated learning (FL) [71, 50] has emerged as a paradigm for learning from such distributed data, but it has been shown that its data minimization principle alone may not provide adequate privacy protection for participants [101, 102]. To obtain formal privacy guarantees, there has thus been extensive work applying differential privacy (DP) [27, 28] to various parts of the FL pipeline (e.g. [32, 73, 41, 48, 4, 63, 44, 83, 34]). Existing approaches for differentially private FL are typically designed for client-level DP in that they protect the federated clients, such as mobile devices (“user-level”), tasks in multi-task learning (“task-level”), or data silos like institutions (“silo-level”), and DP is achieved by clipping and noising the client model updates. While client-level DP is considered a strong privacy notion as all data of a single client is protected, it may not be suitable for cross-silo FL, where there are fewer clients but each hold many data subjects that require protection. For example, when hospitals/banks/schools wish to federate patient/customer/student records, it is the people owning those records rather than the participating silos that should be protected. In fact, laws and regulations may mandate such participation in FL be disclosed publicly [96], compromising the privacy of the federating clients. In this work, we instead consider a more natural model of silo-specific sample-level privacy (Fig. 1, with variants appearing in [41, 66, 109, 51]): the k-th silo may set",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2788b4cdf421e03650868cc4184bfed8-Paper-Conference.pdf",
+              "document_sha256": "8d398511a2f52e48070d8fee2c12b75007b325d969e1ef4ac264245b6f19e44f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "MR-MTL under structured heterogeneity. We further study (1) the extensibility of MR-MTL as a strong baseline method to handle clustering structures of silo data distributions and (2) its flexibility to handle varying heterogeneity levels, by manually introducing two layers of heterogeneity to the MNIST dataset [54]. The first layer is 4-way rotations: train/test images are evenly split into 4 groups of 10 silos, with each group applying {0◦ , 90◦ , 180◦ , 270◦ } of rotation to their images. The second layer is silo-specific masking: each silo generates and applies its unique random mask of 2 × 2 white patches to its images, with varying masking probability. Together, the 1st layer creates 4 well-defined silo clusters, and the 2nd layer (gradually) adds intra-cluster heterogeneity. Importantly, our goal is not to contrive a utility advantage of MR-MTL (in fact, the added heterogeneity is disadvantageous to mean-regularization), but to examine its extensibility and flexibility as a strong baseline method to match the best methods by construction. Under the 1st layer of heterogeneity, clustered FL methods [33, 69] should be optimal if the correct clusters are formed since there is no intra-cluster heterogeneity; with increasing silo-specific heterogeneity in the 2nd layer, local training should be increasingly more attractive. See Appendix C.1 for more details on the setup and examples of images. We propose a simple heuristic to precondition or “warm-start” MR-MTL with a small number of training rounds by running private clustering (with IFCA [33, 69]) followed by mean-regularized training within each formed cluster (see Appendix D for details). We find that this simple heuristic, with convergence properties carried forward from its components [33, 30, 106], enables",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/2788b4cdf421e03650868cc4184bfed8-Paper-Conference.pdf",
+              "document_sha256": "8d398511a2f52e48070d8fee2c12b75007b325d969e1ef4ac264245b6f19e44f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06233b6defe38327243de0ec",
+          "url": "https://proceedings.mlr.press/v139/kairouz21a.html"
+        },
+        "b": {
+          "paper_id": "paper-002b7b90ca88f02a0867db84",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/2788b4cdf421e03650868cc4184bfed8-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "998aa18f56a496d482d96611bd239ba06184ddd05b041843836ae2dee94bef8d"
+    },
+    {
+      "id": "edge-642b15a23472fca06e57be22",
+      "a": "paper-06a107a7d39721405bb97a9f",
+      "b": "paper-0f0ae060b5b77445d186c11f",
+      "state": {
+        "paper_a": {
+          "title": "Inverting Gradients - How easy is it to break privacy in federated learning?",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The idea of federated learning is to collaboratively train a neural network on a server. Each user receives the current weights of the network and in turns sends parameter updates (gradients) based on local data. This protocol has been designed not only to train neural networks data-efficiently, but also to provide privacy benefits for users, as their input data remains on device and only parameter gradients are shared. But how secure is sharing parameter gradients? Previous attacks have provided a false sense of security, by succeeding only in contrived settings - even for a single image. However, by exploiting a magnitude-invariant loss along with optimization strategies based on adversarial attacks, we show that is is actually possible to faithfully reconstruct images at high resolution from the knowledge of their parameter gradients, and demonstrate that such a break of privacy is possible even for trained deep networks. We analyze the effects of architecture as well as parameters on the difficulty of reconstructing an input image and prove that any input to a fully connected layer can be reconstructed analytically independent of the remaining architecture. Finally we discuss settings encountered in practice and show that even averaging gradients over several iterations or several images does not protect the user's privacy in federated learning applications."
+        },
+        "paper_b": {
+          "title": "Differentially Private Decentralized Learning with Random Walks",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The popularity of federated learning comes from the possibility of better scalability and the ability for participants to keep control of their data, improving data security and sovereignty. Unfortunately, sharing model updates also creates a new privacy attack surface. In this work, we characterize the privacy guarantees of decentralized learning with random walk algorithms, where a model is updated by traveling from one node to another along the edges of a communication graph. Using a recent variant of differential privacy tailored to the study of decentralized algorithms, namely Pairwise Network Differential Privacy, we derive closed-form expressions for the privacy loss between each pair of nodes where the impact of the communication topology is captured by graph theoretic quantities. Our results further reveal that random walk algorithms tends to yield better privacy guarantees than gossip algorithms for nodes close from each other. We supplement our theoretical results with empirical evaluation on synthetic and real-world graphs and datasets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "However, sharing model parameters can indirectly leak sensitive information and allow data reconstruction attacks (see e.g. Geiping et al., 2020; Nasr et al., 2018; Shokri et al., 2017; Zhu et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06a107a7d39721405bb97a9f",
+          "b": "paper-0f0ae060b5b77445d186c11f",
+          "input_sha256": "bd15848030e6a901322bc5f6d236c03b2999e559b32d412893208decc3a62162",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/cyffers24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cyffers24a/cyffers24a.pdf",
+              "sha256": "62957f1d5b79d8ce6a9ce0c4d7f747d7fdc7c0630a89dc0ac3bcec75dddd36d7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Similar to previous works on breaking privacy in a federated learning setting, we first focus in the reconstruction of a single input image x ∈ Rn from the gradient ∇θ Lθ (x, y) ∈ Rp . This setting serves as a proof of concept as well as an upper bound on the reconstruction quality for the multi-image distributed learning settings we consider in Sec. 6. While previous works have already shown that a break of privacy is possible for single images, their experiments have been limited to rather shallow, smooth, and untrained networks. In the following, we compare our proposed approach to prior works, and conduct detailed experiments on the effect that architectural- as well as training-related choices have on the reconstruction. All hyperparameter settings and more visual results for each experiment are provided in the supp. material. Comparison to previous approaches. We first validate our approach by comparison to the Euclidean loss (3) optimized via L-BFGS considered in [31, 35, 34]. This approach can often fail due to a bad initialization, so we allow a generous setting of 16 restarts of the L-BFGS solver. For a quantitative comparison we measure the mean PSNR of the reconstruction of 32 × 32 CIFAR-10 images over the first 100 images from the validation set using the same shallow and smooth CNN as in [35], which we denote as \"LeNet (Zhu)\" as well as a ResNet architecture, both with trained and untrained parameters. Table 1 compares the reconstruction quality of euclidean loss (3) with L-BFGS optimization (as in [31, 35, 34]) with the proposed approach. The former works extremely well for 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "the untrained, smooth, shallow architecture, but completely fails on the trained ResNet. We note that [31] applied a GAN to enhance image quality from the LBFGS reconstruction, which, however, fails, when the representative is too distorted to be enhanced. Our approach provides recognizable images and works particularly well on the realistic setting of a trained ResNet as we can see in Figure 2. Interestingly, the reconstructions on the trained ResNet have a better visual quality than those of the untrained ResNet, despite their lower PSNR values according to table 1. Let us study the effect of trained network parameters in an even more realistic setting, i.e., for reconstructing ImageNet images from a ResNet-152. Trained vs. untrained networks. If a network is trained and has sufficient capacity for the gradient of the loss function Lθ to be zero for different inputs, it is obvious that they can never be distinguished from their gradient. In practical settings, however, owing to stochastic gradient descent, data augmentation and a finite number of training epochs, the gradient of images is rarely entirely zero. While we do observe that image gradients have a much smaller magnitude in a trained network than in an untrained one, our magnitude-oblivious approach of (4) still recovers important visual information based only on the direction of the trained gradients. We observe two general effects on trained networks that we illustrate with our ImageNet reconstructions in Fig. 3: First, reconstructions seem to become implicitly biased to typical features of the same class in the training data, e.g., the more blueish feathers of the capercaillie in the 5th image, or the large eyes of the owl in the inset figure. Thus, although the overall privacy of most images is clearly",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Keeping data decentralized can reduce communication costs and latency, and it is also welcomed from a privacy perspective when the data contains personal information or represents a crucial asset for businesses. However, sharing model parameters can indirectly leak sensitive information and allow data reconstruction attacks (see e.g. Geiping et al., 2020; Nasr et al., 2018; Shokri et al., 2017; Zhu et al., 2019). To mitigate this problem, differential privacy (DP) (Dwork et al., 2006) has become the de facto standard in machine learning to provide robust guarantees of privacy. In a nutshell, DP compares two learning scenarios that only differ from the data of a single user and ensures that the output distribution of the algorithm remains similar. This, in particular, means that no attacker can learn too much about the private data of a user by inspecting the outputs, even if they have access to arbitrary auxiliary information. Decentralized learning algorithms can be made differentially private by having each node add noise to their model updates before sharing them with their neighbors in the graph (Bellet et al., 2018; Cheng et al., 2019; Huang et al., 2015; Xu et al., 2021; Zhang et al., 2018). An important challenge is then to bound as tightly as possible the privacy leakage based on the level of noise and the threat model considered to achieve the best possible privacy-utility trade-off. The baseline approach relies on local DP, which assumes that all information a node sends is observed by all other nodes. This leads to overly pessimistic privacy guarantees for decentralized algorithms because nodes only observe the messages sent by their direct neighbors.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cyffers24a/cyffers24a.pdf",
+              "document_sha256": "62957f1d5b79d8ce6a9ce0c4d7f747d7fdc7c0630a89dc0ac3bcec75dddd36d7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "1. We propose a private version of random walk stochastic gradient descent for arbitrary graphs (Algorithm 1); 2. We establish its convergence rate for strongly convex loss functions (Theorem 2); 3. We derive closed-form expressions for the privacy loss 2",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cyffers24a/cyffers24a.pdf",
+              "document_sha256": "62957f1d5b79d8ce6a9ce0c4d7f747d7fdc7c0630a89dc0ac3bcec75dddd36d7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "where x ∈ Rd represents the parameters of the model and the local function fv depends only on the local dataset of node v, and πv ≥ 0 is the weight given to fv (in practice, the vector π will correspond to the stationary distribution of the random walk as defined below). Below, we introduce the notions and assumptions related to random walks and precisely define the privacy threat model we consider.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cyffers24a/cyffers24a.pdf",
+              "document_sha256": "62957f1d5b79d8ce6a9ce0c4d7f747d7fdc7c0630a89dc0ac3bcec75dddd36d7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06a107a7d39721405bb97a9f",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-0f0ae060b5b77445d186c11f",
+          "url": "https://proceedings.mlr.press/v235/cyffers24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "c4fe80d0451366fca398dbc31103b99b85a4f1a69dd32195eb7f3ef35a8c9958"
+    },
+    {
+      "id": "edge-adf0d96997a731d0789686ba",
+      "a": "paper-06a107a7d39721405bb97a9f",
+      "b": "paper-136b26c97fdd9b08cb191883",
+      "state": {
+        "paper_a": {
+          "title": "Inverting Gradients - How easy is it to break privacy in federated learning?",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The idea of federated learning is to collaboratively train a neural network on a server. Each user receives the current weights of the network and in turns sends parameter updates (gradients) based on local data. This protocol has been designed not only to train neural networks data-efficiently, but also to provide privacy benefits for users, as their input data remains on device and only parameter gradients are shared. But how secure is sharing parameter gradients? Previous attacks have provided a false sense of security, by succeeding only in contrived settings - even for a single image. However, by exploiting a magnitude-invariant loss along with optimization strategies based on adversarial attacks, we show that is is actually possible to faithfully reconstruct images at high resolution from the knowledge of their parameter gradients, and demonstrate that such a break of privacy is possible even for trained deep networks. We analyze the effects of architecture as well as parameters on the difficulty of reconstructing an input image and prove that any input to a fully connected layer can be reconstructed analytically independent of the remaining architecture. Finally we discuss settings encountered in practice and show that even averaging gradients over several iterations or several images does not protect the user's privacy in federated learning applications."
+        },
+        "paper_b": {
+          "title": "Bounding training data reconstruction in DP-SGD",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Differentially private training offers a protection which is usually interpreted as a guarantee against membership inference attacks. By proxy, this guarantee extends to other threats like reconstruction attacks attempting to extract complete training examples. Recent works provide evidence that if one does not need to protect against membership attacks but instead only wants to protect against a training data reconstruction, then utility of private models can be improved because less noise is required to protect against these more ambitious attacks. We investigate this question further in the context of DP-SGD, a standard algorithm for private deep learning, and provide an upper bound on the success of any reconstruction attack against DP-SGD together with an attack that empirically matches the predictions of our bound. Together, these two results open the door to fine-grained investigations on how to set the privacy parameters of DP-SGD in practice to protect against reconstruction attacks. Finally, we use our methods to demonstrate that different settings of the DP-SGD parameters leading to same DP guarantees can results in significantly different success rates for reconstruction, indicating that the DP guarantee alone might not be a good proxy for controlling the protection against reconstruction attacks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Similar (but not identical) to Geiping et al. (2020), we use the loss (1) This loss was selected after exhaustively trying all other losses suggested in the aforementioned literature; empirically, Equation (1) performed best.\nWe can instantiate a reconstruction attack for this scenario by leveraging gradient inversion attacks found in the federated learning literature (Yin et al., 2021; Huang et al., 2021; Jeon et al., 2021; Jin et al., 2021; Zhu et al., 2019; Geiping et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06a107a7d39721405bb97a9f",
+          "b": "paper-136b26c97fdd9b08cb191883",
+          "input_sha256": "8dd8c80c5c3f5c57a9ddecc795669678b911515188298303bd7c82400eca63c7",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/f8928b073ccbec15d35f2a9d39430bfd-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/f8928b073ccbec15d35f2a9d39430bfd-Paper-Conference.pdf",
+              "sha256": "24d39226cdba139f8d4a13c31e244f114ccd065e87894862482c90db4a3ad8e7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Similar to previous works on breaking privacy in a federated learning setting, we first focus in the reconstruction of a single input image x ∈ Rn from the gradient ∇θ Lθ (x, y) ∈ Rp . This setting serves as a proof of concept as well as an upper bound on the reconstruction quality for the multi-image distributed learning settings we consider in Sec. 6. While previous works have already shown that a break of privacy is possible for single images, their experiments have been limited to rather shallow, smooth, and untrained networks. In the following, we compare our proposed approach to prior works, and conduct detailed experiments on the effect that architectural- as well as training-related choices have on the reconstruction. All hyperparameter settings and more visual results for each experiment are provided in the supp. material. Comparison to previous approaches. We first validate our approach by comparison to the Euclidean loss (3) optimized via L-BFGS considered in [31, 35, 34]. This approach can often fail due to a bad initialization, so we allow a generous setting of 16 restarts of the L-BFGS solver. For a quantitative comparison we measure the mean PSNR of the reconstruction of 32 × 32 CIFAR-10 images over the first 100 images from the validation set using the same shallow and smooth CNN as in [35], which we denote as \"LeNet (Zhu)\" as well as a ResNet architecture, both with trained and untrained parameters. Table 1 compares the reconstruction quality of euclidean loss (3) with L-BFGS optimization (as in [31, 35, 34]) with the proposed approach. The former works extremely well for 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "the untrained, smooth, shallow architecture, but completely fails on the trained ResNet. We note that [31] applied a GAN to enhance image quality from the LBFGS reconstruction, which, however, fails, when the representative is too distorted to be enhanced. Our approach provides recognizable images and works particularly well on the realistic setting of a trained ResNet as we can see in Figure 2. Interestingly, the reconstructions on the trained ResNet have a better visual quality than those of the untrained ResNet, despite their lower PSNR values according to table 1. Let us study the effect of trained network parameters in an even more realistic setting, i.e., for reconstructing ImageNet images from a ResNet-152. Trained vs. untrained networks. If a network is trained and has sufficient capacity for the gradient of the loss function Lθ to be zero for different inputs, it is obvious that they can never be distinguished from their gradient. In practical settings, however, owing to stochastic gradient descent, data augmentation and a finite number of training epochs, the gradient of images is rarely entirely zero. While we do observe that image gradients have a much smaller magnitude in a trained network than in an untrained one, our magnitude-oblivious approach of (4) still recovers important visual information based only on the direction of the trained gradients. We observe two general effects on trained networks that we illustrate with our ImageNet reconstructions in Fig. 3: First, reconstructions seem to become implicitly biased to typical features of the same class in the training data, e.g., the more blueish feathers of the capercaillie in the 5th image, or the large eyes of the owl in the inset figure. Thus, although the overall privacy of most images is clearly",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Figure 1: Comparison of model-based and gradient-base reconstruction attacks. We run the attacks over 1K different images for both MNIST and CIFAR-10 for a range of ϵ. In Figure 1a and Figure 1b, we plot the average MSE between reconstruction and target images for both attacks. To help calibrate a reader’s interpretation of good and bad reconstructions we plot a nearest neighbor (NN) baseline, marking the average L2 -distance between NN images over the entire dataset, and a baseline corresponding to the average distance between random uniform vectors. We also plot a lower bound for MSE given by Guo et al. (2022a). We give qualitative examples of reconstructions in Appendix B. trained without DP on MNIST and CIFAR-10, but fails to produce correct reconstructions when the model is trained with any reasonable setting of DP parameters. Gradient-based training data reconstruction. Suppose now that the adversary gets access to all the intermediate gradients (g1 , . . . , gT ) = M (D) produced by DP-SGD when training model θ. We can instantiate a reconstruction attack for this scenario by leveraging gradient inversion attacks found in the federated learning literature (Yin et al., 2021; Huang et al., 2021; Jeon et al., 2021; Jin et al., 2021; Zhu et al., 2019; Geiping et al., 2020). In particular, we use the gradients produced by DP-SGD to construct a loss function L(z) for which the target point z ∗ would be optimal if the gradients contained no noise, and then optimize it to obtain our candidate reconstruction. An important difference between our attack and previous works in the federated learning setting is that we use gradients from multiple steps to perform the attack and only attempt to recover a single point. More formally, we start by removing from each privatized",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f8928b073ccbec15d35f2a9d39430bfd-Paper-Conference.pdf",
+              "document_sha256": "24d39226cdba139f8d4a13c31e244f114ccd065e87894862482c90db4a3ad8e7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "We start by introducing DP-SGD, the algorithm we study throughout the paper, and then discuss reconstruction attacks with access to either only the final trained model, or all intermediate gradients. Then we empirically compare both attacks and show that gradient-based attacks are more powerful than model-based attacks, and we identify a significant gap between the success of the best attack and a known lower bound. As a result, we propose the problem of closing the gap between theoretical bounds and empirical reconstruction attacks. Differential privacy and DP-SGD. Differential privacy (Dwork et al., 2006) formalizes the idea that data analysis algorithms whose output does not overly depend on any individual input data point 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/f8928b073ccbec15d35f2a9d39430bfd-Paper-Conference.pdf",
+              "document_sha256": "24d39226cdba139f8d4a13c31e244f114ccd065e87894862482c90db4a3ad8e7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06a107a7d39721405bb97a9f",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-136b26c97fdd9b08cb191883",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/f8928b073ccbec15d35f2a9d39430bfd-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "b1cb4d722741d748e7c6b59af5d98fbde6a093203b59de5e70753617bb853841"
+    },
+    {
+      "id": "edge-d90f0b122544d0df28104eee",
+      "a": "paper-06a107a7d39721405bb97a9f",
+      "b": "paper-a8f48ae77510e32749113f14",
+      "state": {
+        "paper_a": {
+          "title": "Inverting Gradients - How easy is it to break privacy in federated learning?",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "The idea of federated learning is to collaboratively train a neural network on a server. Each user receives the current weights of the network and in turns sends parameter updates (gradients) based on local data. This protocol has been designed not only to train neural networks data-efficiently, but also to provide privacy benefits for users, as their input data remains on device and only parameter gradients are shared. But how secure is sharing parameter gradients? Previous attacks have provided a false sense of security, by succeeding only in contrived settings - even for a single image. However, by exploiting a magnitude-invariant loss along with optimization strategies based on adversarial attacks, we show that is is actually possible to faithfully reconstruct images at high resolution from the knowledge of their parameter gradients, and demonstrate that such a break of privacy is possible even for trained deep networks. We analyze the effects of architecture as well as parameters on the difficulty of reconstructing an input image and prove that any input to a fully connected layer can be reconstructed analytically independent of the remaining architecture. Finally we discuss settings encountered in practice and show that even averaging gradients over several iterations or several images does not protect the user's privacy in federated learning applications."
+        },
+        "paper_b": {
+          "title": "Analyzing Privacy Leakage in Machine Learning via Multiple Hypothesis Testing: A Lesson From Fano",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Differential privacy (DP) is by far the most widely accepted framework for mitigating privacy risks in machine learning. However, exactly how small the privacy parameter $\\epsilon$ needs to be to protect against certain privacy risks in practice is still not well-understood. In this work, we study data reconstruction attacks for discrete data and analyze it under the framework of multiple hypothesis testing. For a learning algorithm satisfying $(\\alpha, \\epsilon)$-Renyi DP, we utilize different variants of the celebrated Fano’s inequality to upper bound the attack advantage of a data reconstruction adversary. Our bound can be numerically computed to relate the parameter $\\epsilon$ to the desired level of privacy protection in practice, and complements the empirical evidence for the effectiveness of DP against data reconstruction attacks even at relatively large values of $\\epsilon$."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In federated learning (McMahan et al., 2017), adversaries that observe the gradient updates can reconstruct private training samples using a process called gradient inversion attack (Zhu et al.,\n2019; Geiping et al., 2020).\n, 2017), adversaries that observe the gradient updates can reconstruct private training samples using a process called gradient inversion attack (Zhu et al., 2019; Geiping et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-06a107a7d39721405bb97a9f",
+          "b": "paper-a8f48ae77510e32749113f14",
+          "input_sha256": "5fe7f57c9fd5283594e423052fed073196ca1a8d0ff6fd4a6cc92dcb32814b66",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/guo23e.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/guo23e/guo23e.pdf",
+              "sha256": "1a574014e2c61f32566980a48f1400ed37ff4a45672aad3519d29617a4686408"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Similar to previous works on breaking privacy in a federated learning setting, we first focus in the reconstruction of a single input image x ∈ Rn from the gradient ∇θ Lθ (x, y) ∈ Rp . This setting serves as a proof of concept as well as an upper bound on the reconstruction quality for the multi-image distributed learning settings we consider in Sec. 6. While previous works have already shown that a break of privacy is possible for single images, their experiments have been limited to rather shallow, smooth, and untrained networks. In the following, we compare our proposed approach to prior works, and conduct detailed experiments on the effect that architectural- as well as training-related choices have on the reconstruction. All hyperparameter settings and more visual results for each experiment are provided in the supp. material. Comparison to previous approaches. We first validate our approach by comparison to the Euclidean loss (3) optimized via L-BFGS considered in [31, 35, 34]. This approach can often fail due to a bad initialization, so we allow a generous setting of 16 restarts of the L-BFGS solver. For a quantitative comparison we measure the mean PSNR of the reconstruction of 32 × 32 CIFAR-10 images over the first 100 images from the validation set using the same shallow and smooth CNN as in [35], which we denote as \"LeNet (Zhu)\" as well as a ResNet architecture, both with trained and untrained parameters. Table 1 compares the reconstruction quality of euclidean loss (3) with L-BFGS optimization (as in [31, 35, 34]) with the proposed approach. The former works extremely well for 5",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "the untrained, smooth, shallow architecture, but completely fails on the trained ResNet. We note that [31] applied a GAN to enhance image quality from the LBFGS reconstruction, which, however, fails, when the representative is too distorted to be enhanced. Our approach provides recognizable images and works particularly well on the realistic setting of a trained ResNet as we can see in Figure 2. Interestingly, the reconstructions on the trained ResNet have a better visual quality than those of the untrained ResNet, despite their lower PSNR values according to table 1. Let us study the effect of trained network parameters in an even more realistic setting, i.e., for reconstructing ImageNet images from a ResNet-152. Trained vs. untrained networks. If a network is trained and has sufficient capacity for the gradient of the loss function Lθ to be zero for different inputs, it is obvious that they can never be distinguished from their gradient. In practical settings, however, owing to stochastic gradient descent, data augmentation and a finite number of training epochs, the gradient of images is rarely entirely zero. While we do observe that image gradients have a much smaller magnitude in a trained network than in an untrained one, our magnitude-oblivious approach of (4) still recovers important visual information based only on the direction of the trained gradients. We observe two general effects on trained networks that we illustrate with our ImageNet reconstructions in Fig. 3: First, reconstructions seem to become implicitly biased to typical features of the same class in the training data, e.g., the more blueish feathers of the capercaillie in the 5th image, or the large eyes of the owl in the inset figure. Thus, although the overall privacy of most images is clearly",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c4ede56bbd98819ae6112b20ac6bf145-Paper.pdf",
+              "document_sha256": "1d5956b106e62c034c9fa53dec7a0f3ef91a5807324765bdb824158042253f45"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Other privacy attacks can extract more detailed information about a training sample beyond membership status. Attribute inference attacks (Fredrikson et al., 2014; Yeom et al., 2018) aim to reconstruct a training sample given access to the trained model and partial knowledge of the sample. Data reconstruction attacks (Fredrikson et al., 2015; Carlini et al., 2019; 2021; Balle et al., 2022) relax the partial knowledge assumption of attribute inference attacks and can recover training samples given only the trained model. In federated learning (McMahan et al., 2017), adversaries that observe the gradient updates can reconstruct private training samples using a process called gradient inversion attack (Zhu et al.,",
+              "url": "https://proceedings.mlr.press/v202/guo23e/guo23e.pdf",
+              "document_sha256": "1a574014e2c61f32566980a48f1400ed37ff4a45672aad3519d29617a4686408"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "(2016)), quantitative information flow (Alvim et al., 2011), and privacy funnel (Makhdoumi et al., 2014; Salamatian et al., 2020). Some works also empirically control mutual information in order to reduce privacy leakage (Bertran et al., 2019; Wang et al., 2021). Similar to our approach, Salamatian et al. (2020) also used Fano’s inequality to derive a closed-form lower bound on the error rate P(k̂ ̸= k), but the bound is too loose for practical purposes. In contrast, we give a numerical method below for upper bounding the adversary’s advantage that is much tighter in practice. Computing advantage bound. The advantage bound is a function of t∗ in Equation 5, which we can obtain by solving a one-dimensional minimization problem as follows. Assume that the mechanism M satisfies I(X; Y ) ≤ µ for some µ > 0, and define:",
+              "url": "https://proceedings.mlr.press/v202/guo23e/guo23e.pdf",
+              "document_sha256": "1a574014e2c61f32566980a48f1400ed37ff4a45672aad3519d29617a4686408"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-06a107a7d39721405bb97a9f",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-a8f48ae77510e32749113f14",
+          "url": "https://proceedings.mlr.press/v202/guo23e.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "4e2a3be2c265b68afc0e5d03e838bd30f2959f233c562886fc16741b859364c5"
+    },
+    {
+      "id": "edge-f991312a1e7f3b0bc32f6990",
+      "a": "paper-07c8cd0ff4020632b3ede6e6",
+      "b": "paper-0abdd96c0d4defaf8ffef61f",
+      "state": {
+        "paper_a": {
+          "title": "Numerical Composition of Differential Privacy",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "We give a fast algorithm to compose privacy guarantees of differentially private (DP) algorithms to arbitrary accuracy. Our method is based on the notion of privacy loss random variables to quantify the privacy loss of DP algorithms. The running time and memory needed for our algorithm to approximate the privacy curve of a DP algorithm composed with itself $k$ times is $\\tilde{O}(\\sqrt{k})$. This improves over the best prior method by Koskela et al. (2020) which requires $\\tilde{\\Omega}(k^{1.5})$ running time. We demonstrate the utility of our algorithm by accurately computing the privacy loss of DP-SGD algorithm of Abadi et al. (2016) and showing that our algorithm speeds up the privacy computations by a few orders of magnitude compared to prior work, while maintaining similar accuracy."
+        },
+        "paper_b": {
+          "title": "Pre-training Differentially Private Models with Limited Public Data",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "The superior performance of large foundation models can be attributed to the use of massive amounts of high-quality data. However, such datasets often contain sensitive, private and copyrighted material that requires formal protection. While differential privacy (DP) is a prominent method used to gauge the degree of security provided to large foundation models, its application in large foundation models has been met with limited success because there are often significant performance compromises when applying DP during the pre-training phase. Consequently, DP is more commonly implemented during the model fine-tuning stage, hence not capable of protecting a substantial portion of the data used during the initial pre-training process. In this work, we first provide a theoretical understanding of the efficacy of DP training by analyzing the per-iteration improvement of loss through the lens of the Hessian. We observe that DP optimizers' deceleration can be significantly mitigated by the use of limited public data, and thus propose the DP continual pre-training strategy. Our DP continual pre-training on vision models, using only 10% of public data, have achieved DP accuracy of 41.5% on ImageNet-21k (with epsilon=8) and non-DP accuracy of 55.7% on Places365 and 60.0% on iNaturalist-2021, which are on par with state-of-the-art standard pre-training and outperform existing DP pertained models. Our DP pre-trained models are released in fastDP library (https://github.com/awslabs/fast-differential-privacy/releases/tag/v2.1)"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We use the privacy accountants in Opacus [88]: RDP [59], GDP [26, 8], PRV [34].\nEssentially, a noise σ N (0 , I ) is injected to the gradient at each iteration, whereas the noise magnitude σ ( B ) is determined by privacy accountants such as RDP (default) [59], PRV [34] and GDP [26, 8] (see Figure 3).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07c8cd0ff4020632b3ede6e6",
+          "b": "paper-0abdd96c0d4defaf8ffef61f",
+          "input_sha256": "7c9398bc992a5faa243b45bd25c0e2331034d8e51837031dcc75dc69851fad96",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/6097d8f3714205740f30debe1166744e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/ac04e54e0a2d1927d60709019e4e7870-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We give a fast algorithm to optimally compose privacy guarantees of differentially private (DP) algorithms to arbitrary accuracy. Our method is based on the notion of privacy loss random variables to quantify the privacy loss of DP algorithms. The running time and memory needed for our algorithm to approximate the privacy √ curve of a DP algorithm composed with itself k times is Õ( k). This improves over the best prior method by [KH21] which requires Ω̃(k 1.5 ) running time. We demonstrate the utility of our algorithm by accurately computing the privacy loss of DP-SGD algorithm of Abadi et al. [ACG+ 16] and showing that our algorithm speeds up the privacy computations by a few orders of magnitude compared to prior work, while maintaining similar accuracy.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "document_sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Figure 1: Case study on DP-SGD. Sampling probability p = 10−3 , noise scale σ = 0.8, δ = 10−7 . Our Techniques Our algorithm (also the prior work of [KJH+ 20]) proceeds by approximating the privacy loss random variables (PRVs) by truncating and discretizing them. We then use Fast Fourier Transform (FFT) to convolve the distributions efficiently. The main difference is in the approximation procedure and the error analysis. In the approximation procedure, we correct the approximation so that the expected value of the discretization matches with the expected value of the PRV. To analyze the approximation error, we introduce the concept of coupling approximation (Definition 5.1), which is a variant of Wasserstein (optimal transport) distance specifically tailored to this application. We first show that the approximation output by our algorithm to each privacy random variable is a good coupling approximation. We then show that when independent coupling approximations are added, cancellation happens between the errors due to Hoeffding bound, producing a much better coupling approximation than one naively expects from the triangle inequality. This allows us to choose the mesh size in our discretization to be ≈ √1k , whereas [KH21] choose a mesh size of ≈ k1 . The other improvement is the truncation procedure. We give a tight tail bound of the PRVs (Lemma 5.4). This allows us to choose the domain size for in truncation to be ≈ Õ(1), √ whereas [KH21] choose ≈ Õ( k). Both ideas together saves a factor of k in the run time and memory. For the analysis, the previous paper analyzes the discretization error by studying the stability of convolution. This leads to complicated calculations with the runtime linear in 1/δerror (see (2)). Since δerror δ 1/N is required to give",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "document_sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "0.10 We consider a fixed privacy budget 20 (B)2/B by RDP AUTO-V (ϵ, δ), to be realized through the DP AUTO-S (B)2/B by GDP 0.08 15 re-param (R=0.1) 2 (B) /B by PRV optimizers in (2). Essentially, a noise re-param (R=0.2) 0.06 O(1/B) re-param (R=1) 10 σN (0, I) is injected to the gradient 0.04 at each iteration, whereas the noise 5 0.02 magnitude σ(B) is determined by 0.00 privacy accountants such as RDP (de0.00 0.25 0.50 0.75 1.00 101 104 102 103 per-sample grad norm ||gi|| Batch size B fault) [59], PRV [34] and GDP [26, 8] Figure 4: Per-sample gradiFigure 3: Noise levels by (see Figure 3). ent clipping in (3). privacy accountants. 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Our main contributions are listed below. We emphasize that we have taken the privacy accounting and the convergence (i.e. the dependence of loss on σ(B, T, ϵ) and B) jointly into consideration. (1) We provide a new perspective of analyzing the loss improvement in DP training with different optimizers. Specifically, in Section 2, we propose a Hessian-based framework to analyze the periteration improvement on the generalization loss and the effects of per-sample gradient clipping, noising, and hyperparameter choices (e.g., batch size, learning rate). (2) Based on the framework, we can analyze the effect that DP mechanisms, especially the DP noise but less so the DP clipping, have on pre-training and fine-tuning stages. This leads to some theoretical justifications about why pre-training is more vulnerable to DP noise; see Figure 1 for some empirical comparisons, and Section 3 for some in-depth discussion. (3) Our analysis suggests that the deceleration due to DP mechanisms can be mitigated by using a certain amount of public data. We then propose a DP continual pre-training strategy that continues the pre-training privately from a non-DP initialization. Our strategy is easily implementable, automatic and effective, obtaining accuracy on upstream and downstream tasks that is on par with its non-DP variants, while significantly outperforming state-of-the-art DP pretraining algorithms (see Figure 2). 100",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "4.1 Necessity of public data in DP pre-training In this section, we propose the DP continual pre-training strategy and demonstrate that the deceleration by DP can be effectively mitigated by using a certain amount of public data. We consider the mixed data training that uses both public data (with subscript 0 for related hyperparameters) and private data (with subscript 1 ). Then SGD becomes αt X (1 − αt ) X gα,t := gj,t + ( Ci,t gi,t + σN (0, Id )). B0 B1 j∈B0",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ac04e54e0a2d1927d60709019e4e7870-Paper-Conference.pdf",
+              "document_sha256": "245f8df60d4dd4789d2217cf00ef9659c8e80614271e748f72137fad543baabf"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07c8cd0ff4020632b3ede6e6",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/6097d8f3714205740f30debe1166744e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-0abdd96c0d4defaf8ffef61f",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/ac04e54e0a2d1927d60709019e4e7870-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "9bc3b321ff7a2493f6f98d2d77582995255de4c41d8ee336fbf202fb12c2c94c"
+    },
+    {
+      "id": "edge-ecb3ef70b1e0f4b829355c95",
+      "a": "paper-07c8cd0ff4020632b3ede6e6",
+      "b": "paper-9e5b64c13bb35dc5faef1006",
+      "state": {
+        "paper_a": {
+          "title": "Numerical Composition of Differential Privacy",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "We give a fast algorithm to compose privacy guarantees of differentially private (DP) algorithms to arbitrary accuracy. Our method is based on the notion of privacy loss random variables to quantify the privacy loss of DP algorithms. The running time and memory needed for our algorithm to approximate the privacy curve of a DP algorithm composed with itself $k$ times is $\\tilde{O}(\\sqrt{k})$. This improves over the best prior method by Koskela et al. (2020) which requires $\\tilde{\\Omega}(k^{1.5})$ running time. We demonstrate the utility of our algorithm by accurately computing the privacy loss of DP-SGD algorithm of Abadi et al. (2016) and showing that our algorithm speeds up the privacy computations by a few orders of magnitude compared to prior work, while maintaining similar accuracy."
+        },
+        "paper_b": {
+          "title": "Differentially Private Image Classification by Learning Priors from Random Processes",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "In privacy-preserving machine learning, differentially private stochastic gradient descent (DP-SGD) performs worse than SGD due to per-sample gradient clipping and noise addition.A recent focus in private learning research is improving the performance of DP-SGD on private data by incorporating priors that are learned on real-world public data.In this work, we explore how we can improve the privacy-utility tradeoff of DP-SGD by learning priors from images generated by random processes and transferring these priors to private data. We propose DP-RandP, a three-phase approach. We attain new state-of-the-art accuracy when training from scratch on CIFAR10, CIFAR100, MedMNIST and ImageNet for a range of privacy budgets $\\\\varepsilon \\\\in [1, 8]$. In particular, we improve the previous best reported accuracy on CIFAR10 from $60.6 \\\\%$ to $72.3 \\\\%$ for $\\\\varepsilon=1$."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Because the closed-form computation of ε with PRV accounting [22] is challenging, we implement this strategy by using a fixed number of steps n for linear probing in CIFAR10, CIFAR100, DermaMNIST, and increasing the number of steps in Phase III as ε increases.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07c8cd0ff4020632b3ede6e6",
+          "b": "paper-9e5b64c13bb35dc5faef1006",
+          "input_sha256": "ea04a4b442bd558cb77e949895f03403b0feaf0bd7188783b9a1a20ceea3ef65",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/6097d8f3714205740f30debe1166744e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/7058bc192a37f5e5a57398887b05f6f6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/7058bc192a37f5e5a57398887b05f6f6-Paper-Conference.pdf",
+              "sha256": "12cd5fe2e2722352182fa68f5f2681b3de3f71a1859c2bc7d900c585377fcddc"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We give a fast algorithm to optimally compose privacy guarantees of differentially private (DP) algorithms to arbitrary accuracy. Our method is based on the notion of privacy loss random variables to quantify the privacy loss of DP algorithms. The running time and memory needed for our algorithm to approximate the privacy √ curve of a DP algorithm composed with itself k times is Õ( k). This improves over the best prior method by [KH21] which requires Ω̃(k 1.5 ) running time. We demonstrate the utility of our algorithm by accurately computing the privacy loss of DP-SGD algorithm of Abadi et al. [ACG+ 16] and showing that our algorithm speeds up the privacy computations by a few orders of magnitude compared to prior work, while maintaining similar accuracy.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "document_sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Figure 1: Case study on DP-SGD. Sampling probability p = 10−3 , noise scale σ = 0.8, δ = 10−7 . Our Techniques Our algorithm (also the prior work of [KJH+ 20]) proceeds by approximating the privacy loss random variables (PRVs) by truncating and discretizing them. We then use Fast Fourier Transform (FFT) to convolve the distributions efficiently. The main difference is in the approximation procedure and the error analysis. In the approximation procedure, we correct the approximation so that the expected value of the discretization matches with the expected value of the PRV. To analyze the approximation error, we introduce the concept of coupling approximation (Definition 5.1), which is a variant of Wasserstein (optimal transport) distance specifically tailored to this application. We first show that the approximation output by our algorithm to each privacy random variable is a good coupling approximation. We then show that when independent coupling approximations are added, cancellation happens between the errors due to Hoeffding bound, producing a much better coupling approximation than one naively expects from the triangle inequality. This allows us to choose the mesh size in our discretization to be ≈ √1k , whereas [KH21] choose a mesh size of ≈ k1 . The other improvement is the truncation procedure. We give a tight tail bound of the PRVs (Lemma 5.4). This allows us to choose the domain size for in truncation to be ≈ Õ(1), √ whereas [KH21] choose ≈ Õ( k). Both ideas together saves a factor of k in the run time and memory. For the analysis, the previous paper analyzes the discretization error by studying the stability of convolution. This leads to complicated calculations with the runtime linear in 1/δerror (see (2)). Since δerror δ 1/N is required to give",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/6097d8f3714205740f30debe1166744e-Paper.pdf",
+              "document_sha256": "e94218f4dec5469436dbe2d46ec76f282093ca3948c80186110cc49d8d567345"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "A general privacy budget allocation strategy. We have observed that allocating the entire privacy budget to linear probing or full training is suboptimal. We now propose a simple yet effective general strategy to allocate the privacy budget. For small ε (ε ≪ 1), we set ε1 = ε to allocate the entire privacy budget to Phase II. This is because allocating the entire privacy budget to linear probing is competitive for small privacy budgets. As ε increases, we decrease ε1 /ε. This is because as ε increases, the noise multiplier will decrease. Therefore, it is easier to train the linear probing layer as ε increases, and the percentage of total steps allocated to Phase II can be reduced to train a good linear probing layer and we can use the remaining steps for Phase III. Because the closed-form computation of ε with numerical privacy loss distribution accounting by Gopi et al. [27] is challenging, we implement this strategy by using a fixed number of steps n for linear probing in CIFAR10, CIFAR100, DermaMNIST, and increasing the number of steps in Phase III as ε increases. We present the privacy allocation ε1 /ε on CIFAR10 in Appendix E for results in Tab. 1, which validates this strategy. 3.4",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7058bc192a37f5e5a57398887b05f6f6-Paper-Conference.pdf",
+              "document_sha256": "12cd5fe2e2722352182fa68f5f2681b3de3f71a1859c2bc7d900c585377fcddc"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In privacy-preserving machine learning, differentially private stochastic gradient descent (DP-SGD) performs worse than SGD due to per-sample gradient clipping and noise addition. A recent focus in private learning research is improving the performance of DP-SGD on private data by incorporating priors that are learned on real-world public data. In this work, we explore how we can improve the privacyutility tradeoff of DP-SGD by learning priors from images generated by random processes and transferring these priors to private data. We propose DP-RandP, a three-phase approach. We attain new state-of-the-art accuracy when training from scratch on CIFAR10, CIFAR100, MedMNIST and ImageNet for a range of privacy budgets ε ∈ [1, 8]. In particular, we improve the previous best reported accuracy on CIFAR10 from 60.6% to 72.3% for ε = 1. Our code is available at https://github.com/inspire-group/DP-RandP.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7058bc192a37f5e5a57398887b05f6f6-Paper-Conference.pdf",
+              "document_sha256": "12cd5fe2e2722352182fa68f5f2681b3de3f71a1859c2bc7d900c585377fcddc"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We propose a three-phase DP training framework DP-RandP that has two phases after pretraining on synthetic images, and significantly improves the performance of DP training (Fig. 1). We first learn noise priors by training a feature extractor on synthetic data (Phase-I). We then split our private training into 1) Learning the head classifier with frozen features (Phase-II) and 2) End-to-end training of the entire network to co-adapt the feature extractor and head classifier (Phase-III). Our design is motivated by the strengths and weaknesses of linear probing and end-to-end training in the private setting. First, the ℓ2 norm of the Gaussian noise added to gradients in each DP-SGD step scales with the number of parameters in the model. Because the head classifier typically has far fewer parameters than the feature extractor, updating this linear layer reduces the amount of added noise. Second, there is a large distribution shift between synthetic data from random processes and natural images found in private datasets. Linear probing merely inherits the frozen pre-trained features, but end-to-end training of all layers can improve the pre-trained features by adapting them to the private dataset. Because adapting to our private dataset may require many end-to-end training steps, we improve the convergence by first learning a task-specific linear classifier that can be trained quickly, and then training the entire network end-to-end. DP-RandP satisfies our previously stated design goal by first obtaining a good initialization with pretraining, then transferring the prior encoded in this initialization to the private dataset with fast-converging linear probing, and finally end-to-end training to adapt to the private dataset as much as possible for a given privacy budget. We",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/7058bc192a37f5e5a57398887b05f6f6-Paper-Conference.pdf",
+              "document_sha256": "12cd5fe2e2722352182fa68f5f2681b3de3f71a1859c2bc7d900c585377fcddc"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07c8cd0ff4020632b3ede6e6",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/6097d8f3714205740f30debe1166744e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-9e5b64c13bb35dc5faef1006",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/7058bc192a37f5e5a57398887b05f6f6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Differential Privacy in Machine Learning Algorithms"
+      },
+      "sha256": "d9a92bd791f8a59d968ca8ad5abaef666b35dfa00b001200c835a85ee911a620"
+    }
+  ]
+}

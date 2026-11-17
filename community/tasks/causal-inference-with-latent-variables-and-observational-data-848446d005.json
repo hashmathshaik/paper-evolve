@@ -1,0 +1,942 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Causal Inference with Latent Variables and Observational Data",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-6501455dec86472da0fb599a",
+      "a": "paper-972692125aeae3c0874c331a",
+      "b": "paper-1c9cd746b30f5b0a1cc608c8",
+      "state": {
+        "paper_a": {
+          "title": "Deep Structural Causal Models for Tractable Counterfactual Inference",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "We formulate a general framework for building structural causal models (SCMs) with deep learning components. The proposed approach employs normalising flows and variational inference to enable tractable inference of exogenous noise variables - a crucial step for counterfactual inference that is missing from existing deep causal learning methods. Our framework is validated on a synthetic dataset built on MNIST as well as on a real-world medical dataset of brain MRI scans. Our experimental results indicate that we can successfully train deep SCMs that are capable of all three levels of Pearl's ladder of causation: association, intervention, and counterfactuals, giving rise to a powerful new approach for answering causal questions in imaging applications and beyond."
+        },
+        "paper_b": {
+          "title": "Diffusion Counterfactual Generation with Semantic Abduction",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Counterfactual image generation presents significant challenges, including preserving identity, maintaining perceptual quality, and ensuring faithfulness to an underlying causal model. While existing auto-encoding frameworks admit semantic latent spaces which can be manipulated for causal control, they struggle with scalability and fidelity. Advancements in diffusion models present opportunities for improving counterfactual image editing, having demonstrated state-of-the-art visual quality, human-aligned perception and representation learning capabilities. Here, we present a suite of diffusion-based causal mechanisms, introducing the notions of spatial, semantic and dynamic abduction. We propose a general framework that integrates semantic representations into diffusion models through the lens of Pearlian causality to edit images via a counterfactual reasoning process. To the best of our knowledge, ours is the first work to consider high-level semantic identity preservation for diffusion counterfactuals and to demonstrate how semantic control enables principled trade-offs between faithful causal control and identity preservation."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…to the exogenous posterior can be defined using the probabilistic encoder in a manner similar to the amortised, explicit mechanism defined by Pawlowski et al. (2020): noting the key benefit of our model in that low-level noise is inferred via DDIM inversion h − 1 θ ( · ) as opposed to a…\nThese are used for structured counterfactual inference via a simple three-step procedure: abduction-action-prediction (Pawlowski et al., 2020; De Sousa Ribeiro et al., 2023; Xia et al., 2023; Wu et al., 2024; Dash et al., 2022; Sauer & Geiger, 2021).\nWe construct the following SCM using the Morpho-MNIST library (Castro et al., 2019), to extend the casual modelling scenarios in (Pawlowski et al., 2020; De Sousa Ribeiro et al., 2023).\nMethods for generating image counterfactuals typically follow the Pearlian method (abduction-action-prediction) (Pawlowski et al., 2020; De Sousa Ribeiro et al., 2023; Xia et al., 2023; Wu et al., 2024; Pan & Bareinboim, 2024; Dash et al., 2022), relying on deep SCMs (DSCMs) where neural networks…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-972692125aeae3c0874c331a",
+          "b": "paper-1c9cd746b30f5b0a1cc608c8",
+          "input_sha256": "2902ceb2d717ab37adfbde4e2ee3025d20a88e9d1a5769629eadacc780bed48a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/0987b8b338d6c90bbedd8631bc499221-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/0987b8b338d6c90bbedd8631bc499221-Paper.pdf",
+              "sha256": "bb70792c1ae0ac9b0f0647aeb3776088efef3decd3910dda15aec49d9cf6248c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/rasal25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We formulate a general framework for building structural causal models (SCMs) with deep learning components. The proposed approach employs normalising flows and variational inference to enable tractable inference of exogenous noise variables—a crucial step for counterfactual inference that is missing from existing deep causal learning methods. Our framework is validated on a synthetic dataset built on MNIST as well as on a real-world medical dataset of brain MRI scans. Our experimental results indicate that we can successfully train deep SCMs that are capable of all three levels of Pearl’s ladder of causation: association, intervention, and counterfactuals, giving rise to a powerful new approach for answering causal questions in imaging applications and beyond. The code for all our experiments is available at https://github.com/biomedia-mira/deepscm.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/0987b8b338d6c90bbedd8631bc499221-Paper.pdf",
+              "document_sha256": "bb70792c1ae0ac9b0f0647aeb3776088efef3decd3910dda15aec49d9cf6248c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "per-instance rather than population level, which could lead to advances in personalised medicine as well as in decision-support systems, more generally. In this context, our work studies the use of DL-based causal mechanisms and establishes effective ways of performing counterfactual inference with fully specified causal models with no unobserved confounding. Our main contributions are: 1) a unified framework for structural causal models using modular deep mechanisms; 2) an efficient approach to estimating counterfactuals by inferring exogenous noise via variational inference or normalising flows; 3) case studies exemplifying how to apply deep structural causal models and perform counterfactual inference. The paper is organised as follows: we first review structural causal models and discuss how to leverage deep mechanisms and enable tractable counterfactual inference. Second, we compare our work to recent progress in deep causal learning in light of Pearl’s ladder of causation [19]. Finally, we apply deep structural causal models to a synthetic experiment as well as to modelling brain MRI scans, demonstrating the practical utility of our framework in answering counterfactual questions.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/0987b8b338d6c90bbedd8631bc499221-Paper.pdf",
+              "document_sha256": "bb70792c1ae0ac9b0f0647aeb3776088efef3decd3910dda15aec49d9cf6248c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "To address these challenges, the framework of structural causal models (SCMs) (Pearl, 2009; Peters et al., 2017; Bareinboim et al., 2022) has been extended with deep generative models, resulting in deep SCMs (DSCMs). These are used for structured counterfactual inference via a simple three-step procedure: abduction-action-prediction (Pawlowski et al., 2020; De Sousa Ribeiro et al., 2023; Xia et al., 2023; Wu et al., 2024; Dash et al., 2022; Sauer & Geiger, 2021). These methods typically parameterise their image-generating components using normalising flows (Papamakarios et al., 2021; Winkler et al., 2019), VAEs (Kingma, 2013; Sohn et al., 2015), GANs (Goodfellow et al., 2014; Mirza & Osindero, 2014), and HVAEs (Vahdat & Kautz, 2020; Child, 2020). More recently, diffusion models have been integrated into DSCMs to leverage their superior perceptual quality and explore counterfactual identifiability (Sanchez & Tsaftaris, 2022; Komanduri et al., 2024; Pan & Bareinboim, 2024). However, these efforts often overlook key nuances of guidance and representation learning unique to diffusion models, and their faithfulness to causal assumptions. This is particularly limiting for real-world applications, where backgrounds, illumination changes, and artefacts complicate causal modelling (Anonymous, 2024; Mokady et al., 2023; Lin et al., 2024). Additionally, SCMs have been informally applied to text-conditional diffusion editing (Song et al., 2024; Gu et al., 2023; Prabhu et al., 2023), yet text control alone often fails to provide the precision needed for real-world counterfactual reasoning.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Conclusion Our work highlights trade-offs inherent in using diffusion models, studied extensively on associative (L1 ) and interventional (L2 ) applications, for counterfactual inference (L3 ). We introduce diffusion-based causal mechanisms with semantic abduction capabilities and demonstrate their enhanced identity preservation in image counterfactuals, as measured by counterfactual soundness metrics. Notably, we show that large ω and smaller p∅ , popular at L2 , compromise identity preservation (composition and reversibility) in favour of causal control (effectiveness) at L3 . Current diffusion approaches are biased towards L2 , limiting their soundness at L3 and widespread adoption at L1 . Since L3 subsumes L1 and L2 , we argue that a causal lens on diffusion modelling at L3 is essential for tackling a broad range of problems, rather than relying on models optimised for random sampling at L2 . This would better generalise diffusion models to real-world tasks that demand creative reasoning and causal understanding - where diffusion already excels. Our findings present new opportunities for using diffusion models at L3 . For example, fast generation with spatial mechanisms could enable efficient counterfactual data augmentation (Roschewitz et al., 2024). Enhanced identity preservation via semantic mechanisms could improve counterfactual explanations for downstream models (Augustin et al., 2022). Dynamic abduction could support stress testing by providing higher image fidelity for challenging test cases (Pérez-García et al., 2023). Lastly, these mechanisms could inspire causally-informed generative recognition models, integrating causal representations into the human-aligned perceptual capabilities of diffusion models (Jaini et al., 2023).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Counterfactual image generation presents significant challenges, including preserving identity, maintaining perceptual quality, and ensuring faithfulness to an underlying causal model. While existing auto-encoding frameworks admit semantic latent spaces which can be manipulated for causal control, they struggle with scalability and fidelity. Advancements in diffusion models present opportunities for improving counterfactual image editing, having demonstrated state-of-the-art visual quality, human-aligned perception and representation learning capabilities. Here, we present a suite of diffusion-based causal mechanisms, introducing the notions of spatial, semantic and dynamic abduction. We propose a general framework that integrates semantic representations into diffusion models through the lens of Pearlian causality to edit images via a counterfactual reasoning process. To our knowledge, this is the first work to consider high-level semantic identity preservation for diffusion counterfactuals and to demonstrate how semantic control enables principled tradeoffs between faithful causal control and identity preservation.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-972692125aeae3c0874c331a",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/0987b8b338d6c90bbedd8631bc499221-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-1c9cd746b30f5b0a1cc608c8",
+          "url": "https://proceedings.mlr.press/v267/rasal25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "82cdbef157893af7731904b7a1024324730e17e8046d14f128fc413140aa83c0"
+    },
+    {
+      "id": "edge-f1660704e8746d5b1f35a81e",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-cba79ef6aebb68cdcd40cdad",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Discovery of Single Independent Latent Variable",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Latent variable discovery is a central problem in data analysis with a broad range of applications in applied science.In this work, we consider data given as an invertible mixture of two statistically independent components, and assume that one of the components is observed while the other is hidden. Our goal is to recover the hidden component.For this purpose, we propose an autoencoder equipped with a discriminator.Unlike the standard nonlinear ICA problem, which was shown to be non-identifiable, in the special case of ICA we consider here, we show that our approach can recover the component of interest up to entropy-preserving transformation.We demonstrate the performance of the proposed approach in several tasks, including image synthesis, voice cloning, and fetal ECG extraction."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-cba79ef6aebb68cdcd40cdad",
+          "input_sha256": "f1848242021eb3db669c33acf7160e5bdc3edbf8c6f2a4ad206c33abbf324b13",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/a12e362d89d4e0b40760f839f91550ee-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/a12e362d89d4e0b40760f839f91550ee-Paper-Conference.pdf",
+              "sha256": "6c20dbf4dbcc7c829446f3a97a4d6cc6ebf01a770b5e52598ca0d6895e460468"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "The problem we consider in this work could be viewed as a simplified case of the classical formulation of nonlinear ICA. Several algorithms have been proposed for recovery of the independent components, assuming that (i) the mixing of the components is linear, and (ii) the components (with a possible exception of one) are non-Gaussian; this case was proven to be identifiable [10, 13]. The nonlinear case, however, i.e., when the mixing of the independent components is an arbitrary invertible function, was proven to be non-identifiable in the general case [24]. Identifiable nonlinear ICA. Hyvarinen et al. [25] have recently described a general framework for identifiable nonlinear ICA, generalizing several earlier identifiability results for time series, e.g., [21, 22, 51], in which in addition to observing the data x, the framework requires an auxiliary observed variable u, so that conditioned on u, the latent factors are independent (i.e., in contrast to being marginally independent as in a standard ICA setting). The approach we propose in this work falls into this general setting, as we assume that the auxiliary variable u is in fact one of the latent factors, which immediately satisfies the conditional independence requirement. For this special case we provide a simple and intuitive recovery guarantee. Following works have recently extended the framework of Hyvarinen et al. [25] to generative models [30], unknown intrinsic problem dimension [50], and multiview setting [17]. With respect to iVAE [30], we allow for the recovery of high-dimensional components, whereas in iVAE, only onedimensional components are recovered. In addition, our work presents several important differences: (i) we formulate our recovery guarantee result in terms of entropy-preserving map rather",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a12e362d89d4e0b40760f839f91550ee-Paper-Conference.pdf",
+              "document_sha256": "6c20dbf4dbcc7c829446f3a97a4d6cc6ebf01a770b5e52598ca0d6895e460468"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "experiment we also train a real/fake discriminator, applied to the output of the decoder. To convert the decoder output to waveform, we use a pre-trained melgan [34] vocoder. Once the autoencoder is trained, we apply it to convert speech from any speaker to any other speaker. Some samples of the converted speech are given at https://shaham-lab.github.io/disilv/. To evaluate the similarity of the converted voice and the target voice, we use MCD (Mel Cepstral Distortion) on a subset of the data containing parallel sentences of multiple speakers. Specifically, MCD computes the `1 difference between dynamically time warped instance of the converted source voice and a parallel instance of the target voice, which is a common evaluation metric for voice cloning. We remark that the parallel data are used only for evaluation and not for training the model. We use the script provided in [37] to compute the MCD and compare our proposed approach to [12, 45] and references therein, which are all considered to be strong baselines, trained on the VCTK dataset as well. The results, shown in Table 1, demonstrate that our approach outperforms these strong baselines.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a12e362d89d4e0b40760f839f91550ee-Paper-Conference.pdf",
+              "document_sha256": "6c20dbf4dbcc7c829446f3a97a4d6cc6ebf01a770b5e52598ca0d6895e460468"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Latent variable discovery is a central problem in data analysis with a broad range of applications in applied science. In this work, we consider data given as an invertible mixture of two statistically independent components, and assume that one of the components is observed while the other is hidden. Our goal is to recover the hidden component. For this purpose, we propose an autoencoder equipped with a discriminator. Unlike the standard nonlinear ICA problem, which was shown to be non-identifiable, in the special case of ICA we consider here, we show that our approach can recover the component of interest up to entropy-preserving transformation. We demonstrate the performance of the proposed approach in several tasks, including image synthesis, voice cloning, and fetal ECG extraction.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/a12e362d89d4e0b40760f839f91550ee-Paper-Conference.pdf",
+              "document_sha256": "6c20dbf4dbcc7c829446f3a97a4d6cc6ebf01a770b5e52598ca0d6895e460468"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-cba79ef6aebb68cdcd40cdad",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/a12e362d89d4e0b40760f839f91550ee-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "38d86523eeb015dc6712800684142d06915189bf15815cf7dcbd4f09f03cccfa"
+    },
+    {
+      "id": "edge-e1ba44f5dbf6f43d60b2e94c",
+      "a": "paper-03790acca0dcb504c15024ef",
+      "b": "paper-0f3e051f738f2f86921c0bc1",
+      "state": {
+        "paper_a": {
+          "title": "Partial Counterfactual Identification of Continuous Outcomes with a Curvature Sensitivity Model",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Counterfactual inference aims to answer retrospective \"what if\" questions and thus belongs to the most fine-grained type of inference in Pearl's causality ladder. Existing methods for counterfactual inference with continuous outcomes aim at point identification and thus make strong and unnatural assumptions about the underlying structural causal model. In this paper, we relax these assumptions and aim at partial counterfactual identification of continuous outcomes, i.e., when the counterfactual query resides in an ignorance interval with informative bounds. We prove that, in general, the ignorance interval of the counterfactual queries has non-informative bounds, already when functions of structural causal models are continuously differentiable. As a remedy, we propose a novel sensitivity model called Curvature Sensitivity Model. This allows us to obtain informative bounds by bounding the curvature of level sets of the functions. We further show that existing point counterfactual identification methods are special cases of our Curvature Sensitivity Model when the bound of the curvature is set to zero. We then propose an implementation of our Curvature Sensitivity Model in the form of a novel deep generative model, which we call Augmented Pseudo-Invertible Decoder. Our implementation employs (i) residual normalizing flows with (ii) variational augmentations. We empirically demonstrate the effectiveness of our Augmented Pseudo-Invertible Decoder. To the best of our knowledge, ours is the first partial identification model for Markovian structural causal models with continuous outcomes."
+        },
+        "paper_b": {
+          "title": "Consistency of Neural Causal Partial Identification",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Recent progress in Neural Causal Models (NCMs) showcased how identification and partial identification of causal effects can be automatically carried out via training of neural generative models that respect the constraints encoded in a given causal graph [Xia et al. 2022, Balazadeh et al. 2022]. However, formal consistency of these methods has only been proven for the case of discrete variables or only for linear causal models. In this work, we prove the consistency of partial identification via NCMs in a general setting with both continuous and categorical variables. Further, our results highlight the impact of the design of the underlying neural network architecture in terms of depth and connectivity as well as the importance of applying Lipschitz regularization in the training phase. In particular, we provide a counterexample showing that without Lipschitz regularization this method may not be asymptotically consistent. Our results are enabled by new results on the approximability of Structural Causal Models (SCMs) via neural generative models, together with an analysis of the sample complexity of the resulting architectures and how that translates into an error in the constrained optimization problem that defines the partial identification bounds."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Related Work There exists a rich literature on partial identification of average treatment effects (ATE) [37, 4, 5, 27, 44, 45, 40, 8, 54, 56, 14, 7, 39, 26].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03790acca0dcb504c15024ef",
+          "b": "paper-0f3e051f738f2f86921c0bc1",
+          "input_sha256": "017baba1e20dbc3b1a8262a494630e895f601127d515d95b20fdf8ab1853cd06",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/65cbe3e21ac62553111d9ecf7d60c18e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/65cbe3e21ac62553111d9ecf7d60c18e-Paper-Conference.pdf",
+              "sha256": "7423b2e6a43f7d51b0d8dcc66d96bc061bb811cfff87327c253549ec615558ab"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/7f9220f90cc85b0da693643add6618e6-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/7f9220f90cc85b0da693643add6618e6-Paper-Conference.pdf",
+              "sha256": "8e2cb927e3b57fe5da5280e69a5c3f2018913714f1c16911e45d616f743688a3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Counterfactual inference aims to answer retrospective “what if” questions and thus belongs to the most fine-grained type of inference in Pearl’s causality ladder. Existing methods for counterfactual inference with continuous outcomes aim at point identification and thus make strong and unnatural assumptions about the underlying structural causal model. In this paper, we relax these assumptions and aim at partial counterfactual identification of continuous outcomes, i.e., when the counterfactual query resides in an ignorance interval with informative bounds. We prove that, in general, the ignorance interval of the counterfactual queries has non-informative bounds, already when functions of structural causal models are continuously differentiable. As a remedy, we propose a novel sensitivity model called Curvature Sensitivity Model. This allows us to obtain informative bounds by bounding the curvature of level sets of the functions. We further show that existing point counterfactual identification methods are special cases of our Curvature Sensitivity Model when the bound of the curvature is set to zero. We then propose an implementation of our Curvature Sensitivity Model in the form of a novel deep generative model, which we call Augmented PseudoInvertible Decoder. Our implementation employs (i) residual normalizing flows with (ii) variational augmentations. We empirically demonstrate the effectiveness of our Augmented Pseudo-Invertible Decoder. To the best of our knowledge, ours is the first partial identification model for Markovian structural causal models with continuous outcomes.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/65cbe3e21ac62553111d9ecf7d60c18e-Paper-Conference.pdf",
+              "document_sha256": "7423b2e6a43f7d51b0d8dcc66d96bc061bb811cfff87327c253549ec615558ab"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Pearl’s ladder of causation [8, 51, 101] comparing observational, interventional, and counterfactual queries corresponding to the SCM M with two observed variables, i. e., binary treatment A ∈ {0, 1} and continuous outcome Y ∈ R. We also plot three causal diagrams, G(M), corresponding to each layer of causation, namely, Bayesian network, causal Bayesian network, and parallel worlds network. Queries with gray background can be simplified, i. e., be expressed via lower-layer distributions. The estimation of the queries with yellow background requires additional assumptions or distributions from the same layer. In this paper, we focus on partial identification of the expected counterfactual outcome of [un]treated, E(Ya | a′ , y ′ ), a′ ̸= a, shown in orange . 134, 135, 140] makes no explicit assumptions besides assuming a structural causal model (SCM) with Markovianity (i. e., independence of the latent noise) and thus gives estimates that can be invalid. However, additional assumptions are needed in counterfactual inference of layer L3 to provide identifiability guarantees [94, 137]. (2) The second stream [4, 32, 59, 66, 93, 96, 123, 148] provides such identifiability guarantees but makes strong assumptions that are unnatural or unrealistic. Formally, the work by Nasr-Esfahany et al. [93] describes bijective generation mechanisms (BGMs), where, in addition to the original Markovianity of SCMs, the functions in the underlying SCMs must be monotonous (strictly increasing or decreasing) with respect to the latent noise. The latter assumption effectively sets the dimensionality of the latent noise to the same dimensionality as the observed (endogenous) variables. However, this is highly unrealistic in real-world settings and is often in violation of domain",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/65cbe3e21ac62553111d9ecf7d60c18e-Paper-Conference.pdf",
+              "document_sha256": "7423b2e6a43f7d51b0d8dcc66d96bc061bb811cfff87327c253549ec615558ab"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "• To construct the NCM approximation, we develop a novel representation theorem of probability measures (Proposition 1) that may be of independent interest. Proposition 1 implies that under certain assumptions, probability distributions supported on the unit cube can be simulated by pushing forward a multivariate uniform distribution. • We discover the importance of Lipschitz regularization by constructing a counterexample where the neural causal approach is not consistent without regularization (Proposition 2). • Using Lipschitz regularization, we prove the consistency of the neural causal approach (Theorem 4). Related Work There exists a rich literature on partial identification of average treatment effects (ATE) [37, 4, 5, 27, 44, 45, 40, 8, 54, 56, 14, 7, 39, 26]. Balke and Pearl [4, 5] first give an algorithm to calculate bounds on the ATE in the Instrumental Variable (IV) setting. They show that regardless of the exact distribution of the latent variables, it is sufficient to consider discrete latent variables as long as all endogenous variables are finitely supported. Moreover, they discover that (1) is an LP problem with a closed-form solution. This LP-based technique was generalized to several special classes of SCMs [44, 8, 27, 46]. For general discrete SCMs, [14, 56, 55] consider transforming the problem (1) into a polynomial programming problem. Xia et al. [51] discover the connection between generative models and SCMs. They show that NCMs are expressive enough to approximate discrete SCMs. By setting C in problem (1) to be the collection of NCMs, they apply NCMs for identification and estimation. For causal models with continuous random variables, the constraints in (1) become integral equations, which makes the problem more difficult. One approach is to",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/7f9220f90cc85b0da693643add6618e6-Paper-Conference.pdf",
+              "document_sha256": "8e2cb927e3b57fe5da5280e69a5c3f2018913714f1c16911e45d616f743688a3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "We denote Vi (t) to be the value of Vi under the intervention T = t and P M (V (t)) to be the distribution of V (t) in M. The notion of a C 2 component [51] is defined as follows. Definition 2 (C 2 -Component). For a causal graph G, a subset C ⊂ V is C 2 -component if each pair Vi , Vj ∈ C is connected by a bi-directed arrow in G and C is maximal. We provide a concrete example in Appendix A to explain all these notions. We will make the following standard assumption about the independence of latent variables. Note that since we allow latent variables to enter in multiple structural equations, this is more a notational convention and not an actual assumption. Also note that under this convention a bi-directed arrow essentially represents the existence of a common latent parental variable. Assumption 1. All the latent variables in U are independent. To deal with categorical variables, we assume that latent variables that influence categorical variables contain two parts: the shared confounding that influences the propensity functions and the independent noise that generates categorical distributions. Assumption 2. The set of latent variables consists of two parts U = {U1 , · · · , UnU } ∪ {GVi : Vi is categorical}. Precisely, if V ni ∈ V is a categorical variable, o the data generation proVi cess of Vi satisfies Vi = arg maxk∈[ni ] gk + log (fi (Pa(Vi ), U Vi ))k ∼ Categorical(fi /∥fi ∥1 ), where GVi = (g1Vi , · · · , gnVii ) are i.i.d. standard Gumbel variables, U Vi ⊂ {U1 , · · · , UnU }. This convention is without loss of generality at this point, but will be useful when introducing Lispchitz restrictions on the structural equation functions. The Gumbel variables in the assumption can be replaced by any random variables that can generate categorical variables. It can",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/7f9220f90cc85b0da693643add6618e6-Paper-Conference.pdf",
+              "document_sha256": "8e2cb927e3b57fe5da5280e69a5c3f2018913714f1c16911e45d616f743688a3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "First, we introduce the definition of an SCM. Throughout the paper, we use bold symbols to represent sets of random variables. Definition 1. (Structural Causal Model) A Structural Causal Model (SCM) is a tuple M = V U is the set of observed variables; U = {Uj }nj=1 is (V , U , F, P (U ), G0 ), where V = {Vi }ni=1 the set of latent variables; P (U ) is the distribution of latent variables; G0 is an acyclic directed graph whose nodes are V . The values of each observed variable Vi are generated by Vi = fi (Pa(Vi ), U Vi ) ,",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/7f9220f90cc85b0da693643add6618e6-Paper-Conference.pdf",
+              "document_sha256": "8e2cb927e3b57fe5da5280e69a5c3f2018913714f1c16911e45d616f743688a3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03790acca0dcb504c15024ef",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/65cbe3e21ac62553111d9ecf7d60c18e-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-0f3e051f738f2f86921c0bc1",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/7f9220f90cc85b0da693643add6618e6-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "90faf173e35ddd155ff9d937b421431d57bc388961353a744190f321be7ef8d0"
+    },
+    {
+      "id": "edge-2cb2a70f6ce45a16e630dfe8",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-08eefd37851f5b90b30f3b5f",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Counterfactual Identifiability of Bijective Causal Models",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We study counterfactual identifiability in causal models with bijective generation mechanisms (BGM), a class that generalizes several widely-used causal models in the literature. We establish their counterfactual identifiability for three common causal structures with unobserved confounding, and propose a practical learning method that casts learning a BGM as structured generative modeling. Learned BGMs enable efficient counterfactual estimation and can be obtained using a variety of deep conditional generative models. We evaluate our techniques in a visual task and demonstrate its application in a real-world video streaming simulation task."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This has been exploited for disentangling semantically meaningful features of high-dimensional data (Locatello et al., 2019; Khemakhem et al., 2020).\nThis has been exploited for disentan-gling semantically meaningful features of high-dimensional data (Locatello et al., 2019; Khemakhem et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-08eefd37851f5b90b30f3b5f",
+          "input_sha256": "8935474dc12f289dca30a7b19528fe42ccd5719f6896e4e40fec4ee4027f3b20",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/nasr-esfahany23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Disentanglement: Independent Component Analysis (ICA) (Hyvärinen & Oja, 2000) concerns the problem of recovering statistically independent source signals S = (S1 , . . . , Sn ) from their observed mixtures X = (X1 , . . . , Xn ), where X = f (S), and the unknown f (mixing function) is assumed to be invertible. Unlike linear mixing functions that make this problem identifiable with certain conditions, it is known to be non-identifiable for nonlinear mixing functions (Hyvärinen & Pajunen, 1999). Recently, Hyvarinen et al. (2019) proved identifiability in the presence of auxiliary variables, which make the sources conditionally independent. This has been exploited for disentangling semantically meaningful features of high-dimensional data (Locatello et al., 2019; Khemakhem et al., 2020).",
+              "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "document_sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "This task corresponds to our BC setting with Z as the backdoor variable. We evaluate our method for BC visually (Figure 4) and quantitatively (Table 1). As you can see, it achieves a high accuracy as opposed to the baselines, both of which are single CGMs that do not take the causal structure into account, which is common in prior work (Lample et al., 2017; Zhu et al., 2017; He et al., 2019). Baseline-x models P (V |X) and baseline-xz models P (V |X, Z). 8.2. Case Study: Video Streaming Simulation",
+              "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "document_sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Nevertheless, counterfactual queries of the form “why–?” and “what if–?” are useful in defining fundamental concepts such as harm (Richens et al., 2022), fairness (Kusner et al., 2017; Zhang & Bareinboim, 2018), credit (Mesnard et al., 2021), regret, and blame. They also have applications in engineering, e.g., root cause analysis (Gan et al., 2022; Budhathoki et al., 2022), trace-driven simulation (Alomar et al., 2023; Bothra et al., 2022), and sample efficient reinforcement learning (Lu et al., 2020; Agarwal et al., 2021). In this paper, we introduce a new class of causal models called Bijective Generation Mechanisms (BGM). BGMs subsume several model classes studied in the literature, e.g., Nonlinear Additive Noise Models (ANM) (Hoyer et al., 2008), Location Scale Noise Models (LSNM) (Immer et al., 2022), and post-nonlinear causal models (PNL) (Zhang & Hyvärinen, 2009) (§4). We establish counterfactual identifiability of BGMs for three meaningful causal structures (§5), assuming a coarse knowledge of the underlying system in the form of a causal diagram.",
+              "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "document_sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-08eefd37851f5b90b30f3b5f",
+          "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "701164cbd6ae355a59419a83633b3160b944fc1112d01bd2832d5044739a4df9"
+    },
+    {
+      "id": "edge-f7e56b9b5e401bbac77f5848",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-1c9cd746b30f5b0a1cc608c8",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Diffusion Counterfactual Generation with Semantic Abduction",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Counterfactual image generation presents significant challenges, including preserving identity, maintaining perceptual quality, and ensuring faithfulness to an underlying causal model. While existing auto-encoding frameworks admit semantic latent spaces which can be manipulated for causal control, they struggle with scalability and fidelity. Advancements in diffusion models present opportunities for improving counterfactual image editing, having demonstrated state-of-the-art visual quality, human-aligned perception and representation learning capabilities. Here, we present a suite of diffusion-based causal mechanisms, introducing the notions of spatial, semantic and dynamic abduction. We propose a general framework that integrates semantic representations into diffusion models through the lens of Pearlian causality to edit images via a counterfactual reasoning process. To the best of our knowledge, ours is the first work to consider high-level semantic identity preservation for diffusion counterfactuals and to demonstrate how semantic control enables principled trade-offs between faithful causal control and identity preservation."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "The unconditional VAE prior p ( z ) in our model makes it non-identifiable (Locatello et al., 2019), meaning the true settings of θ and φ cannot be uniquely determined even with infinite data.\nHowever, Locatello et al. (2019; 2020) demonstrate that unsupervised disentanglement is impossible without inductive biases in both models and datasets.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-1c9cd746b30f5b0a1cc608c8",
+          "input_sha256": "bf02632b6979e4edd089f409bb2e801ae3005ee815e3b43b7fdfad6d7755c0a2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/rasal25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Identifiability. The unconditional VAE prior p(z) in our model makes it non-identifiable (Locatello et al., 2019), meaning the true settings of θ and φ cannot be uniquely determined even with infinite data. This can affect abduction, as multiple values of z may yield the same marginal likelihood pθ (x|pa), resulting in different counterfactuals under the same intervention. Khemakhem et al. (2020a) showed that identifiability can be improved by conditioning the semantic prior on observed variables, e.g., p(z|pa). Incorporating these ideas in our framework may require modifications akin to De Sousa Ribeiro et al. (2023), which we leave for future work.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "Conclusion Our work highlights trade-offs inherent in using diffusion models, studied extensively on associative (L1 ) and interventional (L2 ) applications, for counterfactual inference (L3 ). We introduce diffusion-based causal mechanisms with semantic abduction capabilities and demonstrate their enhanced identity preservation in image counterfactuals, as measured by counterfactual soundness metrics. Notably, we show that large ω and smaller p∅ , popular at L2 , compromise identity preservation (composition and reversibility) in favour of causal control (effectiveness) at L3 . Current diffusion approaches are biased towards L2 , limiting their soundness at L3 and widespread adoption at L1 . Since L3 subsumes L1 and L2 , we argue that a causal lens on diffusion modelling at L3 is essential for tackling a broad range of problems, rather than relying on models optimised for random sampling at L2 . This would better generalise diffusion models to real-world tasks that demand creative reasoning and causal understanding - where diffusion already excels. Our findings present new opportunities for using diffusion models at L3 . For example, fast generation with spatial mechanisms could enable efficient counterfactual data augmentation (Roschewitz et al., 2024). Enhanced identity preservation via semantic mechanisms could improve counterfactual explanations for downstream models (Augustin et al., 2022). Dynamic abduction could support stress testing by providing higher image fidelity for challenging test cases (Pérez-García et al., 2023). Lastly, these mechanisms could inspire causally-informed generative recognition models, integrating causal representations into the human-aligned perceptual capabilities of diffusion models (Jaini et al., 2023).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Counterfactual image generation presents significant challenges, including preserving identity, maintaining perceptual quality, and ensuring faithfulness to an underlying causal model. While existing auto-encoding frameworks admit semantic latent spaces which can be manipulated for causal control, they struggle with scalability and fidelity. Advancements in diffusion models present opportunities for improving counterfactual image editing, having demonstrated state-of-the-art visual quality, human-aligned perception and representation learning capabilities. Here, we present a suite of diffusion-based causal mechanisms, introducing the notions of spatial, semantic and dynamic abduction. We propose a general framework that integrates semantic representations into diffusion models through the lens of Pearlian causality to edit images via a counterfactual reasoning process. To our knowledge, this is the first work to consider high-level semantic identity preservation for diffusion counterfactuals and to demonstrate how semantic control enables principled tradeoffs between faithful causal control and identity preservation.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/rasal25a/rasal25a.pdf",
+              "document_sha256": "fd720c7ef680e642190d1a983fdb8114387c39b51f28767aa8f77b473e545dfb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-1c9cd746b30f5b0a1cc608c8",
+          "url": "https://proceedings.mlr.press/v267/rasal25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "b2ef2161c7411d5c55d2bd5458a9a14ccc3879c0a5525f25455076e3d4135e85"
+    },
+    {
+      "id": "edge-c6fd3f7f71b643c64f8298a4",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-22fec7cc122b43e712c0c28e",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "The third pillar of causal analysis? A measurement perspective on causal representations",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Causal reasoning and discovery, two fundamental tasks of causal analysis, often face challenges in applications due to the complexity, noisiness, and high-dimensionality of real-world data. Despite recent progress in identifying latent causal structures using causal representation learning (CRL), what makes learned representations useful for causal downstream tasks and how to evaluate them are still not well understood. In this paper, we reinterpret CRL using a measurement model framework, where the learned representations are viewed as proxy measurements of the latent causal variables. Our approach clarifies the conditions under which learned representations support downstream causal reasoning and provides a principled basis for quantitatively assessing the quality of representations using a new Test-based Measurement EXclusivity (T-MEX) score. We validate T-MEX across diverse causal inference scenarios, including numerical simulations and real-world ecological video analysis, demonstrating that the proposed framework and corresponding score effectively assess the identification of learned representations and their usefulness for causal downstream tasks. Reproducible code can be found at https://github.com/shimenghuang/a-measurement-perspective-of-crl."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Methodologically, CRL tackles a more challenging task compared to independent component analysis (ICA) and disentanglement, where the latent variables are assumed to be independent of each other (Hyvärinen and Pajunen, 1999; Hyvarinen et al., 2019; Higgins et al., 2017; Locatello et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-22fec7cc122b43e712c0c28e",
+          "input_sha256": "b4e805fccfff9cb34e2b768c43feb93516867a1b0dc31f6ba5d09de649a2531b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/3dda5b6fa9e7c98928844e776f2a657a-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/3dda5b6fa9e7c98928844e776f2a657a-Paper-Conference.pdf",
+              "sha256": "7c0aa730756c99806b71cb771a74a8f266e9f59b12f658ff532aa617d52dc713"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Causal analysis rests on two foundational pillars: causal reasoning and causal discovery. Causal reasoning operates under the assumption that the causal structure is known or can be assumed, and leverages data to make quantitative causal statements, for example, about the average effect of one variable on another. As causal structures are often unknown, causal discovery aims to uncover this structure, assuming that the causal variables of interest are readily observed. In many real-world settings, however, the causal variables may not be directly observable. While originally formulated mostly to enable causal capabilities in machine learning models, Causal Representation Learning (CRL, Schölkopf et al., 2021) has the potential to serve as a third pillar of causal analysis: enabling applications of causality involving unstructured data. For this, we reinterpret causal representation learning using the formalism of “measurement models” (Silva et al., 2006), wherein the learned representations serve as proxy measurements for latent causal variables. This perspective of CRL allows us to better characterize when a representation supports downstream causal reasoning, and it also provides a principled basis for quantitatively evaluating the quality of identification. Methodologically, CRL tackles a more challenging task compared to independent component analysis (ICA) and disentanglement, where the latent variables are assumed to be independent of each other (Hyvärinen and Pajunen, 1999; Hyvarinen et al., 2019; Higgins et al., 2017; Locatello et al., 2019). Instead, CRL aims to unmix a set of causally related latent variables. Many recent causal representation learning works have provided different theoretical results for causal variable 39th Conference on Neural Information",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/3dda5b6fa9e7c98928844e776f2a657a-Paper-Conference.pdf",
+              "document_sha256": "7c0aa730756c99806b71cb771a74a8f266e9f59b12f658ff532aa617d52dc713"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "identification compiling various problem settings (von Kügelgen et al., 2021, 2024; Zhang et al., 2024b; Ahuja et al., 2024, 2022; Varici et al., 2024; Zhang et al., 2024a; Yao et al., 2024b; Kong et al., 2022; Lippe et al., 2022b; Xie et al., 2024; Dong et al., 2024; Lachapelle et al., 2022, 2023; Yao et al., 2022; Zhang et al., 2024a; Squires et al., 2023; Buchholz et al., 2024; Kong et al., 2023), recently unified by (Yao et al., 2025) into a single general methodology. Although most of the results have been theoretical in nature, machine learning models explicitly empowered with identified causal structure have been shown to be more robust under distributional shifts and provide better out-of-distribution generalization (Fumero et al., 2024; Ahuja et al., 2021; Bareinboim and Pearl, 2016; Zhang et al., 2020; Rojas-Carulla et al., 2018). From an AI for science perspective, CRL has shown its potential in understanding climate physics from raw measurement data (Yao et al., 2024a), answering causal questions in the scope of ecology experiments (Cadei et al., 2024, 2025; Yao et al., 2025), psychometric studies (Dong et al., 2024), and countless more applications related to biomedicine (Zhang et al., 2024a; Sun et al., 2025; Ravuri et al., 2025; Jain et al., 2024). Despite recent progress in identifying latent causal structures within causal representation learning, it remains unclear what makes learned representations useful for downstream causal tasks and how to best evaluate them. Building on the proposed measurement model framework, we introduce a new evaluation metric, the Test-based Measurement EXclusivity (T-MEX) Score, which effectively quantifies how well the learned representation aligns with the underlying measurement model. This underlying measurement model",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/3dda5b6fa9e7c98928844e776f2a657a-Paper-Conference.pdf",
+              "document_sha256": "7c0aa730756c99806b71cb771a74a8f266e9f59b12f658ff532aa617d52dc713"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "This paper introduces a novel perspective on Causal Representation Learning (CRL) based on a measurement model framework, in which causal representations are treated as proxy measurements of latent causal variables (§ 2). This perspective provides a flexible framework that unites CRL identification theory with downstream task assumptions via measurement functions, yielding a principled way to evaluate representation quality. More specifically, we propose a new evaluation metric, Test-based Measurement EXclusivity (T-MEX) score, which quantifies the discrepancy between a given measurement model (specified by a CRL algorithm, a causal task, or ground truth knowledge) and the joint distribution of causal and measurement variables (representation outputs of a CRL model) using conditional independence tests (§ 3). Because these conditional independence tests impose no parametric assumptions, our T-MEX score remains broadly applicable. However, like any statistical procedure, these tests are subject to sampling variability and potential statistical errors, so the reliability of T-MEX depends on which test is chosen. By remaining agnostic about the specific test, we empower practitioners to tailor the score to whatever assumptions they are willing to make (e.g., parametric or non-parametric). We demonstrate, using both simulations (§ 5.1) and real-world video analysis (§ 5.2), that our proposed T-MEX score effectively quantifies the identification and causal validity of the learned representation (Defn. 2.2). This provides a convenient and practical evaluation scheme for representation quality in real-world scenarios, especially when the true treatment effect bias is unavailable, such as in the absence of randomized studies. Acknowledgment This research was funded in whole or",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/3dda5b6fa9e7c98928844e776f2a657a-Paper-Conference.pdf",
+              "document_sha256": "7c0aa730756c99806b71cb771a74a8f266e9f59b12f658ff532aa617d52dc713"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-22fec7cc122b43e712c0c28e",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/3dda5b6fa9e7c98928844e776f2a657a-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "41e7bab97e4d2728bb5cc5f6ea9311b0573a6f06707907f921052201277eeb2f"
+    },
+    {
+      "id": "edge-04ac4625a84dbaac1b5ca6d5",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-b2b27162796e82a5700d2c1e",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Weakly supervised causal representation learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Learning high-level causal representations together with a causal model from unstructured low-level data such as pixels is impossible from observational data alone. We prove under mild assumptions that this representation is however identifiable in a weakly supervised setting. This involves a dataset with paired samples before and after random, unknown interventions, but no further labels. We then introduce implicit latent causal models, variational autoencoders that represent causal variables and causal structure without having to optimize an explicit discrete graph structure. On simple image data, including a novel dataset of simulated robotic manipulation, we demonstrate that such models can reliably identify the causal structure and disentangle causal variables."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Without prior assumptions on the data-generating process or supervision, it is impossible to uniquely identify the causal variables and their causal structure [2, 3].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-b2b27162796e82a5700d2c1e",
+          "input_sha256": "b48033daf1d2bd9e555d896e60f8a232faf7b6d68a3964e5ae2ba3322188b90a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/fa567e2b2c870f8f09a87b6e73370869-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/fa567e2b2c870f8f09a87b6e73370869-Paper-Conference.pdf",
+              "sha256": "22aa22e14e0acf758d9aff32df784380cba55fe634a2000d619cd26d615364ad"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "The dynamics of many systems can be described in terms of some high-level variables and causal relations between them. Often, these causal variables are not known but only observed in some unstructured, low-level representation, such as the pixels of a camera feed. Learning the causal representations together with the causal structure between them is a challenging problem and may be important for instance for applications in robotics and autonomous driving [1]. Without prior assumptions on the data-generating process or supervision, it is impossible to uniquely identify the causal variables and their causal structure [2, 3]. In this work, we show that a weak form of supervision is sufficient to identify both the causal representations and the structural causal model between them. We consider a setting in which we have access to data pairs, representing the system before and after a randomly chosen, unknown intervention while preserving the noise. This may approximate the generative process of data collected from a video feed of an external agent or demonstrator interacting with a system. Neither labels on the intervention targets nor active control of the interventions are ∗ †",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa567e2b2c870f8f09a87b6e73370869-Paper-Conference.pdf",
+              "document_sha256": "22aa22e14e0acf758d9aff32df784380cba55fe634a2000d619cd26d615364ad"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "necessary for our identifiability theorem, making this setting useful for offline learning. We prove that with this form of weak supervision, and under certain assumptions (including that the interventions are stochastic and perfect and that all interventions occur in the dataset), latent causal models (LCMs)— structural causal models (SCMs) together with a decoder from the causal factors to the data space— are identifiable up to a relabelling and elementwise reparameterizations of the causal variables. We then discuss two practical methods for LCM inference. First, we define explicit latent causal models (ELCMs) as a variational autoencoder (VAE) [4] in which the causal variables are the latent variables and the prior is based on an SCM. While this approach works in simple problems, it can be finicky and is difficult to scale. We trace this to a major challenge in causal representation learning, namely that it is a chicken-and-egg problem: it can be difficult to learn the causal variables when the causal graph is not yet learned, and it is difficult to learn the graph without knowing the variables. To overcome this optimization difficulty, we introduce a second model class: implicit latent causal models (ILCMs). These models can represent causal structure and variables without requiring an explicit, discrete graph representation, which makes gradient-based optimization easier. Nevertheless, these models still contain the causal structure implicitly, and we discuss two algorithms that can extract it after the model is trained. Finally, we demonstrate ILCMs on synthetic datasets, including the new CausalCircuit dataset of a robot arm interacting with a causally connected system of light switches. We show that these models can robustly learn the true causal variables and",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa567e2b2c870f8f09a87b6e73370869-Paper-Conference.pdf",
+              "document_sha256": "22aa22e14e0acf758d9aff32df784380cba55fe634a2000d619cd26d615364ad"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "The model is trained by minimizing the corresponding VAE loss, learning to map low-level data to noise variables (with q) and to map noise variables to causal variables (with s). The expectation over I is computed via summation, but could alternatively be done with sampling. In practice, we find it beneficial to add a regularization term to the loss that disincentivizes collapse to a lower-dimensional submanifold of the latent space. For each batch of training data, we compute the batch-aggregate intervention posterior qI (I) = Ex,x̃∈batch [q(I|x, x̃)]. To the beta-VAE loss we then add the negative entropy of this distribution, weighted with a hyperparameter. Downstream tasks Despite the implicit representation of causal structure, we argue that ILCMs let us solve various tasks: • Causal representation learning / disentanglement: ILCMs allow us to map low-level data x to causal variables z by applying the encoder q followed by the solution functions s. • Intervention inference: It is also straightforward to infer intervention targets from an observed pair (x, x̃) of pre-intervention and post-intervention data, as this just requires evaluating the intervention-target encoder qI (x, x̃). • Causal discovery / identification: We propose two methods to infer the causal graphs after training an ILCM. One is to use an off-the-shelf method for causal discovery on the learned representations. Since the ILCM allows us to infer intervention targets, we can use intervention-based algorithms. In this paper, we use ENCO [28], a recent differentiable causal discovery method that exploits interventions to obtain acyclic graphs without requiring constrained optimization. Alternatives to ENCO include DCDI [27] and GIES [30]. Alternatively, we can analyze the causal structure implicitly",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/fa567e2b2c870f8f09a87b6e73370869-Paper-Conference.pdf",
+              "document_sha256": "22aa22e14e0acf758d9aff32df784380cba55fe634a2000d619cd26d615364ad"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-b2b27162796e82a5700d2c1e",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/fa567e2b2c870f8f09a87b6e73370869-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "d261e7892052e54c70ec0b0dc908b69dd2a52559a8a38e75d7757b40e02423d8"
+    },
+    {
+      "id": "edge-2598e9c31fec674c523cfa51",
+      "a": "paper-08eefd37851f5b90b30f3b5f",
+      "b": "paper-a09aa7a3d67709b5540e70b1",
+      "state": {
+        "paper_a": {
+          "title": "Counterfactual Identifiability of Bijective Causal Models",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We study counterfactual identifiability in causal models with bijective generation mechanisms (BGM), a class that generalizes several widely-used causal models in the literature. We establish their counterfactual identifiability for three common causal structures with unobserved confounding, and propose a practical learning method that casts learning a BGM as structured generative modeling. Learned BGMs enable efficient counterfactual estimation and can be obtained using a variety of deep conditional generative models. We evaluate our techniques in a visual task and demonstrate its application in a real-world video streaming simulation task."
+        },
+        "paper_b": {
+          "title": "Learning Counterfactual Outcomes Under Rank Preservation",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Counterfactual inference aims to estimate the counterfactual outcome at the individual level given knowledge of an observed treatment and the factual outcome, with broad applications in fields such as epidemiology, econometrics, and management science. Previous methods rely on a known structural causal model (SCM) or assume the homogeneity of the exogenous variable and strict monotonicity between the outcome and exogenous variable. In this paper, we propose a principled approach for identifying and estimating the counterfactual outcome. We first introduce a simple and intuitive rank preservation assumption to identify the counterfactual outcome without relying on a known structural causal model. Building on this, we propose a novel ideal loss for theoretically unbiased learning of the counterfactual outcome and further develop a kernel-based estimator for its empirical estimation. Our theoretical analysis shows that the rank preservation assumption is not stronger than the homogeneity and strict monotonicity assumptions, and shows that the proposed ideal loss is convex, and the proposed estimator is unbiased. Extensive semi-synthetic and real-world experiments are conducted to demonstrate the effectiveness of the proposed method."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08eefd37851f5b90b30f3b5f",
+          "b": "paper-a09aa7a3d67709b5540e70b1",
+          "input_sha256": "78c83b9e02da13a9dd1d2f9eff9ea568c28db93e1d770c97a9d2b099e577e5b1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/nasr-esfahany23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/d9e3587500916105767f0d4e05a29a09-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/d9e3587500916105767f0d4e05a29a09-Paper-Conference.pdf",
+              "sha256": "69effcee706bfa6e3fdd7e343967320514879a99548559bdec2bafcf4e14e655"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Nevertheless, counterfactual queries of the form “why–?” and “what if–?” are useful in defining fundamental concepts such as harm (Richens et al., 2022), fairness (Kusner et al., 2017; Zhang & Bareinboim, 2018), credit (Mesnard et al., 2021), regret, and blame. They also have applications in engineering, e.g., root cause analysis (Gan et al., 2022; Budhathoki et al., 2022), trace-driven simulation (Alomar et al., 2023; Bothra et al., 2022), and sample efficient reinforcement learning (Lu et al., 2020; Agarwal et al., 2021). In this paper, we introduce a new class of causal models called Bijective Generation Mechanisms (BGM). BGMs subsume several model classes studied in the literature, e.g., Nonlinear Additive Noise Models (ANM) (Hoyer et al., 2008), Location Scale Noise Models (LSNM) (Immer et al., 2022), and post-nonlinear causal models (PNL) (Zhang & Hyvärinen, 2009) (§4). We establish counterfactual identifiability of BGMs for three meaningful causal structures (§5), assuming a coarse knowledge of the underlying system in the form of a causal diagram.",
+              "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "document_sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "The theorems in §5 (see also the lemmas in Appendix B.2) provide a tractable objective for learning a BGM that is equivalent to the ground-truth BGM for counterfactual estimation. We now describe a recipe for efficiently solving this learning problem. To represent the search space for fˆ, we use parameterized bijective transforms fˆθ (x, ·) from Û to V , conditioned on X. This resembles transforms used in Conditional Generative Models (CGM). Furthermore, we require certain constraints on fˆθ depending on the case, e.g., being strictly monotonic or differentiable, which we take into account to select an appropriate model family and parameterization. For example, both the IV and BC cases require differentiablity of the transform. Conditional Normalizing Flow (CNF) (Papamakarios et al., 2021) models are a good candidate for learning such functions as they are typically built using differentiable mappings with differentiable inverses (diffeomorphisms). Although our approach is applicable to",
+              "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a/nasr-esfahany23a.pdf",
+              "document_sha256": "95c8b4f237fc9e136e7e637343858e663b549437bb958a051408d068f4c7c19f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "and the observed world poses a unique challenge and makes the counterfactual outcome generally unidentifiable, even in randomized controlled experiments (RCTs) [5, 8, 13, 17]. For counterfactual inference, Pearl et al. [8] proposed a three-step procedure (abduction, action, and prediction) to estimate counterfactual outcomes. However, it relies on the availability of structural causal models (SCMs) that fully describe the data-generating process [18, 19]. In real-world applications, the ground-truth SCM is likely to be unknown, and estimating it requires additional assumptions to ensure identifiability, such as linearity [20] and additive noise [21, 22, 23]. Unfortunately, these assumptions are hard to satisfy in practice and restrict the applicability. To tackle the above problems, several counterfactual learning approaches have been proposed with respect to different identifiability assumptions. For example, Lu et al. [24], Nasr-Esfahany et al. [25], and Xie et al. [19] established the identifiability of counterfactual outcomes based on homogeneity and strict monotonicity assumptions [23, 26]. The homogeneity assumption posits that the exogenous variable for each individual remains constant across different interventional environments, and the strict monotonicity assumption asserts that the outcome is a strictly monotone function of the exogenous variable given the features. In terms of counterfactual learning, [24] and [25] adopted Pearl’s three-step procedure that needs to estimate the SCM initially. In addition, [19] proposed using quantile regression to estimate counterfactual outcomes that effectively avoid the estimation of SCM. Nevertheless, it relies on a stringent assumption that the conditional quantile functions for different counterfactual outcomes come",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d9e3587500916105767f0d4e05a29a09-Paper-Conference.pdf",
+              "document_sha256": "69effcee706bfa6e3fdd7e343967320514879a99548559bdec2bafcf4e14e655"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Assumption 3.1 (Homogeneity). Ux = Ux′ . Assumption 3.2 (Strict Monotonicity). For any given (x, z), Yx = fY (x, z, Ux ) is a smooth and strictly monotonic function of Ux ; or it is a bijective mapping from Ux to Yx . Assumption 3.1 implies that the value of UX for each individual remains unchanged across x. Assumption 3.2 implies that Yx is a strict monotonic function of Ux in the subpopulation of (X = x, Z = z). In Assumption 3.2, the smoothness and strict monotonicity of fY (x, z, Ux ) are akin to a bijective mapping of Yx and Ux and serve the same purpose, so we don’t distinguish them in detail. Lemma 3.3. Under Assumptions 3.1-3.2, yx′ is identifiable. For estimation of yx′ , following Pearl’s three-step procedure, [24] and [25] initially estimate fY and UX for each individual. However, estimating fY and UX needs to impose extra assumptions, such as linearity [20] and additive noise [22]. In addition, [19] demonstrate that yx′ corresponds to the τ ∗ -th quantile of the distribution P(Y |X = x′ , Z = z), where τ ∗ is the quantile of y in P(Y |X = x, Z = z) (See the proof of Lemma 3.3 or Section 4.1 for more details). Based on it, the authors uses quantile regression to estimate yx′ , which avoids the problem of estimating fY and UX . Nevertheless, this method fits a single model to obtain the conditional quantile functions for both the counterfactual and factual outcomes. Thus, its validity relies on the underlying assumption that the conditional quantile functions of outcomes for different treatment groups stem from the same model. In addition, it involves estimating a distinct quantile value for each individual before deriving the counterfactual outcomes, posing a challenging bi-level optimization problem.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d9e3587500916105767f0d4e05a29a09-Paper-Conference.pdf",
+              "document_sha256": "69effcee706bfa6e3fdd7e343967320514879a99548559bdec2bafcf4e14e655"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "counterfactuals within a given causal graph. More relevant to our work, [19] and [24] studied the identifiability assumptions in the setting of backdoor criterion under homogeneity and strict monotonicity assumptions. Several methods focus on determining its bounds with less stringent assumptions, such as [10, 13, 73, 74]. In addition, [11] proposed a method for identifying the joint distribution of potential outcomes using multiple experimental datasets. For estimation, [8] introduced a three-step procedure for counterfactual inference. Many machine learning methods estimate counterfactual outcomes in this framework, such as [6, 18, 24, 25, 75, 76, 77]. Recently, [19] employed quantile regression to estimate the counterfactual outcomes, effectively circumventing the need for SCM estimation. In our work, we extend the above methods in both identification and estimation. Recently, counterfactual inference methods have been extensively applied across various application scenarios, such as counterfactual fairness [78, 79, 80, 81, 82, 83], policy evaluation and improvement [14, 84, 85, 86], reinforcement learning [24, 87, 88, 89, 90, 91, 92], imitation learning [93, 94], counterfactual generation [76, 95, 96, 97], counterfactual explanation [98, 99, 100, 101, 102], counterfactual harm [13, 14, 103, 15], physical audiovisual commonsense reasoning [104], interpretable time series prediction [105], classification and detection in medical imaging [106], data valuation [107], etc. Therefore, developing novel counterfactual inference methods holds significant practical implications.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d9e3587500916105767f0d4e05a29a09-Paper-Conference.pdf",
+              "document_sha256": "69effcee706bfa6e3fdd7e343967320514879a99548559bdec2bafcf4e14e655"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Counterfactual inference aims to estimate the counterfactual outcome at the individual level given knowledge of an observed treatment and the factual outcome, with broad applications in fields such as epidemiology, econometrics, and management science. Previous methods rely on a known structural causal model (SCM) or assume the homogeneity of the exogenous variable and strict monotonicity between the outcome and exogenous variable. In this paper, we propose a principled approach for identifying and estimating the counterfactual outcome. We first introduce a simple and intuitive rank preservation assumption to identify the counterfactual outcome without relying on a known structural causal model. Building on this, we propose a novel ideal loss for theoretically unbiased learning of the counterfactual outcome and further develop a kernel-based estimator for its empirical estimation. Our theoretical analysis shows that the rank preservation assumption is not stronger than the homogeneity and strict monotonicity assumptions, and shows that the proposed ideal loss is convex, and the proposed estimator is unbiased. Extensive semi-synthetic and real-world experiments are conducted to demonstrate the effectiveness of the proposed method.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d9e3587500916105767f0d4e05a29a09-Paper-Conference.pdf",
+              "document_sha256": "69effcee706bfa6e3fdd7e343967320514879a99548559bdec2bafcf4e14e655"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08eefd37851f5b90b30f3b5f",
+          "url": "https://proceedings.mlr.press/v202/nasr-esfahany23a.html"
+        },
+        "b": {
+          "paper_id": "paper-a09aa7a3d67709b5540e70b1",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/d9e3587500916105767f0d4e05a29a09-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "e8c33a23c64faacff0d7ed1bb8bfe6aeb9ff8ea102d4a60435180943af95be16"
+    },
+    {
+      "id": "edge-11a1ab0b7ebb5101c5ffbaec",
+      "a": "paper-0b0c952cf85a50526518d856",
+      "b": "paper-287faffe2b5da0012ac44891",
+      "state": {
+        "paper_a": {
+          "title": "Stochastic Optimization for DC Functions and Non-smooth Non-convex Regularizers with Non-asymptotic Convergence",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Difference of convex (DC) functions cover a broad family of non-convex and possibly non-smooth and non-differentiable functions, and have wide applications in machine learning and statistics. Although deterministic algorithms for DC functions have been extensively studied, stochastic optimization that is more suitable for learning with big data remains under-explored. In this paper, we propose new stochastic optimization algorithms and study their first-order convergence theories for solving a broad family of DC functions. We improve the existing algorithms and theories of stochastic optimization for DC functions from both practical and theoretical perspectives. Moreover, we extend the proposed stochastic algorithms for DC functions to solve problems with a general non-convex non-differentiable regularizer, which does not necessarily have a DC decomposition but enjoys an efficient proximal mapping. To the best of our knowledge, this is the first work that gives the first non-asymptotic convergence for solving non-convex optimization whose objective has a general non-convex non-differentiable regularizer."
+        },
+        "paper_b": {
+          "title": "Large-scale Optimization of Partial AUC in a Range of False Positive Rates",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "The area under the ROC curve (AUC) is one of the most widely used performance measures for classification models in machine learning. However, it summarizes the true positive rates (TPRs) over all false positive rates (FPRs) in the ROC space, which may include the FPRs with no practical relevance in some applications. The partial AUC, as a generalization of the AUC, summarizes only the TPRs over a specific range of the FPRs and is thus a more suitable performance measure in many real-world situations. Although partial AUC optimization in a range of FPRs had been studied, existing algorithms are not scalable to big data and not applicable to deep learning. To address this challenge, we cast the problem into a non-smooth difference-of-convex (DC) program for any smooth predictive functions (e.g., deep neural networks), which allowed us to develop an efficient approximated gradient descent method based on the Moreau envelope smoothing technique, inspired by recent advances in non-smooth DC optimization. To increase the efficiency of large data processing, we used an efficient stochastic block coordinate update in our algorithm. Our proposed algorithm can also be used to minimize the sum of ranked range loss, which also lacks efficient solvers. We established a complexity of $\\tilde O(1/\\epsilon^6)$ for finding a nearly $\\epsilon$-critical solution. Finally, we numerically demonstrated the effectiveness of our proposed algorithms in training both linear models and deep neural networks for partial AUC maximization and sum of ranked range loss minimization."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The stochastic methods of Xu et al. (2019); Thi et al. (2021); An et al. (2019) can be applied when both components are non-smooth but their methods require an unbiased stochastic estimation of the gradient and/or value of the two components, which is not available in the DC formulation of the pAUC…\nThe stochastic methods of [4, 56, 63] can be applied when both components are non-smooth but their methods require an unbiased stochastic estimation of the gradient and/or value of the two components, which is not available in the DC formulation of the pAUC maximization problem in this paper.\nWithin ﬁnitely many iterations, there also exists no algorithm that can ﬁnd an ǫ -critical point unless at least one of f m and f n is smooth, e.g., Xu et al. (2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0b0c952cf85a50526518d856",
+          "b": "paper-287faffe2b5da0012ac44891",
+          "input_sha256": "07a54a8bed094352af94173c6934b7ba846cc5e900b991d3e3b5633f9bb91b32",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/xu19c.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/xu19c/xu19c.pdf",
+              "sha256": "7fbe3ef9ca1c04fdc853e282dc3ddf8499bf89427bda2ac92e241b8026d5c3f8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/ca7998666c2e53cc1e882b7268414d8a-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/ca7998666c2e53cc1e882b7268414d8a-Paper-Conference.pdf",
+              "sha256": "3dcd828ee5f6dd09b7aa28fbbcebfe9e8b803763be4442d9fb17145bcfcac321"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "rithm enjoying an asymptotic convergence result for finding a stationary point. Thi et al. (2017) considered a special class of DC problems and they reformulated the problem into (1) such that h is a sum of n convex functions, and g is a quadratic function and r is the first component of the DC decomposition of the regularizer. Then, they proposed a stochastic variant of the classical DCA (Difference-ofConvex Algorithm) and established an asymptotic convergence result for finding a critical point. To our knowledge, the paper by (Nitanda & Suzuki, 2017) is the probably the first result that gives non-asymptotic convergence for finding an approximate critical point of a special class of DC problems, in which both g and h can be stochastic functions and r = 0. Their algorithm consists of multiple stages of solving a convex objective that is constructed by linearizing h(x) and adding a quadratic regularization. However, their algorithm and convergence theory have the following drawbacks. First, at each stage, they need to compute an unbiased stochastic gradient denoted by v(x) of ∇h(x) such that E[kv(x) − ∇h(x)k2 ] ≤ \u000f2 , where \u000f is the accuracy level imposed on the returned solution in terms of the gradient’s norm. In reality, one has to resort to mini-batching technique by using a large number of samples to ensure this condition, which is impractical and not user-friendly. An user has to worry about what is the size of the mini-batch in order to find a sufficiently accurate solution while keeping the computational costs minimal. Second, for each constructed convex subproblem, their theory requires running a stochastic algorithm that solves each subproblem to the accuracy level of \u000f, which could waste a lot of computations at earlier stages. Third, their convergence",
+              "url": "https://proceedings.mlr.press/v97/xu19c/xu19c.pdf",
+              "document_sha256": "7fbe3ef9ca1c04fdc853e282dc3ddf8499bf89427bda2ac92e241b8026d5c3f8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "h(x) can be a non-smooth non-differentiable function and under the later condition r(x) and g(x) can be non-smooth non-differentiable functions. Second, the convergence rate is automatically adaptive to the Hölder continuity of the involved function without requiring the knowledge of the Hölder continuity to run the algorithm. Third, when adaptive stochastic gradient method is employed to solve each subproblem, we establish an adaptive convergence similar to existing theory of AdaGrad for convex problems (Duchi et al., 2011; Chen et al., 2018a) and weakly convex problems (Chen et al., 2018b), which is missing in (Nitanda & Suzuki, 2017). Our Contributions - II. Moreover, in Section 4 we extend our algorithm and theory to the more general class of non-convex non-smooth problem (1), in which r(x) is a general non-convex non-differentiable regularizer that enjoys an efficient proximal mapping. Although such kind of non-smooth non-convex regularization has been considered in literature (Attouch et al., 2013; Bolte et al., 2014; Bot et al., 2016; Li & Lin, 2015; Yu et al., 2015; Yang, 2018; Liu et al., 2018; An & Nam, 2017; Zhong & Kwok, 2014), existing results are restricted to deterministic optimization and asymptotic or local convergence analysis. In addition, most of them consider a special case of our problem with g − h being a smooth non-convex function. To the best of our knowledge, this is the first work of stochastic optimization with a non-asymptotic first-order convergence result for tackling the non-convex objective (1) with a non-convex non-differentiable regularization and a smooth function g and a possibly non-smooth function h with a Hölder continuous gradient. Our algorithm and theory are based on using the Moreau envelope of r(x) that can be written as",
+              "url": "https://proceedings.mlr.press/v97/xu19c/xu19c.pdf",
+              "document_sha256": "7fbe3ef9ca1c04fdc853e282dc3ddf8499bf89427bda2ac92e241b8026d5c3f8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "The pAUC has been studied for decades [26, 37, 57, 65]. However, most studies focused on its estimation [13] and application as a performance measure, while only a few studies were devoted to numerical algorithms for optimizing the pAUC. Efficient optimization methods have been developed for maximizing AUC and multiclass AUC by [69] and [66], but they cannot be applied to pAUC. Besides the boosting method [29] and the cutting plane algorithm [41, 42, 43] mentioned in the previous section, [59, 67, 68, 73] developed surrogate optimization techniques that directly maximize a smooth approximation of the pAUC or the two-way pAUC [64]. However, their approaches can only be applied when the FPR starts from exactly zero. On the contrary, our method allows the FPR to start from any value between zero and one. [61] and [47] developed algorithms that use the pAUC as a criterion for creating a linear combination of multiple existing classifiers while we consider directly train a classifier using the pAUC. DC optimization has been studied since the 1950s [2, 20]. We refer interested readers to [30, 45, 54, 55, 58], and the references therein. The actively studied numerical methods for solving a DC program include DCA [3, 50, 54, 55], which is also known as the concave-convex procedure [32, 51, 72], the proximal DCA [5, 38, 40, 53], and the direct gradient methods [28]. However, when the two convex components are both non-smooth, the existing methods have only asymptotic convergence results except the method by [1], who considered a stopping criterion different from ours. When at least one component is smooth, non-asymptotic convergence rates have been established with and without the Kurdyka-Łojasiewicz (KL) condition [5, 6, 28, 50, 62]. The algorithms mentioned above are",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ca7998666c2e53cc1e882b7268414d8a-Paper-Conference.pdf",
+              "document_sha256": "3dcd828ee5f6dd09b7aa28fbbcebfe9e8b803763be4442d9fb17145bcfcac321"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "where each element in ∂f (w) is called a subgradient of f at w. We say f is ρ-weakly convex for some ρ ≥ 0 if f (v) ≥ f (w) + ⟨ξ, v − w⟩ − ρ2 ∥v − w∥2 for any v and w and ξ ∈ ∂f (w) and say f is ρ-strongly convex for some ρ ≥ 0 if f (v) ≥ f (w) + ⟨ξ, v − w⟩ + ρ2 ∥v − w∥2 for any 1 v and w and ξ ∈ ∂f (w). It is known that, if f is ρ-weakly convex, then f (w) + 2µ ∥w∥2 is a (µ−1 − ρ)-strongly convex function when µ−1 > ρ. Under Assumption 1, ϕl (Si (w)) is a composite of the closed convex function ϕl and the smooth map Si (w). According to Lemma 4.2 in [14], we have the following lemma. Lemma 1 Under Assumption 1, f m (w) and f n (w) in (6) are ρ-weakly convex with ρ := N+ N− L. To solve (5) numerically, we need to overcome the following challenges. (i) F (w) is non-convex even if each sij (w) is convex. In fact, F (w) is a DC function because, by Lemma 1, we can represent 1 1 F (w) as the difference of the convex functions f n (w) + 2µ ∥w∥2 and f m (w) + 2µ ∥w∥2 with µ−1 > ρ. (ii) F (w) is non-smooth due to ϕl so that finding an approximate critical point (defined below) of F (w) is difficult. (iii) Computing the exact subgradient of f l (w) for l = m, n requires processing N+ N− data pairs, which is computationally expensive for a large data set. Because of challenges (i) and (ii), we have to consider a reasonable goal when solving (5). We say w ∈ Rd is a critical point of (5) if 0 ∈ ∂f n (w) − ∂f m (w). Given ϵ > 0, we say w ∈ Rd is an ϵ-critical point of (5) if there exists ξ ∈ ∂f n (w) − ∂f m (w) such that ∥ξ∥ ≤ ϵ. A critical point can only be achieved asymptotically in general.3 Within finitely many iterations, there also exists no algorithm that can find an ϵ-critical point unless at least one of f m and f n is smooth, e.g., [63]. Since f m and f n are both",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ca7998666c2e53cc1e882b7268414d8a-Paper-Conference.pdf",
+              "document_sha256": "3dcd828ee5f6dd09b7aa28fbbcebfe9e8b803763be4442d9fb17145bcfcac321"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "need to maximize the TPR when the FPR is low [13, 34, 64]. Moreover, since two models with the same AUC can still have different ROCs, the AUC does not always reflect the true performance of a model that is needed in a particular production environment [8]. As a generalization of the AUC, the partial AUC (pAUC) only measures the area under the ROC curve that is restricted between two FPRs. A probabilistic interpretation of the pAUC can be found in [13]. In contrast to the AUC, the pAUC represents the average TPR only over a relevant range of FPRs and provides a performance measure that is more aligned with the practical needs in some applications. In literature, the existing algorithms for training a classifier by maximizing the pAUC include the boosting method [29] and the cutting plane algorithm [41, 42, 43]. However, the former has no theoretical guarantee, and the latter applies only to linear models. More importantly, both methods require processing all the data in each iteration and thus, become computationally inefficient for large datasets. In this paper, we proposed an approximate gradient method for maximizing the pAUC that works for nonlinear models (e.g., deep neural networks) and only needs to process randomly sampled positive and negative data points of any size in each iteration. In particular, we formulated the maximization of the pAUC as a non-smooth difference-of-convex (DC) program [30, 54]. Due to non-smoothness, most existing DC optimization algorithms cannot be applied to our formulation. Motivated by [52], we approximate the two non-smooth convex components in the DC program by their Moreau envelopes and obtain a smooth approximation of the problem, which will be solved using the gradient descent method. Since the gradient of the smooth problem",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ca7998666c2e53cc1e882b7268414d8a-Paper-Conference.pdf",
+              "document_sha256": "3dcd828ee5f6dd09b7aa28fbbcebfe9e8b803763be4442d9fb17145bcfcac321"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "Most existing methods for optimizing pAUC are deterministic and only have an asymptotic convergence property. We formulate pAUC optimization as a non-smooth DC program and develop a stochastic subgradient method based on the Moreau envelope smoothing technique. We show that our method finds a nearly ϵ-critical point in Õ(ϵ−6 ) iterations and demonstrate its performance numerically. A limitation of this paper is the smoothness assumption on sij (w), which does not hold for some models, e.g., neural networks using ReLU activation functions. It is a future work to extend our results for non-smooth models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/ca7998666c2e53cc1e882b7268414d8a-Paper-Conference.pdf",
+              "document_sha256": "3dcd828ee5f6dd09b7aa28fbbcebfe9e8b803763be4442d9fb17145bcfcac321"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0b0c952cf85a50526518d856",
+          "url": "https://proceedings.mlr.press/v97/xu19c.html"
+        },
+        "b": {
+          "paper_id": "paper-287faffe2b5da0012ac44891",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/ca7998666c2e53cc1e882b7268414d8a-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "4a6f8b3a01ff4faac98a08b07f78c4b3081a93c9c1bcaaf92de26e475b14daf1"
+    },
+    {
+      "id": "edge-d78a8427968e42b2bddbeeea",
+      "a": "paper-0cb7a3ad2ba7e426d74b28b5",
+      "b": "paper-a091fb978c97007fe442f1df",
+      "state": {
+        "paper_a": {
+          "title": "Fully Neural Network based Model for General Temporal Point Processes",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "A temporal point process is a mathematical model for a time series of discrete events, which covers various applications. Recently, recurrent neural network (RNN) based models have been developed for point processes and have been found effective. RNN based models usually assume a specific functional form for the time course of the intensity function of a point process (e.g., exponentially decreasing or increasing with the time since the most recent event). However, such an assumption can restrict the expressive power of the model. We herein propose a novel RNN based model in which the time course of the intensity function is represented in a general manner. In our approach, we first model the integral of the intensity function using a feedforward neural network and then obtain the intensity function as its derivative. This approach enables us to both obtain a flexible model of the intensity function and exactly evaluate the log-likelihood function, which contains the integral of the intensity function, without any numerical approximations. Our model achieves competitive or superior performances compared to the previous state-of-the-art methods for both synthetic and real datasets."
+        },
+        "paper_b": {
+          "title": "Neural Frailty Machine: Beyond proportional hazard assumption in neural survival regressions",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "We present neural frailty machine (NFM), a powerful and flexible neural modeling framework for survival regressions. The NFM framework utilizes the classical idea of multiplicative frailty in survival analysis as a principled way of extending the proportional hazard assumption, at the same time being able to leverage the strong approximation power of neural architectures for handling nonlinear covariate dependence. Two concrete models are derived under the framework that extends neural proportional hazard models and nonparametric hazard regression models. Both models allow efficient training under the likelihood objective. Theoretically, for both proposed models, we establish statistical guarantees of neural function approximation with respect to nonparametric components via characterizing their rate of convergence. Empirically, we provide synthetic experiments that verify our theoretical statements. We also conduct experimental evaluations over $6$ benchmark datasets of different scales, showing that the proposed NFM models achieve predictive performance comparable to or sometimes surpassing state-of-the-art survival models. Our code is publicly availabel at https://github.com/Rorschach1989/nfm"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Similar approximation schemes with respect to the hazard function have been proposed in some recent works [52, 56], referred to as \"fully neural approaches\" without theoretical characterizations.\nThe second one further relaxes the proportional frailty assumption and could be viewed as an extension of nonparametric hazard regression (NHR) [13, 44], sometimes referred to as \"fully neural\" models under the context of neural survival analysis [52].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0cb7a3ad2ba7e426d74b28b5",
+          "b": "paper-a091fb978c97007fe442f1df",
+          "input_sha256": "8907fae29a08e0fbb5554b3017d769fbd6de69cb82ec47596529d940af4d6185",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/39e4973ba3321b80f37d9b55f63ed8b8-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/39e4973ba3321b80f37d9b55f63ed8b8-Paper.pdf",
+              "sha256": "ddc9c01b59b714693dbe763d3b55258cac3d131bc8e539cd3fc00796c1657808"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/11a7f429d75f9f8c6e9c630aeb6524b5-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/11a7f429d75f9f8c6e9c630aeb6524b5-Paper-Conference.pdf",
+              "sha256": "e6528dfe28dd6422d1be48038e6774aec41c467f92fdf8b63345304c15247f10"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "In this study, we extended the RNN based point process models such that the time course of the hazard function is represented in a general manner based on a neural network. We then showed the effectiveness of our model by analyzing both synthetic and real datasets. Primary advantages of the proposed model are summarized as follows: • By using a feedforward neural network, our model can reproduce any time course of the hazard function in principle, i.e., the usefulness of fully neural network based modeling for point processes is indicated. • By modeling the cumulative hazard function rather than the hazard function itself, we can avoid the direct evaluation of the integral in the log-likelihood function. The log-likelihood function can be exactly and efficiently evaluated without relying on the numerical approximation because of this approach. We note that the cumulative hazard function also plays an important role in the diagnostic analysis [22, 23, 24]. We did not consider herein the marks of each event (i.e., the information associated with each event other than the timestamp) because the primary contribution of this work is the development of a general model of the hazard function. However, our approach can be easily extended to marked temporal point processes as well. Acknowledgments This research was partly supported by AMED under Grant Number JP19dm0307009. T. O. and K. A. are supported by Kozo Keikaku Engineering Inc. 9",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/39e4973ba3321b80f37d9b55f63ed8b8-Paper.pdf",
+              "document_sha256": "ddc9c01b59b714693dbe763d3b55258cac3d131bc8e539cd3fc00796c1657808"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A temporal point process is a mathematical model for a time series of discrete events, which covers various applications. Recently, recurrent neural network (RNN) based models have been developed for point processes and have been found effective. RNN based models usually assume a specific functional form for the time course of the intensity function of a point process (e.g., exponentially decreasing or increasing with the time since the most recent event). However, such an assumption can restrict the expressive power of the model. We herein propose a novel RNN based model in which the time course of the intensity function is represented in a general manner. In our approach, we first model the integral of the intensity function using a feedforward neural network and then obtain the intensity function as its derivative. This approach enables us to both obtain a flexible model of the intensity function and exactly evaluate the log-likelihood function, which contains the integral of the intensity function, without any numerical approximations. Our model achieves competitive or superior performances compared to the previous state-of-the-art methods for both synthetic and real datasets.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/39e4973ba3321b80f37d9b55f63ed8b8-Paper.pdf",
+              "document_sha256": "ddc9c01b59b714693dbe763d3b55258cac3d131bc8e539cd3fc00796c1657808"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "assumes a linear form and therefore has limited flexibility since the truth is not necessarily linear. Subsequent studies extended CoxPH model to nonlinear variants using ideas from nonparametric regression [36, 8, 9], ensemble learning [37], and neural networks [25, 42]. While such extensions allowed a more flexible nonlinear dependence structure with the covariates, the learning objectives were still derived under the proportional hazards (PH) assumption, which was shown to be inadequate in many real-world scenarios [31]. The most notable case was the failure of modeling the phenomenon of crossing hazards [61]. It is thus of significant interest to explore extensions of CoxPH that both allow nonlinear dependence over covariates and relaxations of the PH assumption. Frailty models [69, 21] are among the most important research topics in modern survival analysis, in that they provide a principled way of extending CoxPH model via incorporating a multiplicative random effect to capture unobserved heterogeneity. The resulting parameterization contains many useful variants of CoxPH like the proportional odds model [3], under specific choices of frailty families. While the theory of frailty models has been well-established [48, 49, 53, 45], most of them focused on the linear case. Recent developments on applying neural approaches to survival analysis [42, 46, 64, 56] have shown promising results in terms of empirical predictive performance, with most of them lacking theoretical discussions. Therefore, it is of significant interest to build more powerful frailty models via adopting techniques in modern deep learning [29] with provable statistical guarantees. In this paper, we present a general framework for neural extensions of frailty models called the neural frailty",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/11a7f429d75f9f8c6e9c630aeb6524b5-Paper-Conference.pdf",
+              "document_sha256": "e6528dfe28dd6422d1be48038e6774aec41c467f92fdf8b63345304c15247f10"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Proportional-style assumption over hazard functions has been shown to be a useful inductive bias in survival analysis. We will treat both h and m in (2) as function parameters, and device two multi-layer perceptrons (MLP) to approximate them separately. The fully neural (FN) scheme imposes no a priori assumptions over ν and is the most general version of NFM. It is straightforward to see that the most commonly used survival models, such as CoxPH, AFT[73], EH[75], or PF models are included in the proposed model space as special cases. We treat ν = ν(t, Z) as the function parameter with input dimension d + 1 and use a multi-layer perceptron (MLP) as the function approximator to ν. Similar approximation schemes with respect to the hazard function have been proposed in some recent works [52, 56], referred to as \"fully neural approaches\" without theoretical characterizations. The choice of frailty family There are many commonly used families of frailty distributions [45, 21, 69], among which the most popular one is the gamma frailty, where ω follows a gamma distribution with mean 1 and variance θ. We briefly introduce some other types of frailty families in appendix A. 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/11a7f429d75f9f8c6e9c630aeb6524b5-Paper-Conference.pdf",
+              "document_sha256": "e6528dfe28dd6422d1be48038e6774aec41c467f92fdf8b63345304c15247f10"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "1. When ω follows parametric distributional assumptions, and νe(t, Z) = λ(t)eβ Z , (1) reduces to the standard proportional frailty model [45]. A special case is when ω is degenerate, i.e., it has no randomness, then the model corresponds to the classic CoxPH model. 2. When ω is degenerate and νe is arbitrary, the model becomes equivalent to nonparametric hazard regression (NHR) [13, 44]. In NHR, the function parameter of interest is usually the logarithm of the (conditional) hazard function. In this paper we construct neural approximations to the logarithm of νe, i.e., ν(t, Z) = log νe(t, Z). The resulting models are called Neural Frailty Machines (NFM). Depending on the prior knowledge of the function ν, we propose two function approximation schemes: 2 For example in medical biology, it was observed that genetically identical animals kept in as similar an environment as possible will typically not behave the same upon exposure to environmental carcinogens [6] 3 The choice of one-dimensional frailty family is mostly for simplicity and clearness of theoretical derivations. Note that there exist multi-dimensional frailty families like the PVF family [69]. Generalizing our theoretical results to such kinds of families would require additional sets of regularity conditions, and will be left to future explorations.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/11a7f429d75f9f8c6e9c630aeb6524b5-Paper-Conference.pdf",
+              "document_sha256": "e6528dfe28dd6422d1be48038e6774aec41c467f92fdf8b63345304c15247f10"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "In this section, we present statistical guarantees regarding both NFM estimates in the sense of nonparametric regression [65], where we obtain rates of convergence to the ground truth function parameters (which is frequently referred to as the true parameter in statistics literature). The results in this section is interpreted as showing the statistical correctness of our approach. Proof strategy Our proof technique is based on the method of sieves [60, 59, 11] that views neural networks as a special kind of nonlinear sieve [11] that satisfies desirable approximation properties [72]. Our strategy is different from previous theoretical works on neural survival models [75, 76] where the developments implicitly requires the loss function to be well-controlled by the L2 loss and is therefore not directly applicable to our model due to the flexibility in choosing the frailty transform. Since both models produce estimates of function parameters, we need to specify a suitable function space to work with. Here we choose the following Hölder ball as was also used in previous works on nonparametric estimation using neural networks [57, 26, 76] \u001a \u001b β α WM (X ) = f : max esssup |D (f (x))| ≤ M , (8) α:|α|≤β x∈X",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/11a7f429d75f9f8c6e9c630aeb6524b5-Paper-Conference.pdf",
+              "document_sha256": "e6528dfe28dd6422d1be48038e6774aec41c467f92fdf8b63345304c15247f10"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0cb7a3ad2ba7e426d74b28b5",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/39e4973ba3321b80f37d9b55f63ed8b8-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-a091fb978c97007fe442f1df",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/11a7f429d75f9f8c6e9c630aeb6524b5-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Causal Inference with Latent Variables and Observational Data"
+      },
+      "sha256": "39a9f854e8e2a991a48f827416821cb312d458363f207069131afcbc3b58ee11"
+    }
+  ]
+}

@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Graph Neural Networks and Graph-Based Deep Learning",
+  "area": "Graph Neural Networks & Molecular AI",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-9db91bee587472a7e39cc0da",
+      "a": "paper-9eba778ed17c5f2a8ef91c7f",
+      "b": "paper-7703cd04ce4da7f50bdc6de5",
+      "state": {
+        "paper_a": {
+          "title": "Training Graph Neural Networks with 1000 Layers",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Deep graph neural networks (GNNs) have achieved excellent results on various tasks on increasingly large graph datasets with millions of nodes and edges. However, memory complexity has become a major obstacle when training deep GNNs for practical applications due to the immense number of nodes, edges, and intermediate activations. To improve the scalability of GNNs, prior works propose smart graph sampling or partitioning strategies to train GNNs with a smaller set of nodes or sub-graphs. In this work, we study reversible connections, group convolutions, weight tying, and equilibrium models to advance the memory and parameter efficiency of GNNs. We find that reversible connections in combination with deep network architectures enable the training of overparameterized GNNs that significantly outperform existing methods on multiple datasets. Our models RevGNN-Deep (1001 layers with 80 channels each) and RevGNN-Wide (448 layers with 224 channels each) were both trained on a single commodity GPU and achieve an ROC-AUC of 87.74 $\\pm$ 0.13 and 88.14 $\\pm$ 0.15 on the ogbn-proteins dataset. To the best of our knowledge, RevGNN-Deep is the deepest GNN in the literature by one order of magnitude."
+        },
+        "paper_b": {
+          "title": "Graph Ladling: Shockingly Simple Parallel GNN Training without Intermediate Communication",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Graphs are omnipresent and GNNs are a powerful family of neural networks for learning over graphs. Despite their popularity, scaling GNNs either by deepening or widening suffers from prevalent issues of $\\textit{unhealthy gradients, over-smoothening, information squashing}$, which often lead to sub-standard performance. In this work, we are interested in exploring a principled way to scale GNNs capacity without deepening or widening, which can improve its performance across multiple small and large graphs. Motivated by the recent intriguing phenomenon of model soups, which suggest that fine-tuned weights of multiple large-language pre-trained models can be merged to a better minima, we argue to exploit the fundamentals of model soups to mitigate the aforementioned issues of memory bottleneck and trainability during GNNs scaling. More specifically, we propose not to deepen or widen current GNNs, but instead present $\\textbf{first data-centric perspective}$ of model soups to build powerful GNNs by dividing giant graph data to build independently and parallelly trained multiple comparatively weaker GNNs without any intermediate communication, and $\\textit{combining their strength}$ using a greedy interpolation soup procedure to achieve state-of-the-art performance. Moreover, we provide a wide variety of model soup preparation techniques by leveraging state-of-the-art graph sampling and graph partitioning approaches that can handle large graph data structures. Our extensive experiments across many real-world small and large graphs, illustrate the effectiveness of our approach and point towards a promising orthogonal direction for GNN scaling. Codes are available at: https://github.com/VITA-Group/graph_ladling"
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "Several works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted the empirical scaling law from NLP, which suggests that over-parametrized models have better generalization capabilities, and proposed to similarly scale GNNs by stacking layers citing their increased ability…\n, 2020), where the final model quality has been found to have a power-law relationship with the amount of data, model size, and compute time; several works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted to scale GNNs (up to 1000 layers) assuming that processing larger graphs would likely benefit from more parameters.\nSeveral works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted the empirical scaling law from NLP, which suggests that over-parametrized models have better generalization capabilities, and proposed to similarly scale GNNs by stacking layers citing their increased ability to capture long-term dependencies.\n…where the final model quality has been found to have a power-law relationship with the amount of data, model size, and compute time; several works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted to scale GNNs (up to 1000 layers) assuming that processing larger graphs…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9eba778ed17c5f2a8ef91c7f",
+          "b": "paper-7703cd04ce4da7f50bdc6de5",
+          "input_sha256": "9dad29af0ba7e96daf0fa12400ed25974a2427940acfa735d0ebd15e9f604b16",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/li21o.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/li21o/li21o.pdf",
+              "sha256": "8abefd85ed3ebabb712a461e04398b320725b97f3b855d520b84ea31028d7c23"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/jaiswal23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/jaiswal23a/jaiswal23a.pdf",
+              "sha256": "9b0bc166cc0d5e597006a8c24142ea19148415e249a0a20cf95c3ef901e9c8f3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "corresponding ResGNNs, thus increasing the performance gap further. For instance, the RevGCN with 28 layers and 180 channels reduces the memory footprint by more than 75% while improving the accurracy by 0.76%, as compared to the ResGCN with 28 layers and 128 channels. Utilizing label propagation, the RevGAT with 5 layers and 1068 channels (3 attention heads with 356 channels for each head) achieves SOTA results on ogbn-arxiv. 4.3. Full-batch vs. Mini-batch Training Our method is orthogonal to existing sampling-based approaches, which also reduce memory consumption. Hence,",
+              "url": "https://proceedings.mlr.press/v139/li21o/li21o.pdf",
+              "document_sha256": "8abefd85ed3ebabb712a461e04398b320725b97f3b855d520b84ea31028d7c23"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Graphs are well-known data structures that model pairwise relationships using a set of vertices and edges and represent a myriad of real-world data from social networks, knowledge graphs, gene expression networks, etc. Graph neural networks (GNNs) (Kipf & Welling, 2017; Defferrard et al., 2016; Veličković et al., 2017; You et al., 2020; Gao et al., 2018; Chiang et al., 2019; Zheng et al., 2021b; Chen et al., 2018; Duan et al., 2022; Thekumparampil et al., 2018), which use message passing (MP) strategy at their core for aggregating knowledge from neighbors, have been widely accepted as powerful algorithmic tools for learning over graphs. Although message passing provides GNNs superior performance over traditional MLPs, the nature of evolving massive topological structures prevents MP-based GNNs from scaling to industrial-grade graph applications, and the majority of state-of-the-art GNNs are only tested on small graph datasets. Additionally, due to the prevalent issues of unhealthy gradients, over-smoothening, and information squashing (Li et al., 2018; NT & Maehara, 2019; Alon & Yahav, 2021; Jaiswal et al., 2022; Liu et al., 2021) while training GNNs, increasing model capacity either by deepening (stacking more layers) or widening (increasing neighborhood coverage) often lead to sub-standard performance. Previously, conforming to the empirical scaling laws (Kaplan et al., 2020), where the final model quality has been found to have a power-law relationship with the amount of data, model size, and compute time; several works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted to scale GNNs (up to 1000 layers) assuming that processing larger graphs would likely benefit from more parameters. Unlike conventional deep neural networks, exploiting",
+              "url": "https://proceedings.mlr.press/v202/jaiswal23a/jaiswal23a.pdf",
+              "document_sha256": "9b0bc166cc0d5e597006a8c24142ea19148415e249a0a20cf95c3ef901e9c8f3"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "2.2. GNNs and Issues with Model Explosion Despite the enormous success of GNNs in learning highquality node representations, many state-of-the-art GNNs are shallow due to notorious challenges in their trainability, resulting in sub-standard performance. Recently, we have been observing a massive explosion in the topological structure of real-world graph data, which raises demand to increase the model capacity to facilitate capturing long-range dependencies, and relaxing the widely-adopted restrictions to learn from limited neighbors subjected to resource constraints due to the design issues of message passing strategy. Several works (Li et al., 2021; Jaiswal et al., 2022; Zhou et al., 2021b) have attempted the empirical scaling law from NLP, which suggests that over-parametrized models have better generalization capabilities, and proposed to similarly scale GNNs by stacking layers citing their increased ability to capture long-term dependencies. However, scaling GNNs capacity either by deepening to capture long-range dependencies or by widening to increase neighborhood aggregation is inhibited by the prevalent issues of unhealthy gradients during back-propagation leading to poor trainability, over-smoothening causing feature collapse, and informa-",
+              "url": "https://proceedings.mlr.press/v202/jaiswal23a/jaiswal23a.pdf",
+              "document_sha256": "9b0bc166cc0d5e597006a8c24142ea19148415e249a0a20cf95c3ef901e9c8f3"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "phenomenon will help or deteriorate GNNs performance. To our surprise, we found that independently trained GNNs from scratch can be smoothly aggregated using our greedy soup interpolation procedure to create a better generalizable GNN that performs exceptionally well. It suggests that linear scaling of GNNs either by deepening or widening is not necessarily the right approach towards building high-quality generalizable GNNs, and model soups can be an alternative. Note that, unlike the conventional model soup, we are the first to explore weight averaging for graph models, and in a well-motivated data-centric perspective (where it matters the most) considering the exploding size of real-world graphs. More specifically, in our work, we firstly illustrate easy adaptability of model soups across multiple SOTA GNN architectures trained on multiple small and large graphs (unexplored till now) and secondly present a novel data-centric perspective of model soups for large graph-structured relational data within constraints of available computational resource. Moreover, we extend current state-of-the-art graph sampling and partitioning techniques to facilitate the training of candidate soup ingredients which can be seamlessly combined at end for better generalization.",
+              "url": "https://proceedings.mlr.press/v202/jaiswal23a/jaiswal23a.pdf",
+              "document_sha256": "9b0bc166cc0d5e597006a8c24142ea19148415e249a0a20cf95c3ef901e9c8f3"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To this end, we propose not to deepen or widen current GNNs, but instead explore a data-centric perspective of dividing ginormous graph data to build independently and parallelly trained multiple comparatively weaker models without any intermediate communication, and merge them together using greedy interpolation soup procedure to achieve state-of-the-art performance. Our work draws motivation from recent advancements in parallel training of pretrained language models (LMs). For example, Branch-Merge-Train (BTM) (Li et al., 2022) learns a set of independent expert LMs specializing in different domains followed by averaging to generalize to multiple domains, and Lo-Fi (Wortsman et al., 2022a) illustrates the futility of communication overhead in data-parallel multi-node finetuning of LMs. Although these techniques seem to work for large pre-trained LMs, it is still unclear and unexplored if they will work for comparatively much smaller GNNs in the trainingfrom-scratch regime. Moreover, GNNs deal with graphstructured relational data unlike independent samples in LMs and have their own unique set of challenges in their trainability, which makes it interesting to understand if soup",
+              "url": "https://proceedings.mlr.press/v202/jaiswal23a/jaiswal23a.pdf",
+              "document_sha256": "9b0bc166cc0d5e597006a8c24142ea19148415e249a0a20cf95c3ef901e9c8f3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9eba778ed17c5f2a8ef91c7f",
+          "url": "https://proceedings.mlr.press/v139/li21o.html"
+        },
+        "b": {
+          "paper_id": "paper-7703cd04ce4da7f50bdc6de5",
+          "url": "https://proceedings.mlr.press/v202/jaiswal23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "f17b6f0e8ff6800aef92d651366da9842a264cecb23b63d240744bf348362114"
+    },
+    {
+      "id": "edge-cb9e77232cc5a73f547d33f1",
+      "a": "paper-026307e276ddd12e3cb281b0",
+      "b": "paper-e0772bfc7ce2c1343802e4fd",
+      "state": {
+        "paper_a": {
+          "title": "Understanding Diffusion Objectives as the ELBO with Simple Data Augmentation",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "To achieve the highest perceptual quality, state-of-the-art diffusion models are optimized with objectives that typically look very different from the maximum likelihood and the Evidence Lower Bound (ELBO) objectives. In this work, we reveal that diffusion model objectives are actually closely related to the ELBO.Specifically, we show that all commonly used diffusion model objectives equate to a weighted integral of ELBOs over different noise levels, where the weighting depends on the specific objective used. Under the condition of monotonic weighting, the connection is even closer: the diffusion objective then equals the ELBO, combined with simple data augmentation, namely Gaussian noise perturbation. We show that this condition holds for a number of state-of-the-art diffusion models. In experiments, we explore new monotonic weightings and demonstrate their effectiveness, achieving state-of-the-art FID scores on the high-resolution ImageNet benchmark."
+        },
+        "paper_b": {
+          "title": "Discrete-state Continuous-time Diffusion for Graph Generation",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Graph is a prevalent discrete data structure, whose generation has wide applications such as drug discovery and circuit design. Diffusion generative models, as an emerging research focus, have been applied to graph generation tasks. Overall, according to the space of states and time steps, diffusion generative models can be categorized into discrete-/continuous-state discrete-/continuous-time fashions. In this paper, we formulate the graph diffusion generation in a discrete-state continuous-time setting, which has never been studied in previous graph diffusion models. The rationale of such a formulation is to preserve the discrete nature of graph-structured data and meanwhile provide flexible sampling trade-offs between sample quality and efficiency. Analysis shows that our training objective is closely related to the generation quality and our proposed generation framework enjoys ideal invariant/equivariant properties concerning the permutation of node ordering. Our proposed model shows competitive empirical performance against other state-of-the-art graph generation solutions on various benchmarks while at the same time can flexibly trade off the generation quality and efficiency in the sampling phase."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Diffusion models [80] can be interpreted from both the score-matching [69, 70] or the variational autoencoder perspective [23, 35, 34].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-026307e276ddd12e3cb281b0",
+          "b": "paper-e0772bfc7ce2c1343802e4fd",
+          "input_sha256": "dd141201414f345060138196c053bbc56671f2f90d63fe933a51a781e3aac246",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/ce79fbf9baef726645bc2337abb0ade2-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/ce79fbf9baef726645bc2337abb0ade2-Paper-Conference.pdf",
+              "sha256": "8e51c6f1a5b101b5ab7a0e350f01ae430323c66595a32fcf533f3b6f71182d09"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/91813e5ddd9658b99be4c532e274b49c-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/91813e5ddd9658b99be4c532e274b49c-Paper-Conference.pdf",
+              "sha256": "c14fdab8a98976fa671bfb74f6ab8648660114911a8d8e457977eae1cb88bb50"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "The diffusion model framework has since been successfully applied to text-to-image generation [Rombach et al., 2022b, Nichol et al., 2021, Ramesh et al., 2022, Saharia et al., 2022b, Yu et al., 2022, Nichol and Dhariwal, 2021, Ho et al., 2022, Dhariwal and Nichol, 2022, Ding et al., 2021], image-to-image generation [Saharia et al., 2022c,a, Whang et al., 2022], 3D synthesis [Poole et al., 2022, Watson et al., 2022], text-to-speech [Chen et al., 2021a, Kong et al., 2021, Chen et al., 2021b], and density estimation [Kingma et al., 2021, Song et al., 2021a]. Diffusion models can be interpreted as a special case of deep variational autoencoders (VAEs) [Kingma and Welling, 2013, Rezende et al., 2014] with a particular choice of inference model and generative model. Just like VAEs, the original diffusion models [Sohl-Dickstein et al., 2015] were optimized by maximizing the variational lower bound of the log-likelihood of the data, also called the evidence lower bound, or ELBO for short. It was shown by Variational Diffusion Models (VDM) [Kingma et al., 2021] and [Song et al., 2021a] how to optimize continuous-time diffusion models with the ELBO objective, achieving state-of-the-art likelihoods on image density estimation benchmarks. However, the best results in terms of sample quality metrics such as FID scores were achieved with other objectives, for example a denoising score matching objective [Song and Ermon, 2019] or a simple noise-prediction objective [Ho et al., 2020]. These now-popular objective functions look, on the face of it, very different from the traditionally popular maximum likelihood and ELBO objectives. Through the analysis in this paper, we reveal that all training objectives used in state-of-the-art diffusion models are actually closely related to the",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/ce79fbf9baef726645bc2337abb0ade2-Paper-Conference.pdf",
+              "document_sha256": "8e51c6f1a5b101b5ab7a0e350f01ae430323c66595a32fcf533f3b6f71182d09"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "Inspired by the theoretical results in Section 4, in this section we propose several monotonic weighting functions, and present experiments that test the effectiveness of the monotonic weighting functions compared to baseline (non-monotonic) weighting functions. In addition, we test the adaptive noise schedule (Section 3.2). For brevity we had to pick a name for our models. Since we build on earlier results on Variational Diffusion Models (VDM) [Kingma et al., 2021], and our objective is equivalent to the VDM objective combined with data augmentation, we name our models VDM++. 5.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/ce79fbf9baef726645bc2337abb0ade2-Paper-Conference.pdf",
+              "document_sha256": "8e51c6f1a5b101b5ab7a0e350f01ae430323c66595a32fcf533f3b6f71182d09"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 10,
+              "text": "Diffusion models [80] can be interpreted from both the score-matching [69, 70] or the variational autoencoder perspective [23, 35, 34]. Pioneering efforts on diffusion generative modeling study the process in continuous-state [67, 23, 68] whose typical reference distribution is Gaussian. Beyond that, some efforts propose discrete-state models [24] to . E.g., D3PM [2] designs the discrete diffusion process by multiplication of transition matrices; τ -LDR [8] generalizes D3PM by formulating a continuous-time Markov chain; [71] proposes a singleton conditional distribution-based objective for the continuous-time Markov chain-based model whose rationale is Brook’s Lemma [5, 49]. Diffusion models are widely used in graph generation tasks [44, 13, 85, 86, 84, 15, 83, 14, 61, 74, 47, 79, 78, 59, 3] such as molecule design [65, 25, 27, 43]. Pioneering works such as EDP-GNN [56] and GDSS [32] diffuse graph data in a continuous state space [26]. DiscDDPM [22] is an early effort to modify the DDPM architecture into a discrete state. In addition, DiGress [73] is also a one-shot discrete-state diffusion model, followed by a very recent work MCD [46], both in the discrete-time setting. Beyond the above-mentioned efforts, DruM [31] proposes to mix the diffusion process. EDGE [10] proposes an interesting process: diffusing graphs into empty graphs. Besides, GRAPHARM [36] proposes an autoregressive graph diffusion model, and [45] applies the diffusion models for molecule property prediction tasks. In addition to the above-mentioned general graph diffusion models, there are many other task-tailored graph diffusion generative models [48, 30, 41, 60, 77, 76, 4, 75], which incorporate more in-depth domain expertise into the model design. Interested readers are referred to this survey [44].",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/91813e5ddd9658b99be4c532e274b49c-Paper-Conference.pdf",
+              "document_sha256": "c14fdab8a98976fa671bfb74f6ab8648660114911a8d8e457977eae1cb88bb50"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "applying discrete-state diffusion models to graph generation tasks and is the current state-of-the-art graph diffusion generative model. However, DiGress is defined in the discrete time space whose generation is inflexible. This is because, its number of sampling steps must match the number of forward diffusion steps, which is a fixed hyperparameter after the model finishes training. A unique advantage of the continuous-time diffusion models [70, 32] lies in their flexible sampling process, and its simulation complexity is proportional to the number of sampling steps, determined by the step size of various numerical approaches (e.g., τ -leaping [18, 8, 71]) and decoupled from the models’ training. Thus, a discrete-state continuous-time diffusion model is highly desirable for graph generation tasks. Driven by the recent advance of continuous-time Markov Chain (CTMC)-based diffusion generative model [8], we incorporate the ideas of CTMC into the corruption and denoising of graph data and propose the first discrete-state continuous-time graph diffusion generative model. It shares the same advantages as DiGress by preserving the discrete nature of graph data and meanwhile overcomes the drawback of the nonadjustable sampling process in DiGress. This Discrete-state Continuous-time graph diffusion model is named D IS C O. D IS C O bears several desirable properties and advantages. First, despite its simplicity, the training objective has a rigorously proved connection to the sampling error. Second, its formulation includes a parametric graph-to-graph mapping, named backbone model, whose input-output architecture is shared between D IS C O and DiGress. Therefore, the graph transformer (GT)-based backbone model [54] from DiGress can be seamlessly plugged into D IS C O. Third, a",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/91813e5ddd9658b99be4c532e274b49c-Paper-Conference.pdf",
+              "document_sha256": "c14fdab8a98976fa671bfb74f6ab8648660114911a8d8e457977eae1cb88bb50"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "where Ait = Rit (f¯i , f i )δḠ\\f¯i ,G\\f i , Bt = Rt (ē(i,j) , e(i,j) )δḠ\\ē(i,j) ,G\\e(i,j) , the operator δḠ\\f¯i ,G\\f i (or δḠ\\ē(i,j) ,G\\e(i,j) ) checks whether two graphs Ḡ and G are exactly the same except for node i (or the edge between nodes i and j). Note that this factorization itself is not our contribution but a necessary part of our framework, so we mention it here for completeness. Its full derivation is in Appendix - Section A. Next, we detail the design of forward rate matrices. 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/91813e5ddd9658b99be4c532e274b49c-Paper-Conference.pdf",
+              "document_sha256": "c14fdab8a98976fa671bfb74f6ab8648660114911a8d8e457977eae1cb88bb50"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-026307e276ddd12e3cb281b0",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/ce79fbf9baef726645bc2337abb0ade2-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-e0772bfc7ce2c1343802e4fd",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/91813e5ddd9658b99be4c532e274b49c-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "95b164a4296b95a9f59b929aa8ef9782de798b84ffe7cebe338ae67c9f1ae35e"
+    },
+    {
+      "id": "edge-3ac43bd670faaba0361450a5",
+      "a": "paper-02678819c708f5e4ea88fd14",
+      "b": "paper-cda2936cf82b22acc114d0f9",
+      "state": {
+        "paper_a": {
+          "title": "Uncertainty Estimation Using a Single Deep Deterministic Neural Network",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN."
+        },
+        "paper_b": {
+          "title": "Uncertainty Estimation for Heterophilic Graphs Through the Lens of Information Theory",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "While uncertainty estimation for graphs recently gained traction, most methods rely on homophily and deteriorate in heterophilic settings. We address this by analyzing message passing neural networks from an information-theoretic perspective and developing a suitable analog to data processing inequality to quantify information throughout the model’s layers. In contrast to non-graph domains, information about the node-level prediction target can increase with model depth if a node’s features are semantically different from its neighbors. Therefore, on heterophilic graphs, the latent embeddings of an MPNN each provide different information about the data distribution - different from homophilic settings. This reveals that considering all node representations simultaneously is a key design principle for epistemic uncertainty estimation on graphs beyond homophily. We empirically confirm this with a simple post-hoc density estimator on the joint node embedding space that provides state-of-the-art uncertainty on heterophilic graphs. At the same time, it matches prior work on homophilic graphs without explicitly exploiting homophily through post-processing."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "One remedy to this problem is enforcing distance preservation constraints on the NN (Mukhoti et al., 2021a; Liu et al., 2020a; Van Amersfoort et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02678819c708f5e4ea88fd14",
+          "b": "paper-cda2936cf82b22acc114d0f9",
+          "input_sha256": "0dc7fec34aae5fe5b608c70358619ed2a352480d4df7c33cf29197e765a8c01b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/fuchsgruber25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/fuchsgruber25a/fuchsgruber25a.pdf",
+              "sha256": "9ca92360bd19a04093dcd3e5cee69a98cbbf36737b78cd494e24ab931431b204"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "5. Conclusion We introduced DUQ, Deterministic Uncertainty Quantification, a simple method for obtaining uncertainty using a deep neural network in a single forward pass. Evaluations show that our method is better in some scenarios and competitive in others with the more computationally expensive Deep Ensembles. Interesting future work would be to place DUQ in a probabilistic framework, enabling a calibrated notion of uncertainty and a rigorous way of separating out epistemic and aleatoric uncertainty.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We propose a method for training a deterministic deep model that can find and reject out of distribution data points at test time with a single forward pass. Our approach, deterministic uncertainty quantification (DUQ), builds upon ideas of RBF networks. We scale training in these with a novel loss function and centroid updating scheme and match the accuracy of softmax models. By enforcing detectability of changes in the input using a gradient penalty, we are able to reliably detect out of distribution data. Our uncertainty quantification scales well to large datasets, and using a single model, we improve upon or match Deep Ensembles in out of distribution detection on notable difficult dataset pairs such as FashionMNIST vs. MNIST, and CIFAR-10 vs. SVHN.",
+              "url": "https://proceedings.mlr.press/v119/van-amersfoort20a/van-amersfoort20a.pdf",
+              "document_sha256": "a5a997b01e0a167f363c0f4d14d9cc5176cb1df338d57c23451bd1d681438947"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Benkert et al. (2024) link this information loss to problems with density-based epistemic uncertainty estimators. These quantify uncertainty with an estimate of p(X) that is often directly computed from NN representations at the penultimate level Z(L−1) or from the logits Z(L) (Wu et al., 2023; Liu et al., 2020a). Because of the DPI, deep representations discard crucial information about both input and target. This is sometimes also referred to as feature collapse (Van Amersfoort et al., 2021). One remedy to this problem is enforcing distance preservation constraints on the NN (Mukhoti et al., 2021a; Liu et al., 2020a; Van Amersfoort et al., 2020). However, this is restrictive regarding the model architecture, prevents post-hoc uncertainty estimation, and often comes at decreased performance (Benkert et al., 2024).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/fuchsgruber25a/fuchsgruber25a.pdf",
+              "document_sha256": "9ca92360bd19a04093dcd3e5cee69a98cbbf36737b78cd494e24ab931431b204"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "7. Conclusion We introduce JLDE as a design principle for uncertainty estimation on heterophilic graphs that is applicable to a broad range of MPNNs. Through an information-theoretic analysis of MPNNs, we derive an analog to the DPI that enables tracking the information over the layers of the network. It reveals that in heterophilic graphs, each embedding provides unique information about the data distribution. Leveraging this insight even with a simple density estimator consistently outperforms existing approaches on different datasets, distribution shifts, and backbones. We believe that our work provides the theoretical groundwork for advancing uncertainty estimation on graphs beyond the homophily assumption of prior work.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/fuchsgruber25a/fuchsgruber25a.pdf",
+              "document_sha256": "9ca92360bd19a04093dcd3e5cee69a98cbbf36737b78cd494e24ab931431b204"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "We build on the insights of Platonov et al. (2023) regarding GNN evaluation on heterophilic data by primarily focusing on the novel heterophilic Amazon Ratings and Roman Empire datasets. The three other heterophilic datasets are binary classification problems that do not permit a LoC distribution shift. Additionally, we evaluate our method on the revisions of the heterophilic Squirrel and Chameleon datasets. We also study the two homophilic citation networks CoraML (Bandyopadhyay et al., 2005) and PubMed (Namata et al., 2012) to compare JLDE to uncertainty estimators that explicitly leverage the homophily in the data.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/fuchsgruber25a/fuchsgruber25a.pdf",
+              "document_sha256": "9ca92360bd19a04093dcd3e5cee69a98cbbf36737b78cd494e24ab931431b204"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02678819c708f5e4ea88fd14",
+          "url": "https://proceedings.mlr.press/v119/van-amersfoort20a.html"
+        },
+        "b": {
+          "paper_id": "paper-cda2936cf82b22acc114d0f9",
+          "url": "https://proceedings.mlr.press/v267/fuchsgruber25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "dc05d8ff3b8f9de0a48b46a1278578f4441e4279b14e59cda9fdfddc83704ced"
+    },
+    {
+      "id": "edge-247503bcf5268083a41bd703",
+      "a": "paper-037cd85432b97533f423aa0c",
+      "b": "paper-a3f4ae934a704ecc1f25bd38",
+      "state": {
+        "paper_a": {
+          "title": "Learning from Counterfactual Links for Link Prediction",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Learning to predict missing links is important for many graph-based applications. Existing methods were designed to learn the association between observed graph structure and existence of link between a pair of nodes. However, the causal relationship between the two variables was largely ignored for learning to predict links on a graph. In this work, we visit this factor by asking a counterfactual question: \"would the link still exist if the graph structure became different from observation?\" Its answer, counterfactual links, will be able to augment the graph data for representation learning. To create these links, we employ causal models that consider the information (i.e., learned representations) of node pairs as context, global graph structural properties as treatment, and link existence as outcome. We propose a novel data augmentation-based link prediction method that creates counterfactual links and learns representations from both the observed and counterfactual links. Experiments on benchmark data show that our graph learning method achieves state-of-the-art performance on the task of link prediction."
+        },
+        "paper_b": {
+          "title": "Cross-Domain Graph Data Scaling: A Showcase with Diffusion Models",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Models for natural language and images benefit from data scaling behavior: the more data fed into the model, the better they perform. This 'better with more' phenomenon enables the effectiveness of large-scale pre-training on vast amounts of data. However, current graph pre-training methods struggle to scale up data due to heterogeneity across graphs. To achieve effective data scaling, we aim to develop a general model that is able to capture diverse data patterns of graphs and can be utilized to adaptively help the downstream tasks. To this end, we propose UniAug, a universal graph structure augmentor built on a diffusion model. We first pre-train a discrete diffusion model on thousands of graphs across domains to learn the graph structural patterns. In the downstream phase, we provide adaptive enhancement by conducting graph structure augmentation with the help of the pre-trained diffusion model via guided generation. By leveraging the pre-trained diffusion model for structure augmentation, we consistently achieve performance improvements across various downstream tasks in a plug-and-play manner. To the best of our knowledge, this study represents the first demonstration of a data-scaling graph structure augmentor on graphs across domains."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Additional results on scaling effects with respect to the proportion of the full data can be found in Appendix D.4.\nThese GDA methods have been generally designed for specific tasks or particular aspects of graph data.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-037cd85432b97533f423aa0c",
+          "b": "paper-a3f4ae934a704ecc1f25bd38",
+          "input_sha256": "db24751369a2b488929f3525ee44e1eb73e624c0680ee6e9211a373cfba31221",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/zhao22e.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/zhao22e/zhao22e.pdf",
+              "sha256": "14ab3f63552b0d531b13d39f8de7a37d5a178eca39005b4c5bb09b15e0554728"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/b2fa07e58da29247ddea5a12f472bb0e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Learning to predict missing links is important for many graph-based applications. Existing methods were designed to learn the association between observed graph structure and existence of link between a pair of nodes. However, the causal relationship between the two variables was largely ignored for learning to predict links on a graph. In this work, we visit this factor by asking a counterfactual question: “would the link still exist if the graph structure became different from observation?” Its answer, counterfactual links, will be able to augment the graph data for representation learning. To create these links, we employ causal models that consider the information (i.e., learned representations) of node pairs as context, global graph structural properties as treatment, and link existence as outcome. We propose a novel data augmentation-based link prediction method that creates counterfactual links and learns representations from both the observed and counterfactual links. Experiments on benchmark data show that our graph learning method achieves state-of-theart performance on the task of link prediction.",
+              "url": "https://proceedings.mlr.press/v162/zhao22e/zhao22e.pdf",
+              "document_sha256": "14ab3f63552b0d531b13d39f8de7a37d5a178eca39005b4c5bb09b15e0554728"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "with others on the social network. The treatment is whether live in the same neighborhood, which can be identified by community detection. And the outcome is their friendship. In this work, we propose a novel concept of “counterfactual link” that answers the counterfactual question and (based on this concept) a novel link prediction method (CFLP) that uses the counterfactual links as augmented data for graph representation learning. Figure 1 illustrates this two-step method. Suppose the treatment variable is defined as one type of global graph structure, e.g., the neighborhood assignment discovered by spectral clustering or community detection algorithms. We are wondering how likely the neighborhood distribution makes a difference on the link (non-)existence for each pair of nodes. So, given a pair of nodes (like Alice and Adam) and the treatment value on this pair (in the same neighborhood), we find a pair of nodes (like Helen and Bob) that satisfies two conditions: (1) it has a different treatment (in different neighborhoods) and (2) it is the most similar pair with the given pair of nodes. We name these matched pairs of nodes as counterfactual links. Note that the outcome of the counterfactual links can be either 1 or 0, depending on whether there exists an edge between the matched pair of nodes. The counterfactual link provides an unobservable outcome to the given pair of nodes under a counterfactual condition. The process of creating counterfactual links for all positive and negative training examples can be viewed as a graph data augmentation method, as it enriches the training set. Then, CFLP trains a link predictor (which is GNN-based) to learn the representation vectors of nodes to predict both the observed factual links and counterfactual links. In this",
+              "url": "https://proceedings.mlr.press/v162/zhao22e/zhao22e.pdf",
+              "document_sha256": "14ab3f63552b0d531b13d39f8de7a37d5a178eca39005b4c5bb09b15e0554728"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Learning from unlabeled graphs. Graph self-supervised learning (SSL) methods provide examples of pre-training and fine-tuning paradigm [22, 23, 24, 25, 26]. However, these methods benefit from limited data scaling due to feature heterogeneity, structural pattern differences across domains, and varying downstream inductive biases. It is worth mentioning that DCT [27] presents a pre-training and then data augmentation pipeline on molecules. Despite its impressive performance improvement on graph-level tasks, DCT is bounded with molecules and thus the use cases are limited. Graph data augmentation. There have been many published works exploring graph data augmentation (GDA) since the introduction of graph neural networks (GNNs), with a focus on nodelevel [28, 29, 30], link-level [31, 32], and graph-level [33, 34, 35, 36, 37]. These GDA methods have been generally designed for specific tasks or particular aspects of graph data. In addition, they are often tailored for a single dataset and struggle to transfer to unseen patterns, which limits their generalizability to a broader class of applications. Diffusion models on graphs. Diffusion models [38, 39, 40] are latent variable models that learn data distribution by gradually adding noise into the data and then recovering the clean input. Existing diffusion models on graphs can be classified into two main categories depending on the type of noise injected, i.e. Gaussian or discrete. Previous works employed Gaussian diffusion models 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "Figure 4: Effects of pre-training amount of compute on graph classification (left) and link prediction (right), where one PF-days = 1015 × 24 × 3600 = 8.64 × 1019 floating point operations. collection. In addition, we add a 1000 graphs subset of the GitHub Star dataset from TUDataset [80] to enlarge the coverage of diverse patterns and form an EXTRA collection. We pre-train three versions of UniAug respectively on the three collections and evaluate them on graph classification and link prediction. As shown in Fig. 3, we observe a clear trend of increase in performance as we enlarge the coverage of pre-training data. This paves the way to scale up UniAug to even more pre-training datasets with an expanding distribution of graphs. Additional results on scaling effects with respect to the proportion of the full data can be found in Appendix D.4. Amount of compute We sought to understand how effectively our diffusion model can learn data patterns as we continue to train it. To this end, we checkpointed UniAug every 2,000 epochs (5 ×10−3 PF-days) while training on the EXTRA collection, and then applied it to graph classification and link prediction tasks. The results are illustrated in Fig. 4. We observe that downstream performance generally improves with prolonged training, while the trend slows down for some datasets when we reach 8,000 epochs. We take the checkpoint at the 10,000th epoch for evaluations. Given the scaling behavior observed, we anticipate UniAug to become even more effective with additional resources. 4.3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "only partially align with those shared by genetic networks [15]. Therefore, closely aligning the characteristics of the pre-training graphs and the downstream data both in feature and structure is essential for facilitating positive transfer [13]. As a consequence, the necessity of such meticulous data filtering restricts these methods from scaling up graphs effectively, as they can only utilize a small part of the available data. Given the limitation of the graph pre-training methods, a pertinent question emerges: How can we effectively leverage the increasing scale of graph data across domains? Rather than focusing solely on data patterns specific to particular domains, we aim to develop a model that has a comprehensive understanding of data patterns inherent across various types of graphs. In line with the principles of data scaling, we hypothesize that incorporating a broader range of training datasets can help the model build an effective and universal graph pattern library, avoiding an overemphasis on major data patterns specific to any single dataset [16]. To construct such a general-purpose model, we propose to utilize a diffusion model operating only on the structure as the backbone, for the following key reasons. (1) Unlike features, graph structures follow a uniform construction principle, namely, the connections between nodes. This allows for positive transfer across domains when the upstream and downstream data exhibit similar topological patterns [13]. In particular, while the graph representations of neurons and forward electronic circuits are derived from distinct domains, they still share common motifs [15]. (2) Current supervised and self-supervised methods tend to capture only specific patterns of graph data, with models designed for particular",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Models for natural language and images benefit from data scaling behavior: the more data fed into the model, the better they perform. This ’better with more’ phenomenon enables the effectiveness of large-scale pre-training on vast amounts of data. However, current graph pre-training methods struggle to scale up data due to heterogeneity across graphs. To achieve effective data scaling, we aim to develop a general model that is able to capture diverse data patterns of graphs and can be utilized to adaptively help the downstream tasks. To this end, we propose UniAug, a universal graph structure augmentor built on a diffusion model. We first pre-train a discrete diffusion model on thousands of graphs across domains to learn the graph structural patterns. In the downstream phase, we provide adaptive enhancement by conducting graph structure augmentation with the help of the pre-trained diffusion model via guided generation. By leveraging the pre-trained diffusion model for structure augmentation, we consistently achieve performance improvements across various downstream tasks in a plug-and-play manner. To the best of our knowledge, this study represents the first demonstration of a data-scaling graph structure augmentor on graphs across domains.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-037cd85432b97533f423aa0c",
+          "url": "https://proceedings.mlr.press/v162/zhao22e.html"
+        },
+        "b": {
+          "paper_id": "paper-a3f4ae934a704ecc1f25bd38",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/b2fa07e58da29247ddea5a12f472bb0e-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "c9f9fd3207e58bd71689a1a78fd10952457366db9a14ddded646fbc5fa47f84b"
+    },
+    {
+      "id": "edge-0c05703808c3482bdbcaf5bf",
+      "a": "paper-05b60024da11991397d7c66f",
+      "b": "paper-478f7b22325e760f9f85b094",
+      "state": {
+        "paper_a": {
+          "title": "Haar Graph Pooling",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Deep Graph Neural Networks (GNNs) are useful models for graph classification and graph-based regression tasks. In these tasks, graph pooling is a critical ingredient by which GNNs adapt to input graphs of varying size and structure. We propose a new graph pooling operation based on compressive Haar transforms — \\emph{HaarPooling}. HaarPooling implements a cascade of pooling operations; it is computed by following a sequence of clusterings of the input graph. A HaarPooling layer transforms a given input graph to an output graph with a smaller node number and the same feature dimension; the compressive Haar transform filters out fine detail information in the Haar wavelet domain. In this way, all the HaarPooling layers together synthesize the features of any given input graph into a feature vector of uniform size. Such transforms provide a sparse characterization of the data and preserve the structure information of the input graph. GNNs implemented with standard graph convolution layers and HaarPooling layers achieve state of the art performance on diverse graph classification and regression problems."
+        },
+        "paper_b": {
+          "title": "Weisfeiler and Lehman Go Topological: Message Passing Simplicial Networks",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "The pairwise interaction paradigm of graph machine learning has predominantly governed the modelling of relational systems. However, graphs alone cannot capture the multi-level interactions present in many complex systems and the expressive power of such schemes was proven to be limited. To overcome these limitations, we propose Message Passing Simplicial Networks (MPSNs), a class of models that perform message passing on simplicial complexes (SCs). To theoretically analyse the expressivity of our model we introduce a Simplicial Weisfeiler-Lehman (SWL) colouring procedure for distinguishing non-isomorphic SCs. We relate the power of SWL to the problem of distinguishing non-isomorphic graphs and show that SWL and MPSNs are strictly more powerful than the WL test and not less powerful than the 3-WL test. We deepen the analysis by comparing our model with traditional graph neural networks (GNNs) with ReLU activations in terms of the number of linear regions of the functions they can represent. We empirically support our theoretical claims by showing that MPSNs can distinguish challenging strongly regular graphs for which GNNs fail and, when equipped with orientation equivariant layers, they can improve classification accuracy in oriented SCs compared to a GNN baseline."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "When the graph Laplacian is non-singular, the Fourier transform matrix is invertible. iii) For the transform Φ by graph wavelet basis, Haar wavelet basis or graph framelets, Φ is invertible in all cases (Xu et al., 2019a; Li et al., 2020; Zheng et al., 2020a;b; 2021; Wang et al., 2020).\niii) For the transform Φ by graph wavelet basis, Haar wavelet basis or graph framelets, the Φ are all invertible (Xu et al., 2019a; Li et al., 2020; Zheng et al., 2020a;b; 2021; Wang et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-05b60024da11991397d7c66f",
+          "b": "paper-478f7b22325e760f9f85b094",
+          "input_sha256": "c79e435c7a6a1fb62485d93335c286b3d64af8f58e81ebedf7a0026c89475d66",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/wang20m.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/wang20m/wang20m.pdf",
+              "sha256": "52d3947cfe4e8e394d90ee81b172aebe2c490c8fdd9f23416015149ce1523f03"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/bodnar21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/bodnar21a/bodnar21a.pdf",
+              "sha256": "b996b1a70a0d4d333ccd21045e7debb5bd93a307da84cb6514dcb4cde0efce99"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Deep Graph Neural Networks (GNNs) are useful models for graph classification and graph-based regression tasks. In these tasks, graph pooling is a critical ingredient by which GNNs adapt to input graphs of varying size and structure. We propose a new graph pooling operation based on compressive Haar transforms — HaarPooling. HaarPooling implements a cascade of pooling operations; it is computed by following a sequence of clusterings of the input graph. A HaarPooling layer transforms a given input graph to an output graph with a smaller node number and the same feature dimension; the compressive Haar transform filters out fine detail information in the Haar wavelet domain. In this way, all the HaarPooling layers together synthesize the features of any given input graph into a feature vector of uniform size. Such transforms provide a sparse characterization of the data and preserve the structure information of the input graph. GNNs implemented with standard graph convolution layers and HaarPooling layers achieve state of the art performance on diverse graph classification and regression problems.",
+              "url": "https://proceedings.mlr.press/v119/wang20m/wang20m.pdf",
+              "document_sha256": "52d3947cfe4e8e394d90ee81b172aebe2c490c8fdd9f23416015149ce1523f03"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "not unique. Graph pooling provides an effective way to overcome this obstacle. Some existing approaches, EigenPooling (Ma et al., 2019a), for example, incorporate both features and graph structure, which gives very good performance on graph classification. In this paper, we propose a new graph pooling strategy based on a sparse Haar representation of the data, which we call Haar Graph Pooling, or simply HaarPooling. It is built on the Haar basis (Wang & Zhuang, 2019; 2020; Li et al., 2019), which is a localized wavelet-like basis on a graph. We define HaarPooling by the compressive Haar transform of the graph data, which is a nonlinear transform that operates in the Haar wavelet domain by using the Haar basis. For an input data sample, which consists of a graph G and the feature on the nodes X in ∈ RN ×d , the compressive Haar transform is determined by the Haar basis vectors on G and maps X in into a matrix X out of dimension d × N1 . The pooled feature X out is in the Haar wavelet domain and extracts the coarser feature of the input. Thus, HaarPooling can provide sparse representations of graph data that distill structural graph information. The Haar basis and its compressive transform can be used to define cascading pooling layers, i.e., for each layer, we define an orthonormal Haar basis and its compressive Haar transform. Each HaarPooling layer pools the graph input from the previous layer to output with a smaller node number and the same feature dimension. In this way, all the HaarPooling layers together synthesize the features of all graph input samples into feature vectors with the same size. We then obtain an output of a fixed dimension, regardless of the size of the input. The algorithm of HaarPooling is simple to implement as the Haar basis and the",
+              "url": "https://proceedings.mlr.press/v119/wang20m/wang20m.pdf",
+              "document_sha256": "52d3947cfe4e8e394d90ee81b172aebe2c490c8fdd9f23416015149ce1523f03"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 6,
+              "text": "The invertibility condition for the aggregation function H can be relaxed, but is satisfied by many commonly used graph convolutions: i) For an undirected graph, the normalised adjacency matrix has non-negative eigenvalues. If the eigenvalues are all positive, the aggregation function is invertible. ii) The Fourier transform is the square matrix of eigenvectors, as used in the spectral GNN (Bruna et al., 2014). When the graph Laplacian is non-singular, the Fourier transform matrix is invertible. iii) For the transform Φ by graph wavelet basis, Haar wavelet basis or graph framelets, Φ is invertible in all cases (Xu et al., 2019a; Li et al., 2020; Zheng et al., 2020a;b; 2021; Wang et al., 2020). So the bound in Theorem 15 applies to them. SCNN Simplicial Complex Neural Networks (SCNNs) were proposed by Ebli et al. (2020). We consider a version of their model using only the first power of a Laplacian matrix, generically denoted here by Mn : \u0001 Hnout = ψ Mn Hnin Wn ,",
+              "url": "https://proceedings.mlr.press/v139/bodnar21a/bodnar21a.pdf",
+              "document_sha256": "b996b1a70a0d4d333ccd21045e7debb5bd93a307da84cb6514dcb4cde0efce99"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract The pairwise interaction paradigm of graph machine learning has predominantly governed the modelling of relational systems. However, graphs alone cannot capture the multi-level interactions present in many complex systems and the expressive power of such schemes was proven to be limited. To overcome these limitations, we propose Message Passing Simplicial Networks (MPSNs), a class of models that perform message passing on simplicial complexes (SCs). To theoretically analyse the expressivity of our model we introduce a Simplicial Weisfeiler-Lehman (SWL) colouring procedure for distinguishing non-isomorphic SCs. We relate the power of SWL to the problem of distinguishing non-isomorphic graphs and show that SWL and MPSNs are strictly more powerful than the WL test and not less powerful than the 3-WL test. We deepen the analysis by comparing our model with traditional graph neural networks (GNNs) with ReLU activations in terms of the number of linear regions of the functions they can represent. We empirically support our theoretical claims by showing that MPSNs can distinguish challenging strongly regular graphs for which GNNs fail and, when equipped with orientation equivariant layers, they can improve classification accuracy in oriented SCs compared to a GNN baseline. *",
+              "url": "https://proceedings.mlr.press/v139/bodnar21a/bodnar21a.pdf",
+              "document_sha256": "b996b1a70a0d4d333ccd21045e7debb5bd93a307da84cb6514dcb4cde0efce99"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Figure 3. Rook’s 4x4 graph and the Shrikhande graph: Strongly Regular non-isomorphic graphs with parameters SR(16,6,2,2). Our approach can distinguish them: only Rook’s graph (left) possesses 4-cliques (orange) and thus the two graphs are associated with distinct clique complexes. The 3-WL test fails to distinguish them.",
+              "url": "https://proceedings.mlr.press/v139/bodnar21a/bodnar21a.pdf",
+              "document_sha256": "b996b1a70a0d4d333ccd21045e7debb5bd93a307da84cb6514dcb4cde0efce99"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-05b60024da11991397d7c66f",
+          "url": "https://proceedings.mlr.press/v119/wang20m.html"
+        },
+        "b": {
+          "paper_id": "paper-478f7b22325e760f9f85b094",
+          "url": "https://proceedings.mlr.press/v139/bodnar21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "3c204f3cd48573592dafd36abcfb04148bba508dab613e381be8782d64587c03"
+    },
+    {
+      "id": "edge-186521ca878bd80b211c259d",
+      "a": "paper-085646cdc463c13b906e0c8c",
+      "b": "paper-4434b5e113774e0ef5e3ce52",
+      "state": {
+        "paper_a": {
+          "title": "Transformers need glasses! Information over-squashing in language tasks",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We study how information propagates in decoder-only Transformers, which are the architectural foundation of most existing frontier large language models (LLMs). We rely on a theoretical signal propagation analysis---specifically, we analyse the representations of the last token in the final layer of the Transformer, as this is the representation used for next-token prediction. Our analysis reveals a representational collapse phenomenon: we prove that certain distinct pairs of inputs to the Transformer can yield arbitrarily close representations in the final token. This effect is exacerbated by the low-precision floating-point formats frequently used in modern LLMs. As a result, the model is provably unable to respond to these sequences in different ways---leading to errors in, e.g., tasks involving counting or copying. Further, we show that decoder-only Transformer language models can lose sensitivity to specific tokens in the input, which relates to the well-known phenomenon of over-squashing in graph neural networks. We provide empirical evidence supporting our claims on contemporary LLMs. Our theory points to simple solutions towards ameliorating these issues."
+        },
+        "paper_b": {
+          "title": "On Vanishing Gradients, Over-Smoothing, and Over-Squashing in GNNs: Bridging Recurrent and Graph Learning",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Graph Neural Networks (GNNs) are models that leverage the graph structure to transmit information between nodes, typically through the message-passing operation. While widely successful, this approach is well-known to suffer from representational collapse as the number of layers increases and insensitivity to the information contained at distant and poorly connected nodes. In this paper, we present a unified view of on the appearance of these issues through the lens of vanishing gradients, using ideas from linear control theory for our analysis. We propose an interpretation of GNNs as recurrent models and empirically demonstrate that a simple state-space formulation of an GNN effectively alleviates these issues at no extra trainable parameter cost. Further, we show theoretically and empirically that (i) Traditional GNNs are by design prone to extreme gradient vanishing even after few layers; (ii) Feature collapse is directly related to the mechanism causing vanishing gradients; (iii) Long-range modeling is most easily achieved by a combination of graph rewiring and vanishing gradient mitigation. We believe our work will help bridge the gap between the recurrent and graph neural network literature and will unlock the design of new deep and performant GNNs."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Over-squashing [1, 100, 30, 7] was originally introduced as a bottleneck resulting from ‘squashing’ into node representations amounts of information that are growing potentially exponentially quickly due to the topology of the graph.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-085646cdc463c13b906e0c8c",
+          "b": "paper-4434b5e113774e0ef5e3ce52",
+          "input_sha256": "b7650e478b5da882411848e18b276b474f6c0f802cae6406b09f82113f9f0ca2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/b1d35561c4a4a0e0b6012b2af531e149-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/b1d35561c4a4a0e0b6012b2af531e149-Paper-Conference.pdf",
+              "sha256": "e32de3f98574234166862edb67755fcb519f757d2771fb904335d5c71ab4271e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/6ba7ebba4d54408b00a2b0275629f625-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/6ba7ebba4d54408b00a2b0275629f625-Paper-Conference.pdf",
+              "sha256": "3418d3e14a5f465b9a0bd5722606e16913b5b974e4f7f8638c5302525010d584"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Over-squashing. Over-squashing [1, 100, 30, 7] was originally introduced as a bottleneck resulting from ‘squashing’ into node representations amounts of information that are growing potentially exponentially quickly due to the topology of the graph. It is often characterized by the quantity pKq p0q being low, implying that the final representation of node u is not very sensitive Bhu {Bhv to the initial representation at some other node v. While the relationship between over-squashing and vanishing gradients was hinted at by [30], in Section 5 we explore this relationship in detail by showing that techniques aimed to mitigate vanishing gradients in sequence models help to mitigate over-squashing in GNNs. Vanishing gradients. Vanishing gradients have been extensively studied in RNNs [11, 61, 82], while this problem has been surprisingly mostly overlooked in the GNN community. For a detailed discussion on the relevant literature, we point the reader to the Appendix F. We simply highlight that there are works that have seen success in taking ideas from sequence modelling [91, 47, 102, 10, 66] or signal propagation [40, 95] and bridging them to GNNs, but they rarely have a detailed discussion on vanishing gradients. In Section 5, we show that vanishing gradient mitigation techniques from RNNs seem to be very effective towards the mitigation of feature collapse and over-squashing in GNNs and argue that the two communities have very aligned problems and goals.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ba7ebba4d54408b00a2b0275629f625-Paper-Conference.pdf",
+              "document_sha256": "3418d3e14a5f465b9a0bd5722606e16913b5b974e4f7f8638c5302525010d584"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Graph Neural Networks (GNNs) are models that leverage the graph structure to transmit information between nodes, typically through the message-passing operation. While widely successful, this approach is well-known to suffer from representational collapse as the number of layers increases and insensitivity to the information contained at distant and poorly connected nodes. In this paper, we present a unified view of the appearance of these issues through the lens of vanishing gradients, using ideas from linear control theory for our analysis. We propose an interpretation of GNNs as recurrent models and empirically demonstrate that a simple state-space formulation of a GNN effectively alleviates these issues at no extra trainable parameter cost. Further, we show theoretically and empirically that (i) Traditional GNNs are by design prone to extreme gradient vanishing even after a few layers; (ii) Feature collapse is directly related to the mechanism causing vanishing gradients; (iii) Long-range modeling is most easily achieved by a combination of graph rewiring and vanishing gradient mitigation. We believe our work will help bridge the gap between the recurrent and graph learning literature and unlock the design of new effective models that benefit from both worlds.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ba7ebba4d54408b00a2b0275629f625-Paper-Conference.pdf",
+              "document_sha256": "3418d3e14a5f465b9a0bd5722606e16913b5b974e4f7f8638c5302525010d584"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "phenomenon in GNNs: (i) How prone are GNNs to gradient vanishing? (ii) What is the effect of gradient vanishing on node feature evolution? (iii) Can preventing vanishing gradients effectively mitigate over-squashing and enable long-range modelling? (iv) Can methods used in the non-linear [61, 82, 9] and more recently, linear [52, 81] recurrent neural network (RNN) literature be effective at dealing with feature collapse and long-range modeling? We answer these questions by providing a novel perspective that bridges the gap between recurrent and graph learning. Contributions and outline. In summary, the contributions of this work are the following: • In Section 3, we explore the connection between GNNs and recurrent models and demonstrate how classical GNNs are susceptible to a phenomenon we term extreme gradient vanishing. We propose GNN-SSM, a GNN model that is written as a state-space model, allowing for better control of the spectrum of the Jacobian. • In Section 4, we show how vanishing gradients contribute to node feature evolution, providing a more precise explanation for why GNNs struggle with depth and how node feature collapse emerges via spectral analysis of the layer-wise Jacobians. We show that GNN-SSMs are able to exactly control the rate of collapse of deep representations. • In Section 5, we show how vanishing gradients are related to over-squashing. We argue that over-squashing should therefore be tackled by approaches that both perform graph rewiring and mitigate vanishing gradients.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/6ba7ebba4d54408b00a2b0275629f625-Paper-Conference.pdf",
+              "document_sha256": "3418d3e14a5f465b9a0bd5722606e16913b5b974e4f7f8638c5302525010d584"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-085646cdc463c13b906e0c8c",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/b1d35561c4a4a0e0b6012b2af531e149-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-4434b5e113774e0ef5e3ce52",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/6ba7ebba4d54408b00a2b0275629f625-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "ad96c420588abc4d26e214fe5ac025dd4b731be2b064c2d6827eed37899fbc59"
+    },
+    {
+      "id": "edge-d1cd63e88e56c78c2b9a28c3",
+      "a": "paper-09e3ae60bf037408b08079d0",
+      "b": "paper-ee08c32029945a1b0a4afe40",
+      "state": {
+        "paper_a": {
+          "title": "Don't Blame the ELBO! A Linear VAE Perspective on Posterior Collapse",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Posterior collapse in Variational Autoencoders (VAEs) with uninformative priors arises when the variational posterior distribution closely matches the prior for a subset of latent variables. This paper presents a simple and intuitive explanation for posterior collapse through the analysis of linear VAEs and their direct correspondence with Probabilistic PCA (pPCA). We explain how posterior collapse may occur in pPCA due to local maxima in the log marginal likelihood. Unexpectedly, we prove that the ELBO objective for the linear VAE does not introduce additional spurious local maxima relative to log marginal likelihood. We show further that training a linear VAE with exact variational inference recovers a uniquely identifiable global maximum corresponding to the principal component directions. Empirically, we find that our linear analysis is predictive even for high-capacity, non-linear VAEs and helps explain the relationship between the observation noise, local maxima, and posterior collapse in deep Gaussian VAEs."
+        },
+        "paper_b": {
+          "title": "Autoregressive Diffusion Model for Graph Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Diffusion-based graph generative models have recently obtained promising results for graph generation. However, existing diffusion-based graph generative models are mostly one-shot generative models that apply Gaussian diffusion in the dequantized adjacency matrix space. Such a strategy can suffer from difficulty in model training, slow sampling speed, and incapability of incorporating constraints. We propose an autoregressive diffusion model for graph generation. Unlike existing methods, we define a node-absorbing diffusion process that operates directly in the discrete graph space. For forward diffusion, we design a diffusion ordering network , which learns a data-dependent node absorbing ordering from graph topology. For reverse generation, we design a denoising network that uses the reverse node ordering to efficiently reconstruct the graph by predicting the node type of the new node and its edges with previously denoised nodes at a time. Based on the permutation invariance of graph, we show that the two networks can be jointly trained by optimizing a simple lower bound of data likelihood. Our experiments on six diverse generic graph datasets and two molecule datasets show that our model achieves better or comparable generation performance with previous state-of-the-art, and meanwhile enjoys fast generation speed."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Existing works (Lucas et al., 2019b;a) have shown that the VAE objective can cause posterior collapse.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09e3ae60bf037408b08079d0",
+          "b": "paper-ee08c32029945a1b0a4afe40",
+          "input_sha256": "c48b38720fb769c9bdf9e35ca571154725a56ade693f23831ac76d05f21afe36",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/7e3315fe390974fcf25e44a9445bd821-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/7e3315fe390974fcf25e44a9445bd821-Paper.pdf",
+              "sha256": "00fd6e54c80b1ca956f7908ac67069585d18c7a0b90ede326e0261f12f56e4af"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/kong23b.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/kong23b/kong23b.pdf",
+              "sha256": "ca0e7e22632ab2cfbe46ceb59f021c682496220c7543388d61f190c57fe1221f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "We explored how the analysis of the linear VAEs extends to deep nonlinear models. To do so, we trained VAEs with Gaussian observation models on the MNIST [27] and CelebA [28] datasets. We apply uniform dequantization as in Papamakarios et al. [31] in each case. We also adopt the nonlinear logit preprocessing transformation from Papamakarios et al. [31] to provide fair comparisons with existing work. We also report results of models trained directly in pixel space in the appendix (there is no significant difference for the hypotheses we test). Measuring posterior collapse In order to measure the extent of posterior collapse, we introduce the following definition. We say that latent dimension dimension i has (\u000f, δ)-collapsed if Px∼p [KL(q(zi |x)||p(zi )) < \u000f] ≥ 1 − δ. Note that the linear VAE can suffer (0, 0)-collapse. To estimate this practically, we compute the proportion of data samples which induce a variational distribution with KL divergence less than \u000f and finally report the percentage of dimensions which have (\u000f, δ)-collapsed. Throughout this work, we fix δ = 0.01 and vary \u000f. Investigating σ 2 We trained MNIST VAEs with 2 hidden layers in both the decoder and encoder, ReLU activations, and 200 latent dimensions. We first evaluated training with fixed values of the observation noise, σ 2 . This mirrors many public VAE implementations where σ 2 is fixed to 1 throughout training (also observed by Dai and Wipf [13]), however, our linear analysis suggests that this is suboptimal. Then, we consider the setting where the observation noise and VAE weights are learned simultaneously. In Table 1 we report the final ELBO of nonlinear VAEs trained on real-valued MNIST. For fixed σ 2 , we found that the final models could have significant differences in ELBO which were",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/7e3315fe390974fcf25e44a9445bd821-Paper.pdf",
+              "document_sha256": "00fd6e54c80b1ca956f7908ac67069585d18c7a0b90ede326e0261f12f56e4af"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Posterior collapse. A dominant issue with VAE optimization is posterior collapse, in which the learned variational distribution is close to the prior. This reduces the capacity of the generative model, making it impossible for the decoder network to make use of the information content of all of the latent dimensions. While posterior collapse is widely acknowledged, formally defining it has remained a challenge. We introduce a formal definition in Section 6.2 which we use to measure posterior collapse in trained deep neural networks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/7e3315fe390974fcf25e44a9445bd821-Paper.pdf",
+              "document_sha256": "00fd6e54c80b1ca956f7908ac67069585d18c7a0b90ede326e0261f12f56e4af"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "VAEs (Simonovsky & Komodakis, 2018; Liu et al., 2018; Ma et al., 2018) and GANs (Cao & Kipf, 2022; Maziarka et al., 2020) generate all edges independently from latent embeddings. This independence assumption can hurt the quality of the generated graphs. Normalizing flow models (Zang & Wang, 2020; Madhawa et al., 2019) are restricted to invertible model architectures for building a normalized probability. The other class is autoregressive graph generative models, which generate a graph by sequentially adding nodes and edges. Autoregressive generation can be achieved using recurrent networks (Li et al., 2018; You et al., 2018b; Dai et al., 2020), VAEs (Liu et al., 2018; Jin et al., 2018; 2020; Guo et al., 2021), normalizing flows (Shi et al., 2020; Luo et al., 2021), and Reinforcement Learning (RL) (You et al., 2018a). By breaking the problem into smaller parts, these methods are more apt at capturing complex structural patterns and can easily incorporate constraints during generation. However, a key drawback of them is that their training is sensitive to node ordering. Most existing works pre-define a fixed node ordering by ad-hoc such as breadthfirst search (BFS) ordering (You et al., 2018b; Shi et al., 2020), which can be suboptimal for generation. OM (Chen et al., 2021) also learns the node ordering for autoregressive graph generation, but our method differs from OM in two aspects. (1) The motivations are different. Our method is motivated by autoregressive diffusion and treats the graph sequences in the diffusion process as the latent variable; OM treats the node ordering as the latent variable and infers its posterior distribution in a way similar to Variational autoencoder (VAE). (2) Our training objective is much simpler than OM. First, we do not need to compute",
+              "url": "https://proceedings.mlr.press/v202/kong23b/kong23b.pdf",
+              "document_sha256": "ca0e7e22632ab2cfbe46ceb59f021c682496220c7543388d61f190c57fe1221f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Diffusion-based graph generative models have recently obtained promising results for graph generation. However, existing diffusion-based graph generative models are mostly one-shot generative models that apply Gaussian diffusion in the dequantized adjacency matrix space. Such a strategy can suffer from difficulty in model training, slow sampling speed, and incapability of incorporating constraints. We propose an autoregressive diffusion model for graph generation. Unlike existing methods, we define a node-absorbing diffusion process that operates directly in the discrete graph space. For forward diffusion, we design a diffusion ordering network, which learns a datadependent node absorbing ordering from graph topology. For reverse generation, we design a denoising network that uses the reverse node ordering to efficiently reconstruct the graph by predicting the node type of the new node and its edges with previously denoised nodes at a time. Based on the permutation invariance of graph, we show that the two networks can be jointly trained by optimizing a simple lower bound of data likelihood. Our experiments on six diverse generic graph datasets and two molecule datasets show that our model achieves better or comparable generation performance with previous state-of-the-art, and meanwhile enjoys fast generation speed.",
+              "url": "https://proceedings.mlr.press/v202/kong23b/kong23b.pdf",
+              "document_sha256": "ca0e7e22632ab2cfbe46ceb59f021c682496220c7543388d61f190c57fe1221f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "We propose an autoregressive graph generative model named G RAPH A RM via autoregressive diffusion on graphs. Autoregressive diffusion model (ARDM) (Hoogeboom et al., 2022) builds upon the recently developed absorbing diffusion (Austin et al., 2021) for discrete data, where exactly one dimension of the data decays to the absorbing state at each diffusion step. In G RAPH A RM, we design node-absorbing autoregressive diffusion for graphs, which diffuses a graph directly in the discrete graph space instead of in the dequantized adjacency matrix space. The forward pass absorbs one node in each step by masking it along with its connecting edges, which is repeated until all the",
+              "url": "https://proceedings.mlr.press/v202/kong23b/kong23b.pdf",
+              "document_sha256": "ca0e7e22632ab2cfbe46ceb59f021c682496220c7543388d61f190c57fe1221f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09e3ae60bf037408b08079d0",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/7e3315fe390974fcf25e44a9445bd821-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-ee08c32029945a1b0a4afe40",
+          "url": "https://proceedings.mlr.press/v202/kong23b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "23bf816b434f582b4a0b96b5d7e113a49035bd9b8e0bf2fb76e86f0e5e8b098e"
+    },
+    {
+      "id": "edge-295df6fe0c74974198761954",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-4dbe244623b906e3e46dee02",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Mitigating Over-smoothing in Transformers via Regularized Nonlocal Functionals",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Transformers have achieved remarkable success in a wide range of natural language processing and computer vision applications. However, the representation capacity of a deep transformer model is degraded due to the over-smoothing issue in which the token representations become identical when the model's depth grows. In this work, we show that self-attention layers in transformers minimize a functional which promotes smoothness, thereby causing token uniformity. We then propose a novel regularizer that penalizes the norm of the difference between the smooth output tokens from self-attention and the input tokens to preserve the fidelity of the tokens. Minimizing the resulting regularized energy functional, we derive the Neural Transformer with a Regularized Nonlocal Functional (NeuTRENO), a novel class of transformer models that can mitigate the over-smoothing issue. We empirically demonstrate the advantages of NeuTRENO over the baseline transformers and state-of-the-art methods in reducing the over-smoothing of token representations on various practical tasks, including object classification, image segmentation, and language modeling."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Transformer models [62] have achieved substantial success in natural language processing [16, 2, 13, 10, 47, 4, 6, 14], reinforcement learning [9, 32], computer vision [19, 40, 59, 49, 44, 3, 41, 71, 27], and other practical applications [50, 33, 70, 26, 66].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-4dbe244623b906e3e46dee02",
+          "input_sha256": "57ef7af39731c4c91ab81b9770bf126357a974f5fc9193fea1b04efb357fd269",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/fde1a69a5b6e554b2f1f727197d2651d-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/fde1a69a5b6e554b2f1f727197d2651d-Paper-Conference.pdf",
+              "sha256": "f6f2dd78d6850f4343333f064e67f6eddb8e33ba5b8228efea573c033cb156c4"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Transformer models [62] have achieved substantial success in natural language processing [16, 2, 13, 10, 47, 4, 6, 14], reinforcement learning [9, 32], computer vision [19, 40, 59, 49, 44, 3, 41, 71, 27], and other practical applications [50, 33, 70, 26, 66]. Transformers also excel at transferring knowledge from pre-trained models to new tasks, even when limited supervision is available [45, 46, 16, 69, 39]. At the heart of transformers lies the self-attention mechanism, which computes a weighted average of token representations within a sequence. These weights are determined based on the similarity scores between pairs of tokens, determining their relative importance in the sequence [11, 43, 38]. This flexibility in capturing diverse syntactic and semantic relationships has been identified as a crucial factor contributing to the success of transformers [57, 63, 12, 64, 31]. 1.1",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fde1a69a5b6e554b2f1f727197d2651d-Paper-Conference.pdf",
+              "document_sha256": "f6f2dd78d6850f4343333f064e67f6eddb8e33ba5b8228efea573c033cb156c4"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "and DeiT backbones the on ADE20K image segmentation task [72], as shown in Table 2. The results demonstrate the substantial performance improvements achieved by utilizing the NeuTRENO DeiT backbone over the DeiT backbone, in terms of both single-scale (SS) MIoU and multi-scale (MS) MIoU metrics. These results strongly emphasize the effectiveness of our NeuTRENO approach in enhancing image segmentation performance. Language Model on WikiText-103. In addition to computer vision tasks, we also evaluate the effectiveness of our model on a large-scale natural language processing application, specifically language modeling on WikiText-103. Our NeuTRENO language model demonstrates better performance in terms of both test perplexity and valid perplexity when compared to the softmax transformer language model [68]. These findings, combined with the results obtained across various tasks, empirically confirm the significant benefits of our NeuTRENO models. Combine with pre-trained models. Furthermore, our proposed method is also beneficial to combine with pre-trained models. To empirically demonstrate that we incorporate NeuTRENO with pre-trained DeiT and fine-tune on the ImageNet dataset with one-third number of epochs that are used in training. The result is presented in Table 1, showing that combined with our method improves both the Top-1 and Top-5 accuracies of the pre-trained models.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fde1a69a5b6e554b2f1f727197d2651d-Paper-Conference.pdf",
+              "document_sha256": "f6f2dd78d6850f4343333f064e67f6eddb8e33ba5b8228efea573c033cb156c4"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Nonlocal Functional (NeuTRENO), a novel class of transformers designed to mitigate over-smoothing. NeuTRENO is derived by optimizing a regularized nonlocal functional, which includes an additional convex fidelity term. This fidelity term penalizes the norm of the difference between the smooth output tokens from self-attention and the input tokens, thereby reducing the over-smoothing effect. Our contribution is three-fold. 1. We develop a nonlocal variational denoising framework for self-attention and shed light on the over-smoothing issue that hampers the representation capacity of transformers. 2. We develop NeuTRENO, a novel class of transformers that are capable of alleviating the over-smoothing issue. 3. We theoretically prove that transformers with softmax self-attention are prone to oversmoothing while NeuTRENO can avoid this issue. We empirically demonstrate the benefits of NeuTRENO on various large-scale applications, including the ImageNet object classification, ADE20K image segmentation, and WikiText-103 language modeling tasks. Organization: We organize our paper as follows: in Section 2, we develop a nonlocal variational denoising framework for self-attention and provide an explanation for the over-smoothing issue in transformer-based models. In section 3, we propose NeuTRENO, and present a theoretical result that guarantees NeuTRENO’s capability of mitigating over-smoothing. In Section 4, we empirically validate the benefits of NeuTRENO. We discuss the related work in Section 6. Finally, we conclude our main contributions and remarks. Further results, details, and proofs are provided in the Appendix.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/fde1a69a5b6e554b2f1f727197d2651d-Paper-Conference.pdf",
+              "document_sha256": "f6f2dd78d6850f4343333f064e67f6eddb8e33ba5b8228efea573c033cb156c4"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-4dbe244623b906e3e46dee02",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/fde1a69a5b6e554b2f1f727197d2651d-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "261fe0b169a9f487ab4fddc07d17ea9cd9e9ae214b324be6273befb2463ea3ac"
+    },
+    {
+      "id": "edge-6d06a9f2f7422343bca4547f",
+      "a": "paper-09fda94d18dce9e214e339aa",
+      "b": "paper-a3f4ae934a704ecc1f25bd38",
+      "state": {
+        "paper_a": {
+          "title": "Learning Transferable Visual Models From Natural Language Supervision",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+        },
+        "paper_b": {
+          "title": "Cross-Domain Graph Data Scaling: A Showcase with Diffusion Models",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Models for natural language and images benefit from data scaling behavior: the more data fed into the model, the better they perform. This 'better with more' phenomenon enables the effectiveness of large-scale pre-training on vast amounts of data. However, current graph pre-training methods struggle to scale up data due to heterogeneity across graphs. To achieve effective data scaling, we aim to develop a general model that is able to capture diverse data patterns of graphs and can be utilized to adaptively help the downstream tasks. To this end, we propose UniAug, a universal graph structure augmentor built on a diffusion model. We first pre-train a discrete diffusion model on thousands of graphs across domains to learn the graph structural patterns. In the downstream phase, we provide adaptive enhancement by conducting graph structure augmentation with the help of the pre-trained diffusion model via guided generation. By leveraging the pre-trained diffusion model for structure augmentation, we consistently achieve performance improvements across various downstream tasks in a plug-and-play manner. To the best of our knowledge, this study represents the first demonstration of a data-scaling graph structure augmentor on graphs across domains."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The effectiveness of existing foundation models [1, 2, 3] heavily relies on the availability of substantial amounts of data, where the relationship manifests as a scaling behavior between model performance and data scale [4].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09fda94d18dce9e214e339aa",
+          "b": "paper-a3f4ae934a704ecc1f25bd38",
+          "input_sha256": "03dc3d163cd43929886359ed85e87966e4e25e9edff788926c92efd297f886f1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/radford21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/b2fa07e58da29247ddea5a12f472bb0e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+              "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+              "document_sha256": "2a4952960f350e50a3a4a847371b80b8aaa09ba82d1c2a8f6b30450e392a1fe4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "The effectiveness of existing foundation models [1, 2, 3] heavily relies on the availability of substantial amounts of data, where the relationship manifests as a scaling behavior between model performance and data scale [4]. Consistent performance gain has been observed with the increasing scale of pre-training data in both Natural Language Processing [4, 5] and Computer Vision [6, 7] domains. This data scaling phenomenon facilitates the development of general models endowed with extensive knowledge and effective data pattern recognition capabilities. In downstream applications, these models are capable of adaptively achieving performance gains across tasks. In the context of graphs, the availability of large-scale graph databases [8, 9, 10] enables possible data scaling across datasets and domains. Existing works have demonstrated graph data scaling following two limited settings: in-domain pre-training [11, 12] and task-specific selection for pre-training data [13]. During the pre-training process, each graph in the pre-training pool must be validated as in-domain or relevant to the downstream dataset. Given a specific domain or task, the crucial discriminative data patterns are likely confined to a fixed set [14], leaving other potential patterns in diverse graph data distribution as noisy input. In terms of structure, graphs from different domains are particularly composed of varied patterns [15], making it hard to transfer across domains. For example, considering the building blocks of the graphs, the motifs shared by the World Wide Web hyperlinks ∗ This work was conducted while H.M. was a Ph.D. student at Michigan State University and is independent of H.M.’s current position at Amazon.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Models for natural language and images benefit from data scaling behavior: the more data fed into the model, the better they perform. This ’better with more’ phenomenon enables the effectiveness of large-scale pre-training on vast amounts of data. However, current graph pre-training methods struggle to scale up data due to heterogeneity across graphs. To achieve effective data scaling, we aim to develop a general model that is able to capture diverse data patterns of graphs and can be utilized to adaptively help the downstream tasks. To this end, we propose UniAug, a universal graph structure augmentor built on a diffusion model. We first pre-train a discrete diffusion model on thousands of graphs across domains to learn the graph structural patterns. In the downstream phase, we provide adaptive enhancement by conducting graph structure augmentation with the help of the pre-trained diffusion model via guided generation. By leveraging the pre-trained diffusion model for structure augmentation, we consistently achieve performance improvements across various downstream tasks in a plug-and-play manner. To the best of our knowledge, this study represents the first demonstration of a data-scaling graph structure augmentor on graphs across domains.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "only partially align with those shared by genetic networks [15]. Therefore, closely aligning the characteristics of the pre-training graphs and the downstream data both in feature and structure is essential for facilitating positive transfer [13]. As a consequence, the necessity of such meticulous data filtering restricts these methods from scaling up graphs effectively, as they can only utilize a small part of the available data. Given the limitation of the graph pre-training methods, a pertinent question emerges: How can we effectively leverage the increasing scale of graph data across domains? Rather than focusing solely on data patterns specific to particular domains, we aim to develop a model that has a comprehensive understanding of data patterns inherent across various types of graphs. In line with the principles of data scaling, we hypothesize that incorporating a broader range of training datasets can help the model build an effective and universal graph pattern library, avoiding an overemphasis on major data patterns specific to any single dataset [16]. To construct such a general-purpose model, we propose to utilize a diffusion model operating only on the structure as the backbone, for the following key reasons. (1) Unlike features, graph structures follow a uniform construction principle, namely, the connections between nodes. This allows for positive transfer across domains when the upstream and downstream data exhibit similar topological patterns [13]. In particular, while the graph representations of neurons and forward electronic circuits are derived from distinct domains, they still share common motifs [15]. (2) Current supervised and self-supervised methods tend to capture only specific patterns of graph data, with models designed for particular",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/b2fa07e58da29247ddea5a12f472bb0e-Paper-Conference.pdf",
+              "document_sha256": "a0834b8d42c7bd5fa6c737cd6daf304fdbec7fa5bca7bc60f58b88678745231a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09fda94d18dce9e214e339aa",
+          "url": "https://proceedings.mlr.press/v139/radford21a.html"
+        },
+        "b": {
+          "paper_id": "paper-a3f4ae934a704ecc1f25bd38",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/b2fa07e58da29247ddea5a12f472bb0e-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "6ea292e6239823ca6886b2be20fe735a6f3dd2040a4d0e650277fb70b8ab38db"
+    },
+    {
+      "id": "edge-cbc5b9c920d5b5209004e687",
+      "a": "paper-0a1e19dd78b87f9604eed244",
+      "b": "paper-2956e2407646f9ffb3a84af4",
+      "state": {
+        "paper_a": {
+          "title": "Universal Invariant and Equivariant Graph Neural Networks",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Graph Neural Networks (GNN) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or \\emph{equivariant} (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity, and either an invariant or equivariant linear output layer. Recently, Maron et al. (2019) showed that by allowing higher-order tensorization inside the network, universal invariant GNNs can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the \\emph{equivariant} case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Additionally, unlike many previous works that consider a fixed number of nodes, our results show that a GNN defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size."
+        },
+        "paper_b": {
+          "title": "Weisfeiler and Leman Go Loopy: A New Hierarchy for Graph Representational Learning",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "We introduce $r$-loopy Weisfeiler-Leman ($r$-$\\ell$WL), a novel hierarchy of graph isomorphism tests and a corresponding GNN framework, $r$-$\\ell$MPNN, that can count cycles up to length $r{+}2$. Most notably, we show that $r$-$\\ell$WL can count homomorphisms of cactus graphs. This extends 1-WL, which can only count homomorphisms of trees and, in fact, is incomparable to $k$-WL for any fixed $k$. We empirically validate the expressive and counting power of $r$-$\\ell$MPNN on several synthetic datasets and demonstrate the scalability and strong performance on various real-world datasets, particularly on sparse graphs."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Although these networks are universal (Maron et al., 2019b; Keriven et al., 2019), their exponential time and space complexity in k renders them impractical.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0a1e19dd78b87f9604eed244",
+          "b": "paper-2956e2407646f9ffb3a84af4",
+          "input_sha256": "c92557eab061241e30204d9c5ce3f960ddeba9556f473f8b397f32ed1656e351",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/ea9268cb43f55d1d12380fb6ea5bf572-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/ea9268cb43f55d1d12380fb6ea5bf572-Paper.pdf",
+              "sha256": "ff8c9b0469b8ec4a3bc6ccbb1ae196aab076e8f47747d33edbfded78e2a122e1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/dad28e90cd2c8caedf362d49c4d99e70-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/dad28e90cd2c8caedf362d49c4d99e70-Paper-Conference.pdf",
+              "sha256": "a9721b1e26ab8e6b1800bd092bd0f7644b15aa5a23c902cef797a876b8c82cfb"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Graph Neural Networks (GNN) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity, and either an invariant or equivariant linear output layer. Recently, Maron et al. (2019b) showed that by allowing higherorder tensorization inside the network, universal invariant GNNs can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Additionally, unlike many previous works that consider a fixed number of nodes, our results show that a GNN defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/ea9268cb43f55d1d12380fb6ea5bf572-Paper.pdf",
+              "document_sha256": "ff8c9b0469b8ec4a3bc6ccbb1ae196aab076e8f47747d33edbfded78e2a122e1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Maron et al. (2019b) recently proved that invariant GNNs similar to (1) are universal approximators of continuous invariant functions. As a warm-up, we propose an alternative proof of (a variant of) this result, that will serve as a basis for our main contribution, the equivariant case (Section 3). Edit distance. For invariant functions, isomorphic graphs are undistinguishable, and therefore we work with a set of equivalence classes of graphs, where two graphs are equivalent if isomorphic. We define such a set for any number n ⩽ nmax of nodes and bounded G n o d def. Ginv. = O (G) ; G ∈ Rn with n ⩽ nmax , kGk ⩽ R , where we recall that O (G) = {σ ? G ; σ ∈ O} is the set of every permuted versions of G, here seen as an equivalence class. We need to equip this set with a metric that takes into account graphs with different number of nodes. A distance often used in the literature is the graph edit distance (Sanfeliu and Fu, 1983). It relies on defining a set of elementary operations o and a cost c(o) associated to each of them, here we consider node addition and edge weight modification. The distance is then defined as def.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/ea9268cb43f55d1d12380fb6ea5bf572-Paper.pdf",
+              "document_sha256": "ff8c9b0469b8ec4a3bc6ccbb1ae196aab076e8f47747d33edbfded78e2a122e1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "The notion of expressivity in standard neural networks is linked to the ability to approximate any continuous function (Cybenko, 1989; Hornik et al., 1989). In contrast, GNN expressivity is measured by the ability to distinguish non-isomorphic graphs. According to the Stone-Weierstrass theorem, these criteria are equivalent (Chen et al., 2019; Dasoulas et al., 2021): a network that can distinguish all graphs can approximate any continuous function. Therefore, research often focuses on determining which graphs a GNN can distinguish (Morris et al., 2023). Xu et al. (2019) and Morris et al. (2019) proved that the expressive power of MPNNs is bounded by 1WL. Subsequent works (Maron et al., 2018; Morris et al., 2019, 2020) introduced higher-order GNNs that have the same expressive power as k-WL or its local variants (Geerts et al., 2022). Although these networks are universal (Maron et al., 2019b; Keriven et al., 2019), their exponential time and space complexity in k renders them impractical. Abboud et al. (2022) proposed k-hop GNNs which aggregate information from k-hop neighbors, thus, enhancing expressivity beyond 1-WL but within 3-WL (Feng et al., 2022). Michel et al. (2023) and Graziani et al. (2024) construct GNNs that process paths emanating from each node to overcome 1-WL. Subgraph GNNs (Bevilacqua et al., 2021; You et al., 2021; Frasca et al., 2022; Huang et al., 2022) surpass 1-WL by decomposing the initial input 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dad28e90cd2c8caedf362d49c4d99e70-Paper-Conference.pdf",
+              "document_sha256": "a9721b1e26ab8e6b1800bd092bd0f7644b15aa5a23c902cef797a876b8c82cfb"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "graph into a bag of subgraphs. However, subgraph GNNs are upper-bounded by 3-WL (Frasca et al., 2022). A different line of work leverages positional encoding through unique node identifiers (Vignac et al., 2020), random features (Abboud et al., 2021; Sato et al., 2021) or eigenvectors (Lim et al., 2022; Maskey et al., 2022) to augment the expressive power of MPNNs. While the predominant approach for gauging the expressive power of GNNs is within the k-WL hierarchy, such a measure is inherently qualitative, as it cannot shed light on substructures a particular GNN can encode. Lovász (1967) showed that homomorphism counts is a complete graph invariant, meaning two graphs are isomorphic if and only if their homomorphism counts are identical. Building on this result, B. Zhang et al. (2024) advocate for homomorphism-count as a quantitative measure of expressivity, as GNN architectures can homomorphism-count particular families of motifs. Tinhofer (1986, 1991) established that 1-WL is equivalent to counting homomorphisms from graphs with tree-width one, while Dell et al. (2018) proved the equivalence between k-WL and the ability to count homomorphisms from graphs with tree-width k. Nguyen et al. (2020), Barceló et al. (2021), Welke et al. (2023), and Jin et al. (2024) used homomorphism counts to develop expressive GNNs. Manually augmenting node features with homomorphism counts can be disadvantageous as performance depends on the chosen substructures. This can be alleviated by designing domain-agnostic GNNs that can learn structural information suitable for the task at hand. For instance, higher-order GNNs can count a large class of substructures as homomorphisms (B. Zhang et al., 2024), but they suffer from scalability issues. We propose r-`WL and r-`GIN, which can count",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dad28e90cd2c8caedf362d49c4d99e70-Paper-Conference.pdf",
+              "document_sha256": "a9721b1e26ab8e6b1800bd092bd0f7644b15aa5a23c902cef797a876b8c82cfb"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "In order to unify different expressivity measures, we recall the definition of graph invariants. Definition 2. Let P be a designated set, referred to as the palette. A graph invariant is a function ζ : G → P such that ζ(G) = ζ(H) for all isomorphic pairs G, H ∈ G. ζ is a complete graph invariant if ζ(G) 6= ζ(F ) for all non-isomorphic pairs G, F ∈ G. Complete graph invariants have maximal expressive power. However, no polynomial-time algorithm to compute a complete graph invariant is known. To compare the expressive power of different graph invariants, such as graph colorings and GNN architectures, we introduce the following definition. Definition 3. Let γ, ζ be two graph invariants. We say that γ is more powerful than ζ (γ v ζ) if for every pair G, H ∈ G, γ(G) = γ(H) implies ζ(G) = ζ(H). We say that γ is strictly more powerful than ζ if γ v ζ and there exists a pair F, G ∈ G such that γ(G) 6= γ(H) and ζ(G) = ζ(H). 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/dad28e90cd2c8caedf362d49c4d99e70-Paper-Conference.pdf",
+              "document_sha256": "a9721b1e26ab8e6b1800bd092bd0f7644b15aa5a23c902cef797a876b8c82cfb"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0a1e19dd78b87f9604eed244",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/ea9268cb43f55d1d12380fb6ea5bf572-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-2956e2407646f9ffb3a84af4",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/dad28e90cd2c8caedf362d49c4d99e70-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Graph Neural Networks and Graph-Based Deep Learning"
+      },
+      "sha256": "f64307a33ec7f54239a402645899a428833bc48cbe5fd2769e27ee4deec1c8b7"
+    }
+  ]
+}

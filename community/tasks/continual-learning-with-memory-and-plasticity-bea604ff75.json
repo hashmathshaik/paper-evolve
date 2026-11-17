@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Continual Learning with Memory and Plasticity",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-b3de9bb963fe79a482cff8a5",
+      "a": "paper-07f112f1e8f8187c57822264",
+      "b": "paper-0a60c64914fc842b29b0eb84",
+      "state": {
+        "paper_a": {
+          "title": "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Most existing work on adversarial data generation focuses on English. For example, PAWS (Paraphrase Adversaries from Word Scrambling) consists of challenging English paraphrase identification pairs from Wikipedia and Quora. We remedy this gap with PAWS-X, a new dataset of 23,659 human translated PAWS evaluation pairs in six typologically distinct languages: French, Spanish, German, Chinese, Japanese, and Korean. We provide baseline numbers for three models with different capacity to capture non-local context and sentence structure, and using different multilingual training and evaluation regimes. Multilingual BERT fine-tuned on PAWS English plus machine-translated data performs the best, with a range of 83.1-90.8 accuracy across the non-English languages and an average accuracy gain of 23% over the next best model. PAWS-X shows the effectiveness of deep, multilingual pre-training while also leaving considerable headroom as a new challenge to drive multilingual research that better captures structure and contextual information."
+        },
+        "paper_b": {
+          "title": "Learning to Solve NLP Tasks in an Incremental Number of Languages",
+          "year": 2021,
+          "venue": "ACL Anthology",
+          "abstract": "In real scenarios, a multilingual model trained to solve NLP tasks on a set of languages can be required to support new languages over time. Unfortunately, the straightforward retraining on a dataset containing annotated examples for all the languages is both expensive and time-consuming, especially when the number of target languages grows. Moreover, the original annotated material may no longer be available due to storage or business constraints. Re-training only with the new language data will inevitably result in Catastrophic Forgetting of previously acquired knowledge. We propose a Continual Learning strategy that updates a model to support new languages over time, while maintaining consistent results on previously learned languages. We define a Teacher-Student framework where the existing model “teaches” to a student model its knowledge about the languages it supports, while the student is also trained on a new language. We report an experimental evaluation in several tasks including Sentence Classification, Relational Learning and Sequence Labeling."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07f112f1e8f8187c57822264",
+          "b": "paper-0a60c64914fc842b29b0eb84",
+          "input_sha256": "18cdc8d800e905e8e9e9f548e9c738a367f61559b6d249dc1b438d4d57d7aa9e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/D19-1382/",
+              "pdf_url": "https://aclanthology.org/D19-1382.pdf",
+              "sha256": "99913bba2a9ee22c10357e0ee2499ac4f7de5149878f110f408c503f374274e9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2021.acl-short.106/",
+              "pdf_url": "https://aclanthology.org/2021.acl-short.106.pdf",
+              "sha256": "c679e36245861b2dcb43d79024d82bcb5385e354e7f1bfa22f6327c03917bdda"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "We introduce PAWS-X, a challenging paraphrase identification dataset with 23,659 human translated evaluation pairs in six languages. Our experimental results showed that PAWS-X effectively measures sensitivity of models to word order and the efficacy of cross-lingual learning approaches. It also leaves considerable headroom as a new challenging benchmark to drive multilingual research on the problem of paraphrase identification.",
+              "url": "https://aclanthology.org/D19-1382.pdf",
+              "document_sha256": "99913bba2a9ee22c10357e0ee2499ac4f7de5149878f110f408c503f374274e9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "This section presents the results of the proposed CL strategy over three semantic processing tasks, involving text classification and sequence tagging. In particular, we report the Mean Absolute Error (MAE) over the Multilingual Amazon Review Corpus (MARC) (Keung et al., 2020), i.e., a 5 category Sentiment Analysis task in 6 languages. We report the Accuracy over a sentence-pair classification task, i.e., Paraphrase Identification on the PAWS-X dataset (Yang et al., 2019) in 6 languages1 . Finally, we report the F1 for the Named Entity Recognition (NER) in 4 languages by merging the CoNLL 2002 (Tjong Kim Sang, 2002) and 2003 (Tjong Kim Sang and De Meulder, 2003) datasets. Additional details about the datasets are in Appendix. Experimental Setup. We foresee a setting where a BERT-based model is incrementally trained using annotated datasets in multiple languages. At each step, the model is fine-tuned using a dataset in one specific language, while the annotated material used up to that point is discarded. 1",
+              "url": "https://aclanthology.org/2021.acl-short.106.pdf",
+              "document_sha256": "c679e36245861b2dcb43d79024d82bcb5385e354e7f1bfa22f6327c03917bdda"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "PAWS-X contains 7 languages. We were not able to reproduce the results of Yang et al. (2019) for the Korean language. Thus, we removed this language in our evaluation.",
+              "url": "https://aclanthology.org/2021.acl-short.106.pdf",
+              "document_sha256": "c679e36245861b2dcb43d79024d82bcb5385e354e7f1bfa22f6327c03917bdda"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "Model Training. We used the bert-basemultilingual-cased model in the Huggingface Transformers package (Wolf et al., 2019). We trained the models for 10 epochs with Early Stopping (patience= 3) and batch size 32. After initial experiments, we set the temperature T to 1. We repeated our experiments for 6/6/24 sequences of language permutations for MARC/PAWS-X/CoNLL, and we report the average performances. Experimental Results and Discussion. We first run zero-shot experiments by fine-tuning a model on a subset of languages and testing it on the unobserved ones (see Figure 1). By comparing the results with the ones in Figure 2, we can observe a large gap between the results achieved on the languages still to be observed vs. the training ones. For instance, at step 1 the average gap is more than 30 MAE on MARC, about 0.8% Accuracy on PAWS-X and about 22 F1 on CoNLL. This confirms the need to fine-tune the model on each language of interest. Figures 2a, 2b and 2c show the results on MARC, PAWS-X and CoNLL, respectively. At each step, we report the average measure computed over all the observed languages, averaged over all the permutations. Given that we are solving the same task in multiple languages, regardless the adopted strategy, the performance can improve at each step due to a cross-lingual transfer learning effect. This beneficial impact is contrasted by the CF, which is also supposed to increase at each step. In our experiments, the effect of transfer learning is generally stronger, with the only exception of CL-Baseline in CoNLL, where CF seems to dominate (the F1 drops from 74.29 at step 1 to 72.67 at step 4). In MARC and PAWS-X, this is alleviated: we argue that CoNLL is more challenging, as it is a word-level tagging on a smaller dataset. The approach we",
+              "url": "https://aclanthology.org/2021.acl-short.106.pdf",
+              "document_sha256": "c679e36245861b2dcb43d79024d82bcb5385e354e7f1bfa22f6327c03917bdda"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "gate CF when incrementally training Transformerbased architectures (Devlin et al., 2019) for semantic processing tasks. The existing model (here the teacher) imparts knowledge to a (student) model about the languages it already supports, while this is trained on new languages. We evaluated our approach using multilingual BERT-based models on three semantic processing tasks, involving Sentence Classification, Paraphrase Identification and Sequence Tagging. Results suggest that the model can progressively learn new languages, while maintaining or even improving its quality over previously observed ones.",
+              "url": "https://aclanthology.org/2021.acl-short.106.pdf",
+              "document_sha256": "c679e36245861b2dcb43d79024d82bcb5385e354e7f1bfa22f6327c03917bdda"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07f112f1e8f8187c57822264",
+          "url": "https://aclanthology.org/D19-1382/"
+        },
+        "b": {
+          "paper_id": "paper-0a60c64914fc842b29b0eb84",
+          "url": "https://aclanthology.org/2021.acl-short.106/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "4e981e6969abea0faf3ea01f3882473c09ce2b3b0af3f50772c35db8346e8e62"
+    },
+    {
+      "id": "edge-f598b1492c869518fa72182f",
+      "a": "paper-04586a2ad26026645f2a7e08",
+      "b": "paper-6f309877984005ec4101713f",
+      "state": {
+        "paper_a": {
+          "title": "Continual Unsupervised Representation Learning",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Continual learning aims to improve the ability of modern learning systems to deal with non-stationary distributions, typically by attempting to learn a series of tasks sequentially. Prior art in the field has largely considered supervised or reinforcement learning tasks, and often assumes full knowledge of task labels and boundaries. In this work, we propose an approach (CURL) to tackle a more general problem that we will refer to as unsupervised continual learning. The focus is on learning representations without any knowledge about task identity, and we explore scenarios when there are abrupt changes between tasks, smooth transitions from one task to another, or even when the data is shuffled. The proposed approach performs task inference directly within the model, is able to dynamically expand to capture new concepts over its lifetime, and incorporates additional rehearsal-based techniques to deal with catastrophic forgetting. We demonstrate the efficacy of CURL in an unsupervised learning setting with MNIST and Omniglot, where the lack of labels ensures no information is leaked about the task. Further, we demonstrate strong performance compared to prior art in an i.i.d setting, or when adapting the technique to supervised tasks such as incremental class learning."
+        },
+        "paper_b": {
+          "title": "Measuring Representational Shifts in Continual Learning: A Linear Transformation Perspective",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "In continual learning scenarios, catastrophic forgetting of previously learned tasks is a critical issue, making it essential to effectively measure such forgetting. Recently, there has been growing interest in focusing on representation forgetting, the forgetting measured at the hidden layer. In this paper, we provide the first theoretical analysis of representation forgetting and use this analysis to better understand the behavior of continual learning. First, we introduce a new metric called representation discrepancy, which measures the difference between representation spaces constructed by two snapshots of a model trained through continual learning. We demonstrate that our proposed metric serves as an effective surrogate for the representation forgetting while remaining analytically tractable. Second, through mathematical analysis of our metric, we derive several key findings about the dynamics of representation forgetting: the forgetting occurs more rapidly to a higher degree as the layer index increases, while increasing the width of the network slows down the forgetting process. Third, we support our theoretical findings through experiments on real image datasets, including Split-CIFAR100 and ImageNet1K."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…forgetting (forgetting measured through the model’s final output), because (1) there are situations such as in unsupervised continual learning (Rao et al., 2019; Fini et al., 2022) where our interest is in the inner representations of the model rather than the model’s output, and (2)…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-04586a2ad26026645f2a7e08",
+          "b": "paper-6f309877984005ec4101713f",
+          "input_sha256": "43fa9e18e8d649f783a1fada3602f7eb2b35d753981a007046250584ac8e5a8f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/861578d797aeb0634f77aff3f488cca2-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/861578d797aeb0634f77aff3f488cca2-Paper.pdf",
+              "sha256": "8b423b376e9e5023ec899abe993212b097f1a05b1c0c603840fe5bfa61e5c3af"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/kim25p.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25p/kim25p.pdf",
+              "sha256": "d010e1bc64adce988f10b1c9d106f905f00e1a6040969ed39a93d552ea798e6c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "to the learner, and hence the focus is on unsupervised task learning. The tasks could correspond to either unsupervised representation learning, or learning skills without extrinsic reward if applied to the reinforcement learning domain. In this sense, the problem setting is “unsupervised” in two ways: in terms of the absence of task labels (or indeed well-defined tasks themselves), and in terms of the absence of external supervision such as class labels, regression targets, or external rewards. The two aspects may seem independent, but considering the unsupervised learning problem encourages solutions that aim to capture all fundamental properties of the data, which in turn might encourage, or reinforce, particular ways of addressing the task boundary problem. Hence the two aspects are connected through the type of solutions they necessitate, and it is beneficial to consider them jointly. We argue that this is an important and challenging open problem, as it enables continual learning in environments without clearly defined tasks and goals, and with minimal external supervision. Relaxing these constraints is crucial to performing lifelong learning in the real world. Our approach, named Continual Unsupervised Representation Learning (CURL), learns a taskspecific representation on top of a larger set of shared parameters, and deals with task ambiguity by performing task inference within the model. We endow the model with the ability to dynamically expand its capacity to capture new tasks, and suggest methods to minimise catastrophic forgetting. The model is experimentally evaluated in a variety of unsupervised settings: when tasks or classes are presented sequentially, when training data are shuffled, and with ambiguous task boundaries when transitions are continuous",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/861578d797aeb0634f77aff3f488cca2-Paper.pdf",
+              "document_sha256": "8b423b376e9e5023ec899abe993212b097f1a05b1c0c603840fe5bfa61e5c3af"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Continual learning aims to improve the ability of modern learning systems to deal with non-stationary distributions, typically by attempting to learn a series of tasks sequentially. Prior art in the field has largely considered supervised or reinforcement learning tasks, and often assumes full knowledge of task labels and boundaries. In this work, we propose an approach (CURL) to tackle a more general problem that we will refer to as unsupervised continual learning. The focus is on learning representations without any knowledge about task identity, and we explore scenarios when there are abrupt changes between tasks, smooth transitions from one task to another, or even when the data is shuffled. The proposed approach performs task inference directly within the model, is able to dynamically expand to capture new concepts over its lifetime, and incorporates additional rehearsal-based techniques to deal with catastrophic forgetting. We demonstrate the efficacy of CURL in an unsupervised learning setting with MNIST and Omniglot, where the lack of labels ensures no information is leaked about the task. Further, we demonstrate strong performance compared to prior art in an i.i.d setting, or when adapting the technique to supervised tasks such as incremental class learning.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/861578d797aeb0634f77aff3f488cca2-Paper.pdf",
+              "document_sha256": "8b423b376e9e5023ec899abe993212b097f1a05b1c0c603840fe5bfa61e5c3af"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Internally, the representations of the model, that is, the hidden activations, undergo a drastic shift during continual learning as well (Caccia et al., 2021). This calls for a separate term that indicates the loss of knowledge for previous tasks in terms of the hidden representations. In this paper, we will use the term representation forgetting of task t to refer to the degradation in a model’s ability to produce highquality features for task t. Note that we are not the first to use the term representation forgetting, as it has been used in the literature to indicate representational shifts during the continual learning process in general (Davari et al., 2022; Luo et al., 2023; Zhang et al., 2022; Murata et al., 2020). Understanding the behavior of the representation forgetting, which is measured at the level of the intermediate layers, is equally important to that of the observed forgetting (forgetting measured through the model’s final output), because (1) there are situations such as in unsupervised continual learning (Rao et al., 2019; Fini et al., 2022) where our interest is in the inner representations of the model rather than the model’s output, and (2) understanding the representation forgetting itself can lead to better understanding of the observed forgetting.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25p/kim25p.pdf",
+              "document_sha256": "d010e1bc64adce988f10b1c9d106f905f00e1a6040969ed39a93d552ea798e6c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "In continual learning scenarios, catastrophic forgetting of previously learned tasks is a critical issue, making it essential to effectively measure such forgetting. Recently, there has been growing interest in focusing on representation forgetting, the forgetting measured at the hidden layer. In this paper, we provide the first theoretical analysis of representation forgetting and use this analysis to better understand the behavior of continual learning. First, we introduce a new metric called representation discrepancy, which measures the difference between representation spaces constructed by two snapshots of a model trained through continual learning. We demonstrate that our proposed metric serves as an effective surrogate for the representation forgetting while remaining analytically tractable. Second, through mathematical analysis of our metric, we derive several key findings about the dynamics of representation forgetting: the forgetting occurs more rapidly to a higher degree as the layer index increases, while increasing the width of the network slows down the forgetting process. Third, we support our theoretical findings through experiments on real image datasets, including Split-CIFAR100 and ImageNet1K.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25p/kim25p.pdf",
+              "document_sha256": "d010e1bc64adce988f10b1c9d106f905f00e1a6040969ed39a93d552ea798e6c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Although there have been several empirical results on the representation forgetting under continual learning (Caccia et al., 2021; Davari et al., 2022; Hess et al., 2023; Luo et al., 2023), no clear justification was provided in terms of theory. Our work addresses this gap by offering one of the first theoretical analyses of the representation forgetting. To achieve this, we introduce a novel metric, representation discrepancy, which quantifies the minimum alignment error of two representation spaces under a linear transformation. We show that this metric not only effectively measures rep-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kim25p/kim25p.pdf",
+              "document_sha256": "d010e1bc64adce988f10b1c9d106f905f00e1a6040969ed39a93d552ea798e6c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-04586a2ad26026645f2a7e08",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/861578d797aeb0634f77aff3f488cca2-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-6f309877984005ec4101713f",
+          "url": "https://proceedings.mlr.press/v267/kim25p.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "26a509b38aaf459bc44d3f5c10de7d16f37c7eea4247262d66ee99e41492bb15"
+    },
+    {
+      "id": "edge-5fdcb101116c16075fc1d824",
+      "a": "paper-05eca28346f92e17e982df67",
+      "b": "paper-38aa349b8d7c0ca7aa6e006d",
+      "state": {
+        "paper_a": {
+          "title": "Quantifying Generalization in Reinforcement Learning",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "In this paper, we investigate the problem of overfitting in deep reinforcement learning. Among the most common benchmarks in RL, it is customary to use the same environments for both training and testing. This practice offers relatively little insight into an agent’s ability to generalize. We address this issue by using procedurally generated environments to construct distinct training and test sets. Most notably, we introduce a new environment called CoinRun, designed as a benchmark for generalization in RL. Using CoinRun, we find that agents overfit to surprisingly large training sets. We then show that deeper convolutional architectures improve generalization, as do methods traditionally found in supervised learning, including L2 regularization, dropout, data augmentation and batch normalization."
+        },
+        "paper_b": {
+          "title": "A Study of Plasticity Loss in On-Policy Deep Reinforcement Learning",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Continual learning with deep neural networks presents challenges distinct from both the fixed-dataset and convex continual learning regimes. One such challenge is plasticity loss, wherein a neural network trained in an online fashion displays a degraded ability to fit new tasks. This problem has been extensively studied in both supervised learning and off-policy reinforcement learning (RL), where a number of remedies have been proposed. Still, plasticity loss has received less attention in the on-policy deep RL setting. Here we perform an extensive set of experiments examining plasticity loss and a variety of mitigation methods in on-policy deep RL. We demonstrate that plasticity loss is pervasive under domain shift in this regime, and that a number of methods developed to resolve it in other settings fail, sometimes even performing worse than applying no intervention at all. In contrast, we find that a class of ``regenerative'' methods are able to consistently mitigate plasticity loss in a variety of contexts, including in gridworld tasks and more challenging environments like Montezuma's Revenge and ProcGen."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Below we present results of a suite of experiments conducted using a 2D gridworld environment (Ju-liani et al., 2022), the procedurally generated CoinRun environment (Cobbe et al., 2019), and the Atari game Montezuma’s Revenge (Bellemare et al., 2013).\nWe also use the CoinRun environment from the ProcGen suite of tasks to evaluate the set of candidate interventions Cobbe et al. (2019, 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-05eca28346f92e17e982df67",
+          "b": "paper-38aa349b8d7c0ca7aa6e006d",
+          "input_sha256": "e40f11466fd0c54698cca95e752b9d72ddccaf678e37dbb8507baa3a38432b55",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/cobbe19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/ce7984e36d58659211a8dc7d5457cd6f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/ce7984e36d58659211a8dc7d5457cd6f-Paper-Conference.pdf",
+              "sha256": "c982f4272a3a970f2d57332cfaf8fe282f7461f7b63b768f915e0a263a0ace05"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we investigate the problem of overfitting in deep reinforcement learning. Among the most common benchmarks in RL, it is customary to use the same environments for both training and testing. This practice offers relatively little insight into an agent’s ability to generalize. We address this issue by using procedurally generated environments to construct distinct training and test sets. Most notably, we introduce a new environment called CoinRun, designed as a benchmark for generalization in RL. Using CoinRun, we find that agents overfit to surprisingly large training sets. We then show that deeper convolutional architectures improve generalization, as do methods traditionally found in supervised learning, including L2 regularization, dropout, data augmentation and batch normalization.",
+              "url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "document_sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "3. Quantifying Generalization 3.1. The CoinRun Environment We propose the CoinRun environment to evaluate the generalization performance of trained agents. The goal of each CoinRun level is simple: collect the single coin that lies at the end of the level. The agent controls a character that spawns on the far left, and the coin spawns on the far right. Several obstacles, both stationary and non-stationary, lie between the agent and the coin. A collision with an obstacle results in the agent’s immediate death. The only reward in the environment is obtained by collecting the coin, and this reward is a fixed positive constant. The level terminates when the agent dies, the coin is collected, or after 1000 time steps. We designed the game CoinRun to be tractable for existing algorithms. That is, given a sufficient number of training levels and sufficient training time, our algorithms learn a near optimal policy for all CoinRun levels. Each level is generated deterministically from a given seed, providing agents access to an arbitrarily large and easily quantifiable supply of training data. CoinRun mimics the style of platformer games like Sonic, but it is much simpler. For the purpose of evaluating generalization, this simplicity can be highly advantageous. Levels vary widely in difficulty, so the distribution of levels naturally forms a curriculum for the agent. Two different levels are shown in Figure 1. See Appendix A for more details about the environment and Appendix B for additional screenshots. Videos of a trained agent playing can be found here, and environment code can be found here. 3.2. CoinRun Generalization Curves Using the CoinRun environment, we can measure how successfully agents generalize from a given set of training lev-",
+              "url": "https://proceedings.mlr.press/v97/cobbe19a/cobbe19a.pdf",
+              "document_sha256": "6e4028215fc469ff7984059496d8da4f6a9c2650cb3b23c5359bbdafb6df1f6e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "Below we present results of a suite of experiments conducted using a 2D gridworld environment (Juliani et al., 2022), the procedurally generated CoinRun environment (Cobbe et al., 2019), and the Atari game Montezuma’s Revenge (Bellemare et al., 2013). All models are trained using PPO (Schulman et al., 2017). For the gridworld experiments we use an MLP encoder, and for the CoinRun and Montezuma’s Revenge experiments we instead use a convolutional encoder. We set the number of environment instances (k) to 100 for all experiments conducted with the gridworld and CoinRun environments. Additional training details can be found in Appendix Section B. 4.1 Plasticity loss is apparent in on-policy RL We find evidence of plasticity loss in the on-policy RL setting in the presence of multiple kinds of distribution shift, as presented in Figure 2. For round-level plots like these, reward values are normalized such that the mean reward at the end of the first round is set to zero. As such, positive and negative values correspond respectively to increases and decreases in performance relative to the first round. Decreasing normalized reward indicates a decay in relative performance, implying plasticity loss. For both the permute and window shift conditions, Figure 2 demonstrates clear degradation in mean episodic reward for the warm-started model as compared to a model which has all of its weights reset between each round. While there is some positive transfer for the warm-start method in the expand shift condition, we find generalization performance suffers in this condition as compared to reset-all. We provide statistical tests comparing the performance of these methods to the warm-start and random initialization baselines in Section D of the appendix. 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ce7984e36d58659211a8dc7d5457cd6f-Paper-Conference.pdf",
+              "document_sha256": "c982f4272a3a970f2d57332cfaf8fe282f7461f7b63b768f915e0a263a0ace05"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "We also use the CoinRun environment from the ProcGen suite of tasks to evaluate the set of candidate interventions Cobbe et al. (2019, 2020). ProcGen is built using procedural generation Cobbe et al. (2020), making it possible to study the same three distribution-shift conditions which were considered in the gridworld experiments. Here we present performance results for each of the intervention methods on the CoinRun environment. Overall, we find results largely consistent with those of the gridworld task. There is significant plasticity loss present in all three tasks as measured by the gap between the warm-start and reset-all conditions. We also find that reset-final, CReLU, and plasticity injection all unable to fully resolve the loss of plasticity. In contrast, the three most effective methods in the gridworld task (LayerNorm, regenerative regularization, and soft shrink+perturb) are all also most effective in CoinRun as well. 7",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ce7984e36d58659211a8dc7d5457cd6f-Paper-Conference.pdf",
+              "document_sha256": "c982f4272a3a970f2d57332cfaf8fe282f7461f7b63b768f915e0a263a0ace05"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "This work studies the plasticity loss phenomenon in detail for the on-policy reinforcement learning setting. We introduce three distinct kinds of distribution shift to facilitate our analysis as well as a variety of environments and tasks. While several interventions have already been proposed, we demonstrate that some of the methods which proved successful for addressing plasticity loss in the supervised learning or off-policy reinforcement learning setting fail in the on-policy setting or under our proposed forms of distribution shift. We further highlight several criteria that we believe are necessary to remedy the issue. Based on these insights, we describe several techniques that resolve plasticity loss on the environments we consider. In summary, the contributions of this paper are: • We extend studies of plasticity loss and the warm-start problem to the on-policy regime, finding that they present a persistent issue across a variety of model architectures and environmental distribution shift conditions. • We provide an in-depth analysis of the correlates of these pathologies, studying several types of environmental settings, model architectures, and previously proposed approaches for mitigation in settings related to on-policy reinforcement learning. Importantly, we include generalization trends in our consideration of these phenomena. • We characterize properties of methods that seem necessary for interventions to be successful at both addressing plasticity loss and ensuring generalization performance is maintained, and provide recommendations along these lines.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ce7984e36d58659211a8dc7d5457cd6f-Paper-Conference.pdf",
+              "document_sha256": "c982f4272a3a970f2d57332cfaf8fe282f7461f7b63b768f915e0a263a0ace05"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "Montezuma’s Revenge is an Atari game that is often used to benchmark the quality of exploration procedures in RL Bellemare et al. (2013); Figure 6: A comparison between RND agents Salimans and Chen (2018). The environment trained with and without a plasticity-loss mitigatconsists of many separate rooms, some only ac- ing intervention. Experiments are done over twenty cessible through a locked door. The agent must replicates and shaded regions show standard error. avoid obstacles, find and use keys, and traverse several rooms before obtaining non-trivial reward. Because of this reward sparsity, exploration is needed to incentivize the agent to advance beyond the periphery of its experience. Montezuma’s Revenge is designed such that the agent only sees the room it currently occupies. Accordingly, the distribution over input states expands as the agent learns to explore the environment. This introduction of significantly different states induces a level of distribution shift which is unique among ALE environments. Within our framework, the distribution shift of Montezuma’s Revenge is most similar to the “expand” condition studied here. In this experiment we consider two versions of a policy trained using the Random Network Distillation (RND) exploration bonus (Burda et al., 2018). All architectures and hyperparameters are inherited from the original RND paper. Figure 6 compares a typical RND policy to ones that are trained in conjunction with the soft shrink+perturb or regenerative regularization interventions. The plasticity loss mitigating policy achieves higher reward than a corresponding agent fitted in a standard fashion. Due to computation constraints, we did not evaluate the other intervention methods.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ce7984e36d58659211a8dc7d5457cd6f-Paper-Conference.pdf",
+              "document_sha256": "c982f4272a3a970f2d57332cfaf8fe282f7461f7b63b768f915e0a263a0ace05"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-05eca28346f92e17e982df67",
+          "url": "https://proceedings.mlr.press/v97/cobbe19a.html"
+        },
+        "b": {
+          "paper_id": "paper-38aa349b8d7c0ca7aa6e006d",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/ce7984e36d58659211a8dc7d5457cd6f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "853e4449fe04831f43bc12bf627321e876ef28a41075b8d45707a5abeaac3368"
+    },
+    {
+      "id": "edge-d02dff501e538162bbda8496",
+      "a": "paper-068805ddfec5e8053a6366bc",
+      "b": "paper-b361d56371e29ef66991c8df",
+      "state": {
+        "paper_a": {
+          "title": "Asymmetric Valleys: Beyond Sharp and Flat Local Minima",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Despite the non-convex nature of their loss functions, deep neural networks are known to generalize well when optimized with stochastic gradient descent (SGD). Recent work conjectures that SGD with proper conﬁguration is able to ﬁnd wide and ﬂat local minima, which are correlated with good generalization performance. In this paper, we observe that local minima of modern deep networks are more than being ﬂat or sharp. Instead, at a local minimum there exist many asymmetric directions such that the loss increases abruptly along one side, and slowly along the opposite side – we formally deﬁne such minima as asymmetric valleys. Under mild assumptions, we ﬁrst prove that for asymmetric valleys, a solution biased towards the ﬂat side generalizes better than the exact empirical minimizer. Then, we show that performing weight averaging along the SGD trajectory implicitly induces such biased solutions. This provides theoretical explanations for a series of intriguing phenomena observed in recent work [25, 5, 51]. Finally, extensive empirical experiments on both modern deep networks and simple 2 layer networks are conducted to validate our assumptions and analyze the intriguing properties of asymmetric valleys."
+        },
+        "paper_b": {
+          "title": "ZeroFlow: Overcoming Catastrophic Forgetting is Easier than You Think",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Backpropagation provides a generalized configuration for overcoming catastrophic forgetting. Optimizers such as SGD and Adam are commonly used for weight updates in continual learning and continual pre-training. However, access to gradient information is not always feasible in practice due to black-box APIs, hardware constraints, or non-differentiable systems, a challenge we refer to as the gradient bans. To bridge this gap, we introduce ZeroFlow, the first benchmark designed to evaluate gradient-free optimization algorithms for overcoming forgetting. ZeroFlow examines a suite of forward pass-based methods across various algorithms, forgetting scenarios, and datasets. Our results show that forward passes alone can be sufficient to mitigate forgetting. We uncover novel optimization principles that highlight the potential of forward pass-based methods in mitigating forgetting, managing task conflicts, and reducing memory demands. Additionally, we propose new enhancements that further improve forgetting resistance using only forward passes. This work provides essential tools and insights to advance the development of forward-pass-based methods for continual learning."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This series of methods (He et al., 2019; Foret et al., 2020; Zhong et al., 2022; Zhuang et al., 2022b) has gained attention due to the effectiveness of the flat minimum in mitigating forgetting (Li et al., 2024; Kong et al., 2023; Cha et al., 2021; Mehta et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-068805ddfec5e8053a6366bc",
+          "b": "paper-b361d56371e29ef66991c8df",
+          "input_sha256": "9482d59575cf4cd185eb8db84807df500802c02ecf405ba7701ce1683e35c364",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/01d8bae291b1e4724443375634ccfa0e-Paper.pdf",
+              "sha256": "dd1cba324ccfc577dfe90831d807d95dcbeac7b0e29a051348d786190c533740"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/feng25j.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/feng25j/feng25j.pdf",
+              "sha256": "7250189296c55b49a8ff44f686604f81d027efcd42694cb730f66484b78de879"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Optimization for catastrophic forgetting. Two broad categories of optimization methods exist for overcoming forgetting, (i) Standard Optimization. SGD and the Adam family are frequently employed to investigate catastrophic forgetting (Hadsell et al., 2020; Masana et al., 2022). For instance, in CL, various CL methods predominantly utilize the SGD optimizer for standard evaluations (van de Ven et al., 2022; Sun et al., 2023a; Zhou et al., 2024c). In fine-tuning the LLM, the Adam series is commonly used to observe forgetting phenomena (Luo et al., 2023; Zhu et al., 2024a). Some works explored orthogonal spaces with these standard optimizers to alleviate forgetting (Lopez-Paz & Ranzato, 2017; Feng et al., 2022c; Saha et al., 2020), such as OGD (Farajtabar et al., 2020), and GPM (Saha et al., 2020). Moreover, other works (Farajtabar et al., 2020; Chaudhry et al., 2018; Lopez-Paz & Ranzato, 2017) modified the gradients in the standard optimization process to align the learning spaces of new and old tasks, such as Uni-Grad (Li et al., 2024). The core of these efforts (Deng et al., 2021; Shi et al., 2021) is to find an equilibrium between learning and forgetting in optimization. (ii) Sharpness-aware Optimization. This series of methods (He et al., 2019; Foret et al., 2020; Zhong et al., 2022; Zhuang et al., 2022b) has gained attention due to the effectiveness of the flat minimum in mitigating forgetting (Li et al., 2024; Kong et al., 2023; Cha et al., 2021; Mehta et al., 2023). Methods such as FS-DPGM (Deng et al., 2021), F2M (Shi et al., 2021), DFGP (Yang et al., 2023), SAM-CL (Tung et al., 2023) overcome forgetting in the flatness areas of different configurations. C-Flat (Bian et al., 2024) proposed a CL-friendly general optimization framework, that holds promise as a",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/feng25j/feng25j.pdf",
+              "document_sha256": "7250189296c55b49a8ff44f686604f81d027efcd42694cb730f66484b78de879"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Backpropagation provides a generalized configuration for overcoming catastrophic forgetting. Optimizers such as SGD and Adam are commonly used for weight updates in continual learning and continual pre-training. However, access to gradient information is not always feasible in practice due to black-box APIs, hardware constraints, or non-differentiable systems, a challenge we refer to as the gradient bans. To bridge this gap, we introduce ZeroFlow, the first benchmark designed to evaluate gradient-free optimization algorithms for overcoming forgetting. ZeroFlow examines a suite of forward pass-based methods across various algorithms, forgetting scenarios, and datasets. Our results show that forward passes alone can be sufficient to mitigate forgetting. We uncover novel optimization principles that highlight the potential of forward pass-based methods in mitigating forgetting, managing task conflicts, and reducing memory demands. Additionally, we propose new enhancements that further improve forgetting resistance using only forward passes. This work provides essential tools and insights to advance the development of forward-pass-based methods for continual learning.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/feng25j/feng25j.pdf",
+              "document_sha256": "7250189296c55b49a8ff44f686604f81d027efcd42694cb730f66484b78de879"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "To sum up, our contributions are listed below, (i) We propose the first benchmark ZeroFlow for overcoming forgetting under gradient bans. This benchmark includes our investigations into 7 forward pass optimization algorithms, several forgetting scenarios and datasets with varying complexity, and task sequences (as Figure 2).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/feng25j/feng25j.pdf",
+              "document_sha256": "7250189296c55b49a8ff44f686604f81d027efcd42694cb730f66484b78de879"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-068805ddfec5e8053a6366bc",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/01d8bae291b1e4724443375634ccfa0e-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b361d56371e29ef66991c8df",
+          "url": "https://proceedings.mlr.press/v267/feng25j.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "5357eca3ee7ce31db46584b6b6d1f4d035c543af7265a3d48e7a6cb28ddc8c95"
+    },
+    {
+      "id": "edge-49eabebfd98c89db48df0d4a",
+      "a": "paper-07081d2721207a90c6b09f0c",
+      "b": "paper-0b438e75cbad5cc1288bb308",
+      "state": {
+        "paper_a": {
+          "title": "The Dormant Neuron Phenomenon in Deep Reinforcement Learning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "In this work we identify the dormant neuron phenomenon in deep reinforcement learning, where an agent’s network suffers from an increasing number of inactive neurons, thereby affecting network expressivity. We demonstrate the presence of this phenomenon across a variety of algorithms and environments, and highlight its effect on learning. To address this issue, we propose a simple and effective method (ReDo) that Recycles Dormant neurons throughout training. Our experiments demonstrate that ReDo maintains the expressive power of networks by reducing the number of dormant neurons and results in improved performance."
+        },
+        "paper_b": {
+          "title": "Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Plasticity, or the ability of an agent to adapt to new tasks, environments, or distributions, is crucial for continual learning. In this paper, we study the loss of plasticity in deep continual RL from the lens of churn: network output variability induced by the data in each training batch. We demonstrate that (1) the loss of plasticity is accompanied by the exacerbation of churn due to the gradual rank decrease of the Neural Tangent Kernel (NTK) matrix; (2) reducing churn helps prevent rank collapse and adjusts the step size of regular RL gradients adaptively. Moreover, we introduce Continual Churn Approximated Reduction (C-CHAIN) and demonstrate it improves learning performance and outperforms baselines in a diverse range of continual learning environments on OpenAI Gym Control, ProcGen, DeepMind Control Suite, and MinAtar benchmarks."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "Researchers have proposed various strategies to mitigate the loss of plasticity; approaches include ensuring active unit engagement (Sokar et al., 2023), mitigating gradient starvation (Gogianu et al., 2021; Dohare et al., 2023), employing smaller batch sizes (Ceron et al., 2023), minimizing…\nCopyright 2025 by the author(s). challenging, and there have been a number of recently proposed remedies, such as resetting dormant neurons (Sokar et al., 2023), regularization (Kumar et al., 2023b), and variants of backpropagation (Dohare et al., 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07081d2721207a90c6b09f0c",
+          "b": "paper-0b438e75cbad5cc1288bb308",
+          "input_sha256": "664d4d7cf3cff5ba08a4aa49ceee39f4c17d19c11c52ca2888ac0bea69f9e4de",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/sokar23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/sokar23a/sokar23a.pdf",
+              "sha256": "01f9edf6f7519b024359ad6413cc2e7d444acbf4362231b220c09f7260c505f0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/tang25g.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/tang25g/tang25g.pdf",
+              "sha256": "2e1d555ba0509fc23d72efa18fe728f2e9b1ae4734a94652e244f070f0f0d3e2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this work we identify the dormant neuron phenomenon in deep reinforcement learning, where an agent’s network suffers from an increasing number of inactive neurons, thereby affecting network expressivity. We demonstrate the presence of this phenomenon across a variety of algorithms and environments, and highlight its effect on learning. To address this issue, we propose a simple and effective method (ReDo) that Recycles Dormant neurons throughout training. Our experiments demonstrate that ReDo maintains the expressive power of networks by reducing the number of dormant neurons and results in improved performance.",
+              "url": "https://proceedings.mlr.press/v202/sokar23a/sokar23a.pdf",
+              "document_sha256": "01f9edf6f7519b024359ad6413cc2e7d444acbf4362231b220c09f7260c505f0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "We demonstrate the presence of the dormant neuron phenomenon across different algorithms and domains: in two value-based algorithms on the Arcade Learning Environment (Bellemare et al., 2013) (DQN (Mnih et al., 2015) and DrQ(\u000f) (Yarats et al., 2021; Agarwal et al., 2021)), and with an actor-critic method (SAC (Haarnoja et al., 2018)) evaluated on the MuJoCo suite (Todorov et al., 2012). To address this issue, we propose Recycling Dormant neurons (ReDo), a simple and effective method to avoid network under-utilization during training without sacrificing previously learned knowledge: we explicitly limit the spread of dormant neurons by “recycling” them to an active state. ReDo consistently maintains the capacity of the network throughout training and improves the agent’s performance (see Figure 1). Our contributions in this work can be summarized as follows:",
+              "url": "https://proceedings.mlr.press/v202/sokar23a/sokar23a.pdf",
+              "document_sha256": "01f9edf6f7519b024359ad6413cc2e7d444acbf4362231b220c09f7260c505f0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "typically occurs when the network settles into sharp local minima or becomes overly specialized to the initial stages of training, resulting in reduced learning capacity, slower convergence, or poor generalization to new data (Nikishin et al., 2022b; 2024). The underlying mechanisms responsible for the loss of plasticity during training remain an area of active research (Ma et al., 2023a; Lyle et al., 2024). Researchers have proposed various strategies to mitigate the loss of plasticity; approaches include ensuring active unit engagement (Sokar et al., 2023), mitigating gradient starvation (Gogianu et al., 2021; Dohare et al., 2023), employing smaller batch sizes (Ceron et al., 2023), minimizing deviations from initial parameter values (Lewandowski et al., 2023; Kumar et al., 2023a), resetting optimizer (Asadi et al., 2023; Ellis et al., 2024), and regularizing weight orthogonality (Chung et al., 2024). Periodically resetting network parameters has been effective (Ash & Adams, 2020; Frati et al., 2024), especially effective in data-efficient reinforcement learning (Schwarzer et al., 2023; Nauman et al., 2024). Ceron et al. (2024a;b); Liu et al. (2025) showed that dynamic sparse training leads to improved performance and enhanced network plasticity.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/tang25g/tang25g.pdf",
+              "document_sha256": "2e1d555ba0509fc23d72efa18fe728f2e9b1ae4734a94652e244f070f0f0d3e2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Plasticity, or the ability of an agent to adapt to new tasks, environments, or distributions, is crucial for continual learning. In this paper, we study the loss of plasticity in deep continual RL from the lens of churn: network output variability for out-of-batch data induced by mini-batch training. We demonstrate that (1) the loss of plasticity is accompanied by the exacerbation of churn due to the gradual rank decrease of the Neural Tangent Kernel (NTK) matrix; (2) reducing churn helps prevent rank collapse and adjusts the step size of regular RL gradients adaptively. Moreover, we introduce Continual Churn Approximated Reduction (C-CHAIN) and demonstrate it improves learning performance and outperforms baselines in a diverse range of continual learning environments on OpenAI Gym Control, ProcGen, DeepMind Control Suite, and MinAtar benchmarks.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/tang25g/tang25g.pdf",
+              "document_sha256": "2e1d555ba0509fc23d72efa18fe728f2e9b1ae4734a94652e244f070f0f0d3e2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Driven by the connection between plasticity and churn, we extend the idea of churn reduction originally proposed for single-MDP RL (Tang & Berseth, 2024) to continual RL. We introduce Continual Churn Approximated Reduction (CCHAIN). C-CHAIN continually minimizes the churn for the data out of the training batch alongside the regular training of continual RL. Moreover, we formally demonstrate that C-CHAIN has a two-fold efficacy in mitigating plasticity loss with a gradient decorrelation effect by suppressing the off-diagonal entries of the NTK matrix, and a step-size adjustment effect by taking the gradient projection of the data out of the training batch.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/tang25g/tang25g.pdf",
+              "document_sha256": "2e1d555ba0509fc23d72efa18fe728f2e9b1ae4734a94652e244f070f0f0d3e2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07081d2721207a90c6b09f0c",
+          "url": "https://proceedings.mlr.press/v202/sokar23a.html"
+        },
+        "b": {
+          "paper_id": "paper-0b438e75cbad5cc1288bb308",
+          "url": "https://proceedings.mlr.press/v267/tang25g.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "cead939700dc1951fbee2f392312925eb8861aec2ee24e85ed80985e5adbea26"
+    },
+    {
+      "id": "edge-a784461a3f6d0736b4d8da57",
+      "a": "paper-07875d4954f71b13511f702c",
+      "b": "paper-d6d6323cb74006388b7dd1fd",
+      "state": {
+        "paper_a": {
+          "title": "Overfitting Can Be Harmless for Basis Pursuit, But Only to a Degree",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recently, there have been significant interests in studying the so-called \"double-descent\" of the generalization error of linear regression models under the overparameterized and overfitting regime, with the hope that such analysis may provide the first step towards understanding why overparameterized deep neural networks (DNN) still generalize well. However, to date most of these studies focused on the min L2-norm solution that overfits the data. In contrast, in this paper we study the overfitting solution that minimizes the L1-norm, which is known as Basis Pursuit (BP) in the compressed sensing literature. Under a sparse true linear regression model with p i.i.d. Gaussian features, we show that for a large range of p up to a limit that grows exponentially with the number of samples n, with high probability the model error of BP is upper bounded by a value that decreases with p. To the best of our knowledge, this is the first analytical result in the literature establishing the double-descent of overfitting BP for finite n and p. Further, our results reveal significant differences between the double-descent of BP and min L2-norm solutions. Specifically, the double-descent upper-bound of BP is independent of the signal strength, and for high SNR and sparse models the descent-floor of BP can be much lower and wider than that of min L2-norm solutions."
+        },
+        "paper_b": {
+          "title": "Theory on Forgetting and Generalization of Continual Learning",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Continual learning (CL), which aims to learn a sequence of tasks, has attracted significant recent attention. However, most work has focused on the experimental performance of CL, and theoretical studies of CL are still limited. In particular, there is a lack of understanding on what factors are important and how they affect \"catastrophic forgetting\" and generalization performance. To fill this gap, our theoretical analysis, under overparameterized linear models, provides the first-known explicit form of the expected forgetting and generalization error for a general CL setup with an arbitrary number of tasks. Further analysis of such a key result yields a number of theoretical explanations about how overparameterization, task similarity, and task ordering affect both forgetting and generalization error of CL. More interestingly, by conducting experiments on real datasets using deep neural networks (DNNs), we show that some of these insights even go beyond the linear models and can be carried over to practical setups. In particular, we use concrete examples to show that our results not only explain some interesting empirical observations in recent studies, but also motivate better practical algorithm designs of CL."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example, some work discovered and studied double-descent with min 2 -norm overﬁtted solutions [9, 7, 6, 20, 39] or min (cid:96) 1 -norm overﬁtted solutions [38, 23], while using simple features such as Gaussian or Fourier features.\nIn order to understand the generalization power of overﬁtted machine learning models, much attention has focused (e.g., [9, 23, 21]) on studying the impact of overparameterization on single-task learning, whereas how overparameterization affects the performance of CL still remains unclear.\nNote that analyzing overparameterized linear models are important in their own right and also, as demonstrated in many recent works, are a ﬁrst step towards understanding the generalization performance of DNNs, e.g., [9, 5, 23, 40, 21].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07875d4954f71b13511f702c",
+          "b": "paper-d6d6323cb74006388b7dd1fd",
+          "input_sha256": "a45c7bb06e75e853080d8953e5eca103e947ce1c3fa3dc224418f6bca75e0cd1",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/5a66b9200f29ac3fa0ae244cc2a51b39-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf",
+              "sha256": "8eb03be6c5cb2771707a4d56bbdb7f15c9689b8a63b79a34e399415540f7d2b0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/lin23f.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/lin23f/lin23f.pdf",
+              "sha256": "eaa8bafb2bb8d8b8ae6318d2581e081cf65a9b6a0c723cbcdad5562b265a5504"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Although there have been significant efforts in experimental studies (e.g., Kirkpatrick et al. 2017; Chaudhry et al. 2018; Yoon et al. 2020; Doan et al. 2021; Evron et al. 2022) to address the forgetting issue, the theoretical understanding of CL is still in the early stage, where only a few attempts have emerged recently, e.g., Yin et al. 2020; Bennani et al. 2020; Doan et al. 2021; Evron et al. 2022 (see a more detailed discussion about the previous theoretical studies of CL in Section 2). However, none of these existing theoretical results provide an explicit characterization of forgetting and generalization error, that only depends on fundamental system parameters/setups (e.g., number of tasks/samples/parameters, noise level, task similarity/order). Thus, our work here provides the first-known explicit theoretical result in a more general CL setup with an arbitrary number of tasks, which enables us to comprehensively understand which factors are relevant and how they (precisely) affect forgetting and generalization error of CL. Our main contributions can be summarized as follows. First, we provide theoretical results on the expected value of forgetting and overall generalization error in CL, under a linear regression setup with i.i.d. Gaussian features and noise. The expression of our results is in an explicit form that captures a clear dependency on various system parameters/setups. Note that analyzing overparameterized linear models are important in their own right and also, as demonstrated in many recent works, are a first step towards understanding the generalization performance of DNNs, e.g., Belkin et al. 2018; Bartlett et al. 2020b; Ju et al. 2020; Muthukumar et al. 2020; Hastie et al. 2022.",
+              "url": "https://proceedings.mlr.press/v202/lin23f/lin23f.pdf",
+              "document_sha256": "eaa8bafb2bb8d8b8ae6318d2581e081cf65a9b6a0c723cbcdad5562b265a5504"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07875d4954f71b13511f702c",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/5a66b9200f29ac3fa0ae244cc2a51b39-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-d6d6323cb74006388b7dd1fd",
+          "url": "https://proceedings.mlr.press/v202/lin23f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "9bb487f4fbb123a94324026979713c10e804c3448620c68bc9a1bd0c4525da18"
+    },
+    {
+      "id": "edge-bc18dccaf01fc0b7ef18f431",
+      "a": "paper-079a3272c53f695ecec70eee",
+      "b": "paper-4226d51067329bf64376862e",
+      "state": {
+        "paper_a": {
+          "title": "Can you trust your model's uncertainty? Evaluating predictive uncertainty under dataset shift",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "Modern machine learning methods including deep learning have achieved great success in predictive accuracy for supervised learning tasks, but may still fall short in giving useful estimates of their predictive uncertainty. Quantifying uncertainty is especially critical in real-world settings, which often involve input distributions that are shifted from the training distribution due to a variety of factors including sample bias and non-stationarity. In such settings, well calibrated uncertainty estimates convey information about when a model's output should (or should not) be trusted. Many probabilistic deep learning methods, including Bayesian-and non-Bayesian methods, have been proposed in the literature for quantifying predictive uncertainty, but to our knowledge there has not previously been a rigorous large-scale empirical comparison of these methods under dataset shift. We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration. We find that traditional post-hoc calibration does indeed fall short, as do several other previous methods. However, some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks."
+        },
+        "paper_b": {
+          "title": "Posterior Meta-Replay for Continual Learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Learning a sequence of tasks without access to i.i.d. observations is a widely studied form of continual learning (CL) that remains challenging. In principle, Bayesian learning directly applies to this setting, since recursive and one-off Bayesian updates yield the same result. In practice, however, recursive updating often leads to poor trade-off solutions across tasks because approximate inference is necessary for most models of interest. Here, we describe an alternative Bayesian approach where task-conditioned parameter distributions are continually inferred from data. We offer a practical deep learning implementation of our framework based on probabilistic task-conditioned hypernetworks, an approach we term posterior meta-replay. Experiments on standard benchmarks show that our probabilistic hypernetworks compress sequences of posterior parameter distributions with virtually no forgetting. We obtain considerable performance gains compared to existing Bayesian CL methods, and identify task inference as our major limiting factor. This limitation has several causes that are independent of the considered sequential setting, opening up new avenues for progress in CL."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "A successful approach for OOD detection are deep ensembles [68], which in the simplest case correspond to several deterministic networks trained independently, and whose predictions are aggregated during inference [35].\nThis surprisingly often results in meaningful OOD performance in high-dimensional benchmarks without any treatment of parameter uncertainty [68].\nHowever, due to the complexity of modelling high-dimensional distributions at the scale of modern deep learning, BNNs still face severe scalability issues [68].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-079a3272c53f695ecec70eee",
+          "b": "paper-4226d51067329bf64376862e",
+          "input_sha256": "9cb8376f92d94689ca1966e48329f6e42a5cee8e55cac83b538546b926ce8789",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/761b42cfff120aac30045f7a110d0256-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf",
+              "sha256": "343d070fab4e939b11e924d0f269444403912ce4d3673f6aa7f47c77d86643e8"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Finally, we evaluate the performance of different methods on the Criteo Display Advertising Challenge6 dataset, a binary classification task consisting of 37M examples with 13 numerical and 26 categorical features per example. We introduce shift by reassigning each categorical feature to a random new token with some fixed probability that controls the intensity of shift. This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions. The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (⇠ 25% of examples are positive), we report AUC instead of classification accuracy. Results from these experiments are depicted in Figure 5. (Figure S7 in Appendix C shows additional results including ECE and Brier score decomposition.) We observe that ensembles are superior in terms of both AUC and Brier score for most of the values of shift, with the performance gap between ensembles and other methods generally increasing as the shift increases. Both Dropout model variants yielded improved AUC on shifted data, and Dropout surpassed ensembles in Brier 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf",
+              "document_sha256": "b35489681c8bc2b3bae1f9122a97a0b7acd4e2bff604591cb36b7e6bbba612ec"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Continual learning. CL algorithms attempt to mitigate catastrophic interference while facilitating transfer of skills whenever possible. They can be coarsely categorized as (1) regularization-methods that put constraints on weight updates, (2) replay-methods that mimic pseudo-i.i.d. training by rehearsing stored or generated data and (3) dynamic architectures which can grow to allocate capacity for new knowledge [71]. Most related to our work is the study from von Oswald et al. [91] that introduces task-conditioned hypernetworks for CL, and already considers task inference via predictive uncertainty in the deterministic case. Our framework can be seen as a probabilistic extension of their work, which provides task-specific point estimates via a shared meta-model (cf. Sec. 3). Follow-up work also achieves task inference via predictive uncertainty, e.g., Wortsman et al. [94] use it to select a learned binary mask per task that modulates a random base network. Here we complement these studies by thoroughly exploring task inference via several uncertainty measures, disclosing the factors that limit task inference and highlighting the importance of parameter uncertainty. A variety of methods tackling CL have been derived from a Bayesian perspective. A prominent example are prior-focused methods [17], which incorporate knowledge from past data via the prior and, in contrast to our work, aim to find a shared posterior for all data. Examples include (Online) EWC [38, 78] and VCL [65, 54]. Other methods like CN-DPM [46] use Bayes’ rule for task inference on the joint p(X, C), where C is a discrete condition such as task identity. An evident downside of CN-DPM is the need for a separate generative and discriminative model per condition. More generally, such an approach requires",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf",
+              "document_sha256": "343d070fab4e939b11e924d0f269444403912ce4d3673f6aa7f47c77d86643e8"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "To investigate the importance of parameter uncertainty, we consider a 2D classification problem for which uncertainty can be visualized in- and out-of-distribution. Classification tasks are of special interest as it is possible to model arbitrary inputdependent discrete distributions, e.g. via a softmax at the outputs. This surprisingly often results in meaningful OOD performance in high-dimensional benchmarks without any treatment of parameter uncertainty [82].",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf",
+              "document_sha256": "343d070fab4e939b11e924d0f269444403912ce4d3673f6aa7f47c77d86643e8"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "virtually no forgetting. However, we discuss in SM F.3 how this isotropic regularization could be improved given that the KL is locally approximated by a norm k·kF induced by the Fisher information matrix F on qθ (W). Task inference. A system with task-specific solutions requires access to task identity when processing unseen samples. In our framework, this amounts to selecting the correct task embedding to condition the TC. Although auxiliary systems can be used to infer task identity [24, 91], here we exploit predictive uncertainty, assuming task identity can be inferred from the input alone. For a task inference approach based on predictive uncertainty to work, the properties of the input data distribution p(t) (x) need to be reflected in the uncertainty measure, i.e., uncertainty needs to be low for in-distribution data and high for out-of-distribution (OOD) data [11]. Uncertainty-based task inference with deterministic discriminative models only captures aleatoric uncertainty, making its overall validity debatable. Indeed, aleatoric uncertainty is only calibrated in-distribution and its OOD behavior is hard to foresee. Instead, we argue that epistemic uncertainty arising naturally in a Bayesian setting is crucial for robust uncertainty-based task inference. In our case, epistemic uncertainty stems from the fact that the posterior parameter distribution p(W|D(t) ) in conjunction with the network architecture induces a distribution over functions. If this distribution captures a rich set of functions, a diversity of predictions on OOD data can be expected even if those functions agree in-distribution (cf. Sec. 4.2). Note, however, that inducing such diverse distribution over functions is not straightforward with neural networks, and that more research is required to",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf",
+              "document_sha256": "343d070fab4e939b11e924d0f269444403912ce4d3673f6aa7f47c77d86643e8"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "This approach introduces two challenges: forgetting at the level of the hypernetwork, and the need to know task identity to correctly condition the hypernetwork. We empirically show that forgetting at the meta-level can be prevented by using a simple regularizer that replays parameters of previous posteriors. In task-agnostic inference settings, often referred to as class-incremental learning in the context of classification benchmarks [88], the main hurdle therefore becomes task inference at test time. Here we focus on this task-agnostic setting, arguably the most challenging but also the most natural CL scenario, since the obtained models can be deployed just like those obtained via i.i.d. training (e.g., irrespective of the sequential training, the final model will be a classifier across all classes). In order to explicitly infer task identity from unseen inputs without resorting to generative models, we thoroughly study the use of principled uncertainty that naturally arises in Bayesian models. We show that results obtained in this task-agnostic setting with our approach constitute a leap in performance compared to prior-focused methods. Furthermore we show that limitations in task inference via predictive uncertainty are not related to our CL solution, but depend instead on the combination of approximate inference method, architecture, uncertainty measure and prior. Finally, we investigate how task inference can be further improved through several extensions. We summarize our main contributions below: • We describe a Bayesian CL framework where task-conditioned posterior parameter distributions are continually learned and compressed in a hypernetwork. • In a series of synthetic and real-world CL benchmarks we show that our task-conditioned hypernetworks exhibit",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/761b42cfff120aac30045f7a110d0256-Paper.pdf",
+              "document_sha256": "343d070fab4e939b11e924d0f269444403912ce4d3673f6aa7f47c77d86643e8"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-079a3272c53f695ecec70eee",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-4226d51067329bf64376862e",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/761b42cfff120aac30045f7a110d0256-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "149d1b764e5db88f5a7970bd99a5658e2b0fbbb0803e2bf89d98024513e529ca"
+    },
+    {
+      "id": "edge-d8e88b72e7080ee8a9b9c65d",
+      "a": "paper-0850485f8051615f4a9f7288",
+      "b": "paper-4d284a2710c221fb7ca0db22",
+      "state": {
+        "paper_a": {
+          "title": "BERT Post-Training for Review Reading Comprehension and Aspect-based Sentiment Analysis",
+          "year": 2019,
+          "venue": "ACL Anthology",
+          "abstract": "Question-answering plays an important role in e-commerce as it allows potential customers to actively seek crucial information about products or services to help their purchase decision making. Inspired by the recent success of machine reading comprehension (MRC) on formal documents, this paper explores the potential of turning customer reviews into a large source of knowledge that can be exploited to answer user questions. We call this problem Review Reading Comprehension (RRC). To the best of our knowledge, no existing work has been done on RRC. In this work, we first build an RRC dataset called ReviewRC based on a popular benchmark for aspect-based sentiment analysis. Since ReviewRC has limited training examples for RRC (and also for aspect-based sentiment analysis), we then explore a novel post-training approach on the popular language model BERT to enhance the performance of fine-tuning of BERT for RRC. To show the generality of the approach, the proposed post-training is also applied to some other review-based tasks such as aspect extraction and aspect sentiment classification in aspect-based sentiment analysis. Experimental results demonstrate that the proposed post-training is highly effective."
+        },
+        "paper_b": {
+          "title": "Achieving Forgetting Prevention and Knowledge Transfer in Continual Learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Continual learning (CL) learns a sequence of tasks incrementally with the goal of achieving two main objectives: overcoming catastrophic forgetting (CF) and encouraging knowledge transfer (KT) across tasks. However, most existing techniques focus only on overcoming CF and have no mechanism to encourage KT, and thus do not do well in KT. Although several papers have tried to deal with both CF and KT, our experiments show that they suffer from serious CF when the tasks do not have much shared knowledge. Another observation is that most current CL methods do not use pre-trained models, but it has been shown that such models can significantly improve the end task performance. For example, in natural language processing, fine-tuning a BERT-like pre-trained language model is one of the most effective approaches. However, for CL, this approach suffers from serious CF. An interesting question is how to make the best use of pre-trained models for CL. This paper proposes a novel model called CTR to solve these problems. Our experimental results demonstrate the effectiveness of CTR"
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0850485f8051615f4a9f7288",
+          "b": "paper-4d284a2710c221fb7ca0db22",
+          "input_sha256": "8541b14bbbacb561ad0c60f620ed4dec23fe65306dd1c14ba59757f2dae636e0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/N19-1242/",
+              "pdf_url": "https://aclanthology.org/N19-1242.pdf",
+              "sha256": "6d429ce933d2d28ffa59283d1776bee930757d86233014a1bc06f15fffa07c23"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/bcd0049c35799cdf57d06eaf2eb3cff6-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/bcd0049c35799cdf57d06eaf2eb3cff6-Paper.pdf",
+              "sha256": "e79ece1a3178a28471ed9ec4e0abd6e677b00595a07dba2ee8341dc9a445605a"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "resolved (as BERT is trained on Wikipedia articles and has almost no understanding of opinion text), and it also introduces another challenge of task-awareness (the RRC task), called the task challenge. This challenge arises when the taskagnostic BERT meets the limited number of finetuning examples in ReviewRC (see Sec. 5) for RRC, which is insufficient to fine-tune BERT to ensure full task-awareness of the system3 . To address all the above challenges, we propose a novel joint post-training technique that takes BERT’s pre-trained weights as the initialization4 for basic language understanding and adapt BERT with both domain knowledge and task (MRC) knowledge before fine-tuning using the domain end task annotated data for the domain RRC. This technique leverages knowledge from two sources: unsupervised domain reviews and supervised (yet out-of-domain) MRC data 5 , where the former enhances domain-awareness and the latter strengthens MRC task-awareness. As a general-purpose approach, we show that the proposed method can also benefit ABSA tasks such as aspect extraction (AE) and aspect sentiment classification (ASC). The main contributions of this paper are as follows. (1) It proposes the new problem of review reading comprehension (RRC). (2) To solve this new problem, an annotated dataset for RRC is created. (3) It proposes a general-purpose posttraining approach to improve RRC, AE, and ASC. Experimental results demonstrate that the proposed approach is effective.",
+              "url": "https://aclanthology.org/N19-1242.pdf",
+              "document_sha256": "6d429ce933d2d28ffa59283d1776bee930757d86233014a1bc06f15fffa07c23"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "services), which are vital for customer decision making. As such, an intelligent agent that can automatically answer customers’ questions is very important for the success of online businesses. Given the ever-changing environment of products and services, it is very hard, if not impossible, to pre-compile an up-to-date and reliable knowledge base to cover a wide assortment of questions that customers may ask, such as in factoidbased KB-QA (Xu et al., 2016; Fader et al., 2014; Kwok et al., 2001; Yin et al., 2015). As a compromise, many online businesses leverage community question-answering (CQA) (McAuley and Yang, 2016) to crowdsource answers from existing customers. However, the problem with this approach is that many questions are not answered, and if they are answered, the answers are delayed, which is not suitable for interactive QA. In this paper, we explore the potential of using product reviews as a large source of user experiences that can be exploited to obtain answers to user questions. Although there are existing studies that have used information retrieval (IR) techniques (McAuley and Yang, 2016; Yu and Lam, 2018) to find a whole review as the response to a user question, giving the whole review to the user is undesirable as it is quite time-consuming for the user to read it. Inspired by the success of Machine Reading Comphrenesions (MRC) (Rajpurkar et al., 2016, 2018), we propose a novel task called Review Reading Comprehension (RRC) as following. Problem Definition: Given a question q = (q1 , . . . , qm ) from a customer (or user) about a product and a review d = (d1 , . . . , dn ) for that product containing the information to answer q, find a sequence of tokens (a text span) a = (ds , . . . , de ) in d that answers q correctly, where 1 ≤ s ≤ n, 1 ≤ e ≤",
+              "url": "https://aclanthology.org/N19-1242.pdf",
+              "document_sha256": "6d429ce933d2d28ffa59283d1776bee930757d86233014a1bc06f15fffa07c23"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Table 1: Statistics of datasets for ASC. The datasets statistics for DSC and 20News have been described in the text. More detailed data statistics are given in Supplementary. major concern for them. The third application (and dataset) is mainly used to test CTR’s ability to overcome CF as its tasks are very different and have little shared knowledge to transfer. 1. Document Sentiment Classification (DSC). This application is to classify each full product review into one of the two opinion classes (positive and negative). The training data of each task consists of reviews of a particular type of product. We adopt the text classification formulation in [8], where a [CLS] token is used to predict the opinion polarity. We employ a set of 10 DSC datasets (reviews of 10 products) to produce sequences of tasks. The products are Sports, Toys, Tools, Video, Pet, Musical, Movies, Garden, Offices, and Kindle [22]. Two experiments are conducted: (1) using small data in each task: 100 positive and 100 negative training reviews per task; (2) using the full data in each task: 2500 positive and 2500 negative training reviews per task [22]. (1) is more useful in practice because labeling a large number of examples is very costly. The same validation reviews (250 positive and 250 negative) and the same test reviews (250 positive and 250 negative) are used in both experiments. 2. Aspect Sentiment Classification (ASC). It classifies a review sentence on the aspect-level sentiment (one of positive, negative, and neutral). For example, the sentence “The picture is great but the sound is lousy” about a TV expresses a positive opinion about the aspect “picture” and a negative opinion about the aspect “sound.” We adopt the ASC formulation in [65], where the aspect term and sentence are",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/bcd0049c35799cdf57d06eaf2eb3cff6-Paper.pdf",
+              "document_sha256": "e79ece1a3178a28471ed9ec4e0abd6e677b00595a07dba2ee8341dc9a445605a"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Unless otherwise stated, the same hyper-parameters are used in experiments for ASC, DSC and 20News datasets. For the knowledge sharing module (KSM), we employ 2 layers of fully connected network with dimensions 768 in the TK-Layer. We employ 3 transfer capsules. We experimented with 2 to 15 capsules and selected 3 based on the validation data accuracy. For the task specific module (TSM), we use 2000 dimensions as the final and the hidden layers of the TSM. The task ID embeddings have 2000 dimensions. A fully connected layer with softmax output is used as the classification heads in the last layer of the BERT, together with the categorical cross-entropy loss. dropout of 0.5 between fully connected layers. The training of BERT, Adapter-BERT and CTR follows that of [65]. We adopt BERTBASE (uncased). The maximum input length is set to 128 which is long enough for both ASC and DSC. We use Adam optimizer and set the learning rate to 3e-5. We use 10 epochs for SemEval datasets and 30 epochs for the other datasets in the ASC application. For DSC, we use 20 epochs. For 20News, we use 10 epochs. These are selected based on the validation results. The batch size is set to 32 for all cases. For all the other CL baselines, we use the code provided by their authors and adapt them for text classification. We also adopt their original parameters, including learning rate, early stopping, and batch size. 5.4",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/bcd0049c35799cdf57d06eaf2eb3cff6-Paper.pdf",
+              "document_sha256": "e79ece1a3178a28471ed9ec4e0abd6e677b00595a07dba2ee8341dc9a445605a"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "Table 3: Ablation experiment results. Effectiveness of Knowledge Transfer. Forward transfer is defined as the forward performance (CTR(forward) in Table 2) subtracting the standalone (SDL) result. CTR(forward) is the test accuracy or MF1 of each task when it was first learned. Backward transfer is defined as the difference between the backward performance (CTR in Table 2, the final result after all tasks are learned) and the forward performance. The average results of CTR (forward) and CTR are given in Table 2. We observe that forward transfer of CTR is highly effective for the three datasets with similar tasks. For DSC, the less the data, the more effective is the transfer, which is reasonable. Backward transfer improves the accuracy and MF1 of ASC and DSC (small). For DSC (full), it is slightly weaker and for 20News, it is also slightly weaker due to a very small amount of forgetting, but the less than 0.0055 CF is negligible. Note that in [36, 46], forward transfer is measured by comparing the test results of the new task on the current learned network and a random initialized network before/without training the new task (like zero-shot). This method indicates whether the learned network contains some useful knowledge for the new task. However, it does not tell how much forward transfer actually happens after learning the new task, which is more important and is what our method measures. Overcoming Forgetting. To validate CTR’s effectiveness in dealing forgetting with a sequence of Pt−1 1 dissimilar tasks, we compute the Forgetting Rate [34], FR = t−1 i=1 Ai,i − At,i , where Ai,i is the forward accuracy of task i and At,i is the accuracy of task i after training the last task t. We average over all tasks except the last one because the last task obviously has no",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/bcd0049c35799cdf57d06eaf2eb3cff6-Paper.pdf",
+              "document_sha256": "e79ece1a3178a28471ed9ec4e0abd6e677b00595a07dba2ee8341dc9a445605a"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "This section describes the general architecture of CTR. The details about its key component CLplugin is presented in the next section. Due to its good performance, BERT [8] and its transformer [60] architecture are used as the base in our model CTR. Since BERT fine-tuning is prone to CF (Sec. 1), we propose the CL plug-in idea, which is inspired by Adapter-BERT [16]. CL-plugin is a full continual learning module designed to interact with a pre-trained model, in our case, BERT. Inserting CL-plugins in BERT. A commonly used method of leveraging a pre-trained model is to add the end task module on top of the pre-trained model. However, as explained in Sec. 1, fine-tuning the pre-trained model can cause serious CF for CL. The CL system PCL [18], which uses this approach, has the pre-trained model frozen to avoid forgetting. But as we will see in Sec. 5.4, this is not the best choice. CTR inserts the proposed CL-plugin in two locations in BERT, i.e., in each transformer layer of BERT. We will also see in Sec. 5.4 that inserting only one CL-plugin in one location is sub-optimal. Figure 1 gives the CTR architecture and we can see the two CL-plugins are added into BERT. In learning, only the two CL-plugins and the classification heads are trained. The components of the original pre-trained BERT are fixed. Continual learning plug-in (CL-plugin). CL-plugin employs a capsule network (CapsNet) [15, 50] like architecture. In the classic neural network, a neuron outputs a scalar, real-valued activation as a feature detector. CapsNets replaces that with a vector-output capsule to preserve additional information. A simple CapsNet consists of two capsule layers. The first layer stores low-level feature maps, and the second layer generates the classification probability with each",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/bcd0049c35799cdf57d06eaf2eb3cff6-Paper.pdf",
+              "document_sha256": "e79ece1a3178a28471ed9ec4e0abd6e677b00595a07dba2ee8341dc9a445605a"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0850485f8051615f4a9f7288",
+          "url": "https://aclanthology.org/N19-1242/"
+        },
+        "b": {
+          "paper_id": "paper-4d284a2710c221fb7ca0db22",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/bcd0049c35799cdf57d06eaf2eb3cff6-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "bcb6696033b14362fab24c845f748bc72ac3cb8e2876fd93486798cac8e48200"
+    },
+    {
+      "id": "edge-ce64f787bcea60ebb48c6597",
+      "a": "paper-09d5cc31a105babbb7a581ff",
+      "b": "paper-a7ebc10600af73875bbbfaa2",
+      "state": {
+        "paper_a": {
+          "title": "Forget-free Continual Learning with Winning Subnetworks",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Inspired by Lottery Ticket Hypothesis that competitive subnetworks exist within a dense network, we propose a continual learning method referred to as Winning SubNetworks (WSN), which sequentially learns and selects an optimal subnetwork for each task. Specifically, WSN jointly learns the model weights and task-adaptive binary masks pertaining to subnetworks associated with each task whilst attempting to select a small set of weights to be activated (winning ticket) by reusing weights of the prior subnetworks. The proposed method is inherently immune to catastrophic forgetting as each selected subnetwork model does not infringe upon other subnetworks. Binary masks spawned per winning ticket are encoded into one N-bit binary digit mask, then compressed using Huffman coding for a sub-linear increase in network capacity with respect to the number of tasks."
+        },
+        "paper_b": {
+          "title": "CLAP4CLIP: Continual Learning with Probabilistic Finetuning for Vision-Language Models",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Continual learning (CL) aims to help deep neural networks to learn new knowledge while retaining what has been learned. Owing to their powerful generalizability, pre-trained vision-language models such as Contrastive Language-Image Pre-training (CLIP) have lately gained traction as practical CL candidates. However, the domain mismatch between the pre-training and the downstream CL tasks calls for finetuning of the CLIP on the latter. The deterministic nature of the existing finetuning methods makes them overlook the many possible interactions across the modalities and deems them unsafe for high-risk tasks requiring reliable uncertainty estimation. To address these, our work proposes C ontinual L e A rning with P robabilistic finetuning (CLAP) - a probabilistic modeling framework over visual-guided text features per task, thus providing more calibrated CL finetuning. Unlike recent data-hungry anti-forgetting CL techniques, CLAP alleviates forgetting by exploiting the rich pre-trained knowledge of CLIP for weight initialization and distribution regularization of task-specific parameters. Cooperating with the diverse range of existing prompting methods, CLAP can surpass the predominant deterministic finetuning approaches for CL with CLIP. We conclude with out-of-the-box applications of superior uncertainty estimation abilities of CLAP including novel data detection and exemplar selection within the existing CL setups. Our code is available at https://github.com/srvCodes/clap4clip."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…Architecture-based approaches learn parameters that are specialized for individual tasks either by network expansion [27] or by sub-network composition [28, 29]; (c) Rehearsal-based approaches [30, 5] rely on storing a fraction of the past task experiences in a memory to train with the current…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09d5cc31a105babbb7a581ff",
+          "b": "paper-a7ebc10600af73875bbbfaa2",
+          "input_sha256": "81fc10b20d45eb40c428a9ceb6ee91482e6aa21e495cdcd25c135b7a31a1d68e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/kang22b.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/e94c57064dd5740c117b453bde8404c9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/e94c57064dd5740c117b453bde8404c9-Paper-Conference.pdf",
+              "sha256": "66670dc0f73a4121e6b8d05e2b77e4803b56e21099fbf2bc359d86dc1952991e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Forget-Free Continual Learning with Winning SubNetworks In this section, we propose our pruning-based continual learning method, Winning SubNetworks (WSN). In WSN, the neural network searches for the task-adaptive winning",
+              "url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "document_sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Inspired by Lottery Ticket Hypothesis that competitive subnetworks exist within a dense network, we propose a continual learning method referred to as Winning SubNetworks (WSN) which sequentially learns and selects an optimal subnetwork for each task. Specifically, WSN jointly learns the model weights and task-adaptive binary masks pertaining to subnetworks associated with each task whilst attempting to select a small set of weights to be activated (winning ticket) by reusing weights of the prior subnetworks. The proposed method is inherently immune to catastrophic forgetting as each selected subnetwork model does not infringe upon other subnetworks. Binary masks spawned per winning ticket are encoded into one N-bit binary digit mask, then compressed using Huffman coding for a sub-linear increase in network capacity with respect to the number of tasks. Code is available at https://github.com/ihaeyong/WSN.",
+              "url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "document_sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Continual Learning (CL). The existing CL literature is predominated by three categories of methods: (a) Regularization-based methods [6, 25, 26] alleviate forgetting by punishing changes to the parameters that are important to previous tasks; (b) Architecture-based approaches learn parameters that are specialized for individual tasks either by network expansion [27] or by sub-network composition [28, 29]; (c) Rehearsal-based approaches [30, 5] rely on storing a fraction of the past task experiences in a memory to train with the current task. Each category has its own flaw – methods in (a) struggle to discriminate inter-task classes [31]; those in (b) often require task oracle during inference; those in (c) are sensitive to the memory sizes besides being prone to overfitting on the memory samples [32]. Hence, practical CL calls for combining these. Our work leverages (a) via function-space regularization (Sec. 3.4), (b) via task-specific modules (Sec. 3.2.3), and (c) via herding-based replay (see App. A.1.1). Vision-Language Models (VLMs) finetuning. The powerful generalizability of pre-trained VLMs [9, 33] like the CLIP [1] has enabled their zero-shot applications to a range of downstream tasks, including CL [14]. In practice, their performance on downstream out-of-domain data remains rather weak [34, 35]. For such cases, finetuning on task-specific data is a natural choice. Instead of performing extensive full finetuning on all parameters, some parameter-efficient finetuning (PEFT) methods learn a lightweight feature adapter module for textual and/or visual paths [13, 36]. Another line of PEFT methods learns soft prompts which are a few continuous tokens serving as inputs to the frozen visual and/or textual encoder(s) to capture task-specific information [12, 37, 20].",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e94c57064dd5740c117b453bde8404c9-Paper-Conference.pdf",
+              "document_sha256": "66670dc0f73a4121e6b8d05e2b77e4803b56e21099fbf2bc359d86dc1952991e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Concept diagram for probabilistic finetuning of pre-trained CLIP in a CL setup: We identify four such suitable design choices for probabilistic modelling. Choice #1 [17] performs variational modelling by imposing prior on the prompt space which makes it prompt-type dependent while also interfering with the in-domain knowledge learning capability of the prompts – a criterion crucial in the deployment of CL models. Choice #2 (see Sec. 3.2.1) instead imposes a prior on the outputs of the text encoder. While this makes it prompt-type agnostic (as the text features can now be derived from arbitrary prompt types), not taking the visual information into account nevertheless leads to the loss of information about cross-modal interactions between the visual and textual cues – a property essential for preventing cross-modal deviation of finetuned features in CL (see Sec. 3.2.2). Choice #3 (Ours) leverages the best of both worlds by modelling the distribution of visual-guided text features. To further refine the learned distributions of CL tasks, we finally introduce lightweight task-specific adapter modules in choice #4 that make the cross-task centroids more distinct while preserving the aforesaid properties (see Sec. 3.2.3). improve the image-to-text coherence. Similarly, on the visual side, images from the same class can have diverse range of backgrounds, poses, orientations, etc. Overlooking the uncertainties in imagetext matching can thus cause overfitting on downstream tasks and forgetting of the generalizable knowledge [15]. For CL, where we seek to adapt CLIP on a stream of tasks, this can further lead to the cross-modal features increasingly deviating from each other to the point of catastrophic forgetting (see Fig. 3b). While existing methods [16, 17] model",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e94c57064dd5740c117b453bde8404c9-Paper-Conference.pdf",
+              "document_sha256": "66670dc0f73a4121e6b8d05e2b77e4803b56e21099fbf2bc359d86dc1952991e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Variational modeling on visual-guided text features. For variational modeling of text features tc (p) that remain aligned with the visual features during continual finetuning, we propose enriching the text features with the visual context through an explicit attention mechanism (see App. A.3 for further justification on this design choice). To this end, we treat the text features as queries Q and the visual features as keys K and values V , and adopt a standard transformer-styled decoder block [48] as a task-shared Visual-guided attention (VGA) module. The VGA module performs text-to-text self-attention followed by text-to-visual cross-attention. To eliminate the influence of the text features from multiple CL tasks, a naive strategy is to perform specialized VGA forward passes with task-specific queries [27]. We seek to replace several such costly VGA passes with a single pass. To do so, we exploit the global nature of our visual context and mask out (set to −∞) all inter-task connections in the queries using a target mask. This ensures that only the task-specific text features undergo self-attention while the entire query still attends to the visual context: \u0001 {t̂kc }tk=1 = VGA Q = {tkc }tk=1 , K = V = f (x) , (5a) t̃tc = t̂tc + g(ttc (p)),",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e94c57064dd5740c117b453bde8404c9-Paper-Conference.pdf",
+              "document_sha256": "66670dc0f73a4121e6b8d05e2b77e4803b56e21099fbf2bc359d86dc1952991e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09d5cc31a105babbb7a581ff",
+          "url": "https://proceedings.mlr.press/v162/kang22b.html"
+        },
+        "b": {
+          "paper_id": "paper-a7ebc10600af73875bbbfaa2",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/e94c57064dd5740c117b453bde8404c9-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "192490d43c05920e5df2eaf13a00dec91775b4fb213289ff0832a171c8d3b31c"
+    },
+    {
+      "id": "edge-084d021ccffe8909b5f93224",
+      "a": "paper-09d5cc31a105babbb7a581ff",
+      "b": "paper-c9857ea572b57375f4dd6eb4",
+      "state": {
+        "paper_a": {
+          "title": "Forget-free Continual Learning with Winning Subnetworks",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Inspired by Lottery Ticket Hypothesis that competitive subnetworks exist within a dense network, we propose a continual learning method referred to as Winning SubNetworks (WSN), which sequentially learns and selects an optimal subnetwork for each task. Specifically, WSN jointly learns the model weights and task-adaptive binary masks pertaining to subnetworks associated with each task whilst attempting to select a small set of weights to be activated (winning ticket) by reusing weights of the prior subnetworks. The proposed method is inherently immune to catastrophic forgetting as each selected subnetwork model does not infringe upon other subnetworks. Binary masks spawned per winning ticket are encoded into one N-bit binary digit mask, then compressed using Huffman coding for a sub-linear increase in network capacity with respect to the number of tasks."
+        },
+        "paper_b": {
+          "title": "Exploiting Task Relationships in Continual Learning via Transferability-Aware Task Embeddings",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Continual learning (CL) has been a critical topic in contemporary deep neural network applications, where higher levels of both forward and backward transfer are desirable for an effective CL performance. Existing CL strategies primarily focus on task models — either by regularizing model updates or by separating task-specific and shared components — while often overlooking the potential of leveraging inter-task relationships to enhance transfer. To address this gap, we propose a transferability-aware task embedding, termed H-embedding, and construct a hypernet framework under its guidance to learn task-conditioned model weights for CL tasks. Specifically, H-embedding is derived from an information theoretic measure of transferability and is designed to be online and easy to compute. Our method is also characterized by notable practicality, requiring only the storage of a low-dimensional task embedding per task and supporting efficient end-to-end training. Extensive evaluations on benchmarks including CIFAR-100, ImageNet-R, and DomainNet show that our framework performs prominently compared to various baseline and SOTA approaches, demonstrating strong potential in capturing and utilizing intrinsic task relationships. Our code is publicly available at \\url{https://github.com/viki760/Hembedding Guided Hypernet}."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Full-model strategies include: Regularization Methods: LwF [Li and Hoiem, 2017], EWC [Kirkpatrick et al., 2017], L2, PredKD+FeatKD [Smith et al., 2023b]; Architecture Methods: PackNet [Mallya and Lazebnik, 2018], HyperNet [von Oswald et al., 2020], WSN [Kang et al., 2022].\n…and Hoiem, 2017], SI [Zenke et al., 2017]) constrain parameter updates to protect prior knowledge; and architecture-based methods (e.g., PackNet [Mallya and Lazebnik, 2018], WSN [Kang et al., 2022]) allocate task-specific and task-sharing components of the model from different architecture levels.\nFor the WSN method [Kang et al., 2022], we follow its original paper and use the default values of parameters in its official code repository.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-09d5cc31a105babbb7a581ff",
+          "b": "paper-c9857ea572b57375f4dd6eb4",
+          "input_sha256": "dbf9ac6527096d2dd4341d0d49a6f3d24e5299a9a4d879f0409dcb59d1e04cb2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/kang22b.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/f3e644506dad33613919fa85af6665d0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/f3e644506dad33613919fa85af6665d0-Paper-Conference.pdf",
+              "sha256": "c0d7dc1a0def16e81d496feef9c1e4b4f073a292178a1702ec7cf4b547c0f882"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Forget-Free Continual Learning with Winning SubNetworks In this section, we propose our pruning-based continual learning method, Winning SubNetworks (WSN). In WSN, the neural network searches for the task-adaptive winning",
+              "url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "document_sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Inspired by Lottery Ticket Hypothesis that competitive subnetworks exist within a dense network, we propose a continual learning method referred to as Winning SubNetworks (WSN) which sequentially learns and selects an optimal subnetwork for each task. Specifically, WSN jointly learns the model weights and task-adaptive binary masks pertaining to subnetworks associated with each task whilst attempting to select a small set of weights to be activated (winning ticket) by reusing weights of the prior subnetworks. The proposed method is inherently immune to catastrophic forgetting as each selected subnetwork model does not infringe upon other subnetworks. Binary masks spawned per winning ticket are encoded into one N-bit binary digit mask, then compressed using Huffman coding for a sub-linear increase in network capacity with respect to the number of tasks. Code is available at https://github.com/ihaeyong/WSN.",
+              "url": "https://proceedings.mlr.press/v162/kang22b/kang22b.pdf",
+              "document_sha256": "2f7c4df1599260051db4e2801131784b24e868ce7f16533241c08d2520247528"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "methods (e.g., LwF [Li and Hoiem, 2017], SI [Zenke et al., 2017]) constrain parameter updates to protect prior knowledge; and architecture-based methods (e.g., PackNet [Mallya and Lazebnik, 2018], WSN [Kang et al., 2022]) allocate task-specific and task-sharing components of the model from different architecture levels. However, strategies that explicitly alleviate forgetting often compromise the acquisition of new knowledge, prioritizing retention over adaptability. In contrast, an effective CL system should facilitate the intrinsic knowledge transfer across all tasks, improving future task performance via forward transfer, and preserving (or even enhancing) prior task performance via backward transfer [von Oswald et al., 2020]. Moreover, most existing works adopt a model-centric perspective3 , relying on posterior information obtained during training to manage cross-task interactions. Yet in CL settings, task sequences often exhibit certain degrees of noise and diversity, making such approaches sensitive to sample- and task-level variations. This can lead to potential negative transfer, reduced robustness, and limited scalability, particularly as the number or complexity of tasks increases. These observations point to a fundamental question in continual learning: Robust and positive knowledge transfers across tasks rely on capturing the underlying task relationships, but how do we efficiently learn and utilize such relations in CL settings? Despite the valuable contributions of previous explorations [e.g. Jin and Kim, 2022, Riemer et al., 2018], they mostly remain constrained by a posterior model-centric paradigm with its associated drawbacks, leaving the prior exploitation of task relations largely underexplored. Based on this insight, we argue that the",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3e644506dad33613919fa85af6665d0-Paper-Conference.pdf",
+              "document_sha256": "c0d7dc1a0def16e81d496feef9c1e4b4f073a292178a1702ec7cf4b547c0f882"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 8,
+              "text": "Comparison Experiments with Baselines from Multiple Paradigms. Our primary evaluation study is conducted on the CIFAR-100 and ImageNet-R benchmarks, both consists of 10 tasks. To ensure fairness and comprehensiveness in comparison, a ResNet-32 [He et al., 2016] and a pretrained ViT-B/16 [Dosovitskiy et al., 2020] are selected as the shared backbone models for the full-model and parameter-efficient methods respectively. All reported results are either obtained by our own implementation (averaged over three random seeds with standard deviation) or directly cited from previous works using the same benchmark and backbone. The choice of baselines is based on the requirements that they should both conform to a rehearsal-free setting and be applicable to these benchmarks and backbones. For a thorough comparison with existing methods to the greatest extent possible, we select representative baselines of varied methodology categories. Full-model strategies include: Regularization Methods: LwF [Li and Hoiem, 2017], EWC [Kirkpatrick et al., 2017], L2, PredKD+FeatKD [Smith et al., 2023b]; Architecture Methods: PackNet [Mallya and Lazebnik, 2018], HyperNet [von Oswald et al., 2020], WSN [Kang et al., 2022]. Parameter-efficient finetuning (PEFT) based strategies include: Prompt Methods: L2P [Wang et al., 2022b], DualPrompt [Wang et al., 2022a], CODA-Prompt [Smith et al., 2023a], HiDe-Prompt [Wang et al., 2023]; LoRA Methods: InfLoRA [Liang and Li, 2024], SD-LoRA [Wu et al., 2025]. Full finetuning is also included as a basic reference in both backbones. For our framework, we construct full model and LoRA generation versions on ResNet and ViT respectively. The experimental results are summarized in Tab. 1, where our method achieves the highest FAA across both backbones and benchmarks,",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3e644506dad33613919fa85af6665d0-Paper-Conference.pdf",
+              "document_sha256": "c0d7dc1a0def16e81d496feef9c1e4b4f073a292178a1702ec7cf4b547c0f882"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Continual learning (CL) has been a critical topic in contemporary deep neural network applications, where higher levels of both forward and backward transfer are desirable for an effective CL performance. Existing CL strategies primarily focus on task models — either by regularizing model updates or by separating task-specific and shared components — while often overlooking the potential of leveraging inter-task relationships to enhance transfer. To address this gap, we propose a transferability-aware task embedding, termed H-embedding, and construct a hypernet framework under its guidance to learn task-conditioned model weights for CL tasks. Specifically, H-embedding is derived from an information theoretic measure of transferability and is designed to be online and easy to compute. Our method is also characterized by notable practicality, requiring only the storage of a low-dimensional task embedding per task and supporting efficient end-to-end training. Extensive evaluations on benchmarks including CIFAR-100, ImageNetR, and DomainNet show that our framework performs prominently compared to various baseline and SOTA approaches, demonstrating strong potential in capturing and utilizing intrinsic task relationships. Our code is publicly available at https: //github.com/viki760/Hembedding_Guided_Hypernet.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3e644506dad33613919fa85af6665d0-Paper-Conference.pdf",
+              "document_sha256": "c0d7dc1a0def16e81d496feef9c1e4b4f073a292178a1702ec7cf4b547c0f882"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "TIL versus CIL. Up to now, our main experiments are conducted under the task-incremental learning (TIL) setting, where task identifiers are provided during both training and inference. However, in class-incremental learning (CIL), the unavailable task ID at test time can make the problem more challenging. Hopefully, due to the orthogonality of our framework with task ID inference, we could adapt it to the CIL setting by introducing an auxiliary module to infer the task ID. Specifically, during training, we cache the intermediate features of input samples extracted from a frozen pretrained model to train a task ID classifier, and use it to infer the task IDs during testing, and select the corresponding task embedding.We evaluate this extension on ImageNet-R (N = 5, 10, 20). As shown in Fig. 3, our CIL method remains competitive with strong baselines, demonstrating its applicability beyond the TIL setting. Nevertheless, this current approach is admittedly limited by its reliance on pretrained model features and the separately trained task classifier, which does not align tightly with the online, continual nature of our framework. We will continue to explore more integrated and dynamic task ID inference strategies that can be better coupled with our architecture in the future.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/f3e644506dad33613919fa85af6665d0-Paper-Conference.pdf",
+              "document_sha256": "c0d7dc1a0def16e81d496feef9c1e4b4f073a292178a1702ec7cf4b547c0f882"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-09d5cc31a105babbb7a581ff",
+          "url": "https://proceedings.mlr.press/v162/kang22b.html"
+        },
+        "b": {
+          "paper_id": "paper-c9857ea572b57375f4dd6eb4",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/f3e644506dad33613919fa85af6665d0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Continual Learning with Memory and Plasticity"
+      },
+      "sha256": "f60320e55934120e2076bf11443117c646b442f5b8ade5873086e15d91354e7f"
+    }
+  ]
+}

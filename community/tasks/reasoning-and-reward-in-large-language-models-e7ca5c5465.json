@@ -1,0 +1,1006 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Reasoning and Reward in Large Language Models",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-1264768cba742c0a4d0186af",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-08ffda935c4dcb1554725927",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "QUARK: Controllable Text Generation with Reinforced Unlearning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO, while relying only on standard language modeling primitives."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-08ffda935c4dcb1554725927",
+          "input_sha256": "ecf1717c9b9568595439d43e0957d8d602ed439bbd32a678442e22b89f1f0d2f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 7,
+              "text": "Baselines and evaluation metrics. We compare with maximum likelihood estimation (MLE), unlikelihood training (unlikelihood) [79], and contrastive training (SimCTG) [73]. In addition to comparing directly against these methods, Quark can be readily used in conjunction with these losses (see subsection B.3 for details). Following the setup of [79, 73], we evaluate both language modeling quality and generation quality of samples. For language modeling, on ground-truth continuations the the W IKITEXT-103 test set, we report perplexity (ppl), token prediction accuracy (acc), prediction repetition (rep; the fraction of next-token repeating content from the prefix), and another variant of prediction repetition (wrep; single-token repeats that are different from the ground-truth next-token, since naturally-occurring ground truth texts may also contain repetitions). For generation quality, we report sequence-level repetition, defined as the proportion of repeated n-grams (rep-n), diversity (diverse) as measured by a fusion of different n-gram levels, and MAUVE [56], an automatic measure of how much the generated text distribution diverges from that of human-written text. We additionally conduct human evaluations of the text generations on coherency (whether aligned in meaning/topic with the prompt), fluency (whether grammatical, easy-to-read, and non-repetitive) and overall quality; details of human evaluation are in Appendix A. Results. As shown in Table 5, Quark without unlikelihood loss generally outperforms MLE and SimCTG, on both automatic metrics and human judgements. Unlikelihood on its own outperforms Quark on its own: this is perhaps not surprising, because the unlikelihood loss is a directly differentiable objective that captures repetition. However, what is",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale language models often learn behaviors that are misaligned with user expectations. Generated text may contain offensive or toxic language, contain significant repetition, or be of a different sentiment than desired by the user. We consider the task of unlearning these misalignments by fine-tuning the language model on signals of what not to do. We introduce Quantized Reward Konditioning (Quark), an algorithm for optimizing a reward function that quantifies an (un)wanted property, while not straying too far from the original model. Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with each quantile identified by a reward token prepended to the language model’s input, and (iii) using a standard language modeling loss on samples from each quantile conditioned on its reward token, while remaining nearby the original language model via a KL-divergence penalty. By conditioning on a high-reward token at generation time, the model generates text that exhibits less of the unwanted property. For unlearning toxicity, negative sentiment, and repetition, our experiments show that Quark outperforms both strong baselines and state-of-the-art reinforcement learning methods like PPO [66], while relying only on standard language modeling primitives.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "the model’s distribution more favorably. However, collecting data that accurately captures desired characteristics (e.g., non-toxic, non-degenerate texts) is difficult (if not impossible) [40]. Moreover, models may overfit to the newly collected corpora [40, 32] and lose desirable characteristics, e.g., few shot learning capacity over general domains. Another option is to build a detector of the undesirable behavior, e.g., by labelling model outputs. However, it is not clear how to adjust the model so that it only generates text that the detector prefers: since detectors score full text samples from the model rather than providing token-by-token feedback, they are not directly differentiable (e.g., toxicity scores) [54]. Dynamically (un)learning from sentence-level, scalar feedback is perhaps better suited to the reinforcement learning (RL) paradigm. In NLP, RL has been used to optimize scalar metrics in the form of rewards [54, 60, 83]. Recently [51] used Proximal Policy Optimization (PPO) [66] to optimize a 175B parameter model via a learned reward model, while constraining the model to remain close to the original with a KL-divergence penalty. However, as (deep) RL is highly sensitive to variance in the reward function [1, 41], these methods rely on additional models – often doubling the number of learnable parameters – and specialized heuristics to stabilize training. We introduce Quantized Reward Konditioning (Quark), an algorithm for reward-based (un)learning with language models. Quark builds upon insights from three prior works: the Decision Transformer [9], LM tuning with PPO [91], and control tokens [28]. During training, Quark alternates between (i) collecting samples with the current language model, (ii) sorting them into quantiles based on reward, with",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/b125999bde7e80910cbdbd323087df8f-Paper-Conference.pdf",
+              "document_sha256": "5f9c0469454bc270dbced8a947aad0639279943262976d1cf72822ef14be4cf5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-08ffda935c4dcb1554725927",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/b125999bde7e80910cbdbd323087df8f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "a58f2e86d32e29b9e769c3fed813102554b7e712fd379a2c2f5aae643364699b"
+    },
+    {
+      "id": "edge-3cd562c2f902a83ce0acb2ef",
+      "a": "paper-a29003426865cc118bd54bfb",
+      "b": "paper-50b9ca5d95ce00ae9c64545f",
+      "state": {
+        "paper_a": {
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "While large-scale unsupervised language models (LMs) learn broad world knowledge and some reasoning skills, achieving precise control of their behavior is difficult due to the completely unsupervised nature of their training. Existing methods for gaining such steerability collect human labels of the relative quality of model generations and fine-tune the unsupervised LM to align with these preferences, often with reinforcement learning from human feedback (RLHF). However, RLHF is a complex and often unstable procedure, first fitting a reward model that reflects the human preferences, and then fine-tuning the large unsupervised LM using reinforcement learning to maximize this estimated reward without drifting too far from the original model. In this paper, we leverage a mapping between reward functions and optimal policies to show that this constrained reward maximization problem can be optimized exactly with a single stage of policy training, essentially solving a classification problem on the human preference data. The resulting algorithm, which we call Direct Preference Optimization (DPO), is stable, performant, and computationally lightweight, eliminating the need for fitting a reward model, sampling from the LM during fine-tuning, or performing significant hyperparameter tuning. Our experiments show that DPO can fine-tune LMs to align with human preferences as well as or better than existing methods. Notably, fine-tuning with DPO exceeds RLHF's ability to control sentiment of generations and improves response quality in summarization and single-turn dialogue while being substantially simpler to implement and train."
+        },
+        "paper_b": {
+          "title": "Team-Based Self-Play With Dual Adaptive Weighting for Fine-Tuning LLMs",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "While recent self-training approaches have reduced reliance on human-labeled data for aligning LLMs, they still face critical limitations: (i) sensitivity to synthetic data quality, leading to instability and bias amplification in iterative training; (ii) ineffective optimization due to a diminishing gap between positive and negative responses over successive training iterations. In this paper, we propose Team-based self-Play with dual Adaptive Weighting (TPAW), a novel self-play algorithm designed to improve alignment in a fully self-supervised setting. TPAW adopts a team-based framework in which the current policy model both collaborates with and competes against historical checkpoints, promoting more stable and efficient optimization. To further enhance learning, we design two adaptive weighting mechanisms: (i) a response reweighting scheme that adjusts the importance of target responses, and (ii) a player weighting strategy that dynamically modulates each team member’s contribution during training. Initialized from a SFT model, TPAW iteratively refines alignment without requiring additional human supervision. Experimental results demonstrate that TPAW consistently outperforms existing baselines across various base models and LLM benchmarks."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "For DPO training, we conducted additional experiments on the UltraFeedback dataset as a supplementary baseline.\nMost existing self-training methods adopt optimization objectives similar to DPO, simultaneously optimizing both positive and negative samples.\nInspired by SPIN (Chen et al., 2024) and DPO (Rafailov et al., 2023)’s implicit reward: we define each main player as: where λ > 0 is a regularization parameter used to constrain the deviation of π θ t +1 from π θ t , thereby stabilizing the self-play process.\nThese SFT models serve as the starting point for all subsequent baseline training, including DPO, SPIN, and TPAW.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-a29003426865cc118bd54bfb",
+          "b": "paper-50b9ca5d95ce00ae9c64545f",
+          "input_sha256": "20db25b86c61c5c07e482fe0c08f126500f1d7bf74fdcad75f3290f547ebcebe",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.847/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.847.pdf",
+              "sha256": "71b0894a60e1909e6a7130a40f3577c4fe4d7f6a63faba302e99bbef784f6884"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "we will show that the RL-based objective used by existing methods can be optimized exactly with a simple binary cross-entropy objective, greatly simplifying the preference learning pipeline. At a high level, existing methods instill the desired behaviors into a language model using curated sets of human preferences representing the types of behaviors that humans find safe and helpful. This preference learning stage occurs after an initial stage of large-scale unsupervised pre-training on a large text dataset. While the most straightforward approach to preference learning is supervised fine-tuning on human demonstrations of high quality responses, the most successful class of methods is reinforcement learning from human (or AI) feedback (RLHF/RLAIF; [12, 2]). RLHF methods fit a reward model to a dataset of human preferences and then use RL to optimize a language model policy to produce responses assigned high reward without drifting excessively far from the original model. While RLHF produces models with impressive conversational and coding abilities, the RLHF pipeline is considerably more complex than supervised learning, involving training multiple LMs and sampling from the LM policy in the loop of training, incurring significant computational costs. In this paper, we show how to directly optimize a language model to adhere to human preferences, without explicit reward modeling or reinforcement learning. We propose Direct Preference Optimization (DPO), an algorithm that implicitly optimizes the same objective as existing RLHF algorithms (reward maximization with a KL-divergence constraint) but is simple to implement and straightforward to train. Intuitively, the DPO update increases the relative log probability of preferred to dispreferred responses, but it",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "document_sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Motivated by the challenges of applying reinforcement learning algorithms on large-scale problems such as fine-tuning language models, our goal is to derive a simple approach for policy optimization using preferences directly. Unlike prior RLHF methods, which learn a reward and then optimize it via RL, our approach bypasses the reward modeling step and directly optimizes a language model using preference data. As we will describe next in detail, our key insight is to leverage an analytical mapping from reward functions to optimal policies, which enables us to transform a loss function over reward functions into a loss function over policies. This change-of-variables approach allows us to skip the explicit reward modeling step, while still optimizing under existing models of human preferences, such as the Bradley-Terry model. In essence, the policy network represents both the language model and the reward. Deriving the DPO objective. We start with the same RL objective as prior work, Eq. 3, under a general reward function r. Following prior work [29, 28, 17, 15], it is straightforward to show that the optimal solution to the KL-constrained reward maximization objective in Eq. 3 takes the form: ✓ ◆ 1 1 ⇡r (y | x) = ⇡ref (y | x) exp r(x, y) , (4) Z(x) ⇣ ⌘ P where Z(x) = y ⇡ref (y | x) exp 1 r(x, y) is the partition function. See Appendix A.1 for a complete derivation. Even if we use the MLE estimate r of the ground-truth reward function r⇤ , it is still expensive to estimate the partition function Z(x) [17, 15], which makes this representation hard to utilize in practice. However, we can rearrange Eq. 4 to express the reward function in terms of its corresponding optimal policy ⇡r , the reference policy ⇡ref , and the unknown partition function Z(·). Specifically, we",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+              "document_sha256": "894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "To further enhance the robustness and alignment of the team-based self-play framework, we introduce a dual adaptive weighting mechanism that dynamically adjusts the importance of training target responses and the influence of main players during team-based self-play. Adaptive Target Response Weighting. Most existing self-training methods adopt optimization objectives similar to DPO, simultaneously optimizing both positive and negative samples. However, recent studies have shown that when the similarity between positive and negative responses is high (Pal et al., 2024; Razin et al., 2025), or the probability of generating negative responses is low (Ren and Sutherland, 2025), the model’s likelihood of producing preferred (i.e., target) responses can deteriorate during training. We also find the decrease phenomenon in our ablation experiment and SPIN baseline in Section 4.4. To address this issue, we propose Adaptive Target Response Weighting, a method designed to balance the discriminative capacity of the main players with the alignment of the LLM policy to the target distribution. Specifically, based on each player Pj ’s optimization objective in Eq. 3, our method adaptively increases the reward score Pj (x, y) for the target response y when the model’s likelihood for y decreases relative to a reference model. This adjustment effectively increases the weight of the target response during training, encouraging the model to better refit to the target distribution. We define the adaptive target response weight for player Pj as: \u001a η if Pj (x, y) ≤ 0, (x, y) ∈ DO , αj = (4) 1 else, where η > 1 is a hyperparameter that controls the degree of weight growth when the target response score is low. Incorporating this adaptive weighting into the player’s objective, we modify Eq. 3",
+              "url": "https://aclanthology.org/2026.acl-long.847.pdf",
+              "document_sha256": "71b0894a60e1909e6a7130a40f3577c4fe4d7f6a63faba302e99bbef784f6884"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Optimization (DPO) (Rafailov et al., 2023). Despite their success, these alignment methods heavily depend on human-annotated data, which limits their scalability. To address this, recent research has explored self-training paradigms (Wang et al., 2023; Yuan et al., 2024; Chen et al., 2024) that utilize model-generated data. Among them, methods such as Self-Play Fine-Tuning (SPIN) (Chen et al., 2024) have shown promise by repurposing existing SFT datasets to iteratively align models without the need for additional human annotations. However, these self-training approaches still face several limitations that may hinder their alignment performance. First, based on current model’s performance, self-rewarding or self-play mechanisms fail to fully utilize the model’s accumulated training trajectory throughout the iterative training process. In addition, these approaches exhibit training instability and high sensitivity to the quality of synthetic data, often leading to the accumulation and amplification of errors and biases during self-training (Ren et al., 2024; Xu et al., 2024). Second, most self-training methods use DPO-like objectives that jointly optimize positive and negative samples. However, studies have shown that the probabilities of both y + and y − often decrease during training (Pang et al., 2024; Yuan et al., 2025; Rafailov et al., 2024; Tajwar et al., 2024), possibly due to the high similarity between them (Pal et al., 2024; Razin et al., 2025). This problem is exacerbated in self-training methods, where the distinction between positive and negative responses diminishes over iterations (Song et al., 2025; Huang et al., 2025), resulting in noisy preference data and suboptimal policy updates (Wang et al., 2025). To address these challenges, we propose Teambased",
+              "url": "https://aclanthology.org/2026.acl-long.847.pdf",
+              "document_sha256": "71b0894a60e1909e6a7130a40f3577c4fe4d7f6a63faba302e99bbef784f6884"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Adaptive Main Players Weighting. In the TeamBased Self-Play framework, multiple main players are introduced to fully leverage the potential of historical model checkpoints in enhancing the discriminative capabilities of the main players. However, in iteration t + 1, since Pt−1 and Pt−2 have already undergone optimization in previous iterations, statically assigning weights to the main players can lead to suboptimal training. Specifically, Pt may be undertrained, while Pt−1 and Pt−2 risk overfitting. To address this, we propose Adaptive Main Player Weighting, which dynamically assigns greater weight to the main player when it exhibits weaker discriminative performance in distinguishing between human-written and LLM-generated responses. Specifically, for a given player Pj , we define the preference margin mj as: mj = Pj (x, y) − Pj (x, ygen ).",
+              "url": "https://aclanthology.org/2026.acl-long.847.pdf",
+              "document_sha256": "71b0894a60e1909e6a7130a40f3577c4fe4d7f6a63faba302e99bbef784f6884"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-a29003426865cc118bd54bfb",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-50b9ca5d95ce00ae9c64545f",
+          "url": "https://aclanthology.org/2026.acl-long.847/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "b48d9a466ee794252c2b4abe481e52bc1d167ad5096a60a58d8f7a19bd231970"
+    },
+    {
+      "id": "edge-5a45dbe0080ad90352758880",
+      "a": "paper-08308beefc384bbc6a815203",
+      "b": "paper-dba91eb28a4112d48b0feaf0",
+      "state": {
+        "paper_a": {
+          "title": "MAmmoTH2: Scaling Instructions from the Web",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Instruction tuning improves the reasoning abilities of large language models (LLMs), with data quality and scalability being the crucial factors. Most instruction tuning data come from human crowd-sourcing or GPT-4 distillation. We propose a paradigm to efficiently harvest 10 million naturally existing instruction data from the pre-training web corpus to enhance LLM reasoning. Our approach involves (1) recalling relevant documents, (2) extracting instruction-response pairs, and (3) refining the extracted pairs using open-source LLMs. Fine-tuning base LLMs on this dataset, we build MAmmoTH2 models, which significantly boost performance on reasoning benchmarks. Notably, MAmmoTH2-7B’s (Mistral) performance increases from 11% to 36.7% on MATH and from 36% to 68.4% on GSM8K without training on any in-domain data. Further training MAmmoTH2 on public instruction tuning datasets yields MAmmoTH2-Plus, achieving state-of-the-art performance on several reasoning and chatbot benchmarks. Our work demonstrates how to harvest large-scale, high-quality instruction data without costly human annotation or GPT-4 distillation, providing a new paradigm for building better instruction tuning data."
+        },
+        "paper_b": {
+          "title": "General-Reasoner: Advancing LLM Reasoning Across All Domains",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Reinforcement learning (RL) has recently demonstrated strong potential in enhancing the reasoning capabilities of large language models (LLMs). Particularly, the \"Zero\" reinforcement learning introduced by Deepseek-R1-Zero, enables direct RL training of base LLMs without relying on an intermediate supervised fine-tuning stage. Despite these advancements, current works for LLM reasoning mainly focus on mathematical and coding domains, largely due to data abundance and the ease of answer verification. This limits the applicability and generalization of such models to broader domains, where questions often have diverse answer representations, and data is more scarce. In this paper, we propose General-Reasoner, a novel training framework designed to enhance LLM reasoning capabilities across diverse domains. Our key contributions include: (1) constructing a large-scale, high-quality dataset of questions with verifiable answers curated by web crawling, covering a wide range of disciplines; and (2) developing a generative model-based answer verifier, which replaces traditional rule-based verification with the capability of chain-of-thought and context-awareness. We train a series of models and evaluate them on a wide range of datasets covering wide domains like physics, chemistry, finance, electronics etc. Our comprehensive evaluation across these 12 benchmarks (e.g. MMLU-Pro, GPQA, SuperGPQA, TheoremQA, BBEH and MATH AMC) demonstrates that General-Reasoner outperforms existing baseline methods, achieving robust and generalizable reasoning performance while maintaining superior effectiveness in mathematical reasoning tasks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-08308beefc384bbc6a815203",
+          "b": "paper-dba91eb28a4112d48b0feaf0",
+          "input_sha256": "6d356e901810cc199751283500af528cea3a6336df7683197df005b61616a83f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/a4ca07aa108036f80cbb5b82285fd4b1-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/a4ca07aa108036f80cbb5b82285fd4b1-Paper-Conference.pdf",
+              "sha256": "d2bf47a5cc6518991779dfc87bb2121659e9271ce2c7135480f00fc7707ab0e0"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/51c52cbb4b3faa891ca0621d13efe1be-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/51c52cbb4b3faa891ca0621d13efe1be-Paper-Conference.pdf",
+              "sha256": "6e9c0045bbd9babf6c92e7ebd3f212ea8ad07cb21a4f11ebcd87205c1a45f161"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Instruction tuning improves the reasoning abilities of large language models (LLMs), with data quality and scalability being the crucial factors. Most instruction tuning data come from human crowd-sourcing or GPT-4 distillation. We propose a paradigm to efficiently harvest 10 million naturally existing instruction data from the pre-training web corpus to enhance LLM reasoning. Our approach involves (1) recalling relevant documents, (2) extracting instruction-response pairs, and (3) refining the extracted pairs using open-source LLMs. Fine-tuning base LLMs on this dataset, we build MAmmoTH2 models, which significantly boost performance on reasoning benchmarks. Notably, MAmmoTH2-7B’s (Mistral) performance increases from 11% to 36.7% on MATH and from 36% to 68.4% on GSM8K without training on any in-domain data. Further training MAmmoTH2 on public instruction tuning datasets yields MAmmoTH2-Plus, achieving state-of-the-art performance on several reasoning and chatbot benchmarks. Our work demonstrates how to harvest largescale, high-quality instruction data without costly human annotation or GPT-4 distillation, providing a new paradigm for building better instruction tuning data.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/a4ca07aa108036f80cbb5b82285fd4b1-Paper-Conference.pdf",
+              "document_sha256": "d2bf47a5cc6518991779dfc87bb2121659e9271ce2c7135480f00fc7707ab0e0"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 2: Comparison between our dataset curation method and previous studies. reasoning is essential for advancing scientific knowledge, developing new technologies, and making informed decisions in various contexts. Recently, large language models (LLMs) [Brown et al., 2020, Ouyang et al., 2022, Touvron et al., 2023a,b, Achiam et al., 2023, Team et al., 2023] have shown remarkable progress in various NLP tasks. However, their ability to perform complex reasoning tasks [Lin et al., 2024] in the domains of mathematics, science, and engineering is still limited. Recent studies have extensively explored how to enhance base LLMs’ reasoning abilities. The two main approaches are continued training and instruction tuning. Continued training trains LLMs on large-scale filtered documents [Lewkowycz et al., 2022, Taylor et al., 2022, Azerbayev et al., 2023, Shao et al., 2024, Ying et al., 2024]. Instruction tuning seeks to employ supervised fine-tuning loss on, usually small-scale, high-quality instruction-response pairs [Ouyang et al., 2022, Chung et al., 2024]. While human-annotated instruction datasets [Cobbe et al., 2021, Hendrycks et al., 2021b, Amini et al., 2019] are often limited in scale, recent studies [Yu et al., 2023, Yue et al., 2023b, Toshniwal et al., 2024, Li et al., 2024a, Tang et al., 2024] attempt to prompt GPT-4 with seed data to increase the scalability. However, the synthesized instruction data becomes highly biased, not diverse, and prone to a high degree of hallucination. To address these limitations, we propose to discover naturally existing instruction data from the web (Figure 2). We argue that the pre-training corpus (e.g., Common Crawl) already contains a vast amount of high-quality instruction data for LLM reasoning. For example, the web corpus",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/a4ca07aa108036f80cbb5b82285fd4b1-Paper-Conference.pdf",
+              "document_sha256": "d2bf47a5cc6518991779dfc87bb2121659e9271ce2c7135480f00fc7707ab0e0"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Recent advancements in large language models (LLMs) have demonstrated strong potential in many expert-level tasks by following user instructions. One of the most significant breakthroughs in recent work is the use of reinforcement learning (RL), such as PPO and GRPO, to improve the reasoning capabilities of LLMs. A particularly noteworthy development is the “Zero” reinforcement learning setting proposed by DeepSeek-R1-Zero [1], which shows that training a base LLM directly via RL can unlock powerful reasoning capabilities without relying on a supervised fine-tuning step. RL for LLM reasoning has inspired multiple open-source efforts, such as SimpleRL [2], DAPO [3], and DeepScaleR [4, 5], which leverage variants of GRPO [6] to further enhance reasoning performance, either in the zero RL setting or via continuous reinforcement learning on models with supervised fine-tuning or distillation. However, existing methods primarily focus on training and evaluation in mathematical reasoning or coding tasks. This narrow focus can be attributed to two main reasons: (1) DATA A BUNDANCE: it is easier to harvest large-scale mathematical data from the Internet due to the abundance of international math and coding competitions and exams; (2) A NSWER V ERIFICATION: mathematical domains allow for easy and reliable answer verification using straightforward rule-based methods (e.g., exact numeric matching, symbolic equation comparison), which provide accurate reward signals. However, this reliance on rule-based verifiers restricts the generalizability of the resulting models. Real-world reasoning often spans multiple disciplines, such as science, finance, and the humanities, and involves complex, long-tailed answer representations that cannot be reliably verified through heuristic rules.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/51c52cbb4b3faa891ca0621d13efe1be-Paper-Conference.pdf",
+              "document_sha256": "6e9c0045bbd9babf6c92e7ebd3f212ea8ad07cb21a4f11ebcd87205c1a45f161"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "To facilitate robust reasoning capabilities across a wide range of domains beyond mathematical problems, we construct a large-scale, diverse, and high-quality dataset composed of verifiable reasoning tasks. Our dataset-building pipeline is illustrated in Figure 2. The initial data source is from WebInstruct dataset [9], which consists of around 5 million naturally occurring, web-crawled instructions from high-quality resource websites, including platforms like 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/51c52cbb4b3faa891ca0621d13efe1be-Paper-Conference.pdf",
+              "document_sha256": "6e9c0045bbd9babf6c92e7ebd3f212ea8ad07cb21a4f11ebcd87205c1a45f161"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Reinforcement learning (RL) has recently demonstrated strong potential in enhancing the reasoning capabilities of large language models (LLMs). Particularly, the “Zero” reinforcement learning introduced by Deepseek-R1-Zero, enables direct RL training of base LLMs without relying on an intermediate supervised fine-tuning stage. Despite these advancements, current works for LLM reasoning mainly focus on mathematical and coding domains, largely due to data abundance and the ease of answer verification. This limits the applicability and generalization of such models to broader domains, where questions often have diverse answer representations, and data is more scarce. In this paper, we propose General-Reasoner, a novel training framework designed to enhance LLM reasoning capabilities across diverse domains. Our key contributions include: (1) constructing a large-scale, high-quality dataset of questions with verifiable answers curated by web crawling, covering a wide range of disciplines; and (2) developing a generative model-based answer verifier, which replaces traditional rule-based verification with the capability of chain-of-thought and context-awareness. We train a series of models and evaluate them on a wide range of datasets covering wide domains like physics, chemistry, finance, electronics etc. Our comprehensive evaluation across these 12 benchmarks (e.g. MMLU-Pro, GPQA, SuperGPQA, TheoremQA, BBEH and MATH AMC) demonstrates that General-Reasoner outperforms existing baseline methods, achieving robust and generalizable reasoning performance while maintaining superior effectiveness in mathematical reasoning tasks.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/51c52cbb4b3faa891ca0621d13efe1be-Paper-Conference.pdf",
+              "document_sha256": "6e9c0045bbd9babf6c92e7ebd3f212ea8ad07cb21a4f11ebcd87205c1a45f161"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "1. We construct and release a large-scale, high-quality dataset (WebInstruct-verified) of verifiable reasoning questions with short-form answers spanning diverse domains, significantly broadening the training resources available for general reasoning. 2. We introduce a compact, generative model-based verifier (General-Verifier) specifically trained for chain-of-thought answer verification, effectively replacing rule-based methods and enabling robust and scalable RL training across multiple complex reasoning domains. 3. Through extensive evaluations, we empirically demonstrate the superior performance and generalization capabilities of General-Reasoner in the Zero-RL setting, providing a strong baseline and valuable insights for future advancements in RL-driven general reasoning.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/51c52cbb4b3faa891ca0621d13efe1be-Paper-Conference.pdf",
+              "document_sha256": "6e9c0045bbd9babf6c92e7ebd3f212ea8ad07cb21a4f11ebcd87205c1a45f161"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-08308beefc384bbc6a815203",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/a4ca07aa108036f80cbb5b82285fd4b1-Abstract-Conference.html"
+        },
+        "b": {
+          "paper_id": "paper-dba91eb28a4112d48b0feaf0",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/51c52cbb4b3faa891ca0621d13efe1be-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "b7e5a1a24b10dcd010043fda317823105885617c557e6c4bf1dd19393addae7e"
+    },
+    {
+      "id": "edge-c40b6989699150787acde8f9",
+      "a": "paper-03e0c1c1489127d033c9f086",
+      "b": "paper-b5cbec591bc30c1f52c3e869",
+      "state": {
+        "paper_a": {
+          "title": "MAUVE: Measuring the Gap Between Neural Text and Human Text using Divergence Frontiers",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce Mauve, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. Mauve scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that Mauve identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics."
+        },
+        "paper_b": {
+          "title": "Latent Thought Models with Variational Bayes Inference-Time Computation",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "We propose a novel class of language models, Latent Thought Models (LTMs), which incorporate explicit latent thought vectors that follow an explicit prior model in latent space. These latent thought vectors guide the autoregressive generation of ground tokens through a Transformer decoder. Training employs a dual-rate optimization process within the classical variational Bayes framework: fast learning of local variational parameters for the posterior distribution of latent vectors (inference-time computation), and slow learning of global decoder parameters. Empirical studies reveal that LTMs possess additional scaling dimensions beyond traditional Large Language Models (LLMs), such as the number of iterations in inference-time computation and number of latent thought vectors. Higher sample efficiency can be achieved by increasing training compute per token, with further gains possible by trading model size for more inference steps. Designed based on these scaling properties, LTMs demonstrate superior sample and parameter efficiency compared to autoregressive models and discrete diffusion models. They significantly outperform these counterparts in validation perplexity and zero-shot language modeling tasks. Additionally, LTMs exhibit emergent few-shot in-context reasoning capabilities that scale with model size, and achieve competitive performance in conditional and unconditional text generation. The project page is available at https://deqiankong.github.io/blogs/ltm."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-03e0c1c1489127d033c9f086",
+          "b": "paper-b5cbec591bc30c1f52c3e869",
+          "input_sha256": "7a8e213c6c9afeca34fc46af210f62e745d1c7410b8d2691085177044fad0b73",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/kong25c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kong25c/kong25c.pdf",
+              "sha256": "ae170f7ef88c6c47a47f44344e82e41b7d9c307b728783fa2af48c411d34c06d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract As major progress is made in open-ended text generation, measuring how close machine-generated text is to human language remains a critical open problem. We introduce M AUVE, a comparison measure for open-ended text generation, which directly compares the learnt distribution from a text generation model to the distribution of human-written text using divergence frontiers. M AUVE scales up to modern text generation models by computing information divergences in a quantized embedding space. Through an extensive empirical study on three open-ended generation tasks, we find that M AUVE identifies known properties of generated text, scales naturally with model size, and correlates with human judgments, with fewer restrictions than existing distributional evaluation metrics.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "We presented M AUVE, an automatic measure of the gap between neural text and human text for open-ended text generation. M AUVE measures the area under a divergence curve, formalizing and summarizing a spectrum of errors that capture phenomena present in machine and human-generated text. M AUVE correlated with human judgments and identified quality differences due to generation length, decoding algorithm, and model size, which prior metrics struggle to capture. Automated metrics have driven advances in computer vision and many other machine learning domains. M AUVE’s principled foundation and strong empirical performance offers a similar path forward for open-ended text generation systems. Extensions of M AUVE to closed-ended tasks, such as summarization and translation, where generations must be compared to a fixed set of gold-standard references, are promising directions for future work. Broader Impacts Statement M AUVE rewards model text which resembles human-authored text. However, we acknowledge the risks of rewarding systems that try to mimic humans [4], which is the ultimate goal of open-ended text generation. While our research is important for developing better language generators, we also encourage the community to pay attention to the development of technology that can reliably distinguish between human and machine text. We leave the extension of our method towards building such systems to future work. Acknowledgments Part of this work was done while Zaid Harchaoui was visiting the Simons Institute for the Theory of Computing, and while John Thickstun was at the University of Washington. This work was supported by NSF DMS-2134012, NSF CCF-2019844, NSF DMS-2023166, the DARPA MCS program through NIWC Pacific (N66001-19-2-4031), the CIFAR “Learning in Machines &",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/260c2432a0eecc28ce03c10dadc078a4-Paper.pdf",
+              "document_sha256": "34c1df70d37d4bc3808768f940c91f66e483f153bd47143002b1f06ab186801b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "• Arithmetic Reasoning: LTMs demonstrate emergent fewshot in-context learning at scales that are significantly smaller than GPTs. This is significant even in our smallest model, LTM-Small. This capability scales further with increased model size. We also find scaling the number of latent thought vectors appears to be helpful. • Text Generation: LTM-Large outperform both autoregressive and diffusion counterparts in conditional sentence completion when measured with MAUVE score (Pillutla et al., 2021). In unconditional generation, LTM-Large achieves generative perplexity (Dieleman et al., 2022) and token-level entropy (Zheng et al., 2024) comparable to GPT-2-Large, while being significantly faster.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kong25c/kong25c.pdf",
+              "document_sha256": "ae170f7ef88c6c47a47f44344e82e41b7d9c307b728783fa2af48c411d34c06d"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 7,
+              "text": "Conditional Generation. We evaluate LTM’s conditional generation capabilities by generating fixed-length completions for 50-token prompts from the OWT validation set, following Lou et al. (2024). We assess generation quality using MAUVE scores (Pillutla et al., 2021), which measure the distributional similarity between generated and groundtruth text, following Lou et al. (2024) and Han et al. (2022). While GPT-2 requires nucleus sampling to achieve comparable performance with diffusion models, LTMs outperform",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kong25c/kong25c.pdf",
+              "document_sha256": "ae170f7ef88c6c47a47f44344e82e41b7d9c307b728783fa2af48c411d34c06d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "We formulate our framework as a structured probabilistic model that captures the relationship between latent thought vectors and observed sequences as shown in Fig. 2. Layered Thought Vectors. We assume z = (z1 , ..., zL ), where zl consists of thought vectors cross-attending to layer l of the Transformer decoder. Nz denotes the total number of latent vectors, except in Section 2.4 where it represents the number per layer. While we explored an alternative design using a single set of thought vectors attending to all layers simultaneously, empirical evidence strongly favors the layered approach. The layered structure, where distinct sets of thought vectors attend to different layers, appears to capture multiple levels of abstraction more effectively.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kong25c/kong25c.pdf",
+              "document_sha256": "ae170f7ef88c6c47a47f44344e82e41b7d9c307b728783fa2af48c411d34c06d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Compared to Langevin sampling, it provides more efficient optimization. Compared to VAE, it avoids learning a large inference model and mitigates posterior collapse by avoiding the initial mismatch between the inference model and the true posterior. More importantly, the classical variational method allows us to explore gradient descent for inference, connecting our approach to fast-slow learning and inferencetime or test-time computation paradigms (Ba et al., 2016; Krause et al., 2018).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/kong25c/kong25c.pdf",
+              "document_sha256": "ae170f7ef88c6c47a47f44344e82e41b7d9c307b728783fa2af48c411d34c06d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-03e0c1c1489127d033c9f086",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/260c2432a0eecc28ce03c10dadc078a4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-b5cbec591bc30c1f52c3e869",
+          "url": "https://proceedings.mlr.press/v267/kong25c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "26f544db65b82c4c99fbfe65d8bcd27d8f141775e4f0336c16d4b8f36da88326"
+    },
+    {
+      "id": "edge-d490f3f78a76375bbd7f2927",
+      "a": "paper-061413e25bbf6974a8e72e85",
+      "b": "paper-8439120de718031aaab25abe",
+      "state": {
+        "paper_a": {
+          "title": "SciREX: A Challenge Dataset for Document-Level Information Extraction",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Extracting information from full documents is an important problem in many domains, but most previous work focus on identifying relationships within a sentence or a paragraph. It is challenging to create a large-scale information extraction (IE) dataset at the document level since it requires an understanding of the whole document to annotate entities and their document-level relationships that usually span beyond sentences or even sections. In this paper, we introduce SciREX, a document level IE dataset that encompasses multiple IE tasks, including salient entity identification and document level N-ary relation identification from scientific articles. We annotate our dataset by integrating automatic and human annotations, leveraging existing scientific knowledge resources. We develop a neural model as a strong baseline that extends previous state-of-the-art IE models to document-level IE. Analyzing the model performance shows a significant gap between human performance and current baselines, inviting the community to use our dataset as a challenge to develop document-level IE models. Our data and code are publicly available at https://github.com/allenai/SciREX ."
+        },
+        "paper_b": {
+          "title": "CHIMERA: A Knowledge Base of Scientific Idea Recombinations for Research Analysis and Ideation",
+          "year": 2026,
+          "venue": "ACL Anthology",
+          "abstract": "A hallmark of human innovation is recombination—the creation of novel ideas by integrating elements from existing concepts and mechanisms. In this work, we introduce CHIMERA, the first large-scale Knowledge Base (KB) of recombination examples automatically mined from the scientific literature. CHIMERA enables empirical analysis of how scientists recombine concepts and draw inspiration from different areas, and enables training models that propose cross-disciplinary research directions. To construct this KB, we define a new information extraction task: identifying recombination instances in papers. We curate an expert-annotated dataset and use it to fine-tune an LLM-based extraction model, which we apply to a broad corpus of AI papers. We also demonstrate generalization to a biological domain. We showcase the utility of CHIMERA through two applications. First, we analyze patterns of recombination across AI subfields. Second, we train a scientific hypothesis generation model using the KB, showing that it can propose directions that researchers rate as inspiring."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-061413e25bbf6974a8e72e85",
+          "b": "paper-8439120de718031aaab25abe",
+          "input_sha256": "21b35a0bd8f1546c59be61617264f3f9bed591583d5f6c0ef5ccdbd07b6685b9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.670/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.670.pdf",
+              "sha256": "b19535b67223edfc3b89a299ea5d32ad88f003d2ceb30d3967073d501e9079ff"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2026.acl-long.85/",
+              "pdf_url": "https://aclanthology.org/2026.acl-long.85.pdf",
+              "sha256": "cb213fe5afe51edec87089301f838c3465239fae4b94d7d4cf9968caaedc753f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Extracting information from full documents is an important problem in many domains, but most previous work focus on identifying relationships within a sentence or a paragraph. It is challenging to create a large-scale information extraction (IE) dataset at the document level since it requires an understanding of the whole document to annotate entities and their document-level relationships that usually span beyond sentences or even sections. In this paper, we introduce S CI REX, a document level IE dataset that encompasses multiple IE tasks, including salient entity identification and document level N -ary relation identification from scientific articles. We annotate our dataset by integrating automatic and human annotations, leveraging existing scientific knowledge resources. We develop a neural model as a strong baseline that extends previous state-of-the-art IE models to documentlevel IE. Analyzing the model performance shows a significant gap between human performance and current baselines, inviting the community to use our dataset as a challenge to develop document-level IE models. Our data and code are publicly available at https:",
+              "url": "https://aclanthology.org/2020.acl-main.670.pdf",
+              "document_sha256": "b19535b67223edfc3b89a299ea5d32ad88f003d2ceb30d3967073d501e9079ff"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Creating datasets for information extraction at the document level is challenging because it requires domain expertise and considerable annotation effort to comprehensively annotate a full document for multiple IE tasks. In addition to local relationships between entities, it requires identifying document-level relationships that go beyond sentences and even sections. Figure 1 shows an example of such document level relation (Dataset: SQuAD, Metric: EM, Method: BiDAF, Task:machine comprehension). In this paper, we introduce S CI REX, a new comprehensive dataset for information extraction from",
+              "url": "https://aclanthology.org/2020.acl-main.670.pdf",
+              "document_sha256": "b19535b67223edfc3b89a299ea5d32ad88f003d2ceb30d3967073d501e9079ff"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "duce diverse LLM responses. Scideator (Radensky et al., 2024) is another recent work that helps researchers explore ideas through interactive concept recombination. Other studies focus on recombining ideas from input and analogous artifacts (Srinivasan and Chan, 2024; Chilton et al., 2019) or searching for useful recombinations via iterative idea generation (Yang et al., 2025a,b). In this work, we build CHIMERA, the first KB of scientific idea recombinations, and show how it enables a new approach for recombinant ideation: training models that learn from past examples of how ideas have been recombined in scientific texts, to suggest new recombination directions. Scientific IE Information extraction (IE) from scientific texts has been widely studied. A foundational resource is SciERC (Luan et al., 2018), which labels scientific entities (e.g., methods, tasks, metrics) and generic relations (e.g., conjunction) across 500 abstracts. Later datasets, such as SciREX (Jain et al., 2020) and SciDMTAL (Pan et al., 2024), expand IE to full documents, but similarly focus on standard schema involving scientific concepts and their relations. However, existing IE resources are not designed to capture recombinations, often resulting in noisy, irrelevant, or misleading outputs, as illustrated in Appendix G, Figure 21. In this work, we introduce a focused IE schema tailored specifically to idea recombination, along with a taxonomy that distinguishes between key recombination types: blend and inspiration. This enables a more precise and semantically rich analysis of cross-domain ideation. For instance, our knowledge base includes numerous analogical inspirations identified in AI research (Figure 1) - patterns that existing scientific IE schemas fail to capture.",
+              "url": "https://aclanthology.org/2026.acl-long.85.pdf",
+              "document_sha256": "cb213fe5afe51edec87089301f838c3465239fae4b94d7d4cf9968caaedc753f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract A hallmark of human innovation is recombination—the creation of novel ideas by integrating elements from existing concepts and mechanisms. In this work, we introduce CHIMERA, the first large-scale Knowledge Base (KB) of recombination examples automatically mined from the scientific literature. CHIMERA enables empirical analysis of how scientists recombine concepts and draw inspiration from different areas, and enables training models that propose cross-disciplinary research directions. To construct this KB, we define a new information extraction task: identifying recombination instances in papers. We curate an expertannotated dataset and use it to fine-tune an LLM-based extraction model, which we apply to a broad corpus of AI papers. We also demonstrate generalization to a biological domain. We showcase the utility of CHIMERA through two applications. First, we analyze patterns of recombination across AI subfields. Second, we train a scientific hypothesis generation model using the KB, showing that it can propose directions that researchers rate as inspiring.",
+              "url": "https://aclanthology.org/2026.acl-long.85.pdf",
+              "document_sha256": "cb213fe5afe51edec87089301f838c3465239fae4b94d7d4cf9968caaedc753f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Automatic Recombination Extraction Examples Abstract: “...Current archaeology depends on trained experts to carry out bronze dating... we propose to integrate advanced deep learning techniques and archaeological knowledge...” Blend: “advanced deep learning techniques” ←→ “archaeological knowledge”",
+              "url": "https://aclanthology.org/2026.acl-long.85.pdf",
+              "document_sha256": "cb213fe5afe51edec87089301f838c3465239fae4b94d7d4cf9968caaedc753f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-061413e25bbf6974a8e72e85",
+          "url": "https://aclanthology.org/2020.acl-main.670/"
+        },
+        "b": {
+          "paper_id": "paper-8439120de718031aaab25abe",
+          "url": "https://aclanthology.org/2026.acl-long.85/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "6b0779a17c8d3bb4ee332767bd0b27df0baec7c7d1245c4296a1fb7591533f52"
+    },
+    {
+      "id": "edge-cb7bf843fe791daa07b8ec59",
+      "a": "paper-010812c896d060dc21cfe8a0",
+      "b": "paper-3bc43e4ca2969b65951bded4",
+      "state": {
+        "paper_a": {
+          "title": "NumGLUE: A Suite of Fundamental yet Challenging Mathematical Reasoning Tasks",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Given the ubiquitous nature of numbers in text, reasoning with numbers to perform simple calculations is an important skill of AI systems. While many datasets and models have been developed to this end, state-of-the-art AI systems are brittle; failing to perform the underlying mathematical reasoning when they appear in a slightly different scenario. Drawing inspiration from GLUE that was proposed in the context of natural language understanding, we propose NumGLUE, a multi-task benchmark that evaluates the performance of AI systems on eight different tasks, that at their core require simple arithmetic understanding. We show that this benchmark is far from being solved with neural models including state-of-the-art large-scale language models performing significantly worse than humans (lower by 46.4 %). Further, NumGLUE promotes sharing knowledge across tasks, especially those with limited training data as evidenced by the superior performance (average gain of 3.4 % on each task) when a model is jointly trained on all the tasks as opposed to task-specific modeling. Finally, we hope that NumGLUE will encourage systems that perform robust and general arithmetic reasoning within language, a first step towards being able to perform more complex mathematical reasoning."
+        },
+        "paper_b": {
+          "title": "MultiTool-CoT: GPT-3 Can Use Multiple External Tools with Chain of Thought Prompting",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Large language models (LLMs) have achieved impressive performance on various reasoning tasks. To further improve the performance, we propose MultiTool-CoT, a novel framework that leverages chain-of-thought (CoT) prompting to incorporate multiple external tools, such as a calculator and a knowledge retriever, during the reasoning process. We apply MultiTool-CoT to the Task 2 dataset of NumGLUE, which requires both numerical reasoning and domain-specific knowledge. The experiments show that our method significantly outperforms strong baselines and achieves state-of-the-art performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "As a proof of concept, we apply MultiToolCoT to the Task 2 dataset of NumGLUE (Mishra et al., 2022), which requires both numerical reasoning and domain-specific knowledge.\nWe used the Task 2 dataset of NumGLUE (Mishra et al., 2022), which requires both numerical reasoning and domain-specific knowledge, mainly related to chemistry.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-010812c896d060dc21cfe8a0",
+          "b": "paper-3bc43e4ca2969b65951bded4",
+          "input_sha256": "8e79e68ae4fd283e8d19c44a3c0fec40a7ddd434d988996710511c4269a2a714",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.246/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.246.pdf",
+              "sha256": "167f40581a3f36d4d9512ddef44368c3f216c6376ebc85cfd99e34ee17cf33d6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-short.130/",
+              "pdf_url": "https://aclanthology.org/2023.acl-short.130.pdf",
+              "sha256": "746de9db99bcc2c4c9d3ecb6c5ba435e697b6fd09baea1c9643c0fa9324915aa"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "mathematical reasoning skills (Saxton et al., 2019; Hendrycks et al., 2020, 2021). NumGLUE. To this end, we propose N UM GLUE, a multi-task benchmark consisting of eight different tasks that at their core test for arithmetic reasoning skills. For example, as discussed in fig. 1, tasks can involve word problems presented in a slightly different manner or can involve additional reasoning strategies like commonsense reasoning or reading comprehension to be combined with the core skill of simple arithmetic. Our benchmark consists of four new tasks in addition to four existing ones; with „100K problems spread across eight differet tasks. The motivation behind N UM GLUE is similar to GLUE (Wang et al., 2018, 2019), a multi-task benchmark that aimed at models that demonstrated superior language understanding by learning the underlying linguistic features. N UM GLUE is designed with goal of progressing towards AI systems that are capable of performing arithmetic reasoning in a general setting; achieving superior performance on our benchmark requires the ability to correctly identify and perform the underlying arithmetic reasoning without relying on task or dataset-specific signals. Finally, we hope that N UM GLUE will encourage systems that perform robust and general numeric reasoning within language, a first step towards being able to perform more complex mathematical reasoning.",
+              "url": "https://aclanthology.org/2022.acl-long.246.pdf",
+              "document_sha256": "167f40581a3f36d4d9512ddef44368c3f216c6376ebc85cfd99e34ee17cf33d6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Contributions. 1. We introduce N UM GLUE– a multi-task benchmark consisting of eight different tasks, including 4 new ones, whose solution at its core requires an understanding of simple arithmetic. 2. We demonstrate that N UM GLUE is a challenging benchmark even for state-of-the-art large scale language models, obtaining poor scores not only in zero or few shot settings but also after fine-tuning. This indicates a fundamental barrier for AI systems; one that needs to be breached before complex mathematical challenges can be successfully tackled. 3. Finally, we propose a memory-augmented neural model to demonstrate the utility of such a multi-task meta dataset. Our proposed model when trained on the entirety of N UM GLUE obtains an average improvement of 3.4% on each task as opposed to task-specific training – in-",
+              "url": "https://aclanthology.org/2022.acl-long.246.pdf",
+              "document_sha256": "167f40581a3f36d4d9512ddef44368c3f216c6376ebc85cfd99e34ee17cf33d6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "an external tool, such as a web browser or a calculator (Nakano et al., 2021; Cobbe et al., 2021; Yao et al., 2022). This is performed by invoking an external tool during reasoning with LLMs and injecting the results into the reasoning process. However, previous studies have focused on using a single external tool to solve a single problem with LLMs and have not addressed different problems together. This paper proposes MultiTool-CoT, an interactive framework that allows LLMs to use multiple external tools during reasoning. Figure 1 provides an overview. In MultiTool-CoT, LLMs solve reasoning problems by generating reasoning processes including tool triggers to invoke external tools. We let LLMs learn to invoke multiple external tools at proper reasoning steps by chain-ofthought (CoT) prompting based on few-shot learning (Wei et al., 2022). As a proof of concept, we apply MultiToolCoT to the Task 2 dataset of NumGLUE (Mishra et al., 2022), which requires both numerical reasoning and domain-specific knowledge. Experiments show that MultiTool-CoT significantly outperforms strong baselines and achieves state-ofthe-art performance.",
+              "url": "https://aclanthology.org/2023.acl-short.130.pdf",
+              "document_sha256": "746de9db99bcc2c4c9d3ecb6c5ba435e697b6fd09baea1c9643c0fa9324915aa"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "We used the Task 2 dataset of NumGLUE (Mishra et al., 2022), which requires both numerical reasoning and domain-specific knowledge, mainly related to chemistry. Example (1) shows a question in the dataset. (1)",
+              "url": "https://aclanthology.org/2023.acl-short.130.pdf",
+              "document_sha256": "746de9db99bcc2c4c9d3ecb6c5ba435e697b6fd09baea1c9643c0fa9324915aa"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models (LLMs) have achieved impressive performance on various reasoning tasks. To further improve the performance, we propose MultiTool-CoT, a novel framework that leverages chain-of-thought (CoT) prompting to incorporate multiple external tools, such as a calculator and a knowledge retriever, during the reasoning process. We apply MultiTool-CoT to the Task 2 dataset of NumGLUE, which requires both numerical reasoning and domain-specific knowledge. The experiments show that our method significantly outperforms strong baselines and achieves state-of-the-art performance. 1",
+              "url": "https://aclanthology.org/2023.acl-short.130.pdf",
+              "document_sha256": "746de9db99bcc2c4c9d3ecb6c5ba435e697b6fd09baea1c9643c0fa9324915aa"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "Figure 2 shows an improved example. ZeroShot and Few-Shot generated wrong answers. Zero-Shot+CoT and Few-Shot+CoT performed reasoning based on the incorrect molar mass of Al2(CO3)3, resulting in incorrect answers. Besides, Few-Shot+CoT failed to calculate 12 × 3/342 × 100. Our method, MultiTool-CoT, was able to answer correctly based on correct knowledge and calculation, relying on external tools. More examples are presented in Figure 3 and Figure 4 in Appendix. Despite the excellent results, there were 46 instances in which the proposed method failed to deliver accurate answers. Upon manual investigation of all the errors, we identified that the majority of them were caused by incorrect reason-",
+              "url": "https://aclanthology.org/2023.acl-short.130.pdf",
+              "document_sha256": "746de9db99bcc2c4c9d3ecb6c5ba435e697b6fd09baea1c9643c0fa9324915aa"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-010812c896d060dc21cfe8a0",
+          "url": "https://aclanthology.org/2022.acl-long.246/"
+        },
+        "b": {
+          "paper_id": "paper-3bc43e4ca2969b65951bded4",
+          "url": "https://aclanthology.org/2023.acl-short.130/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "cddbdce80dcdd62401fdbf60682627174e4ce99423e908968d4e4e2f76a9fcce"
+    },
+    {
+      "id": "edge-433318c895e724e089beb3bc",
+      "a": "paper-011b8d96c7974f9f35b2b0cb",
+      "b": "paper-39be4e567af872a6613b45c0",
+      "state": {
+        "paper_a": {
+          "title": "MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weight-sharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous sub-billion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases."
+        },
+        "paper_b": {
+          "title": "Distilling LLM Agent into Small Models with Retrieval and Code Tools",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Large language models (LLMs) excel at complex reasoning tasks but remain computationally expensive, limiting their practical deployment. To address this, recent works have focused on distilling reasoning capabilities into smaller language models (sLMs) using chain-of-thought (CoT) traces from teacher LLMs. However, this approach struggles in scenarios requiring rare factual knowledge or precise computation, where sLMs often hallucinate due to limited capability. In this work, we propose Agent Distillation, a framework for transferring not only reasoning capability but full task-solving behavior from LLM-based agents into sLMs with retrieval and code tools. We improve agent distillation along two complementary axes: (1) we introduce a prompting method called first-thought prefix to enhance the quality of teacher-generated trajectories; and (2) we propose a self-consistent action generation for improving test-time robustness of small agents. We evaluate our method on eight reasoning tasks across factual and mathematical domains, covering both in-domain and out-of-domain generalization. Our results show that sLMs as small as 0.5B, 1.5B, 3B parameters can achieve performance competitive with next-tier larger 1.5B, 3B, 7B models fine-tuned using CoT distillation, demonstrating the potential of agent distillation for building practical, tool-using small agents."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "While these considerations have motivated growing interest in smaller language models (sLMs) [13, 14], preserving the problem-solving capabilities of larger models in sLMs remains challenging.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-011b8d96c7974f9f35b2b0cb",
+          "b": "paper-39be4e567af872a6613b45c0",
+          "input_sha256": "8eba670bff566328b5bbb1bacbdb1079eef8a6ad83b537e28c6142bac570a277",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/liu24ce.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/99263f9bf46874e2b8b7f104b5063864-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weightsharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous subbillion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "To further validate our design principles under a wider range of memory constraints, we extend our model to include MobileLLM-600M, 1B, and 1.5B configurations. The comprehensive results are detailed in the Appendix A. Question Answering and Reading Comprehension We evaluate pre-trained models on the TQA question answering benchmark (Joshi et al., 2017) and RACE reading comprehension benchmark (Lai et al., 2017). We follow the evaluation setup from (Touvron et al., 2023a) and report the results in Table 4. Comparing models of 125M size, MobileLLM125M demonstrates a noteworthy improvement of over 4.3 points on the TQA benchmark in contrast to its predecessor. Moreover, the MobileLLM-350M model exhibits a substantial performance increase of approximately 10 points compared to other 350M-sized models. For the reading comprehension tasks, MobileLLM model family also exhibits significantly higher scores than preceding sub-billion parameter models.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Large language models (LLMs) have achieved remarkable performance across complex real-world tasks, surpassing average human accuracy on college-level mathematics and demonstrating competence in high-stakes domains [10–12]. However, as LLM usage grows, their high inference cost becomes increasingly burdensome. While these considerations have motivated growing interest in smaller language models (sLMs) [13, 14], preserving the problem-solving capabilities of larger models in sLMs remains challenging. Therefore, a core research question emerges: how can we preserve LLM-level problem-solving ability in much smaller models? Although recent advancements in pre- and post-training methods have steadily increased the capabilities of sLMs [15], sLMs still struggle to solve complex tasks at the level of LLMs. To address this, recent works have explored reasoning distillation, where sLMs are trained to mimic CoT reasoning traces generated by teacher LLMs through next-token prediction [10, 11, 1, 16, 17]. However, distilled small models are prone to hallucination and often fail to perform accurate calculations [18]. For example, answering the real-world question, “What would $100 invested in Apple stock in 2010 be worth by 2020?”, requires both factual knowledge about stock history and arithmetic reasoning. As illustrated in Figure 2, LLMs can correctly answer this question using CoT by leveraging memorized knowledge and numerical skills. However, simply distilling such a reasoning trace into an sLM does not guarantee generalization, especially those involving new knowledge or calculation not observed during distillation due to their limited capability [19]. In this work, we propose Agent Distillation, a framework that moves beyond static reasoning to distill the ability to take",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models (LLMs) excel at complex reasoning tasks but remain computationally expensive, limiting their practical deployment. To address this, recent works have focused on distilling reasoning capabilities into smaller language models (sLMs) using chain-of-thought (CoT) traces from teacher LLMs. However, this approach struggles in scenarios requiring rare factual knowledge or precise computation, where sLMs often hallucinate due to limited capability. In this work, we propose Agent Distillation, a framework for transferring not only reasoning capability but full task-solving behavior from LLM-based agents into sLMs with retrieval and code tools. We improve agent distillation along two complementary axes: (1) we introduce a prompting method called first-thought prefix to enhance the quality of teacher-generated trajectories; and (2) we propose a self-consistent action generation for improving test-time robustness of small agents. We evaluate our method on eight reasoning tasks across factual and mathematical domains, covering both in-domain and out-of-domain generalization. Our results show that sLMs as small as 0.5B, 1.5B, 3B parameters can achieve performance competitive with nexttier larger 1.5B, 3B, 7B models fine-tuned using CoT distillation, demonstrating the potential of agent distillation for building practical, tool-using small agents. Our code is available at https://github.com/Nardien/agent-distillation. \u0000&\u0000R\u00007\u0000\u0003\u00003\u0000U\u0000R\u0000P\u0000S\u0000W\u0000L\u0000Q\u0000J \u0000&\u0000R\u00007\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q \u0000&\u0000R\u00007\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q\u0000\u0003\u0000\u000e\u0000\u0003\u00005\u0000$\u0000* \u0000$\u0000J\u0000H\u0000Q\u0000W\u0000\u0003\u00003\u0000U\u0000R\u0000P\u0000S\u0000W\u0000L\u0000Q\u0000J \u0000$\u0000J\u0000H\u0000Q\u0000W\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q\u0000\u0003\u0000 \u00002\u0000X\u0000U\u0000V\u0000",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 12,
+              "text": "Code-specific teacher yields better students—marginally. We primarily study general instructiontuned models for both the teacher and student agents, as shown in Table 2. Given that CodeAct [21] requires generating code to perform actions, a natural question arises: Can we obtain better agents by using code-specific models for the teacher or student in the agent distillation process? To explore this, we conduct the same set of experiments using Qwen2.5-Coder-32B-Instruct as the teacher and Qwen2.5-Coder-1.5B-Instruct as the student [77]. The results, presented in Table 3, suggest that the use of a code-specific student model does not significantly impact performance. Instead, the choice of a code-specific model as the teacher appears to be more influential in generating effective trajectories for distillation. Nevertheless, the overall improvements are marginal on average, indicating that code-specific post-training has limited impact, which suggests the code knowledge is not critical bottleneck of the student. Agent distillation applies across different model families. We further validate whether the improvements from our method generalize across different language model families. In Table 4, we conduct experiments with two additional student models, Llama-3.2-1B-Instruct [11] and Phi-4-mini-instruct [76]. Results show that both models benefit from agent distillation com8",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-011b8d96c7974f9f35b2b0cb",
+          "url": "https://proceedings.mlr.press/v235/liu24ce.html"
+        },
+        "b": {
+          "paper_id": "paper-39be4e567af872a6613b45c0",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/99263f9bf46874e2b8b7f104b5063864-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "04656eedbf40adfb028b1dfec8f4acf675d4136605d96cbb20a0ef1793ad43f7"
+    },
+    {
+      "id": "edge-6db78a4c43cdc44da6341569",
+      "a": "paper-017ceb90e893555baf777c59",
+      "b": "paper-a83ec7fef8c41b5c564f8ece",
+      "state": {
+        "paper_a": {
+          "title": "O(n) Connections are Expressive Enough: Universal Approximability of Sparse Transformers",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recently, Transformer networks have redefined the state of the art in many NLP tasks. However, these models suffer from quadratic computational cost in the input sequence length $n$ to compute pairwise attention in each layer. This has prompted recent research into sparse Transformers that sparsify the connections in the attention layers. While empirically promising for long sequences, fundamental questions remain unanswered: Can sparse Transformers approximate any arbitrary sequence-to-sequence function, similar to their dense counterparts? How does the sparsity pattern and the sparsity level affect their performance? In this paper, we address these questions and provide a unifying framework that captures existing sparse attention models. We propose sufficient conditions under which we prove that a sparse attention model can universally approximate any sequence-to-sequence function. Surprisingly, our results show that sparse Transformers with only $O(n)$ connections per attention layer can approximate the same function class as the dense model with $n^2$ connections. Lastly, we present experiments comparing different patterns/levels of sparsity on standard NLP tasks."
+        },
+        "paper_b": {
+          "title": "Towards Revealing the Mystery behind Chain of Thought: A Theoretical Perspective",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Recent studies have discovered that Chain-of-Thought prompting (CoT) can dramatically improve the performance of Large Language Models (LLMs), particularly when dealing with complex tasks involving mathematics or reasoning. Despite the enormous empirical success, the underlying mechanisms behind CoT and how it unlocks the potential of LLMs remain elusive. In this paper, we take a first step towards theoretically answering these questions. Specifically, we examine the expressivity of LLMs with CoT in solving fundamental mathematical and decision-making problems. By using circuit complexity theory, we first give impossibility results showing that bounded-depth Transformers are unable to directly produce correct answers for basic arithmetic/equation tasks unless the model size grows super-polynomially with respect to the input length. In contrast, we then prove by construction that autoregressive Transformers of constant size suffice to solve both tasks by generating CoT derivations using a commonly used math language format. Moreover, we show LLMs with CoT can handle a general class of decision-making problems known as Dynamic Programming, thus justifying their power in tackling complex real-world tasks. Finally, an extensive set of experiments show that, while Transformers always fail to directly predict the answers, they can consistently learn to generate correct solutions step-by-step given sufficient CoT demonstrations."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "[61] Chulhee Yun, Yin-Wen Chang, Srinadh Bhojanapalli, Ankit Singh Rawat, Sashank Reddi, and Sanjiv Kumar.\nRecently, universality results have been extended to model variants such as Sparse Transformers [61] and Transformers with relative positional encodings (RPE) [35].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017ceb90e893555baf777c59",
+          "b": "paper-a83ec7fef8c41b5c564f8ece",
+          "input_sha256": "518cc9320ed6d0937f5da6ce1b82712525e921bf52c0b60240e774dace5e634f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/dfc310e81992d2e4cedc09ac47eff13e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/dfc310e81992d2e4cedc09ac47eff13e-Paper-Conference.pdf",
+              "sha256": "85dc4921fb555a3d6c49f3389233aacc89e41a7508594d48e37abfc8a4a41fc3"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we take the first step towards a theoretical understanding of sparse Transformers. We propose a unified framework to analyze sparse Transformers, which generalizes the existing approaches that sparsify attention layers (§ 3.1). • We propose a set of intuitive conditions on the sparsity pattern (Assumption 1) and the probability map (Assumption 2). Then, in Theorem 1, we show that Sparse Transformers, of fixed width and arbitrary depth, satisfying these conditions are universal approximators of any continuous sequence-to-sequence functions for any given fixed sequence length (§ 3.2 and § 3.3). • We next show some examples of existing sparse Transformers [2, 6, 8, 9, 11, 34, 35] that satisfy these conditions, and hence have universal approximability (§ 3.4). Surprisingly, we show that there are sparse Transformers with only O(n) connections per self-attention layer (instead of n2 ) that have enough expressive power to approximate arbitrary continuous functions (Corollary 2). • We report experimental results on standard NLP tasks using sparse Transformers, comparing different sparsity patterns/levels (§ 5). •",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Assumption 1.1 is equivalent to saying that every token always attends to itself. Assumption 1.2 reSp quires that there is a chain of direct connections that covers all n tokens; note that the set l=1 Alγ(i+1) is the set of all tokens that the γ(i + 1)-th token directly attends to. To elaborate more about Sp the chain, consider a directed graph with n vertices corresponding to the n tokens. For any j ∈ l=1 Alk , we add a directed edge j → k. Given a graph constructed this way, Assumption 1.2 requires that the graph has a Hamiltonian path γ(1) → γ(2) → · · · → γ(n). Assumption 1.3 requires that after s sparse attention layers, every token can attend to all the other tokens, either directly or indirectly. As we discuss in § 3.4, the statements in Assumption 1 are natural enough to be satisfied by many existing sparsity patterns studied in the literature. In fact, Assumption 1.3 is necessary for universal approximation. If p = 1, n = 2, A11 = {1} and A12 = {1, 2}, then the first token never attends to the second, so this sparse Transformer cannot approximate a function whose first output token is dependent on both input tokens. The other two assumptions are required in parts of our proof, which involve “propagating information” over all the tokens in a sequential manner. We now state the assumption on the probability map ρ[·]. For this, we define σH [·] to be the hardmax operator, which outputs the one-hot representation of the arg max entry for each column of the input matrix. Since ρ is a column-wise operator that outputs a column-stochastic matrix, we state the assumption for the operation of ρ on a single column. Assumption 2. For any ζ > 0 and η ∈ (0, 1], ∃ t > 0 such that, for any columnP input v satisfying vj ∗ − maxj6=j ∗ vj ≥ ζ (where j ∗ = arg maxj vj ), we have",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/9ed27554c893b5bad850a422c3538c15-Paper.pdf",
+              "document_sha256": "f81400b49560b50af6e0d8b095ec69cffa77a41f375822d65574a1b55f4fb930"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Owing to the tremendous success of Transformers and Large Language Models across diverse domains, there has been a substantial body of works dedicated to theoretically comprehending their capabilities and limitations. Initially, researchers primarily focused on exploring the expressive power of Transformers in the context of function approximation. Yun et al. [67] proved that Transformers with sufficient size can universally approximate arbitrary continuous sequence-to-sequence functions on a compact domain. Recently, universality results have been extended to model variants such as Sparse Transformers [68] and Transformers with relative positional encodings (RPE) [41]. 9",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/dfc310e81992d2e4cedc09ac47eff13e-Paper-Conference.pdf",
+              "document_sha256": "85dc4921fb555a3d6c49f3389233aacc89e41a7508594d48e37abfc8a4a41fc3"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017ceb90e893555baf777c59",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/9ed27554c893b5bad850a422c3538c15-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-a83ec7fef8c41b5c564f8ece",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/dfc310e81992d2e4cedc09ac47eff13e-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "6d29a5c96e9fd61582d6d02ffc0c168b9eb37e91d470e77ca8b091b82f68c897"
+    },
+    {
+      "id": "edge-61a2f45cca62691f7d4340d6",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-26528f06f6bbed8872cd0bfc",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "T-Eval: Evaluating the Tool Utilization Capability of Large Language Models Step by Step",
+          "year": 2024,
+          "venue": "ACL Anthology",
+          "abstract": "Large language models (LLMs) have achieved remarkable performance on various NLP tasks and are augmented by tools for broader applications. Yet, how to evaluate and analyze the tool utilization capability of LLMs is still under-explored. In contrast to previous works that evaluate models holistically, we comprehensively decompose the tool utilization into multiple sub-processes, including instruction following, planning, reasoning, retrieval, understanding, and review. Based on that, we further introduce T-Eval to evaluate the tool-utilization capability step by step. T-Eval disentangles the tool utilization evaluation into several sub-domains along model capabilities, facilitating the inner understanding of both holistic and isolated competency of LLMs. We conduct extensive experiments on T-Eval and in-depth analysis of various LLMs. T-Eval not only exhibits consistency with the outcome-oriented evaluation but also provides a more fine-grained analysis of the capabilities of LLMs, providing a new perspective in LLM evaluation on tool-utilization ability. The benchmark will be available."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "Augmenting LLMs with Tools There are two paradigms to empower LLMs with external tools, and the first one is regarding external tools as specific tokens and fine-tuning parts or full of the model (Schick et al., 2023; Parisi et al., 2022; Lewis et al., 2020; Hao et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-26528f06f6bbed8872cd0bfc",
+          "input_sha256": "370404642f9b62a8260665b8738b09d1988fefd09d4fc69780e451a08a8cd856",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2024.acl-long.515/",
+              "pdf_url": "https://aclanthology.org/2024.acl-long.515.pdf",
+              "sha256": "d947d2c92a72472e3ccb7bdc4cdd2ff596c577fbbe53198854bc39fb3a835091"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "Augmenting LLMs with Tools There are two paradigms to empower LLMs with external tools, and the first one is regarding external tools as specific tokens and fine-tuning parts or full of the model (Schick et al., 2023; Parisi et al., 2022; Lewis et al., 2020; Hao et al., 2023). However, these methods need a large amount of tool-relevant data and struggle to adapt newly appeared tools. Recently, the strong in-context learning ability (Brown et al., 2020) promotes researchers to focus more on the second paradigm, which is augmenting LLMs with tools by giving in-context tool descriptions and demonstrations (Hsieh et al., 2023; Mialon et al., 2023; Ruan et al., 2023; Patil et al., 2023). This paradigm has achieved great tool-calling potentiality and resulted in successful applications such as ChatGPT plugins. T-Eval focus on this paradigm and evaluate scores of various foundation models.",
+              "url": "https://aclanthology.org/2024.acl-long.515.pdf",
+              "document_sha256": "d947d2c92a72472e3ccb7bdc4cdd2ff596c577fbbe53198854bc39fb3a835091"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "tool learning has not been fully explored. Existing works evaluate the tool utilization ability based on the final output (Qin et al., 2023b) or only consider the single-step tool calling (Li et al., 2023b). However, real-world problems usually involve complex planning and executing multiple tools. Simply judging the quality through the final output omits the assessment of the intermediate steps, making it hard to identify the main bottlenecks of the tool-use capability in LLMs. Besides, current benchmarks mainly rely on real-time tool interactions (Qin et al., 2023b; Li et al., 2023b), which overlooks the external factors (instability of API service or temporal information shift) on the overall judgment, leading to evaluation variance and unfair comparison. To overcome the above problems, we introduce T-Eval, a step-by-step Tool Evaluation benchmark for LLMs. Unlike prior works that appraise the model from a holistic perspective, we explicitly decompose the evaluation into several sub-tasks along the basic capabilities of the language model. Specifically, given the golden tool-utilization annotations verified by human experts, we dedicatedly designed the evaluation protocols and corresponding instruction prompts based on the intermediate steps along the annotation path. Such a paradigm enables us to separately benchmark each competence of the LLMs, including planning, reasoning, retrieval, understanding, instruction following, and review. Additionally, thanks to the decomposed evaluation protocols, our benchmark significantly alleviates the exogenous influences (such as online tools) during the evaluation process, yielding a more stable and fair model assessment. By conducting extensive experiments on T-Eval, we carry out in-depth analysis and insights on the results,",
+              "url": "https://aclanthology.org/2024.acl-long.515.pdf",
+              "document_sha256": "d947d2c92a72472e3ccb7bdc4cdd2ff596c577fbbe53198854bc39fb3a835091"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "performance on complex downstream tasks, providing a new perspective in LLM evaluation on tool utilization. Our major contributions are as follows: • We introduce T-Eval, a step-by-step tool utilization evaluation benchmark, which decomposes the evaluation into several sub-tasks, gauging the fine-grained abilities of LLMs as tool agents. • T-Eval uses a multi-agent data generation pipeline verified by human experts. This approach significantly reduces the impact of external factors, leading to a more stable and fair assessment of the LLMs. • Extensive experiments conducted with various LLMs validate the effectiveness and generalization of T-Eval, providing valuable insights into bottlenecks of current LLMs, and offering new perspectives in improving tool-utilization capabilities.",
+              "url": "https://aclanthology.org/2024.acl-long.515.pdf",
+              "document_sha256": "d947d2c92a72472e3ccb7bdc4cdd2ff596c577fbbe53198854bc39fb3a835091"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-26528f06f6bbed8872cd0bfc",
+          "url": "https://aclanthology.org/2024.acl-long.515/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "3218ef7227a3d5942d804f19368fca1c6975d07f35f818a0fe279cc8d00ce0e5"
+    },
+    {
+      "id": "edge-cba89dc3a34ec4fa6ff7d33a",
+      "a": "paper-022c67f485da3edf6197ac8d",
+      "b": "paper-39be4e567af872a6613b45c0",
+      "state": {
+        "paper_a": {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
+        },
+        "paper_b": {
+          "title": "Distilling LLM Agent into Small Models with Retrieval and Code Tools",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Large language models (LLMs) excel at complex reasoning tasks but remain computationally expensive, limiting their practical deployment. To address this, recent works have focused on distilling reasoning capabilities into smaller language models (sLMs) using chain-of-thought (CoT) traces from teacher LLMs. However, this approach struggles in scenarios requiring rare factual knowledge or precise computation, where sLMs often hallucinate due to limited capability. In this work, we propose Agent Distillation, a framework for transferring not only reasoning capability but full task-solving behavior from LLM-based agents into sLMs with retrieval and code tools. We improve agent distillation along two complementary axes: (1) we introduce a prompting method called first-thought prefix to enhance the quality of teacher-generated trajectories; and (2) we propose a self-consistent action generation for improving test-time robustness of small agents. We evaluate our method on eight reasoning tasks across factual and mathematical domains, covering both in-domain and out-of-domain generalization. Our results show that sLMs as small as 0.5B, 1.5B, 3B parameters can achieve performance competitive with next-tier larger 1.5B, 3B, 7B models fine-tuned using CoT distillation, demonstrating the potential of agent distillation for building practical, tool-using small agents."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For CoT distillation, we add the baseline that uses retrieval-augmented generation [73] in both distillation and inference for a fair comparison with external knowledge [19, 28, 29].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-022c67f485da3edf6197ac8d",
+          "b": "paper-39be4e567af872a6613b45c0",
+          "input_sha256": "594d13557c4fdbf5e500ba91e6dab70d662aee4c31cc147dc376e15114c2bbee",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/99263f9bf46874e2b8b7f104b5063864-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit nonparametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) — models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, and another which can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state of the art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we find that RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Overview of our approach. We combine a pre-trained retriever (Query Encoder + Document Index) with a pre-trained seq2seq model (Generator) and fine-tune end-to-end. For query x, we use Maximum Inner Product Search (MIPS) to find the top-K documents zi . For final prediction y, we treat z as a latent variable and marginalize over seq2seq predictions given different documents. but have only explored open-domain extractive question answering. Here, we bring hybrid parametric and non-parametric memory to the “workhorse of NLP,” i.e. sequence-to-sequence (seq2seq) models. We endow pre-trained, parametric-memory generation models with a non-parametric memory through a general-purpose fine-tuning approach which we refer to as retrieval-augmented generation (RAG). We build RAG models where the parametric memory is a pre-trained seq2seq transformer, and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We combine these components in a probabilistic model trained end-to-end (Fig. 1). The retriever (Dense Passage Retriever [26], henceforth DPR) provides latent documents conditioned on the input, and the seq2seq model (BART [32]) then conditions on these latent documents together with the input to generate the output. We marginalize the latent documents with a top-K approximation, either on a per-output basis (assuming the same document is responsible for all tokens) or a per-token basis (where different documents are responsible for different tokens). Like T5 [51] or BART, RAG can be fine-tuned on any seq2seq task, whereby both the generator and retriever are jointly learned. There has been extensive previous work proposing architectures to enrich systems with non-parametric memory which are trained from",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+              "document_sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 9,
+              "text": "Tasks and datasets. We evaluate two categories of reasoning tasks: factual and mathematical. For each, we assess both in-domain and out-of-domain generalization. We use 1,000 HotPotQA [2] and 2,000 MATH [6] examples for training. For test benchmarks, we summarize them in Table 1. To reduce evaluation cost, we limit each test set to 500 examples, following Wang et al. [71]. As a metric, we use exact match for math and llm-as-a-judge [72] using gpt-4o-mini for factual reasoning. Models. The teacher model is Qwen2.5-32B-Instruct, a 32B parameter instruction-tuned model. For student models, we use the Qwen2.5-Instruct series with four sizes: 0.5B, 1.5B, 3B, and 7B parameters. All student models are instruction-tuned prior to distillation [1]. Baselines. We compare two main distillation paradigms: (1) CoT distillation [16], which transfers static reasoning traces generated using Chain-of-Thought prompting, and (2) our proposed Agent Distillation, which transfers interactive reason-act-observe trajectories. For CoT distillation, we add the baseline that uses retrieval-augmented generation [73] in both distillation and inference for a fair comparison with external knowledge [19, 28, 29]. For ours, we adopt the formulation from CodeAct [21, 61], where each step consists of a Thought, Action (e.g., Python code), and Observation. Additionally, we incorporate two proposed methods — distillation using trajectories through first-thought prefix ftp and self-consistent action generation sag. Training & inference details. For reproducibility of experiments, we use Wikipedia 2018 as a knowledge base for both agents and RAG instead of search engine. We use e5-base-v2 [74] as both document and query embeddings as in Jin et al. [49]. For both CoT and agent, we sample one trajectory per",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models (LLMs) excel at complex reasoning tasks but remain computationally expensive, limiting their practical deployment. To address this, recent works have focused on distilling reasoning capabilities into smaller language models (sLMs) using chain-of-thought (CoT) traces from teacher LLMs. However, this approach struggles in scenarios requiring rare factual knowledge or precise computation, where sLMs often hallucinate due to limited capability. In this work, we propose Agent Distillation, a framework for transferring not only reasoning capability but full task-solving behavior from LLM-based agents into sLMs with retrieval and code tools. We improve agent distillation along two complementary axes: (1) we introduce a prompting method called first-thought prefix to enhance the quality of teacher-generated trajectories; and (2) we propose a self-consistent action generation for improving test-time robustness of small agents. We evaluate our method on eight reasoning tasks across factual and mathematical domains, covering both in-domain and out-of-domain generalization. Our results show that sLMs as small as 0.5B, 1.5B, 3B parameters can achieve performance competitive with nexttier larger 1.5B, 3B, 7B models fine-tuned using CoT distillation, demonstrating the potential of agent distillation for building practical, tool-using small agents. Our code is available at https://github.com/Nardien/agent-distillation. \u0000&\u0000R\u00007\u0000\u0003\u00003\u0000U\u0000R\u0000P\u0000S\u0000W\u0000L\u0000Q\u0000J \u0000&\u0000R\u00007\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q \u0000&\u0000R\u00007\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q\u0000\u0003\u0000\u000e\u0000\u0003\u00005\u0000$\u0000* \u0000$\u0000J\u0000H\u0000Q\u0000W\u0000\u0003\u00003\u0000U\u0000R\u0000P\u0000S\u0000W\u0000L\u0000Q\u0000J \u0000$\u0000J\u0000H\u0000Q\u0000W\u0000\u0003\u0000'\u0000L\u0000V\u0000W\u0000L\u0000O\u0000O\u0000D\u0000W\u0000L\u0000R\u0000Q\u0000\u0003\u0000 \u00002\u0000X\u0000U\u0000V\u0000",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Large language models (LLMs) have achieved remarkable performance across complex real-world tasks, surpassing average human accuracy on college-level mathematics and demonstrating competence in high-stakes domains [10–12]. However, as LLM usage grows, their high inference cost becomes increasingly burdensome. While these considerations have motivated growing interest in smaller language models (sLMs) [13, 14], preserving the problem-solving capabilities of larger models in sLMs remains challenging. Therefore, a core research question emerges: how can we preserve LLM-level problem-solving ability in much smaller models? Although recent advancements in pre- and post-training methods have steadily increased the capabilities of sLMs [15], sLMs still struggle to solve complex tasks at the level of LLMs. To address this, recent works have explored reasoning distillation, where sLMs are trained to mimic CoT reasoning traces generated by teacher LLMs through next-token prediction [10, 11, 1, 16, 17]. However, distilled small models are prone to hallucination and often fail to perform accurate calculations [18]. For example, answering the real-world question, “What would $100 invested in Apple stock in 2010 be worth by 2020?”, requires both factual knowledge about stock history and arithmetic reasoning. As illustrated in Figure 2, LLMs can correctly answer this question using CoT by leveraging memorized knowledge and numerical skills. However, simply distilling such a reasoning trace into an sLM does not guarantee generalization, especially those involving new knowledge or calculation not observed during distillation due to their limited capability [19]. In this work, we propose Agent Distillation, a framework that moves beyond static reasoning to distill the ability to take",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/99263f9bf46874e2b8b7f104b5063864-Paper-Conference.pdf",
+              "document_sha256": "b5cdc342bbbd0be2aa4b170f314516a6a3e23004ba68565b07d0dc6f4e43f710"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-022c67f485da3edf6197ac8d",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-39be4e567af872a6613b45c0",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/99263f9bf46874e2b8b7f104b5063864-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Reasoning and Reward in Large Language Models"
+      },
+      "sha256": "d425bff7bff3ee9642c3a3039507e296d022d6683e9add34930387461d2ae279"
+    }
+  ]
+}

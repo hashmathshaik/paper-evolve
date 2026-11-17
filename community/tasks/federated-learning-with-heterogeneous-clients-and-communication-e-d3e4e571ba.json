@@ -1,0 +1,974 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency",
+  "area": "Optimization & Federated Learning",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-b70f67d5a49905cf84deafb4",
+      "a": "paper-970d64138100dee5d6a26cc0",
+      "b": "paper-40d461a172577edac3132244",
+      "state": {
+        "paper_a": {
+          "title": "Error Feedback Fixes SignSGD and other Gradient Compression Schemes",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Sign-based algorithms (e.g. signSGD) have been proposed as a biased gradient compression technique to alleviate the communication bottleneck in training large neural networks across multiple workers. We show simple convex counter-examples where signSGD does not converge to the optimum. Further, even when it does converge, signSGD may generalize poorly when compared with SGD. These issues arise because of the biased nature of the sign compression operator. We then show that using error-feedback, i.e. incorporating the error made by the compression operator into the next step, overcomes these issues. We prove that our algorithm (EF-SGD) with arbitrary compression operator achieves the same rate of convergence as SGD without any additional assumptions. Thus EF-SGD achieves gradient compression for free. Our experiments thoroughly substantiate the theory."
+        },
+        "paper_b": {
+          "title": "ProgFed: Effective, Communication, and Computation Efficient Federated Learning by Progressive Training",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Federated learning is a powerful distributed learning scheme that allows numerous edge devices to collaboratively train a model without sharing their data. However, training is resource-intensive for edge devices, and limited network bandwidth is often the main bottleneck. Prior work often overcomes the constraints by condensing the models or messages into compact formats, e.g., by gradient compression or distillation. In contrast, we propose ProgFed, the first progressive training framework for efficient and effective federated learning. It inherently reduces computation and two-way communication costs while maintaining the strong performance of the final models. We theoretically prove that ProgFed converges at the same asymptotic rate as standard training on full models. Extensive results on a broad range of architectures, including CNNs (VGG, ResNet, ConvNets) and U-nets, and diverse tasks from simple classification to medical image segmentation show that our highly effective training approach saves up to $20%$ computation and up to $63%$ communication costs for converged models. As our approach is also complimentary to prior work on compression, we can achieve a wide range of trade-offs by combining these techniques, showing reduced communication of up to $50\\times$ at only $0.1%$ loss in utility. Code is available at https://github.com/a514514772/ProgFed."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The first category focuses solely on client-to-server compression (Alistarh et al., 2017; Wen et al., 2017; Lin et al., 2018; Bernstein et al., 2018; Stich et al., 2018; Konečnỳ et al., 2016; Karimireddy et al., 2019; Fu et al., 2020; Stich, 2020).\nAlistarh et al. (2017); Wen et al. (2017) prove the convergence of probabilistic quantized SGD. SignSGD (Bernstein et al., 2018; Karimireddy et al., 2019) significantly compresses the gradients with only one bit.\nThe first category focuses solely on client-to-server compression (Alistarh et al., 2017; Wen et al., 2017; Lin et al., 2018; Bernstein et al., 2018; Stich et al., 2018; Kone ˇ cn ` y et al., 2016; Karimireddy et al., 2019; Fu et al., 2020; Stich, 2020).\nSignSGD (Bernstein et al., 2018; Karimireddy et al., 2019) significantly compresses the gradients with only one bit.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-970d64138100dee5d6a26cc0",
+          "b": "paper-40d461a172577edac3132244",
+          "input_sha256": "f3bcbbebad88b6d6f8b2ae63f292bdec4eb68e2ad19d1d580254d61c3720c09e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/karimireddy19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/karimireddy19a/karimireddy19a.pdf",
+              "sha256": "ac5f6da6624810fe993acd8a64511756a285fc91200a45ed284408325626f70c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/wang22y.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/wang22y/wang22y.pdf",
+              "sha256": "4082a894080109430a1ad93cb99330d5b40bdf2c8f9db90289f35d2f7680102b"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Message compression. Prior work has studied message compression (e.g., on gradients or model weights) to reduce the communication costs in distributed learning. The first category focuses solely on client-to-server compression (Alistarh et al., 2017; Wen et al., 2017; Lin et al., 2018; Bernstein et al., 2018; Stich et al., 2018; Konečnỳ et al., 2016; Karimireddy et al., 2019; Fu et al., 2020; Stich, 2020). To name a few, Konečnỳ et al. (2016) reduce the costs by sending sparsified gradients and compressing them with probabilistic quantization. Alistarh et al. (2017); Wen et al. (2017) prove the convergence of probabilistic quantized SGD. SignSGD (Bernstein et al., 2018; Karimireddy et al., 2019) significantly compresses the gradients with only one bit. Compression of server-to-client communication is nontrivial and has been a focus of recent research (Yu et al., 2019; Tang et al., 2019; Liu et al., 2020; Philippenko & Dieuleveut, 2020; He et al., 2021b). Instead of dedicated designs, our method inherently reduces two-way communication costs and complements existing methods, as we will show in Section 4.",
+              "url": "https://proceedings.mlr.press/v162/wang22y/wang22y.pdf",
+              "document_sha256": "4082a894080109430a1ad93cb99330d5b40bdf2c8f9db90289f35d2f7680102b"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 9,
+              "text": "6. Conclusion Beyond prior work on expressing models in compact formats, we show a novel approach to modifying the training pipeline to reduce the training costs. We propose ProgFed and show that progressive learning can be seamlessly applied to federated learning for communication and computation cost reduction. Extensive results on different architectures from small CNNs to U-Net and different tasks from simple classification to medical image segmentation show that our method is communication- and computationefficient, especially when the training budgets are limited. Interestingly, we found that a progressive learning scheme has even led to improved performance in vanilla learning and more robust results when learning is perturbed e.g. in the case of gradient compression, which highlights progressive learning as a promising technique in itself with future application domains such as privacy-preserving learning, advanced compression schemes, and strong anytime-learning performance.",
+              "url": "https://proceedings.mlr.press/v162/wang22y/wang22y.pdf",
+              "document_sha256": "4082a894080109430a1ad93cb99330d5b40bdf2c8f9db90289f35d2f7680102b"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated learning is a powerful distributed learning scheme that allows numerous edge devices to collaboratively train a model without sharing their data. However, training is resource-intensive for edge devices, and limited network bandwidth is often the main bottleneck. Prior work often overcomes the constraints by condensing the models or messages into compact formats, e.g., by gradient compression or distillation. In contrast, we propose ProgFed, the first progressive training framework for efficient and effective federated learning. It inherently reduces computation and two-way communication costs while maintaining the strong performance of the final models. We theoretically prove that ProgFed converges at the same asymptotic rate as standard training on full models. Extensive results on a broad range of architectures, including CNNs (VGG, ResNet, ConvNets) and U-nets, and diverse tasks from simple classification to medical image segmentation show that our highly effective training approach saves up to 20% computation and up to 63% communication costs for converged models. As our approach is also complimentary to prior work on compression, we can achieve a wide range of trade-offs by combining these techniques, showing reduced communication of up to 50× at only 0.1% loss in utility. Code is available at https: //github.com/a514514772/ProgFed.",
+              "url": "https://proceedings.mlr.press/v162/wang22y/wang22y.pdf",
+              "document_sha256": "4082a894080109430a1ad93cb99330d5b40bdf2c8f9db90289f35d2f7680102b"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-970d64138100dee5d6a26cc0",
+          "url": "https://proceedings.mlr.press/v97/karimireddy19a.html"
+        },
+        "b": {
+          "paper_id": "paper-40d461a172577edac3132244",
+          "url": "https://proceedings.mlr.press/v162/wang22y.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "38bd926b4ddfab8902892361935297aa386ef96224d47a2ab59fb268b8298b04"
+    },
+    {
+      "id": "edge-f5e06d57590f332490bb774c",
+      "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+      "b": "paper-e0cafd3ed14d9c473b6e9402",
+      "state": {
+        "paper_a": {
+          "title": "Parameter-Efficient Transfer Learning for NLP",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Fine-tuning large pretrained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to $26$ diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within $0.8%$ of the performance of full fine-tuning, adding only $3.6%$ parameters per task. By contrast, fine-tuning trains $100%$ of the parameters per task."
+        },
+        "paper_b": {
+          "title": "Federated Learning with Partial Model Personalization",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "We consider two federated learning algorithms for training partially personalized models, where the shared and personal parameters are updated either simultaneously or alternately on the devices. Both algorithms have been proposed in the literature, but their convergence properties are not fully understood, especially for the alternating variant. We provide convergence analyses of both algorithms in the general nonconvex setting with partial participation and delineate the regime where one dominates the other. Our experiments on real-world image, text, and speech datasets demonstrate that (a) partial personalization can obtain most of the benefits of full model personalization with a small fraction of personal parameters, and, (b) the alternating update algorithm outperforms the simultaneous update algorithm by a small but consistent margin."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "We use the transformer adapters of Houlsby et al. (2019) and for ResNet-18, the residual adapters of Rebufﬁ et al. (2017).\nThis architecture is proposed by Houlsby et al. (2019) for ﬁnetuning large language models.\n(a) The adapter has a skip connection, thus it collapses to the identity mapping if vi = 0; in addition, it has a bottleneck in the middle (Houlsby et al., 2019).\nThe analysis of FedAlt with partial participation is especially challenging and we develop a novel technique of virtual full participation to overcome the difﬁculties. to the identity mapping if v i = 0 ; in addition, it has a bottleneck in the middle (Houlsby et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "b": "paper-e0cafd3ed14d9c473b6e9402",
+          "input_sha256": "314b83028fe9fdbccd350e1ed9914a192c791019a8743af92b7f8d39d8645ed6",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/houlsby19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/pillutla22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/pillutla22a/pillutla22a.pdf",
+              "sha256": "31d4e1a7102f0b5773fdeab5d6f3ee407d92ea971472ec3c878f67c40155e511"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Both feature-based transfer and fine-tuning require a new set of weights for each task. Fine-tuning is more parameter efficient if the lower layers of a network are shared between tasks. However, our proposed adapter tuning method is even more parameter efficient. Figure 1 demonstrates this tradeoff. The x-axis shows the number of parameters trained per task; this corresponds to the marginal increase in the model size required to solve each additional task. Adapter-based tuning requires training two orders of magnitude fewer parameters to fine-tuning, while attaining similar performance. Adapters are new modules added between layers of a pre-trained network. Adapter-based tuning differs from feature-based transfer and fine-tuning in the following way. Consider a function (neural network) with parameters w: φw (x). Feature-based transfer composes φw with a new function, χv , to yield χv (φw (x)). Only the new, taskspecific, parameters, v, are then trained. Fine-tuning involves adjusting the original parameters, w, for each new task, limiting compactness. For adapter tuning, a new function, ψw,v (x), is defined, where parameters w are copied over from pre-training. The initial parameters v0 are set such that the new function resembles the original: ψw,v0 (x) ≈ φw (x). During training, only v are tuned. For deep networks, defining ψw,v typically involves adding new layers to the original network, φw . If one chooses |v| |w|, the resulting model requires ∼ |w| parameters for many tasks. Since w is fixed, the model can be extended to new tasks without affecting previous ones. Adapter-based tuning relates to multi-task and continual learning. Multi-task learning also results in compact models. However, multi-task learning requires simultaneous access to all tasks, which",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fine-tuning large pre-trained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to 26 diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within 0.4% of the performance of full fine-tuning, adding only 3.6% parameters per task. By contrast, fine-tuning trains 100% of the parameters per task.",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Figure 2. More structured partial model personalization. (a) The adapter has a skip connection, thus it collapses to the identity mapping if vi = 0; in addition, it has a bottleneck in the middle (Houlsby et al., 2019). (b) The generalized additive model can be further augmented with a shared input layer for representation learning.",
+              "url": "https://proceedings.mlr.press/v162/pillutla22a/pillutla22a.pdf",
+              "document_sha256": "31d4e1a7102f0b5773fdeab5d6f3ee407d92ea971472ec3c878f67c40155e511"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "domain and scenarios, we may personalize either the input layer(s) or the output layer(s) of the model; see Figure 1. In Figure 1c, the input layers are split horizontally into two parts, one shared and the other personal. They process different chunks of the input vector and their outputs are concatenated before feeding to the upper layers of the model. As demonstrated by Bui et al. (2019), this partitioning can help protect user-specific private features (input 2 in Figure 1c) as the corresponding feature embedding (through vi ) are personalized and kept local at the device. Similar architectures have also been proposed in context-dependent language models (e.g., Mikolov & Zweig, 2012). A more structured partitioning is illustrated in Figure 2a, where a typical transformer layer (Vaswani et al., 2017) is augmented with two adapters. This architecture is proposed by Houlsby et al. (2019) for finetuning large language models. Similar residual adapter modules are proposed by Rebuffi et al. (2017) for image classification models in the context of multi-task learning. In the context of FL, we treat the adapter parameters as personal and the rest of the model parameters as shared. Figure 2b shows a generalized additive model, where the outputs of two separate models, one shared and the other personalized, are fused to generate a prediction. Suppose the shared model is h(u, ·) and the personal model is hi (vi , ·). For regression tasks with samples zi,j = (xi,j , yi,j ), where xi,j is the input and yi,j is the output, we let Fi (u, vi ) = \u0001 PNi (1/Ni ) j=1 fi (u, vi ), zi,j with \u0001 2 fi (u, vi ), zi,j = ∥yi,j − h(u, xi,j ) − hi (vi , xi,j )∥ . In this special case, the personal model fits the residual of the shared model and vice-versa (Evgeniou & Pontil,",
+              "url": "https://proceedings.mlr.press/v162/pillutla22a/pillutla22a.pdf",
+              "document_sha256": "31d4e1a7102f0b5773fdeab5d6f3ee407d92ea971472ec3c878f67c40155e511"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "had participated. This iterate is virtual, meaning that it is a tool of the analysis but is not required by the algorithm. We introduce Ve (t+1) on the right hand side of (6) to get",
+              "url": "https://proceedings.mlr.press/v162/pillutla22a/pillutla22a.pdf",
+              "document_sha256": "31d4e1a7102f0b5773fdeab5d6f3ee407d92ea971472ec3c878f67c40155e511"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "performance for speech recognition, cf. Table 3. This variation is explained via the primary source of data heterogeneity across devices for each task. The choice of the next word after a context can vary between users, so the output layer is the right component to personalize for this task. Likewise, there is greater heterogeneity in the audio of LibriSpeech (accent, tone, and voice of the speaker) than the text (standard literary English), so input layer personalization works best in this case. This shows that the approach of personalizing a fixed model part, as in past works, is suboptimal. Our framework allows for the use of domain knowledge to determine customized personalization. Finetuning is competitive with other full personalization methods. Full finetuning matches the performance of pFedMe and Ditto on StackOverflow and EMNIST. On GLDv2, however, pFedMe outperforms finetuning by 0.07pp, but is still 3.5pp worse than adapter personalization. FedAlt outperforms FedSim by a small but consistent margin. Table 4 shows that FedAlt almost always outper-",
+              "url": "https://proceedings.mlr.press/v162/pillutla22a/pillutla22a.pdf",
+              "document_sha256": "31d4e1a7102f0b5773fdeab5d6f3ee407d92ea971472ec3c878f67c40155e511"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "url": "https://proceedings.mlr.press/v97/houlsby19a.html"
+        },
+        "b": {
+          "paper_id": "paper-e0cafd3ed14d9c473b6e9402",
+          "url": "https://proceedings.mlr.press/v162/pillutla22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "b80c8405181bafba3c5309d61d8d7b766414f51ca04b985598444eaad5eb7e31"
+    },
+    {
+      "id": "edge-fe715f4b7a6f9ed14e40e3a4",
+      "a": "paper-98a6091fb136a322f159d2ec",
+      "b": "paper-2008123efb6fd1534909f892",
+      "state": {
+        "paper_a": {
+          "title": "On Large-Cohort Training for Federated Learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Federated learning methods typically learn a model by iteratively sampling updates from a population of clients. In this work, we explore how the number of clients sampled at each round (the cohort size) impacts the quality of the learned model and the training dynamics of federated learning algorithms. Our work poses three fundamental questions. First, what challenges arise when trying to scale federated learning to larger cohorts? Second, what parallels exist between cohort sizes in federated learning, and batch sizes in centralized learning? Last, how can we design federated learning methods that effectively utilize larger cohort sizes? We give partial answers to these questions based on extensive empirical evaluation. Our work highlights a number of challenges stemming from the use of larger cohorts. While some of these (such as generalization issues and diminishing returns) are analogs of large-batch training challenges, others (including catastrophic training failures and fairness concerns) are unique to federated learning."
+        },
+        "paper_b": {
+          "title": "Taming Fat-Tailed (“Heavier-Tailed” with Potentially Infinite Variance) Noise in Federated Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "In recent years, federated learning (FL) has emerged as an important distributed machine learning paradigm to collaboratively learn a global model with multiple clients, while keeping data local and private. However, a key assumption in most existing works on FL algorithms' convergence analysis is that the noise in stochastic first-order information has a finite variance. Although this assumption covers all light-tailed (i.e., sub-exponential) and some heavy-tailed noise distributions (e.g., log-normal, Weibull, and some Pareto distributions), it fails for many fat-tailed noise distributions (i.e., ``heavier-tailed'' with potentially infinite variance) that have been empirically observed in the FL literature. To date, it remains unclear whether one can design convergent algorithms for FL systems that experience fat-tailed noise. This motivates us to fill this gap in this paper by proposing an algorithmic framework called $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ (\\ul{f}ederated \\ul{a}veraging with \\ul{t}wo-sided learning rates and \\ul{clipping}), which contains two variants: $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ per-round ($\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PR}$) and $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ per-iteration ($\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PI}$). Specifically, for the largest $\\alpha \\in (1,2]$ such that the fat-tailed noise in FL still has a bounded $\\alpha$-moment, we show that both variants achieve $\\mathcal{O}((mT)^{\\frac{2-\\alpha}{\\alpha}})$ and $\\mathcal{O}((mT)^{\\frac{1-\\alpha}{3\\alpha-2}})$ convergence rates in the strongly-convex and general non-convex settings, respectively, where $m$ and $T$ are the numbers of clients and communication rounds. Moreover, at the expense of more clipping operations compared to $\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PR}$, $\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PI}~$ further enjoys a linear speedup effect with respect to the number of local updates at each client and being lower-bound-matching (i.e., order-optimal). Collectively, our results advance the understanding of designing efficient algorithms for FL systems that exhibit fat-tailed first-order oracle information."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The presence of fat-tailed noise poses two major challenges in FL algorithm design and analysis: i) Experimentally, it has been shown in [20] that many existing FL algorithms suffer severely from fat-tailed noise and frequently exhibit the so-called “catastrophic failure of model performance”…\n3) The Impacts of Fat-Tailed Noise on Federated Learning: Next, we show that the fat-tailed noise could lead to a “catastrophic model failure” (i.e., a sudden and dramatic drop of learning accuracy), consistent with previous observations in the FL literature [20].\nIn this section, we have shown that, under heavy/fat-tailed noises, catastrophic training failures happen in FL training, which is consistent with the observations in large-cohort FL training [20].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-98a6091fb136a322f159d2ec",
+          "b": "paper-2008123efb6fd1534909f892",
+          "input_sha256": "ca51c68652deb0021905375ae469c77ecf9b2a45ac66c4d1a6a8c29df256da1b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/ab9ebd57177b5106ad7879f0896685d4-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/ab9ebd57177b5106ad7879f0896685d4-Paper.pdf",
+              "sha256": "ba2fd4c63e4826f67ea7ae44cf5e04274777f592f5fc0166d4c86c4e11bd5b34"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/6cb7246003d556c4d1cbf9c17c392ee3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "Another popular technique for large-batch training is layer-wise adaptivity. Methods such as LARS [71] and Lamb [72] use layer-wise adaptive learning rates, which may allow the methods to train faster than SGD with linear scaling and warmup in large-batch settings [71, 72]. We propose two new federated versions of these optimizers, FedLARS and FedLamb. These are special cases of Algorithm 1, where the server uses LARS and Lamb, respectively. Given the difficulties of learning rate scaling above, FedLARS and FedLamb may perform better in large-cohort settings. 8",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/ab9ebd57177b5106ad7879f0896685d4-Paper.pdf",
+              "document_sha256": "ba2fd4c63e4826f67ea7ae44cf5e04274777f592f5fc0166d4c86c4e11bd5b34"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "cohort training, we get a server pseudo-gradient ∆t that is close to zero. To compensate, we propose a variant of FedAvg where rather than applying SGD to the server pseudo-gradient (as in Algorithm 1), we apply SGD to the normalized server pseudo-gradient. That is, the server updates its model via x0 = x − ηs ∆/k∆k2 . This method, which we refer to as normalized FedAvg, is a federated analog of normalized SGD methods used for centralized learning [57]. It introduces no new hyperparameters with respect to Algorithm 1. To test it, we present its training and test accuracy versus cohort size in Figure 10. Notably, we re-use the same learning rates tuned for (unnormalized) FedAvg. For full results, see Appendix B.9.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/ab9ebd57177b5106ad7879f0896685d4-Paper.pdf",
+              "document_sha256": "ba2fd4c63e4826f67ea7ae44cf5e04274777f592f5fc0166d4c86c4e11bd5b34"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "on performance analysis of FL algorithms, which states that the random noise in stochastic first-order oracles (e.g., stochastic gradients or associated estimators) has a finite variance. Although this assumption is not too restrictive and can cover all light-tailed (i.e., sub-exponential) and some heavytailed noise distributions (e.g., log-normal, Weibull, and some Pareto distributions), it fails for many “fat-tailed” distributions (i.e., “heavier-tailed” with potentially infinite variance1 ). In fact, fat-tailed distributions have already been empirically observed under centralized learning settings [15–19], let alone in the more heterogeneous FL environments. Later in Section 3, we will also provide empirical evidence that shows that fat-tailed noise distributions can be easily induced by FL systems with non-i.i.d. datasets and heterogeneous local updates across clients. The presence of fat-tailed noise poses two major challenges in FL algorithm design and analysis: i) Experimentally, it has been shown in [20] that many existing FL algorithms suffer severely from fat-tailed noise and frequently exhibit the so-called “catastrophic failure of model performance” (i.e., sudden and dramatic drops of learning accuracy during the training phase); ii) Theoretically, the infinite variance of the random noise in the stochastic first-order oracles renders most of the proof techniques in existing FL algorithmic convergence analysis inapplicable, which necessitates new algorithmic ideas and proof strategies. In light of these empirical and theoretical challenges, two foundational questions naturally emerge in FL algorithm design and analysis: 1) Can we develop FL algorithms with convergence guarantee under fat-tailed noise? 2) If the answer to 1) is “yes,” could we characterize",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "document_sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 5,
+              "text": "Figure 1: Distributions of the Figure 2: Estimation of α for Figure 3: Catastrophic training norms of the pseudo-gradient CIFAR-10 dataset. The non-IID failures happen when applying noises computed with CNN on index p represents the data het- GFedAvg on CIFAR-10 dataset, CIFAR-10 dataset in i.i.d. case erogeneity level, and p = 10 is where the test accuracy expe(top) and non-i.i.d. case (bot- the IID case. The smaller the p, riences a sudden and dramatic tom). m = 100 clients partic- the more heterogeneous the data drop and the pseudo-gradient across clients. norm increases substantially. ipate in the training. of the distribution. Also, the α-parameter also determines the moments: E[|X|r ] < ∞ if and only if r < α, which implies that X has infinite variance when α < 2, i.e., being fat-tailed. Next, we investigate the tail property of model updates returned by clients in the GFedAvg algorithm. Due to multiple local steps in the GFedAvg algorithm, we view the whole update vector ∆it returned by each client, which we called “pseudo-gradient,” as a random vector and then analyze its statistical properties. Note that in the special case with the number of local update K = 1, ∆it coincides with a single stochastic gradient of a random sample, (i.e., ∆it = ∇fi (xt , ξt )). We study the mismatch between the “non-fat-tailed” condition (α = 2) and the empirical behavior of the stochastic psudo-gradient noise. In Fig. 1, we illustrate the distributions of the norms of the stochastic pseudo-gradient noises computed with convolutional neural network (CNN) on the CIFAR-10 dataset in both i.i.d. and non-i.i.d. client dataset settings. We can clearly observe that the non-i.i.d. case exhibits a rather fat-tailed behavior, where the pseudo-gradient norm could be as large as 1.6.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "document_sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-98a6091fb136a322f159d2ec",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/ab9ebd57177b5106ad7879f0896685d4-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-2008123efb6fd1534909f892",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/6cb7246003d556c4d1cbf9c17c392ee3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "42d627ff84824eaea6e780f8dade270af264a8f1b8ed393e954034f0d681efc7"
+    },
+    {
+      "id": "edge-100138545645d8d09edddc5a",
+      "a": "paper-016fb990744a6a7571bc430d",
+      "b": "paper-e7e57c95e46891eba91113d4",
+      "state": {
+        "paper_a": {
+          "title": "Personalized Federated Learning under Mixture of Distributions",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The recent trend towards Personalized Federated Learning (PFL) has garnered significant attention as it allows for the training of models that are tailored to each client while maintaining data privacy. However, current PFL techniques primarily focus on modeling the conditional distribution heterogeneity (i.e. concept shift), which can result in suboptimal performance when the distribution of input data across clients diverges (i.e. covariate shift). Additionally, these techniques often lack the ability to adapt to unseen data, further limiting their effectiveness in real-world scenarios. To address these limitations, we propose a novel approach, FedGMM, which utilizes Gaussian mixture models (GMM) to effectively fit the input data distributions across diverse clients. The model parameters are estimated by maximum likelihood estimation utilizing a federated Expectation-Maximization algorithm, which is solved in closed form and does not assume gradient similarity. Furthermore, FedGMM possesses an additional advantage of adapting to new clients with minimal overhead, and it also enables uncertainty quantification. Empirical evaluations on synthetic and benchmark datasets demonstrate the superior performance of our method in both PFL classification and novel sample detection."
+        },
+        "paper_b": {
+          "title": "FedRC: Tackling Diverse Distribution Shifts Challenge in Federated Learning by Robust Clustering",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Federated Learning (FL) is a machine learning paradigm that safeguards privacy by retaining client data on edge devices. However, optimizing FL in practice can be challenging due to the diverse and heterogeneous nature of the learning system. Though recent research has focused on improving the optimization of FL when distribution shifts occur among clients, ensuring global performance when multiple types of distribution shifts occur simultaneously among clients—such as feature distribution shift, label distribution shift, and concept shift—remain under-explored. In this paper, we identify the learning challenges posed by the simultaneous occurrence of diverse distribution shifts and propose a clustering principle to overcome these challenges. Through our research, we find that existing methods fail to address the clustering principle. Therefore, we propose a novel clustering algorithm framework, dubbed as FedRC, which adheres to our proposed clustering principle by incorporating a bi-level optimization problem and a novel objective function. Extensive experiments demonstrate that FedRC significantly outperforms other SOTA cluster-based FL methods. Our code will be publicly available."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Other methods (Long et al., 2023; Marfoq et al., 2021; Zhu et al., 2023; Wu et al., 2023) employ the Expectation-Maximization approach to maximize log-likelihood functions or joint distributions.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-016fb990744a6a7571bc430d",
+          "b": "paper-e7e57c95e46891eba91113d4",
+          "input_sha256": "81a46b364580d54ee8b044d74ea7135e8e6fefaa2457db752761646ea3d9d588",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/wu23z.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/wu23z/wu23z.pdf",
+              "sha256": "1efea1c91319f5b7ce70ac044a20de1157e0a4eccc19f53c7f9db9c128e6ee21"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/guo24f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24f/guo24f.pdf",
+              "sha256": "bc89070f8551b35709abb5ecec0a6757883ef39dd44f6d48596b36712e6836fe"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The recent trend towards Personalized Federated Learning (PFL) has garnered significant attention as it allows for the training of models that are tailored to each client while maintaining data privacy. However, current PFL techniques primarily focus on modeling the conditional distribution heterogeneity (i.e. concept shift), which can result in suboptimal performance when the distribution of input data across clients diverges (i.e. covariate shift). Additionally, these techniques often lack the ability to adapt to unseen data, further limiting their effectiveness in realworld scenarios. To address these limitations, we propose a novel approach, FedGMM, which utilizes Gaussian mixture models (GMM) to effectively fit the input data distributions across diverse clients. The model parameters are estimated by maximum likelihood estimation utilizing a federated Expectation-Maximization algorithm, which is solved in closed form and does not assume gradient similarity. Furthermore, FedGMM possesses an additional advantage of adapting to new clients with minimal overhead, and it also enables uncertainty quantification. Empirical evaluations on synthetic and benchmark datasets demonstrate the superior performance of our method in both PFL classification and novel sample detection.",
+              "url": "https://proceedings.mlr.press/v202/wu23z/wu23z.pdf",
+              "document_sha256": "1efea1c91319f5b7ce70ac044a20de1157e0a4eccc19f53c7f9db9c128e6ee21"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this study, we propose a Federated Gaussian Mixture Model (FedGMM) approach, which utilizes Gaussian mixture models to tackle the aforementioned issues. Our approach operates under the assumption that the joint distribution of data is a linear mixture of several base distributions. FedGMM builds up PFL by maximizing the log-likelihood of the observed data. To maximize the log-likelihood of the mixture model, we suggest a federated ExpectationMaximization (EM) algorithm for model parameter learning. The update rule for the Gaussian components has a closed-form solution and does not resort to gradient methods. To ensure convergence of the EM update rule, we incorporate our algorithm with the theoretical analysis of federated EM for GMMs. The Gaussian parameters inferred by the server offer a detailed global statistical descriptor of the data, and can be applied for various purposes, including",
+              "url": "https://proceedings.mlr.press/v202/wu23z/wu23z.pdf",
+              "document_sha256": "1efea1c91319f5b7ce70ac044a20de1157e0a4eccc19f53c7f9db9c128e6ee21"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Clustered Federated Learning. Clustered Federated Learning (clustered FL) is a technique that groups clients into clusters based on their local data distribution to address the distribution shift problem. Various methods have been proposed for clustering clients, including using local loss values (Ghosh et al., 2020), communication time/local calculation time (Wang et al., 2022b), fuzzy c-Means (Stallmann & Wilbik, 2022), and hierarchical clustering (Zhao et al., 2020; Briggs et al., 2020; Sattler et al., 2020a). Some approaches, such as FedSoft (Ruan & Joe-Wong, 2022), combine clustered FL with personalized FL by allowing clients to contribute to multiple clusters. Other methods (Long et al., 2023; Marfoq et al., 2021; Zhu et al., 2023; Wu et al., 2023) employ the Expectation-Maximization approach to maximize log-likelihood functions or joint distributions. However, these methods targeting on improving the local",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24f/guo24f.pdf",
+              "document_sha256": "bc89070f8551b35709abb5ecec0a6757883ef39dd44f6d48596b36712e6836fe"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Federated Learning (FL) is a machine learning paradigm that safeguards privacy by retaining client data on edge devices. However, optimizing FL in practice can be challenging due to the diverse and heterogeneous nature of the learning system. Though recent research has focused on improving the optimization of FL when distribution shifts occur among clients, ensuring global performance when multiple types of distribution shifts occur simultaneously among clients—such as feature distribution shift, label distribution shift, and concept shift—remain under-explored. In this paper, we identify the learning challenges posed by the simultaneous occurrence of diverse distribution shifts and propose a clustering principle to overcome these challenges. Through our research, we find that existing methods fail to address the clustering principle. Therefore, we propose a novel clustering algorithm framework, dubbed as FedRC, which adheres to our proposed clustering principle by incorporating a bi-level optimization problem and a novel objective function. Extensive experiments demonstrate that FedRC significantly outperforms other SOTA cluster-based FL methods. Our code is available at https: //github.com/LINs-lab/FedRC.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24f/guo24f.pdf",
+              "document_sha256": "bc89070f8551b35709abb5ecec0a6757883ef39dd44f6d48596b36712e6836fe"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Illustration of our principles of robust clustering. Each circle represents a client, with points (features) of varying colors indicating distinct labels. Label shifts are represented by clients exhibiting data points of varying colors, as seen in clients 1 and 2. Feature shifts are exemplified by clients maintaining data points with the same color but having substantial distances between them, as observed in clients 2 and 3. Concept shifts occur when data points at the same position have different labels, as evident in clients 2 and 5. Dashed lines in different colors depict decision boundaries for classifiers of different clusters, i.e., θ1 and θ2 . Figure 1(a) demonstrates that single-model methods are inadequate for handling concept shifts. Figure 1(b) shows that current multi-model methods tend to overfit local distributions and can not handle unseen data, like the data points in the top-left corner of Figure 1(b). Our method (Figure 1(c)) improves model generalization by grouping clients with concept shifts into distinct clusters, while ensuring that clients with only feature or label shifts are placed in the same clusters.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/guo24f/guo24f.pdf",
+              "document_sha256": "bc89070f8551b35709abb5ecec0a6757883ef39dd44f6d48596b36712e6836fe"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-016fb990744a6a7571bc430d",
+          "url": "https://proceedings.mlr.press/v202/wu23z.html"
+        },
+        "b": {
+          "paper_id": "paper-e7e57c95e46891eba91113d4",
+          "url": "https://proceedings.mlr.press/v235/guo24f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "7c7ee715043858303d28da1532c28219f0e8a8d2e39fde34eb151e8317d4b7a8"
+    },
+    {
+      "id": "edge-2bb72af2caf977b76b3307a2",
+      "a": "paper-0250ca6205e63c628d666de0",
+      "b": "paper-aea930ebac3f4cc8cc281465",
+      "state": {
+        "paper_a": {
+          "title": "FL-NTK: A Neural Tangent Kernel-based Framework for Federated Learning Analysis",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Federated Learning (FL) is an emerging learning scheme that allows different distributed clients to train deep neural networks together without data sharing. Neural networks have become popular due to their unprecedented success. To the best of our knowledge, the theoretical guarantees of FL concerning neural networks with explicit forms and multi-step updates are unexplored. Nevertheless, training analysis of neural networks in FL is non-trivial for two reasons: first, the objective loss function we are optimizing is non-smooth and non-convex, and second, we are even not updating in the gradient direction. Existing convergence results for gradient descent-based methods heavily rely on the fact that the gradient direction is used for updating. The current paper presents a new class of convergence analysis for FL, Federated Neural Tangent Kernel (FL-NTK), which corresponds to overparamterized ReLU neural networks trained by gradient descent in FL and is inspired by the analysis in Neural Tangent Kernel (NTK). Theoretically, FL-NTK converges to a global-optimal solution at a linear rate with properly tuned learning parameters. Furthermore, with proper distributional assumptions, FL-NTK can also achieve good generalization. The proposed theoretical analysis scheme can be generalized to more complex neural networks."
+        },
+        "paper_b": {
+          "title": "Lessons from Generalization Error Analysis of Federated Learning: You May Communicate Less Often!",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "We investigate the generalization error of statistical learning models in a Federated Learning (FL) setting. Specifically, we study the evolution of the generalization error with the number of communication rounds $R$ between $K$ clients and a parameter server (PS), i.e. the effect on the generalization error of how often the clients’ local models are aggregated at PS. In our setup, the more the clients communicate with PS the less data they use for local training in each round, such that the amount of training data per client is identical for distinct values of $R$. We establish PAC-Bayes and rate-distortion theoretic bounds on the generalization error that account explicitly for the effect of the number of rounds $R$, in addition to the number of participating devices $K$ and individual datasets size $n$. The bounds, which apply to a large class of loss functions and learning algorithms, appear to be the first of their kind for the FL setting. Furthermore, we apply our bounds to FL-type Support Vector Machines (FSVM); and derive (more) explicit bounds in this case. In particular, we show that the generalization bound of FSVM increases with $R$, suggesting that more frequent communication with PS diminishes the generalization power. This implies that the population risk decreases less fast with $R$ than does the empirical risk. Moreover, our bound suggests that the generalization error of FSVM decreases faster than that of centralized learning by a factor of $\\mathcal{O}(\\sqrt{\\log(K)/K})$. Finally, we provide experimental results obtained using neural networks (ResNet-56) which show evidence that not only may our observations for FSVM hold more generally but also that the population risk may even start to increase beyond some value of $R$."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…2020; Barnes et al., 2022a;b; Sefidgaran et al., 2022a), and with relatively strong assumptions on the loss function and algorithm or the model (Huang et al., 2021)) the existing literature crucially lacks true generalization bounds for FL-type algorithms, i.e., ones that bring the analysis of…\n…al., 2020; Barnes et al., 2022a;b; Sefidgaran et al., 2022a), and with relatively strong assumptions on the loss function and algorithm or the model (Huang et al., 2021)) the existing literature crucially lacks true generalization bounds for FL-type algorithms, i.e., ones that bring the analysis…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0250ca6205e63c628d666de0",
+          "b": "paper-aea930ebac3f4cc8cc281465",
+          "input_sha256": "115e147827551bcded34ab1f4248b370d256af7a3dbb39198f1a37ee2f9f2b90",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/huang21c.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/sefidgaran24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sefidgaran24a/sefidgaran24a.pdf",
+              "sha256": "56332f7e43f27a28ff53f96819b5cef0893ce7461a408689788a6a41d15759fd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "It was recently proved in a series of papers that gradient descent converges to global optimum if the neural networks are overparameterized (significantly larger than the size of the datasets). Our work is motivated by Neural Tangent Kernel (NTK) that is originally proposed by (Jacot et al., 2018) and has been extensively studied over the last few years. NTK is defined as the inner product space of pairwise data point gradient (aka Gram matrix). It describes the evolution of deep artificial neural networks during their training by gradient descent. Thus, we propose a novel NTK-based framework for federated learning convergence and generalization analysis on ReLU neural networks, so-called Federated Learning Neural Tangent Kernel (FL-NTK). Unlike the good property of the symmetric Gram matrix in classical NTK, we show the Gram matrix of FL-NTK is asymmetric in Section 3.2. Our techniques address the core question: How shall we handle the asymmetric Gram matrix in FL-NTK? Contributions. Our contributions are summarized into the following two folds: • We proposed a framework to analyze federated learning in neural networks. By appealing to recent advances of over-parameterized neural networks, we prove convergence and generalization results of federated learning without the assumptions on the convexity of objective functions or distribution of data in the convergence analysis. Thus, we make the first step toward bridging the gap between the empirical success of federated learning and its theoretical understanding in the settings of ReLU neural networks. The results theoretically show that given fixed training instances, the number of communication rounds increases as the number of clients increases, which is also supported by empirical evidence. We show that when the",
+              "url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "document_sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "R|Sc | to be the (local) model’s output of its data in the t-th global round and k-th local step. For simplicity, we also use y (k) (t) ∈ Rn to denote aggregating all (local) model’s outputs in the t-th global round and k-th local step. 3.1. Preliminaries In this subsection we introduce Algorithm 1, the brief algorithm of our federated learning (under NTK setting): • In the t-th global round, server broadcasts u(t) ∈ Rd×m to every client. • Each client c then starts from w0,c (t) = u(t) and takes K (local) steps gradient descent to find wK,c (t). • Each client sends ∆uc (t) = wK,c (t) − w0,c (t) to server. • Server computes a new u(t + 1) based on the average of all ∆uc (t). Specifically, the server updates u(t) by the average of all local updates ∆uc (t) and arrives at X u(t + 1) = u(t) + ηglobal · ∆uc (t)/N. c∈[N ]",
+              "url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "document_sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "The effect of multi-round interactions on the generalization power of FL algorithms remains highly unexplored for general loss functions and algorithms, however. For example, with the very few exceptions that we discuss in this paper (most of which pertain to the specific case R “ 1 (Yagli et al., 2020; Barnes et al., 2022a;b; Sefidgaran et al., 2022a), and with relatively strong assumptions on the loss function and algorithm or the model (Huang et al., 2021)) the existing literature crucially lacks true generalization bounds for FL-type algorithms, i.e., ones that bring the analysis of the distributed architecture and rounds into the bound, and even less that show some form of explicit dependence on R. One central mathematical difficulty in studying the behavior of the expected generalization error is caused by the interactions with the PS inducing statistical correlations among the devices’ models which become stronger with R and are not easy to handle. For example, common tools that are generally applied in similar settings, such as the Leave-one-out Expansion Lemma of Shalev-Shwartz et al. 2",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sefidgaran24a/sefidgaran24a.pdf",
+              "document_sha256": "56332f7e43f27a28ff53f96819b5cef0893ce7461a408689788a6a41d15759fd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "1 Our framework and results can be extended to the case in which µk also depends on the running round r “ 1, . . . , R, as",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sefidgaran24a/sefidgaran24a.pdf",
+              "document_sha256": "56332f7e43f27a28ff53f96819b5cef0893ce7461a408689788a6a41d15759fd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0250ca6205e63c628d666de0",
+          "url": "https://proceedings.mlr.press/v139/huang21c.html"
+        },
+        "b": {
+          "paper_id": "paper-aea930ebac3f4cc8cc281465",
+          "url": "https://proceedings.mlr.press/v235/sefidgaran24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "fbb5b9c9063bdb184bc716c26fef68be8499a1c044f214bd7c1f63086d943166"
+    },
+    {
+      "id": "edge-d6103f35344e1b634837d3ee",
+      "a": "paper-0250ca6205e63c628d666de0",
+      "b": "paper-ea992698e31c15fa575441d4",
+      "state": {
+        "paper_a": {
+          "title": "FL-NTK: A Neural Tangent Kernel-based Framework for Federated Learning Analysis",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Federated Learning (FL) is an emerging learning scheme that allows different distributed clients to train deep neural networks together without data sharing. Neural networks have become popular due to their unprecedented success. To the best of our knowledge, the theoretical guarantees of FL concerning neural networks with explicit forms and multi-step updates are unexplored. Nevertheless, training analysis of neural networks in FL is non-trivial for two reasons: first, the objective loss function we are optimizing is non-smooth and non-convex, and second, we are even not updating in the gradient direction. Existing convergence results for gradient descent-based methods heavily rely on the fact that the gradient direction is used for updating. The current paper presents a new class of convergence analysis for FL, Federated Neural Tangent Kernel (FL-NTK), which corresponds to overparamterized ReLU neural networks trained by gradient descent in FL and is inspired by the analysis in Neural Tangent Kernel (NTK). Theoretically, FL-NTK converges to a global-optimal solution at a linear rate with properly tuned learning parameters. Furthermore, with proper distributional assumptions, FL-NTK can also achieve good generalization. The proposed theoretical analysis scheme can be generalized to more complex neural networks."
+        },
+        "paper_b": {
+          "title": "Federated Adversarial Learning: A Framework with Convergence Analysis",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Federated learning (FL) is a trending training paradigm to utilize decentralized training data. FL allows clients to update model parameters locally for several epochs, then share them to a global model for aggregation. This training paradigm with multi-local step updating before aggregation exposes unique vulnerabilities to adversarial attacks. Adversarial training is a popular and effective method to improve the robustness of networks against adversaries. In this work, we formulate a general form of federated adversarial learning (FAL) that is adapted from adversarial learning in the centralized setting. On the client side of FL training, FAL has an inner loop to generate adversarial samples for adversarial training and an outer loop to update local model parameters. On the server side, FAL aggregates local model updates and broadcast the aggregated model. We design a global robust training loss and formulate FAL training as a min-max optimization problem. Unlike the convergence analysis in classical centralized training that relies on the gradient direction, it is significantly harder to analyze the convergence in FAL for three reasons: 1) the complexity of min-max optimization, 2) model not updating in the gradient direction due to the multi-local updates on the client-side before aggregation and 3) inter-client heterogeneity. We address these challenges by using appropriate gradient approximation and coupling techniques and present the convergence analysis in the over-parameterized regime. Our main result theoretically shows that the minimum loss under our algorithm can converge to $\\epsilon$ small with chosen learning rate and communication rounds. It is noteworthy that our analysis is feasible for non-IID clients."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Another line of work (Du et al., 2019b; Arora et al., 2019a;b; Song & Yang, 2019; Brand et al., 2021; Song et al., 2021a;b; Huang et al., 2021; Zhang, 2022; Munteanu et al., 2022; Hu et al., 2022; Alman et al., 2022; Zhang, 2022; Gao et al., 2023a) builds on neural tangent kernel (NTK) (Jacot et…\nAnother line of work (Du et al., 2019b; Arora et al., 2019a;b; Song & Yang, 2019; Brand et al., 2021; Song et al., 2021a;b; Huang et al., 2021; Zhang, 2022; Munteanu et al., 2022; Hu et al., 2022; Alman et al., 2022; Zhang, 2022; Gao et al., 2023a) builds on neural tangent kernel (NTK) (Jacot et al.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0250ca6205e63c628d666de0",
+          "b": "paper-ea992698e31c15fa575441d4",
+          "input_sha256": "531558b008ffd5884ed4add7ae537f7ce57b41dd31ffb7402256c0deca491fac",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/huang21c.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/li23z.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/li23z/li23z.pdf",
+              "sha256": "631d7ff7cd0278be541b964e57c4308b2ce79fd65532fa1a89fcde992d9cada9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "It was recently proved in a series of papers that gradient descent converges to global optimum if the neural networks are overparameterized (significantly larger than the size of the datasets). Our work is motivated by Neural Tangent Kernel (NTK) that is originally proposed by (Jacot et al., 2018) and has been extensively studied over the last few years. NTK is defined as the inner product space of pairwise data point gradient (aka Gram matrix). It describes the evolution of deep artificial neural networks during their training by gradient descent. Thus, we propose a novel NTK-based framework for federated learning convergence and generalization analysis on ReLU neural networks, so-called Federated Learning Neural Tangent Kernel (FL-NTK). Unlike the good property of the symmetric Gram matrix in classical NTK, we show the Gram matrix of FL-NTK is asymmetric in Section 3.2. Our techniques address the core question: How shall we handle the asymmetric Gram matrix in FL-NTK? Contributions. Our contributions are summarized into the following two folds: • We proposed a framework to analyze federated learning in neural networks. By appealing to recent advances of over-parameterized neural networks, we prove convergence and generalization results of federated learning without the assumptions on the convexity of objective functions or distribution of data in the convergence analysis. Thus, we make the first step toward bridging the gap between the empirical success of federated learning and its theoretical understanding in the settings of ReLU neural networks. The results theoretically show that given fixed training instances, the number of communication rounds increases as the number of clients increases, which is also supported by empirical evidence. We show that when the",
+              "url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "document_sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "R|Sc | to be the (local) model’s output of its data in the t-th global round and k-th local step. For simplicity, we also use y (k) (t) ∈ Rn to denote aggregating all (local) model’s outputs in the t-th global round and k-th local step. 3.1. Preliminaries In this subsection we introduce Algorithm 1, the brief algorithm of our federated learning (under NTK setting): • In the t-th global round, server broadcasts u(t) ∈ Rd×m to every client. • Each client c then starts from w0,c (t) = u(t) and takes K (local) steps gradient descent to find wK,c (t). • Each client sends ∆uc (t) = wK,c (t) − w0,c (t) to server. • Server computes a new u(t + 1) based on the average of all ∆uc (t). Specifically, the server updates u(t) by the average of all local updates ∆uc (t) and arrives at X u(t + 1) = u(t) + ηglobal · ∆uc (t)/N. c∈[N ]",
+              "url": "https://proceedings.mlr.press/v139/huang21c/huang21c.pdf",
+              "document_sha256": "c6128b11571d6861dcedb15067b4dc0b21c723265d1b44da3f0750c4b5583a0d"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "to guarantee convergence, the width (m) of a neural network shall be at least polynomial factor of all parameters (i.e. m ≥ poly(n, d, 1/δ)), where δ is the minimum distance between all pairs of data points, n is the number of data points and d is the data dimension. Another line of work (Du et al., 2019b; Arora et al., 2019a;b; Song & Yang, 2019; Brand et al., 2021; Song et al., 2021a;b; Huang et al., 2021; Zhang, 2022; Munteanu et al., 2022; Hu et al., 2022; Alman et al., 2022; Zhang, 2022; Gao et al., 2023a) builds on neural tangent kernel (NTK) (Jacot et al., 2018). In this line of work, the minimum eigenvalue of the NTK is required to be lower bounded to guarantee convergence. Our analysis focuses on the former approach based on data separability.",
+              "url": "https://proceedings.mlr.press/v202/li23z/li23z.pdf",
+              "document_sha256": "631d7ff7cd0278be541b964e57c4308b2ce79fd65532fa1a89fcde992d9cada9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "ing with FL. The contributions of this paper are: • We propose a framework to analyze a general form of FAL in over-parameterized neural networks. We follow a natural and valid assumption of data separability that the training dataset are well separated apropos of the adversarial perturbations’ magnitude. After sufficient rounds of global communication and certain steps of local gradient descent for each t, we obtain the minimal loss close to zero. Notably, our assumptions do not rely on data distribution. Thus the proposed analysis framework is feasible for non-IID clients.",
+              "url": "https://proceedings.mlr.press/v202/li23z/li23z.pdf",
+              "document_sha256": "631d7ff7cd0278be541b964e57c4308b2ce79fd65532fa1a89fcde992d9cada9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "Note that we do not require IID assumptions for data distribution. In sum, the proposed FAL formulation and analysis framework can well handle the multi-local updates and non-IID data in FL. Our framework can be generalized to other FL aggregation methods such as sketching and selective aggregation. We denote these generalization in FL aggregation as intriguing future works.",
+              "url": "https://proceedings.mlr.press/v202/li23z/li23z.pdf",
+              "document_sha256": "631d7ff7cd0278be541b964e57c4308b2ce79fd65532fa1a89fcde992d9cada9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0250ca6205e63c628d666de0",
+          "url": "https://proceedings.mlr.press/v139/huang21c.html"
+        },
+        "b": {
+          "paper_id": "paper-ea992698e31c15fa575441d4",
+          "url": "https://proceedings.mlr.press/v202/li23z.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "d4087fdbae16692e5403bc8b356a7f9989f96d63160686b920c24a78e70493a6"
+    },
+    {
+      "id": "edge-0b40d7091e98be73e479caf7",
+      "a": "paper-02c90240b05a55f23aa8559c",
+      "b": "paper-a21aece2e25bd9c5b97b433f",
+      "state": {
+        "paper_a": {
+          "title": "Federated Minimax Optimization: Improved Convergence Analyses and Algorithms",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "In this paper, we consider nonconvex minimax optimization, which is gaining prominence in many modern machine learning applications, such as GANs. Large-scale edge-based collection of training data in these applications calls for communication-efficient distributed optimization algorithms, such as those used in federated learning, to process the data. In this paper, we analyze local stochastic gradient descent ascent (SGDA), the local-update version of the SGDA algorithm. SGDA is the core algorithm used in minimax optimization, but it is not well-understood in a distributed setting. We prove that Local SGDA has order-optimal sample complexity for several classes of nonconvex-concave and nonconvex-nonconcave minimax problems, and also enjoys linear speedup with respect to the number of clients. We provide a novel and tighter analysis, which improves the convergence and communication guarantees in the existing literature. For nonconvex-PL and nonconvex-one-point-concave functions, we improve the existing complexity results for centralized minimax problems. Furthermore, we propose a momentum-based local-update algorithm, which has the same convergence guarantees, but outperforms Local SGDA as demonstrated in our experiments."
+        },
+        "paper_b": {
+          "title": "Multiplayer Federated Learning: Reaching Equilibrium with Less Communication",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Traditional Federated Learning (FL) approaches assume collaborative clients with aligned objectives working towards a shared global model. However, in many real-world scenarios, clients act as rational players with individual objectives and strategic behaviors, a concept that existing FL frameworks are not equipped to adequately address. To bridge this gap, we introduce Multiplayer Federated Learning (MpFL) , a novel framework that models the clients in the FL environment as players in a game-theoretic context, aiming to reach an equilibrium. In this scenario, each player tries to optimize their own utility function, which may not align with the collective goal. Within MpFL, we propose Per-Player Local Stochastic Gradient Descent (PEARL-SGD) , an algorithm in which each player/client performs local updates independently and periodically communicates with other players. We theoretically analyze PEARL-SGD and prove that it reaches a neighborhood of equilibrium with less communication in the stochastic setup compared to its non-local counterpart. Finally, we verify our theoretical findings through numerical experiments."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "2 Multiplayer Federated Learning: Definition and Related Work In this section, we introduce the Multiplayer Federated Learning (MpFL) framework and explain its main differences compared to the classical FL [59], federated minimax optimization [25, 122, 145] and personalized FL [34, 129].\nThe extension of Local SGD for solving this problem are Local Stochastic Gradient Descent-Ascent (SGDA) [25, 122] or Local Stochastic Extragradient (SEG) [8, 9] algorithms.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02c90240b05a55f23aa8559c",
+          "b": "paper-a21aece2e25bd9c5b97b433f",
+          "input_sha256": "b35ab63085c9cf2663e1125afa538ccc80e3c91c726ecabe84cb688ad89b190a",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/sharma22c.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/sharma22c/sharma22c.pdf",
+              "sha256": "d07a7b055bc3e933e8104fd86255e0c76040751aa50f32e6b6aba8cd889a5094"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/8258e815fa93aa59441ad526cc828c53-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/8258e815fa93aa59441ad526cc828c53-Paper-Conference.pdf",
+              "sha256": "8dc67f540b5c780622fa1cae2ffb71eb60bffeac7f1e96ffd7b06678ff9f8836"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract In this paper, we consider nonconvex minimax optimization, which is gaining prominence in many modern machine learning applications, such as GANs. Large-scale edge-based collection of training data in these applications calls for communication-efficient distributed optimization algorithms, such as those used in federated learning, to process the data. In this paper, we analyze local stochastic gradient descent ascent (SGDA), the local-update version of the SGDA algorithm. SGDA is the core algorithm used in minimax optimization, but it is not well-understood in a distributed setting. We prove that Local SGDA has order-optimal sample complexity for several classes of nonconvex-concave and nonconvexnonconcave minimax problems, and also enjoys linear speedup with respect to the number of clients. We provide a novel and tighter analysis, which improves the convergence and communication guarantees in the existing literature. For nonconvex-PL and nonconvex-one-point-concave functions, we improve the existing complexity results for centralized minimax problems. Furthermore, we propose a momentum-based localupdate algorithm, which has the same convergence guarantees, but outperforms Local SGDA as demonstrated in our experiments.",
+              "url": "https://proceedings.mlr.press/v162/sharma22c/sharma22c.pdf",
+              "document_sha256": "d07a7b055bc3e933e8104fd86255e0c76040751aa50f32e6b6aba8cd889a5094"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "are optimal in ϵ.1 To the best of our knowledge, this complexity guarantee does not exist in the prior literature even for n = 1.2 • Since the PL condition is weaker than strong-concavity, our result also extends to NC-SC functions. To the best of our knowledge, ours is the first work to prove optimal (in ϵ) guarantees for SDGA in the case of NC-SC functions, with O(1) batch-size. This way, we improve the result in (Lin et al., 2020a) which necessarily requires O(1/ϵ2 ) batch-sizes. In the federated setting, ours is the first work to achieve the optimal (in ϵ) guarantee. • We propose a novel algorithm (Momentum Local SGDA Algorithm 2), which achieves the same theoretical guarantees as Local SGDA for NC-PL functions (Theorem 2), and also outperforms Local SGDA in experiments. • For NC-C functions (Section 4.2), we utilize Local SGDA+ algorithm proposed in (Deng & Mahdavi, 2021)3 , and prove O(1/(nϵ8 )) gradient complexity, and O(1/ϵ7 ) communication cost (Theorem 3). This implies linear speedup over the n = 1 result (Lin et al., 2020a). • For NC-1PC functions (Section 4.3), using an improved analysis for Local SGDA+, we prove O(1/ϵ8 ) gradient complexity, and O(1/ϵ7 ) communication cost (Theorem 4). To the best of our knowledge, this result is the first to generalize the existing O(1/ϵ8 ) complexity guarantee of SGDA (proved for NC-C problems in (Lin et al., 2020a)), to the more general class of NC-1PC functions.",
+              "url": "https://proceedings.mlr.press/v162/sharma22c/sharma22c.pdf",
+              "document_sha256": "d07a7b055bc3e933e8104fd86255e0c76040751aa50f32e6b6aba8cd889a5094"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "Federated minimax optimization. This is a more recent, federated extension of minimax optimization appearing in many ML applications. There the problem is: minimize maximize L(x, y) = x∈Rdx y∈Rdy Pn 1 i=1 Li (x, y). Here n is the number of clients and Li represents the local loss function at client n i that depends on both x and y. It is defined as Li (x, y) = Eξi ∼Di [ϕi (x, y, ξ)], where ϕi (x, y, ξ) denotes the loss for the data point ξ, sampled from the local data distribution Di at client i. The extension of Local SGD for solving this problem are Local Stochastic Gradient Descent-Ascent (SGDA) [25, 122] or Local Stochastic Extragradient (SEG) [8, 9] algorithms. More recently there was also an approach based on primal-dual updates [20]. While this line of work also studied federated learning in the context of minimax optimization and games, it is totally different from MpFL. The setup assumes that each FL client adjusts the actions of both players x and y of the minimax game, and does not take the multiplayer aspect into account. In contrast, in MpFL, we assume that each client i is a player of a large-scale multiplayer game who only adjusts their own action xi in the interest of optimizing their own objective fi . In our work, we design the novel PEARL-SGD algorithm suitable for MpFL, as the existing Local SGDA and Local SEG methods cannot handle the setup. Personalized federated learning. In personalized FL [34, 129, 50, 49, 26, 130], clients aim to learn models tailored to each local data distribution, while generalizing well on all clients’ data [51]. One Pn 1 i formulation of personalized FL is minimize h (x ) + ϕ(x1 , . . . , xn ); in [50, 51], for i i=1 n x=(x1 ,...,xn )∈Rnd Pn 2 λ i example, ϕ is taken as the model consensus regularizer ϕ(x1 , . . . , xn )",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8258e815fa93aa59441ad526cc828c53-Paper-Conference.pdf",
+              "document_sha256": "8dc67f540b5c780622fa1cae2ffb71eb60bffeac7f1e96ffd7b06678ff9f8836"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "In this section, we introduce the Multiplayer Federated Learning (MpFL) framework and explain its main differences compared to the classical FL [59], federated minimax optimization [25, 122, 145] and personalized FL [34, 129]. 2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8258e815fa93aa59441ad526cc828c53-Paper-Conference.pdf",
+              "document_sha256": "8dc67f540b5c780622fa1cae2ffb71eb60bffeac7f1e96ffd7b06678ff9f8836"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Introducing Multiplayer Federated Learning. We develop a novel framework of Multiplayer Federated Learning (MpFL), which models the FL process as a game among rational players with individual utility functions. In MpFL, each client within the FL environment is viewed as a player of the game, and their local models are viewed as their actions. Each player constantly adjusts their model (action) to optimize their own objective function, and the MpFL framework aims for each player to reach to a Nash equilibrium by collaboratively training their model under the orchestration of a central server (e.g., service provider), while keeping the training data decentralized. That is, MpFL extends the scope of FL to scenarios where clients are allowed to have more general, diversified, possibly competing objectives. • Design and analysis of Per-Player Local SGD. To handle the Multiplayer Federated Learning framework, we introduce Per-Player Local SGD (PEARL-SGD), a new algorithm inspired by the stochastic gradient descent ascent method in minimax optimization, that is able to handle the competitive nature of the players/clients. In PEARL-SGD, each player performs local SGD steps independently on their own actions/strategies (keeping the strategies of the other players fixed), and the udpated actions/models are periodically communicated with the other players of the network via a central server. • Convergence guarantees for PEARL-SGD on heterogeneous data. We provide tight convergence guarantees for PEARL-SGD, in both deterministic and stochastic regimes with heterogeneous data (see Table 1 for a summary of our results). – Deterministic setting: For the full-batch (deterministic) variant of PEARL-SGD, we prove that under suitable assumptions, PEARL-SGD converges linearly to an",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8258e815fa93aa59441ad526cc828c53-Paper-Conference.pdf",
+              "document_sha256": "8dc67f540b5c780622fa1cae2ffb71eb60bffeac7f1e96ffd7b06678ff9f8836"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this paper, we introduce Multiplayer Federated Learning (MpFL), an FL framework that models setups where clients, acting strategically in their own interests, collaborate through a central server to train models (actions) with the goal of reaching an equilibrium. We propose the PEARL-SGD algorithm for handling MpFL and establish its tight convergence guarantees under heterogeneous settings where each player has distinct objectives and data distributions. We show that PEARL-SGD achieves improved communication efficiency, mitigating the primary computational bottleneck in large-scale applications. Our work offers several promising future research directions, including the incorporation of ideas such as Extragradient methods [68, 43], asynchronous updates [23, 127], gradient compression [4], gradient tracking [107], and algorithmic correction for client drifts [61, 100]. We anticipate that our initiation of the study of MpFL will stimulate further research along these and related directions. 10",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8258e815fa93aa59441ad526cc828c53-Paper-Conference.pdf",
+              "document_sha256": "8dc67f540b5c780622fa1cae2ffb71eb60bffeac7f1e96ffd7b06678ff9f8836"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02c90240b05a55f23aa8559c",
+          "url": "https://proceedings.mlr.press/v162/sharma22c.html"
+        },
+        "b": {
+          "paper_id": "paper-a21aece2e25bd9c5b97b433f",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/8258e815fa93aa59441ad526cc828c53-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "6352d68a9ee8d92ce3539be6ac0d47d7b546834eb05691799184003dd5bfd155"
+    },
+    {
+      "id": "edge-f8a41e0338de69461255aac8",
+      "a": "paper-02d326d85099525ed92a5971",
+      "b": "paper-2008123efb6fd1534909f892",
+      "state": {
+        "paper_a": {
+          "title": "Breaking the centralized barrier for cross-device federated learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Federated learning (FL) is a challenging setting for optimization due to the heterogeneity of the data across different clients which gives rise to the client drift phenomenon. In fact, obtaining an algorithm for FL which is uniformly better than simple centralized training has been a major open problem thus far. In this work, we propose a general algorithmic framework, Mime, which i) mitigates client drift and ii) adapts arbitrary centralized optimization algorithms such as momentum and Adam to the cross-device federated learning setting. Mime uses a combination of control-variates and server-level statistics (e.g. momentum) at every client-update step to ensure that each local update mimics that of the centralized method run on iid data. We prove a reduction result showing that Mime can translate the convergence of a generic algorithm in the centralized setting into convergence in the federated setting. Further, we show that when combined with momentum based variance reduction, Mime is provably faster than any centralized method--the first such result. We also perform a thorough experimental exploration of Mime's performance on real world datasets."
+        },
+        "paper_b": {
+          "title": "Taming Fat-Tailed (“Heavier-Tailed” with Potentially Infinite Variance) Noise in Federated Learning",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "In recent years, federated learning (FL) has emerged as an important distributed machine learning paradigm to collaboratively learn a global model with multiple clients, while keeping data local and private. However, a key assumption in most existing works on FL algorithms' convergence analysis is that the noise in stochastic first-order information has a finite variance. Although this assumption covers all light-tailed (i.e., sub-exponential) and some heavy-tailed noise distributions (e.g., log-normal, Weibull, and some Pareto distributions), it fails for many fat-tailed noise distributions (i.e., ``heavier-tailed'' with potentially infinite variance) that have been empirically observed in the FL literature. To date, it remains unclear whether one can design convergent algorithms for FL systems that experience fat-tailed noise. This motivates us to fill this gap in this paper by proposing an algorithmic framework called $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ (\\ul{f}ederated \\ul{a}veraging with \\ul{t}wo-sided learning rates and \\ul{clipping}), which contains two variants: $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ per-round ($\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PR}$) and $\\mathsf{FAT}$-$\\mathsf{Clipping}~$ per-iteration ($\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PI}$). Specifically, for the largest $\\alpha \\in (1,2]$ such that the fat-tailed noise in FL still has a bounded $\\alpha$-moment, we show that both variants achieve $\\mathcal{O}((mT)^{\\frac{2-\\alpha}{\\alpha}})$ and $\\mathcal{O}((mT)^{\\frac{1-\\alpha}{3\\alpha-2}})$ convergence rates in the strongly-convex and general non-convex settings, respectively, where $m$ and $T$ are the numbers of clients and communication rounds. Moreover, at the expense of more clipping operations compared to $\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PR}$, $\\mathsf{FAT}$-$\\mathsf{Clipping}$-$\\mathsf{PI}~$ further enjoys a linear speedup effect with respect to the number of local updates at each client and being lower-bound-matching (i.e., order-optimal). Collectively, our results advance the understanding of designing efficient algorithms for FL systems that exhibit fat-tailed first-order oracle information."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "With intensive research in recent years, researchers have developed many FL algorithms (e.g., FedAvg [1] and many follow-ups [2–12]) that have been theoretically shown to achieve fast convergence rates in the presence of various types of randomness and heterogeneity resulted from training data,…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02d326d85099525ed92a5971",
+          "b": "paper-2008123efb6fd1534909f892",
+          "input_sha256": "e4f4a11c178e7aa88a0b3401f09e83a731fc428673fda9df5b30ea73c9ff3aaa",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/f0e6be4ce76ccfa73c5a540d992d0756-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/6cb7246003d556c4d1cbf9c17c392ee3-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "the entire clients’ data during training. The cross-device setting is further characterized by resourcepoor clients communicating over a highly unreliable network. Together, the essential features of this setting give rise to unique challenges not present in the cross-silo setting. In this work, we are interested in the more challenging cross-device setting, for which we will formalize and study stochastic optimization algorithms. Importantly, recent advances in FL optimization, such as SCAFFOLD [32] or FedDyn [1], are not anymore applicable since they are designed for the cross-silo setting. The problem. The de facto standard algorithm for the cross-device setting is F EDAVG [43], which performs multiple SGD updates on the available clients before communicating to the server. While this approach can reduce the frequency of communication required, performing multiple steps on the same client can lead to ‘over-fitting’ to its atypical local data, a phenomenon known as client drift [32]. This in turn leads to slower convergence and can, somewhat counter-intuitively, require larger total communication [69]. Despite significant attention received from the optimization community, the communication complexity of heterogeneous cross-device has not improved upon that of simple centralized methods, which take no local steps (aka S ERVER -O NLY methods). Furthermore, algorithmic innovations such as momentum [59, 14], adaptivity [35, 75, 77], and clipping [71, 72, 76] are critical to the success of deep learning applications. The lack of a theoretical understanding of the impact of multiple client steps has also hindered adapting these techniques in a principled manner into the client updates, in order to replace the vanilla SGD update of F EDAVG. To overcome such deficiencies,",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "document_sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated learning (FL) is a challenging setting for optimization due to the heterogeneity of the data across different clients which can cause a client drift phenomenon. In fact, designing an algorithm for FL that is uniformly better than simple centralized training has been a major open problem thus far. In this work, we propose a general algorithmic framework, M IME, which i) mitigates client drift and ii) adapts an arbitrary centralized optimization algorithm such as momentum and Adam to the cross-device federated learning setting. M IME uses a combination of control-variates and server-level optimizer state (e.g. momentum) at every client-update step to ensure that each local update mimics that of the centralized method run on i.i.d. data. We prove a reduction result showing that M IME can translate the convergence of a generic algorithm in the centralized setting into convergence in the federated setting. Moreover, we show that, when combined with momentum-based variance reduction, M IME is provably faster than any centralized method–the first such result. We also perform a thorough experimental exploration of M IME’s performance on real world datasets (implemented here).",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "document_sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "In recent years, federated learning (FL) has emerged as an important distributed machine learning paradigm, where, coordinated by a server, a set of clients collaboratively learn a global model, while keeping their training data local and private. With intensive research in recent years, researchers have developed many FL algorithms (e.g., FedAvg [1] and many follow-ups [2–12]) that have been theoretically shown to achieve fast convergence rates in the presence of various types of randomness and heterogeneity resulted from training data, network environments, computing resources at clients, etc. Moreover, many of these algorithms enjoy the so-called “linear speedup” effect, i.e., the convergence time to a first-order stationary point is inversely proportional to the number of workers and local update steps. However, despite the recent advances in FL algorithm design and theoretical understanding, a “cloud that remains obscures the sky of FL” is a common assumption that can be found in almost all works 36th Conference on Neural Information Processing Systems (NeurIPS 2022).",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "document_sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "on performance analysis of FL algorithms, which states that the random noise in stochastic first-order oracles (e.g., stochastic gradients or associated estimators) has a finite variance. Although this assumption is not too restrictive and can cover all light-tailed (i.e., sub-exponential) and some heavytailed noise distributions (e.g., log-normal, Weibull, and some Pareto distributions), it fails for many “fat-tailed” distributions (i.e., “heavier-tailed” with potentially infinite variance1 ). In fact, fat-tailed distributions have already been empirically observed under centralized learning settings [15–19], let alone in the more heterogeneous FL environments. Later in Section 3, we will also provide empirical evidence that shows that fat-tailed noise distributions can be easily induced by FL systems with non-i.i.d. datasets and heterogeneous local updates across clients. The presence of fat-tailed noise poses two major challenges in FL algorithm design and analysis: i) Experimentally, it has been shown in [20] that many existing FL algorithms suffer severely from fat-tailed noise and frequently exhibit the so-called “catastrophic failure of model performance” (i.e., sudden and dramatic drops of learning accuracy during the training phase); ii) Theoretically, the infinite variance of the random noise in the stochastic first-order oracles renders most of the proof techniques in existing FL algorithmic convergence analysis inapplicable, which necessitates new algorithmic ideas and proof strategies. In light of these empirical and theoretical challenges, two foundational questions naturally emerge in FL algorithm design and analysis: 1) Can we develop FL algorithms with convergence guarantee under fat-tailed noise? 2) If the answer to 1) is “yes,” could we characterize",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6cb7246003d556c4d1cbf9c17c392ee3-Paper-Conference.pdf",
+              "document_sha256": "8a1acd2cc1ece29ee18f00e56d6a6a327a20c0294bb6593ea0b18c498e86f9f2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02d326d85099525ed92a5971",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/f0e6be4ce76ccfa73c5a540d992d0756-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-2008123efb6fd1534909f892",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/6cb7246003d556c4d1cbf9c17c392ee3-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "6eed7ed934c53d4739aa462750b13fa957451061656abe5e78901992c3aa36bb"
+    },
+    {
+      "id": "edge-d2fe2d0a28f66387c194da1c",
+      "a": "paper-02d326d85099525ed92a5971",
+      "b": "paper-e4ea173b685b8221a3a2773a",
+      "state": {
+        "paper_a": {
+          "title": "Breaking the centralized barrier for cross-device federated learning",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Federated learning (FL) is a challenging setting for optimization due to the heterogeneity of the data across different clients which gives rise to the client drift phenomenon. In fact, obtaining an algorithm for FL which is uniformly better than simple centralized training has been a major open problem thus far. In this work, we propose a general algorithmic framework, Mime, which i) mitigates client drift and ii) adapts arbitrary centralized optimization algorithms such as momentum and Adam to the cross-device federated learning setting. Mime uses a combination of control-variates and server-level statistics (e.g. momentum) at every client-update step to ensure that each local update mimics that of the centralized method run on iid data. We prove a reduction result showing that Mime can translate the convergence of a generic algorithm in the centralized setting into convergence in the federated setting. Further, we show that when combined with momentum based variance reduction, Mime is provably faster than any centralized method--the first such result. We also perform a thorough experimental exploration of Mime's performance on real world datasets."
+        },
+        "paper_b": {
+          "title": "Understanding Server-Assisted Federated Learning in the Presence of Incomplete Client Participation",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Existing works in federated learning (FL) often assume either full client or uniformly distributed client participation. However, in reality, some clients may never participate in FL training (aka incomplete client participation) due to various system heterogeneity factors. A popular solution is the server-assisted federated learning (SA-FL) framework, where the server uses an auxiliary dataset. Despite empirical evidence of SA-FL’s effectiveness in addressing incomplete client participation, theoretical understanding of SA-FL is lacking. Furthermore, the effects of incomplete client participation in conventional FL are poorly understood. This motivates us to rigorously investigate SA-FL. Toward this end, we first show that conventional FL is not PAC-learnable under incomplete client participation in the worst case. Then, we show that the PAC-learnability of FL with incomplete client participation can indeed be revived by SA-FL, which theoretically justifies the use of SA-FL for the first time. Lastly, to provide practical guidance for SA-FL training under incomplete client participation , we propose the SAFARI (server-assisted federated averaging) algorithm that enjoys the same linear convergence speedup guarantees as classic FL with ideal client participation assumptions, offering the first SA-FL algorithm with convergence guarantee. Extensive experiments on different datasets show SAFARI significantly improves the performance under incomplete client participation."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…(e.g., (Li et al., 2020a; Wang et al., 2020; Zhang et al., 2020; Acar et al., 2021; Karimireddy et al., 2020; Luo et al., 2021; Mitra et al., 2021; Karimireddy et al., 2021; Khanduri et al., 2021; Mu-rata & Suzuki, 2021; Avdiukhin & Kasiviswanathan, 2021; Yang et al., 2021b; Grudzie´n et al.,…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-02d326d85099525ed92a5971",
+          "b": "paper-e4ea173b685b8221a3a2773a",
+          "input_sha256": "367643e97da42fa13d75087d0e8e77705d4a322ce73dfc833fea7a7541075c20",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/f0e6be4ce76ccfa73c5a540d992d0756-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/yang24r.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24r/yang24r.pdf",
+              "sha256": "72fb53361c9c74cce25053b40f94e1da1000d5822e5e8c3230e55399e3078077"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "the entire clients’ data during training. The cross-device setting is further characterized by resourcepoor clients communicating over a highly unreliable network. Together, the essential features of this setting give rise to unique challenges not present in the cross-silo setting. In this work, we are interested in the more challenging cross-device setting, for which we will formalize and study stochastic optimization algorithms. Importantly, recent advances in FL optimization, such as SCAFFOLD [32] or FedDyn [1], are not anymore applicable since they are designed for the cross-silo setting. The problem. The de facto standard algorithm for the cross-device setting is F EDAVG [43], which performs multiple SGD updates on the available clients before communicating to the server. While this approach can reduce the frequency of communication required, performing multiple steps on the same client can lead to ‘over-fitting’ to its atypical local data, a phenomenon known as client drift [32]. This in turn leads to slower convergence and can, somewhat counter-intuitively, require larger total communication [69]. Despite significant attention received from the optimization community, the communication complexity of heterogeneous cross-device has not improved upon that of simple centralized methods, which take no local steps (aka S ERVER -O NLY methods). Furthermore, algorithmic innovations such as momentum [59, 14], adaptivity [35, 75, 77], and clipping [71, 72, 76] are critical to the success of deep learning applications. The lack of a theoretical understanding of the impact of multiple client steps has also hindered adapting these techniques in a principled manner into the client updates, in order to replace the vanilla SGD update of F EDAVG. To overcome such deficiencies,",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "document_sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Federated learning (FL) is a challenging setting for optimization due to the heterogeneity of the data across different clients which can cause a client drift phenomenon. In fact, designing an algorithm for FL that is uniformly better than simple centralized training has been a major open problem thus far. In this work, we propose a general algorithmic framework, M IME, which i) mitigates client drift and ii) adapts an arbitrary centralized optimization algorithm such as momentum and Adam to the cross-device federated learning setting. M IME uses a combination of control-variates and server-level optimizer state (e.g. momentum) at every client-update step to ensure that each local update mimics that of the centralized method run on i.i.d. data. We prove a reduction result showing that M IME can translate the convergence of a generic algorithm in the centralized setting into convergence in the federated setting. Moreover, we show that, when combined with momentum-based variance reduction, M IME is provably faster than any centralized method–the first such result. We also perform a thorough experimental exploration of M IME’s performance on real world datasets (implemented here).",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/f0e6be4ce76ccfa73c5a540d992d0756-Paper.pdf",
+              "document_sha256": "51b40bba3667aa9dfda8b28a43f75622398c64bb712cded51f706a9759fd3737"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "1) Partial Client Participation in Federated Learning: Since The seminal FedAvg algorithm (McMahan et al., 2017), there have been many follow-ups (e.g., (Li et al., 2020a; Wang et al., 2020; Zhang et al., 2020; Acar et al., 2021; Karimireddy et al., 2020; Luo et al., 2021; Mitra et al., 2021; Karimireddy et al., 2021; Khanduri et al., 2021; Murata & Suzuki, 2021; Avdiukhin & Kasiviswanathan, 2021; Yang et al., 2021b; Grudzień et al., 2023; Condat et al., 2023; Mishchenko et al., 2022) and so on) on addressing the data heterogeneity challenge in FL. However, most of these works are based on the full or uniform (i.e., sampling clients uniformly at random) client participation assumption.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24r/yang24r.pdf",
+              "document_sha256": "72fb53361c9c74cce25053b40f94e1da1000d5822e5e8c3230e55399e3078077"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Existing works in federated learning (FL) often assume either full client or uniformly distributed client participation. However, in reality, some clients may never participate in FL training (aka incomplete client participation) due to various system heterogeneity factors. A popular solution is the server-assisted federated learning (SA-FL) framework, where the server uses an auxiliary dataset. Despite empirical evidence of SA-FL’s effectiveness in addressing incomplete client participation, theoretical understanding of SA-FL is lacking. Furthermore, the effects of incomplete client participation in conventional FL are poorly understood. This motivates us to rigorously investigate SA-FL. Toward this end, we first show that conventional FL is not PAC-learnable under incomplete client participation in the worst case. Then, we show that the PAC-learnability of FL with incomplete client participation can indeed be revived by SA-FL, which theoretically justifies the use of SA-FL for the first time. Lastly, to provide practical guidance for SA-FL training under incomplete client participation, we propose the SAFARI (server-assisted federated averaging) algorithm that enjoys the same linear convergence speedup guarantees as classic FL with ideal client participation assumptions, offering the first SAFL algorithm with convergence guarantee. Extensive experiments on different datasets show SAFARI significantly improves the performance under incomplete client participation.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24r/yang24r.pdf",
+              "document_sha256": "72fb53361c9c74cce25053b40f94e1da1000d5822e5e8c3230e55399e3078077"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• To ensure that SA-FL is provably convergent in training, we propose a new training algorithm for SA-FL called SAFARI (server-assisted federated averaging). By carefully designing the server-client update √ coordination, we show that SAFARI achieves an O(1/ mkR) convergence rate in non-convex functions and Õ( R1 ) in stronglyconvex functions, matching the convergence rates of stateof-the-art classic FL algorithms (Li et al., 2020b; Yang et al., 2021b). We also conduct extensive experiments to demonstrate the effectiveness of our SAFARI algorithm. 2",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/yang24r/yang24r.pdf",
+              "document_sha256": "72fb53361c9c74cce25053b40f94e1da1000d5822e5e8c3230e55399e3078077"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-02d326d85099525ed92a5971",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/f0e6be4ce76ccfa73c5a540d992d0756-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-e4ea173b685b8221a3a2773a",
+          "url": "https://proceedings.mlr.press/v235/yang24r.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "d2b24a6037b4f5c393934da765a94fbf5473ea08e2106ee3d248065a0024c485"
+    },
+    {
+      "id": "edge-df1f8f69caef01f4adf9bb0b",
+      "a": "paper-061728eeb7b6202209df958f",
+      "b": "paper-c6fa86296a892648b5a6de0b",
+      "state": {
+        "paper_a": {
+          "title": "Efficient Meta Learning via Minibatch Proximal Update",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "We address the problem of meta-learning which learns a prior over hypothesis from a sample of meta-training tasks for fast adaptation on meta-testing tasks. A particularly simple yet successful paradigm for this research is model-agnostic meta-learning (MAML). Implementation and analysis of MAML, however, can be tricky; first-order approximation is usually adopted to avoid directly computing Hessian matrix but as a result the convergence and generalization guarantees remain largely mysterious for MAML. To remedy this deficiency, in this paper we propose a minibatch proximal update based meta-learning approach for learning to efficient hypothesis transfer. The principle is to learn a prior hypothesis shared across tasks such that the minibatch risk minimization biased regularized by this prior can quickly converge to the optimal hypothesis in each training task. The prior hypothesis training model can be efficiently optimized via SGD with provable convergence guarantees for both convex and non-convex problems. Moreover, we theoretically justify the benefit of the learnt prior hypothesis for fast adaptation to new few-shot learning tasks via minibatch proximal update. Experimental results on several few-shot regression and classification tasks demonstrate the advantages of our method over state-of-the-arts."
+        },
+        "paper_b": {
+          "title": "Personalized Federated Learning using Hypernetworks",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Personalized federated learning is tasked with training machine learning models for multiple clients, each with its own data distribution. The goal is to train personalized models collaboratively while accounting for data disparities across clients and reducing communication costs. We propose a novel approach to this problem using hypernetworks, termed pFedHN for personalized Federated HyperNetworks. In this approach, a central hypernetwork model is trained to generate a set of models, one model for each client. This architecture provides effective parameter sharing across clients while maintaining the capacity to generate unique and diverse personal models. Furthermore, since hypernetwork parameters are never transmitted, this approach decouples the communication cost from the trainable model size. We test pFedHN empirically in several personalized federated learning challenges and find that it outperforms previous methods. Finally, since hypernetworks share information across clients, we show that pFedHN can generalize better to new clients whose distributions differ from any client observed during training."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Many papers proposed a decentralized version of the model agnostic meta-learning (MAML) problem (Fallah et al., 2020a; Li et al., 2017; Behl et al., 2019; Zhou et al., 2019; Fallah et al., 2020b).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-061728eeb7b6202209df958f",
+          "b": "paper-c6fa86296a892648b5a6de0b",
+          "input_sha256": "685dfc5061bedf3d52086bf75ba36adcf0a15c4c86acfa3eda9f7bed31d23508",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/8c235f89a8143a28a1d6067e959dd858-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/8c235f89a8143a28a1d6067e959dd858-Paper.pdf",
+              "sha256": "cdf323def205c35c98538513f55bf86e5be411c2eef6fc4d9d2239508990f6ba"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/shamsian21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/shamsian21a/shamsian21a.pdf",
+              "sha256": "5d6028cc942c9d278efb2fb8c375e9acde68f403358b0c14d7eab525e61ba403"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract We address the problem of meta-learning which learns a prior over hypothesis from a sample of meta-training tasks for fast adaptation on meta-testing tasks. A particularly simple yet successful paradigm for this research is model-agnostic meta-learning (MAML). Implementation and analysis of MAML, however, can be tricky; first-order approximation is usually adopted to avoid directly computing Hessian matrix but as a result the convergence and generalization guarantees remain largely mysterious for MAML. To remedy this deficiency, in this paper we propose a minibatch proximal update based meta-learning approach for learning to efficient hypothesis transfer. The principle is to learn a prior hypothesis shared across tasks such that the minibatch risk minimization biased regularized by this prior can quickly converge to the optimal hypothesis in each training task. The prior hypothesis training model can be efficiently optimized via SGD with provable convergence guarantees for both convex and non-convex problems. Moreover, we theoretically justify the benefit of the learnt prior hypothesis for fast adaptation to new few-shot learning tasks via minibatch proximal update. Experimental results on several few-shot regression and classification tasks demonstrate the advantages of our method over state-of-the-arts.",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8c235f89a8143a28a1d6067e959dd858-Paper.pdf",
+              "document_sha256": "cdf323def205c35c98538513f55bf86e5be411c2eef6fc4d9d2239508990f6ba"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "T with corresponding loss LDT (w), the meta-loss LDT (w − η∇LDT (w)) is small. This method is compatible with any model trained with gradient descent, a.k.a. model-agnostic, and has been showed to be effective in many classification and reinforcement learning applications. However, for gradient based meta-optimization, MAML requires computing second-order derivative introduced by the intra-task gradient descent step w − η∇LDT (w) which is computationally inhibitable for large networks. To resolve this issue, first-order approximates of MAML [6, 10] have been developed to avoid the estimation of second-order derivative. For example, first-order MAML (FOMAML) [6] directly ignores the second-order derivative terms in MAML and Reptile [10] approximates the gradient in MAML by the gradient sum of several gradient descent steps on a joint training model. Though exhibiting impressive scalability and accuracy in some applications, the convergence and generalization behavior of these variants is under explored and remains largely mysterious, especially for non-convex problems. Indeed for few-shot classification, as shown in Sec. 4 that the first-order approximate approaches have been witnessed to suffer from generalization performance degradation, e.g. on the Omniglot [10] and tieredImageNet datasets, due to gradient approximation steps. To remedy the deficiency of MAML, we consider the minibatch proximal update regularized by prior hypothesis parameters w, i.e., minwT LDT (wT ) + λ2 kwT − wk22 , which aims to learn the optimum hypothesis parameter wT∗ of task T around a prior hypothesis w. Such a mechanism can leverage the good prior w to facilitate the learning of task T with only a few samples, as it tells the learner where the optimum hypothesis parameter wT∗ roughly",
+              "url": "https://papers.nips.cc/paper_files/paper/2019/file/8c235f89a8143a28a1d6067e959dd858-Paper.pdf",
+              "document_sha256": "cdf323def205c35c98538513f55bf86e5be411c2eef6fc4d9d2239508990f6ba"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "2.2. Personalized Federated Learning The federated learning setup presents numerous challenges, including data heterogeneity (differences in data distribution), device heterogeneity (in terms of computation capabilities, network connection, etc.), and communication efficiency (Kairouz et al., 2019). Especially data heterogeneity makes it hard to learn a single shared global model that applies to all clients. To overcome these issues, Personalized Federated Learning (PFL) aims to personalize the global model for each client in the federation (Kulkarni et al., 2020). Many papers proposed a decentralized version of the model agnostic meta-learning (MAML) problem (Fallah et al., 2020a; Li et al., 2017; Behl et al., 2019; Zhou et al., 2019; Fallah et al., 2020b). Since the MAML approach relies on the Hessian matrix, which is computationally costly, several works attempted to approximate the Hessian (Finn et al., 2017; Nichol et al., 2018). Multitask learning was also used for PFL by viewing each client as a learning task (Smith et al., 2017). Recently, Dinh et al. (2021) proposed FedU, a federated multitask algorithm that uses Laplacian regularization to encourage similarities between clients. Another approach to PFL is model mixing, where clients learn a mixture of the global model and local models (Deng et al., 2020; Arivazhagan et al., 2019). Hanzely & Richtárik (2020) introduced a new neural network architecture divided into base and personalized layers. The central model trains the base layers by FedAvg, and the personalized layers are trained locally. Liang et al. (2020) presented LG-FedAvg, a mixing-model method where each client obtains local feature extractor and global output layers, which differ from the conventional mixing model approach. Using a shared output",
+              "url": "https://proceedings.mlr.press/v139/shamsian21a/shamsian21a.pdf",
+              "document_sha256": "5d6028cc942c9d278efb2fb8c375e9acde68f403358b0c14d7eab525e61ba403"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "while minimizing communication. Unfortunately, learning a single global model may fail when the data distribution varies across clients. For example, user data may originate from different devices or geographical locales and is potentially heterogeneous. In the extreme, each client may be required to solve another task. To handle such heterogeneity across clients, Personalized Federated Learning (PFL) (Smith et al., 2017) allows each client to use a personalized model instead of a shared global model. The key challenge in PFL is to benefit from joint training while allowing each client to keep its unique model and at the same time limit the communication cost. While several approaches were recently proposed for this challenge, these problems are far from being resolved. In this work, we describe a new approach named pFedHN for personalized Federated HyperNetwork, which aims to resolve these challenges using hypernetworks (Ha et al., 2017). A hypernetwork is a model that produces parameters for another neural networks. Our approach learns to smartly share parameters across clients by using a single joint hypernetwork to generate separate network parameters for every client. Each client has a unique embedding vector, passed as input to the hypernetwork to produce its personalized model weights. The vast majority of trainable parameters belong to the hypernetwork and are shared across clients. Despite that, using a hypernetwork achieves great flexibility and diversity across client models. Intuitively, since a hypernetwork provides a mapping from the embedding input space to the space of client network parameters, its image can be viewed as a low-dimensional manifold in that space. Thus, we can think of the hypernetwork as the coordinate map of this manifold. Each unique",
+              "url": "https://proceedings.mlr.press/v139/shamsian21a/shamsian21a.pdf",
+              "document_sha256": "5d6028cc942c9d278efb2fb8c375e9acde68f403358b0c14d7eab525e61ba403"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "We summarize our method in Alg. 1. Importantly, we note that in practice, all parameter updates are performed using efficient backpropagation and without multiplication of Jacobian matrices. 3.3. Personal Classifier In some cases, it is undesirable to learn the entire network end-to-end with a single hypernetwork. As an illustrative example, consider a case where clients differ only by the label ordering in their output vectors. In this case, having to learn the correct label ordering per client adds another unnecessary difficulty if they were to learn the classification layer as well using the hypernetwork. As another example, consider the case where each client solves an entirely separate task, similar to multitask learning, where the number of classes may differ between clients. It makes little sense to have the hypernetwork produce each unique task classification layer. In these cases, it would be preferable for the hypernetwork to produce the feature extraction part of the target network, which contains most of the trainable parameters while learning a local output layer for each client. Formally, let ωi denote the personal classifier parameters of client i. We modify the optimization problem (eq. 3) to obtain, n",
+              "url": "https://proceedings.mlr.press/v139/shamsian21a/shamsian21a.pdf",
+              "document_sha256": "5d6028cc942c9d278efb2fb8c375e9acde68f403358b0c14d7eab525e61ba403"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-061728eeb7b6202209df958f",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/8c235f89a8143a28a1d6067e959dd858-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c6fa86296a892648b5a6de0b",
+          "url": "https://proceedings.mlr.press/v139/shamsian21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Federated Learning with Heterogeneous Clients and Communication Efficiency"
+      },
+      "sha256": "f55ebcbe3e002ade051f55bd08fb382afb0251afd259dc51f32bedf3b9eb9a66"
+    }
+  ]
+}

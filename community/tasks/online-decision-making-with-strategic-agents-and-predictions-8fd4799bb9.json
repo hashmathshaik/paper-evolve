@@ -1,0 +1,950 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Online Decision Making with Strategic Agents and Predictions",
+  "area": "Online Learning and Bandits",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-03efb91567e9d82afe5145e3",
+      "a": "paper-00351c044a18ae9f44df4a19",
+      "b": "paper-d075c38b327de6ef01a6752d",
+      "state": {
+        "paper_a": {
+          "title": "No-Regret and Incentive-Compatible Online Learning",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "We study online learning settings in which experts act strategically to maximize their influence on the learning algorithm’s predictions by potentially misreporting their beliefs about a sequence of binary events. Our goal is twofold. First, we want the learning algorithm to be no-regret with respect to the best-fixed expert in hindsight. Second, we want incentive compatibility, a guarantee that each expert’s best strategy is to report his true beliefs about the realization of each event. To achieve this goal, we build on the literature on wagering mechanisms, a type of multi-agent scoring rule. We provide algorithms that achieve no regret and incentive compatibility for myopic experts for both the full and partial information settings. In experiments on datasets from FiveThirtyEight, our algorithms have regret comparable to classic no-regret algorithms, which are not incentive-compatible. Finally, we identify an incentive-compatible algorithm for forward-looking strategic agents that exhibits diminishing regret in practice."
+        },
+        "paper_b": {
+          "title": "Information Discrepancy in Strategic Learning",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "We initiate the study of the effects of non-transparency in decision rules on individuals’ ability to improve in strategic learning settings. Inspired by real-life settings, such as loan approvals and college admissions, we remove the assumption typically made in the strategic learning literature, that the decision rule is fully known to individuals, and focus instead on settings where it is inaccessible. In their lack of knowledge, individuals try to infer this rule by learning from their peers (e.g., friends and acquaintances who previously applied for a loan), naturally forming groups in the population, each with possibly different type and level of information regarding the decision rule. We show that, in equilibrium, the principal’s decision rule optimizing welfare across sub-populations may cause a strong negative externality: the true quality of some of the groups can actually deteriorate. On the positive side, we show that, in many natural cases, optimal improvement can be guaranteed simultaneously for all sub-populations. We further introduce a measure we term information overlap proxy, and demonstrate its usefulness in characterizing the disparity in improvements across sub-populations. Finally, we identify a natural condition under which improvement can be guaranteed for all sub-populations while maintaining high predictive accuracy. We complement our theoretical analysis with experiments on real-world datasets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The first one advocates that changes in the agents’ original features are considered “gaming”, hence the learner wishes to construct algorithms that are robust to such behavior (Meir et al., 2010; 2011; 2012; Perote & Perote-Pena, 2004; Dekel et al., 2010; Chen et al., 2018; Roughgarden & Schrijvers, 2017; Freeman et al., 2020; Dalvi et al., 2004; Brückner et al., 2012; Hardt et al., 2016; Dong et al., 2018; Chen et al., 2020a; Ahmadi et al., 2021; Sundaram et al., 2020; Ioannidis & Loiseau, 2013; Horel et al., 2014; Cai et al., 2015).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00351c044a18ae9f44df4a19",
+          "b": "paper-d075c38b327de6ef01a6752d",
+          "input_sha256": "f240de4919526854d4f7d0827f1061aa740d05d60138ec1d921ad49f37b73da0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/freeman20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/freeman20a/freeman20a.pdf",
+              "sha256": "9a71c6462f83d4cda790140d02be39616f5a7fa61a4c7b82fbb3f070924723ad"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/bechavod22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "a principal to elicit the beliefs of a group of agents without taking on financial risk. Using this connection, we construct online learning algorithms that are incentive-compatible and incur sublinear regret. For the full information setting, we introduce √ Weighted-Score Update (WSU), which yields regret O( T ln K), matching the optimal regret achievable for general loss functions, even without incentive guarantees. For the partial information setting, we introduce WeightedScore Update with Uniform Exploration (WSU-UX), which achieves regret O(T 2/3 (K ln K)1/3 ). We focus primarily on experts that strategize only about their influence at the next timestep. However, we obtain a partial extension for forward-looking experts. Building on a mechanism that was proposed for forecasting competitions (Witkowski et al., 2018), we identify an algorithm, ELF-X, for the full information setting that is incentivecompatible and achieves diminishing regret in simulations. Our theoretical results are supported by experiments on data gathered from an online prediction contest on FiveThirtyEight. Our algorithms achieve regret almost identical to the classic (and not incentive-compatible) Multiplicative Weights Update (MWU) (Freund & Schapire, 1997) and EXP3 (Auer et al., 2002) algorithms in the full and partial information settings respectively, though WSU falls short of the optimal regret achieved by Hedge for quadratic loss. Related Work. Other work has drawn connections between online learning and incentive-compatible forecasting, particularly in the context of prediction markets (Abernethy et al., 2013; Abernethy & Frongillo, 2011; Frongillo et al., 2012; Hu & Storkey, 2014). Our work is most closely related to that of Roughgarden & Schrijvers (2017), but differs from theirs in",
+              "url": "https://proceedings.mlr.press/v119/freeman20a/freeman20a.pdf",
+              "document_sha256": "9a71c6462f83d4cda790140d02be39616f5a7fa61a4c7b82fbb3f070924723ad"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "sub-populations, but has to learn them instead (App. A). Empirical Evaluation. Our experiments on real-world datasets (TAIWAN -C REDIT and A DULT) illustrate our theoretical results, further highlighting the pivotal role access to information plays in strategic settings (Sec. 5). 1.2. Related Work Our work is primarily related to three strands of literature on strategic behavior in learning (of independent interest is Jagadeesan et al. (2021), who re-examine the standard assumptions around strategic learning). The first one advocates that changes in the agents’ original features are considered “gaming”, hence the learner wishes to construct algorithms that are robust to such behavior (Meir et al., 2010; 2011; 2012; Perote & Perote-Pena, 2004; Dekel et al., 2010; Chen et al., 2018; Roughgarden & Schrijvers, 2017; Freeman et al., 2020; Dalvi et al., 2004; Brückner et al., 2012; Hardt et al., 2016; Dong et al., 2018; Chen et al., 2020a; Ahmadi et al., 2021; Sundaram et al., 2020; Ioannidis & Loiseau, 2013; Horel et al., 2014; Cai et al., 2015). When the learner optimizes for robustness to strategic behavior, the deployed algorithm has disparate impact on different sub-populations (Hu et al., 2019; Milli et al., 2019). Braverman & Garg (2020) study the impact of randomized or noisy classifiers on mitigating inequalities, but focus on a singledimensional case. In our work, we do not consider the disparate impact of “robustness”, but rather of information disparities across groups. In a concurrent and independent work, Ghalme et al. (2021) study non-transparency in strategic classification, characterize the “price of opacity”, and show conditions under which fully transparent classifiers are the recommended policy. While sharing some of the assumptions, the goals of the two",
+              "url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "document_sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "gic investments and outcomes. To make things worse, there is often a regulatory requirement that the same decision rule be used on all sub-populations (due to e.g., the risk of redlining (Hunt, 2005; Rothstein, 2017)), prohibiting the use of group-specific decision rules by the decision-maker for to mitigate the adverse effects of information discrepancy. 1.1. Our Work Our work introduces the first framework to study the disparate effects of non-transparency in strategic learning on individuals’ ability to improve. Below, we provide an overview of our contributions, and the roadmap of the paper. Equilibrium Model. We propose a model for the principalagent interaction, when individuals from different subpopulations learn from their peers (Sec. 2). We then show how individuals from different sub-populations use the information available among their peers to form estimates of the decision rule, and compute the closed-form solutions for their and the principal’s responses in equilibrium (Sec. 3). Improvement Across Sub-Populations. Using our proposed model, we first prove a strong negative externality result: even if the principal deploys a decision rule that is optimized for maximizing the improvement across subpopulations, and individuals best-respond to the principal’s rule, some sub-populations may still suffer deterioration in their “quality” (true label). On the positive side, we show that improvement can be guaranteed simultaneously for all sub-populations under moderate conditions, e.g., when they have similar costs for effort exertion or when the extent to which they share the same information is minimal (Sec. 4.1). We then examine the extent to which information discrepancy regarding the deployed decision rule may result in disparity of improvement between",
+              "url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "document_sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00351c044a18ae9f44df4a19",
+          "url": "https://proceedings.mlr.press/v119/freeman20a.html"
+        },
+        "b": {
+          "paper_id": "paper-d075c38b327de6ef01a6752d",
+          "url": "https://proceedings.mlr.press/v162/bechavod22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "9d2ecbd8e6e470b39b9ad3ef3784c16a7dec85f0ceae1db86e06257f2ae020ee"
+    },
+    {
+      "id": "edge-562e0626b112d7edc90d58d4",
+      "a": "paper-00df3b96607d07e861660ef3",
+      "b": "paper-61226e61832b1ec3f84f0f21",
+      "state": {
+        "paper_a": {
+          "title": "Online metric algorithms with untrusted predictions",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Machine-learned predictors, although achieving very good results for inputs resembling training data, cannot possibly provide perfect predictions in all situations. Still, decision-making systems that are based on such predictors need not only to benefit from good predictions but also to achieve a decent performance when the predictions are inadequate. In this paper, we propose a prediction setup for arbitrary metrical task systems (MTS) (e.g., caching, k-server and convex body chasing) and online matching on the line. We utilize results from the theory of online algorithms to show how to make the setup robust. Specifically for caching, we present an algorithm whose performance, as a function of the prediction error, is exponentially better than what is achievable for general MTS. Finally, we present an empirical evaluation of our methods on real world datasets, which suggests practicality."
+        },
+        "paper_b": {
+          "title": "Online Algorithms with Uncertainty-Quantified Predictions",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The burgeoning field of algorithms with predictions studies the problem of using possibly imperfect machine learning predictions to improve online algorithm performance. While nearly all existing algorithms in this framework make no assumptions on prediction quality, a number of methods providing uncertainty quantification (UQ) on machine learning models have been developed in recent years, which could enable additional information about prediction quality at decision time. In this work, we investigate the problem of optimally utilizing uncertainty-quantified predictions in the design of online algorithms. In particular, we study two classic online problems, ski rental and online search, where the decision-maker is provided predictions augmented with UQ describing the likelihood of the ground truth falling within a particular range of values. We demonstrate that non-trivial modifications to algorithm design are needed to fully leverage the UQ predictions. Moreover, we consider how to utilize more general forms of UQ, proposing an online learning framework that learns to exploit UQ to make decisions in multi-instance settings."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…that incorporate untrusted predictions of either problem parameters or optimal decisions (Lykouris & Vas-silvitskii, 2021; Purohit et al., 2018; Mahdian et al., 2012; Mitzenmacher & Vassilvitskii, 2022; Wei & Zhang, 2020; Antoniadis et al., 2020; Christianson et al., 2023; Sun et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00df3b96607d07e861660ef3",
+          "b": "paper-61226e61832b1ec3f84f0f21",
+          "input_sha256": "a754c05db9066f8ed4d045f9234bc774f2a7a9de350e64fa3a958d3b6fd71a3d",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/antoniadis20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/sun24f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sun24f/sun24f.pdf",
+              "sha256": "434aed07b2f1cb9717fe4d044c31d11d8875b628d47da0b12f8bab3fc27542a5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2019), power management of embedded systems as well as data centers (Irani et al., 2003; Lin et al., 2013), and are also related to the experts problem in online learning (see Daniely & Mansour, 2019; Blum & Burch, 2000). Initially, we are given a metric space M of states, which can be interpreted for example as actions, investment strategies, or configurations of some production machine. We start at a predefined initial state x0 . At each time t = 1, 2, . . . , we are presented with a cost function `t : M → R+ ∪{0, +∞} and our task is to decide either to stay at xt−1 and pay the cost `t (xt−1 ), or to move to some other (possibly cheaper) state xt and pay dist(xt−1 , xt ) + `t (xt ), where dist(xt−1 , xt ) is the cost of the transition between states xt−1 and xt . The objective is to minimize the overall cost incurred over time. Given that MTS is an online problem, one needs to make each decision without any information about the future cost functions. This makes the problem substantially difficult, as supported by strong lower bounds for general MTS (Borodin et al., 1992) as well as for many special MTS problems (see e.g. Karloff et al., 1994; Fiat et al., 1998). For the recent work on MTS, see Bubeck et al. (2019); Coester & Lee (2019); Bubeck & Rabani (2020). In this paper, we study how to utilize predictors (possibly based on machine learning) in order to decrease the uncertainty about the future and achieve a better performance for MTS. We propose a natural prediction setup for MTS and show how to develop algorithms in this setup with the following properties of consistency (i) and robustness (ii). (i) Their performance improves with accuracy of the predictor and is close-to-optimal with perfect predictions. (ii) When given poor predictions, their performance is",
+              "url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "document_sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Machine-learned predictors, although achieving very good results for inputs resembling training data, cannot possibly provide perfect predictions in all situations. Still, decision-making systems that are based on such predictors need not only to benefit from good predictions but also to achieve a decent performance when the predictions are inadequate. In this paper, we propose a prediction setup for arbitrary metrical task systems (MTS) (e.g., caching, k-server and convex body chasing) and online matching on the line. We utilize results from the theory of online algorithms to show how to make the setup robust. Specifically for caching, we present an algorithm whose performance, as a function of the prediction error, is exponentially better than what is achievable for general MTS. Finally, we present an empirical evaluation of our methods on real world datasets, which suggests practicality.",
+              "url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "document_sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "1.1. Related Literature Algorithms with untrusted predictions A significant body of work has emerged considering the design of algorithms that incorporate untrusted predictions of either problem parameters or optimal decisions (Lykouris & Vassilvitskii, 2021; Purohit et al., 2018; Mahdian et al., 2012; Mitzenmacher & Vassilvitskii, 2022; Wei & Zhang, 2020; Antoniadis et al., 2020; Christianson et al., 2023; Sun et al., 2021). However, in nearly all of these works, predictions are assumed to be point predictions of problem parameters or decisions, i.e., individual untrusted decisions with no further assumptions on quality, uncertainty, probability of correctness, etc. Several recent studies have consid-",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sun24f/sun24f.pdf",
+              "document_sha256": "434aed07b2f1cb9717fe4d044c31d11d8875b628d47da0b12f8bab3fc27542a5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "where η and γ are the consistency and robustness of algorithms with untrusted interval predictions. 2.2. An Optimization-Based Algorithmic Approach We introduce an optimization-based algorithmic approach for the single-instance distributionally-robust analysis that can be leveraged to systematically design online algorithms with UQ predictions. We focus on a class of parameterized online algorithms. Let A(w) denote the online algorithm with parameter w ∈ Ω, where Ω is the parameter set. The design of an online algorithm augmented by a UQ prediction PIP(θ) is to find a policy π ∈ Π : Θ → Ω that maps from θ to an online algorithm A(w). We propose a general optimization-based approach to design the policy by solving an ancillary optimization problem.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sun24f/sun24f.pdf",
+              "document_sha256": "434aed07b2f1cb9717fe4d044c31d11d8875b628d47da0b12f8bab3fc27542a5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Optimization-based algorithmic approach Technically, we propose an optimization-based approach for incorporating UQ predictions into online algorithms. The approach consists of building an ancillary optimization problem based on predictions with the objective of minimizing DRCR for hard instances of the problem. The solution of the optimization problem then yields the optimal algorithm design, considering the provided UQ. This approach is general in the sense that the optimization can be tuned based on the specific forms of the predictions and design goals, and, thus, this approach can potentially be applied to incorporate other forms of UQ predictions and to devise algorithms for other online problems beyond ski rental and online search.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/sun24f/sun24f.pdf",
+              "document_sha256": "434aed07b2f1cb9717fe4d044c31d11d8875b628d47da0b12f8bab3fc27542a5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00df3b96607d07e861660ef3",
+          "url": "https://proceedings.mlr.press/v119/antoniadis20a.html"
+        },
+        "b": {
+          "paper_id": "paper-61226e61832b1ec3f84f0f21",
+          "url": "https://proceedings.mlr.press/v235/sun24f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "7fe9eb95eb12613b2252e743082a6dc5e60cdb0a312d982e35eb6060391da7e0"
+    },
+    {
+      "id": "edge-9556686b614a8aafe428390e",
+      "a": "paper-00df3b96607d07e861660ef3",
+      "b": "paper-fa998d76f1eda3f3a1706fb3",
+      "state": {
+        "paper_a": {
+          "title": "Online metric algorithms with untrusted predictions",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "Machine-learned predictors, although achieving very good results for inputs resembling training data, cannot possibly provide perfect predictions in all situations. Still, decision-making systems that are based on such predictors need not only to benefit from good predictions but also to achieve a decent performance when the predictions are inadequate. In this paper, we propose a prediction setup for arbitrary metrical task systems (MTS) (e.g., caching, k-server and convex body chasing) and online matching on the line. We utilize results from the theory of online algorithms to show how to make the setup robust. Specifically for caching, we present an algorithm whose performance, as a function of the prediction error, is exponentially better than what is achievable for general MTS. Finally, we present an empirical evaluation of our methods on real world datasets, which suggests practicality."
+        },
+        "paper_b": {
+          "title": "Improved Learning-Augmented Algorithms for the Multi-Option Ski Rental Problem via Best-Possible Competitive Analysis",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "In this paper, we present improved learning-augmented algorithms for the multi-option ski rental problem. Learning-augmented algorithms take ML predictions as an added part of the input and incorporates these predictions in solving the given problem. Due to their unique strength that combines the power of ML predictions with rigorous performance guarantees, they have been extensively studied in the context of online optimization problems. Even though ski rental problems are one of the canonical problems in the field of online optimization, only deterministic algorithms were previously known for multi-option ski rental, with or without learning augmentation. We present the first randomized learning-augmented algorithm for this problem, surpassing previous performance guarantees given by deterministic algorithms. Our learning-augmented algorithm is based on a new, provably best-possible randomized competitive algorithm for the problem. Our results are further complemented by lower bounds for deterministic and randomized algorithms, and computational experiments evaluating our algorithms’ performance improvements."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…to online optimization problems in particular, including caching (Rohatgi, 2020; Lykouris & Vassilvitskii, 2021; Im et al., 2022), matching (Antoniadis et al., 2020b; Lavastida et al., 2021), and graph/metric problems (Antoniadis et al., 2020a; Azar et al., 2022; Jiang et al., 2022) for…\n…to online optimization problems in particular, including caching (Rohatgi, 2020; Lykouris & Vassilvitskii, 2021; Im et al., 2022), matching (Antoniadis et al., 2020b; Lavastida et al., 2021), and graph/metric problems (Antoniadis et al., 2020a; Azar et al., 2022; Jiang et al., 2022) for example.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00df3b96607d07e861660ef3",
+          "b": "paper-fa998d76f1eda3f3a1706fb3",
+          "input_sha256": "2c26b927a6fa2afbd0e4426bf859a6afa07241b46bbdfb081e99896c5e8d603e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/antoniadis20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/shin23c.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/shin23c/shin23c.pdf",
+              "sha256": "27dd4bc055a64feba2b88380ae3fd02e94b35e360a3517f4748d04d5a316f147"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2019), power management of embedded systems as well as data centers (Irani et al., 2003; Lin et al., 2013), and are also related to the experts problem in online learning (see Daniely & Mansour, 2019; Blum & Burch, 2000). Initially, we are given a metric space M of states, which can be interpreted for example as actions, investment strategies, or configurations of some production machine. We start at a predefined initial state x0 . At each time t = 1, 2, . . . , we are presented with a cost function `t : M → R+ ∪{0, +∞} and our task is to decide either to stay at xt−1 and pay the cost `t (xt−1 ), or to move to some other (possibly cheaper) state xt and pay dist(xt−1 , xt ) + `t (xt ), where dist(xt−1 , xt ) is the cost of the transition between states xt−1 and xt . The objective is to minimize the overall cost incurred over time. Given that MTS is an online problem, one needs to make each decision without any information about the future cost functions. This makes the problem substantially difficult, as supported by strong lower bounds for general MTS (Borodin et al., 1992) as well as for many special MTS problems (see e.g. Karloff et al., 1994; Fiat et al., 1998). For the recent work on MTS, see Bubeck et al. (2019); Coester & Lee (2019); Bubeck & Rabani (2020). In this paper, we study how to utilize predictors (possibly based on machine learning) in order to decrease the uncertainty about the future and achieve a better performance for MTS. We propose a natural prediction setup for MTS and show how to develop algorithms in this setup with the following properties of consistency (i) and robustness (ii). (i) Their performance improves with accuracy of the predictor and is close-to-optimal with perfect predictions. (ii) When given poor predictions, their performance is",
+              "url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "document_sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Machine-learned predictors, although achieving very good results for inputs resembling training data, cannot possibly provide perfect predictions in all situations. Still, decision-making systems that are based on such predictors need not only to benefit from good predictions but also to achieve a decent performance when the predictions are inadequate. In this paper, we propose a prediction setup for arbitrary metrical task systems (MTS) (e.g., caching, k-server and convex body chasing) and online matching on the line. We utilize results from the theory of online algorithms to show how to make the setup robust. Specifically for caching, we present an algorithm whose performance, as a function of the prediction error, is exponentially better than what is achievable for general MTS. Finally, we present an empirical evaluation of our methods on real world datasets, which suggests practicality.",
+              "url": "https://proceedings.mlr.press/v119/antoniadis20a/antoniadis20a.pdf",
+              "document_sha256": "513bb0f887d22a98b6d25634b85633e54cc2acd95dd081ad90e65b60e2359fa1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Related Work Recently, learning-augmented algorithms have been studied for a broad range of traditional optimization problems. Many studies introduce ML predictions to online optimization problems in particular, including caching (Rohatgi, 2020; Lykouris & Vassilvitskii, 2021; Im et al., 2022), matching (Antoniadis et al., 2020b; Lavastida et al., 2021), and graph/metric problems (Antoniadis et al., 2020a; Azar et al., 2022; Jiang et al., 2022) for example. We refer interested readers to the survey of Mitzenmacher and Vassilvitskii (2022) for a more thorough review.",
+              "url": "https://proceedings.mlr.press/v202/shin23c/shin23c.pdf",
+              "document_sha256": "27dd4bc055a64feba2b88380ae3fd02e94b35e360a3517f4748d04d5a316f147"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00df3b96607d07e861660ef3",
+          "url": "https://proceedings.mlr.press/v119/antoniadis20a.html"
+        },
+        "b": {
+          "paper_id": "paper-fa998d76f1eda3f3a1706fb3",
+          "url": "https://proceedings.mlr.press/v202/shin23c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "8ea048824473048e83cfeaf286c64d1133777298bba5ed9c366dba1b4af2efc3"
+    },
+    {
+      "id": "edge-b830b31620010d71e172e1ba",
+      "a": "paper-0a96eb73d24f362dc952ff46",
+      "b": "paper-50cfa695b6ba34e413f84f28",
+      "state": {
+        "paper_a": {
+          "title": "Predictive Flows for Faster Ford-Fulkerson",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Recent work has shown that leveraging learned predictions can improve the running time of algorithms for bipartite matching and similar combinatorial problems. In this work, we build on this idea to improve the performance of the widely used Ford-Fulkerson algorithm for computing maximum flows by seeding Ford-Fulkerson with predicted flows. Our proposed method offers strong theoretical performance in terms of the quality of the prediction. We then consider image segmentation, a common use-case of flows in computer vision, and complement our theoretical analysis with strong empirical results."
+        },
+        "paper_b": {
+          "title": "Learning-Augmented Algorithms for MTS with Bandit Access to Multiple Predictors",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Combining algorithms is one of the key techniques in learning-augmented algorithms. We consider the following problem: We are given $\\ell$ heuristics for Metrical Task Systems (MTS), where each might be tailored to a different type of input instances. While processing an input instance received online, we are allowed to query the action of only one of the heuristics at each time step. Our goal is to achieve performance comparable to the best of the given heuristics. The main difficulty of our setting comes from the fact that the cost paid by a heuristic at time $t$ cannot be estimated unless the same heuristic was also queried at time $t-1$. This is related to Bandit Learning against memory bounded adversaries (Arora et al., 2012). We show how to achieve regret of $O(\\text{OPT}^{2/3})$ and prove a tight lower bound based on the construction of Dekel et al. (2013)."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "…were studied in this setting, including Caching (Rohatgi, 2020; Wei, 2020), Scheduling (Lindermayr & Megow, 2022; Benomar & Perchet, 2024b; Balkanski et al., 2023; Bamas et al., 2020), graph problems (Eberle et al., 2022; Bernardini et al., 2022; Dong et al., 2025; Davies et al., 2023) and others.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0a96eb73d24f362dc952ff46",
+          "b": "paper-50cfa695b6ba34e413f84f28",
+          "input_sha256": "3aa104d4707653a6cd20c80f313c2d28986f9b034f1e261a596b5a281ba3eac2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/davies23b.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/davies23b/davies23b.pdf",
+              "sha256": "f7cbfe09f54f7a72a274af338daccaa57c5a8b081bf6828ab4bd40213a666253"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/cosa25a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cosa25a/cosa25a.pdf",
+              "sha256": "70dd65512ecafe8da4d6eb12fb3b81d8ded7a11b5d9932f38699be4dc88eb738"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "First works on Combining Heuristics were by Fiat et al. (1990) for k-server, Fiat et al. (1991) for Caching, and Azar et al. (1993); Blum & Burch (2000) for MTS. More recently, Emek et al. (2021) studied Caching with multiple predictors and achieved regret sublinear in T , while also tackling a bandit-like setting. Further results on other online problems are by Anand et al. (2022); Dinitz et al. (2022); Bhaskara et al. (2020); Gollapudi & Panigrahi (2019); Almanza et al. (2021); Wang et al. (2020); Kevi & Nguyen (2023). Learning-augmented algorithms were introduced by Lykouris & Vassilvitskii (2021); Kraska et al. (2018) who designed algorithms effectively utilizing unreliable machinelearned predictions. Since these two seminal works, many computational problems were studied in this setting, including Caching (Rohatgi, 2020; Wei, 2020), Scheduling (Lindermayr & Megow, 2022; Benomar & Perchet, 2024b; Balkanski et al., 2023; Bamas et al., 2020), graph problems (Eberle et al., 2022; Bernardini et al., 2022; Dong et al., 2025; Davies et al., 2023) and others. Several works consider algorithms using the predictions sparingly (Im et al., 2022; Drygala et al., 2023; Sadek & Eliáš, 2024; Benomar & Perchet, 2024a). See the survey (Mitzenmacher & Vassilvitskii, 2022) and the website by (Lindermayr & Megow, 2023).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cosa25a/cosa25a.pdf",
+              "document_sha256": "70dd65512ecafe8da4d6eb12fb3b81d8ded7a11b5d9932f38699be4dc88eb738"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "In Appendix D, we show that our algorithm can be adapted to the m-memory bounded setting for bandits, where it achieves a regret of O(T 2/3 ) comparable to Arora et al. (2012), while slightly improving the dependence on m. Note that T can be much larger than OPT≤0 . We extend our result to a setting with a benchmark which can switch between the heuristics at most k times, while the algorithm’s number of switches still remains unrestricted. Theorem 1.2. Let D, ℓ, and m ≥ 2 be constant and k ≥ 1 be a parameter. Consider heuristics H1 , . . . , Hℓ for an MTS with diameter D. There is an algorithm ALG which, given an m-delayed bandit access to H1 , . . . , Hℓ , satisfies 3",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cosa25a/cosa25a.pdf",
+              "document_sha256": "70dd65512ecafe8da4d6eb12fb3b81d8ded7a11b5d9932f38699be4dc88eb738"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "3.3. Analysis We introduce the following random variables which will be useful in our analysis. We define Xt as an indicator variable such that Xt = 1 if t ∈ X and 0 otherwise. Similarly, Et is an indicator of t ∈ E. These variables are determined by β1 , . . . , βT . We also define gt = Et · gtet which is 0 for any t ∈ / E. We consider a filtration F0 ⊆ F1 ⊆ · · · ⊆ FT , where Ft is a σ-algebra generated by the realizations of β1 , . . . , βt and e1 , . . . , et . Note that these realizations determine Xt′ , Et′ , gt′ , and xt′ +1 for any t′ ≤ t. Moreover, we have the following observations.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/cosa25a/cosa25a.pdf",
+              "document_sha256": "70dd65512ecafe8da4d6eb12fb3b81d8ded7a11b5d9932f38699be4dc88eb738"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0a96eb73d24f362dc952ff46",
+          "url": "https://proceedings.mlr.press/v202/davies23b.html"
+        },
+        "b": {
+          "paper_id": "paper-50cfa695b6ba34e413f84f28",
+          "url": "https://proceedings.mlr.press/v267/cosa25a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "ebd1f68b91c5b33bedc43e5cdb354445150deca9279ff73b0a4958e966b73535"
+    },
+    {
+      "id": "edge-30109bee64b1b6ff6eb24d20",
+      "a": "paper-119d2e5b0ca23b6a5debf71a",
+      "b": "paper-ccd9522fc99721c87eb4f459",
+      "state": {
+        "paper_a": {
+          "title": "Fairness Through Computationally-Bounded Awareness",
+          "year": 2018,
+          "venue": "NeurIPS",
+          "abstract": "We study the problem of fair classification within the versatile framework of Dwork et al. [ITCS '12], which assumes the existence of a metric that measures similarity between pairs of individuals. Unlike earlier work, we do not assume that the entire metric is known to the learning algorithm; instead, the learner can query this arbitrary metric a bounded number of times. We propose a new notion of fairness called metric multifairness and show how to achieve this notion in our setting. Metric multifairness is parameterized by a similarity metric d on pairs of individuals to classify and a rich collection C of (possibly overlapping) \"comparison sets\" over pairs of individuals. At a high level, metric multifairness guarantees that similar subpopulations are treated similarly , as long as these subpopulations are identified within the class C."
+        },
+        "paper_b": {
+          "title": "Fairness in Matching under Uncertainty",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "The prevalence and importance of algorithmic two-sided marketplaces has drawn attention to the issue of fairness in such settings. Algorithmic decisions are used in assigning students to schools, users to advertisers, and applicants to job interviews. These decisions should heed the preferences of individuals, and simultaneously be fair with respect to their merits (synonymous with fit, future performance, or need). Merits conditioned on observable features are always uncertain , a fact that is exacerbated by the widespread use of machine learning algorithms to infer merit from the observables. As our key contribution, we carefully axiomatize a notion of individual fairness in the two-sided marketplace setting which respects the uncertainty in the merits; indeed, it simultaneously recognizes uncertainty as the primary potential cause of unfairness and an approach to address it. We design a linear programming framework to find fair utility-maximizing distributions over allocations, and we show that the linear program is robust to perturbations in the estimated parameters of the uncertain merit distributions, a key property in combining the approach with machine learning techniques."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The most relevant approach is that of Kim et al. (2020), who propose preference-informed individual fairness (PIIF), which requires that allocations be individually fair but also allows for deviations aligned with preferences of the users.\n…of fairness in computer science can be classified into those that try to capture fairness towards a group (Hardt et al., 2016; Hébert-Johnson et al., 2018; Kearns et al., 2018; Kleinberg et al., 2017) vs. those that try to be fair to each individual Dwork et al. (2012); Kim et al. (2018, 2020).\nthose that try to be fair to each individual (Dwork et al., 2012; Kim et al., 2018; 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-119d2e5b0ca23b6a5debf71a",
+          "b": "paper-ccd9522fc99721c87eb4f459",
+          "input_sha256": "f2a2fbc0956b54aad23f1d1d3a08ec69ad20dc4fdb139edfe953f2cb6599881e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2018/hash/c8dfece5cc68249206e4690fc4737a8d-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/c8dfece5cc68249206e4690fc4737a8d-Paper.pdf",
+              "sha256": "40d54009662a78597b6847705ee7e3132a56abe738c0d5119300df77a7fffaf7"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/devic23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/devic23a/devic23a.pdf",
+              "sha256": "7b85cbc463ded8112efd6a792a9653534259b05ce478ba32527c389101e1bc07"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "and ethical concerns, independent from the task of learning. In particular, in certain settings, the metric designers may have access to a different set of features than the learner. For instance, perhaps the metric designers have access to sensitive attributes, but for legal, social, or pragmatic reasons, the learner does not. In addition to its conceptual simplicity, the modularity of fairness through awareness makes it a very appealing framework. Currently, there are many (sometimes contradictory) notions of what it means for a classifier to be fair [19, 5, 9, 13, 14], and there is much debate on which definitions should be applied in a given context. Discrimination comes in many forms and classification is used in a variety of settings, so naturally, it is hard to imagine any universally-applicable definition of fairness. Basing fairness on a similarity metric offers a flexible approach for formalizing a variety of guarantees and protections from discrimination. Still, a challenging aspect of this approach is the assumption that the similarity metric is known for all pairs of individuals.2 Deciding on an appropriate metric is itself a delicate matter and could require human input from sociologists, legal scholars, and specialists with domain expertise. For instance, in the loan repayment example, a simple, seemingly-objective metric might be a comparison of credit scores. A potential concern, however, is that these scores might themselves be biased (i.e. encode historical discriminations). In this case, a more nuanced metric requiring human input may be necessary. Further, if the metric depends on features that are latent to the learner (e.g. some missing sensitive feature) then the metric could appear arbitrarily complex to the learner. As such, in many realistic",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/c8dfece5cc68249206e4690fc4737a8d-Paper.pdf",
+              "document_sha256": "40d54009662a78597b6847705ee7e3132a56abe738c0d5119300df77a7fffaf7"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "Then, we can think of the input labels to Algorithm 1 to be the output of any predictor that was trained separately.6 For instance, if we have learned a highly-accurate model, but are unsure of its fairness, we can instantiate our framework with, say, the squared loss between the original predictions and the returned predictions; then, we can view the program as a procedure to project the highly-accurate predictions onto the set of metric multifair predictions. Importantly, our procedure only needs a small set of samples from the metric and not the original data used to train the model. Post-processing prediction models for fairness has been studied in a few contexts [25, 14, 18]. This post-processing setting should be contrasted to these settings. In our setting, the predictions are not required to generalize out of sample (in terms of loss or fairness). On the one hand, this means the metric multifairness guarantee does not generalize outside the N individuals; on the other hand, because the predictions need not come from a bounded hypothesis class, their utility can only improve compared to learning a metric multifair hypothesis directly. In addition to preserving the utility of previously-trained classifiers, separating the tasks of training for utility and enforcing fairness may be desirable when intentional malicious discrimination may be anticipated. For instance, when addressing the forms of racial profiling that can occur through targeted advertising (as described in [6]), we may not expect self-interested advertisers to adhere to classification under strict fairness constraints, but it stands to reason that prominent advertising platforms might want to prevent such blatant abuses of their platform. In this setting, the platform could impose metric",
+              "url": "https://papers.nips.cc/paper_files/paper/2018/file/c8dfece5cc68249206e4690fc4737a8d-Paper.pdf",
+              "document_sha256": "40d54009662a78597b6847705ee7e3132a56abe738c0d5119300df77a7fffaf7"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Johnson et al., 2018) vs. those that try to be fair to each individual (Dwork et al., 2012; Kim et al., 2018; 2020). In our work, we focus on the latter notion. The most widely studied notion of individual fairness is due to the seminal work of Dwork et al. (2012): it assumes that a metric space on observable features of individuals captures similarity, and requires that outcomes of a resource allocation mechanism satisfy a certain Lipschitz continuity condition with respect to the given metric. Intuitively, this ensures that individuals who are similar according to the metric will be treated similarly by the mechanism.",
+              "url": "https://proceedings.mlr.press/v202/devic23a/devic23a.pdf",
+              "document_sha256": "7b85cbc463ded8112efd6a792a9653534259b05ce478ba32527c389101e1bc07"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 1,
+              "text": "Reconciling individual preferences with the traditional notion of individual fairness (IF) has proven to be difficult. The most relevant approach is that of Kim et al. (2020), who propose preference-informed individual fairness (PIIF), which requires that allocations be individually fair but also allows for deviations aligned with preferences of the users. However, there is a key difference between allowing for",
+              "url": "https://proceedings.mlr.press/v202/devic23a/devic23a.pdf",
+              "document_sha256": "7b85cbc463ded8112efd6a792a9653534259b05ce478ba32527c389101e1bc07"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "The choice of statistics sj captures the desired notion of fairness. Our mathematical formulation, treating the expectations as lower bounds, implicitly captures that larger values are better or more fair. Apart from this, we place no restriction on the sj . In principle, sj could even completely omit the outcomes of some of the individuals, though the most natural approach in a symmetric setting is to apply the same statistics to the outcomes of all individuals. Considering our approach for general environments, the statistics should be chosen by domain experts, and auditable as quantitative expressions of normative criteria of desired fairness.",
+              "url": "https://proceedings.mlr.press/v202/devic23a/devic23a.pdf",
+              "document_sha256": "7b85cbc463ded8112efd6a792a9653534259b05ce478ba32527c389101e1bc07"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "3. Discussion and Related Work Given that our key contribution is to articulate a formal framework for reasoning about fairness in allocation problems, before proceeding to technical results, here, we discuss various modeling choices and their underlying implicit or explicit normative principles, as well as limitations imposed by our framework. Many of the issues we discuss here have been discussed by Singh et al. (2021) as well.",
+              "url": "https://proceedings.mlr.press/v202/devic23a/devic23a.pdf",
+              "document_sha256": "7b85cbc463ded8112efd6a792a9653534259b05ce478ba32527c389101e1bc07"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-119d2e5b0ca23b6a5debf71a",
+          "url": "https://papers.nips.cc/paper_files/paper/2018/hash/c8dfece5cc68249206e4690fc4737a8d-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-ccd9522fc99721c87eb4f459",
+          "url": "https://proceedings.mlr.press/v202/devic23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "c746e807c3e3c6cc924f2609de320faaf77c32d20327c7277826be65046ad9e7"
+    },
+    {
+      "id": "edge-af75edc61f377bd3993e39f8",
+      "a": "paper-152ef0053c01243f96ef2eba",
+      "b": "paper-8bbff10d43c1793fe4da7558",
+      "state": {
+        "paper_a": {
+          "title": "Algorithmic recourse under imperfect causal knowledge: a probabilistic approach",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "Recent work has discussed the limitations of counterfactual explanations to recommend actions for algorithmic recourse, and argued for the need of taking causal relationships between features into consideration. Unfortunately, in practice, the true underlying structural causal model is generally unknown. In this work, we first show that it is impossible to guarantee recourse without access to the true structural equations. To address this limitation, we propose two probabilistic approaches to select optimal actions that achieve recourse with high probability given limited causal knowledge (e.g., only the causal graph). The first captures uncertainty over structural equations under additive Gaussian noise, and uses Bayesian model averaging to estimate the counterfactual distribution. The second removes any assumptions on the structural equations by instead computing the average effect of recourse actions on individuals similar to the person who seeks recourse, leading to a novel subpopulation-based interventional notion of recourse. We then derive a gradient-based procedure for selecting optimal recourse actions, and empirically show that the proposed approaches lead to more reliable recommendations under imperfect causal knowledge than non-probabilistic baselines."
+        },
+        "paper_b": {
+          "title": "Strategic Classification Made Practical",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Strategic classification regards the problem of learning in settings where users can strategically modify their features to improve outcomes. This setting applies broadly, and has received much recent attention. But despite its practical significance, work in this space has so far been predominantly theoretical. In this paper we present a learning framework for strategic classification that is practical. Our approach directly minimizes the “strategic” empirical risk, which we achieve by differentiating through the strategic response of users. This provides flexibility that allows us to extend beyond the original problem formulation and towards more realistic learning scenarios. A series of experiments demonstrates the effectiveness of our approach on various learning settings."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "…note that any predictor inevitably determines the degree of recourse , deﬁned as the ability of users that are denied a service (e.g., a loan) to take reasonable action to reverse this decision (Ustun et al., 2019; Gupta et al., 2019; Joshi et al., 2019; Chen et al., 2020; Karimi et al., 2020b).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-152ef0053c01243f96ef2eba",
+          "b": "paper-8bbff10d43c1793fe4da7558",
+          "input_sha256": "aa1bd1a4a82aea5eecac2ddca2fbed190073ba59a6410fb0824bf8155f0a902b",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/02a3c7fb3f489288ae6942498498db20-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/02a3c7fb3f489288ae6942498498db20-Paper.pdf",
+              "sha256": "97517ccf81e68a4f4b817d300676a57af1a14d9117c6a27ae00f81544061b35b"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/levanon21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 10,
+              "text": "Broader Impact Our work falls into the domain of explainable AI, which—given the increasing use of often intransparent (“blackbox”) machine learning models in consequential decision making—is of rapidly-growing societal importance. In particular, we consider the task of enabling and facilitating algorithmic recourse, which aims to provide individuals with guidance and recommendations on how best (i.e., efficiently and ideally at low cost) to recover from unfavourable decisions made by an automated system. To address this task, we build on the framework of causal modelling, which constitutes a principled and mathematically rigorous way to reason about the downstream effects of actions. Since correlation does not imply causation, this requires to make additional assumptions based on a general understanding of the domain at hand. While this may perhaps seem restrictive at first, we point out that other approaches to explainability also make implicit assumptions of a causal nature (e.g., that all features can be changed at will without affecting others in the case of “counterfactual” explanations), without explicitly and clearly stating such assumptions. The advantage of phrasing assumptions about relations between features in the form of a causal graph is that the latter is transparent and intuitive to understand and can thus be challenged by decision makers and individuals alike. While theoretically sound from a causal perspective, at the same time, our method is aimed at being practical by not making further assumptions beyond the causal graph which would be hard or impossible to test or challenge empirically—in contrast to the assumed known specification of the full SCM in [22]. We start from the position that the model is only partially known, and use this to motivate",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/02a3c7fb3f489288ae6942498498db20-Paper.pdf",
+              "document_sha256": "97517ccf81e68a4f4b817d300676a57af1a14d9117c6a27ae00f81544061b35b"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Recent work has discussed the limitations of counterfactual explanations to recommend actions for algorithmic recourse, and argued for the need of taking causal relationships between features into consideration. Unfortunately, in practice, the true underlying structural causal model is generally unknown. In this work, we first show that it is impossible to guarantee recourse without access to the true structural equations. To address this limitation, we propose two probabilistic approaches to select optimal actions that achieve recourse with high probability given limited causal knowledge (e.g., only the causal graph). The first captures uncertainty over structural equations under additive Gaussian noise, and uses Bayesian model averaging to estimate the counterfactual distribution. The second removes any assumptions on the structural equations by instead computing the average effect of recourse actions on individuals similar to the person who seeks recourse, leading to a novel subpopulation-based interventional notion of recourse. We then derive a gradient-based procedure for selecting optimal recourse actions, and empirically show that the proposed approaches lead to more reliable recommendations under imperfect causal knowledge than non-probabilistic baselines.",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/02a3c7fb3f489288ae6942498498db20-Paper.pdf",
+              "document_sha256": "97517ccf81e68a4f4b817d300676a57af1a14d9117c6a27ae00f81544061b35b"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "is known, common cost functions tend to permit arbitrary movement and so cannot account for this structure. Here we show how our approach can incorporate (approximate) manifold constraints into learning. We begin by learning a manifold bundle (M, T ) composed of a manifold model M and a tangent function T (x) that returns the subspace tangent to M at x.5 Since tangents T (x) are linear objects that provide a first-order approximation to the manifold at x, our approach is to add them as linear constraints to the optimization of the response mapping (i.e., the argmax in ∆ is taken over x0 ∈ T (x)). This ensure points move only on the tangent, thus approximating movement on the manifold. 3.4. Regularizing for social good Our discussion of strategic classification thus far has been focused on a single objective: predicting accurately in the face of strategic gaming. This promotes a clear interest of the system, but neglects to account for the effects of learning users. Returning to our loans example, note that any predictor inevitably determines the degree of recourse, defined as the ability of users that are denied a service (e.g., a loan) to take reasonable action to reverse this decision (Ustun et al., 2019; Gupta et al., 2019; Joshi et al., 2019; Chen et al., 2020; Karimi et al., 2020b). Recourse is clearly beneficial to users, but in many cases, its facilitation is also beneficial to the system (for discussion see Ustun et al. (2019); Venkatasubramanian & Alfano (2020); Karimi et al. (2020a)). In this section we show how our framework can be used to train models that are both accurate and promote favorable social outcomes. Relying on the observation that different models can induce very different social outcomes (Heidari et al., 2019), we cast learning as a problem of",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "We evaluate our approach of regularizing for social good (Sec. 3.4) on credit, which has been used in a recent paper on recourse by Ustun et al. (2019). Here we study how accuracy and social good trade-off under SERM by varying the amount of regularization λ. Figure 2 shows results for expected utility (left), social burden (center), and recourse (right). Each point in the plots corresponds to a model trained with a different λ. Results show that all three measures of social good exhibit a super-linear tradeoff curve: with mild regularization, a large increase in social good is obtained at little or no cost to accuracy. This highlights three interrelated points: that incentives in strategic classification are not fully discordant; that multiple models can achieve high accuracy; and that of these, our approach to model selection through regularization is effective at selecting models that promote favorable social outcomes.",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "change the loss function). Combined, the above limitations indicate a clear need for an approach to learning in strategic classification that is effective and practical. Our work aims to take a first step towards addressing this need. The core idea of our approach is to encode into the learning objective a response mapping that models how users respond to a given classification rule. By anticipating how inputs will be strategically modified under a given model, our approach optimizes directly for predictive performance under strategic behavior. We refer to this as strategic empirical risk minimization, or SERM. The challenge in optimizing the SERM objective is that models of user response typically involve an argmax operator, which can be nondifferentiable and even discontinuous. Our solution is to replace the argmax operator with a differentiable proxy, and for this we draw on recent advances in differentiable optimization solvers (Amos & Kolter, 2017; Djolonga & Krause, 2017; Agrawal et al., 2019a;b; Berthet et al., 2020; Tan et al., 2020; Agrawal & Boyd, 2020) and adapt them to our purpose. The resulting strategic response layer provides the main building-block of our framework. Using the flexibility our framework provides, we propose and showcase multiple ways in which the framework can extend beyond the original formulation of strategic classification and towards more realistic learning scenarios. We make use of the modular nature of our approach and the flexibility it provides to explore various extensions aimed at addressing potential practical concerns. These include: supporting complex predictive models (e.g., recursive neural networks), supporting structured cost functions (e.g., constraining movement to a manifold), and relaxing the assumption of a fixed and",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-152ef0053c01243f96ef2eba",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/02a3c7fb3f489288ae6942498498db20-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-8bbff10d43c1793fe4da7558",
+          "url": "https://proceedings.mlr.press/v139/levanon21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "051a2aa36c28b989af7a14b4eb227fe1affa10e117643febf3a721bbd5f0483f"
+    },
+    {
+      "id": "edge-80e2e52feeb596eccff34b79",
+      "a": "paper-161d8362f76e9086c3608e54",
+      "b": "paper-8bbff10d43c1793fe4da7558",
+      "state": {
+        "paper_a": {
+          "title": "On the Long-term Impact of Algorithmic Decision Policies: Effort Unfairness and Feature Segregation through Social Learning",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Most existing notions of algorithmic fairness are one-shot: they ensure some form of allocative equality at the time of decision making, but do not account for the adverse impact of the algorithmic decisions today on the long-term welfare and prosperity of certain segments of the population. We take a broader perspective on algorithmic fairness. We propose an effort-based measure of fairness and present a data-driven framework for characterizing the long-term impact of algorithmic policies on reshaping the underlying population. Motivated by the psychological literature on social learning and the economic literature on equality of opportunity, we propose a micro-scale model of how individuals may respond to decision-making algorithms. We employ existing measures of segregation from sociology and economics to quantify the resulting macro- scale population-level change. Importantly, we observe that different models may shift the group- conditional distribution of qualifications in different directions. Our findings raise a number of important questions regarding the formalization of fairness for decision-making models."
+        },
+        "paper_b": {
+          "title": "Strategic Classification Made Practical",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Strategic classification regards the problem of learning in settings where users can strategically modify their features to improve outcomes. This setting applies broadly, and has received much recent attention. But despite its practical significance, work in this space has so far been predominantly theoretical. In this paper we present a learning framework for strategic classification that is practical. Our approach directly minimizes the “strategic” empirical risk, which we achieve by differentiating through the strategic response of users. This provides flexibility that allows us to extend beyond the original problem formulation and towards more realistic learning scenarios. A series of experiments demonstrates the effectiveness of our approach on various learning settings."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Relying on the observation that different models can induce very different social outcomes (Heidari et al., 2019), we cast learning as a problem of model se-\nRelying on the observation that different models can induce very different social outcomes (Heidari et al., 2019), we cast learning as a problem of model selection , where the selection criterion reﬂects some notion of ‘social good’ (e.g., recourse).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-161d8362f76e9086c3608e54",
+          "b": "paper-8bbff10d43c1793fe4da7558",
+          "input_sha256": "a03f8ab10c9517db151a17a6caeeceb415f149d189df8ccb5254cd7cb24aa629",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/heidari19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/levanon21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "munity that to formalize fairness appropriately we need to first formalize the processes and dynamics through which algorithmic decisions impact their subjects and society in the long run. 1.1. Related Work Most existing notions of algorithmic fairness are one-shot and require that a particular error metric is equal across all social groups. Different choices for the metric have led to different fairness criteria; examples include demographic parity (Kleinberg et al., 2017; Dwork et al., 2012; CorbettDavies et al., 2017), disparate impact (Zafar et al., 2017; Feldman et al., 2015), equality of odds (Hardt et al., 2016), and calibration (Kleinberg et al., 2017). Prior notions fail to capture the disparity in the effort it takes members of different social groups to improve their algorithmic outcome. We propose a group-dependent, data-driven measure of effort, inspired by the literature on Equality Of Opportunity (EOP) (Roemer & Trannoy, 2015; Heidari et al., 2019). (In particular, the effort it takes individual i to improve their feature k value from x to x0 is proportional to the difference between the rank/quantile of x0 and x in the distribution of feature k in i’s social group.) Social (or observational) learning (Bandura, 2008) is a type of learning that occurs through observing and imitating the behavior of others. This type of learning requires a social model (or role model)—someone of higher status in the environment. According to the social learning theory, observers recreate their role model’s behavior only if they have sufficient motivation (Bandura, 1962; Apesteguia et al., 2007)—this often comes from the observation that the model is rewarded for their actions. In our model, an individual recreates their role model’s qualification if by doing so he obtains",
+              "url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "document_sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Most existing notions of algorithmic fairness are one-shot: they ensure some form of allocative equality at the time of decision making, but do not account for the adverse impact of the algorithmic decisions today on the long-term welfare and prosperity of certain segments of the population. We take a broader perspective on algorithmic fairness. We propose an effort-based measure of fairness and present a data-driven framework for characterizing the long-term impact of algorithmic policies on reshaping the underlying population. Motivated by the psychological literature on social learning and the economic literature on equality of opportunity, we propose a micro-scale model of how individuals may respond to decision making algorithms. We employ existing measures of segregation from sociology and economics to quantify the resulting macroscale population-level change. Importantly, we observe that different models may shift the groupconditional distribution of qualifications in different directions. Our findings raise a number of important questions regarding the formalization of fairness for decision-making models.",
+              "url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "document_sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 5,
+              "text": "is known, common cost functions tend to permit arbitrary movement and so cannot account for this structure. Here we show how our approach can incorporate (approximate) manifold constraints into learning. We begin by learning a manifold bundle (M, T ) composed of a manifold model M and a tangent function T (x) that returns the subspace tangent to M at x.5 Since tangents T (x) are linear objects that provide a first-order approximation to the manifold at x, our approach is to add them as linear constraints to the optimization of the response mapping (i.e., the argmax in ∆ is taken over x0 ∈ T (x)). This ensure points move only on the tangent, thus approximating movement on the manifold. 3.4. Regularizing for social good Our discussion of strategic classification thus far has been focused on a single objective: predicting accurately in the face of strategic gaming. This promotes a clear interest of the system, but neglects to account for the effects of learning users. Returning to our loans example, note that any predictor inevitably determines the degree of recourse, defined as the ability of users that are denied a service (e.g., a loan) to take reasonable action to reverse this decision (Ustun et al., 2019; Gupta et al., 2019; Joshi et al., 2019; Chen et al., 2020; Karimi et al., 2020b). Recourse is clearly beneficial to users, but in many cases, its facilitation is also beneficial to the system (for discussion see Ustun et al. (2019); Venkatasubramanian & Alfano (2020); Karimi et al. (2020a)). In this section we show how our framework can be used to train models that are both accurate and promote favorable social outcomes. Relying on the observation that different models can induce very different social outcomes (Heidari et al., 2019), we cast learning as a problem of",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "the tradeoff between classifier’s accuracy and the social outcomes it induces through regularization (see Sec. 3.4). A parallel line of work studies how learned models affect actual (rather than predictive) outcomes. Some works analyze how models should promote users to invest effort effectively (Kleinberg & Raghavan, 2019; Alon et al., 2020), while others tie learning to the underlying casual mechanisms of the environment (Perdomo et al., 2020; Bechavod et al., 2020; Shavit et al., 2020; Miller et al., 2020). We remain within the original, purely predictive problem formulation, but view the extension of our approach to such settings to be intriguing as future work.",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "In summary, our paper makes the following contributions: • Practical framework. We propose a novel learning framework for strategic classification that is practical, effective, and flexible. Our approach allows to differentiate through strategic user responses, thus permitting end-to-end training. • Flexible modeling. We show how the flexibility of our approach allows for learning in diverse strategic settings. We effectively apply our approach to multiple such settings of practical interest. • Socially-aware learning. We propose several forms of regularization that encourage learned models to promote favorable social outcomes. By capitalizing on certain structural aspects of the problem, our regularization effectively balances between system and user interests. We conduct a series of experiments demonstrating the effectiveness of our approach. With respect to the above points, each of our experiments is designed to study a different practical aspect of learning. The experiments cover a range of learning environments using real and synthetic data. Our results show that learning in strategic classification can be practical, effective, and socially responsible. One of our main goals in this paper is to motivate and support future empirical research on strategic classification, Towards this end, we make publicly available a code repository with a flexible implementation of our approach, designed to support a wide range of strategic learning settings. Code can be found at https://github.com/ SagiLevanon1/scmp.",
+              "url": "https://proceedings.mlr.press/v139/levanon21a/levanon21a.pdf",
+              "document_sha256": "0f5f45c6812702ce9e696c86457c0d8ee421ef3676918ae89a783690cec1a28c"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-161d8362f76e9086c3608e54",
+          "url": "https://proceedings.mlr.press/v97/heidari19a.html"
+        },
+        "b": {
+          "paper_id": "paper-8bbff10d43c1793fe4da7558",
+          "url": "https://proceedings.mlr.press/v139/levanon21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "aa51d9282e43c35f0a40f050acfcdb8f36be90387f63ed8c43b57d1608ab0cbf"
+    },
+    {
+      "id": "edge-cd58c8760c7aef636c9e38fa",
+      "a": "paper-161d8362f76e9086c3608e54",
+      "b": "paper-c63c18201036ce92d1144421",
+      "state": {
+        "paper_a": {
+          "title": "On the Long-term Impact of Algorithmic Decision Policies: Effort Unfairness and Feature Segregation through Social Learning",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Most existing notions of algorithmic fairness are one-shot: they ensure some form of allocative equality at the time of decision making, but do not account for the adverse impact of the algorithmic decisions today on the long-term welfare and prosperity of certain segments of the population. We take a broader perspective on algorithmic fairness. We propose an effort-based measure of fairness and present a data-driven framework for characterizing the long-term impact of algorithmic policies on reshaping the underlying population. Motivated by the psychological literature on social learning and the economic literature on equality of opportunity, we propose a micro-scale model of how individuals may respond to decision-making algorithms. We employ existing measures of segregation from sociology and economics to quantify the resulting macro- scale population-level change. Importantly, we observe that different models may shift the group- conditional distribution of qualifications in different directions. Our findings raise a number of important questions regarding the formalization of fairness for decision-making models."
+        },
+        "paper_b": {
+          "title": "Strategic Instrumental Variable Regression: Recovering Causal Relationships From Strategic Responses",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "In settings where Machine Learning (ML) algorithms automate or inform consequential decisions about people, individual decision subjects are often incentivized to strategically modify their observable attributes to receive more favorable predictions. As a result, the distribution the assessment rule is trained on may differ from the one it operates on in deployment. While such distribution shifts, in general, can hinder accurate predictions, our work identifies a unique opportunity associated with shifts due to strategic responses: We show that we can use strategic responses effectively to recover causal relationships between the observable features and outcomes we wish to predict, even under the presence of unobserved confounding variables. Specifically, our work establishes a novel connection between strategic responses to ML models and instrumental variable (IV) regression by observing that the sequence of deployed models can be viewed as an instrument that affects agents’ observable features but does not directly influence their outcomes. We show that our causal recovery method can be utilized to improve decision-making across several important criteria: individual fairness, agent outcomes, and predictive risk. In particular, we show that if decision subjects differ in their ability to modify non-causal attributes, any decision rule deviating from the causal coefficients can lead to (potentially unbounded) individual-level unfairness. ."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Moreover, recent work has established the potential of these tools to amplify existing social disparities by incentivizing different effort investments across distinct groups of subjects (Liu et al., 2020; Heidari et al., 2019; Mouzannar et al., 2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-161d8362f76e9086c3608e54",
+          "b": "paper-c63c18201036ce92d1144421",
+          "input_sha256": "ec69e20a65e7449d0f55fd9c8798f0949d125cc18bdf82ff98ec399a8db775de",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/heidari19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/harris22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/harris22a/harris22a.pdf",
+              "sha256": "c8239cfc3eca08489ddaaf426e04acf393c9e003a2304e9d9c063499dd30818e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "munity that to formalize fairness appropriately we need to first formalize the processes and dynamics through which algorithmic decisions impact their subjects and society in the long run. 1.1. Related Work Most existing notions of algorithmic fairness are one-shot and require that a particular error metric is equal across all social groups. Different choices for the metric have led to different fairness criteria; examples include demographic parity (Kleinberg et al., 2017; Dwork et al., 2012; CorbettDavies et al., 2017), disparate impact (Zafar et al., 2017; Feldman et al., 2015), equality of odds (Hardt et al., 2016), and calibration (Kleinberg et al., 2017). Prior notions fail to capture the disparity in the effort it takes members of different social groups to improve their algorithmic outcome. We propose a group-dependent, data-driven measure of effort, inspired by the literature on Equality Of Opportunity (EOP) (Roemer & Trannoy, 2015; Heidari et al., 2019). (In particular, the effort it takes individual i to improve their feature k value from x to x0 is proportional to the difference between the rank/quantile of x0 and x in the distribution of feature k in i’s social group.) Social (or observational) learning (Bandura, 2008) is a type of learning that occurs through observing and imitating the behavior of others. This type of learning requires a social model (or role model)—someone of higher status in the environment. According to the social learning theory, observers recreate their role model’s behavior only if they have sufficient motivation (Bandura, 1962; Apesteguia et al., 2007)—this often comes from the observation that the model is rewarded for their actions. In our model, an individual recreates their role model’s qualification if by doing so he obtains",
+              "url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "document_sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Most existing notions of algorithmic fairness are one-shot: they ensure some form of allocative equality at the time of decision making, but do not account for the adverse impact of the algorithmic decisions today on the long-term welfare and prosperity of certain segments of the population. We take a broader perspective on algorithmic fairness. We propose an effort-based measure of fairness and present a data-driven framework for characterizing the long-term impact of algorithmic policies on reshaping the underlying population. Motivated by the psychological literature on social learning and the economic literature on equality of opportunity, we propose a micro-scale model of how individuals may respond to decision making algorithms. We employ existing measures of segregation from sociology and economics to quantify the resulting macroscale population-level change. Importantly, we observe that different models may shift the groupconditional distribution of qualifications in different directions. Our findings raise a number of important questions regarding the formalization of fairness for decision-making models.",
+              "url": "https://proceedings.mlr.press/v97/heidari19a/heidari19a.pdf",
+              "document_sha256": "b4000324ea9ff1d67a4fa7da73075875fe896f9ad6388da00ae70f8a1ebe02e4"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction Machine learning (ML) predictions increasingly inform high-stakes decisions for people in areas such as college admissions (Pangburn, 2019; Somvichian-Clausen, 2021), credit scoring (Petrasic et al., 2017; Rice & Swesnik, 2013), employment (Sánchez-Monedero et al., 2020), and beyond. One of the major criticisms against the use of ML in socially consequential domains is the failure of these technologies to identify causal relationships among relevant attributes and the outcome of interest (Kusner et al., 2017). The single-minded focus of ML on predictive accuracy has given rise to brittle predictive models that learn to rely on spurious correlations—and at times, harmful stereotypes— to achieve seemingly accurate predictions on held-out test data (Sweeney, 2013; Kusner & Loftus, 2020). The resulting models frequently underperform in deployment, and their predictions can negatively impact decision subjects. As an example of the long-term negative consequences of ML-based decision-making systems, they often prompt individuals to modify their observable attributes strategically to receive more favorable predictions—and subsequently, decisions (Hardt et al., 2016). These strategic responses are among the primary causes of distribution shifts (and subsequently, the unsatisfactory performance) of ML in high-stakes decision-making domains. Moreover, recent work has established the potential of these tools to amplify existing social disparities by incentivizing different effort investments across distinct groups of subjects (Liu et al., 2020; Heidari et al., 2019; Mouzannar et al., 2019). The above challenges have led to renewed calls on the ML community to strengthen their understanding of the connections between ML and causality (Pearl, 2019; Schölkopf,",
+              "url": "https://proceedings.mlr.press/v162/harris22a/harris22a.pdf",
+              "document_sha256": "c8239cfc3eca08489ddaaf426e04acf393c9e003a2304e9d9c063499dd30818e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "lead to changes in y. Therefore, we say that an observable feature xi is causally relevant if θi∗ 6= 0. For convenience, throughout we denote the subset of causally-relevant features by xC , where C ⊆ [n], ∀i ∈ C if θi∗ 6= 0. 1.2. Overview of Results Strategic regression as instruments. Since bt , Et , and ot may be correlated with one another, ordinary least squares generally will not produce a consistent estimator for θ ∗ (see Appendix A.1 for details). We make the novel observation that the principal’s assessment rule θ t is a valid instrument, and leverage this observation to recover θ ∗ via Two-Stage Least Squares regression (2SLS). Our method applies to both off-policy and on-policy settings: one can directly apply 2SLS on historical data {(θ t , xt , yt )}Tt=1 , or the principal can intentionally deploy a sequence of varying assessment rules (e.g., by making small perturbations on a fixed rule) and then apply 2SLS on the collected data. Additionally, we show that our recovery of θ ∗ can be utilized to improve decision-making across several desired criteria, namely, individual fairness, agent outcomes, and predictive risk. (Non-)causal assessment rules and fairness. In Section 3, we analyze the individual-level disparities that may result if the assessment rule deviates from θ ∗ . Unlike most existing definitions of individual fairness, which rely on the observed characteristics of individuals, our definition measures the similarity between two individuals solely by comparing their b’s and E’s—that is, we consider two individuals to be similar if they have the same baseline values for causally relevant observable features and similar potentials for improv-",
+              "url": "https://proceedings.mlr.press/v162/harris22a/harris22a.pdf",
+              "document_sha256": "c8239cfc3eca08489ddaaf426e04acf393c9e003a2304e9d9c063499dd30818e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "ground. Applicants may manipulate both of their features. See Appendix F for a full experimental description. Results. In Figure 2, we compare the true effect of SAT score on college GPA (θ ∗ ) with the estimates of these quantities given by our method of 2SLS from Section 2 (θ̂ 2SLS ) and with the estimates given by OLS (θ̂ OLS ). (An analogous figure for the effects of HS GPA is included in the appendix.) In Figure 3, we compare the estimation errors of OLS and bOLS − θ ∗ k2 and kθ b2SLS − θ ∗ k2 . 2SLS, i.e. kθ We find that our 2SLS method converges to the true causal relationship (at a rate of about √1T ), whereas OLS has a constant bias. Although our setting assumes that SAT score has no causal relationship with college GPA, OLS mistakenly predicts that, on average, a 100 point increase in SAT score leads to about a 0.05 point increase in college GPA. If SAT were not causally related to collegiate performance in real life, these biased estimates could lead universities to erroneously use SAT scores in admissions decisions. This highlights the advantage of our method, since using a naive parameter estimation method like OLS in the presence of confounding could cause decision-making institutions to deploy assessments which don’t accurately reflect the characteristics they are trying to measure.",
+              "url": "https://proceedings.mlr.press/v162/harris22a/harris22a.pdf",
+              "document_sha256": "c8239cfc3eca08489ddaaf426e04acf393c9e003a2304e9d9c063499dd30818e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-161d8362f76e9086c3608e54",
+          "url": "https://proceedings.mlr.press/v97/heidari19a.html"
+        },
+        "b": {
+          "paper_id": "paper-c63c18201036ce92d1144421",
+          "url": "https://proceedings.mlr.press/v162/harris22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "f4aeed82aa1a58f8617b2ecf2bfe7fd0f2b62c82c4662a7c88f518bb83aec31a"
+    },
+    {
+      "id": "edge-527eba2c4801ba99b952b956",
+      "a": "paper-1e92f530857b900cdddedf5a",
+      "b": "paper-92ba9a865418937b0e8083d1",
+      "state": {
+        "paper_a": {
+          "title": "Causal Strategic Linear Regression",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "In many predictive decision-making scenarios, such as credit scoring and academic testing, a decision-maker must construct a model that accounts for agents’ propensity to “game” the decision rule by changing their features so as to receive better decisions. Whereas the strategic classification literature has previously assumed that agents’ outcomes are not causally affected by their features (and thus that strategic agents’ goal is deceiving the decision-maker), we join concurrent work in modeling agents’ outcomes as a function of their changeable attributes. As our main contribution, we provide efficient algorithms for learning decision rules that optimize three distinct decision-maker objectives in a realizable linear setting: accurately predicting agents’ post-gaming outcomes (prediction risk minimization), incentivizing agents to improve these outcomes (agent outcome maximization), and estimating the coefficients of the true underlying model (parameter estimation). Our algorithms circumvent a hardness result of Miller et al. (2019) by allowing the decision maker to test a sequence of decision rules and observe agents’ responses, in effect performing causal interventions through the decision rules."
+        },
+        "paper_b": {
+          "title": "Alternative Microfoundations for Strategic Classification",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "When reasoning about strategic behavior in a machine learning context it is tempting to combine standard microfoundations of rational agents with the statistical decision theory underlying classification. In this work, we argue that a direct combination of these ingredients leads to brittle solution concepts of limited descriptive and prescriptive value. First, we show that rational agents with perfect information produce discontinuities in the aggregate response to a decision rule that we often do not observe empirically. Second, when any positive fraction of agents is not perfectly strategic, desirable stable points—where the classifier is optimal for the data it entails—no longer exist. Third, optimal decision rules under standard microfoundations maximize a measure of negative externality known as social burden within a broad class of assumptions about agent behavior. Recognizing these limitations we explore alternatives to standard microfoundations for binary classification. We describe desiderata that help navigate the space of possible assumptions about agent responses, and we then propose the noisy response model. Inspired by smoothed analysis and empirical observations, noisy response incorporates imperfection in the agent responses, which we show mitigates the limitations of standard microfoundations. Our model retains analytical tractability, leads to more robust insights about stable points, and imposes a lower social burden at optimality."
+        },
+        "reference_list_contains_a": 0,
+        "citing_sentence": "…et al., 2019; Hu et al., 2019) whether classifiers incentivize improvement as opposed to gaming (Kleinberg and Raghavan, 2019; Miller et al., 2020; Shavit et al., 2020; Haghtalab et al., 2020), and practical considerations for optimization (Levanon and Rosenfeld, 2021) have also mostly built on…\n, 2019) whether classifiers incentivize improvement as opposed to gaming (Kleinberg and Raghavan, 2019; Miller et al., 2020; Shavit et al., 2020; Haghtalab et al., 2020), and practical considerations for optimization (Levanon and Rosenfeld, 2021) have also mostly built on standard microfoundations.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1e92f530857b900cdddedf5a",
+          "b": "paper-92ba9a865418937b0e8083d1",
+          "input_sha256": "e1309749019869082a899025be51ffbd7dab1dfdcf35ddbe3d3cf8dde025b127",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/shavit20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/jagadeesan21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/jagadeesan21a/jagadeesan21a.pdf",
+              "sha256": "0e9092c340d8142ac724b54720427c4ca0ad4c31ba7102ce8f08d24ef11e87b7"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "outcomes of its subject population, including credit scoring, academic testing, hiring, and online recommendation systems. In such scenarios, given the right decision rule, decision-makers can gain from transparency. But how can we find such a decision rule that maximizes agents’ outcomes if we do not know the effects of agents’ feature-changing actions? In recent work, Miller et al. (2020) argue that finding such “agent outcome”-maximizing decision rules requires solving a non-trivial causal inference problem. As we illustrate in Figure 1, the decision rule affects the agents’ features, which causally affect agents’ outcomes, and recovering these relationships from observational data is hard. We will refer to this setting as “causal strategic learning”, in view of the causal impact of the decision rule on agents’ outcomes. The core insight of our work is that while we may not know how agents will respond to any arbitrary decision rule, they will naturally respond to any particular rule we pick. Thus, as we test different decision rules and observe strategic agents’ responses and true outcomes, we can improve our decision rule over time. In the language of causality, by choosing a decision rule we are effectively launching an intervention that allows us to infer properties of the causal graph, circumventing the hardness result of (Miller et al., 2020). In this work, we introduce the setting of causal strategic linear regression in the realizable case and with norm-squared agent action costs. We propose algorithms for efficiently optimizing three possible objectives that a decision-maker may care about. Agent outcome maximization requires choosing a decision rule that will result in the highest expected outcome of an agent who games that rule. Prediction risk",
+              "url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "document_sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "outcome-affecting features from the decision rule has major consequences for causal strategic learning. Omitted variable bias in classic linear regression leads a learned predictor to reward non-causal visible features which are correlated with hidden causal features (Greene, 2003). In the strategic case, this backfires, as an agent’s action may change a visible feature without changing the hidden feature, thereby breaking this correlation, and undermining a naı̈vely-trained predictor. All of our methods are designed to succeed even when actions break the relationships between visible proxies and hidden causal features. Another common characteristic of real-life strategic learning scenarios is that in order to game one feature, an agent may need to take an action that also perturbs other features. We follow Kleinberg & Raghavan (2019) in modeling this by having agents take actions in action space which are mapped to features in feature space by an effort conversion matrix. As much of the prior literature has focused on the case of binary classification, it’s worth meditating on why we focus on regression. Many decisions, such as loan terms or insurance premiums, are not binary “accept/reject”s but rather lie somewhere on a continuum based on a prediction of a real-valued outcome. Furthermore, many ranking decisions, like which ten items to recommend in response to a search query, can instead be viewed as real-valued predictions that are post-processed into an ordering. 1.1. Summary of Results In Section 2, we introduce a setting for studying the performance of linear models that make real-valued decisions about strategic agents. Our methodology incorporates the realities that agents’ actions may causally affect their eventual outcomes, that a decision-maker can only",
+              "url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "document_sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "we show via simulations that a larger variance of the noise in the manipulation target leads to more conservative optimal thresholds. Finally, the aggregate distribution induced by noisy response can be estimated from individual experiments alone, without ever deploying a classifier. 1.2. Related work Existing work on strategic classification has mostly followed standard microfoundations for modeling agent behavior in response to a decision rule, e.g., (Dalvi et al., 2004; Brückner and Scheffer, 2011; Hardt et al., 2016a; Khajehnejad et al.; Tsirtsis and Gomez-Rodriguez, 2020) to name a few. This includes works that focus on minimizing Stackelberg regret (Dong et al., 2018; Chen et al., 2020), quantify the price of transparency (Akyol et al., 2016), and investigate the benefits of randomization in the decision rule (Braverman and Garg, 2020). Investigations of externalities such as social cost (Milli et al., 2019; Hu et al., 2019) whether classifiers incentivize improvement as opposed to gaming (Kleinberg and Raghavan, 2019; Miller et al., 2020; Shavit et al., 2020; Haghtalab et al., 2020), and practical considerations for optimization (Levanon and Rosenfeld, 2021) have also mostly built on standard microfoundations. A handful of works have suggested potential limitations of the standard strategic classification framework. Brückner et al. (2012) recognized that the standard model leads to very conservative Stackelberg solutions, and proposed resorting to Nash equilibria as an alternative solution concept. We instead advocate for altogether rethinking standard microfoundations. Concurrent and independent work by Ghalme et al. (2021) and Bechavod et al. (2021) relaxed the perfect information assumption in the standard model and studied strategic classification when the",
+              "url": "https://proceedings.mlr.press/v139/jagadeesan21a/jagadeesan21a.pdf",
+              "document_sha256": "0e9092c340d8142ac724b54720427c4ca0ad4c31ba7102ce8f08d24ef11e87b7"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "insights. Guided by these desiderata, we propose noisy response as a promising alternative to the standard model. Limitations of standard microfoundations. In strategic classification, agents respond strategically to the deployment of a binary decision rule fθ specified by classifier weights θ. The decision-maker assumes that agents follow standard microfoundations: that is, agents have full information about fθ and change their features so as to maximize their utility function. The utility function captures the benefit of a positive classification outcome, as well as the cost of feature change. Consequently, an agent only invests in changing their features if the cost of feature change does not exceed the benefit of positive classification. Our first observation concerns the aggregate response—the distribution D(θ) over feature, label pairs induced by a classifier fθ . We show that in the standard model, the aggregate response necessarily exhibits discontinuities that we often do not observe in empirical settings. The problem persists even if we assume an approximate best response or allow for heterogeneous cost functions. Our second observation reveals that, apart from lacking descriptive power, the standard model also leads to brittle conclusions about the solution concept of performative stability. Performative stability (Perdomo et al., 2020) refers to decision rules that are optimal on the particular distribution they entail. Stable points thus represent fixed points of retraining methods, which repeatedly update the classifier weights to be optimal on the data distribution induced by the previous classifier weights. We show that the existence of performatively stable classifiers breaks down whenever a positive fraction of randomly chosen agents in the population",
+              "url": "https://proceedings.mlr.press/v139/jagadeesan21a/jagadeesan21a.pdf",
+              "document_sha256": "0e9092c340d8142ac724b54720427c4ca0ad4c31ba7102ce8f08d24ef11e87b7"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "3. Alternative microfoundations In this section, we depart from this classical approach and systematically search for models that are more appropriate for binary classification. We define the space of alternatives and collect a set of useful properties that we show are desirable for microfoundations to satisfy. These properties serve as a “compass” to guide our search for an alternative microfoundations for strategic classification in Section 4. 3.1. Defining the space of alternatives The principle behind microfoundations for strategic classification is to equip the distribution map with structure by viewing the distribution induced by a decision rule as an aggregate of the responses of individual agents. We consider a space of alternative microfoundations that capture agent responses in full generality. We introduce a family of response types T that represents the space of all possible ways that agents can react to the classifier fθ . The response type fully determines agent behavior through the agent response function Rt : X × Θ → X. In particular, an agent with true features x and response type t changes their features to x0 = Rt (x, θ) when the classifier fθ is deployed. Remark. Non-strategic agents and the standard microfoundations each correspond to one response type. In our framework a population of agents could exhibit a mixture of different types, or even be described by a continuum of types. We formalize microfoundations through a mapping M : X ×Y → T from agents to response types. We denote the set of possible mappings M by the collection M that consists of all5 possible randomized functions X × Y → T . Conceptually, a mapping M ∈ M sets up the rules of agent behavior. The response types directly specify agent responses, rather 5 These mappings are subject",
+              "url": "https://proceedings.mlr.press/v139/jagadeesan21a/jagadeesan21a.pdf",
+              "document_sha256": "0e9092c340d8142ac724b54720427c4ca0ad4c31ba7102ce8f08d24ef11e87b7"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1e92f530857b900cdddedf5a",
+          "url": "https://proceedings.mlr.press/v119/shavit20a.html"
+        },
+        "b": {
+          "paper_id": "paper-92ba9a865418937b0e8083d1",
+          "url": "https://proceedings.mlr.press/v139/jagadeesan21a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "76e41d12d73db8ff86515bc1e2ac796241affa858389d9879202599fd2421725"
+    },
+    {
+      "id": "edge-3991dd8060f5babff8e60e3c",
+      "a": "paper-1e92f530857b900cdddedf5a",
+      "b": "paper-d075c38b327de6ef01a6752d",
+      "state": {
+        "paper_a": {
+          "title": "Causal Strategic Linear Regression",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "In many predictive decision-making scenarios, such as credit scoring and academic testing, a decision-maker must construct a model that accounts for agents’ propensity to “game” the decision rule by changing their features so as to receive better decisions. Whereas the strategic classification literature has previously assumed that agents’ outcomes are not causally affected by their features (and thus that strategic agents’ goal is deceiving the decision-maker), we join concurrent work in modeling agents’ outcomes as a function of their changeable attributes. As our main contribution, we provide efficient algorithms for learning decision rules that optimize three distinct decision-maker objectives in a realizable linear setting: accurately predicting agents’ post-gaming outcomes (prediction risk minimization), incentivizing agents to improve these outcomes (agent outcome maximization), and estimating the coefficients of the true underlying model (parameter estimation). Our algorithms circumvent a hardness result of Miller et al. (2019) by allowing the decision maker to test a sequence of decision rules and observe agents’ responses, in effect performing causal interventions through the decision rules."
+        },
+        "paper_b": {
+          "title": "Information Discrepancy in Strategic Learning",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "We initiate the study of the effects of non-transparency in decision rules on individuals’ ability to improve in strategic learning settings. Inspired by real-life settings, such as loan approvals and college admissions, we remove the assumption typically made in the strategic learning literature, that the decision rule is fully known to individuals, and focus instead on settings where it is inaccessible. In their lack of knowledge, individuals try to infer this rule by learning from their peers (e.g., friends and acquaintances who previously applied for a loan), naturally forming groups in the population, each with possibly different type and level of information regarding the decision rule. We show that, in equilibrium, the principal’s decision rule optimizing welfare across sub-populations may cause a strong negative externality: the true quality of some of the groups can actually deteriorate. On the positive side, we show that, in many natural cases, optimal improvement can be guaranteed simultaneously for all sub-populations. We further introduce a measure we term information overlap proxy, and demonstrate its usefulness in characterizing the disparity in improvements across sub-populations. Finally, we identify a natural condition under which improvement can be guaranteed for all sub-populations while maintaining high predictive accuracy. We complement our theoretical analysis with experiments on real-world datasets."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Models in the strategic learning literature, however, typically make a full transparency assumption—that is, the agents fully observe the deployed scoring or decision rule (Hardt et al., 2016; Dong et al., 2018; Chen et al., 2020a; Bechavod et al., 2021; Shavit et al., 2020; Hu et al., 2019; Kleinberg & Raghavan, 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-1e92f530857b900cdddedf5a",
+          "b": "paper-d075c38b327de6ef01a6752d",
+          "input_sha256": "86a1c354b81fa04de3f08452513315c478035b086b28ff794f888785df741375",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/shavit20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/bechavod22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "outcomes of its subject population, including credit scoring, academic testing, hiring, and online recommendation systems. In such scenarios, given the right decision rule, decision-makers can gain from transparency. But how can we find such a decision rule that maximizes agents’ outcomes if we do not know the effects of agents’ feature-changing actions? In recent work, Miller et al. (2020) argue that finding such “agent outcome”-maximizing decision rules requires solving a non-trivial causal inference problem. As we illustrate in Figure 1, the decision rule affects the agents’ features, which causally affect agents’ outcomes, and recovering these relationships from observational data is hard. We will refer to this setting as “causal strategic learning”, in view of the causal impact of the decision rule on agents’ outcomes. The core insight of our work is that while we may not know how agents will respond to any arbitrary decision rule, they will naturally respond to any particular rule we pick. Thus, as we test different decision rules and observe strategic agents’ responses and true outcomes, we can improve our decision rule over time. In the language of causality, by choosing a decision rule we are effectively launching an intervention that allows us to infer properties of the causal graph, circumventing the hardness result of (Miller et al., 2020). In this work, we introduce the setting of causal strategic linear regression in the realizable case and with norm-squared agent action costs. We propose algorithms for efficiently optimizing three possible objectives that a decision-maker may care about. Agent outcome maximization requires choosing a decision rule that will result in the highest expected outcome of an agent who games that rule. Prediction risk",
+              "url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "document_sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "outcome-affecting features from the decision rule has major consequences for causal strategic learning. Omitted variable bias in classic linear regression leads a learned predictor to reward non-causal visible features which are correlated with hidden causal features (Greene, 2003). In the strategic case, this backfires, as an agent’s action may change a visible feature without changing the hidden feature, thereby breaking this correlation, and undermining a naı̈vely-trained predictor. All of our methods are designed to succeed even when actions break the relationships between visible proxies and hidden causal features. Another common characteristic of real-life strategic learning scenarios is that in order to game one feature, an agent may need to take an action that also perturbs other features. We follow Kleinberg & Raghavan (2019) in modeling this by having agents take actions in action space which are mapped to features in feature space by an effort conversion matrix. As much of the prior literature has focused on the case of binary classification, it’s worth meditating on why we focus on regression. Many decisions, such as loan terms or insurance premiums, are not binary “accept/reject”s but rather lie somewhere on a continuum based on a prediction of a real-valued outcome. Furthermore, many ranking decisions, like which ten items to recommend in response to a search query, can instead be viewed as real-valued predictions that are post-processed into an ordering. 1.1. Summary of Results In Section 2, we introduce a setting for studying the performance of linear models that make real-valued decisions about strategic agents. Our methodology incorporates the realities that agents’ actions may causally affect their eventual outcomes, that a decision-maker can only",
+              "url": "https://proceedings.mlr.press/v119/shavit20a/shavit20a.pdf",
+              "document_sha256": "b06b8f08bd39dff12724f04e55e5ef16aec8ca7c447128b6cbfe201ba85a39b6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "1. Introduction Machine learning algorithms are increasingly used to make consequential decisions across a variety of domains, including loan approvals, college admissions, probation qualifications, and hiring. Given the high stakes of these decisions, individuals are incentivized to invest effort in changing their attributes, to obtain more favorable decisions. The evidence for such strategic adaptation from multiple domains (e.g., Björkegren et al. (2020); Dee et al. (2019); Dranove et al. (2003); Greenstone et al. (2020); Gonzalez-Lira & Mobarak (2019)) has inspired a growing literature on strategic learning that studies the interaction between learning algorithms and strategic individuals (“agents”). Models in the strategic learning literature, however, typically make a full transparency assumption—that is, the agents fully observe the deployed scoring or decision rule (Hardt et al., 2016; Dong et al., 2018; Chen et al., 2020a; Bechavod et al., 2021; Shavit et al., 2020; Hu et al., 2019; Kleinberg & Raghavan, 2020). In the context of credit scores, for example, this translates to the assumption that individuals know the deployed credit scoring rule in full detail. However, in reality, such a full-transparency assumption is often far-fetched, and as many credit scoring rules are proprietary, banks or financial agencies rarely make their machine learning model fully transparent to outsiders. Instead, they may only provide some labeled examples (e.g., past applicants who were granted loans) or explanations (e.g., ways to improve one’s credit score). As the actual scoring rule in effect is not directly observable, agents naturally attempt to infer it using other sources of information, which may differ greatly across different individuals. This is the case when the",
+              "url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "document_sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "gic investments and outcomes. To make things worse, there is often a regulatory requirement that the same decision rule be used on all sub-populations (due to e.g., the risk of redlining (Hunt, 2005; Rothstein, 2017)), prohibiting the use of group-specific decision rules by the decision-maker for to mitigate the adverse effects of information discrepancy. 1.1. Our Work Our work introduces the first framework to study the disparate effects of non-transparency in strategic learning on individuals’ ability to improve. Below, we provide an overview of our contributions, and the roadmap of the paper. Equilibrium Model. We propose a model for the principalagent interaction, when individuals from different subpopulations learn from their peers (Sec. 2). We then show how individuals from different sub-populations use the information available among their peers to form estimates of the decision rule, and compute the closed-form solutions for their and the principal’s responses in equilibrium (Sec. 3). Improvement Across Sub-Populations. Using our proposed model, we first prove a strong negative externality result: even if the principal deploys a decision rule that is optimized for maximizing the improvement across subpopulations, and individuals best-respond to the principal’s rule, some sub-populations may still suffer deterioration in their “quality” (true label). On the positive side, we show that improvement can be guaranteed simultaneously for all sub-populations under moderate conditions, e.g., when they have similar costs for effort exertion or when the extent to which they share the same information is minimal (Sec. 4.1). We then examine the extent to which information discrepancy regarding the deployed decision rule may result in disparity of improvement between",
+              "url": "https://proceedings.mlr.press/v162/bechavod22a/bechavod22a.pdf",
+              "document_sha256": "39b48182ac4000fd30d20d5dcbf2d71af33284ea66ce36796ed4a62b43538c93"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-1e92f530857b900cdddedf5a",
+          "url": "https://proceedings.mlr.press/v119/shavit20a.html"
+        },
+        "b": {
+          "paper_id": "paper-d075c38b327de6ef01a6752d",
+          "url": "https://proceedings.mlr.press/v162/bechavod22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Online Decision Making with Strategic Agents and Predictions"
+      },
+      "sha256": "262d10d3852edd813fad38d4ceffb07c646529e6e5db85774ca9ac98660a431b"
+    }
+  ]
+}

@@ -1,0 +1,1022 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Efficient Neural Network Compression and Training Optimization",
+  "area": "Natural Language Processing & LLMs",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-07c88eb9ff1c6bd77222ef76",
+      "a": "paper-07a1eb3b1988af43e401c2b7",
+      "b": "paper-65eb02d13e4c8b0e2cae2570",
+      "state": {
+        "paper_a": {
+          "title": "DeeBERT: Dynamic Early Exiting for Accelerating BERT Inference",
+          "year": 2020,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in real-time applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ~40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/DeeBERT."
+        },
+        "paper_b": {
+          "title": "LLM-Pruner: On the Structural Pruning of Large Language Models",
+          "year": 2023,
+          "venue": "NeurIPS",
+          "abstract": "Large language models (LLMs) have shown remarkable capabilities in language understanding and generation. However, such impressive capability typically comes with a substantial model size, which presents significant challenges in both the deployment, inference, and training stages. With LLM being a general-purpose task solver, we explore its compression in a task-agnostic manner, which aims to preserve the multi-task solving and language generation ability of the original LLM. One challenge to achieving this is the enormous size of the training corpus of LLM, which makes both data transfer and model post-training over-burdensome. Thus, we tackle the compression of LLMs within the bound of two constraints: being task-agnostic and minimizing the reliance on the original training dataset. Our method, named LLM-pruner, adopts structural pruning that selectively removes non-critical coupled structures based on gradient information, maximally preserving the majority of the LLM's functionality. To this end, the performance of pruned models can be efficiently recovered through tuning techniques, LoRA, in merely 3 hours, requiring only 50K data. We validate the LLM-Pruner on three LLMs, including LLaMA, Vicuna, and ChatGLM, and demonstrate that the compressed models still exhibit satisfactory capabilities in zero-shot classification and generation. The code will be made public."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-07a1eb3b1988af43e401c2b7",
+          "b": "paper-65eb02d13e4c8b0e2cae2570",
+          "input_sha256": "6753dd7e18fb0a4bcf8f9614e4c12f5dfd58926e4e23ac68bd7e08e7feff7e1e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2020.acl-main.204/",
+              "pdf_url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2023/hash/44956951349095f74492a5471128a7e0-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2023/file/44956951349095f74492a5471128a7e0-Paper-Conference.pdf",
+              "sha256": "598cabc76802d09492349649997aac9bf4e45184a0952ea6d84c8e8b3e89233f"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pre-trained language models such as ELMo (Peters et al., 2018), GPT (Radford et al., 2019), BERT (Devlin et al., 2019), XLNet (Yang et al., 2019), and RoBERTa (Liu et al., 2019) have brought significant improvements to natural language processing (NLP) applications. Despite their power, they are notorious for being enormous in size and slow in both training and inference. Their long inference latencies present challenges to deployment in real-time applications and hardwareconstrained edge devices such as mobile phones and smart watches. To accelerate inference for BERT, we propose DeeBERT: Dynamic early exiting for BERT. The inspiration comes from a well-known observation in the computer vision community: in deep convolutional neural networks, higher layers typically produce more detailed and finer-grained features (Zeiler and Fergus, 2014). Therefore, we",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large-scale pre-trained language models such as BERT have brought significant improvements to NLP applications. However, they are also notorious for being slow in inference, which makes them difficult to deploy in realtime applications. We propose a simple but effective method, DeeBERT, to accelerate BERT inference. Our approach allows samples to exit earlier without passing through the entire model. Experiments show that DeeBERT is able to save up to ∼40% inference time with minimal degradation in model quality. Further analyses show different behaviors in the BERT transformer layers and also reveal their redundancy. Our work provides new ideas to efficiently apply deep transformer-based models to downstream tasks. Code is available at https://github.com/castorini/ DeeBERT.",
+              "url": "https://aclanthology.org/2020.acl-main.204.pdf",
+              "document_sha256": "106c35a429ef02b2f10667e5865d67187845a9c076d3b839442a841a223579a3"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Compression of Language Model. Language models [9, 31, 25] have gained much attention and increase the need to reduce the size of parameters and reduce the latency [23, 48]. To compress the language model, previous works can be divided into several categories: network pruning [21, 63, 32, 15], knowledge distillation [46, 47, 40], quantization [68, 1, 71] and other techniques, like early exit [62] or dynamic token reduction [69]. We focus on the pruning of the language models, especially structural pruning [26]. Structural pruning removes the entire filter from the neural network, which is more hardware friendly. There are several ways to remove the structure, such as l1-dependent pruning [16, 72], first-order importance estimation [18], hessian-based estimation [21, 54] or the optimal brain surgeon [24, 21]. As for the pruning unit in structural pruning, some works adopt the entire layer [10] as the minimal unit, and others take the multi-head attention [52] or the feed-forward layers [18, 36] as the basic structure to prune. CoFi [61] studies the pruning unit in different granularity. Efficient and Low Resource Compression. With the growing size of neural network models, there is an increasing demand for efficient and low-resource compression [67, 66, 30, 29, 65]. As for the efficient compression, [22] accelerate the post-training by defining the reconstruction error as a linear least squares problem. [13, 12] propose the layer-wise optimal brain surgeon. As for the constraint of availability of the training corpus, data-free pruning [45, 70] come up with several strategies to prune the model by measuring neurons’ similarity. Besides, [34, 33, 42] proposes methods that distill the model without reliance on the training corpus of the model. However, those methods are",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/44956951349095f74492a5471128a7e0-Paper-Conference.pdf",
+              "document_sha256": "598cabc76802d09492349649997aac9bf4e45184a0952ea6d84c8e8b3e89233f"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Large language models (LLMs) have shown remarkable capabilities in language understanding and generation. However, such impressive capability typically comes with a substantial model size, which presents significant challenges in both the deployment, inference, and training stages. With LLM being a general-purpose task solver, we explore its compression in a task-agnostic manner, which aims to preserve the multi-task solving and language generation ability of the original LLM. One challenge to achieving this is the enormous size of the training corpus of LLM, which makes both data transfer and model post-training over-burdensome. Thus, we tackle the compression of LLMs within the bound of two constraints: being taskagnostic and minimizing the reliance on the original training dataset. Our method, named LLM-Pruner, adopts structural pruning that selectively removes non-critical coupled structures based on gradient information, maximally preserving the majority of the LLM’s functionality. To this end, the performance of pruned models can be efficiently recovered through tuning techniques, LoRA, in merely 3 hours, requiring only 50K data. We validate the LLM-Pruner on three LLMs, including LLaMA, Vicuna, and ChatGLM, and demonstrate that the compressed models still exhibit satisfactory capabilities in zero-shot classification and generation. The code is available at: https://github.com/horseee/LLM-Pruner",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/44956951349095f74492a5471128a7e0-Paper-Conference.pdf",
+              "document_sha256": "598cabc76802d09492349649997aac9bf4e45184a0952ea6d84c8e8b3e89233f"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Illustration of LLM-Pruner. (i) Task-specific compression: the model is fine-tuned then compressed on a specific task. (ii) TinyBERT: First distill the model on unlabeled corpus and then fine-tune it on the specific task. (iii) LLM-Pruner: Task-agnostic compression within 3 hours. Thus, we strive to compress the LLM in a new setting: to reduce the LLM’s size while preserving its diverse capabilities as general-purpose task solvers, as depicted in Figure 1. This introduces the task-agnostic compression of LLMs, which presents two key challenges: • The size of the training corpus of the LLM is enormous. Previous compression methods heavily depend on the training corpus. The LLM has escalated the corpus scale to 1 trillion tokens or more [17, 51]. The extensive storage needs and protracted transmission times make the dataset difficult to acquire. Furthermore, if the dataset is proprietary, acquisition of the training corpus verges on impossibility, a situation encountered in [74, 39]. • The unacceptably long duration for the post-training of the pruned LLM. Existing methods require a substantial amount of time for post-training the smaller model [55, 28]. For instance, the general distillation in TinyBERT takes around 14 GPU days [20]. Even post-training a task-specific compressed model of BERT demands around 33 hours [61, 22]. As the size of both the model and corpus for LLMs increases rapidly, this step will invariably consume an even more extensive time. To tackle the aforementioned challenges associated with the task-agnostic compression of LLMs, we introduce a novel approach called LLM-Pruner. Since our goal is to compress LLMs with reduced data dependency and expedited post-training, how to prune model with the minimal disruption to the origin is crucial.",
+              "url": "https://papers.nips.cc/paper_files/paper/2023/file/44956951349095f74492a5471128a7e0-Paper-Conference.pdf",
+              "document_sha256": "598cabc76802d09492349649997aac9bf4e45184a0952ea6d84c8e8b3e89233f"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-07a1eb3b1988af43e401c2b7",
+          "url": "https://aclanthology.org/2020.acl-main.204/"
+        },
+        "b": {
+          "paper_id": "paper-65eb02d13e4c8b0e2cae2570",
+          "url": "https://papers.nips.cc/paper_files/paper/2023/hash/44956951349095f74492a5471128a7e0-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "0eb8ae6b5442c2f5a8949addaf672d9f4c799db8468045a4fd0332c1f0781f95"
+    },
+    {
+      "id": "edge-0f5075e608a4b44bfce86f98",
+      "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+      "b": "paper-ea3f898dd2f3df5d6f3a1f04",
+      "state": {
+        "paper_a": {
+          "title": "Parameter-Efficient Transfer Learning for NLP",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Fine-tuning large pretrained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to $26$ diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within $0.8%$ of the performance of full fine-tuning, adding only $3.6%$ parameters per task. By contrast, fine-tuning trains $100%$ of the parameters per task."
+        },
+        "paper_b": {
+          "title": "IntLoRA: Integral Low-rank Adaptation of Quantized Diffusion Models",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Fine-tuning pre-trained diffusion models under limited budgets has gained great success. In particular, the recent advances that directly fine-tune the quantized weights using Low-rank Adaptation (LoRA) further reduces training costs. Despite these progress, we point out that existing adaptation recipes are not inference-efficient. Specifically, additional post-training quantization (PTQ) on tuned weights is needed during deployment, which results in noticeable performance drop when the bit-width is low. Based on this observation, we introduce IntLoRA, which adapts quantized diffusion models with integer-type low-rank parameters, to include inference efficiency during tuning. Specifically, IntLoRA enables pre-trained weights to remain quantized during training, facilitating fine-tuning on consumer-level GPUs. During inference, IntLoRA weights can be seamlessly merged into pre-trained weights to directly obtain quantized downstream weights without PTQ. Extensive experiments show our IntLoRA achieves significant speedup on both training and inference without losing performance."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In order to reduce the fine-tuning cost of large models, parameter-efficient fine-tuning (PEFT) has recently gained great interests (Lian et al., 2022; Chavan et al., 2023; Li & Liang, 2021; He et al., 2021; Jie & Deng, 2023).\nMore recently, some works (Dettmers et al., 2024; Qin et al., 2024) have successfully married PEFT and network quantization to allow the low-rank adaptation directly on the quantized weights (as shown in Fig.\nTo allow fine-tuning on consumer-level GPUs for user customization, some work attempts to apply PEFT techniques directly on the quantized pre-trained weights.\nTo facilitate efficient training, recent advances have introduced parameter efficient fine-tuning (PEFT) (Houlsby et al., 2019; Jia et al., 2022) techniques, such as LoRA (Hu et al., 2021), to fine-tune a limited number of parameters.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "b": "paper-ea3f898dd2f3df5d6f3a1f04",
+          "input_sha256": "8a0e42889fd4da02093a74b79470530758b7eec3854104920b0bea8e80a17650",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/houlsby19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/guo25f.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/guo25f/guo25f.pdf",
+              "sha256": "81c04c0d7e6f8388ab926a555cdfb0f741300124c7c60cf0b6fc109c74fe9a56"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "Both feature-based transfer and fine-tuning require a new set of weights for each task. Fine-tuning is more parameter efficient if the lower layers of a network are shared between tasks. However, our proposed adapter tuning method is even more parameter efficient. Figure 1 demonstrates this tradeoff. The x-axis shows the number of parameters trained per task; this corresponds to the marginal increase in the model size required to solve each additional task. Adapter-based tuning requires training two orders of magnitude fewer parameters to fine-tuning, while attaining similar performance. Adapters are new modules added between layers of a pre-trained network. Adapter-based tuning differs from feature-based transfer and fine-tuning in the following way. Consider a function (neural network) with parameters w: φw (x). Feature-based transfer composes φw with a new function, χv , to yield χv (φw (x)). Only the new, taskspecific, parameters, v, are then trained. Fine-tuning involves adjusting the original parameters, w, for each new task, limiting compactness. For adapter tuning, a new function, ψw,v (x), is defined, where parameters w are copied over from pre-training. The initial parameters v0 are set such that the new function resembles the original: ψw,v0 (x) ≈ φw (x). During training, only v are tuned. For deep networks, defining ψw,v typically involves adding new layers to the original network, φw . If one chooses |v| |w|, the resulting model requires ∼ |w| parameters for many tasks. Since w is fixed, the model can be extended to new tasks without affecting previous ones. Adapter-based tuning relates to multi-task and continual learning. Multi-task learning also results in compact models. However, multi-task learning requires simultaneous access to all tasks, which",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Fine-tuning large pre-trained models is an effective transfer mechanism in NLP. However, in the presence of many downstream tasks, fine-tuning is parameter inefficient: an entire new model is required for every task. As an alternative, we propose transfer with adapter modules. Adapter modules yield a compact and extensible model; they add only a few trainable parameters per task, and new tasks can be added without revisiting previous ones. The parameters of the original network remain fixed, yielding a high degree of parameter sharing. To demonstrate adapter’s effectiveness, we transfer the recently proposed BERT Transformer model to 26 diverse text classification tasks, including the GLUE benchmark. Adapters attain near state-of-the-art performance, whilst adding only a few parameters per task. On GLUE, we attain within 0.4% of the performance of full fine-tuning, adding only 3.6% parameters per task. By contrast, fine-tuning trains 100% of the parameters per task.",
+              "url": "https://proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf",
+              "document_sha256": "fc1e0f0d643dd116049b6d42d562b7c7203121db89cc2110e79714d57dda8021"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Figure 1: (a) The arithmetic inconsistency between the pretrained and adaptation weights leads to the merged weights still in FP16. Consequently, additional PTQ is needed for low-bit inference. (b) Our IntLoRA allows to work directly on INT4 arithmetic, ensuring the merged weights seamlessly in INT4 format and streamlining the whole process. els for downstream tasks poses challenges on consumerlevel GPUs. For instance, only loading the FP32 FLUX.1dev (BlackForestLabs, 2024) weights into GPUs can consume over 24GB of memory, let alone subsequent finetuning. Therefore, the huge fine-tuning costs hinder personalized diffusion model customization. To facilitate efficient training, recent advances have introduced parameter efficient fine-tuning (PEFT) (Houlsby et al., 2019; Jia et al., 2022) techniques, such as LoRA (Hu et al., 2021), to fine-tune a limited number of parameters. With the reduced gradient and optimizer states, they can achieve comparable or even better adaptation performance than fully fine-tuning. More recently, some works (Dettmers et al., 2024; Qin et al., 2024) have successfully married PEFT and network quantization to allow the low-rank adaptation directly on the quantized weights (as shown in Fig. 1(a)). Through reducing the bit-widths, the GPU costs during finetuning are further decreased.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/guo25f/guo25f.pdf",
+              "document_sha256": "81c04c0d7e6f8388ab926a555cdfb0f741300124c7c60cf0b6fc109c74fe9a56"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Parameter-efficient fine-tuning of diffusion models. In order to reduce the fine-tuning cost of large models, parameterefficient fine-tuning (PEFT) has recently gained great interests (Lian et al., 2022; Chavan et al., 2023; Li & Liang, 2021; He et al., 2021; Jie & Deng, 2023). For example, promptbased methods (Jia et al., 2022) append learnable prompts to modify the input space. Adapter-based methods (Houlsby et al., 2019; Chen et al., 2022) employ additional bottleneck structures as bypass branches for adaptation. Moreover, LoRA (Hu et al., 2021) adopts low-rank matrices to learn the weight updates for downstream tasks. In this work, we mainly focus on LoRA since it has been widely applied in diffusion model fine-tuning and can be merged into pretrained weights without increasing inference costs.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/guo25f/guo25f.pdf",
+              "document_sha256": "81c04c0d7e6f8388ab926a555cdfb0f741300124c7c60cf0b6fc109c74fe9a56"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "To address these challenges, a potential solution is to also transfer the adaptation weights to integer arithmetic. In this way, all weights during fine-tuning are in integers, thus ensuring the merged weights naturally being quantized. Despite these promising properties, it is non-trivial to accurately quantize the low-rank weights. For example, while zero initializing low-rank weights are advantageous for finetuning (Hu et al., 2021), it poses quantization challenges due to substantial quantization errors from small values. Furthermore, the additive form of the original LoRA forces the pre-trained and adaptation weights to share the same quantizer for seamless weight merging, which restricts available parameter space during fine-tuning. In this work, we propose IntLoRA, which achieves integral low-rank parameters for both training and inference efficient diffusion models. In detail, we introduce the AdaptationQuantization Separation (AQS) technique, which employs a task-agnostic auxiliary matrix to enable quantizationfriendly low-rank parameters without disrupting the gradient trajectory of the original LoRA. Additionally, we present the Multiplicative Low-rank Adaptation (MLA), which reformulates the mathematical structure of LoRA from addition to multiplication. This remains mathematically equivalent to the original but allows for independent optimization of adaptation weights. Furthermore, we develop the Variance Matching Control (VMC) to align the pre-trained and auxiliary matrices. For implementation, we provide two versions, i.e., IntLoRAMUL , and IntLoRASHIFT . The IntLoRAMUL learns quantized low-rank parameters and can be seamlessly merged through integer multiplication, while IntLoRASHIFT introduces log2-quantization and operates by bit-shifting the",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/guo25f/guo25f.pdf",
+              "document_sha256": "81c04c0d7e6f8388ab926a555cdfb0f741300124c7c60cf0b6fc109c74fe9a56"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Fine-tuning pre-trained diffusion models under limited budgets has gained great success. In particular, the recent advances that directly fine-tune the quantized weights using Low-rank Adaptation (LoRA) further reduces training costs. Despite these progress, we point out that existing adaptation recipes are not inference-efficient. Specifically, additional post-training quantization (PTQ) on tuned weights is needed during deployment, which results in noticeable performance drop when the bit-width is low. Based on this observation, we introduce IntLoRA, which adapts quantized diffusion models with integer-type low-rank parameters, to include inference efficiency during tuning. Specifically, IntLoRA enables pre-trained weights to remain quantized during training, facilitating fine-tuning on consumer-level GPUs. During inference, IntLoRA weights can be seamlessly merged into pre-trained weights to directly obtain quantized downstream weights without PTQ. Extensive experiments show our IntLoRA achieves significant speedup on both training and inference without losing performance. Code is available at https://github.com/csguoh/IntLoRA.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/guo25f/guo25f.pdf",
+              "document_sha256": "81c04c0d7e6f8388ab926a555cdfb0f741300124c7c60cf0b6fc109c74fe9a56"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9c76f30c6d2e3a2638f0c4b7",
+          "url": "https://proceedings.mlr.press/v97/houlsby19a.html"
+        },
+        "b": {
+          "paper_id": "paper-ea3f898dd2f3df5d6f3a1f04",
+          "url": "https://proceedings.mlr.press/v267/guo25f.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "f9dbcaa0512c9bf3614a94091ffb8a587b3706eae9c348267ee1b3405df459c0"
+    },
+    {
+      "id": "edge-a5366083c73498441370dbe0",
+      "a": "paper-9c283b7ca688de5899f32f74",
+      "b": "paper-1d8a3d55a7b888720f681c7c",
+      "state": {
+        "paper_a": {
+          "title": "Parameter efficient training of deep convolutional neural networks by dynamic sparse reparameterization",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Modern deep neural networks are typically highly overparameterized. Pruning techniques are able to remove a significant fraction of network parameters with little loss in accuracy. Recently, techniques based on dynamic reallocation of non-zero parameters have emerged, allowing direct training of sparse networks without having to pre-train a large dense model. Here we present a novel dynamic sparse reparameterization method that addresses the limitations of previous techniques such as high computational cost and the need for manual configuration of the number of free parameters allocated to each layer. We evaluate the performance of dynamic reallocation methods in training deep convolutional networks and show that our method outperforms previous static and dynamic reparameterization methods, yielding the best accuracy for a fixed parameter budget, on par with accuracies obtained by iteratively pruning a pre-trained dense model. We further investigated the mechanisms underlying the superior generalization performance of the resultant sparse networks. We found that neither the structure, nor the initialization of the non-zero parameters were sufficient to explain the superior performance. Rather, effective learning crucially depended on the continuous exploration of the sparse network structure space during training. Our work suggests that exploring structural degrees of freedom during training is more effective than adding extra parameters to the network."
+        },
+        "paper_b": {
+          "title": "Bi-directional Masks for Efficient N:M Sparse Training",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "We focus on addressing the dense backward propagation issue for training efficiency of N:M fine-grained sparsity that preserves at most N out of M consecutive weights and achieves practical speedups supported by the N:M sparse tensor core. Therefore, we present a novel method of Bi-directional Masks (Bi-Mask) with its two central innovations in: 1) Separate sparse masks in the two directions of forward and backward propagation to obtain training acceleration. It disentangles the forward and backward weight sparsity and overcomes the very dense gradient computation. 2) An efficient weight row permutation method to maintain performance. It picks up the permutation candidate with the most eligible N:M weight blocks in the backward to minimize the gradient gap between traditional unidirectional masks and our bi-directional masks. Compared with existing uni-directional scenario that applies a transposable mask and enables backward acceleration, our Bi-Mask is experimentally demonstrated to be more superior in performance. Also, our Bi-Mask performs on par with or even better than methods that fail to achieve backward acceleration. Project of this paper is available at https://github.com/zyxxmu/Bi-Mask."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In principle, the fine-grained network sparsity can maintain the performance of dense networks at an ultra-high sparse ratio like 90.0% (Mostafa & Wang, 2019; Blalock et al., 2020).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9c283b7ca688de5899f32f74",
+          "b": "paper-1d8a3d55a7b888720f681c7c",
+          "input_sha256": "d51bd349c159bc2c53e633918f1dce278ef6e8687630c47dd3380922b3c4ebf0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/mostafa19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/mostafa19a/mostafa19a.pdf",
+              "sha256": "449cb6fccf62f196e048e87ffbad9a3a99bedf5326a71aeb6cd4aea5ca8a1a8c"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/zhang23ae.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/zhang23ae/zhang23ae.pdf",
+              "sha256": "61f4ee90ebbaded9890f6d3ef2ce2817ba8a8afd0fe8061b12fc141a23a3416d"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Modern deep neural networks are typically highly overparameterized. Pruning techniques are able to remove a significant fraction of network parameters with little loss in accuracy. Recently, techniques based on dynamic reallocation of nonzero parameters have emerged, allowing direct training of sparse networks without having to pretrain a large dense model. Here we present a novel dynamic sparse reparameterization method that addresses the limitations of previous techniques such as high computational cost and the need for manual configuration of the number of free parameters allocated to each layer. We evaluate the performance of dynamic reallocation methods in training deep convolutional networks and show that our method outperforms previous static and dynamic reparameterization methods, yielding the best accuracy for a fixed parameter budget, on par with accuracies obtained by iteratively pruning a pre-trained dense model. We further investigated the mechanisms underlying the superior generalization performance of the resultant sparse networks. We found that neither the structure, nor the initialization of the non-zero parameters were sufficient to explain the superior performance. Rather, effective learning crucially depended on the continuous exploration of the sparse network structure space during training. Our work suggests that exploring structural degrees of freedom during training is more effective than adding extra parameters to the network.",
+              "url": "https://proceedings.mlr.press/v97/mostafa19a/mostafa19a.pdf",
+              "document_sha256": "449cb6fccf62f196e048e87ffbad9a3a99bedf5326a71aeb6cd4aea5ca8a1a8c"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "fψ is a more parameter efficient function approximator than f. Sparse reparameterization is a special case where g is a linear projection; φ is the non-zero entries (i.e. “weights”) and ψ their indices (i.e. “connectivity”) in the original parameter tensor θ. Likewise, parameter sharing is a similar special case of linear reparameterization where φ is the tied parameters and ψ the indices at which each parameter is placed (with repetition) in the original parameter tensor θ. If metaparameters ψ are fixed during the course of training, the reparameterization is static, whereas if ψ is adjusted adaptively during training, we call it dynamic reparameterization. In this paper, we investigate multiple static and dynamic reparameterizations of deep residual CNNs for efficient training. Inspired by previous techniques, we developed a novel dynamic reparameterization method that yielded the highest parameter efficiency in training sparse deep residual networks, outperforming existing static and dynamic reparameterization methods. Our method dynamically changes the sparse structure of the network during training. Its superior performance suggests that, given a limited storage and computational budget for training a CNN, it is better to allocate part of the resources to describing and evolving the structure of the network, than to spend it entirely on the parameters of a dense network. ∗",
+              "url": "https://proceedings.mlr.press/v97/mostafa19a/mostafa19a.pdf",
+              "document_sha256": "449cb6fccf62f196e048e87ffbad9a3a99bedf5326a71aeb6cd4aea5ca8a1a8c"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "2. Related Work 2.1. Network Sparsity Network sparsity has been one of the most effective tools to relieve the complexity of DNNs over the past decades (LeCun et al., 1989; Han et al., 2015). Pioneering works implement network sparsity in a fine-grained granularity where weights at arbitrary positions are removed to obtain a compact network. (Han et al., 2015) presented a classic three-step paradigm including pre-training a full network, removing low-magnitude weights, and fine-tuning the sparse networks. The lottery ticker hypothesis (Frankle & Carbin, 2019) further reveals the existence of randomly-initialized sparse networks that can be trained independently to compete with the performance of the dense model. In principle, the fine-grained network sparsity can maintain the performance of dense networks at an ultra-high sparse ratio like 90.0% (Mostafa & Wang, 2019; Blalock et al., 2020). Nevertheless, it receives very limited speedups since the resulting sparse networks are in unstructured formats, which barely take advantage of general hardware platforms.",
+              "url": "https://proceedings.mlr.press/v202/zhang23ae/zhang23ae.pdf",
+              "document_sha256": "61f4ee90ebbaded9890f6d3ef2ce2817ba8a8afd0fe8061b12fc141a23a3416d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Our simple design of Bi-Mask turns out to achieve remarkable results. Besides forward & backward training acceleration, Bi-Mask well improves the performance of transposable mask (T-Mask) across different N:M patterns, benchmarks, and networks. For example, Bi-Mask achieves 71.5% Top-1 accuracy when training 1:16 sparse ResNet-50 on ImageNet, surpassing T-mask by 5.3%. More surprisingly, our approach achieves comparable or even better results than vanilla N:M methods, where the backward propagation can not be accelerated. For example, our Bi-Mask exceeds Top-1 accuracy of SR-STE (Zhou et al., 2021) by 0.4% when training 2:4 sparse ResNet-50 on ImageNet. Table 1 provides advantage comparison between different mask methods.",
+              "url": "https://proceedings.mlr.press/v202/zhang23ae/zhang23ae.pdf",
+              "document_sha256": "61f4ee90ebbaded9890f6d3ef2ce2817ba8a8afd0fe8061b12fc141a23a3416d"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Sparse training serves as an effective tool to boost the performance of network sparsity (Hoefler et al., 2021; Evci et al., 2020; Sanh et al., 2020). It dynamically prunes and revives weights of the sparse networks during training according to specific criteria. For example, RigL (Evci et al., 2020) removes smaller-magnitude weights and revives weights with larger-magnitude gradients. Besides, sparse momentum (Dettmers & Zettlemoyer, 2019) considers magnitude of mean weight momentum as a guide to redistribute the sparse weights. In this paper, we focus on training N:M sparse networks. As a study mostly related to ours, the transposable N:M masks (Hubara et al., 2021) requires one single sparse mask with N:M blocks in both rows and columns such that the transposition in the backward also embraces hardware acceleration. In contrast, our method separately builds sparse masks in the forward and backward propagation without additional sparse constraints and gains significantly better performance under the same N:M case. Besides, (Pool & Yu, 2021) proposed to permute the input channel of pre-trained CNNs to maximally preserve the magnitude of N:M sparse networks. Very differently, our Bi-Mask permutes the row dimension of sparse weights that are trained from scratch, with a diverse object of obtaining more eligible N:M weight blocks to mitigate the gradient gap in the backward sparsity.",
+              "url": "https://proceedings.mlr.press/v202/zhang23ae/zhang23ae.pdf",
+              "document_sha256": "61f4ee90ebbaded9890f6d3ef2ce2817ba8a8afd0fe8061b12fc141a23a3416d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9c283b7ca688de5899f32f74",
+          "url": "https://proceedings.mlr.press/v97/mostafa19a.html"
+        },
+        "b": {
+          "paper_id": "paper-1d8a3d55a7b888720f681c7c",
+          "url": "https://proceedings.mlr.press/v202/zhang23ae.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "6aa0783809c9b173be596031aa683c8951537351f39dee6ef8d897dabf356e5a"
+    },
+    {
+      "id": "edge-8bfb08ae701d1181494d28ef",
+      "a": "paper-011b8d96c7974f9f35b2b0cb",
+      "b": "paper-335d5b0be6c02219c2c7b28c",
+      "state": {
+        "paper_a": {
+          "title": "MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weight-sharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous sub-billion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases."
+        },
+        "paper_b": {
+          "title": "ParetoQ: Improving Scaling Laws in Extremely Low-bit LLM Quantization",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "The optimal bit-width for achieving the best trade-off between quantized model size and accuracy has been a subject of ongoing debate. While some advocate for 4-bit quantization, others propose that 1.58-bit offers superior results. However, the lack of a cohesive framework for different bits has left such conclusions relatively tenuous. We present ParetoQ, the first unified framework that facilitates rigorous comparisons across 1-bit, 1.58-bit, 2-bit, 3-bit, and 4-bit quantization settings. Our findings reveal a notable learning transition between 2 and 3 bits: For 3-bits and above, the fine-tuned models stay close to their original pre-trained distributions, whereas for learning 2-bit networks or below, the representations change drastically. By optimizing training schemes and refining quantization functions, ParetoQ surpasses all previous methods tailored to specific bit widths. Remarkably, our ParetoQ ternary 600M-parameter model even outperforms the previous SoTA ternary 3B-parameter model in accuracy, using only one-fifth of the parameters. Extensive experimentation shows that ternary, 2-bit, and 3-bit quantization maintains comparable performance in the size-accuracy trade-off and generally exceeds 4-bit and binary quantization. Considering hardware constraints, 2-bit quantization offers promising potential for memory reduction and speedup."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The ParetoQ 3B ternary model is quantized from LLaMA3 [AI@Meta, 2024] 3B model, while other models are quantized from MobileLLM [Liu et al., 2024b].\nWe conduct experiments on eight models including MobileLLM [Liu et al., 2024b] 125M/350M/600M/1B/1.5B and LLaMA-3 [AI@Meta, 2024] 1B/3B/8B.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-011b8d96c7974f9f35b2b0cb",
+          "b": "paper-335d5b0be6c02219c2c7b28c",
+          "input_sha256": "4a4a8e873dc722a0ee9829670649e6007ac7a29448bc3f466eee4bf7ff923dab",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/liu24ce.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/83b17fb3369b1effa97ca5409526b02e-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/83b17fb3369b1effa97ca5409526b02e-Paper-Conference.pdf",
+              "sha256": "4fca19034be9218c5e1b651bbc53ea28f531e77c832b0f51eeb1bb03370e45ed"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "This paper addresses the growing need for efficient large language models (LLMs) on mobile devices, driven by increasing cloud costs and latency concerns. We focus on designing top-quality LLMs with fewer than a billion parameters, a practical choice for mobile deployment. Contrary to prevailing belief emphasizing the pivotal role of data and parameter quantity in determining model quality, our investigation underscores the significance of model architecture for sub-billion scale LLMs. Leveraging deep and thin architectures, coupled with embedding sharing and grouped-query attention mechanisms, we establish a strong baseline network denoted as MobileLLM, which attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M state-of-the-art models. Additionally, we propose an immediate block-wise weightsharing approach with no increase in model size and only marginal latency overhead. The resultant models, denoted as MobileLLM-LS, demonstrate a further accuracy enhancement of 0.7%/0.8% than MobileLLM 125M/350M. Moreover, MobileLLM model family shows significant improvements compared to previous subbillion models on chat benchmarks, and demonstrates close correctness to LLaMA-v2 7B in API calling tasks, highlighting the capability of small models for common on-device use cases.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "To further validate our design principles under a wider range of memory constraints, we extend our model to include MobileLLM-600M, 1B, and 1.5B configurations. The comprehensive results are detailed in the Appendix A. Question Answering and Reading Comprehension We evaluate pre-trained models on the TQA question answering benchmark (Joshi et al., 2017) and RACE reading comprehension benchmark (Lai et al., 2017). We follow the evaluation setup from (Touvron et al., 2023a) and report the results in Table 4. Comparing models of 125M size, MobileLLM125M demonstrates a noteworthy improvement of over 4.3 points on the TQA benchmark in contrast to its predecessor. Moreover, the MobileLLM-350M model exhibits a substantial performance increase of approximately 10 points compared to other 350M-sized models. For the reading comprehension tasks, MobileLLM model family also exhibits significantly higher scores than preceding sub-billion parameter models.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24ce/liu24ce.pdf",
+              "document_sha256": "0e327790c3b5c233d0c2b4a0259409445dc074e235f2422376d7ab7f58f8c49f"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "We conduct experiments on eight models including MobileLLM [Liu et al., 2024b] 125M/350M/600M/1B/1.5B and LLaMA-3 [AI@Meta, 2024] 1B/3B/8B. Our evaluation was carried out on eight zero-shot commonsense reasoning tasks and Wiki2 [Merity et al., 2016] test set. During the quantized network training process, we initialized the models with pre-trained weights. Following the common practice [Frantar et al., 2022, Liu et al., 2023c], all weights except for the embedding and output layers are quantized. We employed the AdamW [Loshchilov and Hutter, 2017] optimizer with zero weight decay for optimization. The training was distributed across 16 GPUs, with each GPU handling a batch size of 8. For binary, ternary, and 2-bit quantization settings, the optimization process spanned 120,000 iterations with initial learning rate of 2 × 10−5 . For 3-bit and 4-bit settings, the process involved 40,000 iterations with initial learning rate of 1 × 10−5 . The learning rate decayed to zero following cosine learning rate decay. 5.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/83b17fb3369b1effa97ca5409526b02e-Paper-Conference.pdf",
+              "document_sha256": "4fca19034be9218c5e1b651bbc53ea28f531e77c832b0f51eeb1bb03370e45ed"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "65 65 65 M M M B B B B B 65 125 350 600 1 1.5 1 3 8 60 MobileLLM | LLaMA-3 60 60 60 55 55 Learnable Policy 55 55 Statistics Clip Range 50 Statistics MinMax Range 50 50 50 SEQ Clip Range Init B B B B B B B B B B B B B B B SEQ MinMax Range Init M M M M M M M M M 1 1 1 5 5 5 1 3 8 1 3 8 1 3 8 5 0 0 5 0 0 5 0 0 . . . 2 5 60 2 5 60 25M 50M600M 1B 1.5B 1B 3B 8B 1 1 1 12 35 60 LSQ MinMax Range Init MobileLLM | LLaMA-3 1 3 MobileLLM | LLaMA-3 1 3 MobileLLM | LLaMA-3 1 3 MobileLLM | LLaMA-3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/83b17fb3369b1effa97ca5409526b02e-Paper-Conference.pdf",
+              "document_sha256": "4fca19034be9218c5e1b651bbc53ea28f531e77c832b0f51eeb1bb03370e45ed"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "In this paper, we demonstrate that previous conclusions on the low-bit scaling laws can be significantly sharpened by better quantization scheme design and training improvements. While previous works define the search space of the QAT scaling laws solely as a function of model parameters (N ), token count (D), and quantization precision (P), we emphasize the critical role that the training scheme (Strain ) and the bit-specific quantization function (F) play in the equation. We formalize the search space as L(N , D, P, Strain , F), comprising five dimensions. To disentangle these complexities, we first identify the optimal training strategy for plausible quantization functions in each bit width, L(N, D, Strain | P, F). Subsequently, with the optimal training ∗ strategy (Strain ) and the token count (D∗ ) required for saturation, we determine the best quantiza∗ tion function for each bit, L(N, F | P, D∗ , Strain ). Results highlight that quantization grids and ranges are pivotal in the sub-4-bit regime, with a sharp learning behavior transition between 1-bit/1.58-bit/2-bit and 3-bit/4-bit. Based on the findings, we derive ParetoQ, the first framework that unifies the training and quantization scheme in sub 4-bit regime. Rather than fitting hypothetical scaling laws for quantization, ParetoQ demonstrate its robustness by yielding state-of-the-art (SOTA) models at all bit widths, surpassing prior works tailored for individual bit levels. These SOTA points in the Pareto chart ensure that our scaling law comparisons are both reliable and consistent, as they derive from homogeneous settings. Leveraging ParetoQ, we identify the optimal ∗ bit-width for minimizing loss within the effective quantized model size, L(N , P|F ∗ , D∗ , Strain ). Our scaling laws reveal that binary",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/83b17fb3369b1effa97ca5409526b02e-Paper-Conference.pdf",
+              "document_sha256": "4fca19034be9218c5e1b651bbc53ea28f531e77c832b0f51eeb1bb03370e45ed"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Post-Training Quantization (PTQ) and Quantization-Aware Training (QAT) are two primary quantization approaches. PTQ applies quantization after full-precision training, simplifying deployment but often leads to significant performance loss at bit widths below 4 bits. In contrast, QAT incorporates quantization during training to optimize model performance for low-bit-width representations. Here we start by answering a key question: Given a fixed training budget (in #tokens) Btrain = BFPT + BQAT , how should the budget be optimally allocated between full-precision training (BFPT ) and quantization-aware training/finetuning (BQAT ) to maximize the accuracy of the quantized model? This question is both technically intriguing and practically significant. Our approach begins with analyzing the pretraining phase to determine the optimal switching point from FPT to QAT, aiming to minimize the loss: ∗ ∗ BFPT , BQAT = arg min L(BFPT , BQAT |N , P) (1) BFPT +BQAT =Btrain",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/83b17fb3369b1effa97ca5409526b02e-Paper-Conference.pdf",
+              "document_sha256": "4fca19034be9218c5e1b651bbc53ea28f531e77c832b0f51eeb1bb03370e45ed"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-011b8d96c7974f9f35b2b0cb",
+          "url": "https://proceedings.mlr.press/v235/liu24ce.html"
+        },
+        "b": {
+          "paper_id": "paper-335d5b0be6c02219c2c7b28c",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/83b17fb3369b1effa97ca5409526b02e-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "038e50ea3df8d3e48786968a037be8e9bf2ec652882e65c2e0fe664c3669e489"
+    },
+    {
+      "id": "edge-41aec8a50349bbe1ce72c99c",
+      "a": "paper-018941066c958bd2e1d2a54c",
+      "b": "paper-01f54f0a3ea576d720399f2a",
+      "state": {
+        "paper_a": {
+          "title": "Accurate Post Training Quantization With Small Calibration Sets",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant over-fitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to over-fitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bit-width allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code \\textit{https://github.com/papers-submission/CalibTIP}."
+        },
+        "paper_b": {
+          "title": "A Frustratingly Easy Post-Training Quantization Scheme for LLMs",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "Efficient inference has become crucial for hyper-scale AI models, including large language models, as their parameter count continues to increase for enhanced performance. This necessity holds true regardless of the computing environment, whether it be mobile devices or cloud servers. Quantization emerges as a solution to alleviate the computational burden during inference. By representing models with a reduced bit-width, quantization minimizes the frequency of DRAM access while fully exploiting the parallelism of operations through a dense matrix format. Consequently, quantized models achieve low end-to-end latency and optimize resource utilization by addressing both memory and computing bottlenecks. In this paper, we propose a straightforward post-training quantization scheme, called Z-Fold, that fully utilizes the feature of the Transformer structure widely employed in large language models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "…optimize the quantized network by various approaches approximating the Hessian with the calibration set (few-shot), which leads quantized networks to be more robust than data-free quantization (Nagel et al., 2020; Li et al., 2021; Hubara et al., 2021; Frantar and Alistarh, 2022; Jeon et al., 2023).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-018941066c958bd2e1d2a54c",
+          "b": "paper-01f54f0a3ea576d720399f2a",
+          "input_sha256": "e3e7de93f1bf6291b352b23c49786b1944221e787736e5bdfd7cb05f14f441d0",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/hubara21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.emnlp-main.892/",
+              "pdf_url": "https://aclanthology.org/2023.emnlp-main.892.pdf",
+              "sha256": "090d9bc28ff4ffdd585bfc6a31afc49b12e4e4b3bc24719ae27e084378f3f9d2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant overfitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to overfitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bitwidth allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "5. Experiments In this section, we demonstrate our methods and pipelines on several models and datasets. We first start by analyzing image recognition models such as ResNet18/50, MobileNetV2, which were trained over the ImageNet dataset. Next, we demonstrate our method robustness by applying it on question answering task using the popular BERT model (Devlin et al., 2018), which was fine-tuned on the SQuAD1.1 dataset (Rajpurkar et al., 2016). In all our experiments, we used a small calibration set taken from the training dataset. Unless stated otherwise, we applied asymmetric per-channel quantization (i.e. GEMLOWP (Wu et al., 2016)) with quantized offset (i.e., zero point). Next, we analyze each method’s strengths and weaknesses separately and argue for its validity. Additional implementation details can be found in section and the code are given in sections (5) of the supplementary material. 5.1. AdaQuant Recently several researchers suggested different types of MSE optimization. In most cases, the optimization was done per-tensor (i.e., for the weights and activations separately).",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "where min() and max() return the minimum and maximum values of each column respectively. Based on the step size α set by MMSE or minmax, we can further optimize the quantized network by various approaches approximating the Hessian with the calibration set (few-shot), which leads quantized networks to be more robust than datafree quantization (Nagel et al., 2020; Li et al., 2021; Hubara et al., 2021; Frantar and Alistarh, 2022; Jeon et al., 2023). Among them, OPTQ (Frantar et al., 2023), also known as GPTQ, achieves reasonable performance for quantized LLMs without gradient-based optimization in a relatively short period by simplifying Optimal Brain Quantization (Frantar and Alistarh, 2022). Consider W ⊺ ∈ Rdout ×din as the transposed weight matrix and X ∈ Rdin ×n as the input batch of the layer,",
+              "url": "https://aclanthology.org/2023.emnlp-main.892.pdf",
+              "document_sha256": "090d9bc28ff4ffdd585bfc6a31afc49b12e4e4b3bc24719ae27e084378f3f9d2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "inference techniques have gained significant attention as much as for scaling out the models, whether in resource-constrained (e.g., edge devices) or resource-abundant (e.g., cloud server) environments. Quantization emerges as a promising and attractive solution among various techniques aimed at improving model efficiency (e.g., pruning (Frantar and Alistarh, 2023), low-rank approximation (Chen et al., 2018) and knowledge distillation (Hsieh et al., 2023)). By representing models with a low bit-width, quantization reduces the frequency of DRAM access, while fully leveraging the parallelism of operations through a dense matrix format. As a result, quantized models alleviate the bottleneck caused by both memory and computational overheads. In this paper, we propose a post-training quantization method for LLMs, called Z-F OLD, which exploits the feature of the Transformer architecture (pre-LayerNorm) to enhance the quantized models without introducing additional quantization parameters or computational costs. In a nutshell, we quantize weights into low bit-width (down to 2-bit) using more parameters (ζ) than existing approaches. This contributes to improving quantized networks by further minimizing the loss perturbation as a result of quantization. However, we fold or fuse these additional parameters (ζ) into other existing parameters (α or γ; see Figure 1) in advance of inference, to avoid imposing further hardware costs. As a result, our approach achieves state-of-the-art performance among quantized LLMs without any additional parameters or hardware costs.",
+              "url": "https://aclanthology.org/2023.emnlp-main.892.pdf",
+              "document_sha256": "090d9bc28ff4ffdd585bfc6a31afc49b12e4e4b3bc24719ae27e084378f3f9d2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "quently apply a few-shot quantization method to refine quantized models further. Algorithm 2 explains our approach when given a calibration set. We initialize quantized models by Z-F OLD, where we use the Hessian for α to minimize the degrada-",
+              "url": "https://aclanthology.org/2023.emnlp-main.892.pdf",
+              "document_sha256": "090d9bc28ff4ffdd585bfc6a31afc49b12e4e4b3bc24719ae27e084378f3f9d2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-018941066c958bd2e1d2a54c",
+          "url": "https://proceedings.mlr.press/v139/hubara21a.html"
+        },
+        "b": {
+          "paper_id": "paper-01f54f0a3ea576d720399f2a",
+          "url": "https://aclanthology.org/2023.emnlp-main.892/"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "79078e72f55e63fcbb610d548450853c2536b7eab6e1f98520454d747062cfcc"
+    },
+    {
+      "id": "edge-2d972558fe95e037b0030aaf",
+      "a": "paper-018941066c958bd2e1d2a54c",
+      "b": "paper-2da09086378f6397016ad14f",
+      "state": {
+        "paper_a": {
+          "title": "Accurate Post Training Quantization With Small Calibration Sets",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant over-fitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to over-fitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bit-width allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code \\textit{https://github.com/papers-submission/CalibTIP}."
+        },
+        "paper_b": {
+          "title": "SKIM: Any-bit Quantization Pushing The Limits of Post-Training Quantization",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Large Language Models (LLMs) exhibit impressive performance across various tasks, but deploying them for inference poses challenges. Their high resource demands often necessitate complex, costly multi-GPU pipelines, or the use of smaller, less capable models. While quantization offers a promising solution utilizing lower precision for model storage, existing methods frequently experience significant performance drops at lower precision levels. Additionally, they typically provide only a limited set of solutions at specific bit levels, many of which are extensively manually tuned. To address these challenges, we propose a new method called SKIM : Scaled K-means clustering wIth Mixed precision. Our approach introduces two novel techniques: 1. A greedy algorithm to solve approximately optimal bit allocation across weight channels, and 2. A trainable scaling vector for non-differentiable K-means clustering. These techniques substantially improve the model performance and can be adapted to any given bit. Notably, in terms of perplexity, our method narrows the gap between quantized LLaMA models and their full precision counterparts by around 14% on average."
+        },
+        "reference_list_contains_a": null,
+        "citing_sentence": "The Layer-wise Quantization Framework has been widely adopted (Frantar et al., 2022; Hubara et al., 2021) to make the task more targeted.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-018941066c958bd2e1d2a54c",
+          "b": "paper-2da09086378f6397016ad14f",
+          "input_sha256": "0666ce1b31efed6cefa00bd3cc83102377c624c0087f222a1c2d6d646d3ef2d2",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/hubara21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/bai25c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/bai25c/bai25c.pdf",
+              "sha256": "1b1c3c90681d5e9c1db455939cd748cc2d2813b5c933d809ef7c93daad4eafb6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant overfitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to overfitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bitwidth allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "5. Experiments In this section, we demonstrate our methods and pipelines on several models and datasets. We first start by analyzing image recognition models such as ResNet18/50, MobileNetV2, which were trained over the ImageNet dataset. Next, we demonstrate our method robustness by applying it on question answering task using the popular BERT model (Devlin et al., 2018), which was fine-tuned on the SQuAD1.1 dataset (Rajpurkar et al., 2016). In all our experiments, we used a small calibration set taken from the training dataset. Unless stated otherwise, we applied asymmetric per-channel quantization (i.e. GEMLOWP (Wu et al., 2016)) with quantized offset (i.e., zero point). Next, we analyze each method’s strengths and weaknesses separately and argue for its validity. Additional implementation details can be found in section and the code are given in sections (5) of the supplementary material. 5.1. AdaQuant Recently several researchers suggested different types of MSE optimization. In most cases, the optimization was done per-tensor (i.e., for the weights and activations separately).",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "3.2. Layer-wise Quantization The Layer-wise Quantization Framework has been widely adopted (Frantar et al., 2022; Hubara et al., 2021) to make the task more targeted. This framework aims to quantize each layer individually and addresses corresponding reconstruction problems. Concretely, let W be the full-precision weight matrix, and X the input data. The goal is to find the quantized weight W q that minimizes the layer-wise squared error between the outputs of the original and quantized weights, which can be formally expressed as: 2",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/bai25c/bai25c.pdf",
+              "document_sha256": "1b1c3c90681d5e9c1db455939cd748cc2d2813b5c933d809ef7c93daad4eafb6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "5. Experiments 5.1. Setups Quantization Details We evaluate our method within the context of post-training and weight-only quantization. The default setting includes INT4 and INT3, as well as INT3 and INT2 with extra memory usage. Note that we have 6",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/bai25c/bai25c.pdf",
+              "document_sha256": "1b1c3c90681d5e9c1db455939cd748cc2d2813b5c933d809ef7c93daad4eafb6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "We propose Scaled K-means clustering wIth Mixed Precision (SKIM), an effective posting-training and weight-only quantization method. Building on previous non-uniform quantization methods, SKIM further incorporate two novel techniques: Adaptive Mixed Precision and Trainable Scaling Vector. Our method is evaluated across a wide range of models, tasks, and bit levels, consistently outperforming previous state-of-the-art methods. Its memory efficiency and ability to break the fixed bit grid facilitate the deployment of large language models.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/bai25c/bai25c.pdf",
+              "document_sha256": "1b1c3c90681d5e9c1db455939cd748cc2d2813b5c933d809ef7c93daad4eafb6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-018941066c958bd2e1d2a54c",
+          "url": "https://proceedings.mlr.press/v139/hubara21a.html"
+        },
+        "b": {
+          "paper_id": "paper-2da09086378f6397016ad14f",
+          "url": "https://proceedings.mlr.press/v267/bai25c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "d940a5763fa62c123f32e16da0c0cb72b042727e456f21768dea63df7417e49c"
+    },
+    {
+      "id": "edge-74b074ed82ea283470d75694",
+      "a": "paper-018941066c958bd2e1d2a54c",
+      "b": "paper-b136cffbed66f7b8e5a13edc",
+      "state": {
+        "paper_a": {
+          "title": "Accurate Post Training Quantization With Small Calibration Sets",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant over-fitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to over-fitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bit-width allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code \\textit{https://github.com/papers-submission/CalibTIP}."
+        },
+        "paper_b": {
+          "title": "Outlier Suppression: Pushing the Limit of Low-bit Transformer Language Models",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Transformer architecture has become the fundamental element of the widespread natural language processing~(NLP) models. With the trends of large NLP models, the increasing memory and computation costs hinder their efficient deployment on resource-limited devices. Therefore, transformer quantization attracts wide research interest. Recent work recognizes that structured outliers are the critical bottleneck for quantization performance. However, their proposed methods increase the computation overhead and still leave the outliers there. To fundamentally address this problem, this paper delves into the inherent inducement and importance of the outliers. We discover that $\\boldsymbol \\gamma$ in LayerNorm (LN) acts as a sinful amplifier for the outliers, and the importance of outliers varies greatly where some outliers provided by a few tokens cover a large area but can be clipped sharply without negative impacts. Motivated by these findings, we propose an outlier suppression framework including two components: Gamma Migration and Token-Wise Clipping. The Gamma Migration migrates the outlier amplifier to subsequent modules in an equivalent transformation, contributing to a more quantization-friendly model without any extra burden. The Token-Wise Clipping takes advantage of the large variance of token range and designs a token-wise coarse-to-fine pipeline, obtaining a clipping range with minimal final quantization loss in an efficient way. This framework effectively suppresses the outliers and can be used in a plug-and-play mode. Extensive experiments prove that our framework surpasses the existing works and, for the first time, pushes the 6-bit post-training BERT quantization to the full-precision (FP) level. Our code is available at https://github.com/wimh966/outlier_suppression."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Among them, quantization [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], working in the low-precision arithmetic fashion, is one of the key approaches to compress large models and fit them into the lightweight devices.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-018941066c958bd2e1d2a54c",
+          "b": "paper-b136cffbed66f7b8e5a13edc",
+          "input_sha256": "9dabce3340e78b024e454567800634f66faa1fad7a82a8f782f3234355006dd4",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/hubara21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/6f6db140de9c9f111b12ef8a216320a9-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/6f6db140de9c9f111b12ef8a216320a9-Paper-Conference.pdf",
+              "sha256": "320b3958f960cb93c5778225197fcecbe39ff69f5c3bbc6bcb7d5236bc83aef2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant overfitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to overfitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bitwidth allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "5. Experiments In this section, we demonstrate our methods and pipelines on several models and datasets. We first start by analyzing image recognition models such as ResNet18/50, MobileNetV2, which were trained over the ImageNet dataset. Next, we demonstrate our method robustness by applying it on question answering task using the popular BERT model (Devlin et al., 2018), which was fine-tuned on the SQuAD1.1 dataset (Rajpurkar et al., 2016). In all our experiments, we used a small calibration set taken from the training dataset. Unless stated otherwise, we applied asymmetric per-channel quantization (i.e. GEMLOWP (Wu et al., 2016)) with quantized offset (i.e., zero point). Next, we analyze each method’s strengths and weaknesses separately and argue for its validity. Additional implementation details can be found in section and the code are given in sections (5) of the supplementary material. 5.1. AdaQuant Recently several researchers suggested different types of MSE optimization. In most cases, the optimization was done per-tensor (i.e., for the weights and activations separately).",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Transformer [1] has been one of the most common architectures in natural language processing along with lots of popular self-supervised models, such as BERT [2], RoBERTa [3], XLNet [4] and BART [5]. While these pre-trained models have demonstrated a significant superiority in performance, the memory and computation overheads have been a popular concern, particularly in the real development. Therefore, model compression [6, 7, 8, 9] has attracted much attention from both academia and industry. Among them, quantization [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], working in the low-precision arithmetic fashion, is one of the key approaches to compress large models and fit them into the lightweight devices. ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6f6db140de9c9f111b12ef8a216320a9-Paper-Conference.pdf",
+              "document_sha256": "320b3958f960cb93c5778225197fcecbe39ff69f5c3bbc6bcb7d5236bc83aef2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "Implementation details. To begin with, we identify the quantization nodes and take a reasonable scheme like the one in FasterTransformer [38] (Details see Sec. B.1). For PTQ, equipping our framework, we use 256 samples to calibrate the model. For QAT, our methods work on the calibration phase and later are combined with LSQ+ [12], a strong baseline for the training phase. For training, hyper-parameters like learning rate are searched both for our methods and baseline techniques for fair comparisons. Details see Appendix F. Baseline. For PTQ, we compare with the prevalent calibration mechanisms including MinMax [39], OMSE [28], Percentile [29], EasyQuant [40] and PEG [26]. For QAT, we present the results of Q-BERT [22], Q8BERT [21] and PEG [26]. Also, because our framework applying in QAT is coupled with LSQ+ [12], we show the results of the pure LSQ+, and another canonical quantization approach PACT [41]. Last but not least, the results combined with knowledge distillation (KD) proposed in TernaryBERT [23] are included as well. 5.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6f6db140de9c9f111b12ef8a216320a9-Paper-Conference.pdf",
+              "document_sha256": "320b3958f960cb93c5778225197fcecbe39ff69f5c3bbc6bcb7d5236bc83aef2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "These days, researchers focus more on quantization of Transformer-based models. [21] proposes an 8-bit quantization scheme for BERT-like models. [22] advises a group-wise quantization technique and analyzes mixed-precision using second-order Hessian information. [23, 24] combine distillation with quantization. [25] approximates nonlinear operations to implement integer-only quantization. Nonetheless, few studies investigate the inherent bottleneck of quantizing Transformer-based models. Recently, some papers [26, 27] indicate that the Transformer-based models hold significantly large outliers (even close to 100) and these extreme outliers behave in structured patterns (mainly gather at a few embedding dimensions and even become larger on unique tokens). These special outliers can bring devastating damage to the quantization performance (e.g., a 12% drop even for the 8-bit [26]). To combat this challenge, existing method [26] chooses bypassing solutions such as a finer quantization granularity. However, this scheme causes an increased computation cost and unavoidably hinders the acceleration effect. In this paper, to suppress the outliers rather than walk around them, we make an in-depth analysis to investigate the inducement of the outliers and the impact of clipping the outliers. For the inducement, we find that the scaling parameter γ in the LayerNorm structure works as an outlier amplifier, which amplifies the outliers in the output. By extracting it, the activation becomes more robust for quantization. Then by further studying the clipping impact, we discover that the influence of final performance when clipping the outliers varies greatly, where some more aggressive outliers covering a large area can be clipped safely without accuracy degradation, but the accuracy",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/6f6db140de9c9f111b12ef8a216320a9-Paper-Conference.pdf",
+              "document_sha256": "320b3958f960cb93c5778225197fcecbe39ff69f5c3bbc6bcb7d5236bc83aef2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-018941066c958bd2e1d2a54c",
+          "url": "https://proceedings.mlr.press/v139/hubara21a.html"
+        },
+        "b": {
+          "paper_id": "paper-b136cffbed66f7b8e5a13edc",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/6f6db140de9c9f111b12ef8a216320a9-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "0dcfde00375fc4937eff6cecd143194f2b24203b169a98f75b58866577527f37"
+    },
+    {
+      "id": "edge-ed42521aa45698705524484d",
+      "a": "paper-018941066c958bd2e1d2a54c",
+      "b": "paper-e0064d1e95932e31031accb3",
+      "state": {
+        "paper_a": {
+          "title": "Accurate Post Training Quantization With Small Calibration Sets",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant over-fitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to over-fitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bit-width allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code \\textit{https://github.com/papers-submission/CalibTIP}."
+        },
+        "paper_b": {
+          "title": "Towards Next-Level Post-Training Quantization of Hyper-Scale Transformers",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "With the increasing complexity of generative AI models, post-training quantization (PTQ) has emerged as a promising solution for deploying hyper-scale models on edge devices such as mobile and TVs.Existing PTQ schemes, however, consume considerable time and resources, which could be a bottleneck in real situations where frequent model updates and multiple hyperparameter tunings are required.As a cost-effective alternative, learning-free PTQ schemes have been proposed. However, the performance is somewhat limited because they cannot consider the inter-layer dependency within the attention module, which is a significant feature of Transformers.In this paper, we thus propose a novel PTQ algorithm that balances accuracy and efficiency.The key idea of the proposed algorithm called aespa is to perform quantization layer-wise for efficiency while targeting attention-wise reconstruction to consider the cross-layer dependency.Through extensive experiments on various language models and complexity analysis, we demonstrate that aespa is accurate and efficient in quantizing Transformer models. The code will be available at https: //github.com/SamsungLabs/aespa."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Early studies on PTQ focused on optimizing the weight-rounding policy [23, 10, 18, 11, 12].\nAlthough existing PTQ schemes have successfully quantized relatively small-scale models ( e.g., ResNet) [23, 10, 18, 6, 11], they have difficulty handling large-scale models because of their time and space complexity.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-018941066c958bd2e1d2a54c",
+          "b": "paper-e0064d1e95932e31031accb3",
+          "input_sha256": "e6c77439371ff39db008ad7a6252630954f891d2df196f0ba4ecafa6dcfa2663",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/hubara21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/ab6eba9a853087993addff937c8cec87-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/ab6eba9a853087993addff937c8cec87-Paper-Conference.pdf",
+              "sha256": "42e81d6ba7b3f68d3532c268c9ff0a18e41a16db8a93eba734e9887eab3eb5f6"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Lately, post-training quantization methods have gained considerable attention, as they are simple to use, and require only a small unlabeled calibration set. This small dataset cannot be used to fine-tune the model without significant overfitting. Instead, these methods only use the calibration set to set the activations’ dynamic ranges. However, such methods always resulted in significant accuracy degradation, when used below 8-bits (except on small datasets). Here we aim to break the 8-bit barrier. To this end, we minimize the quantization errors of each layer or block separately by optimizing its parameters over the calibration set. We empirically demonstrate that this approach is: (1) much less susceptible to overfitting than the standard fine-tuning approaches, and can be used even on a very small calibration set; and (2) more powerful than previous methods, which only set the activations’ dynamic ranges. We suggest two flavors for our method, parallel and sequential aim for a fixed and flexible bitwidth allocation. For the latter, we demonstrate how to optimally allocate the bit-widths for each layer, while constraining accuracy degradation or model compression by proposing a novel integer programming formulation. Finally, we suggest model global statistics tuning, to correct biases introduced during quantization. Together, these methods yield state-of-the-art results for both vision and text models. For instance, on ResNet50, we obtain less than 1% accuracy degradation — with 4-bit weights and activations in all layers, but first and last. The suggested methods are two orders of magnitude faster than the traditional Quantize Aware Training approach used for lower than 8-bit quantization. We open-sourced our code",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "5. Experiments In this section, we demonstrate our methods and pipelines on several models and datasets. We first start by analyzing image recognition models such as ResNet18/50, MobileNetV2, which were trained over the ImageNet dataset. Next, we demonstrate our method robustness by applying it on question answering task using the popular BERT model (Devlin et al., 2018), which was fine-tuned on the SQuAD1.1 dataset (Rajpurkar et al., 2016). In all our experiments, we used a small calibration set taken from the training dataset. Unless stated otherwise, we applied asymmetric per-channel quantization (i.e. GEMLOWP (Wu et al., 2016)) with quantized offset (i.e., zero point). Next, we analyze each method’s strengths and weaknesses separately and argue for its validity. Additional implementation details can be found in section and the code are given in sections (5) of the supplementary material. 5.1. AdaQuant Recently several researchers suggested different types of MSE optimization. In most cases, the optimization was done per-tensor (i.e., for the weights and activations separately).",
+              "url": "https://proceedings.mlr.press/v139/hubara21a/hubara21a.pdf",
+              "document_sha256": "d348a8ad6eb9a3a20b7f7bf211a37dd2b1d4a671f5437710b5380f86234e82b2"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Although existing PTQ schemes have successfully quantized relatively small-scale models (e.g., ResNet) [23, 10, 18, 6, 11], they have difficulty handling large-scale models because of their time and space complexity. As a cost-effective alternative, learning-free algorithms have been proposed recently [7, 13, 19], but their performance is somewhat limited because they do not consider the inter-layer dependency and are reliant on the nearest rounding. There is an accuracy-efficiency trade-off; thus, we aim to bridge the gap toward next-level quantization of hyper-scale Transformer models. In this paper, we propose a novel PTQ algorithm, called aespa,2 that pursues both accuracy and efficiency. The key idea of aespa is to perform quantization layer-wise for efficiency while targeting the attention-wise reconstruction to consider the cross-layer dependency. Our contributions are summarized as follows: • We propose a new quantization strategy that balances accuracy and efficiency. Our scheme aims to reconstruct the attention output to consider the cross-layer dependency while quantizing models layer-wise to pursue efficiency. • To accelerate the quantization process, we propose refined quantization objectives for the attention module. Through a complexity analysis, we demonstrate that quantization that is approximately 10 times faster than existing block-wise approaches can be achieved by exploiting the proposed objectives. • From extensive experiments on language models, we demonstrate that our approach outperforms conventional schemes by a significant margin, particularly for low-bit precision (INT2).",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ab6eba9a853087993addff937c8cec87-Paper-Conference.pdf",
+              "document_sha256": "42e81d6ba7b3f68d3532c268c9ff0a18e41a16db8a93eba734e9887eab3eb5f6"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "where s, z, and n are the scale, zero-point, and bit-width, respectively, and ⌊·⌉ represents the round-off. Early studies on PTQ focused on optimizing the weight-rounding policy [23, 10, 18, 11, 12]. These studies have attempted to assign each weight to a “proper” grid (instead of an adjacent grid), such that the loss degradation could be minimized. In [23], a learning-based weight-rounding optimization algorithm, called AdaRound, has been proposed to solve the layer-wise reconstruction problem in (2). In [18], AdaRound has been extended to the following block-wise reconstruction problem: \\min _{\\Delta \\mW ^{(\\ell )}}~& \\mathbb {E} \\left [ \\left \\| f^{(\\ell )} \\left ( \\mathcal {Q} ( \\mW ^{(\\ell )} ), \\mX \\right ) - f^{(\\ell )} \\left ( \\mW ^{(\\ell )}, \\mX \\right ) \\right \\|_{F}^{2} \\right ], \\label {eq:block-wise reconstruction}",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ab6eba9a853087993addff937c8cec87-Paper-Conference.pdf",
+              "document_sha256": "42e81d6ba7b3f68d3532c268c9ff0a18e41a16db8a93eba734e9887eab3eb5f6"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Although AdaRound and B RECQ have been successful in quantizing small-scale networks (e.g., ResNet), scaling those learning-based schemes to LLMs with billions of parameters is challenging. In fact, B RECQ requires more than 20 GPU hours to quantize relatively small-sized language models (e.g., OPT-2.7B; see Appendix K), which would not be suitable for the real-world deployment of LLMs where models to be deployed are frequently updated. Owing to the excessive time and memory costs of classic PTQ schemes, recent studies have focused on developing cost-effective alternatives for quantizing LLMs. In OPTQ [7], a one-shot PTQ scheme that optimizes a weight-rounding policy without relying on learning, has been proposed. In addition, PTQ schemes that enhance the performance of the nearest-rounding, rather than optimizing the weight-rounding policy, have been proposed. These schemes use additional “foldable” parameters3 to suppress activation outliers or quantize weights more precisely [33, 19, 13, 27, 20]. Although previous studies have mitigated the computational overhead of classic PTQ methods, they often sacrifice the low-bit quantization performance or suffer from an unstable quantization process. The main reason for this unsatisfactory performance is that all the schemes mentioned above, except OPTQ, rely on nearest-rounding and do not optimize the weight-rounding policy. Moreover, most of them target layer-wise reconstruction in (2), not block-wise reconstruction in (4), thus ignoring the cross-layer dependency within the attention module. Although [27, 20] target block-wise reconstruction via learning, they need to approximate gradients for a non-differentiable quantization function, which results in an unstable training process (see Table 1 in Section 4) [19]. Thus,",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ab6eba9a853087993addff937c8cec87-Paper-Conference.pdf",
+              "document_sha256": "42e81d6ba7b3f68d3532c268c9ff0a18e41a16db8a93eba734e9887eab3eb5f6"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 4,
+              "text": "In such a case, we need to compute SA( b Q, c K, Vb ) for every batch sequence in each iteration, which is computationally heavy and time-consuming (see Section 3.5 for details on complexity). To overcome this computational overhead, we quantize each projection separately in a divide-andconquer manner. For example, when quantizing the query projection WQ , we fix WK and WV with full-precision (Figure 1(b)), which facilitates the factoring out of common terms affected by WK and WV (see Section 3.3 for details). We emphasize that this strategy differs from conventional layer-wise quantization schemes (e.g., AdaRound and OPTQ) in that we aim to minimize the reconstruction error for the attention module, not the reconstruction error for each layer. We conduct experiments to demonstrate the importance of targeting attention-wise reconstruction and validity of the proposed quantization strategy. In our experiments, we set the loss function for each projection as the attention reconstruction error in (7) but quantize each projection separately (see Figure 2(c)). Table 5 in Appendix B summarizes the performance of AdaRound, B RECQ, and our approach. As evident, our approach uniformly outperforms AdaRound for all bit-widths, although both methods quantize models layer-wise. This is because we can consider cross-layer dependency (i.e., relationship between the query, key, and value) by targeting attention-wise reconstruction, which is different from AdaRound wherein layers are considered independent. Furthermore, once we target attention-wise reconstruction, separate layer-wise quantization does not incur severe performance degradation compared to the joint quantization method (B RECQ). In fact, our approach causes only a marginal performance degradation for 2-bit and exhibits",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/ab6eba9a853087993addff937c8cec87-Paper-Conference.pdf",
+              "document_sha256": "42e81d6ba7b3f68d3532c268c9ff0a18e41a16db8a93eba734e9887eab3eb5f6"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-018941066c958bd2e1d2a54c",
+          "url": "https://proceedings.mlr.press/v139/hubara21a.html"
+        },
+        "b": {
+          "paper_id": "paper-e0064d1e95932e31031accb3",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/ab6eba9a853087993addff937c8cec87-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "386bb162fcf8744041cc25e0a746913043a204b166168bfa0c840dd0a0fc6421"
+    },
+    {
+      "id": "edge-a3c5f680bcba17d5cbe4b1ff",
+      "a": "paper-023329e840e8f885666e8c24",
+      "b": "paper-f9f99800d8834c3a08abea9d",
+      "state": {
+        "paper_a": {
+          "title": "Extreme Compression of Large Language Models via Additive Quantization",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The emergence of accurate open large language models (LLMs) has led to a race towards performant quantization techniques which can enable their execution on end-user devices. In this paper, we revisit the problem of “extreme” LLM compression—defined as targeting extremely low bit counts, such as 2 to 3 bits per parameter—from the point of view of classic methods in Multi-Codebook Quantization (MCQ). Our algorithm, called AQLM, generalizes the classic Additive Quantization (AQ) approach for information retrieval to advance the state-of-the-art in LLM compression, via two innovations: 1) learned additive quantization of weight matrices in input-adaptive fashion, and 2) joint optimization of codebook parameters across each transformer blocks. Broadly, AQLM is the first scheme that is Pareto optimal in terms of accuracy-vs-model-size when compressing to less than 3 bits per parameter, and significantly improves upon all known schemes in the extreme compression (2bit) regime. In addition, AQLM is practical: we provide fast GPU and CPU implementations of AQLM for token generation, which enable us to match or outperform optimized FP16 implementations for speed, while executing in a much smaller memory footprint."
+        },
+        "paper_b": {
+          "title": "HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Quantized training of Large Language Models (LLMs) remains an open challenge, as maintaining accuracy while performing all matrix multiplications in low precision has proven difficult. This is particularly the case when fine-tuning pre-trained models, which can have large weight, activation, and error (output gradient) outlier values that make lower-precision optimization difficult. To address this, we present HALO, a new quantization-aware training approach for Transformers that enables accurate and efficient low-precision training by combining 1) strategic placement of Hadamard rotations in both forward and backward passes, which mitigate outliers, 2) high-performance kernel support, and 3) FSDP integration for low-precision communication. Our approach ensures that all large matrix multiplications during the forward and backward passes are executed in lower precision. Applied to LLaMa models, HALO achieves near-full-precision-equivalent results during fine-tuning on various tasks, while delivering up to 1.41x end-to-end speedup for full fine-tuning on RTX 4090 GPUs. HALO efficiently supports both standard and parameter-efficient fine-tuning (PEFT). Our results demonstrate the first practical approach to fully quantized LLM fine-tuning that maintains accuracy in INT8 and FP6 precision, while delivering performance benefits."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Inference quantization methods aim to compress either the model weights [17; 14; 35] or jointly quantizing weights and activations, allowing for lower-precision forward computation [42].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-023329e840e8f885666e8c24",
+          "b": "paper-f9f99800d8834c3a08abea9d",
+          "input_sha256": "287a6bb09be8d12e0e7d38b62f63e89b2caa4ab6da3ed4a85c47f08025b1a2fd",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/egiazarian24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac58b418745b3e5f10c80110c963969f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/ac58b418745b3e5f10c80110c963969f-Paper-Conference.pdf",
+              "sha256": "558c623ae4313646792038bc179129c77cf573327c8a63bba19b588dc955bba2"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "More precisely, we extend Additive Quantization (AQ) (Babenko & Lempitsky, 2014; Martinez et al., 2016), a popular MCQ algorithm, to the task of compressing LLM weights such that the output of each layer and Transformer block are approximately preserved. Our extension reformulates the classic AQ optimization problem to reduce the error in LLM layer outputs under the input token distribution and as well as to jointly optimize codes over layer blocks, rather than only preserving the weights themselves as in standard AQ. We refer to the resulting procedure as Additive Quantization of Language Models (AQLM). Unlike some extreme LLM quantization approaches that require hybrid sparse-quantized formats which separate outlier quantization (Kim et al., 2023; Dettmers et al., 2023b), AQLM quantizes models in a simple homogeneous format, which is easy to support in practice. Our main contributions are as follows:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "document_sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1. We propose the AQLM algorithm, which extends AQ to post-training compression of LLM weights, via two innovations: (1) adapting the MAP-MRF1 optimization problem behind AQ to be instance-aware, taking layer calibration input & output activations into account; (2) complementing the layer-wise optimization with an efficient intra-block tuning technique, which optimizes quantization parameters jointly over several layers, using only the calibration data.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "document_sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "Related Work. Inference quantization methods aim to compress either the model weights [17; 14; 35] or jointly quantizing weights and activations, allowing for lower-precision forward computation [42]. It is known that activation quantization is challenging due to “outlier features” [37] of much larger magnitude. Recent works apply transforms to mitigate such features on top of pre-trained models. Chee et al. [5] observed that the magnitude of the largest elements (outliers, roughly defined as values ≥ 10 larger than the value average in the considered tensor) in the weight matrices W that we wish to quantize for inference can be reduced by applying orthogonal transformations to W from both sides, a method known as Incoherence Processing [6]. QuaRot [3] mitigates the impact of outliers in both weights and activations by applying (randomized) Hadamard rotations that are fused into the weights—a technique known as computational invariance. This approach enables most inference computations to be performed in 4 bits without incurring the transform overhead during inference. SpinQuant [23] builds on a similar idea but trains a subset of orthogonal transformations. Unfortunately, the QuaRot approach cannot be used for low-precision training (see Section 3.1). Performing low-precision computation during the backward pass is strictly harder than quantized inference, for instance due to the very high dynamic range of gradients with respect to layer outputs [24; 7]. LM-FP8 [32] trains large-scale models from scratch using FP8 on 40-100B of tokens, while Fishman et al. [15] demonstrates that FP8 training becomes unstable when training with over >250B tokens, and proposes a new activation function to address this issue. As such, their technique cannot be used to fine-tune an",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac58b418745b3e5f10c80110c963969f-Paper-Conference.pdf",
+              "document_sha256": "558c623ae4313646792038bc179129c77cf573327c8a63bba19b588dc955bba2"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Quantized training of Large Language Models (LLMs) remains an open challenge, as maintaining accuracy while performing all matrix multiplications in low precision has proven difficult. This is particularly the case when fine-tuning pre-trained models, which can have large weight, activation, and error (output gradient) outlier values that make lower-precision optimization difficult. To address this, we present HALO, a new quantization-aware training approach for Transformers that enables accurate and efficient low-precision training by combining 1) strategic placement of Hadamard rotations in both forward and backward passes, which mitigate outliers, 2) high-performance kernel support, and 3) FSDP integration for low-precision communication. Our approach ensures that all large matrix multiplications during the forward and backward passes are executed in lower precision. Applied to L LAMA-family models, HALO achieves near-full-precision-equivalent results during fine-tuning on various tasks, while delivering up to 1.41× end-to-end speedup for full fine-tuning on RTX 4090 GPUs. HALO efficiently supports both standard and parameter-efficient fine-tuning (PEFT). Our results demonstrate the first practical approach to fully quantized LLM fine-tuning that maintains accuracy in INT8 and FP6 precision, while delivering performance benefits.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac58b418745b3e5f10c80110c963969f-Paper-Conference.pdf",
+              "document_sha256": "558c623ae4313646792038bc179129c77cf573327c8a63bba19b588dc955bba2"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: Largest magnitudes of first 512 channels in output gradients, or errors, of the mlp output (down_proj) in the 15-th layer of L LAMA 3-8B model over 128 tokens in the 60th step of the ViGGO fine tuning (see Appendix A.4 for other data types). The outliers are propagated across columns and can be mitigated after applying left-hand-side Hadamard transformations. but also in terms of performance—as the overheads of switching between representations can negate the performance gains of lower-precision computation. This accuracy problem is especially challenging in the popular practical scenario where the user fine-tunes a pretrained model: as we illustrate in this paper, since pretrained LLMs often have large outlier values in the weight, activation, and error distributions [37; 42; 34; 28], stable results are much harder to achieve compared to from-scratch quantized pre-training. Contributions. We present a new quantized training technique called Hadamard-Assisted Lowprecision Optimization (HALO), which modifies the structure of Transformer-based models [36] in transparent fashion, allowing them to be fine-tuned in lower precision (INT8, or even FP6), with minimal accuracy loss. Importantly, we do so while performing all large matrix multiplications in lower precision. HALO applies equally well to full and parameter-efficient fine-tuning. HALO starts from an in-depth analysis of the quantization error sensitivity of different internal representations (weight, input, and output gradients) during back-propagation [33; 22]. We identify the forward pass and output gradients as key sources of sensitivity to quantization, each exhibiting distinct outlier patterns. Specifically, while applying a Hadamard transformation is sufficient to mitigate outliers in the forward",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/ac58b418745b3e5f10c80110c963969f-Paper-Conference.pdf",
+              "document_sha256": "558c623ae4313646792038bc179129c77cf573327c8a63bba19b588dc955bba2"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-023329e840e8f885666e8c24",
+          "url": "https://proceedings.mlr.press/v235/egiazarian24a.html"
+        },
+        "b": {
+          "paper_id": "paper-f9f99800d8834c3a08abea9d",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac58b418745b3e5f10c80110c963969f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "45035ce0a730a7a576cb5dc14c30111414aa05ab185232c673e028109e34e5d3"
+    },
+    {
+      "id": "edge-21d31b6ee3205d60d435c1c2",
+      "a": "paper-023329e840e8f885666e8c24",
+      "b": "paper-fcbb69a4a5b0c041549acc6d",
+      "state": {
+        "paper_a": {
+          "title": "Extreme Compression of Large Language Models via Additive Quantization",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "The emergence of accurate open large language models (LLMs) has led to a race towards performant quantization techniques which can enable their execution on end-user devices. In this paper, we revisit the problem of “extreme” LLM compression—defined as targeting extremely low bit counts, such as 2 to 3 bits per parameter—from the point of view of classic methods in Multi-Codebook Quantization (MCQ). Our algorithm, called AQLM, generalizes the classic Additive Quantization (AQ) approach for information retrieval to advance the state-of-the-art in LLM compression, via two innovations: 1) learned additive quantization of weight matrices in input-adaptive fashion, and 2) joint optimization of codebook parameters across each transformer blocks. Broadly, AQLM is the first scheme that is Pareto optimal in terms of accuracy-vs-model-size when compressing to less than 3 bits per parameter, and significantly improves upon all known schemes in the extreme compression (2bit) regime. In addition, AQLM is practical: we provide fast GPU and CPU implementations of AQLM for token generation, which enable us to match or outperform optimized FP16 implementations for speed, while executing in a much smaller memory footprint."
+        },
+        "paper_b": {
+          "title": "BlockDialect: Block-wise Fine-grained Mixed Format Quantization for Energy-Efficient LLM Inference",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "The rapidly increasing size of large language models (LLMs) presents significant challenges in memory usage and computational costs. Quantizing both weights and activations can address these issues, with hardware-supported fine-grained scaling emerging as a promising solution to mitigate outliers. However, existing methods struggle to capture nuanced block data distributions. We propose BlockDialect, a block-wise fine-grained mixed format technique that assigns a per-block optimal number format from a formatbook for better data representation. Additionally, we introduce DialectFP4, a formatbook of FP4 variants (akin to dialects) that adapt to diverse data distributions. To leverage this efficiently, we propose a two-stage approach for online DialectFP4 activation quantization. Importantly, DialectFP4 ensures energy efficiency by selecting representable values as scaled integers compatible with low-precision integer arithmetic. BlockDialect achieves 10.78% (7.48%) accuracy gain on the LLaMA3-8B (LLaMA2-7B) model compared to MXFP4 format with lower bit usage per data, while being only 5.45% (2.69%) below full precision even when quantizing full-path matrix multiplication. Focusing on how to represent over how to scale, our work presents a promising path for energy-efficient LLM inference."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "In addition to advancements in block-wise quantization, research has progressed to sub-8-bit quantization, reaching even 2-bit precision (Egiazarian et al., 2024; Chee et al., 2024).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-023329e840e8f885666e8c24",
+          "b": "paper-fcbb69a4a5b0c041549acc6d",
+          "input_sha256": "c72c52cd32878a25d8622a96035a27787f3fb81b0d65ab40d241bc854ebd939c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/egiazarian24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/jang25c.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jang25c/jang25c.pdf",
+              "sha256": "0944f0b12cceb19b3dacbb8614fb98b79e7c2ef3a45d1f4d83df57a91dc32956"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "More precisely, we extend Additive Quantization (AQ) (Babenko & Lempitsky, 2014; Martinez et al., 2016), a popular MCQ algorithm, to the task of compressing LLM weights such that the output of each layer and Transformer block are approximately preserved. Our extension reformulates the classic AQ optimization problem to reduce the error in LLM layer outputs under the input token distribution and as well as to jointly optimize codes over layer blocks, rather than only preserving the weights themselves as in standard AQ. We refer to the resulting procedure as Additive Quantization of Language Models (AQLM). Unlike some extreme LLM quantization approaches that require hybrid sparse-quantized formats which separate outlier quantization (Kim et al., 2023; Dettmers et al., 2023b), AQLM quantizes models in a simple homogeneous format, which is easy to support in practice. Our main contributions are as follows:",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "document_sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1. We propose the AQLM algorithm, which extends AQ to post-training compression of LLM weights, via two innovations: (1) adapting the MAP-MRF1 optimization problem behind AQ to be instance-aware, taking layer calibration input & output activations into account; (2) complementing the layer-wise optimization with an efficient intra-block tuning technique, which optimizes quantization parameters jointly over several layers, using only the calibration data.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/egiazarian24a/egiazarian24a.pdf",
+              "document_sha256": "11571d421f2ad3c92c22a5922bba5f3b07b4d46e868928892d84e96e7ff82f9e"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "In addition to advancements in block-wise quantization, research has progressed to sub-8-bit quantization, reaching even 2-bit precision (Egiazarian et al., 2024; Chee et al., 2024). However, most methods focus on weight-only quantization due to challenges in quantizing activations which are: (1) the need for real-time quantization, (2) a wider dynamic range, and (3) channel-wise variances that misalign with matrix multiplication dimensions (Xiao et al., 2023). As a result, activations remain high-precision, requiring dequantization of weights and high-precision arithmetic operations (Dotzel et al., 2024), which reduces gains in energy efficiency and inference throughput. Moreover, increasing sequence lengths in modern LLMs exacerbate these inefficiencies due to quadratic computational growth (Shyam et al., 2024). Thus, addressing activation quantization is critical for realizing energy-efficient LLM inference.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jang25c/jang25c.pdf",
+              "document_sha256": "0944f0b12cceb19b3dacbb8614fb98b79e7c2ef3a45d1f4d83df57a91dc32956"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "The rapidly increasing size of large language models (LLMs) presents significant challenges in memory usage and computational costs. Quantizing both weights and activations can address these issues, with hardware-supported fine-grained scaling emerging as a promising solution to mitigate outliers. However, existing methods struggle to capture nuanced block data distributions. We propose BlockDialect, a block-wise finegrained mixed format technique that assigns a per-block optimal number format from a formatbook for better data representation. Additionally, we introduce DialectFP4, a formatbook of FP4 variants (akin to dialects) that adapt to diverse data distributions. To leverage this efficiently, we propose a two-stage approach for online DialectFP4 activation quantization. Importantly, DialectFP4 ensures energy efficiency by selecting representable values as scaled integers compatible with low-precision integer arithmetic. BlockDialect achieves 10.78 % (7.48 %) accuracy gain on the LLaMA3-8B (LLaMA2-7B) model compared to MXFP4 format with lower bit usage per data, while being only 5.45% (2.69%) below full precision even when quantizing full-path matrix multiplication. Focusing on how to represent over how to scale, our work presents a promising path for energy-efficient LLM inference.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jang25c/jang25c.pdf",
+              "document_sha256": "0944f0b12cceb19b3dacbb8614fb98b79e7c2ef3a45d1f4d83df57a91dc32956"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 8,
+              "text": "els, even when evaluated on the all scope (∼0.15, ∼0.63%), highlighting its effectiveness. This marginal gap also stems from the limitations of the MSE method, which overlooks the magnitude of data elements. This oversight can lead to suboptimal quantization, with inaccuracies for large magnitude values while accurately quantizing smaller ones. By focusing on large magnitudes, our method achieves more efficient and balanced quantization. Impact of Block Size. We explore the impact of block size in Table 3. Overall, smaller sizes improve performance by constraining outliers within smaller blocks and making it easier to represent all block data more effectively with dialects. However, this advantage comes with a higher effective bitwidth, making it a trade-off between performance and memory footprint. We further investigate dynamic block size assignment by applying small blocks to specific projection layers to assess block size sensitivity across sublayers. As in Table 3, down projection has higher sensitivity, which aligns with the observation from prior works (Li et al., 2023; Ashkboos et al., 2023). Based on these findings, we obtain comparable or superior results with block size of 64 by applying smaller blocks only to sublayers prone to outliers (Hooper et al., 2024; Liu et al., 2024a), compared to a uniform block size of 32 in the all scope.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/jang25c/jang25c.pdf",
+              "document_sha256": "0944f0b12cceb19b3dacbb8614fb98b79e7c2ef3a45d1f4d83df57a91dc32956"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-023329e840e8f885666e8c24",
+          "url": "https://proceedings.mlr.press/v235/egiazarian24a.html"
+        },
+        "b": {
+          "paper_id": "paper-fcbb69a4a5b0c041549acc6d",
+          "url": "https://proceedings.mlr.press/v267/jang25c.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Efficient Neural Network Compression and Training Optimization"
+      },
+      "sha256": "91677b1a040036e75071ce3f0e7909edd15d3983ae7261e47f70e7535389f185"
+    }
+  ]
+}

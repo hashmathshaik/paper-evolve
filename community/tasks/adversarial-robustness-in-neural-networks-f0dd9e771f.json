@@ -1,0 +1,990 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Adversarial Robustness in Neural Networks",
+  "area": "Cross-Cutting & Specialized Research",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-39867ea7e6697fd2b41e675b",
+      "a": "paper-01153a4deaeed4a3ac0fe2b7",
+      "b": "paper-d513e6b2cbc360a4ca57e5ef",
+      "state": {
+        "paper_a": {
+          "title": "Demystifying the Adversarial Robustness of Random Transformation Defenses",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Neural networks’ lack of robustness against attacks raises concerns in security-sensitive settings such as autonomous vehicles. While many countermeasures may look promising, only a few withstand rigorous evaluation. Defenses using random transformations (RT) have shown impressive results, particularly BaRT (Raff et al., 2019) on ImageNet. However, this type of defense has not been rigorously evaluated, leaving its robustness properties poorly understood. Their stochastic properties make evaluation more challenging and render many proposed attacks on deterministic models inapplicable. First, we show that the BPDA attack (Athalye et al., 2018a) used in BaRT’s evaluation is ineffective and likely overestimates its robustness. We then attempt to construct the strongest possible RT defense through the informed selection of transformations and Bayesian optimization for tuning their parameters. Furthermore, we create the strongest possible attack to evaluate our RT defense. Our new attack vastly outperforms the baseline, reducing the accuracy by 83% compared to the 19% reduction by the commonly used EoT attack ($4.3\\times$ improvement). Our result indicates that the RT defense on the Imagenette dataset (a ten-class subset of ImageNet) is not robust against adversarial examples. Extending the study further, we use our new attack to adversarially train RT defense (called AdvRT), resulting in a large robustness gain. Code is available at https://github.com/wagnergroup/demystify-random-transform."
+        },
+        "paper_b": {
+          "title": "Preprocessors Matter! Realistic Decision-Based Attacks on Machine Learning Systems",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Decision-based attacks construct adversarial examples against a machine learning (ML) model by making only hard-label queries. These attacks have mainly been applied directly to standalone neural networks. However, in practice, ML models are just one component of a larger learning system. We find that by adding a single preprocessor in front of a classifier, state-of-the-art query-based attacks are up to seven× less effective at attacking a prediction pipeline than at attacking the model alone. We explain this discrepancy by the fact that most preprocessors introduce some notion of invariance to the input space. Hence, attacks that are unaware of this invariance inevitably waste a large number of queries to re-discover or overcome it. We, therefore, develop techniques to (i) reverse-engineer the preprocessor and then (ii) use this extracted information to attack the end-to-end system. Our preprocessors extraction method requires only a few hundred queries, and our preprocessor-aware attacks recover the same efficacy as when attacking the model alone. The code can be found at https://github.com/google-research/preprocessor-aware-black-box-attack."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Unfortunately, these defenses are largely ineffective in a white-box setting (Athalye et al., 2018; Tramer et al., 2020; Sitawarin et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-01153a4deaeed4a3ac0fe2b7",
+          "b": "paper-d513e6b2cbc360a4ca57e5ef",
+          "input_sha256": "d2c97f585b1e2d374235bb673f75ddfe905cc0f378237656c569376cbe19eb3f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/sitawarin22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/sitawarin23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/sitawarin23a/sitawarin23a.pdf",
+              "sha256": "64d915d4b7096f6ebfa04f182341c542419ec5b7ecef730531bc84f98613ce14"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "To mitigate this issue, we introduce another optimizer. AggMo is exactly designed to be less sensitive to choices of the damping coefficient by aggregating B momentum terms with different constants instead of one (Lucas et al., 2019). After only a few tries, we found a wide range of values of B where AggMo outperforms SGD with a fine-tuned momentum constant (see Fig. 10b). Fig. 5 compares the attacks using different choices of the optimizers to the baseline EoT attack. Here, the baseline can only reduce the adversarial accuracy from 89% to 70% while our best attack manages to reach 6% or over 4.3× improvement. This concludes that the optimizer plays a crucial role in the success of the attack, and the RT defense, even with a carefully and systematically chosen transformation hyperparameters, is not robust against adversarial examples. Furthermore, we note that without our loss function and only using AggMo, the accuracy only goes down to 23% at a much slower rate. Conversely, when the linear loss and SGM are used with SGD (no momentum), the accuracy drops to 51%. This signifies that all three techniques we deploy play important roles to the attack’s effectiveness. 6.5. Comparison with AutoAttack AutoAttack (Croce & Hein, 2020) was proposed as a standardized benchmark for evaluating deterministic defenses against adversarial examples. It uses an ensemble of four different attacks that cover weaknesses of one another, one of which does not use gradients. AutoAttack has been proven to be one of the strongest attack currently and is capable of catching defenses with false robustness caused by gradient obfuscation (Athalye et al., 2018a). While not particularly designed for stochastic models, AutoAttack can be used to evaluate them when combined with EoT. We report the",
+              "url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "document_sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "forms, one poor transform gradient approximation could ruin the overall gradient approximation. Appendix A.3 has more details on these experiments. These results show that BaRT’s evaluation using BPDA was overly optimistic, and BaRT is not as robust as previously thought. Since BPDA is unreliable for approximating gradients of non-differentiable image transformations, we recommend that other ensuing RT-based defenses only use differentiable transformations. For the rest of this paper, we only study the robustness of RT defenses with differentiable transforms to isolate them from an orthogonal line of research on non-differentiable defenses (e.g., with approximate gradients or zero-th order attacks). Additionally, differentiable models can boost their robustness further when combined with adversarial training. We explore this direction in Section 7. Even without non-differentiable transforms, we still lack reliable evaluation on stochastic defenses apart from EoT. In the next section, we show that applying an EoT attack on RT defense results in a critically sub-optimal evaluation. After that, we propose a stronger attack.",
+              "url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "document_sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Preprocessing defenses. A number of proposed defenses against adversarial examples preprocess inputs before classification (Guo et al., 2018; Song et al., 2018). Unfortunately, these defenses are largely ineffective in a white-box setting (Athalye et al., 2018; Tramer et al., 2020; Sitawarin et al., 2022). Surprisingly, recent work has shown that",
+              "url": "https://proceedings.mlr.press/v202/sitawarin23a/sitawarin23a.pdf",
+              "document_sha256": "64d915d4b7096f6ebfa04f182341c542419ec5b7ecef730531bc84f98613ce14"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Here, (·)+ represents the Moore-Penrose pseudo-inverse. We defer the formal derivation to Appendix B.2. Limitation. We have demonstrated how to bypass two very common preprocessors—cropping and resizing—but not all can be bypassed in this way. Our Bypassing Attack assumes (A1) the preprocessors are idempotent, i.e., t(t(x)) = t(x), and (A2) the preprocessor’s output space is continuous. Most common preprocessing functions are idempotent: e.g., quantizing an already quantized image makes no difference. For preprocessors that do not satisfy (A2), e.g., quantization whose output space is discrete, we propose an alternative attack in the next section.",
+              "url": "https://proceedings.mlr.press/v202/sitawarin23a/sitawarin23a.pdf",
+              "document_sha256": "64d915d4b7096f6ebfa04f182341c542419ec5b7ecef730531bc84f98613ce14"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-01153a4deaeed4a3ac0fe2b7",
+          "url": "https://proceedings.mlr.press/v162/sitawarin22a.html"
+        },
+        "b": {
+          "paper_id": "paper-d513e6b2cbc360a4ca57e5ef",
+          "url": "https://proceedings.mlr.press/v202/sitawarin23a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "7da782f8ce0ab34d7be7f789d1a728d1be89d5d00681c98cb329aafc43783d06"
+    },
+    {
+      "id": "edge-14fffd5347f4d0a53dd74e01",
+      "a": "paper-012d74ad21447cbcce807bdb",
+      "b": "paper-136e256c77422df599aec9fd",
+      "state": {
+        "paper_a": {
+          "title": "Score-based Generative Modeling in Latent Space",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset."
+        },
+        "paper_b": {
+          "title": "DiffBreak: Is Diffusion-Based Purification Robust?",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion-based purification (DBP) has become a cornerstone defense against adversarial examples (AEs), regarded as robust due to its use of diffusion models (DMs) that project AEs onto the natural data manifold. We refute this core claim, theoretically proving that gradient-based attacks effectively target the DM rather than the classifier, causing DBP's outputs to align with adversarial distributions. This prompts a reassessment of DBP's robustness, accrediting it two critical factors: inaccurate gradients and improper evaluation protocols that test only a single random purification of the AE. We show that when accounting for stochasticity and resubmission risk, DBP collapses. To support this, we introduce DiffBreak, the first reliable toolkit for differentiation through DBP, eliminating gradient mismatches that previously further inflated robustness estimates. We also analyze the current defense scheme used for DBP where classification relies on a single purification, pinpointing its inherent invalidity. We provide a statistically grounded majority-vote (MV) alternative that aggregates predictions across multiple purified copies, showing partial but meaningful robustness gain. We then propose a novel adaptation of an optimization method against deepfake watermarking, crafting systemic perturbations that defeat DBP even under MV, challenging DBP's viability."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Given DMs’ data modeling abilities [12, 39], DBP operates under the assumption that each denoising (reverse) step’s output belongs to a corresponding marginal natural distribution (a distribution obtained by introducing Gaussian noise into natural inputs, with decreasing variance proportional to…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-012d74ad21447cbcce807bdb",
+          "b": "paper-136e256c77422df599aec9fd",
+          "input_sha256": "ab09d46b2b839df499ed8045860de149edfd46cacadca0c5f78e8d56c2c7a7da",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/1d5c1d0d32666a4c2568dab0aeb0f0fe-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset. Our implementation is available at https://github.com/NVlabs/LSGM.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "increased easily without sacrifices. Moreover, SDE-based generative models are currently defined for continuous data and cannot be applied effortlessly to binary, categorical, or graph-structured data. Here, we propose the Latent Score-based Generative Model (LSGM), a new approach for learning SGMs in latent space, leveraging a variational autoencoder (VAE) framework [14, 15]. We map the input data to latent space and apply the score-based generative model there. The score-based model is then tasked with modeling the distribution over the embeddings of the data set. Novel data synthesis is achieved by first generating embeddings via drawing from a simple base distribution followed by iterative denoising, and then transforming this embedding via a decoder to data space (see Fig. 1). We can consider this model a VAE with an SGM prior. Our approach has several key advantages: Synthesis Speed: By pretraining the VAE with a Normal prior first, we can bring the marginal distribution over encodings (the aggregate posterior) close to the Normal prior, which is also the SGM’s base distribution. Consequently, the SGM only needs to model the remaining mismatch, resulting in a less complex model from which sampling becomes easier. Furthermore, we can tailor the latent space according to our needs. For example, we can use hierarchical latent variables and apply the diffusion model only over a subset of them, further improving synthesis speed. Expressivity: Training a regular SGM can be considered as training a neural ODE directly on the data [2]. However, previous works found that augmenting neural ODEs [16, 17] and more generally generative models [18, 19, 20, 21] with latent variables improves their expressivity. Consequently, we expect similar performance gains from combining",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "ML classifiers are vulnerable to Adversarial Examples (AEs)—imperceptible perturbations that induce misclassification [37, 15]. Adversarial Training [28, 54] is attack-specific and costly [44], while other defenses [16, 13, 3, 46, 49, 32, 50, 9] are vulnerable to adaptive attacks [38]. Diffusion-Based Purification (DBP) [30, 40], which leverages diffusion models (DMs) [36, 34], has emerged as a promising defense [6, 45, 7, 53, 31, 42]. DBP purifies inputs by solving the reverse stochastic differential equation (SDE) associated with DMs, diffusing the input with random noise to dilute adversarial changes and iteratively denoising it. Given DMs’ data modeling abilities [12, 39], DBP operates under the assumption that each denoising (reverse) step’s output belongs to a corresponding marginal natural distribution (a distribution obtained by introducing Gaussian noise into natural inputs, with decreasing variance proportional to that step). This is the foundation for DBP’s robustness as it ensures its outputs are from the natural distribution, while AEs lie outside this manifold and are unlikely to be preserved. Recent works treat DBP as a static pre-processor that standard gradient-based attacks cannot directly manipulate but rather only attempt to evade. Thus, attackers are assumed to either fail due to randomness that masks the classifier’s vulnerabilities [26], or be forced to rely on surrogate losses and heuristic approximations [20, 41]. We theoretically refute DBP’s robustness rooted in its ability to perform projection onto the natural manifold. This is paradoxical as it assumes correct behavior of the score model sθ used by the DM to mimic the gradients of the marginal distributions. Yet, sθ is an ML system with exploitable imperfections. In §3.1, we prove that",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion-based purification (DBP) has become a cornerstone defense against adversarial examples (AEs), regarded as robust due to its use of diffusion models (DMs) that project AEs onto the natural data manifold. We refute this core claim, theoretically proving that gradient-based attacks effectively target the DM rather than the classifier, causing DBP’s outputs to align with adversarial distributions. This prompts a reassessment of DBP’s robustness, accrediting it two critical factors: inaccurate gradients and improper evaluation protocols that test only a single random purification of the AE. We show that when accounting for stochasticity and resubmission risk, DBP collapses. To support this, we introduce DiffBreak, the first reliable toolkit for differentiation through DBP, eliminating gradient mismatches that previously further inflated robustness estimates. We also analyze the current defense scheme used for DBP where classification relies on a single purification, pinpointing its inherent invalidity. We provide a statistically grounded majorityvote (MV) alternative that aggregates predictions across multiple purified copies, showing partial but meaningful robustness gain. We then propose a novel adaptation of an optimization method against deepfake watermarking, crafting systemic perturbations that defeat DBP even under MV, challenging DBP’s viability.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: DiffGrad. x is given to the iterative attack algorithm Aθ to generate xadv . At each iteration, xadv is propagated through DBP, yielding x̂advp0q that is given to M while storing each intermediate x̂advptq (bottom replicas) from DBP’s reverse pass (see §2) but without saving any graph dependencies. Backpropagation uses the stored samples: Starting from t “ ´dt (dt ă 0—see §2), each x̂advptq is used to recompute x̂advpt`dtq, retrieving the required dependencies. Then, we recursively obtain the gradient w.r.t. x̂advptq from the gradients w.r.t. x̂advpt`dtq using this recovered sub-graph (see §3.2). Finally, gradients are backpropagated in a standard manner from xadvpt˚ q to Aθ to update xadv . In §3.2 and §3.3, we revisit DBP’s previous robustness, attributing it to backpropagation issues and improper evaluation protocols. Most works [20, 30, 26, 40] judge attacks based on a single purification of the final adversarial input. While this seemingly mirrors DBP’s intended “purify once and classify” deployment [30, 40], it is statistically invalid: since DBP samples noise randomly, one evaluation of the AE fails to capture true single misclassification probability across possible purifications. Moreover, due to DBP’s memory-intensive gradients, prior works implement exact backpropagation [20, 26, 41] via checkpointing [8]. We discover and fix issues in all previous implementations, introducing DiffGrad—the first reliable module for exact backpropagation through DBP (see Fig.1). In §4, we show that even under the one-sample evaluation protocol, AutoAttack [10] significantly outperforms prior works, exposing their gradient fallacies. We further use a multi-sample evaluation that captures DBP’s stochasticity and resubmission risk—aligned with DiffHammer [41], which",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-012d74ad21447cbcce807bdb",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-136e256c77422df599aec9fd",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/1d5c1d0d32666a4c2568dab0aeb0f0fe-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "b025d168e7483a19f8fbaf2dcbc2e313df070f737f7e52322660800738dade94"
+    },
+    {
+      "id": "edge-31eab1e8dbce24f6c5334359",
+      "a": "paper-012d74ad21447cbcce807bdb",
+      "b": "paper-c557bf94909b813696ece8c2",
+      "state": {
+        "paper_a": {
+          "title": "Score-based Generative Modeling in Latent Space",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset."
+        },
+        "paper_b": {
+          "title": "Diffusion Models for Adversarial Purification",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Adversarial purification refers to a class of defense methods that remove adversarial perturbations using a generative model. These methods do not make assumptions on the form of attack and the classification model, and thus can defend pre-existing classifiers against unseen threats. However, their performance currently falls behind adversarial training methods. In this work, we propose DiffPure that uses diffusion models for adversarial purification: Given an adversarial example, we first diffuse it with a small amount of noise following a forward diffusion process, and then recover the clean image through a reverse generative process. To evaluate our method against strong adaptive attacks in an efficient and scalable way, we propose to use the adjoint method to compute full gradients of the reverse generative process. Extensive experiments on three image datasets including CIFAR-10, ImageNet and CelebA-HQ with three classifier architectures including ResNet, WideResNet and ViT demonstrate that our method achieves the state-of-the-art results, outperforming current adversarial training and adversarial purification methods, often by a large margin."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "These models have demonstrated strong sample quality, beating GANs in image generation (Dhariwal & Nichol, 2021; Vahdat et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-012d74ad21447cbcce807bdb",
+          "b": "paper-c557bf94909b813696ece8c2",
+          "input_sha256": "2b0bae733b4ecc6abee78001f056364f989577c3fc3ffce8d0392e7f39c60066",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/nie22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/nie22a/nie22a.pdf",
+              "sha256": "ec5ff5e4398704a558cdc149f3e05d5f2d5b9b7aa4adfbb566eef414d72491ea"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Score-based generative models (SGMs) have recently demonstrated impressive results in terms of both sample quality and distribution coverage. However, they are usually applied directly in data space and often require thousands of network evaluations for sampling. Here, we propose the Latent Score-based Generative Model (LSGM), a novel approach that trains SGMs in a latent space, relying on the variational autoencoder framework. Moving from data to latent space allows us to train more expressive generative models, apply SGMs to non-continuous data, and learn smoother SGMs in a smaller space, resulting in fewer network evaluations and faster sampling. To enable training LSGMs end-to-end in a scalable and stable manner, we (i) introduce a new score-matching objective suitable to the LSGM setting, (ii) propose a novel parameterization of the score function that allows SGM to focus on the mismatch of the target distribution with respect to a simple Normal one, and (iii) analytically derive multiple techniques for variance reduction of the training objective. LSGM obtains a state-of-the-art FID score of 2.10 on CIFAR-10, outperforming all existing generative results on this dataset. On CelebA-HQ-256, LSGM is on a par with previous SGMs in sample quality while outperforming them in sampling time by two orders of magnitude. In modeling binary images, LSGM achieves state-of-the-art likelihood on the binarized OMNIGLOT dataset. Our implementation is available at https://github.com/NVlabs/LSGM.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "increased easily without sacrifices. Moreover, SDE-based generative models are currently defined for continuous data and cannot be applied effortlessly to binary, categorical, or graph-structured data. Here, we propose the Latent Score-based Generative Model (LSGM), a new approach for learning SGMs in latent space, leveraging a variational autoencoder (VAE) framework [14, 15]. We map the input data to latent space and apply the score-based generative model there. The score-based model is then tasked with modeling the distribution over the embeddings of the data set. Novel data synthesis is achieved by first generating embeddings via drawing from a simple base distribution followed by iterative denoising, and then transforming this embedding via a decoder to data space (see Fig. 1). We can consider this model a VAE with an SGM prior. Our approach has several key advantages: Synthesis Speed: By pretraining the VAE with a Normal prior first, we can bring the marginal distribution over encodings (the aggregate posterior) close to the Normal prior, which is also the SGM’s base distribution. Consequently, the SGM only needs to model the remaining mismatch, resulting in a less complex model from which sampling becomes easier. Furthermore, we can tailor the latent space according to our needs. For example, we can use hierarchical latent variables and apply the diffusion model only over a subset of them, further improving synthesis speed. Expressivity: Training a regular SGM can be considered as training a neural ODE directly on the data [2]. However, previous works found that augmenting neural ODEs [16, 17] and more generally generative models [18, 19, 20, 21] with latent variables improves their expressivity. Consequently, we expect similar performance gains from combining",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/5dca4c6b9e244d24a30b4c45601d9720-Paper.pdf",
+              "document_sha256": "af8ab94d51218f86badd0e4ba36506a737e3e624ef6b7efaf517f0a023bab344"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "effectiveness (Zhang et al., 2019; Gowal et al., 2021). However, most adversarial training methods can only defend against a specific attack that they are trained with. Recent works on defending against unseen threats add a carefully designed threat model into their adversarial training pipeline, but they suffer from a significant performance drop (Laidlaw et al., 2021; Dolatabadi et al., 2021). Additionally, the computational complexity of adversarial training is usually higher than standard training (Wong et al., 2020). In contrast, another class of defense methods, often termed adversarial purification (Shi et al., 2021; Yoon et al., 2021), relies on generative models to purify adversarially perturbed images before classification (Samangouei et al., 2018; Hill et al., 2021). Compared to the adversarial training methods, adversarial purification can defend against unseen threats in a plug-n-play manner without re-training the classifiers. This is because the generative purification models are trained independently from both threat models and classifiers. Despite these advantages, their performance usually falls behind current adversarial training methods (Croce & Hein, 2020), in particular against adaptive attacks where the attacker has the full knowledge of the defense method (Athalye et al., 2018; Tramer et al., 2020). This is usually attributed to the shortcomings of current generative models that are used as a purification model, such as mode collapse in GANs (Goodfellow et al., 2014), low sample quality in energy-based models (EBMs) (LeCun et al., 2006), and the lack of proper randomness (Pinot et al., 2020). Recently, diffusion models have emerged as powerful generative models (Ho et al., 2020; Song et al., 2021b). These models have demonstrated strong sample",
+              "url": "https://proceedings.mlr.press/v162/nie22a/nie22a.pdf",
+              "document_sha256": "ec5ff5e4398704a558cdc149f3e05d5f2d5b9b7aa4adfbb566eef414d72491ea"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "4. Related Work Adversarial training It learns a robust classifier by training on adversarial examples created during every weight update. After first introduced by Madry et al. (2018), adversarial training has become one of the most successful defense methods in neural networks against adversarial attacks (Gowal et al., 2020; Rebuffi et al., 2021). Despite the difference in the defense form, some variants of adversarial training share similarities with our method. He et al. (2019) inject Gaussian noise to each network layer for better robustness via stochastic effects. Kang et al. (2021) train neural ODEs with Lyapunov-stable equilibrium points for adversarial defense. Gowal et al. (2021) use generative models for data augmentation to improve adversarial training, where diffusion models work the best. Adversarial purification Using generative models to purify adversarial images before classification, adversarial purification has become a promising counterpart of adversarial training. In particular, Samangouei et al. (2018) propose defense-GAN using GANs as the purification model, and Song et al. (2018) propose PixelDefense by relying on autoregressive generative models. More recently, Du & Mordatch (2019); Grathwohl et al. (2020); Hill et al. (2021) show the improved robustness of using EBMs to purify attacked images via Langevin dynamics (LD). More similar to our work, Yoon et al. (2021) use the denoising score-based model (Song & Ermon, 2019) for purification, but its sampling is still a variant of LD that does not rely on forward diffusion and backward denoising processes. We empirically compare our method against these previous works and we largely outperform them. Image editing with diffusion models As a probabilistic generative models for unsupervised modeling",
+              "url": "https://proceedings.mlr.press/v162/nie22a/nie22a.pdf",
+              "document_sha256": "ec5ff5e4398704a558cdc149f3e05d5f2d5b9b7aa4adfbb566eef414d72491ea"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 7,
+              "text": "5.4. Comparison with Other Purification Methods Because most prior adversarial purification methods have an optimization or sampling loop in their defense process (Hill et al., 2021), they cannot be evaluated directly with the strongest white-box adaptive attacks, such as AutoAttack. To this end, we use the BPDA+EOT attack (Tramer et al., 2020; Hill et al., 2021), an adaptive attack designed specifically for purification methods (with stochasticity), to evaluate our method and baselines for a fair comparison. CelebA-HQ We compare with other strong generative models, such as NVAE (Vahdat & Kautz, 2020) and StyleGAN2 (Karras et al., 2020), that can be used to purify adversarial examples. The basic idea is to first encode adversarial images to latent codes, with which purified images are synthesized from the decoder (see Appendix B.3 for implementation details). We choose CelebA-HQ for the comparsion because they both perform well on it. In Table 5a, we use the eyeglasses attribute to show that our method has much better robust accuracy (+15.63%) than the best performing baseline while also maintaining a relatively high standard accuracy. We defer the similar results on the smiling attribute to Appendix C.3. These results demonstrate the superior performance of diffusion models in adversarial robustness than other generative models as a purification model. CIFAR-10 In Table 5b, we compare our method with other adversarial purification methods on CIFAR-10, where",
+              "url": "https://proceedings.mlr.press/v162/nie22a/nie22a.pdf",
+              "document_sha256": "ec5ff5e4398704a558cdc149f3e05d5f2d5b9b7aa4adfbb566eef414d72491ea"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-012d74ad21447cbcce807bdb",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/5dca4c6b9e244d24a30b4c45601d9720-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-c557bf94909b813696ece8c2",
+          "url": "https://proceedings.mlr.press/v162/nie22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "0cc577c828d125ebc37e403e2f10d4ea16e4fdbc6f87b1ee8a027a040b906d18"
+    },
+    {
+      "id": "edge-41c323aa5fa82831e3f054d8",
+      "a": "paper-0150cc8a00b0f4bd136059dd",
+      "b": "paper-a751ea2cb07b74f6c258a4bc",
+      "state": {
+        "paper_a": {
+          "title": "Adversarial Purification with Score-based Generative Models",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "While adversarial training is considered as a standard defense method against adversarial attacks for image classifiers, adversarial purification, which purifies attacked images into clean images with a standalone purification, model has shown promises as an alternative defense method. Recently, an EBM trained with MCMC has been highlighted as a purification model, where an attacked image is purified by running a long Markov-chain using the gradients of the EBM. Yet, the practicality of the adversarial purification using an EBM remains questionable because the number of MCMC steps required for such purification is too large. In this paper, we propose a novel adversarial purification method based on an EBM trained with DSM. We show that an EBM trained with DSM can quickly purify attacked images within a few steps. We further introduce a simple yet effective randomized purification scheme that injects random noises into images before purification. This process screens the adversarial perturbations imposed on images by the random noises and brings the images to the regime where the EBM can denoise well. We show that our purification method is robust against various attacks and demonstrate its state-of-the-art performances."
+        },
+        "paper_b": {
+          "title": "One Stone, Two Birds: Enhancing Adversarial Defense Through the Lens of Distributional Discrepancy",
+          "year": 2025,
+          "venue": "ICML",
+          "abstract": "Statistical adversarial data detection (SADD) detects whether an upcoming batch contains adversarial examples (AEs) by measuring the distributional discrepancies between clean examples (CEs) and AEs. In this paper, we explore the strength of SADD-based methods by theoretically showing that minimizing distributional discrepancy can help reduce the expected loss on AEs. Despite these advantages, SADD-based methods have a potential limitation: they discard inputs that are detected as AEs, leading to the loss of clean information within those inputs. To address this limitation, we propose a two-pronged adversarial defense method, named D istributional-discrepancy-based A dversarial D efense (DAD). In the training phase, DAD first optimizes the test power of the maximum mean discrepancy (MMD) to derive MMD-OPT, which is a stone that kills two birds . MMD-OPT first serves as a guiding signal to minimize the distributional discrepancy between CEs and AEs to train a denoiser. Then, it serves as a discriminator to differentiate CEs and AEs during inference. Overall, in the inference stage, DAD consists of a two-pronged process: (1) directly feeding the detected CEs into the classifier, and (2) removing noise from the detected AEs by the distributional-discrepancy-based denoiser. Extensive experiments show that DAD outperforms current state-of-the-art (SOTA) defense methods by simultaneously improving clean and robust accuracy on CIFAR-10 and ImageNet-1K against adaptive white-box attacks. Codes are publicly available at: https://github.com/tmlr-group/DAD."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Therefore, it is imperative to develop advanced defense methods to defend against AEs (Goodfellow et al., 2015; Madry et al., 2018; Zhang et al., 2019; Wang et al., 2020; Yoon et al., 2021; Nie et al., 2022).\nThe following studies mainly focus on exploring the use of more powerful generative models for AP (Liao et al., 2018; Samangouei et al., 2018; Song et al., 2018; Yoon et al., 2021; Nie et al., 2022).\nThe success of recent AP methods often relies on the assumption that there will be a pre-trained generative model that can precisely estimate the probability density of the CEs (Yoon et al., 2021; Nie et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0150cc8a00b0f4bd136059dd",
+          "b": "paper-a751ea2cb07b74f6c258a4bc",
+          "input_sha256": "86914e66ec6238a64c0f7a70a7be2d1e13745703344791015f0eb9a9f0bd63a9",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/yoon21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v267/zhang25bn.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25bn/zhang25bn.pdf",
+              "sha256": "635894babca90aa92dae5a981d656708c00519c0a5c4bf32267c29e7a97e9a49"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2019), in which a classifier is trained with adversarial examples, is considered as a standard defense method due to its effectiveness. Another approach for the adversarial defense is to purify attacked images before feeding them to classifiers. This strategy, referred to as adversarial purification (Srinivasan et al., 2021; Yang et al., 2019; Shi et al., 2021), learns a purification model whose goal is to remove any existing adversarial noise from potentially attacked images into clean images so that they could be correctly classified when fed to the classifier. The purification model is usually trained independently of the classifier and does not necessarily require the class labels for training; thus, it is less likely to affect the clean image classification accuracy compared to the adversarial training methods. The most common way is for adversarial purification to learn a generative model over the images (Samangouei et al., 2018; Song et al., 2018; Schott et al., 2019; Ghosh et al., 2019) such that one can restore clean images from attacked images. Recently, along with the advances in learning Energy-Based Models (EBMs) with deep neural networks, adversarial purification methods using an EBM trained with Markov-Chain Monte-Carlo (MCMC) as a purification model have been highlighted (Du & Mordatch, 2019; Grathwohl et al., 2020; Hill et al., 2021). Hinging on the memoryless behavior of MCMC , these methods purify attacked images by running a large number of sampling steps defined by Langevin dynamics. When started from an attacked image, in the long run, Langevin sampling will eventually bring the attacked image to a clean image that is likely to be generated from the data distribution. However, the success of the purification heavily depends on the number of",
+              "url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "document_sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Adversarial purification with score-based generative models 3.1. Denoising score matching for adversarial purification While previous adversarial purification methods using EBMs employ maximum likelihood training with MCMC, we propose to use DSM to train an EBM to be used for purification. As we discussed above, DSM aims to learn a score network sθ (x) pointing the direction of restoring original samples from perturbed samples. Considering that the adversarial purification can be understood as a denoising procedure, we conjecture that DSM is a better option to train an EBM as it is learned with the objective more directly related to the adversarial purification. The maximum likelihood training aims to learn the energy function Eθ (x), and the gradients ∇x Eθ (x) is obtained as a byproduct. Hence, unless trained perfectly, accurately predicting the energy function does not necessarily mean accurately predicting the gradients ∇x Eθ (x) that are actually used for purification. In this work, we adopt the recently proposed Noise Conditional Score Network (NCSN) (Song & Ermon, 2019; 2020) for our model. An NCSN is trained with a modified DSM incorporating multiple noise levels, where inputs are perturbed with multiple noise levels {σj }L j=1 instead of a single noise σ. The training objective based on this multi-scale noise is L X L L(θ, {σj }j=1 ) = σj2 `(θ, σj ), (10) j=1",
+              "url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "document_sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "The discovery of adversarial examples (AEs) has raised a security concern for deep learning techniques in recent decades (Szegedy et al., 2014; Goodfellow et al., 2015). AEs are often crafted by adding imperceptible noise to clean examples (CEs), which can easily mislead a well-trained deep learning model to make wrong predictions. Considering the extensive use of deep learning-based systems, AEs pose a significant security threat for real-world applications (Dong et al., 2019; Cao et al., 2021; Han et al., 2025). Therefore, it is imperative to develop advanced defense methods to defend against AEs (Goodfellow et al., 2015; Madry et al., 2018; Zhang et al., 2019; Wang et al., 2020; Yoon et al., 2021; Nie et al., 2022).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25bn/zhang25bn.pdf",
+              "document_sha256": "635894babca90aa92dae5a981d656708c00519c0a5c4bf32267c29e7a97e9a49"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 12,
+              "text": "Denoiser-based adversarial defense. Denoiser-based adversarial defense often leverages generative models to shift AEs back to their clean counterparts before feeding them into a classifier. In most literature, it is called adversarial purification (AP). At the early stage of AP, Meng & Chen (2017) propose a two-pronged defense called MagNet to remove adversarial noise by first using a detector to discard the detected AEs, and then using an autoencoder to purify the remaining samples. The following studies mainly focus on exploring the use of more powerful generative models for AP (Liao et al., 2018; Samangouei et al., 2018; Song et al., 2018; Yoon et al., 2021; Nie et al., 2022). Recently, the outstanding denoising capabilities of pre-trained diffusion models have been leveraged to purify AEs (Nie et al., 2022; Lee & Kim, 2023). The success of recent AP methods often relies on the assumption that there will be a pre-trained generative model that can precisely estimate the probability density of the CEs (Nie et al., 2022; Lee & Kim, 2023). However, even powerful generative models (e.g., diffusion models) may have an inaccurate density estimation, leading to unsatisfactory performance (Chen et al., 2024). By contrast, instead of estimating probability densities, our method directly minimizes the distributional discrepancies between AEs and CEs, leveraging the fact that identifying distributional discrepancies is simpler and more feasible.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25bn/zhang25bn.pdf",
+              "document_sha256": "635894babca90aa92dae5a981d656708c00519c0a5c4bf32267c29e7a97e9a49"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 6,
+              "text": "Baseline settings. DAD is a two-pronged adversarial defense method, which is different from most existing defense methods. In terms of the pipeline structure, MagNet (Meng & Chen, 2017) is the only similar defense method to ours, which also contains a two-pronged process. However, MagNet is now considered outdated, making it unfair for DAD to compare with it. Therefore, to make the comparison as fair as possible, we follow a recent study on robust evaluation (Lee & Kim, 2023) to compare our method with SOTA adversarial training (AT) methods in RobustBench (Croce et al., 2020) and adversarial purification (AP) methods selected by Lee & Kim (2023).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25bn/zhang25bn.pdf",
+              "document_sha256": "635894babca90aa92dae5a981d656708c00519c0a5c4bf32267c29e7a97e9a49"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "Statistical adversarial data detection (SADD) detects whether an upcoming batch contains adversarial examples (AEs) by measuring the distributional discrepancies between clean examples (CEs) and AEs. In this paper, we explore the strength of SADD-based methods by theoretically showing that minimizing distributional discrepancy can help reduce the expected loss on AEs. Despite these advantages, SADD-based methods have a potential limitation: they discard inputs that are detected as AEs, leading to the loss of useful information within those inputs. To address this limitation, we propose a two-pronged adversarial defense method, named Distributionaldiscrepancy-based Adversarial Defense (DAD). In the training phase, DAD first optimizes the test power of the maximum mean discrepancy (MMD) to derive MMD-OPT, which is a stone that kills two birds. MMD-OPT first serves as a guiding signal to minimize the distributional discrepancy between CEs and AEs to train a denoiser. Then, it serves as a discriminator to differentiate CEs and AEs during inference. Overall, in the inference stage, DAD consists of a two-pronged process: (1) directly feeding the detected CEs into the classifier, and (2) removing noise from the detected AEs by the distributional-discrepancybased denoiser. Extensive experiments show that DAD outperforms current state-of-the-art (SOTA) defense methods by simultaneously improving clean and robust accuracy on CIFAR-10 and ImageNet-1K against adaptive white-box attacks. Codes are publicly available at: https: //github.com/tmlr-group/DAD.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25bn/zhang25bn.pdf",
+              "document_sha256": "635894babca90aa92dae5a981d656708c00519c0a5c4bf32267c29e7a97e9a49"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0150cc8a00b0f4bd136059dd",
+          "url": "https://proceedings.mlr.press/v139/yoon21a.html"
+        },
+        "b": {
+          "paper_id": "paper-a751ea2cb07b74f6c258a4bc",
+          "url": "https://proceedings.mlr.press/v267/zhang25bn.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "13fb94a4a9c289ac59db6266b2c0d588103cf4a09e96d749a4e208d58764b548"
+    },
+    {
+      "id": "edge-658e23b6a0dc233d37fc9c33",
+      "a": "paper-0150cc8a00b0f4bd136059dd",
+      "b": "paper-b64f34afaccc50930f122cb7",
+      "state": {
+        "paper_a": {
+          "title": "Adversarial Purification with Score-based Generative Models",
+          "year": 2021,
+          "venue": "ICML",
+          "abstract": "While adversarial training is considered as a standard defense method against adversarial attacks for image classifiers, adversarial purification, which purifies attacked images into clean images with a standalone purification, model has shown promises as an alternative defense method. Recently, an EBM trained with MCMC has been highlighted as a purification model, where an attacked image is purified by running a long Markov-chain using the gradients of the EBM. Yet, the practicality of the adversarial purification using an EBM remains questionable because the number of MCMC steps required for such purification is too large. In this paper, we propose a novel adversarial purification method based on an EBM trained with DSM. We show that an EBM trained with DSM can quickly purify attacked images within a few steps. We further introduce a simple yet effective randomized purification scheme that injects random noises into images before purification. This process screens the adversarial perturbations imposed on images by the random noises and brings the images to the regime where the EBM can denoise well. We show that our purification method is robust against various attacks and demonstrate its state-of-the-art performances."
+        },
+        "paper_b": {
+          "title": "Better Diffusion Models Further Improve Adversarial Training",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "It has been recognized that the data generated by the denoising diffusion probabilistic model (DDPM) improves adversarial training. After two years of rapid development in diffusion models, a question naturally arises: can better diffusion models further improve adversarial training? This paper gives an affirmative answer by employing the most recent diffusion model which has higher efficiency ($\\sim 20$ sampling steps) and image quality (lower FID score) compared with DDPM. Our adversarially trained models achieve state-of-the-art performance on RobustBench using only generated data (no external datasets). Under the $\\ell_\\infty$-norm threat model with $\\epsilon=8/255$, our models achieve $70.69\\\\%$ and $42.67\\\\%$ robust accuracy on CIFAR-10 and CIFAR-100, respectively, i.e. improving upon previous state-of-the-art models by $+4.58\\\\%$ and $+8.03\\\\%$. Under the $\\ell_2$-norm threat model with $\\epsilon=128/255$, our models achieve $84.86\\\\%$ on CIFAR-10 ($+4.44\\\\%$). These results also beat previous works that use external data. We also provide compelling results on the SVHN and TinyImageNet datasets. Our code is at https://github.com/wzekai99/DM-Improves-AT."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Diffusion models have recently gained popularity in adversarial purification (Yoon et al., 2021; Nie et al., 2022; Wang et al., 2022;\nXiao et al., 2022), demonstrating promising robust accuracy against AutoAttack.\nDiffusion models have recently gained popularity in adversarial purification (Yoon et al., 2021; Nie et al., 2022; Wang et al., 2022; Xiao et al., 2022), demonstrating promising robust accuracy against AutoAttack.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0150cc8a00b0f4bd136059dd",
+          "b": "paper-b64f34afaccc50930f122cb7",
+          "input_sha256": "8c68f96322266068d660b8a9491aca1feb4f52bec9daf5940d869d2057679fec",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v139/yoon21a.html",
+              "pdf_url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/wang23ad.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/wang23ad/wang23ad.pdf",
+              "sha256": "0c164689b081b5f7e913f44e384aceb6781f80b1ff22c039655d3f7b95446c10"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "2019), in which a classifier is trained with adversarial examples, is considered as a standard defense method due to its effectiveness. Another approach for the adversarial defense is to purify attacked images before feeding them to classifiers. This strategy, referred to as adversarial purification (Srinivasan et al., 2021; Yang et al., 2019; Shi et al., 2021), learns a purification model whose goal is to remove any existing adversarial noise from potentially attacked images into clean images so that they could be correctly classified when fed to the classifier. The purification model is usually trained independently of the classifier and does not necessarily require the class labels for training; thus, it is less likely to affect the clean image classification accuracy compared to the adversarial training methods. The most common way is for adversarial purification to learn a generative model over the images (Samangouei et al., 2018; Song et al., 2018; Schott et al., 2019; Ghosh et al., 2019) such that one can restore clean images from attacked images. Recently, along with the advances in learning Energy-Based Models (EBMs) with deep neural networks, adversarial purification methods using an EBM trained with Markov-Chain Monte-Carlo (MCMC) as a purification model have been highlighted (Du & Mordatch, 2019; Grathwohl et al., 2020; Hill et al., 2021). Hinging on the memoryless behavior of MCMC , these methods purify attacked images by running a large number of sampling steps defined by Langevin dynamics. When started from an attacked image, in the long run, Langevin sampling will eventually bring the attacked image to a clean image that is likely to be generated from the data distribution. However, the success of the purification heavily depends on the number of",
+              "url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "document_sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "3. Adversarial purification with score-based generative models 3.1. Denoising score matching for adversarial purification While previous adversarial purification methods using EBMs employ maximum likelihood training with MCMC, we propose to use DSM to train an EBM to be used for purification. As we discussed above, DSM aims to learn a score network sθ (x) pointing the direction of restoring original samples from perturbed samples. Considering that the adversarial purification can be understood as a denoising procedure, we conjecture that DSM is a better option to train an EBM as it is learned with the objective more directly related to the adversarial purification. The maximum likelihood training aims to learn the energy function Eθ (x), and the gradients ∇x Eθ (x) is obtained as a byproduct. Hence, unless trained perfectly, accurately predicting the energy function does not necessarily mean accurately predicting the gradients ∇x Eθ (x) that are actually used for purification. In this work, we adopt the recently proposed Noise Conditional Score Network (NCSN) (Song & Ermon, 2019; 2020) for our model. An NCSN is trained with a modified DSM incorporating multiple noise levels, where inputs are perturbed with multiple noise levels {σj }L j=1 instead of a single noise σ. The training objective based on this multi-scale noise is L X L L(θ, {σj }j=1 ) = σj2 `(θ, σj ), (10) j=1",
+              "url": "https://proceedings.mlr.press/v139/yoon21a/yoon21a.pdf",
+              "document_sha256": "35b5759b2f7291d9e5567dc3682e6a79c441595935ff10ce38460b42a52cfef6"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Adversarial purification. Generative models have been used to purify adversarial examples (Song et al., 2018) or strengthen certified defenses (Carlini et al., 2022). Diffusion models have recently gained popularity in adversarial purification (Yoon et al., 2021; Nie et al., 2022; Wang et al., 2022; 2",
+              "url": "https://proceedings.mlr.press/v202/wang23ad/wang23ad.pdf",
+              "document_sha256": "0c164689b081b5f7e913f44e384aceb6781f80b1ff22c039655d3f7b95446c10"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "Xiao et al., 2022), demonstrating promising robust accuracy against AutoAttack. The effectiveness of diffusion-based purification, on the other hand, is dependent on the randomness of the SDE solvers (Ho et al., 2020; Bao et al., 2022), which causes at least tens of times inference computation and is unfriendly to downstream deployment. Furthermore, it has been demonstrated that stochastic pre-processing or test-time defenses have common limitations (Gao et al., 2022; Croce et al., 2022), which may be vulnerable to, e.g., transfer-based attacks (Kang et al., 2021) or intermediatestate attacks (Yang et al., 2022).",
+              "url": "https://proceedings.mlr.press/v202/wang23ad/wang23ad.pdf",
+              "document_sha256": "0c164689b081b5f7e913f44e384aceb6781f80b1ff22c039655d3f7b95446c10"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "Better Diffusion Models Further Improve Adversarial Training Table 2. Test accuracy (%) of clean images and under AutoAttack (AA) on CIFAR-10. We highlight our results in bold whenever the value represents an improvement relative to the strongest baseline using the same architecture, and we underline them whenever the value achieves new SOTA result under the threat model. We did not apply CutMix following Pang et al. (2022). † With the same batch size, the training time per epoch of our method is equivalent to the w/o-generated-data baseline (see ‘training time’ paragraph in Section 3). Dataset",
+              "url": "https://proceedings.mlr.press/v202/wang23ad/wang23ad.pdf",
+              "document_sha256": "0c164689b081b5f7e913f44e384aceb6781f80b1ff22c039655d3f7b95446c10"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Better Diffusion Models Further Improve Adversarial Training Table 3. Test accuracy (%) of clean images and under AutoAttack (AA) on CIFAR-100. We highlight our results in bold whenever the value represents an improvement relative to the strongest baseline using the same architecture, and we underline them whenever the value achieves new SOTA result under the threat model. We did not apply CutMix following Pang et al. (2022). † With the same batch size, the training time per epoch of our method is equivalent to the w/o-generated-data baseline (see ‘training time’ paragraph in Section 3). Dataset",
+              "url": "https://proceedings.mlr.press/v202/wang23ad/wang23ad.pdf",
+              "document_sha256": "0c164689b081b5f7e913f44e384aceb6781f80b1ff22c039655d3f7b95446c10"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0150cc8a00b0f4bd136059dd",
+          "url": "https://proceedings.mlr.press/v139/yoon21a.html"
+        },
+        "b": {
+          "paper_id": "paper-b64f34afaccc50930f122cb7",
+          "url": "https://proceedings.mlr.press/v202/wang23ad.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "83e7e764ba0c02d3d400b9d9e8cd1204004da9155d86ccbd22757e7243150d3b"
+    },
+    {
+      "id": "edge-4f01e6e5044b0c180b2e840e",
+      "a": "paper-017dd5c7b52a28ba75e645d4",
+      "b": "paper-2841a14165d53d56a7facaa4",
+      "state": {
+        "paper_a": {
+          "title": "Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "Current saliency map interpretations for neural networks generally rely on two key assumptions. First, they use first-order approximations of the loss function, neglecting higher-order terms such as the loss curvature. Second, they evaluate each feature’s importance in isolation, ignoring feature interdependencies. This work studies the effect of relaxing these two assumptions. First, we characterize a closed-form formula for the input Hessian matrix of a deep ReLU network. Using this formula, we show that, for classification problems with many classes, if a prediction has high probability then including the Hessian term has a small impact on the interpretation. We prove this result by demonstrating that these conditions cause the Hessian matrix to be approximately rank one and its leading eigenvector to be almost parallel to the gradient of the loss. We empirically validate this theory by interpreting ImageNet classifiers. Second, we incorporate feature interdependencies by calculating the importance of group-features using a sparsity regularization term. We use an L0 - L1 relaxation technique along with proximal gradient descent to efficiently compute group-feature importance values. Our empirical results show that our method significantly improves deep learning interpretations."
+        },
+        "paper_b": {
+          "title": "Second-Order Provable Defenses against Adversarial Attacks",
+          "year": 2020,
+          "venue": "ICML",
+          "abstract": "A robustness certificate against adversarial examples is the minimum distance of a given input to the decision boundary of the classifier (or its lower bound). For \\emph{any} perturbation of the input with a magnitude smaller than the certificate value, the classification output will provably remain unchanged. Computing exact robustness certificates for neural networks is difficult in general since it requires solving a non-convex optimization. In this paper, we provide computationally-efficient robustness certificates for neural networks with differentiable activation functions in two steps. First, we show that if the eigenvalues of the Hessian of the network (curvatures of the network) are bounded (globally or locally), we can compute a robustness certificate in the $l_2$ norm efficiently using convex optimization. Second, we derive a computationally-efficient differentiable upper bound on the curvature of a deep network. We also use the curvature bound as a regularization term during the training of the network to boost its certified robustness. Putting these results together leads to our proposed {\\bf C}urvature-based {\\bf R}obustness {\\bf C}ertificate (CRC) and {\\bf C}urvature-based {\\bf R}obust {\\bf T}raining (CRT). Our numerical results show that CRT leads to significantly higher certified robust accuracy compared to interval-bound propagation based training."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Furthermore, Lemma 1 can also be of independent interest in other related problems such as second-order interpretation methods for deep learning (e.g. (Singla et al., 2019)).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-017dd5c7b52a28ba75e645d4",
+          "b": "paper-2841a14165d53d56a7facaa4",
+          "input_sha256": "145c972791139edce81cc01fc9d46f57fb6c7d6c44a9f7e46d0bd96075a7d945",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/singla19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v119/singla20a.html",
+              "pdf_url": "https://proceedings.mlr.press/v119/singla20a/singla20a.pdf",
+              "sha256": "aabd61ed5f57ebc1eb9b031fe7503358e742b365b5778e23240b7c6e11f2d225"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Current saliency map interpretations for neural networks generally rely on two key assumptions. First, they use first-order approximations of the loss function, neglecting higher-order terms such as the loss curvature. Second, they evaluate each feature’s importance in isolation, ignoring feature interdependencies. This work studies the effect of relaxing these two assumptions. First, we characterize a closed-form formula for the input Hessian matrix of a deep ReLU network. Using this, we show that, for classification problems with many classes, if a prediction has high probability then including the Hessian term has a small impact on the interpretation. We prove this result by demonstrating that these conditions cause the Hessian matrix to be approximately rank one and its leading eigenvector to be almost parallel to the gradient of the loss. We empirically validate this theory by interpreting ImageNet classifiers. Second, we incorporate feature interdependencies by calculating the importance of group-features using a sparsity regularization term. We use an L0 − L1 relaxation technique along with proximal gradient descent to efficiently compute group-feature importance values. Our empirical results show that our method significantly improves deep learning interpretations.",
+              "url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "document_sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "where ∆ ∶= x̃ − x and Hx is the Hessian of the loss function on the input features x (note y is fixed). This second-order expansion of the loss function decreases the interpretation’s model approximation error. By choosing proper values for regularization parameters, the resulting optimization using the second-order surrogate loss is strictly a convex minimization (or equivalently concave maximization) problem, allowing for efficient optimization using gradient descent (Theorem 3). Moreover, even though the Hessian matrix Hx can be expensive to compute for large neural networks, gradient updates of our method only require the Hessian-vector product (i.e., Hx ∆) which can be computed efficiently (Pearlmutter, 1994). This yields the following Context-Aware Second-Order (CASO) interpretation function.",
+              "url": "https://proceedings.mlr.press/v97/singla19a/singla19a.pdf",
+              "document_sha256": "99eb659f08e7159deb44fe12a0d2ac8a1ecd5ec2b52473a9df5d60fbf007fad1"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "where B(I) is the Jacobian of z(I) with respect to x (dimensions NI × D), and F(L,I) is the Jacobian of z(L) with respect to a(I) (dimensions NL × NI ). The proof is presented in Appendix E.3. Using the chain rule, we can compute B(I) , F(L,I) matrices in Lemma 1 recursively as follows: ⎧ (1) ⎪ I =1 ⎪W , B(I) = ⎨ (I) ′ (I−1) (I−1) ⎪ )) B W diag (σ (z , I ≥2 ⎪ ⎩ ⎧ (L) ⎪ I =L−1 ⎪W , F(L,I) = ⎨ (L) ′ (L−1) (L−1,I) ⎪ (z )) W diag (σ F , I ≤L−2 ⎪ ⎩ This leads to a fast back-propagation like method that can be used to compute the Hessian. Note that Lemma 1 only assumes a matrix multiplication operation from a(I−1) to z(I) . Since a convolution operation can also be expressed as a matrix multiplication, we can directly extend this lemma to deep convolutional networks. Furthermore, Lemma 1 can also be of independent interest in other related problems such as second-order interpretation methods for deep learning (e.g. (Singla et al., 2019)).",
+              "url": "https://proceedings.mlr.press/v119/singla20a/singla20a.pdf",
+              "document_sha256": "aabd61ed5f57ebc1eb9b031fe7503358e742b365b5778e23240b7c6e11f2d225"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "In this work, we propose a new approach for developing provable defenses against `2 -bounded adversarial attacks as well as computing robustness certifications of pre-trained deep networks with differentiable activations. In contrast to the existing certificates (Weng et al., 2018; Zhang et al., 2018b) that use the first-order information (upper and lower bounds on the slope), our approach is based on the secondorder information (upper and lower bounds on curvature values i.e. eigenvalues of the Hessian). Our approach is based on two key theoretically-justified steps: First, in Theorems 1 and 2, we show that if the eigenvalues of the Hessian of the network (curvatures of the network) are bounded (globally or locally), we can efficiently compute a robustness certificate and develop a defense method against `2 -bounded adversarial attacks using convex optimization. Second, in Theorem 4, we derive a computationally-efficient differentiable bound on the curvature (eigenvalues of the Hessian) of a deep network. We derive this bound by explicitly characterizing the Hessian of a deep network in Lemma 1.",
+              "url": "https://proceedings.mlr.press/v119/singla20a/singla20a.pdf",
+              "document_sha256": "aabd61ed5f57ebc1eb9b031fe7503358e742b365b5778e23240b7c6e11f2d225"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "the tightest certificate in those cases. For example, for a 2,3,4 layer networks trained on MNIST, we can find provably closest adversarial points for 44.17%, 22.59%, 19.53% cases, respectively (Table 2). To the best of our knowledge, our method is the first approach that can efficiently compute provably closest adversarial examples for a significant fraction of examples in non-trivial neural networks.",
+              "url": "https://proceedings.mlr.press/v119/singla20a/singla20a.pdf",
+              "document_sha256": "aabd61ed5f57ebc1eb9b031fe7503358e742b365b5778e23240b7c6e11f2d225"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-017dd5c7b52a28ba75e645d4",
+          "url": "https://proceedings.mlr.press/v97/singla19a.html"
+        },
+        "b": {
+          "paper_id": "paper-2841a14165d53d56a7facaa4",
+          "url": "https://proceedings.mlr.press/v119/singla20a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "fdc482b114fa8f36c0f491bcb1c8c14e2b36eb01367f2a97eaf0ea9c0f3fdf70"
+    },
+    {
+      "id": "edge-9fed921bc59ba74f2709e062",
+      "a": "paper-0336b33db25645d4dfe6ddfa",
+      "b": "paper-01153a4deaeed4a3ac0fe2b7",
+      "state": {
+        "paper_a": {
+          "title": "Theoretically Principled Trade-off between Robustness and Accuracy",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "We identify a trade-off between robustness and accuracy that serves as a guiding principle in the design of defenses against adversarial examples. Although this problem has been widely studied empirically, much remains unknown concerning the theory underlying this trade-off. In this work, we decompose the prediction error for adversarial examples (robust error) as the sum of the natural (classification) error and boundary error, and provide a differentiable upper bound using the theory of classification-calibrated loss, which is shown to be the tightest possible upper bound uniform over all probability distributions and measurable predictors. Inspired by our theoretical analysis, we also design a new defense method, TRADES, to trade adversarial robustness off against accuracy. Our proposed algorithm performs well experimentally in real-world datasets. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge in which we won the 1st place out of 2,000 submissions, surpassing the runner-up approach by 11.41% in terms of mean L_2 perturbation distance."
+        },
+        "paper_b": {
+          "title": "Demystifying the Adversarial Robustness of Random Transformation Defenses",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Neural networks’ lack of robustness against attacks raises concerns in security-sensitive settings such as autonomous vehicles. While many countermeasures may look promising, only a few withstand rigorous evaluation. Defenses using random transformations (RT) have shown impressive results, particularly BaRT (Raff et al., 2019) on ImageNet. However, this type of defense has not been rigorously evaluated, leaving its robustness properties poorly understood. Their stochastic properties make evaluation more challenging and render many proposed attacks on deterministic models inapplicable. First, we show that the BPDA attack (Athalye et al., 2018a) used in BaRT’s evaluation is ineffective and likely overestimates its robustness. We then attempt to construct the strongest possible RT defense through the informed selection of transformations and Bayesian optimization for tuning their parameters. Furthermore, we create the strongest possible attack to evaluate our RT defense. Our new attack vastly outperforms the baseline, reducing the accuracy by 83% compared to the 19% reduction by the commonly used EoT attack ($4.3\\times$ improvement). Our result indicates that the RT defense on the Imagenette dataset (a ten-class subset of ImageNet) is not robust against adversarial examples. Extending the study further, we use our new attack to adversarially train RT defense (called AdvRT), resulting in a large robustness gain. Code is available at https://github.com/wagnergroup/demystify-random-transform."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "On the other hand, the AdvRT trained on CIFAR-10 proves to be more promising even though it is still not as robust as deterministic models trained with adversarial training or TRADES (Zhang et al. 2019).\nOn the other hand, the Ad-vRT trained on CIFAR-10 proves to be more promising even though it is still not as robust as deterministic models trained with adversarial training or TRADES (Zhang et al., 2019).\nThe outcomes appear more promising for CIFAR-10, but it still lacks behind deterministic defense such as Madry et al. (2018) and Zhang et al. (2019).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0336b33db25645d4dfe6ddfa",
+          "b": "paper-01153a4deaeed4a3ac0fe2b7",
+          "input_sha256": "f421bdff3a94f9ac96d68834b742ea121a30d20d7729cc1a5eff5c6afabfcb3f",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhang19p.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/sitawarin22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Theoretically, we characterize the trade-off between accuracy and robustness for classification problems via decomposing the robust error as the sum of the natural error and the boundary error. We provide differentiable upper bounds on both terms using the theory of classification-calibrated loss, which are shown to be the tightest upper bounds uniform over all probability distributions and measurable predictors. • Algorithmically, inspired by our theoretical analysis, we propose a new formulation of adversarial defense, TRADES, as optimizing a regularized surrogate loss. The loss consists of two terms: the term of empirical risk minimization encourages the algorithm to maximize the natural accuracy, while the regularization term encourages the algorithm to push the decision boundary away from the data, so as to improve adversarial robustness (see Figure 1). • Experimentally, we show that our proposed algorithm outperforms state-of-the-art methods under both blackbox and white-box threat models. In particular, the methodology won the final round of the NeurIPS 2018 Adversarial Vision Challenge.",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Our methodology and results We begin with an example that illustrates the trade-off between accuracy and adversarial robustness in Section 2.4, a phenomenon which has been demonstrated by Tsipras et al. (2019), but without theoretical guarantees. We constructed a toy example where the Bayes optimal classifier achieves natural error 0% and robust error 100%, while the trivial all-one classifier achieves both natural error and robust error 50% (Table 1). Despite a large literature on the analysis of robust error in terms of generalization (Schmidt et al., 2018; Cullina et al., 2018; Yin et al., 2018) and computational complexity (Bubeck et al., 2018b;a), the trade-off between the natural error and the robust error has not been a focus of theoretical study. We show that the robust error can in general be bounded tightly using two terms: one corresponds to the natural error measured by a surrogate loss function, and the other corresponds to how likely the input features are close to the ✏-extension of the decision boundary, termed as the boundary error. We then minimize the differentiable upper bound. Our theoretical analysis naturally leads to a new formulation of adversarial defense which has several appealing properties; in particular, it inherits the benefits of scalability to large datasets exhibited by Tiny ImageNet, and the algorithm achieves state-of-the-art performance on a range of benchmarks while providing theoretical guarantees. For example, while the defenses overviewed in (Athalye et al., 2018) achieve robust accuracy no higher than ~47% under white-box attacks, our method achieves robust accuracy as high as ~57% in the same setting. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge where we won first place",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "We also take the investigation further and combine RT defense with adversarial training. Nevertheless, this turns out to be ineffective as the attack is not sufficiently strong and only generates weak adversarial examples for the model to train with. The outcomes appear more promising for CIFAR10, but it still lacks behind deterministic defense such as Madry et al. (2018) and Zhang et al. (2019). We believe that stronger and more efficient attacks on RT-based models will be necessary not only for accurate evaluation of the stochastic defenses but also for improving the effectiveness of adversarial training for such models. To summarize, we make the following contributions: • We show that non-differentiable transforms impede optimization during an attack and even an adaptive technique for circumventing non-differentiability (i.e., BPDA (Athalye et al., 2018a)) is not sufficiently effective. This reveals that existing RT defenses are likely non-robust. • To this end, we suggest that an RT defense should only use differentiable transformations for reliable evaluations and compatibility with adversarial training. • We propose a new state-of-the-art attack for RT defense that improves over EoT (Athalye et al., 2018b) in terms of both the loss function and the optimizer. We explain the success of our attack through the variance of the gradients. • Improve the RT scheme by using Bayesian optimization for hyperparameter tuning and combining it with adversarial training which uses our new attack method instead of the baseline EoT.",
+              "url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "document_sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "To mitigate this issue, we introduce another optimizer. AggMo is exactly designed to be less sensitive to choices of the damping coefficient by aggregating B momentum terms with different constants instead of one (Lucas et al., 2019). After only a few tries, we found a wide range of values of B where AggMo outperforms SGD with a fine-tuned momentum constant (see Fig. 10b). Fig. 5 compares the attacks using different choices of the optimizers to the baseline EoT attack. Here, the baseline can only reduce the adversarial accuracy from 89% to 70% while our best attack manages to reach 6% or over 4.3× improvement. This concludes that the optimizer plays a crucial role in the success of the attack, and the RT defense, even with a carefully and systematically chosen transformation hyperparameters, is not robust against adversarial examples. Furthermore, we note that without our loss function and only using AggMo, the accuracy only goes down to 23% at a much slower rate. Conversely, when the linear loss and SGM are used with SGD (no momentum), the accuracy drops to 51%. This signifies that all three techniques we deploy play important roles to the attack’s effectiveness. 6.5. Comparison with AutoAttack AutoAttack (Croce & Hein, 2020) was proposed as a standardized benchmark for evaluating deterministic defenses against adversarial examples. It uses an ensemble of four different attacks that cover weaknesses of one another, one of which does not use gradients. AutoAttack has been proven to be one of the strongest attack currently and is capable of catching defenses with false robustness caused by gradient obfuscation (Athalye et al., 2018a). While not particularly designed for stochastic models, AutoAttack can be used to evaluate them when combined with EoT. We report the",
+              "url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "document_sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "forms, one poor transform gradient approximation could ruin the overall gradient approximation. Appendix A.3 has more details on these experiments. These results show that BaRT’s evaluation using BPDA was overly optimistic, and BaRT is not as robust as previously thought. Since BPDA is unreliable for approximating gradients of non-differentiable image transformations, we recommend that other ensuing RT-based defenses only use differentiable transformations. For the rest of this paper, we only study the robustness of RT defenses with differentiable transforms to isolate them from an orthogonal line of research on non-differentiable defenses (e.g., with approximate gradients or zero-th order attacks). Additionally, differentiable models can boost their robustness further when combined with adversarial training. We explore this direction in Section 7. Even without non-differentiable transforms, we still lack reliable evaluation on stochastic defenses apart from EoT. In the next section, we show that applying an EoT attack on RT defense results in a critically sub-optimal evaluation. After that, we propose a stronger attack.",
+              "url": "https://proceedings.mlr.press/v162/sitawarin22a/sitawarin22a.pdf",
+              "document_sha256": "c05e024666818d090487540b2a315dde7d522d02d356976818eaa597754ce3c9"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0336b33db25645d4dfe6ddfa",
+          "url": "https://proceedings.mlr.press/v97/zhang19p.html"
+        },
+        "b": {
+          "paper_id": "paper-01153a4deaeed4a3ac0fe2b7",
+          "url": "https://proceedings.mlr.press/v162/sitawarin22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "d17e9082a399ddc14a7cabf2ade74010409e20d918cc70493de01b74521f1c27"
+    },
+    {
+      "id": "edge-3018697a715358c7cca8da00",
+      "a": "paper-0336b33db25645d4dfe6ddfa",
+      "b": "paper-136e256c77422df599aec9fd",
+      "state": {
+        "paper_a": {
+          "title": "Theoretically Principled Trade-off between Robustness and Accuracy",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "We identify a trade-off between robustness and accuracy that serves as a guiding principle in the design of defenses against adversarial examples. Although this problem has been widely studied empirically, much remains unknown concerning the theory underlying this trade-off. In this work, we decompose the prediction error for adversarial examples (robust error) as the sum of the natural (classification) error and boundary error, and provide a differentiable upper bound using the theory of classification-calibrated loss, which is shown to be the tightest possible upper bound uniform over all probability distributions and measurable predictors. Inspired by our theoretical analysis, we also design a new defense method, TRADES, to trade adversarial robustness off against accuracy. Our proposed algorithm performs well experimentally in real-world datasets. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge in which we won the 1st place out of 2,000 submissions, surpassing the runner-up approach by 11.41% in terms of mean L_2 perturbation distance."
+        },
+        "paper_b": {
+          "title": "DiffBreak: Is Diffusion-Based Purification Robust?",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion-based purification (DBP) has become a cornerstone defense against adversarial examples (AEs), regarded as robust due to its use of diffusion models (DMs) that project AEs onto the natural data manifold. We refute this core claim, theoretically proving that gradient-based attacks effectively target the DM rather than the classifier, causing DBP's outputs to align with adversarial distributions. This prompts a reassessment of DBP's robustness, accrediting it two critical factors: inaccurate gradients and improper evaluation protocols that test only a single random purification of the AE. We show that when accounting for stochasticity and resubmission risk, DBP collapses. To support this, we introduce DiffBreak, the first reliable toolkit for differentiation through DBP, eliminating gradient mismatches that previously further inflated robustness estimates. We also analyze the current defense scheme used for DBP where classification relies on a single purification, pinpointing its inherent invalidity. We provide a statistically grounded majority-vote (MV) alternative that aggregates predictions across multiple purified copies, showing partial but meaningful robustness gain. We then propose a novel adaptation of an optimization method against deepfake watermarking, crafting systemic perturbations that defeat DBP even under MV, challenging DBP's viability."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Adversarial Training [28, 54] is attack-specific and costly [44], while other defenses [16, 13, 3, 46, 49, 32, 50, 9] are vulnerable to adaptive attacks [38].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0336b33db25645d4dfe6ddfa",
+          "b": "paper-136e256c77422df599aec9fd",
+          "input_sha256": "6bf38ae3a68fdf0765fe2f94185896e466d77d77720bf18fcbb6b7f3c391e01c",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhang19p.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/1d5c1d0d32666a4c2568dab0aeb0f0fe-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Theoretically, we characterize the trade-off between accuracy and robustness for classification problems via decomposing the robust error as the sum of the natural error and the boundary error. We provide differentiable upper bounds on both terms using the theory of classification-calibrated loss, which are shown to be the tightest upper bounds uniform over all probability distributions and measurable predictors. • Algorithmically, inspired by our theoretical analysis, we propose a new formulation of adversarial defense, TRADES, as optimizing a regularized surrogate loss. The loss consists of two terms: the term of empirical risk minimization encourages the algorithm to maximize the natural accuracy, while the regularization term encourages the algorithm to push the decision boundary away from the data, so as to improve adversarial robustness (see Figure 1). • Experimentally, we show that our proposed algorithm outperforms state-of-the-art methods under both blackbox and white-box threat models. In particular, the methodology won the final round of the NeurIPS 2018 Adversarial Vision Challenge.",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Our methodology and results We begin with an example that illustrates the trade-off between accuracy and adversarial robustness in Section 2.4, a phenomenon which has been demonstrated by Tsipras et al. (2019), but without theoretical guarantees. We constructed a toy example where the Bayes optimal classifier achieves natural error 0% and robust error 100%, while the trivial all-one classifier achieves both natural error and robust error 50% (Table 1). Despite a large literature on the analysis of robust error in terms of generalization (Schmidt et al., 2018; Cullina et al., 2018; Yin et al., 2018) and computational complexity (Bubeck et al., 2018b;a), the trade-off between the natural error and the robust error has not been a focus of theoretical study. We show that the robust error can in general be bounded tightly using two terms: one corresponds to the natural error measured by a surrogate loss function, and the other corresponds to how likely the input features are close to the ✏-extension of the decision boundary, termed as the boundary error. We then minimize the differentiable upper bound. Our theoretical analysis naturally leads to a new formulation of adversarial defense which has several appealing properties; in particular, it inherits the benefits of scalability to large datasets exhibited by Tiny ImageNet, and the algorithm achieves state-of-the-art performance on a range of benchmarks while providing theoretical guarantees. For example, while the defenses overviewed in (Athalye et al., 2018) achieve robust accuracy no higher than ~47% under white-box attacks, our method achieves robust accuracy as high as ~57% in the same setting. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge where we won first place",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "ML classifiers are vulnerable to Adversarial Examples (AEs)—imperceptible perturbations that induce misclassification [37, 15]. Adversarial Training [28, 54] is attack-specific and costly [44], while other defenses [16, 13, 3, 46, 49, 32, 50, 9] are vulnerable to adaptive attacks [38]. Diffusion-Based Purification (DBP) [30, 40], which leverages diffusion models (DMs) [36, 34], has emerged as a promising defense [6, 45, 7, 53, 31, 42]. DBP purifies inputs by solving the reverse stochastic differential equation (SDE) associated with DMs, diffusing the input with random noise to dilute adversarial changes and iteratively denoising it. Given DMs’ data modeling abilities [12, 39], DBP operates under the assumption that each denoising (reverse) step’s output belongs to a corresponding marginal natural distribution (a distribution obtained by introducing Gaussian noise into natural inputs, with decreasing variance proportional to that step). This is the foundation for DBP’s robustness as it ensures its outputs are from the natural distribution, while AEs lie outside this manifold and are unlikely to be preserved. Recent works treat DBP as a static pre-processor that standard gradient-based attacks cannot directly manipulate but rather only attempt to evade. Thus, attackers are assumed to either fail due to randomness that masks the classifier’s vulnerabilities [26], or be forced to rely on surrogate losses and heuristic approximations [20, 41]. We theoretically refute DBP’s robustness rooted in its ability to perform projection onto the natural manifold. This is paradoxical as it assumes correct behavior of the score model sθ used by the DM to mimic the gradients of the marginal distributions. Yet, sθ is an ML system with exploitable imperfections. In §3.1, we prove that",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion-based purification (DBP) has become a cornerstone defense against adversarial examples (AEs), regarded as robust due to its use of diffusion models (DMs) that project AEs onto the natural data manifold. We refute this core claim, theoretically proving that gradient-based attacks effectively target the DM rather than the classifier, causing DBP’s outputs to align with adversarial distributions. This prompts a reassessment of DBP’s robustness, accrediting it two critical factors: inaccurate gradients and improper evaluation protocols that test only a single random purification of the AE. We show that when accounting for stochasticity and resubmission risk, DBP collapses. To support this, we introduce DiffBreak, the first reliable toolkit for differentiation through DBP, eliminating gradient mismatches that previously further inflated robustness estimates. We also analyze the current defense scheme used for DBP where classification relies on a single purification, pinpointing its inherent invalidity. We provide a statistically grounded majorityvote (MV) alternative that aggregates predictions across multiple purified copies, showing partial but meaningful robustness gain. We then propose a novel adaptation of an optimization method against deepfake watermarking, crafting systemic perturbations that defeat DBP even under MV, challenging DBP’s viability.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Figure 1: DiffGrad. x is given to the iterative attack algorithm Aθ to generate xadv . At each iteration, xadv is propagated through DBP, yielding x̂advp0q that is given to M while storing each intermediate x̂advptq (bottom replicas) from DBP’s reverse pass (see §2) but without saving any graph dependencies. Backpropagation uses the stored samples: Starting from t “ ´dt (dt ă 0—see §2), each x̂advptq is used to recompute x̂advpt`dtq, retrieving the required dependencies. Then, we recursively obtain the gradient w.r.t. x̂advptq from the gradients w.r.t. x̂advpt`dtq using this recovered sub-graph (see §3.2). Finally, gradients are backpropagated in a standard manner from xadvpt˚ q to Aθ to update xadv . In §3.2 and §3.3, we revisit DBP’s previous robustness, attributing it to backpropagation issues and improper evaluation protocols. Most works [20, 30, 26, 40] judge attacks based on a single purification of the final adversarial input. While this seemingly mirrors DBP’s intended “purify once and classify” deployment [30, 40], it is statistically invalid: since DBP samples noise randomly, one evaluation of the AE fails to capture true single misclassification probability across possible purifications. Moreover, due to DBP’s memory-intensive gradients, prior works implement exact backpropagation [20, 26, 41] via checkpointing [8]. We discover and fix issues in all previous implementations, introducing DiffGrad—the first reliable module for exact backpropagation through DBP (see Fig.1). In §4, we show that even under the one-sample evaluation protocol, AutoAttack [10] significantly outperforms prior works, exposing their gradient fallacies. We further use a multi-sample evaluation that captures DBP’s stochasticity and resubmission risk—aligned with DiffHammer [41], which",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/1d5c1d0d32666a4c2568dab0aeb0f0fe-Paper-Conference.pdf",
+              "document_sha256": "bd5123b36af1752104211d0e552c4416b2bd95e842a3dabade697153b9bfa7f0"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0336b33db25645d4dfe6ddfa",
+          "url": "https://proceedings.mlr.press/v97/zhang19p.html"
+        },
+        "b": {
+          "paper_id": "paper-136e256c77422df599aec9fd",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/1d5c1d0d32666a4c2568dab0aeb0f0fe-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "0a5eeee457e2d292f67ba4f9217916d3a54f078820a24b1ed83fef862fb0fc9b"
+    },
+    {
+      "id": "edge-ae46cba8db9cf0d5826e6414",
+      "a": "paper-0336b33db25645d4dfe6ddfa",
+      "b": "paper-1c4c7c4f0b5cb86be2f14dda",
+      "state": {
+        "paper_a": {
+          "title": "Theoretically Principled Trade-off between Robustness and Accuracy",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "We identify a trade-off between robustness and accuracy that serves as a guiding principle in the design of defenses against adversarial examples. Although this problem has been widely studied empirically, much remains unknown concerning the theory underlying this trade-off. In this work, we decompose the prediction error for adversarial examples (robust error) as the sum of the natural (classification) error and boundary error, and provide a differentiable upper bound using the theory of classification-calibrated loss, which is shown to be the tightest possible upper bound uniform over all probability distributions and measurable predictors. Inspired by our theoretical analysis, we also design a new defense method, TRADES, to trade adversarial robustness off against accuracy. Our proposed algorithm performs well experimentally in real-world datasets. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge in which we won the 1st place out of 2,000 submissions, surpassing the runner-up approach by 11.41% in terms of mean L_2 perturbation distance."
+        },
+        "paper_b": {
+          "title": "On the Limitations of Stochastic Pre-processing Defenses",
+          "year": 2022,
+          "venue": "NeurIPS",
+          "abstract": "Defending against adversarial examples remains an open problem. A common belief is that randomness at inference increases the cost of finding adversarial inputs. An example of such a defense is to apply a random transformation to inputs prior to feeding them to the model. In this paper, we empirically and theoretically investigate such stochastic pre-processing defenses and demonstrate that they are flawed. First, we show that most stochastic defenses are weaker than previously thought; they lack sufficient randomness to withstand even standard attacks like projected gradient descent. This casts doubt on a long-held assumption that stochastic defenses invalidate attacks designed to evade deterministic defenses and force attackers to integrate the Expectation over Transformation (EOT) concept. Second, we show that stochastic defenses confront a trade-off between adversarial robustness and model invariance; they become less effective as the defended model acquires more invariance to their randomization. Future work will need to decouple these two effects. We also discuss implications and guidance for future research."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For example, prior work identiﬁed trade-offs between robustness and accuracy [39, 46] for deterministic classiﬁers.\nAlthough defenses like adversarial training still cost accuracy [39, 46], they do not intentionally introduce errors like stochastic pre-processing defenses.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0336b33db25645d4dfe6ddfa",
+          "b": "paper-1c4c7c4f0b5cb86be2f14dda",
+          "input_sha256": "1b3bcaf40cf923e599adf58629c3fc979df6e9deed542ea888b5ede997b20b0e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhang19p.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2022/hash/997089469acbeb410405e43f0011be1f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2022/file/997089469acbeb410405e43f0011be1f-Paper-Conference.pdf",
+              "sha256": "e186d8732358ab6b8e6fcb27984d6456ee1bf1946c80defda5b08390deec3e44"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Theoretically, we characterize the trade-off between accuracy and robustness for classification problems via decomposing the robust error as the sum of the natural error and the boundary error. We provide differentiable upper bounds on both terms using the theory of classification-calibrated loss, which are shown to be the tightest upper bounds uniform over all probability distributions and measurable predictors. • Algorithmically, inspired by our theoretical analysis, we propose a new formulation of adversarial defense, TRADES, as optimizing a regularized surrogate loss. The loss consists of two terms: the term of empirical risk minimization encourages the algorithm to maximize the natural accuracy, while the regularization term encourages the algorithm to push the decision boundary away from the data, so as to improve adversarial robustness (see Figure 1). • Experimentally, we show that our proposed algorithm outperforms state-of-the-art methods under both blackbox and white-box threat models. In particular, the methodology won the final round of the NeurIPS 2018 Adversarial Vision Challenge.",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Our methodology and results We begin with an example that illustrates the trade-off between accuracy and adversarial robustness in Section 2.4, a phenomenon which has been demonstrated by Tsipras et al. (2019), but without theoretical guarantees. We constructed a toy example where the Bayes optimal classifier achieves natural error 0% and robust error 100%, while the trivial all-one classifier achieves both natural error and robust error 50% (Table 1). Despite a large literature on the analysis of robust error in terms of generalization (Schmidt et al., 2018; Cullina et al., 2018; Yin et al., 2018) and computational complexity (Bubeck et al., 2018b;a), the trade-off between the natural error and the robust error has not been a focus of theoretical study. We show that the robust error can in general be bounded tightly using two terms: one corresponds to the natural error measured by a surrogate loss function, and the other corresponds to how likely the input features are close to the ✏-extension of the decision boundary, termed as the boundary error. We then minimize the differentiable upper bound. Our theoretical analysis naturally leads to a new formulation of adversarial defense which has several appealing properties; in particular, it inherits the benefits of scalability to large datasets exhibited by Tiny ImageNet, and the algorithm achieves state-of-the-art performance on a range of benchmarks while providing theoretical guarantees. For example, while the defenses overviewed in (Athalye et al., 2018) achieve robust accuracy no higher than ~47% under white-box attacks, our method achieves robust accuracy as high as ~57% in the same setting. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge where we won first place",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "Stochastic Pre-processing Defenses. Defending against adversarial examples remains an open problem, where a common belief is that inference-time randomness increases the cost of finding adversarial inputs. Early examples of such stochastic defenses include input transformations [12] and rescaling [42]. These defenses were broken by Athalye et al. [2] using techniques like EOT [3] to capture randomness. After that, more stochastic defenses were proposed but with inadvertently weak evaluations [26, 29, 40, 44], which were found ineffective by Tramèr et al. [38]. Subsequent stochastic defenses resort to larger randomization space like BaRT [28], which was only broken recently by Sitawarin et al. [34]. In parallel to our work, DiffPure [25] adopts a complicated stochastic diffusion process to purify the inputs. As we will discuss in Appendix F.1, this defense belongs to an existing line of research that leverages generative models to pre-process input images [19, 32, 35], hence it matches the settings in our work. On the other hand, randomized smoothing [6, 17, 31] leverages randomness to certify the inherent robustness of a given decision. In this work, instead of designing adaptive attacks for individual defenses, which is a well-known challenging progress [2, 34, 38], we focus on the general stochastic pre-processing defenses and demonstrate their limitations. Trade-offs for Adversarial Robustness. The trade-offs associated with adversarial robustness have been widely discussed in the literature. For example, prior work identified trade-offs between robustness and accuracy [39, 46] for deterministic classifiers. Pinot et al. [27] generalize this trade-off to randomized classifiers with a similar form as randomized smoothing. Compared with these results, our work",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/997089469acbeb410405e43f0011be1f-Paper-Conference.pdf",
+              "document_sha256": "e186d8732358ab6b8e6fcb27984d6456ee1bf1946c80defda5b08390deec3e44"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 9,
+              "text": "In this section, we discuss several questions that arose from our study of stochastic pre-processing defenses. Discussions about extensions, limitations, and broader topics can be found in Appendix F. What do stochastic pre-processing defenses really do? We show that stochastic pre-processing defenses do not introduce inherent robustness to the prediction task. Instead, they shift the input distribution through randomness and transformations, which results in variance and introduces errors during prediction. The observed “robustness”, in an unusual meaning for this literature, is a result of these errors. This is fundamentally different from the inherent robustness provided by adversarial training [24]. Although defenses like adversarial training still cost accuracy [39, 46], they do not intentionally introduce errors like stochastic pre-processing defenses. 3 The defense may not grow stronger with more transformations, which is a drawback of BaRT that we will discuss in Appendix D.3. Yet, our evaluations focus on the fact that solid curves are above the dashed curves. 4 One may also observe a trade-off between robustness and utility by examining the curve’s horizontal trend. However, we focus on the trade-off between robustness and invariance, which manifests in the vertical gap.",
+              "url": "https://papers.nips.cc/paper_files/paper/2022/file/997089469acbeb410405e43f0011be1f-Paper-Conference.pdf",
+              "document_sha256": "e186d8732358ab6b8e6fcb27984d6456ee1bf1946c80defda5b08390deec3e44"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0336b33db25645d4dfe6ddfa",
+          "url": "https://proceedings.mlr.press/v97/zhang19p.html"
+        },
+        "b": {
+          "paper_id": "paper-1c4c7c4f0b5cb86be2f14dda",
+          "url": "https://papers.nips.cc/paper_files/paper/2022/hash/997089469acbeb410405e43f0011be1f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "34c59e6599733e0ba249daa9ee0b7fe4a714a1349390b24884205c90a5cfd155"
+    },
+    {
+      "id": "edge-011ebc4fbd2fc6d197942c81",
+      "a": "paper-0336b33db25645d4dfe6ddfa",
+      "b": "paper-1ce0a13683232bc9660d8f20",
+      "state": {
+        "paper_a": {
+          "title": "Theoretically Principled Trade-off between Robustness and Accuracy",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "We identify a trade-off between robustness and accuracy that serves as a guiding principle in the design of defenses against adversarial examples. Although this problem has been widely studied empirically, much remains unknown concerning the theory underlying this trade-off. In this work, we decompose the prediction error for adversarial examples (robust error) as the sum of the natural (classification) error and boundary error, and provide a differentiable upper bound using the theory of classification-calibrated loss, which is shown to be the tightest possible upper bound uniform over all probability distributions and measurable predictors. Inspired by our theoretical analysis, we also design a new defense method, TRADES, to trade adversarial robustness off against accuracy. Our proposed algorithm performs well experimentally in real-world datasets. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge in which we won the 1st place out of 2,000 submissions, surpassing the runner-up approach by 11.41% in terms of mean L_2 perturbation distance."
+        },
+        "paper_b": {
+          "title": "Evaluating the Adversarial Robustness of Adaptive Test-time Defenses",
+          "year": 2022,
+          "venue": "ICML",
+          "abstract": "Adaptive defenses, which optimize at test time, promise to improve adversarial robustness. We categorize such adaptive test-time defenses, explain their potential benefits and drawbacks, and evaluate a representative variety of the latest adaptive defenses for image classification. Unfortunately, none significantly improve upon static defenses when subjected to our careful case study evaluation. Some even weaken the underlying static model while simultaneously increasing inference computation. While these results are disappointing, we still believe that adaptive test-time defenses are a promising avenue of research and, as such, we provide recommendations for their thorough evaluation. We extend the checklist of Carlini et al. (2019) by providing concrete steps specific to adaptive defenses."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "This means that, in practice, most of the transferred points are clean images (since the TRADES model is highly robust).\nconsider many scenarios in their experimental evaluation, we test SODEF when the feature extractor consists of a robust classifier, trained with TRADES (Zhang et al., 2019) against `∞-norm perturbations of size 8/255 on CIFAR-10, without the last linear layer (since checkpoints are available online).\nCopyright 2022 by the author(s). et al., 2018; Kannan et al., 2018; Zhang et al., 2019; Rice et al., 2020; Gowal et al., 2020; 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-0336b33db25645d4dfe6ddfa",
+          "b": "paper-1ce0a13683232bc9660d8f20",
+          "input_sha256": "b7791f6ba9b86f90a2e56408c51fe376e2cdec6fc0219bf7bf122abcc4f233cc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/zhang19p.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v162/croce22a.html",
+              "pdf_url": "https://proceedings.mlr.press/v162/croce22a/croce22a.pdf",
+              "sha256": "c7f6d993003ce1e4bf5be7878de709cc7c9a2c373416053ffb491f5299d52d30"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 2,
+              "text": "• Theoretically, we characterize the trade-off between accuracy and robustness for classification problems via decomposing the robust error as the sum of the natural error and the boundary error. We provide differentiable upper bounds on both terms using the theory of classification-calibrated loss, which are shown to be the tightest upper bounds uniform over all probability distributions and measurable predictors. • Algorithmically, inspired by our theoretical analysis, we propose a new formulation of adversarial defense, TRADES, as optimizing a regularized surrogate loss. The loss consists of two terms: the term of empirical risk minimization encourages the algorithm to maximize the natural accuracy, while the regularization term encourages the algorithm to push the decision boundary away from the data, so as to improve adversarial robustness (see Figure 1). • Experimentally, we show that our proposed algorithm outperforms state-of-the-art methods under both blackbox and white-box threat models. In particular, the methodology won the final round of the NeurIPS 2018 Adversarial Vision Challenge.",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "1.1. Our methodology and results We begin with an example that illustrates the trade-off between accuracy and adversarial robustness in Section 2.4, a phenomenon which has been demonstrated by Tsipras et al. (2019), but without theoretical guarantees. We constructed a toy example where the Bayes optimal classifier achieves natural error 0% and robust error 100%, while the trivial all-one classifier achieves both natural error and robust error 50% (Table 1). Despite a large literature on the analysis of robust error in terms of generalization (Schmidt et al., 2018; Cullina et al., 2018; Yin et al., 2018) and computational complexity (Bubeck et al., 2018b;a), the trade-off between the natural error and the robust error has not been a focus of theoretical study. We show that the robust error can in general be bounded tightly using two terms: one corresponds to the natural error measured by a surrogate loss function, and the other corresponds to how likely the input features are close to the ✏-extension of the decision boundary, termed as the boundary error. We then minimize the differentiable upper bound. Our theoretical analysis naturally leads to a new formulation of adversarial defense which has several appealing properties; in particular, it inherits the benefits of scalability to large datasets exhibited by Tiny ImageNet, and the algorithm achieves state-of-the-art performance on a range of benchmarks while providing theoretical guarantees. For example, while the defenses overviewed in (Athalye et al., 2018) achieve robust accuracy no higher than ~47% under white-box attacks, our method achieves robust accuracy as high as ~57% in the same setting. The methodology is the foundation of our entry to the NeurIPS 2018 Adversarial Vision Challenge where we won first place",
+              "url": "https://proceedings.mlr.press/v97/zhang19p/zhang19p.pdf",
+              "document_sha256": "06a3a902986176a7878c1d641ef02a27f03b69208787018269cda956c90ac411"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 4,
+              "text": "3.2. Stable Neural ODE with Lyapunov-Stable Equilibrium Points for Defending against Adversarial Attacks (Kang et al., 2021) Summary of method. This defense applies a neural Ordinary Differential Equation (ODE) layer to improve robustness against `p -norm bounded attacks by the stability of equilibrium points of the underlying ODE. The proposed SODEF model consists of a feature extractor followed by a neural ODE layer and finally one or multiple fully connected layers. The feature extractor is a standard convolutional network, while the neural ODE can be solved with numerical methods (Runge-Kutta of order 5 in this case) up to some integration time T . Evaluation. While Kang et al. consider many scenarios in their experimental evaluation, we test SODEF when the feature extractor consists of a robust classifier, trained with TRADES (Zhang et al., 2019) against `∞ -norm perturbations of size 8/255 on C IFAR -10, without the last linear layer (since checkpoints are available online). We use the original implementation with corresponding parameters, including integration time T = 5. A significant improvement in robustness against `∞ - and `2 -norm perturbations is reported (57.76% and 67.75%) when compared to the original TRADES model (53.69% and 59.42%), under the evaluation of AUTOATTACK. In particular, AUTOATTACK is used both directly on the SODEF model and as the basis for a transfer attack from the TRADES classifier. However, we note that by default AUTOATTACK returns the original images when they are originally misclassified or when no adversarial perturbation is found. This means that, in practice, most of the transferred points are clean images (since the TRADES model is highly robust). Moreover, AUTOATTACK does not aim at maximizing the confidence in the",
+              "url": "https://proceedings.mlr.press/v162/croce22a/croce22a.pdf",
+              "document_sha256": "c7f6d993003ce1e4bf5be7878de709cc7c9a2c373416053ffb491f5299d52d30"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Adaptive defenses, which optimize at test time, promise to improve adversarial robustness. We categorize such adaptive test-time defenses, explain their potential benefits and drawbacks, and evaluate a representative variety of the latest adaptive defenses for image classification. Unfortunately, none significantly improve upon static defenses when subjected to our careful case study evaluation. Some even weaken the underlying static model while simultaneously increasing inference computation. While these results are disappointing, we still believe that adaptive test-time defenses are a promising avenue of research and, as such, we provide recommendations for their thorough evaluation. We extend the checklist of Carlini et al. (2019) by providing concrete steps specific to adaptive defenses.",
+              "url": "https://proceedings.mlr.press/v162/croce22a/croce22a.pdf",
+              "document_sha256": "c7f6d993003ce1e4bf5be7878de709cc7c9a2c373416053ffb491f5299d52d30"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-0336b33db25645d4dfe6ddfa",
+          "url": "https://proceedings.mlr.press/v97/zhang19p.html"
+        },
+        "b": {
+          "paper_id": "paper-1ce0a13683232bc9660d8f20",
+          "url": "https://proceedings.mlr.press/v162/croce22a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Adversarial Robustness in Neural Networks"
+      },
+      "sha256": "dee0a39e3839c96ae159ee4060910dfc7659adb83a57617455afd6ee52c47998"
+    }
+  ]
+}

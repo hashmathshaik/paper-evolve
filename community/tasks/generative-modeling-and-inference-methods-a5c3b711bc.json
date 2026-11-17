@@ -1,0 +1,982 @@
+{
+  "version": "paper-evolve-review-v1",
+  "topic": "Generative Modeling and Inference Methods",
+  "area": "Generative Modeling and Inference",
+  "description": "Investigate contribution links from earlier papers to later work in this topic.",
+  "tasks": [
+    {
+      "id": "edge-02f2e388db2d384788193099",
+      "a": "paper-9927558d9a11ced9627be9d3",
+      "b": "paper-b0871f294d9843e5eb41bd67",
+      "state": {
+        "paper_a": {
+          "title": "Dirichlet Diffusion Score Model for Biological Sequence Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Designing biological sequences is an important challenge that requires satisfying complex constraints and thus is a natural problem to address with deep generative modeling. Diffusion generative models have achieved considerable success in many applications. Score-based generative stochastic differential equations (SDE) model is a continuous-time diffusion model framework that enjoys many benefits, but the originally proposed SDEs are not naturally designed for modeling discrete data. To develop generative SDE models for discrete data such as biological sequences, here we introduce a diffusion process defined in the probability simplex space with stationary distribution being the Dirichlet distribution. This makes diffusion in continuous space natural for modeling discrete data. We refer to this approach as Dirchlet diffusion score model. We demonstrate that this technique can generate samples that satisfy hard constraints using a Sudoku generation task. This generative model can also solve Sudoku, including hard puzzles, without additional training. Finally, we applied this approach to develop the first human promoter DNA sequence design model and showed that designed sequences share similar properties with natural promoter sequences."
+        },
+        "paper_b": {
+          "title": "Bridging Model-Based Optimization and Generative Modeling via Conservative Fine-Tuning of Diffusion Models",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "AI-driven design problems, such as DNA/protein sequence design, are commonly tackled from two angles: generative modeling, which efficiently captures the feasible design space (e.g., natural images or biological sequences), and model-based optimization, which utilizes reward models for extrapolation. To combine the strengths of both approaches, we adopt a hybrid method that fine-tunes cutting-edge diffusion models by optimizing reward models through RL. Although prior work has explored similar avenues, they primarily focus on scenarios where accurate reward models are accessible. In contrast, we concentrate on an offline setting where a reward model is unknown, and we must learn from static offline datasets, a common scenario in scientific domains. In offline scenarios, existing approaches tend to suffer from overoptimization, as they may be misled by the reward model in out-of-distribution regions. To address this, we introduce a conservative fine-tuning approach, BRAID, by optimizing a conservative reward model, which includes additional penalization outside of offline data distributions. Through empirical and theoretical analysis, we demonstrate the capability of our approach to outperform the best designs in offline data, leveraging the extrapolation capabilities of reward models while avoiding the generation of invalid designs through pre-trained diffusion models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Regarding diffusion models for sequences, we adopt the architecture and algorithm tailored to biological sequences over the simple space (Avdeyev et al., 2023).\nFor example, in biology, this is expected to capture the valid design space X pre such as human DNA sequences or physically feasible proteins (Avdeyev et al., 2023; Li et al., 2024; Sarkar et al., 2024; Stark et al., 2024; Campbell et al., 2024).\nThis approach allows us to model the space of “valid” designs (e.g., natural images, natural DNA sequences, foldable protein sequences (Avdeyev et al., 2023)).\nHence, for example, our Theorem 1 can handle scenarios where the domain is discrete or lies on the simplex space (Avdeyev et al., 2023) in order to model biological sequences as we do in Section 7.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9927558d9a11ced9627be9d3",
+          "b": "paper-b0871f294d9843e5eb41bd67",
+          "input_sha256": "8440ec9f66751c5e8f5b95b385ea643839761e6cea6f95c4b03f097fc70c3f42",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/avdeyev23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/e68274fc4f158dbcbd4dddc672f7ee9c-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/e68274fc4f158dbcbd4dddc672f7ee9c-Paper-Conference.pdf",
+              "sha256": "5479434049b031fe08d07d23d9a67920d2fe0943cdb9aecce82a84bfe66f0ee5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Designing biological sequences is an important challenge that requires satisfying complex constraints and thus is a natural problem to address with deep generative modeling. Diffusion generative models have achieved considerable success in many applications. Score-based generative stochastic differential equations (SDE) model is a continuous-time diffusion model framework that enjoys many benefits, but the originally proposed SDEs are not naturally designed for modeling discrete data. To develop generative SDE models for discrete data such as biological sequences, here we introduce a diffusion process defined in the probability simplex space with stationary distribution being the Dirichlet distribution. This makes diffusion in continuous space natural for modeling discrete data. We refer to this approach as Dirchlet diffusion score model. We demonstrate that this technique can generate samples that satisfy hard constraints using a Sudoku generation task. This generative model can also solve Sudoku, including hard puzzles, without additional training. Finally, we applied this approach to develop the first human promoter DNA sequence design model and showed that designed sequences share similar properties with natural promoter sequences.",
+              "url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "document_sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "The second technique is designed to improve sample quality. Comparing to unbiasedly sampling from the learned model distribution, it is often desirable to sample near the high probability density regions, which often corresponds to higher quality samples in suitable applications. In Appendix A.5 we propose a simple technique, time-dilation, applicable to reverse diffusion sampling without modifying the score model, when a flat distribution such as the flat Dirichlet distribution is the stationary distribution. In Appendix B.9, we compare sample quality obtained by time dilation with other sampling strategies which reported to improve sample quality (Song et al., 2020).",
+              "url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "document_sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Computational design involves synthesizing designs that optimize a particular reward function. This approach finds applications in various scientific domains, including DNA/RNA/protein design (Sample et al., 2019; Gosai et al., 2023; Wu et al., 2024). While physical simulations are often used in design problems, lacking extensive knowledge of underlying physical processes necessitates solutions that solely rely on experimental data. In these scenarios, we need an algorithm that synthesizes an improved design by utilizing a dataset of past experiments (i.e., static offline dataset). Existing research has addressed computational design from two primary angles. The first angle is generative modeling such as diffusion models (Ho et al., 2020), which aim to directly model the distribution of valid designs by emulating the offline data. This approach allows us to model the space of “valid” designs (e.g., natural images, natural DNA sequences, foldable protein sequences (Avdeyev et al., 2023)). The second angle is offline model-based optimization (MBO), which entails learning the reward model from static offline data and optimizing it with respect to design inputs (Brookes et al., 2019; Trabucco et al., 2021; Angermueller et al., 2019; Linder and Seelig, 2021; Fannjiang and ∗ †",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e68274fc4f158dbcbd4dddc672f7ee9c-Paper-Conference.pdf",
+              "document_sha256": "5479434049b031fe08d07d23d9a67920d2fe0943cdb9aecce82a84bfe66f0ee5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 4,
+              "text": "Offline data with a pre-trained generative model. Based on the above motivation, we consider scenarios where we have an offline dataset Doff , used for learning the reward function. More off specifically, the dataset, Doff = {x(j) , y (j) }nj=1 contains pairs of designs x ∼ poff (·) and their associated noisy reward feedbacks y = r(x) + ϵ, where ϵ is noise. Compared to settings in many existing papers on MBO, we also assume access to a pre-trained generative model (diffusion model) trained on a large dataset comprising valid designs, in addition to the offline data Doff . For example, in biology, this is expected to capture the valid design space Xpre such as human DNA sequences or physically feasible proteins (Avdeyev et al., 2023; Li et al., 2024; Sarkar et al., 2024; Stark et al., 2024; Campbell et al., 2024). These pre-trained generative models are anticipated to be beneficial for narrowing down the raw search space X to the design space Xpre . In our work, denoting the distribution induced by the pre-trained model by ppre , we regard the support of ppre as Xpre . 3.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e68274fc4f158dbcbd4dddc672f7ee9c-Paper-Conference.pdf",
+              "document_sha256": "5479434049b031fe08d07d23d9a67920d2fe0943cdb9aecce82a84bfe66f0ee5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract AI-driven design problems, such as DNA/protein sequence design, are commonly tackled from two angles: generative modeling, which efficiently captures the feasible design space (e.g., natural images or biological sequences), and modelbased optimization, which utilizes reward models for extrapolation. To combine the strengths of both approaches, we adopt a hybrid method that fine-tunes cutting-edge diffusion models by optimizing reward models through RL. Although prior work has explored similar avenues, they primarily focus on scenarios where accurate reward models are accessible. In contrast, we concentrate on an offline setting where a reward model is unknown, and we must learn from static offline datasets, a common scenario in scientific domains. In offline scenarios, existing approaches tend to suffer from overoptimization, as they may be misled by the reward model in out-of-distribution regions. To address this, we introduce a conservative finetuning approach, BRAID, by optimizing a conservative reward model, which includes additional penalization outside of offline data distributions. Through empirical and theoretical analysis, we demonstrate the capability of our approach to outperform the best designs in offline data, leveraging the extrapolation capabilities of reward models while avoiding the generation of invalid designs through pretrained diffusion models. The main code is available at https://github. com/masa-ue/RLfinetuning_Diffusion_Bioseq.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e68274fc4f158dbcbd4dddc672f7ee9c-Paper-Conference.pdf",
+              "document_sha256": "5479434049b031fe08d07d23d9a67920d2fe0943cdb9aecce82a84bfe66f0ee5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Listgarten, 2020; Chen et al., 2022). This class of methods potentially enables us to surpass the best design observed in the offline data by harnessing the extrapolative capabilities of reward models. In our work, we explore how the generative modeling and MBO perspectives could be reconciled, inspired by recent work on RL-based fine-tuning of diffusion models (e.g., Black et al. (2023); Fan et al. (2023)), which aims to finetune diffusion models by optimizing down-stream reward functions. Although these studies do not originally address computational design, we can potentially leverage the strengths of both perspectives. However, these existing studies often focus on scenarios where online reward feedback can be queried or accurate reward functions are available. Such approaches are not well-suited for the typical offline setting, where we lack access to true reward functions and need to rely solely on static offline data (Levine et al., 2020; Kidambi et al., 2020; Yu et al., 2020). In scientific fields, this offline scenario is common due to the high cost of acquiring feedback data. In such contexts, existing works for fine-tuning diffusion models may easily lead to overoptimization, where optimized designs are misled by the trained reward model from the offline data, resulting in out-of-distribution adversarial designs instead of genuinely high-quality designs. To mitigate overoptimization, we develop a conservative fine-tuning approach for generate models aimed at computational design. Specifically, we consider a critical scenario where we have offline data (with feedback) and a pre-trained diffusion model capable of capturing the space of “valid” designs, and propose a two-stage method (Figure 1). In the initial stage, we train a conservative reward model using",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/e68274fc4f158dbcbd4dddc672f7ee9c-Paper-Conference.pdf",
+              "document_sha256": "5479434049b031fe08d07d23d9a67920d2fe0943cdb9aecce82a84bfe66f0ee5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9927558d9a11ced9627be9d3",
+          "url": "https://proceedings.mlr.press/v202/avdeyev23a.html"
+        },
+        "b": {
+          "paper_id": "paper-b0871f294d9843e5eb41bd67",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/e68274fc4f158dbcbd4dddc672f7ee9c-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "5ab2f28638925402d186cf7bcbb569a0d72e3433d22a04e969d1b25704dc1696"
+    },
+    {
+      "id": "edge-9a733baa28697dd83f4ca26d",
+      "a": "paper-062d25f0f8525ed904991d84",
+      "b": "paper-c00246a33c5be4dfc202857a",
+      "state": {
+        "paper_a": {
+          "title": "Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations",
+          "year": 2019,
+          "venue": "ICML",
+          "abstract": "The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than $12000$ models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets."
+        },
+        "paper_b": {
+          "title": "Disentangling by Subspace Diffusion",
+          "year": 2020,
+          "venue": "NeurIPS",
+          "abstract": "We present a novel nonparametric algorithm for symmetry-based disentangling of data manifolds, the Geometric Manifold Component Estimator (GEOMANCER). GEOMANCER provides a partial answer to the question posed by Higgins et al.(2018): is it possible to learn how to factorize a Lie group solely from observations of the orbit of an object it acts on? We show that fully unsupervised factorization of a data manifold is possible if the true metric of the manifold is known and each factor manifold has nontrivial holonomy – for example, rotation in 3D. Our algorithm works by estimating the subspaces that are invariant under random walk diffusion, giving an approximation to the de Rham decomposition from differential geometry. We demonstrate the efficacy of GEOMANCER on several complex synthetic manifolds. Our work reduces the question of whether unsupervised disentangling is possible to the question of whether unsupervised metric learning is possible, providing a unifying insight into the geometric nature of representation learning."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-062d25f0f8525ed904991d84",
+          "b": "paper-c00246a33c5be4dfc202857a",
+          "input_sha256": "35c44b23e2ef0e19fd9adff10a83bd213f6e2e77861f7b9cc83fff6db1173026",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v97/locatello19a.html",
+              "pdf_url": "https://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf",
+              "sha256": "bbce8bcfc6e25f92c9e74d9cc9cbdd5039688a8cb7d572d544f9dd63e533a9ef"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2020/hash/c9f029a6a1b20a8408f372351b321dd8-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c9f029a6a1b20a8408f372351b321dd8-Paper.pdf",
+              "sha256": "9fea0ef126cbd1e562185c8f59f19235500b29a284d503464a9032e489449e2d"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "The ability to disentangle the different latent factors of variation in the world has been hypothesized as a critical ingredient in representation learning [1], and much recent research has sought a fully unsupervised way to learn disentangled representations from data [2–18]. Because the community has not settled on a definition of “disentangling\", much of this work relies on heuristics and qualitative criteria to judge performance. For instance, datasets are often constructed by varying interpretable factors like object position, rotation and color and methods are judged by how well they recover these predefined factors [19, 20]. One commonly used definition is that a representation is disentangled if the data distribution can be modeled as a nonlinear transformation of a product of independent probability distributions [20]. This leads to a pessimistic result, that the different latent factors are not identifiable without side information or further assumptions. To escape this pessimistic result, we can turn to a different, symmetry-based definition of disentangling [21], rooted in the Lie group model of visual perception [22–26]. Instead of a product of distributions, the symmetry-based approach to disentangling considers a representation disentangled if it matches the product of groups that define the symmetries in the world. If the actions that define the possible transformations in the world form a group G = G1 ⇥G2 ⇥...⇥Gm , then a representation is disentangled under this definition if it decomposes in such a way that the action of a single subgroup leaves all factors of the representation invariant except for one (See Supp. Mat., Sec. B for a formal definition). The symmetry-based definition is appealing as it resolves an apparent contradiction in the",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c9f029a6a1b20a8408f372351b321dd8-Paper.pdf",
+              "document_sha256": "9fea0ef126cbd1e562185c8f59f19235500b29a284d503464a9032e489449e2d"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 8,
+              "text": "To demonstrate the power of G EO M AN CE R, we investigate its performance on both synthetic manifolds and a dataset of rendered 3D objects. We avoid using existing performance metrics for disentangling, as most are based on the causal or probabilistic interpretation of disentangling [2, 4, 6, 20, 21, 68–70] rather than the symmetry-based one. Furthermore, many disentangling metrics assume that each disentangled factor is one-dimensional [2, 4, 6, 68, 69], which is not the case in our investigation here. Details of dataset generation, training, evaluation and additional results are given in Supp. Mat., Sec. D. Synthetic Data First, we generated data from a variety of product manifolds by uniformly sampling from either the n-dimensional sphere S n ⇢ Rn+1 , represented as vectors with unit length, or the special orthogonal group SO(n) ⇢ Rn⇥n , represented as orthonormal matrices with positive determinant. We then concatenated the vectorized data to form a product manifold. As these manifolds are geodesically complete and have a metric structure inherited from their embedding in Euclidean space, we would expect G EO M AN CE R to discover their global product structure easily. Due to sampling noise, no eigenvalues were exactly zero, but it can be seen in Fig. 5(a) that the spectrum has a large gap at the number corresponding to the number of submanifolds, which grows with increased data. In Fig. 5(b) we show the average angle between the learned subspaces and the ground truth tangent spaces of each submanifold. For all manifolds, a threshold is crossed beyond which the error begins to decline exponentially with more data. Unsurprisingly, the amount of data required grows for more complex high-dimensional manifolds, but in all cases G EO M AN CE R is able to discover the",
+              "url": "https://papers.nips.cc/paper_files/paper/2020/file/c9f029a6a1b20a8408f372351b321dd8-Paper.pdf",
+              "document_sha256": "9fea0ef126cbd1e562185c8f59f19235500b29a284d503464a9032e489449e2d"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-062d25f0f8525ed904991d84",
+          "url": "https://proceedings.mlr.press/v97/locatello19a.html"
+        },
+        "b": {
+          "paper_id": "paper-c00246a33c5be4dfc202857a",
+          "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c9f029a6a1b20a8408f372351b321dd8-Abstract.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "bc2be2345052dc2257253856f03bcb28796b2e7b7a89e899e738ae3ea802c091"
+    },
+    {
+      "id": "edge-ad416a6cd44d9c2737484066",
+      "a": "paper-9927558d9a11ced9627be9d3",
+      "b": "paper-bebde12f5bbcb2e35673a65c",
+      "state": {
+        "paper_a": {
+          "title": "Dirichlet Diffusion Score Model for Biological Sequence Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Designing biological sequences is an important challenge that requires satisfying complex constraints and thus is a natural problem to address with deep generative modeling. Diffusion generative models have achieved considerable success in many applications. Score-based generative stochastic differential equations (SDE) model is a continuous-time diffusion model framework that enjoys many benefits, but the originally proposed SDEs are not naturally designed for modeling discrete data. To develop generative SDE models for discrete data such as biological sequences, here we introduce a diffusion process defined in the probability simplex space with stationary distribution being the Dirichlet distribution. This makes diffusion in continuous space natural for modeling discrete data. We refer to this approach as Dirchlet diffusion score model. We demonstrate that this technique can generate samples that satisfy hard constraints using a Sudoku generation task. This generative model can also solve Sudoku, including hard puzzles, without additional training. Finally, we applied this approach to develop the first human promoter DNA sequence design model and showed that designed sequences share similar properties with natural promoter sequences."
+        },
+        "paper_b": {
+          "title": "Fisher Flow Matching for Generative Modeling over Discrete Data",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Generative modeling over discrete data has recently seen numerous success stories, with applications spanning language modeling, biological sequence design, and graph-structured molecular data. The predominant generative modeling paradigm for discrete data is still autoregressive, with more recent alternatives based on diffusion or flow-matching falling short of their impressive performance in continuous data settings, such as image or video generation. In this work, we introduce Fisher-Flow, a novel flow-matching model for discrete data. Fisher-Flow takes a manifestly geometric perspectiveby considering categorical distributions over discrete data as points residing on a statistical manifold equipped with its natural Riemannian metric: the \\emph{Fisher-Rao metric}. As a result, we demonstrate discrete data itself can be continuously reparameterised to points on the positive orthant of the $d$-hypersphere $\\mathbb{S}^d_+$, which allows us to define flows that map any source distribution to target in a principled manner by transporting mass along (closed-form) geodesics of $\\mathbb{S}^d_+$. Furthermore, the learned flows in Fisher-Flow can be further bootstrapped by leveraging Riemannian optimal transport leading to improved training dynamics. We prove that the gradient flow induced by Fisher-FLow is optimal in reducing the forward KL divergence. We evaluate Fisher-Flow on an array of synthetic and diverse real-world benchmarks, including designing DNA Promoter, and DNA Enhancer sequences. Empirically, we find that Fisher-Flow improves over prior diffusion and flow-matching models on these benchmarks."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "For a detailed dataset background, see §F.1 in Avdeyev et al. [9].\nF LOW outperforms baseline methods DDSM [9] and D IRICHLET FM [68] on the MSE evaluation.\nOur key geometric insight is to endow the probability simplex with its natural Riemannian metric—the Fisher-Rao metric—which transforms the space into a Riemannian manifold and induces a different geometry compared to past approaches of Avdeyev et al. [9], Stark et al. [68].\nConsequently, past work has relied on relaxing discrete data to points on the interior of the probability simplex [9, 68].",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9927558d9a11ced9627be9d3",
+          "b": "paper-bebde12f5bbcb2e35673a65c",
+          "input_sha256": "41de7fea237bef2d2d513bbb44ed5b1ca4e681e71f67686204d28584b5516812",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/avdeyev23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/fadec8f2e65f181d777507d1df69b92f-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/fadec8f2e65f181d777507d1df69b92f-Paper-Conference.pdf",
+              "sha256": "b09ccbf77554f7ca216ad170f0875af70e3b65c8878299ba295ec8657b42a007"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Designing biological sequences is an important challenge that requires satisfying complex constraints and thus is a natural problem to address with deep generative modeling. Diffusion generative models have achieved considerable success in many applications. Score-based generative stochastic differential equations (SDE) model is a continuous-time diffusion model framework that enjoys many benefits, but the originally proposed SDEs are not naturally designed for modeling discrete data. To develop generative SDE models for discrete data such as biological sequences, here we introduce a diffusion process defined in the probability simplex space with stationary distribution being the Dirichlet distribution. This makes diffusion in continuous space natural for modeling discrete data. We refer to this approach as Dirchlet diffusion score model. We demonstrate that this technique can generate samples that satisfy hard constraints using a Sudoku generation task. This generative model can also solve Sudoku, including hard puzzles, without additional training. Finally, we applied this approach to develop the first human promoter DNA sequence design model and showed that designed sequences share similar properties with natural promoter sequences.",
+              "url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "document_sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "The second technique is designed to improve sample quality. Comparing to unbiasedly sampling from the learned model distribution, it is often desirable to sample near the high probability density regions, which often corresponds to higher quality samples in suitable applications. In Appendix A.5 we propose a simple technique, time-dilation, applicable to reverse diffusion sampling without modifying the score model, when a flat distribution such as the flat Dirichlet distribution is the stationary distribution. In Appendix B.9, we compare sample quality obtained by time dilation with other sampling strategies which reported to improve sample quality (Song et al., 2020).",
+              "url": "https://proceedings.mlr.press/v202/avdeyev23a/avdeyev23a.pdf",
+              "document_sha256": "1c9d4273f13f0ae76f027454f8e9424afb150e5fbfaa5c9082be3f25167c4ad8"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "without important inference techniques such as nucleus sampling [39]. It is expected that further progress will come from the principled equivalents of diffusion and flow-matching approaches for categorical distributions in the discrete data setting. While appealing, one central barrier in constructing diffusion and flow matching over discrete spaces lies in designing an appropriate forward process that progressively corrupts discrete data. This often involves the sophisticated design of transition kernels [8, 23, 2, 50], which hits an ideal stationary distribution—itself remaining an unclear quantity in the discrete setting. An alternative path to designing discrete transitions is to instead opt for a continuous relaxation of discrete data over a continuous space, which then enables the simple application of flow-matching and diffusion. Consequently, past work has relied on relaxing discrete data to points on the interior of the probability simplex [9, 68]. However, since the probability simplex is not 2 Euclidean, it is not possible to utilise Gaussian Categorical Δ2 + x probability paths—the stationary distribution x of an uninformative prior is uniform rather x 0.1 φ than Gaussian [26]. One possible remedy is x ∼ 0.7 x to construct conditional probability paths on x 0.2 the simplex using Dirichlet distributions [68], x but this can lead to undesirable properties that include a complex parameterisation of the vector Figure 1: A geodesic connecting x0 and x1 using the ˚ 2 and the corresponding path on S2+ . field. An even greater limitation is that flows FR metric on ∆ using Dirichlet paths are not general enough to accommodate starting from a non-uniform (source) prior distribution—hampering downstream generative modeling applications. These limitations motivate the",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fadec8f2e65f181d777507d1df69b92f-Paper-Conference.pdf",
+              "document_sha256": "b09ccbf77554f7ca216ad170f0875af70e3b65c8878299ba295ec8657b42a007"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 2,
+              "text": "Present work. In this paper, we propose F ISHER -F LOW, a new flow matching-based generative model for discrete data. Our key geometric insight is to endow the probability simplex with its natural Riemannian metric—the Fisher-Rao metric—which transforms the space into a Riemannian manifold and induces a different geometry compared to past approaches of Avdeyev et al. [9], Stark et al. [68]. Moreover, using this Riemannian manifold, we exploit a well-known geometric construction: the probability simplex under the Fisher-Rao metric is isometric to the positive orthant of the d-dimensional hypersphere Sd+ [6] (see Figure 1). By operating on Sd+ , we obtain a more flexible and numerically stable parameterisation of learned vector fields as well as the ability to use a familiar metric—namely, the Euclidean metric ℓ2 restricted to the sphere, which leads to better training dynamics and improved performance. As a result, F ISHER -F LOW becomes an instance of Riemannian Flow Matching (RFM) [26], and our designed flows enjoy explicit and numerically favorable formulas for the trajectory connecting a pair of sampled points between any source and target distribution—effectively generalising previous flow models [68]. On a theoretical front, we prove in Proposition 1 that optimising the flow-matching objective with F ISHER -F LOW is an optimal choice for matching categorical distributions on the probability simplex. More precisely, we show the direction of the optimal induced gradient flow in the space of probabilities converges to the Fisher-Rao flow in the space of probabilities. In addition, we show in Proposition 2 how to design straighter flows, leading to improved training dynamics, by solving the Riemannian optimal transport problem on Sd+ . Empirically, we investigate F",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fadec8f2e65f181d777507d1df69b92f-Paper-Conference.pdf",
+              "document_sha256": "b09ccbf77554f7ca216ad170f0875af70e3b65c8878299ba295ec8657b42a007"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Generative modeling over discrete data has recently seen numerous success stories, with applications spanning language modeling, biological sequence design, and graph-structured molecular data. The predominant generative modeling paradigm for discrete data is still autoregressive, with more recent alternatives based on diffusion or flow-matching falling short of their impressive performance in continuous data settings, such as image or video generation. In this work, we introduce F ISHER -F LOW, a novel flow-matching model for discrete data. F ISHER -F LOW takes a manifestly geometric perspective by considering categorical distributions over discrete data as points residing on a statistical manifold equipped with its natural Riemannian metric: the Fisher-Rao metric. As a result, we demonstrate discrete data itself can be continuously reparameterised to points on the positive orthant of the d-hypersphere Sd+ , which allows us to define flows that map any source distribution to target in a principled manner by transporting mass along (closed-form) geodesics of Sd+ . Furthermore, the learned flows in F ISHER -F LOW can be further bootstrapped by leveraging Riemannian optimal transport leading to improved training dynamics. We prove that the gradient flow induced by F ISHER -F LOW is optimal in reducing the forward KL divergence. We evaluate F ISHER -F LOW on an array of synthetic and diverse real-world benchmarks, including designing DNA Promoter, and DNA Enhancer sequences. Empirically, we find that F ISHER -F LOW improves over prior diffusion and flow-matching models on these benchmarks. Our code is available at https://github.com/olsdavis/fisher-flow.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fadec8f2e65f181d777507d1df69b92f-Paper-Conference.pdf",
+              "document_sha256": "b09ccbf77554f7ca216ad170f0875af70e3b65c8878299ba295ec8657b42a007"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 10,
+              "text": "In this paper, we introduce F ISHER -F LOW a novel generative model for discrete data. Our approach offers a novel perspective and reparameterises discrete data to live on the positive orthant of a d-hypersphere, which allows us to learn categorical densities by performing Riemannian flow matching. Empirically, F ISHER -F LOW improves performance on synthetic and biological sequence design tasks over comparative discrete diffusion and flow matching models while being more general as a framework. While F ISHER -F LOW enjoys favorable theoretical properties with strong empirical performance, our method is not fully developed for language modeling domains. Consequently, a natural direction for future work is to design variations of F ISHER -F LOW capable of handling larger sequence lengths and discrete categories as found in language domains. 10",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/fadec8f2e65f181d777507d1df69b92f-Paper-Conference.pdf",
+              "document_sha256": "b09ccbf77554f7ca216ad170f0875af70e3b65c8878299ba295ec8657b42a007"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9927558d9a11ced9627be9d3",
+          "url": "https://proceedings.mlr.press/v202/avdeyev23a.html"
+        },
+        "b": {
+          "paper_id": "paper-bebde12f5bbcb2e35673a65c",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/fadec8f2e65f181d777507d1df69b92f-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "d42d2d3f564bff34f1e576ceade66e6b7fc64f4c77d70f7d3644ec97d4dce0d7"
+    },
+    {
+      "id": "edge-b3c7c32464d95dfdc2ce1a74",
+      "a": "paper-9b669ca6a16876adedf54610",
+      "b": "paper-37fbdfdef242e652e4887908",
+      "state": {
+        "paper_a": {
+          "title": "Rapid Convergence of the Unadjusted Langevin Algorithm: Isoperimetry Suffices",
+          "year": 2019,
+          "venue": "NeurIPS",
+          "abstract": "We study the Unadjusted Langevin Algorithm (ULA) for sampling from a probability distribution $\\nu = e^{-f}$ on $\\R^n$. We prove a convergence guarantee in Kullback-Leibler (KL) divergence assuming $\\nu$ satisfies log-Sobolev inequality and $f$ has bounded Hessian. Notably, we do not assume convexity or bounds on higher derivatives. We also prove convergence guarantees in R\\'enyi divergence of order $q > 1$ assuming the limit of ULA satisfies either log-Sobolev or Poincar\\'e inequality."
+        },
+        "paper_b": {
+          "title": "The Poisson Midpoint Method for Langevin Dynamics: Provably Efficient Discretization for Diffusion Models",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Langevin Dynamics is a Stochastic Differential Equation (SDE) central to sampling and generative modeling and is implemented via time discretization. Langevin Monte Carlo (LMC), based on the Euler-Maruyama discretization, is the simplest and most studied algorithm. LMC can suffer from slow convergence - requiring a large number of steps of small step-size to obtain good quality samples. This becomes stark in the case of diffusion models where a large number of steps gives the best samples, but the quality degrades rapidly with smaller number of steps. Randomized Midpoint Method has been recently proposed as a better discretization of Langevin dynamics for sampling from strongly log-concave distributions. However, important applications such as diffusion models involve non-log concave densities and contain time varying drift. We propose its variant, the Poisson Midpoint Method, which approximates a small step-size LMC with large step-sizes. We prove that this can obtain a quadratic speed up of LMC under very weak assumptions. We apply our method to diffusion models for image generation and show that it maintains the quality of DDPM with 1000 neural network calls with just 50-80 neural network calls and outperforms ODE based methods with similar compute."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "To show the generality of our results, we combine Theorems 2 and 3 with convergence results for OLMC /ULMC in the literature ([45, 53]) when π ⋆ satisfies the Logarithmic Sobolev Inequality with constant λ ( λ -LSI).\nThe convergence properties of LMC have been studied extensively in the literature under various conditions on the target distribution [8, 12, 11, 45, 15, 33, 7, 1, 6, 9, 16, 30, 53, 5].\nWith the suggested initialization in [45] i.e X 0 ∼ N ( x , I L ) for any stationary point x of F we have KL Law ( X 0 ) (cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12)(cid:12) π ⋆ ≤ ˜ O ( d ) .\nWe now state [45, Theorem 1] (adapting to our notation) which gives convergence guarantees for OLMC under the assumption of λ -LSI.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-9b669ca6a16876adedf54610",
+          "b": "paper-37fbdfdef242e652e4887908",
+          "input_sha256": "bd130e32cf77de6e75d5dd8220c965c75f20681e64c3290a6da633261370dd83",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2019/hash/65a99bb7a3115fdede20da98b08a370f-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/65a99bb7a3115fdede20da98b08a370f-Paper.pdf",
+              "sha256": "2703f847d9564b826f278c844b95524b489af35f2dd0b1c3d27728e86cdb76eb"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/796455f65fd2cbe049112a2d2d4488cb-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/796455f65fd2cbe049112a2d2d4488cb-Paper-Conference.pdf",
+              "sha256": "ef3f8966abc142725f39c799d5388cafbf0e2816802fbb652cb8f1a3e913ce74"
+            }
+          },
+          "passages": [
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "The task of sampling from a target distribution is central to Bayesian inference, generative modeling, differential privacy and theoretical computer science [48, 20, 17, 25]. Sampling algorithms, based on the discretization of a stochastic differential equation (SDE) called the Langevin Dynamics, are widely used. The straightforward time discretization (i.e., Euler Maruyama discretization) of Langevin dynamics, called Langevin Monte Carlo (LMC), is popular due to its simplicity. The convergence properties of LMC have been studied extensively in the literature under various conditions on the target distribution [8, 12, 11, 45, 15, 33, 7, 1, 6, 9, 16, 30, 53, 5]. LMC can suffer from slow convergence to the target distribution, and often requires a large number of steps with a very fine time discretization (i.e., small step-size), making it prohibitively expensive. The Poisson Midpoint Method introduced in this paper approximates multiple steps of small step-size Euler-Maruyama discretization with one step of larger step-size via stochastic approximation. In the case of LMC, we show that our method (called PLMC) converges to the target as fast as LMC with a much smaller step-size without any additional assumptions such as isoperimetry or strong log concavity (up to a small additional error term). This is a variant of the Randomized Midpoint Method (RLMC) studied in the literature [40, 18, 50] (see Section 1.1 for comparison). ∗",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/796455f65fd2cbe049112a2d2d4488cb-Paper-Conference.pdf",
+              "document_sha256": "ef3f8966abc142725f39c799d5388cafbf0e2816802fbb652cb8f1a3e913ce74"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 6,
+              "text": "OLMC and ULMC are sampling algorithms which output approximate samples (XT and UT respectively) from the distribution with density π ⋆ ∝ e−F . Given ϵ > 0, prior works give upper bounds on T and the \u0001 corresponding step-size α as a function of ϵ to achieve guarantees such as KL Law(XT ) π ⋆ ≤ ϵ2 or TV(Law(XT ), π ⋆ ) ≤ ϵ. By Pinsker’s inequality TV2 ≤ 2KL therefore we guarantees for KL ≤ ϵ2 to those for TV ≤ ϵ as is common in the literature. Quadratic Speedup Let T = Θ̃(1/α) as is standard. Choosing K = Θ(1/α), our method applied to OLMC achieves a KL divergence of O(α2 ) to OLMC with step-size α2 . Similarly, our method applied to ULMC achieves a KL divergence of O(α4 ) to ULMC with step-size α2 . Whenever the KL divergence of OLMC (resp. ULMC) output to π ⋆ , with step-size η is Ω̃(η) (resp Ω̃(η 2 )) Theorem 2 (resp. Theorem 3) demonstrates a quadratic speed up. To show the generality of our results, we combine Theorems 2 and 3 with convergence results for OLMC /ULMC in the literature ([45, 53]) when π ⋆ satisfies the Logarithmic Sobolev Inequality with constant λ (λ-LSI). We obtain convergence bounds for the last iterate of PLMC to π ⋆ under the same conditions. λ-LSI is more general than strong log-concavity (λ-strongly log-concave π ⋆ satisfies λ-LSI). It is stable under bounded multiplicative perturbations of the density [21] and Lipschitz mappings. λ-LSI condition has been widely used to study sampling algorithms beyond log-concavity. We present our results in Table 1 and refer to Section G for the exact conditions and results. 6",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/796455f65fd2cbe049112a2d2d4488cb-Paper-Conference.pdf",
+              "document_sha256": "ef3f8966abc142725f39c799d5388cafbf0e2816802fbb652cb8f1a3e913ce74"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Langevin Dynamics is a Stochastic Differential Equation (SDE) central to sampling and generative modeling and is implemented via time discretization. Langevin Monte Carlo (LMC), based on the Euler-Maruyama discretization, is the simplest and most studied algorithm. LMC can suffer from slow convergence - requiring a large number of steps of small step-size to obtain good quality samples. This becomes stark in the case of diffusion models where a large number of steps gives the best samples, but the quality degrades rapidly with smaller number of steps. Randomized Midpoint Method has been recently proposed as a better discretization of Langevin dynamics for sampling from strongly log-concave distributions. However, important applications such as diffusion models involve non-log concave densities and contain time varying drift. We propose its variant, the Poisson Midpoint Method, which approximates a small step-size LMC with large step-sizes. We prove that this can obtain a quadratic speed up of LMC under very weak assumptions. We apply our method to diffusion models for image generation and show that it maintains the quality of DDPM with 1000 neural network calls with just 50-80 neural network calls and outperforms ODE based methods with similar compute.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/796455f65fd2cbe049112a2d2d4488cb-Paper-Conference.pdf",
+              "document_sha256": "ef3f8966abc142725f39c799d5388cafbf0e2816802fbb652cb8f1a3e913ce74"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "We introduce the Poisson Midpoint Method, which efficiently discretizes Langevin Dynamics and theoretically demonstrates quadratic speed up over Euler-Maruyama discretization under general conditions. We apply our method to diffusion models for image generation, and show that our method maintains the quality of 1000 step DDPM with just 50-80 neural network calls. This outperforms ODE based methods such as DPM-Solver in terms of quality, with a similar amount of compute. Future work can explore variants of Poisson midpoint method with better performance when fewer than 50 neural network calls are used. An interesting theoretical direction would be to derive convergence bounds for algorithms such as DDPM which have a time dependent drift function. Future work can also consider convergence rates of PLMC under conditions such as the Poincare Inequality and whenever ∇F is Hölder continuous instead of Lipschitz continuous.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/796455f65fd2cbe049112a2d2d4488cb-Paper-Conference.pdf",
+              "document_sha256": "ef3f8966abc142725f39c799d5388cafbf0e2816802fbb652cb8f1a3e913ce74"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-9b669ca6a16876adedf54610",
+          "url": "https://papers.nips.cc/paper_files/paper/2019/hash/65a99bb7a3115fdede20da98b08a370f-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-37fbdfdef242e652e4887908",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/796455f65fd2cbe049112a2d2d4488cb-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "942433d76ec274158169369baf3f1fc64fa86bbbf7320690473513b56dbd7c26"
+    },
+    {
+      "id": "edge-78228ecfd02c24c3bef5517d",
+      "a": "paper-00640311fb43b4a0eb12ccfb",
+      "b": "paper-920e92bff82df8402f629c9e",
+      "state": {
+        "paper_a": {
+          "title": "MultiDiffusion: Fusing Diffusion Paths for Controlled Image Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Recent advances in text-to-image generation with diffusion models present transformative capabilities in image quality. However, user controllability of the generated image, and fast adaptation to new tasks still remains an open challenge, currently mostly addressed by costly and long re-training and fine-tuning or ad-hoc adaptations to specific image generation tasks. In this work, we present MultiDiffusion, a unified framework that enables versatile and controllable image generation, using a pre-trained text-to-image diffusion model, without any further training or finetuning. At the center of our approach is a new generation process, based on an optimization task that binds together multiple diffusion generation processes with a shared set of parameters or constraints. We show that MultiDiffusion can be readily applied to generate high quality and diverse images that adhere to user-provided controls, such as desired aspect ratio (e.g., panorama), and spatial guiding signals, ranging from tight segmentation masks to bounding boxes."
+        },
+        "paper_b": {
+          "title": "HiFlow: Training-free High-Resolution Image Generation with Flow-Aligned Guidance",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Text-to-image (T2I) diffusion/flow models have drawn considerable attention recently due to their remarkable ability to deliver flexible visual creations. Still, high-resolution image synthesis presents formidable challenges due to the scarcity and complexity of high-resolution content. Recent approaches have investigated training-free strategies to enable high-resolution image synthesis with pre-trained models. However, these techniques often struggle with generating high-quality visuals and tend to exhibit artifacts or low-fidelity details, as they typically rely solely on the endpoint of the low-resolution sampling trajectory while neglecting intermediate states that are critical for preserving structure and synthesizing finer detail. To this end, we present HiFlow, a training-free and model-agnostic framework to unlock the resolution potential of pre-trained flow models. Specifically, HiFlow establishes a virtual reference flow within the high-resolution space that effectively captures the characteristics of low-resolution flow information, offering guidance for high-resolution generation through three key aspects: initialization alignment for low-frequency consistency, direction alignment for structure preservation, and acceleration alignment for detail fidelity. By leveraging such flow-aligned guidance, HiFlow substantially elevates the quality of high-resolution image synthesis of T2I models and demonstrates versatility across their personalized variants. Extensive experiments validate HiFlow's capability in achieving superior high-resolution image quality over state-of-the-art methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Therefore, recent studies have investigated training-free strategies [17, 12, 23, 1, 25, 60, 29, 26, 42, 13, 49] to harness the inherent potential of pre-trained T2I models in high-resolution image synthesis.\nRecent efforts have focused on training-free strategies [17, 12, 23, 1, 25, 60, 29, 26, 42, 13, 49, 55] that modify the inference strategies of diffusion models for low-resolution generation.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00640311fb43b4a0eb12ccfb",
+          "b": "paper-920e92bff82df8402f629c9e",
+          "input_sha256": "d27f52c315548e9141a794c768ce8718e04403e3fc6736db64999d411c0a67cc",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/bar-tal23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/d4ecde5d18d36150c529d1b9c5f0d727-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/d4ecde5d18d36150c529d1b9c5f0d727-Paper-Conference.pdf",
+              "sha256": "333edf575aa5dd56d354cc6b0409ff406e8c0938f718fd3cfb33541657d69df5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Recent advances in text-to-image generation with diffusion models present transformative capabilities in image synthesis. However, user controllability of the generated image, and fast adaptation to new tasks still remains an open challenge, currently mostly addressed by costly and long retraining and fine-tuning or ad-hoc adaptations to specific image generation tasks. In this work, we present MultiDiffusion, a unified framework that enables versatile and controllable image generation, using a pre-trained text-to-image diffusion model, without any further training or finetuning. At the center of our approach is a new generation process, based on an optimization task that binds together multiple diffusion generation processes with a shared set of parameters or constraints. We show that MultiDiffusion can be readily applied to generate high quality and diverse images that adhere to user-provided controls, such as desired aspect ratio (e.g., panorama), and spatial guiding signals, ranging from tight segmentation masks to bounding boxes.",
+              "url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "document_sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Fig. 4 shows sample generation results by our method compared to the above baselines. As seen, both baselines often exhibit visible seams and discontinuities between overlapping crops, as well as degradation in visual quality as moving away from the center pivotal image; this is expected due to the iterative generation process. BLD often generates repetitive content (e.g., skiers example), where SI results in noticeable visual difference between the left and right parts of the image. In contrast, our framework simultaneously “samples” the panoramic image by combining the diffusion paths of all crops, resulting in seamless and high quality images. Additional comparisons are in the Appendix 11.",
+              "url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "document_sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "The text-to-image (T2I) diffusion/flow models [45, 41, 40, 4, 10, 38, 40, 46, 30, 50, 28, 53, 54, 3], which allow for flexible content creation from textual prompts, have recently achieved a landmark advancement. Despite considerable improvements, existing T2I models are typically confined to a restricted resolution (e.g., 1024 × 1024) and experience notable quality decline and even structural breakdown when attempting to generate higher-resolution images, as illustrated in Fig. 2. Such shortcoming limits the utility and diminishes their appeal to contemporary artistic and commercial applications, in which detail and precision are paramount. As initial efforts, several methods [16, 21, 35, 44, 51, 63, 57, 56] suggest fine-tuning T2I models on higher-resolution samples to enhance the adaptability to large-scale images. Nevertheless, this straightforward approach entails significant costs, primarily the burden of high-resolution image collection and the necessity for model-specific fine-tuning. Therefore, recent studies have investigated training-free strategies [17, 12, 23, 1, 25, 60, 29, 26, 42, 13, 49] to harness the inherent potential of pre-trained T2I models in high-resolution image synthesis. However, the majority of these methods [17, 23, 60, 42, 25] involve manipulating the internal features within models, exhibiting restricted transferability across architectures, such as applying methods tailored for U-Net architecture in DiT-based models. Another line of research [12, 26, 49, 13] suggests fusing the upsampled lowresolution images into the denoising target during high-resolution synthesis for structure guidance. Despite simplicity, these methods merely align high-resolution images predicted at different time steps with the upsampled low-resolution image from",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d4ecde5d18d36150c529d1b9c5f0d727-Paper-Conference.pdf",
+              "document_sha256": "333edf575aa5dd56d354cc6b0409ff406e8c0938f718fd3cfb33541657d69df5"
+            },
+            {
+              "id": "b_citation_2",
+              "kind": "citation",
+              "page": 3,
+              "text": "High-resolution image generation with diffusion models has gained increasing popularity in recent years. Several studies [16, 21, 35, 44, 51, 63, 57, 56] have proposed training or fine-tuning existing T2I diffusion models to enhance their capability for high-resolution image generation. However, it remains a challenging task due to the scarcity of high-resolution training data and the substantial computational resources required for modeling such data. Another line of researchs [58, 11, 32, 52, 6] employs super-resolution techniques to upscale the resolution of generated low-resolution images. Nevertheless, the quality of generated images via this approach heavily depends on the initial quality of the low-resolution images and the performance of the super-resolution model. Recent efforts have focused on training-free strategies [17, 12, 23, 1, 25, 60, 29, 26, 42, 13, 49, 55] that modify the inference strategies of diffusion models for low-resolution generation. For instance, HiDiffusion [60] suggests reshaping features in the outermost blocks of the U-Net architecture to match the training size in deeper blocks. DiffuseHigh [26] upscales the low-resolution generation result and re-denoises it under the structural guidance from the Discrete Wavelet Transform. I-Max [13] projects the highresolution flow into the low-resolution space, enabling training-free high-resolution image generation with flow models. Many existing training-free methods [17, 23, 60, 42, 25] are inherently entangled with model-specific internal features, limiting their generalizability across different architectures. Others [12, 26, 49, 13] lack effective guidance throughout the high-resolution generation process, 3",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d4ecde5d18d36150c529d1b9c5f0d727-Paper-Conference.pdf",
+              "document_sha256": "333edf575aa5dd56d354cc6b0409ff406e8c0938f718fd3cfb33541657d69df5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 3,
+              "text": "Text-to-image (T2I) synthesis [45, 41, 40, 4, 10, 38, 46, 30, 50, 28] has witnessed significant advancements with the advent of diffusion models [2, 33, 64], which have demonstrated remarkable capabilities in producing high-quality images based on given textual prompts. Denoising Diffusion Probabilistic Models (DDPM) [19] and Guided Diffusion [9] showcased the potential of diffusion processes to generate high-fidelity images. Subsequently, the introduction of latent space diffusion [45] marked a revolutionary advancement in the field, which significantly reduced computational demands and enabled more efficient training, giving rise to pioneering models such as Stable Diffusion and Stable Diffusion XL [41]. Recently, the integration of transformer-based architectures [5, 4, 14, 15, 65, 28] into diffusion models has also led to improvements in both image quality and computational efficiency. In this work, we primarily construct our method upon Flux.1.0-dev [28], an advanced Rectified Flow T2I backbone renowned for its superior generation quality. 2.2",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d4ecde5d18d36150c529d1b9c5f0d727-Paper-Conference.pdf",
+              "document_sha256": "333edf575aa5dd56d354cc6b0409ff406e8c0938f718fd3cfb33541657d69df5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 3,
+              "text": "Figure 2: T2I models suffer significant quality degradation in high-resolution image generation. scale, facilitating superior visual quality. Furthermore, HiFlow exhibits broad generalizability across U-Net and DiT architectures, owing to its independence from internal model characteristics. Extensive experiments demonstrate that the proposed method surpasses state-of-the-art baselines on the latest Rectified Flow T2I model. The main contributions of this paper are summarized as follows: (i) We propose HiFlow, a novel training-free and model-agnostic framework to unlock the resolution potential of pre-trained Rectified Flow models, which constructs virtual reference flow derived from low-resolution sampling trajectories to enable high-resolution synthesis; (ii) The constructed virtual reference flow provides flow-aligned guidance in terms of initialization, direction, and acceleration, thus promoting low-frequency consistency, structural preservation, and detail fidelity, respectively; and (iii) Comprehensive experiments validate HiFlow’s superiority over state-of-the-art competitors and highlight its flexibility and versatility in various applications including LoRA [22], ControlNet [59], and Quantization [31].",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/d4ecde5d18d36150c529d1b9c5f0d727-Paper-Conference.pdf",
+              "document_sha256": "333edf575aa5dd56d354cc6b0409ff406e8c0938f718fd3cfb33541657d69df5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00640311fb43b4a0eb12ccfb",
+          "url": "https://proceedings.mlr.press/v202/bar-tal23a.html"
+        },
+        "b": {
+          "paper_id": "paper-920e92bff82df8402f629c9e",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/d4ecde5d18d36150c529d1b9c5f0d727-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "9f66cc7d6fa8c51e138b070fc9f0971cba8c676f5552b44df2b68518df8761e6"
+    },
+    {
+      "id": "edge-bd1eabf612d1e704db340833",
+      "a": "paper-00640311fb43b4a0eb12ccfb",
+      "b": "paper-d28921d30594c2e719d1cbba",
+      "state": {
+        "paper_a": {
+          "title": "MultiDiffusion: Fusing Diffusion Paths for Controlled Image Generation",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "Recent advances in text-to-image generation with diffusion models present transformative capabilities in image quality. However, user controllability of the generated image, and fast adaptation to new tasks still remains an open challenge, currently mostly addressed by costly and long re-training and fine-tuning or ad-hoc adaptations to specific image generation tasks. In this work, we present MultiDiffusion, a unified framework that enables versatile and controllable image generation, using a pre-trained text-to-image diffusion model, without any further training or finetuning. At the center of our approach is a new generation process, based on an optimization task that binds together multiple diffusion generation processes with a shared set of parameters or constraints. We show that MultiDiffusion can be readily applied to generate high quality and diverse images that adhere to user-provided controls, such as desired aspect ratio (e.g., panorama), and spatial guiding signals, ranging from tight segmentation masks to bounding boxes."
+        },
+        "paper_b": {
+          "title": "Accelerating Diffusion Models with Parallel Sampling: Inference at Sub-Linear Time Complexity",
+          "year": 2024,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion models have become a leading method for generative modeling of both image and scientific data.As these models are costly to train and \\emph{evaluate}, reducing the inference cost for diffusion models remains a major goal.Inspired by the recent empirical success in accelerating diffusion models via the parallel sampling technique~\\cite{shih2024parallel}, we propose to divide the sampling process into $\\mathcal{O}(1)$ blocks with parallelizable Picard iterations within each block. Rigorous theoretical analysis reveals that our algorithm achieves $\\widetilde{\\mathcal{O}}(\\mathrm{poly} \\log d)$ overall time complexity, marking \\emph{the first implementation with provable sub-linear complexity w.r.t. the data dimension $d$}. Our analysis is based on a generalized version of Girsanov's theorem and is compatible with both the SDE and probability flow ODE implementations. Our results shed light on the potential of fast and efficient sampling of high-dimensional data on fast-evolving modern large-memory GPU clusters."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Diffusion and probability flow based models [2–11] are now state-of-the-art in many fields, such as computer vision and image generation [12–22], natural language processing [23, 24], audio and video generation [25–29], optimization [30, 31], sampling and learning of fixed classes of distributions…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00640311fb43b4a0eb12ccfb",
+          "b": "paper-d28921d30594c2e719d1cbba",
+          "input_sha256": "0e8e251c9a26b63835a633020dd9fce61ebe35409b23dc641d9ffc0dc08d720e",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/bar-tal23a.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/f162fa05675e3db4a733aafc081653cf-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/f162fa05675e3db4a733aafc081653cf-Paper-Conference.pdf",
+              "sha256": "c51e48969b255ee846e3f757ad50a1d32871fe9e11be787b638425e3096d177e"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Recent advances in text-to-image generation with diffusion models present transformative capabilities in image synthesis. However, user controllability of the generated image, and fast adaptation to new tasks still remains an open challenge, currently mostly addressed by costly and long retraining and fine-tuning or ad-hoc adaptations to specific image generation tasks. In this work, we present MultiDiffusion, a unified framework that enables versatile and controllable image generation, using a pre-trained text-to-image diffusion model, without any further training or finetuning. At the center of our approach is a new generation process, based on an optimization task that binds together multiple diffusion generation processes with a shared set of parameters or constraints. We show that MultiDiffusion can be readily applied to generate high quality and diverse images that adhere to user-provided controls, such as desired aspect ratio (e.g., panorama), and spatial guiding signals, ranging from tight segmentation masks to bounding boxes.",
+              "url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "document_sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Fig. 4 shows sample generation results by our method compared to the above baselines. As seen, both baselines often exhibit visible seams and discontinuities between overlapping crops, as well as degradation in visual quality as moving away from the center pivotal image; this is expected due to the iterative generation process. BLD often generates repetitive content (e.g., skiers example), where SI results in noticeable visual difference between the left and right parts of the image. In contrast, our framework simultaneously “samples” the panoramic image by combining the diffusion paths of all crops, resulting in seamless and high quality images. Additional comparisons are in the Appendix 11.",
+              "url": "https://proceedings.mlr.press/v202/bar-tal23a/bar-tal23a.pdf",
+              "document_sha256": "4d253d4f83b0f1169659df220512880218686bd06e96ec0196d93dce9b00da25"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "Diffusion and probability ﬂow based models [2–11] are now state-of-the-art in many ﬁelds, such as computer vision and image generation [12–22], natural language processing [23, 24], audio and video generation [25–29], optimization [30, 31], sampling and learning of ﬁxed classes of distributions [32–41], solving high-dimensional partial differential equations [42–46], and more recently several applications in physical, chemical and biological ﬁelds [47–63]. For a more comprehensive list of related work, one may refer to the following review papers [64–66]. While there are already many variants, such as denoising diffusion probabilistic models (DDPMs) [7], score-based generative models (SGMs) [9], diffusion schrödinger bridges [67], stochastic interpolants and ﬂow matching [2–4], etc., the recurring idea is to design a stochastic process that interpolates between the data distribution and some simple distribution, along which score functions or alike are learned by neural network-based estimators, and then perform inference guided by the learned score functions. Due to the sequential nature of the sampling process, the inference of high-quality samples from diffusion models often requires a large number of iterations and, thus, evaluations of the neural network-based score function, which can be computationally expensive [68]. Efforts have been ∗ †",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f162fa05675e3db4a733aafc081653cf-Paper-Conference.pdf",
+              "document_sha256": "c51e48969b255ee846e3f757ad50a1d32871fe9e11be787b638425e3096d177e"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion models have become a leading method for generative modeling of both image and scientiﬁc data. As these models are costly to train and evaluate, reducing the inference cost for diffusion models remains a major goal. Inspired by the recent empirical success in accelerating diffusion models via the parallel sampling technique [1], we propose to divide the sampling process into O(1) blocks with parallelizable Picard iterations within each block. Rigorous theoretical analysis reveals that our algorithm achieves e O(poly log d) overall time complexity, marking the ﬁrst implementation with provable sub-linear complexity w.r.t. the data dimension d. Our analysis is based on a generalized version of Girsanov’s theorem and is compatible with both the SDE and probability ﬂow ODE implementations. Our results shed light on the potential of fast and efﬁcient sampling of high-dimensional data on fast-evolving modern large-memory GPU clusters.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f162fa05675e3db4a733aafc081653cf-Paper-Conference.pdf",
+              "document_sha256": "c51e48969b255ee846e3f757ad50a1d32871fe9e11be787b638425e3096d177e"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "• We propose parallelized inference algorithms for diffusion models in both the SDE and probability ﬂow ODE implementations (PIADM-SDE/ODE) with exponential integrators, a shrinking step size scheme towards the data end, and the early stopping technique; • We provide a rigorous convergence analysis of PIADM-SDE, showing that our parallelization e strategy yields a diffusion model with O(poly log d) approximate time complexity; • We show that our strategy is also compatible with the probability ﬂow ODE implementation, and PIADM-ODE could improve the space complexity from e O(d2 ) to e O(d3/2 ) while maintaining the poly-logarithmic time complexity.",
+              "url": "https://papers.nips.cc/paper_files/paper/2024/file/f162fa05675e3db4a733aafc081653cf-Paper-Conference.pdf",
+              "document_sha256": "c51e48969b255ee846e3f757ad50a1d32871fe9e11be787b638425e3096d177e"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00640311fb43b4a0eb12ccfb",
+          "url": "https://proceedings.mlr.press/v202/bar-tal23a.html"
+        },
+        "b": {
+          "paper_id": "paper-d28921d30594c2e719d1cbba",
+          "url": "https://papers.nips.cc/paper_files/paper/2024/hash/f162fa05675e3db4a733aafc081653cf-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "7e6e47893a08ba605c14e5b2d100224beb3d6852e70a26d2b0ad0ac6c8417ce4"
+    },
+    {
+      "id": "edge-588bd820b052874d64383f9f",
+      "a": "paper-006d2c84db959907f0285cde",
+      "b": "paper-13e6c0e97e37a6085d3e0448",
+      "state": {
+        "paper_a": {
+          "title": "Differentiable Annealed Importance Sampling and the Perils of Gradient Noise",
+          "year": 2021,
+          "venue": "NeurIPS",
+          "abstract": "Annealed importance sampling (AIS) and related algorithms are highly effective tools for marginal likelihood estimation, but are not fully differentiable due to the use of Metropolis-Hastings correction steps. Differentiability is a desirable property as it would admit the possibility of optimizing marginal likelihood as an objective using gradient-based methods. To this end, we propose Differentiable AIS (DAIS), a variant of AIS which ensures differentiability by abandoning the Metropolis-Hastings corrections. As a further advantage, DAIS allows for mini-batch gradients. We provide a detailed convergence analysis for Bayesian linear regression which goes beyond previous analyses by explicitly accounting for the sampler not having reached equilibrium. Using this analysis, we prove that DAIS is consistent in the full-batch setting and provide a sublinear convergence rate. Furthermore, motivated by the problem of learning from large-scale datasets, we study a stochastic variant of DAIS that uses mini-batch gradients. Surprisingly, stochastic DAIS can be arbitrarily bad due to a fundamental incompatibility between the goals of last-iterate convergence to the posterior and elimination of the accumulated stochastic error. This is in stark contrast with other settings such as gradient-based optimization and Langevin dynamics, where the effect of gradient noise can be washed out by taking smaller steps. This indicates that annealing-based marginal likelihood estimation with stochastic gradients may require new ideas."
+        },
+        "paper_b": {
+          "title": "MixFlows: principled variational inference via mixed flows",
+          "year": 2023,
+          "venue": "ICML",
+          "abstract": "This work presents mixed variational flows (MixFlows), a new variational family that consists of a mixture of repeated applications of a map to an initial reference distribution. First, we provide efficient algorithms for i.i.d. sampling, density evaluation, and unbiased ELBO estimation. We then show that MixFlows have MCMC-like convergence guarantees when the flow map is ergodic and measure-preserving, and provide bounds on the accumulation of error for practical implementations where the flow map is approximated. Finally, we develop an implementation of MixFlows based on uncorrected discretized Hamiltonian dynamics combined with deterministic momentum refreshment. Simulated and real data experiments show that MixFlows can provide more reliable posterior approximations than several black-box normalizing flows, as well as samples of comparable quality to those obtained from state-of-the-art MCMC methods."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Many are related to annealed importance sampling (Salimans et al., 2015; Wolf et al., 2016; Geffner & Domke, 2021; Zhang et al., 2021; Thin et al., 2021b; Jankowiak & Phan, 2021); these methods introduce numerous auxiliary random variables and only have convergence guarantees in the limit of increasing dimension of the joint distribution.\nMany are related to annealed importance sampling (Salimans et al., 2015; Wolf et al., 2016; Geffner & Domke, 2021; Zhang et al., 2021; Thin et al., 2021b; Jankowiak & Phan, 2021); these methods introduce numerous auxiliary variables and only have convergence guarantees in the limit of increasing…",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-006d2c84db959907f0285cde",
+          "b": "paper-13e6c0e97e37a6085d3e0448",
+          "input_sha256": "d3ce93e40864c3ba4adf6d4b3e956b5dd29573651d221f30b5289e8284a1c9ce",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2021/hash/a1a609f1ac109d0be28d8ae112db1bbb-Abstract.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2021/file/a1a609f1ac109d0be28d8ae112db1bbb-Paper.pdf",
+              "sha256": "3d1fb075e8ba7414263ad5cbd12fae1910ebed0384bdf393641640b82283c2bc"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v202/xu23b.html",
+              "pdf_url": "https://proceedings.mlr.press/v202/xu23b/xu23b.pdf",
+              "sha256": "6e12ae8947c79210c9a3a0f26c0305fe2083674cdbf52c6b1350b5a822e358dd"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Annealed importance sampling (AIS) and related algorithms are highly effective tools for marginal likelihood estimation, but are not fully differentiable due to the use of Metropolis-Hastings correction steps. Differentiability is a desirable property as it would admit the possibility of optimizing marginal likelihood as an objective using gradient-based methods. To this end, we propose Differentiable AIS (DAIS), a variant of AIS which ensures differentiability by abandoning the MetropolisHastings corrections. As a further advantage, DAIS allows for mini-batch gradients. We provide a detailed convergence analysis for Bayesian linear regression which goes beyond previous analyses by explicitly accounting for the sampler not having reached equilibrium. Using this analysis, we prove that DAIS is consistent in the full-batch setting and provide a sublinear convergence rate. Furthermore, motivated by the problem of learning from large-scale datasets, we study a stochastic variant of DAIS that uses mini-batch gradients. Surprisingly, stochastic DAIS can be arbitrarily bad due to a fundamental incompatibility between the goals of last-iterate convergence to the posterior and elimination of the accumulated stochastic error. This is in stark contrast with other settings such as gradient-based optimization and Langevin dynamics, where the effect of gradient noise can be washed out by taking smaller steps. This indicates that annealing-based marginal likelihood estimation with stochastic gradients may require new ideas.",
+              "url": "https://papers.nips.cc/paper_files/paper/2021/file/a1a609f1ac109d0be28d8ae112db1bbb-Paper.pdf",
+              "document_sha256": "3d1fb075e8ba7414263ad5cbd12fae1910ebed0384bdf393641640b82283c2bc"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 2,
+              "text": "VI typically does not possess the same “exactness regardless of tuning” that MCMC does. The optimal variational distribution is not usually equal to the posterior due to the use of a limited parametric variational family; and even if it were, one could not reliably find it due to nonconvexity of the KL objective (Xu & Campbell, 2022). Recent work addresses this problem by constructing variational families from parametrized Markov chains targeting the posterior. Many are related to annealed importance sampling (Salimans et al., 2015; Wolf et al., 2016; Geffner & Domke, 2021; Zhang et al., 2021; Thin et al., 2021b; Jankowiak & Phan, 2021); these methods introduce numerous auxiliary variables and only have convergence guarantees in the limit of increasing dimension of the joint distribution. Those based on flows (Neal, 2005; Caterini et al., 2018; Chen et al., 2022) avoid the increase in dimension with flow length, but typically do not have guaranteed convergence to the target. Methods involving the final-state marginal of finite simulations of standard MCMC methods (e.g., Zhang & Hernández-Lobato, 2020) do not enable density evaluation.",
+              "url": "https://proceedings.mlr.press/v202/xu23b/xu23b.pdf",
+              "document_sha256": "6e12ae8947c79210c9a3a0f26c0305fe2083674cdbf52c6b1350b5a822e358dd"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 7,
+              "text": "6. Experiments In this section, we demonstrate the performance of our method (MixFlow) on 7 synthetic targets and 7 real data targets. See Appendix E for the details of each target. Both our synthetic and real data examples are designed to cover a range of challenging features such as heavy tails, high dimensions, multimodality, and weak identifiability. We compare posterior approximation quality to several black-box normalizing flow methods (NF): PlanarFlow, RadialFlow, and RealNVP with various architectures (Papamakarios et al., 2021). To make the methods comparable via the ELBO, we train all NFs on the same joint space as MixFlow. We also compare the marginal sample quality of MixFlow against 5,000 samples from NUTS and NFs. Finally, we compare sampling time with all competitors, and effective sample size (ESS) per second with HMC. For all experiments, we use the standard Laplace distribution as the momentum distribution due to its nu-",
+              "url": "https://proceedings.mlr.press/v202/xu23b/xu23b.pdf",
+              "document_sha256": "6e12ae8947c79210c9a3a0f26c0305fe2083674cdbf52c6b1350b5a822e358dd"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 6,
+              "text": "In this section, we provide an example of how to design a MixFlow by starting from an exactly measure-preserving map and then creating a tunable approximation to it. The construction is inspired by Hamiltonian Monte Carlo (HMC) (Neal, 2011; 1996), in which each iteration involves simulating Hamiltonian dynamics followed by a stochastic momentum refreshment; our method replaces the stochastic refreshment with a deterministic transformation. In particular, consider the augmented target density on X × Rd × [0, 1], d Y",
+              "url": "https://proceedings.mlr.press/v202/xu23b/xu23b.pdf",
+              "document_sha256": "6e12ae8947c79210c9a3a0f26c0305fe2083674cdbf52c6b1350b5a822e358dd"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-006d2c84db959907f0285cde",
+          "url": "https://papers.nips.cc/paper_files/paper/2021/hash/a1a609f1ac109d0be28d8ae112db1bbb-Abstract.html"
+        },
+        "b": {
+          "paper_id": "paper-13e6c0e97e37a6085d3e0448",
+          "url": "https://proceedings.mlr.press/v202/xu23b.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "03ef8b16ae026efd2d396ec2097eb250bde3b9ae94311fa751c87ddb287ef710"
+    },
+    {
+      "id": "edge-bdbaa649fbb98ed38a546a44",
+      "a": "paper-00a7da2e6ec9a42f864e2dd2",
+      "b": "paper-13b39938b4673289977fedc4",
+      "state": {
+        "paper_a": {
+          "title": "Knowledge Neurons in Pretrained Transformers",
+          "year": 2022,
+          "venue": "ACL Anthology",
+          "abstract": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus. In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers."
+        },
+        "paper_b": {
+          "title": "Unveiling Concept Attribution in Diffusion Models",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion models have shown remarkable abilities in generating realistic and high-quality images from text prompts. However, a trained model remains largely black-box; little do we know about the roles of its components in exhibiting a concept such as objects or styles. Recent works employ causal tracing to localize knowledge-storing layers in generative models without showing how other layers contribute to the target concept. In this work, we approach diffusion models' interpretability problem from a more general perspective and pose a question: \\textit{``How do model components work jointly to demonstrate knowledge?''}. To answer this question, we decompose diffusion models using component attribution, systematically unveiling the importance of each component (specifically the model parameter) in generating a concept. The proposed framework, called \\textbf{C}omponent \\textbf{A}ttribution for \\textbf{D}iffusion Model (CAD), discovers the localization of concept-inducing (positive) components, while interestingly uncovers another type of components that contribute negatively to generating a concept, which is missing in the previous knowledge localization work. Based on this holistic understanding of diffusion models, we present and empirically evaluate one utility of component attribution in controlling the generation process. Specifically, we introduce two fast, inference-time model editing algorithms, CAD-Erase and CAD-Amplify; in particular, CAD-Erase enables erasure and CAD-Amplify allows amplification of a generated concept by ablating the positive and negative components, respectively, while retaining knowledge of other concepts. Extensive experimental results validate the significance of both positive and negative components pinpointed by our framework, demonstrating the potential of providing a complete view of interpreting generative models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Previous work [8, 16] investigates how components of language model store factual knowledge.\nDai et al. [8] also propose a method to amplify facts, but relies on amplifying positive neurons.",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00a7da2e6ec9a42f864e2dd2",
+          "b": "paper-13b39938b4673289977fedc4",
+          "input_sha256": "2308c20fca4f97783eb851de5295e516f8959e05278b67d80c825f6aa2529b07",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2022.acl-long.581/",
+              "pdf_url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/295d03c732e675d699aab6056393d5ee-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/295d03c732e675d699aab6056393d5ee-Paper-Conference.pdf",
+              "sha256": "974837a1f6a6aec968eb791d638064e883a09f4aa49e0943cd15ef3cb6ba07b5"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Large-scale pretrained language models are surprisingly good at recalling factual knowledge presented in the training corpus (Petroni et al., 2019; Jiang et al., 2020b). In this paper, we present preliminary studies on how factual knowledge is stored in pretrained Transformers by introducing the concept of knowledge neurons. Specifically, we examine the fill-in-the-blank cloze task for BERT. Given a relational fact, we propose a knowledge attribution method to identify the neurons that express the fact. We find that the activation of such knowledge neurons is positively correlated to the expression of their corresponding facts. In our case studies, we attempt to leverage knowledge neurons to edit (such as update, and erase) specific factual knowledge without fine-tuning. Our results shed light on understanding the storage of knowledge within pretrained Transformers. The code is available at https://github.com/ Hunter-DDM/knowledge-neurons.",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 1,
+              "text": "text-form knowledge prediction. In this paper, we attempt to look deeper into pretrained Transformers and investigate how factual knowledge is stored. As shown in Figure 1, we propose a knowledge attribution method to identify the neurons that express a relational fact, where such neurons are named knowledge neurons. Specifically, we view feed-forward network (i.e., two-layer perceptron) modules in Transformer as key-value memories (Geva et al., 2020). For the example in Figure 1, the hidden state is fed into the first linear layer and activates knowledge neurons; then, the second linear layer integrates the corresponding memory vectors. The key-value-memory nature (Geva et al., 2020) inspires us to propose the knowledge attribution method, which identifies knowledge neurons in feed-forward networks by computing the contribution of each neuron to the knowledge prediction. Extensive analysis shows that the activation of the identified knowledge neurons is positively correlated to the knowledge expression, which shows",
+              "url": "https://aclanthology.org/2022.acl-long.581.pdf",
+              "document_sha256": "0576f133236aa9fb69a4bd7379f9cc3434091f64a02aba038763e5349ebd51de"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 3,
+              "text": "model. Dravid et al. [9] examine the weight space of several customized diffusion models; in contrast, our work offers an efficient approach to studying individual model component roles. Concept Erasure. Latent diffusion models (LDMs) can generate undesirable content (e.g., nudity, outdated information, copyrighted artistic styles) due to their large and uncontrolled training datasets. Early efforts address this problem involved fine-tuning Cross-Attention layers [11, 20, 21, 50, 29] or editing the text-encoder [1, 2]. In addition, several research [12, 25, 44] highlight the necessity to remove multiple concepts simultaneously in real-world scenarios. More recent works aim to improve robustness of erasing methods to red-teaming attacks, including ConceptPrune [5], RECE [13], RACE [19], and pruning methods [45]. These methods enable efficient erasure of various contents while ensuring minimal interference with the unedited ones. Concept Amplification. Motivated by Dreambooth [33], Cones [24] inserts new objects into the model by identifying concept neurons. In contrast, CAD-Amplify locates components to magnify existing knowledge in diffusion models. Dai et al. [8] also proposes a method to amplify facts, but relies on amplifying positive neurons. Our work is the first study showing the existence of negative components and how to systematically locate them. Red-Teaming Attacks. Although fine-tuning eliminates undesirable concepts in text-to-image models, recent studies [47, 6, 51, 46, 48, 41, 30] show that this approach remains unreliable against adversarial prompt attacks. These safety mechanisms can be bypassed by both black-box (e.g., SneakyPrompt [47], Ring-A-bell [41]) and white-box attacks (e.g., P4D [6], UnlearnDiff [51]), leading to the regeneration of sensitive",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/295d03c732e675d699aab6056393d5ee-Paper-Conference.pdf",
+              "document_sha256": "974837a1f6a6aec968eb791d638064e883a09f4aa49e0943cd15ef3cb6ba07b5"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "Abstract Diffusion models have shown remarkable abilities in generating realistic and highquality images from text prompts. However, a trained model remains largely black-box; little do we know about the roles of its components in exhibiting a concept such as objects or styles. Recent works employ causal tracing to localize knowledge-storing layers in generative models without showing how other layers contribute to the target concept. In this work, we approach diffusion models’ interpretability problem from a more general perspective and pose a question: “How do model components work jointly to demonstrate knowledge?”. To answer this question, we decompose diffusion models using component attribution, systematically unveiling the importance of each component (specifically the model parameter) in generating a concept. The proposed framework, called Component Attribution for Diffusion Model (CAD), discovers the localization of concept-inducing (positive) components, while interestingly uncovers another type of components that contribute negatively to generating a concept, which is missing in the previous knowledge localization work. Based on this holistic understanding of diffusion models, we present and empirically evaluate one utility of component attribution in controlling the generation process. Specifically, we introduce two fast, inference-time model editing algorithms, CAD-Erase and CAD-Amplify; in particular, CAD-Erase enables erasure and CAD-Amplify allows amplification of a generated concept by ablating the positive and negative components, respectively, while retaining knowledge of other concepts. Extensive experimental results validate the significance of both positive and negative components pinpointed by our framework, demonstrating the potential of",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/295d03c732e675d699aab6056393d5ee-Paper-Conference.pdf",
+              "document_sha256": "974837a1f6a6aec968eb791d638064e883a09f4aa49e0943cd15ef3cb6ba07b5"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "Generated image To address that limitation, this paper first poses Prompt a more general question: How do components \"A photo of a cat\" in diffusion models contribute to a generated concept? We introduce a framework that predicts the model’s behavior given the presence of each component by identifying its contribu: positive components : negative components tion through an efficient linear counterfactual : other components estimator [35]. Through this framework, called Component Attribution for Diffusion Model (CAD), we advance the understanding of how Figure 1: Overview of our framework. We show model components activate concepts (e.g., ob- that there exist positive and negative components in jects, styles, or explicit contents) in diffusion diffusion that increase or decrease the probability models. In contrast to the prior work that fo- of the target concept, respectively. Removing those cuses on the model’s layers, CAD allows anal- components will have the reverse effect. ysis of more fine-grained components. Specifically, we revisit the distributed hypothesis [2] and leverage CAD to identify concept-inducing (or positive) components that are similar to knowledge storage. However, by focusing on the most finegrained components, i.e., the model’s parameters, we propose the localization hypothesis: knowledge is localized in a small number of parameters. Surprisingly, besides the positive components, CAD also reveals the existence of components that contribute negatively to generating the target concept, which is missing in the previous studies. Ablating positive or negative components decreases or increases the probability of generating the corresponding knowledge. As one example of its utility, this holistic understanding of diffusion models enables a lightweight",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/295d03c732e675d699aab6056393d5ee-Paper-Conference.pdf",
+              "document_sha256": "974837a1f6a6aec968eb791d638064e883a09f4aa49e0943cd15ef3cb6ba07b5"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00a7da2e6ec9a42f864e2dd2",
+          "url": "https://aclanthology.org/2022.acl-long.581/"
+        },
+        "b": {
+          "paper_id": "paper-13b39938b4673289977fedc4",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/295d03c732e675d699aab6056393d5ee-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "6969385d1a2d0dddc2d8b64d7b1301cea09054eade6b695a4340b706373f56a6"
+    },
+    {
+      "id": "edge-6320c578fc1a73ce8160dfbc",
+      "a": "paper-00dccf715c07d0c24bc0047d",
+      "b": "paper-a841896d8faa9d930d7fec48",
+      "state": {
+        "paper_a": {
+          "title": "DiffusionBERT: Improving Generative Masked Language Models with Diffusion Models",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "We present DiffusionBERT, a new generative masked language model based on discrete dif- fusion models. Diffusion models and many pre- trained language models have a shared training objective, i.e., denoising, making it possible to combine the two powerful models and enjoy the best of both worlds. On the one hand, dif- fusion models offer a promising training strat- egy that helps improve the generation quality. On the other hand, pre-trained denoising lan- guage models (e.g., BERT) can be used as a good initialization that accelerates convergence. We explore training BERT to learn the reverse process of a discrete diffusion process with an absorbing state and elucidate several designs to improve it. First, we propose a new noise schedule for the forward diffusion process that controls the degree of noise added at each step based on the information of each token. Sec- ond, we investigate several designs of incorpo- rating the time step into BERT. Experiments on unconditional text generation demonstrate that DiffusionBERT achieves significant improve- ment over existing diffusion models for text (e.g., D3PM and Diffusion-LM) and previous generative masked language models in terms of perplexity and BLEU score. Promising re- sults in conditional generation tasks show that DiffusionBERT can generate texts of compa- rable quality and more diverse than a series of established baselines."
+        },
+        "paper_b": {
+          "title": "Continuous Diffusion Model for Language Modeling",
+          "year": 2025,
+          "venue": "NeurIPS",
+          "abstract": "Diffusion models have emerged as a promising alternative to autoregressive models in modeling discrete categorical data. However, diffusion models that directly work on discrete data space fail to fully exploit the power of iterative refinement, as the signals are lost during transitions between discrete states. Existing continuous diffusion models for discrete data underperform compared to discrete methods, and the lack of a clear connection between the two approaches hinders the development of effective diffusion models for discrete data. In this work, we propose a continuous diffusion model for language modeling that incorporates the geometry of the underlying categorical distribution. We establish a connection between the discrete diffusion and continuous flow on the statistical manifold, and building on this analogy, introduce a simple diffusion process that generalizes existing discrete diffusion models. We further propose a simulation-free training framework based on radial symmetry, along with a simple technique to address the high dimensionality of the manifold. Comprehensive experiments on language modeling benchmarks and other modalities show that our method outperforms existing discrete diffusion models and approaches the performance of autoregressive models."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "Table 4 shows that our framework achieves the lowest MSE, outperforming the flow matching methods (Stärk et al., 2024; Davis et al., 2024) and the discrete diffusion diffusion model (Austin et al., 2021).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00dccf715c07d0c24bc0047d",
+          "b": "paper-a841896d8faa9d930d7fec48",
+          "input_sha256": "d8638dc06ebf21eb9ff7577601e540fcf88c41e1652f23d2f02d41b76a480283",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.248/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://papers.nips.cc/paper_files/paper/2025/hash/8c4046a93293442e88f54e19a5849d68-Abstract-Conference.html",
+              "pdf_url": "https://papers.nips.cc/paper_files/paper/2025/file/8c4046a93293442e88f54e19a5849d68-Paper-Conference.pdf",
+              "sha256": "79c5e3b267bc695f171358b420b7757be3fc67f044bd7264ba065eae94e65509"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We present DiffusionBERT, a new generative masked language model based on discrete diffusion models. Diffusion models and many pretrained language models have a shared training objective, i.e., denoising, making it possible to combine the two powerful models and enjoy the best of both worlds. On the one hand, diffusion models offer a promising training strategy that helps improve the generation quality. On the other hand, pre-trained denoising language models (e.g., BERT) can be used as a good initialization that accelerates convergence. We explore training BERT to learn the reverse process of a discrete diffusion process with an absorbing state and elucidate several designs to improve it. First, we propose a new noise schedule for the forward diffusion process that controls the degree of noise added at each step based on the information of each token. Second, we investigate several designs of incorporating the time step into BERT. Experiments on unconditional text generation demonstrate that DiffusionBERT achieves significant improvement over existing diffusion models for text (e.g., D3PM and Diffusion-LM) and previous generative masked language models in terms of perplexity and BLEU score. Promising results in conditional generation tasks show that DiffusionBERT can generate texts of comparable quality and more diverse than a series of established baselines.",
+              "url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "document_sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "jective between diffusion models and PLMs, i.e., denoising. Diffusion models consist of a forward process (data to noise) and a reverse process (noise to data). In the forward process, a small amount of noise is gradually added to the data. Then, a neural network (pθ in Figure 1) is employed to learn the reverse process step by step, i.e., learn to denoise. Such a denoising neural network is naturally related to a wide class of PLMs that are pre-trained with denoising objectives such as BERT (Devlin et al., 2019) and BART (Lewis et al., 2020). Hence, pre-trained denoising language models can serve as a good starting point to learn the reverse diffusion process. On the other hand, diffusion models also offer a promising training strategy for generative PLMs. In contrast to commonly used generative PLMs (e.g., GPT (Brown et al., 2020)) that rely on an autoregressive factorization of the joint probability, diffusion models provide another way of factorization along the dimension of time and therefore allow the generative model to be not necessarily autoregressive. Thus, diffusion models can be combined with a variety of PLMs that may not be pre-trained for generation. In the discrete domain, the forward diffusion process can be implemented by a chain of transition matrices that gradually corrupt the clean text. As shown in Figure 1, the clean text \"Hello world !\" is gradually corrupted into \"[MASK] [MASK] [MASK]\" during the diffusion process. In this work, we explore using pre-trained denoising language models (e.g., BERT) to learn the reverse diffusion process and demonstrate their advantages in accelerating convergence and improving generation quality. Further, we propose a new noise schedule of the forward process based on the principle of distributing the corrupted",
+              "url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "document_sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 8,
+              "text": "We evaluate our Riemannian Diffusion Language Model (RDLM) for text generation tasks on two language benchmarks: Text8 [42] and One Billion Words Dataset [7]. Baselines We compare against state-of-the-art diffusion and autoregressive models. Multinomial Diffusion [29], D3PM [2], SEDD [39], MDLM [49], MD4 [52] are discrete diffusion models. Plaid [23] and Bayesian Flow Network (BFN) [21] are continuous diffusion models. IAF/SCF [63], AR Argmax Flow [29], and Discrete Flow [58] are flow-based models, and ARDM [30] and MAC [53] are any-order autoregressive models. We also compare with the transformer AR model [61]. We provide further details on the baselines in Appendix B.2 Implementation details For all experiments, we use the same data split and context size following Lou et al. [39] and Sahoo et al. [49]. For Text8, we randomly sample contiguous chunks of length 256 as done in previous works [2, 39]. For One Billion Words, we use the same tokenizer as in He et al. [25] with context size 128. We use a diffusion transformer architecture [44] with rotary positional embeddings [55] for all the experiments and match the number of parameters as used in the previous works [39, 49]. For our model, we use the mixture path of masked and uniform diffusion (Eq. (9)) and apply dimension splitting for a large vocabulary. We provide more details in Appendix B.2.",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8c4046a93293442e88f54e19a5849d68-Paper-Conference.pdf",
+              "document_sha256": "79c5e3b267bc695f171358b420b7757be3fc67f044bd7264ba065eae94e65509"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 4,
+              "text": "where λit is the time-dependent mixing schedule assigned to the i-the generative path. This construction allows the resulting process to transition between different generative behaviors over time. In particular, we propose a simple yet effective mixture path built from mixing the time marginals of the masked diffusion and uniform diffusion, for a time-dependent schedule λt as follows: λt Qmask + (1 − λt )Qunif , (9) t t √ Pd with initial distribution λ0 δ(em )+(1−λ0 )δ( i=1 ei / d). This formulation generalizes the mixture paths used in discrete flow matching [51] and the state-dependent schedule [52]. Generalizing flow matching Notably, our framework generalizes previous flow matching methods on the statistical manifold [12, 15]. By designing the noise schedule in Eq. (5) to be σt ≡ σ0 → 0, we obtain the conditional vector field of the flow matching models. 4",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8c4046a93293442e88f54e19a5849d68-Paper-Conference.pdf",
+              "document_sha256": "79c5e3b267bc695f171358b420b7757be3fc67f044bd7264ba065eae94e65509"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 5,
+              "text": "Next, we introduce our training scheme. We present a simple parameterization of our generative model and derive the likelihood bound and training objectives. Further, we present a simulation-free training method based on the radial symmetry of the hypersphere. Model parameterization To use the diffusion process in Eq. (6) as a generative model, its unknown drift should be learned through a neural network, similarly to flow matching [8, 37] or bridge matching [33]. Yet the drift of the mixture process diverges near the terminal time T , which makes it challenging to learn. Therefore, instead of approximating the drift function directly, we propose to model the probability pT |t (XT |Xt ) with a neural network sθ as follows: h iT (10) pθ (Xt , t) := softmax (sθ (Xt , t)) = pT |t (e1 |Xt ), · · · , pT |t (ed |Xt ) , which converges to ek for some k as t → T . In the case of masked diffusion, we set the probability pT |t (em |Xt ) to be zero for all t, indicating that the final state cannot be a mask token. From Eq. (10), the drift of the mixture process in Eq. (6) is parameterized as follows: ηθ (Xt , t) =",
+              "url": "https://papers.nips.cc/paper_files/paper/2025/file/8c4046a93293442e88f54e19a5849d68-Paper-Conference.pdf",
+              "document_sha256": "79c5e3b267bc695f171358b420b7757be3fc67f044bd7264ba065eae94e65509"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00dccf715c07d0c24bc0047d",
+          "url": "https://aclanthology.org/2023.acl-long.248/"
+        },
+        "b": {
+          "paper_id": "paper-a841896d8faa9d930d7fec48",
+          "url": "https://papers.nips.cc/paper_files/paper/2025/hash/8c4046a93293442e88f54e19a5849d68-Abstract-Conference.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "10f26e1034c8589368de1e3c20b081d6b050567753cf94164f7212dcded49515"
+    },
+    {
+      "id": "edge-f300c0966b9a80bcb242f651",
+      "a": "paper-00dccf715c07d0c24bc0047d",
+      "b": "paper-e09ec91542151c0bed9ac910",
+      "state": {
+        "paper_a": {
+          "title": "DiffusionBERT: Improving Generative Masked Language Models with Diffusion Models",
+          "year": 2023,
+          "venue": "ACL Anthology",
+          "abstract": "We present DiffusionBERT, a new generative masked language model based on discrete dif- fusion models. Diffusion models and many pre- trained language models have a shared training objective, i.e., denoising, making it possible to combine the two powerful models and enjoy the best of both worlds. On the one hand, dif- fusion models offer a promising training strat- egy that helps improve the generation quality. On the other hand, pre-trained denoising lan- guage models (e.g., BERT) can be used as a good initialization that accelerates convergence. We explore training BERT to learn the reverse process of a discrete diffusion process with an absorbing state and elucidate several designs to improve it. First, we propose a new noise schedule for the forward diffusion process that controls the degree of noise added at each step based on the information of each token. Sec- ond, we investigate several designs of incorpo- rating the time step into BERT. Experiments on unconditional text generation demonstrate that DiffusionBERT achieves significant improve- ment over existing diffusion models for text (e.g., D3PM and Diffusion-LM) and previous generative masked language models in terms of perplexity and BLEU score. Promising re- sults in conditional generation tasks show that DiffusionBERT can generate texts of compa- rable quality and more diverse than a series of established baselines."
+        },
+        "paper_b": {
+          "title": "Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution",
+          "year": 2024,
+          "venue": "ICML",
+          "abstract": "Despite their groundbreaking performance for many generative modeling tasks, diffusion models have fallen short on discrete data domains such as natural language. Crucially, standard diffusion models rely on the well-established theory of score matching, but efforts to generalize this to discrete structures have not yielded the same empirical gains. In this work, we bridge this gap by proposing score entropy, a novel loss that naturally extends score matching to discrete spaces, integrates seamlessly to build discrete diffusion models, and significantly boosts performance. Experimentally, we test our Score Entropy Discrete Diffusion models (SEDD) on standard language modeling tasks. For comparable model sizes, SEDD beats existing language diffusion paradigms (reducing perplexity by $25$-$75$%) and is competitive with autoregressive models, in particular outperforming GPT-2. Furthermore, compared to autoregressive mdoels, SEDD generates faithful text without requiring distribution annealing techniques like temperature scaling (around $6$-$8\\times$ better generative perplexity than un-annealed GPT-2), can trade compute and quality (similar quality with $32\\times$ fewer network evaluations), and enables controllable infilling (matching nucleus sampling quality while enabling other strategies besides left to right prompting)."
+        },
+        "reference_list_contains_a": 1,
+        "citing_sentence": "The baselines are taken from He et al. (2022).\n…language modeling tasks, SEDD outperforms all existing language diffusion models (Li et al., 2022; Austin et al., 2021; Gulrajani & Hashimoto, 2023; He et al., 2022) by large margins and is competitive with autoregressive models of the same size (beating GPT-2 on its zero-shot perplexity tasks…\nThey are D3PM (Austin et al., 2021), Diffusion-LM (Li et al., 2022), BERT-mouth (Wang & Cho, 2019), and DiffusionBert (He et al., 2022).",
+        "source_evidence": {
+          "version": "source-packets-v1",
+          "a": "paper-00dccf715c07d0c24bc0047d",
+          "b": "paper-e09ec91542151c0bed9ac910",
+          "input_sha256": "52559896361095c3d9b6ea32f3b22366625bfea9ef4de6a8754015d2526d03a5",
+          "status": "ready",
+          "documents": {
+            "a": {
+              "status": "ready",
+              "source_url": "https://aclanthology.org/2023.acl-long.248/",
+              "pdf_url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            "b": {
+              "status": "ready",
+              "source_url": "https://proceedings.mlr.press/v235/lou24a.html",
+              "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lou24a/lou24a.pdf",
+              "sha256": "099811eb8ae4c232ea8f8e7b15d95f252b1d949172b985c53337780d7dba1489"
+            }
+          },
+          "passages": [
+            {
+              "id": "a_passage_1",
+              "kind": "passage",
+              "page": 1,
+              "text": "We present DiffusionBERT, a new generative masked language model based on discrete diffusion models. Diffusion models and many pretrained language models have a shared training objective, i.e., denoising, making it possible to combine the two powerful models and enjoy the best of both worlds. On the one hand, diffusion models offer a promising training strategy that helps improve the generation quality. On the other hand, pre-trained denoising language models (e.g., BERT) can be used as a good initialization that accelerates convergence. We explore training BERT to learn the reverse process of a discrete diffusion process with an absorbing state and elucidate several designs to improve it. First, we propose a new noise schedule for the forward diffusion process that controls the degree of noise added at each step based on the information of each token. Second, we investigate several designs of incorporating the time step into BERT. Experiments on unconditional text generation demonstrate that DiffusionBERT achieves significant improvement over existing diffusion models for text (e.g., D3PM and Diffusion-LM) and previous generative masked language models in terms of perplexity and BLEU score. Promising results in conditional generation tasks show that DiffusionBERT can generate texts of comparable quality and more diverse than a series of established baselines.",
+              "url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "document_sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            {
+              "id": "a_passage_2",
+              "kind": "passage",
+              "page": 2,
+              "text": "jective between diffusion models and PLMs, i.e., denoising. Diffusion models consist of a forward process (data to noise) and a reverse process (noise to data). In the forward process, a small amount of noise is gradually added to the data. Then, a neural network (pθ in Figure 1) is employed to learn the reverse process step by step, i.e., learn to denoise. Such a denoising neural network is naturally related to a wide class of PLMs that are pre-trained with denoising objectives such as BERT (Devlin et al., 2019) and BART (Lewis et al., 2020). Hence, pre-trained denoising language models can serve as a good starting point to learn the reverse diffusion process. On the other hand, diffusion models also offer a promising training strategy for generative PLMs. In contrast to commonly used generative PLMs (e.g., GPT (Brown et al., 2020)) that rely on an autoregressive factorization of the joint probability, diffusion models provide another way of factorization along the dimension of time and therefore allow the generative model to be not necessarily autoregressive. Thus, diffusion models can be combined with a variety of PLMs that may not be pre-trained for generation. In the discrete domain, the forward diffusion process can be implemented by a chain of transition matrices that gradually corrupt the clean text. As shown in Figure 1, the clean text \"Hello world !\" is gradually corrupted into \"[MASK] [MASK] [MASK]\" during the diffusion process. In this work, we explore using pre-trained denoising language models (e.g., BERT) to learn the reverse diffusion process and demonstrate their advantages in accelerating convergence and improving generation quality. Further, we propose a new noise schedule of the forward process based on the principle of distributing the corrupted",
+              "url": "https://aclanthology.org/2023.acl-long.248.pdf",
+              "document_sha256": "533db021b8b873a0abfb4e20b64ffeb7e1a682d7283b002570d95b65fbb79259"
+            },
+            {
+              "id": "b_citation_1",
+              "kind": "citation",
+              "page": 1,
+              "text": "To alleviate these issues, researchers have sought alternative approaches to generating text data. In particular, inspired by their success in the image domain, many works have extended diffusion models (Sohl-Dickstein et al., 2015; Ho et al., 2020; Song et al., 2021c) to language domains (Li et al., 2022; Austin et al., 2021). Yet, despite considerable effort, no such approach yet rivals autoregressive modeling, as they are not competitive on likelihoods, are slower to sample from, and do not generate comparable samples without resorting to heavy annealing and empirical alterations. In our work, we challenge the longstanding dominance of autoregressive models by introducing Score Entropy Discrete Diffusion models (SEDD). SEDD parameterizes a reverse discrete diffusion process using the ratios of the data distribution. These are learned using score entropy, a novel loss that is analogous to score matching for standard diffusion models (Hyvärinen, 2005; Song & Ermon, 2019) and results in several empirical benefits: 1. On core language modeling tasks, SEDD outperforms all existing language diffusion models (Li et al., 2022; Austin et al., 2021; Gulrajani & Hashimoto, 2023; He et al., 2022) by large margins and is competitive with autoregressive models of the same size (beating GPT-2 on its zero-shot perplexity tasks (Radford et al., 2019)).",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lou24a/lou24a.pdf",
+              "document_sha256": "099811eb8ae4c232ea8f8e7b15d95f252b1d949172b985c53337780d7dba1489"
+            },
+            {
+              "id": "b_passage_1",
+              "kind": "passage",
+              "page": 5,
+              "text": "We now empirically validate that our score entropy discrete diffusion (SEDD) model on a variety of language modeling tasks. We measure both perplexity (i.e. likelihood estimation capabilities) as well as generation quality, finding that our method performs quite well in both aspects. 5.1. Model and Training Setup",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lou24a/lou24a.pdf",
+              "document_sha256": "099811eb8ae4c232ea8f8e7b15d95f252b1d949172b985c53337780d7dba1489"
+            },
+            {
+              "id": "b_passage_2",
+              "kind": "passage",
+              "page": 9,
+              "text": "7. Conclusion We have introduced score entropy discrete diffusion (SEDD) models, a discrete diffusion model that is parameterized by the concrete score and can be trained efficiently with our novel score entropy loss. SEDD beats previous language diffusion models and rivals autoregressive models for both perplexity and quality. We hope that future work can build off our framework to defines alternatives to the modern autoregressive language modeling paradigm.",
+              "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/lou24a/lou24a.pdf",
+              "document_sha256": "099811eb8ae4c232ea8f8e7b15d95f252b1d949172b985c53337780d7dba1489"
+            }
+          ]
+        }
+      },
+      "sources": {
+        "a": {
+          "paper_id": "paper-00dccf715c07d0c24bc0047d",
+          "url": "https://aclanthology.org/2023.acl-long.248/"
+        },
+        "b": {
+          "paper_id": "paper-e09ec91542151c0bed9ac910",
+          "url": "https://proceedings.mlr.press/v235/lou24a.html"
+        }
+      },
+      "priority": {
+        "queue": "cached_source",
+        "later_paper_topic": "Generative Modeling and Inference Methods"
+      },
+      "sha256": "30b8f13ae76d8ea9447044252afea35b4e346740782c9bc51f7de4a5b25aad6a"
+    }
+  ]
+}
