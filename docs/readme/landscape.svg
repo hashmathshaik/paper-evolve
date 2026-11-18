@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 440" role="img" aria-labelledby="t d" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="t">Share of each year's papers by research area, 2018 to 2025</title>
+<desc id="d">Stacked bands for ten research areas. NLP and LLMs falls from 39% in 2018 to 29% in 2023, then rises to 40% in 2025. Optimization shrinks from 14% to 6%.</desc>
+<style>@keyframes wipe{0%{width:0}45%,92%{width:916px}100%{width:916px}}@keyframes names{0%,40%{opacity:0}50%,100%{opacity:1}}#reveal rect{animation:wipe 9s ease-out 1 both}.names{animation:names 9s ease-out 1 both}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs><clipPath id="reveal"><rect x="58" y="0" width="916" height="440"/></clipPath></defs>
+<rect x=".5" y=".5" width="1239" height="439" rx="16" fill="#fafbf9" stroke="#e0e6e1"/>
+<line x1="60" x2="972" y1="400.0" y2="400.0" stroke="#c5cdc4"/><text x="50" y="404.0" font-size="12" text-anchor="end" fill="#8d9c8c">0%</text>
+<line x1="60" x2="972" y1="308.5" y2="308.5" stroke="#e8ece6"/><text x="50" y="312.5" font-size="12" text-anchor="end" fill="#8d9c8c">25%</text>
+<line x1="60" x2="972" y1="217.0" y2="217.0" stroke="#e8ece6"/><text x="50" y="221.0" font-size="12" text-anchor="end" fill="#8d9c8c">50%</text>
+<line x1="60" x2="972" y1="125.5" y2="125.5" stroke="#e8ece6"/><text x="50" y="129.5" font-size="12" text-anchor="end" fill="#8d9c8c">75%</text>
+<line x1="60" x2="972" y1="34.0" y2="34.0" stroke="#e8ece6"/><text x="50" y="38.0" font-size="12" text-anchor="end" fill="#8d9c8c">100%</text>
+<text x="60.0" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2018</text>
+<text x="190.3" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2019</text>
+<text x="320.6" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2020</text>
+<text x="450.9" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2021</text>
+<text x="581.1" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2022</text>
+<text x="711.4" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2023</text>
+<text x="841.7" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2024</text>
+<text x="972.0" y="422" font-size="12" text-anchor="middle" fill="#8d9c8c">2025</text>
+<g clip-path="url(#reveal)">
+<polygon points="60.0,257.2 190.3,255.9 320.6,282.8 450.9,277.9 581.1,286.5 711.4,294.1 841.7,272.5 972.0,252.3 972.0,400.0 841.7,400.0 711.4,400.0 581.1,400.0 450.9,400.0 320.6,400.0 190.3,400.0 60.0,400.0" fill="#2a78d6" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,248.7 190.3,248.7 320.6,276.4 450.9,267.9 581.1,275.6 711.4,280.7 841.7,253.4 972.0,229.6 972.0,252.3 841.7,272.5 711.4,294.1 581.1,286.5 450.9,277.9 320.6,282.8 190.3,255.9 60.0,257.2" fill="#eb6834" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,244.9 190.3,244.1 320.6,269.4 450.9,261.8 581.1,266.7 711.4,269.3 841.7,237.0 972.0,213.4 972.0,229.6 841.7,253.4 711.4,280.7 581.1,275.6 450.9,267.9 320.6,276.4 190.3,248.7 60.0,248.7" fill="#1baf7a" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,219.5 190.3,222.4 320.6,250.1 450.9,245.3 581.1,251.6 711.4,249.0 841.7,217.7 972.0,193.5 972.0,213.4 841.7,237.0 711.4,269.3 581.1,266.7 450.9,261.8 320.6,269.4 190.3,244.1 60.0,244.9" fill="#eda100" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,213.7 190.3,214.1 320.6,239.6 450.9,234.4 581.1,238.6 711.4,232.2 841.7,201.7 972.0,178.5 972.0,193.5 841.7,217.7 711.4,249.0 581.1,251.6 450.9,245.3 320.6,250.1 190.3,222.4 60.0,219.5" fill="#e87ba4" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,164.2 190.3,169.1 320.6,195.0 450.9,193.5 581.1,196.3 711.4,193.8 841.7,173.0 972.0,158.0 972.0,178.5 841.7,201.7 711.4,232.2 581.1,238.6 450.9,234.4 320.6,239.6 190.3,214.1 60.0,213.7" fill="#008300" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,145.4 190.3,149.7 320.6,172.4 450.9,173.0 581.1,175.1 711.4,172.5 841.7,156.6 972.0,144.5 972.0,158.0 841.7,173.0 711.4,193.8 581.1,196.3 450.9,193.5 320.6,195.0 190.3,169.1 60.0,164.2" fill="#6250d6" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,118.5 190.3,120.7 320.6,132.9 450.9,134.7 581.1,136.3 711.4,136.5 841.7,128.1 972.0,122.2 972.0,144.5 841.7,156.6 711.4,172.5 581.1,175.1 450.9,173.0 320.6,172.4 190.3,149.7 60.0,145.4" fill="#e34948" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,80.3 190.3,81.4 320.6,80.7 450.9,83.6 581.1,83.5 711.4,82.5 841.7,79.4 972.0,81.0 972.0,122.2 841.7,128.1 711.4,136.5 581.1,136.3 450.9,134.7 320.6,132.9 190.3,120.7 60.0,118.5" fill="#888780" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="60.0,34.0 190.3,34.0 320.6,34.0 450.9,34.0 581.1,34.0 711.4,34.0 841.7,34.0 972.0,34.0 972.0,81.0 841.7,79.4 711.4,82.5 581.1,83.5 450.9,83.6 320.6,80.7 190.3,81.4 60.0,80.3" fill="#b4b2a9" stroke="#fafbf9" stroke-width="1.5" stroke-linejoin="round"/>
+</g>
+<g class="names">
+<path d="M976 57.5h8L996 57.5h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="57.5" r="4.5" fill="#b4b2a9"/><text x="1028" y="61.5" font-size="12.5" fill="#263c38">Uncategorized</text><text x="1218" y="61.5" font-size="12" text-anchor="end" fill="#70807b">13%</text>
+<path d="M976 101.6h8L996 101.6h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="101.6" r="4.5" fill="#888780"/><text x="1028" y="105.6" font-size="12.5" fill="#263c38">Cross-cutting</text><text x="1218" y="105.6" font-size="12" text-anchor="end" fill="#70807b">11%</text>
+<path d="M976 133.3h8L996 133.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="133.3" r="4.5" fill="#e34948"/><text x="1028" y="137.3" font-size="12.5" fill="#263c38">Reinforcement learning</text><text x="1218" y="137.3" font-size="12" text-anchor="end" fill="#70807b">6%</text>
+<path d="M976 151.3h8L996 155.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="155.3" r="4.5" fill="#6250d6"/><text x="1028" y="159.3" font-size="12.5" fill="#263c38">Online learning</text><text x="1218" y="159.3" font-size="12" text-anchor="end" fill="#70807b">4%</text>
+<path d="M976 168.2h8L996 177.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="177.3" r="4.5" fill="#008300"/><text x="1028" y="181.3" font-size="12.5" fill="#263c38">Optimization</text><text x="1218" y="181.3" font-size="12" text-anchor="end" fill="#70807b">6%</text>
+<path d="M976 186.0h8L996 199.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="199.3" r="4.5" fill="#e87ba4"/><text x="1028" y="203.3" font-size="12.5" fill="#263c38">Graphs and molecules</text><text x="1218" y="203.3" font-size="12" text-anchor="end" fill="#70807b">4%</text>
+<path d="M976 203.5h8L996 221.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="221.3" r="4.5" fill="#eda100"/><text x="1028" y="225.3" font-size="12.5" fill="#263c38">Generative modeling</text><text x="1218" y="225.3" font-size="12" text-anchor="end" fill="#70807b">5%</text>
+<path d="M976 221.5h8L996 243.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="243.3" r="4.5" fill="#1baf7a"/><text x="1028" y="247.3" font-size="12.5" fill="#263c38">3D generation</text><text x="1218" y="247.3" font-size="12" text-anchor="end" fill="#70807b">4%</text>
+<path d="M976 240.9h8L996 265.3h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="265.3" r="4.5" fill="#eb6834"/><text x="1028" y="269.3" font-size="12.5" fill="#263c38">Multimodal</text><text x="1218" y="269.3" font-size="12" text-anchor="end" fill="#70807b">6%</text>
+<path d="M976 326.1h8L996 326.1h8" fill="none" stroke="#c5cdc4"/><circle cx="1016" cy="326.1" r="4.5" fill="#2a78d6"/><text x="1028" y="330.1" font-size="12.5" fill="#263c38">NLP and LLMs</text><text x="1218" y="330.1" font-size="12" text-anchor="end" fill="#70807b">40%</text>
+</g>
+</svg>

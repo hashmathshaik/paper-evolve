@@ -1,77 +1,139 @@
-# Paper Evolve
+<p align="center">
+  <a href="https://hashmathshaik.github.io/paper-evolve/">
+    <img src="docs/readme/hero.svg" width="100%" alt="BERT (2019) and four later papers that build on it, with each connection labelled Extends or Transfers">
+  </a>
+</p>
 
-Explore how research contributions develop across 70,861 papers. Follow
-evidence-backed connections—Extends, Challenges, Combines, Transfers and
-Revives—and use semantic similarity as a separate discovery layer.
+<h1 align="center">Paper Evolve</h1>
 
-The app runs as a static site on GitHub Pages. Papers, topic clusters and
-prepared contribution packs are included; contributors do not need the private
-embedding/source caches or a backend.
+<p align="center">
+  <b>Follow how research ideas build on each other.</b><br>
+  70,861 AI papers, connected by what each one took from earlier work and what it changed.
+</p>
 
-## Contribute from a clone
+<p align="center">
+  <a href="https://hashmathshaik.github.io/paper-evolve/"><b>Open the live site</b></a> ·
+  <a href="https://hashmathshaik.github.io/paper-evolve/contribute.html">Add a connection</a> ·
+  <a href="community/PAPERS.md">Add papers</a> ·
+  <a href="CONTRIBUTING.md">Contributor guide</a>
+</p>
 
-Fork this repository on GitHub, copy your fork's clone URL, then:
+<p align="center">
+  <a href="https://github.com/hashmathshaik/paper-evolve/actions/workflows/pages.yml"><img src="https://github.com/hashmathshaik/paper-evolve/actions/workflows/pages.yml/badge.svg" alt="Site build status"></a>
+  <img src="https://img.shields.io/badge/papers-70%2C861-28756e" alt="70,861 papers">
+  <img src="https://img.shields.io/badge/connections-3%2C733-438078" alt="3,733 connections">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-7291a3" alt="MIT license"></a>
+</p>
+
+## What you can do with it
+
+Pick any paper and see the earlier work it grew from and the later work that
+grew from it. Every connection says which kind it is, what was kept and what
+changed, and shows the passages from both papers that support it.
+
+<p align="center">
+  <img src="docs/readme/types.svg" width="100%" alt="The five kinds of connection. Extends: keeps an idea and adds capabilities or scope. Challenges: questions a claim, assumption or limitation. Combines: joins ideas from separate lines of work. Transfers: takes an idea to a new task or field. Revives: brings an older idea back under new conditions.">
+</p>
+
+<table>
+  <tr>
+    <td width="50%"><a href="https://hashmathshaik.github.io/paper-evolve/"><img src="docs/readme/site-evolution.jpg" alt="The Evolution view: a paper with its earlier and later connected papers laid out by year"></a></td>
+    <td width="50%"><a href="https://hashmathshaik.github.io/paper-evolve/contribute.html"><img src="docs/readme/site-contribute.jpg" alt="The Contribute page with two papers chosen as a pair to connect"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Evolution</b>: one paper, the work before it and after it</td>
+    <td align="center"><b>Contribute</b>: pick two papers and propose how they connect</td>
+  </tr>
+</table>
+
+### How the field has shifted
+
+The Landscape view shows each research area's share of the year's papers. This
+is drawn from the collection itself:
+
+<p align="center">
+  <a href="https://hashmathshaik.github.io/paper-evolve/#landscape"><img src="docs/readme/landscape.svg" width="100%" alt="Stacked chart of ten research areas' share of papers from 2018 to 2025. NLP and LLMs reaches 40% in 2025; Optimization falls from 14% to 6%."></a>
+</p>
+
+## Add a connection
+
+The graph grows through pull requests. Your agent does the reading; you never
+need an API key unless you choose that route.
+
+<p align="center">
+  <img src="docs/readme/flow.svg" width="100%" alt="Five steps: pick a pair, your agent reads both papers, quotes are checked, a pull request is reviewed, the connection appears on the map">
+</p>
+
+Fork this repository, clone your fork, then run one command.
+
+**A prepared task pack**, reviewed by Claude Code or Codex:
 
 ```sh
-git clone YOUR_FORK_URL paper-evolve
-cd paper-evolve
 python paper_evolve.py list
-python paper_evolve.py start --pack PACK_ID --name "Your name" \
-  --tool "Actual Claude Code or Codex / model version"
+python paper_evolve.py run --pack PACK_ID --name "Your name" --agent claude
 ```
 
-Choose an actual pack ID from `list`. Open the cloned folder in Claude Code or
-Codex and give your agent the generated workspace's `PROMPT.md`. It has the paper
-pairs, source passages, relationship rules and submission template. Root
-`AGENTS.md` and `CLAUDE.md` explain the workflow. Validation and PR preparation
-need only Python 3.10+; agents use their own account and PDF research tools.
-
-Agents can actively research full papers, not just classify prepared snippets.
-Use `fetch` to download/title-check PDFs and extract page-marked text, then
-`cite` to attach newly found evidence with URL, page and document fingerprint.
-PDF extraction needs an existing Poppler/pdftotext or pypdf installation;
-validation stays standard-library-only. See [RESEARCH.md](community/RESEARCH.md).
-
-Then prepare your pull request:
+**Any two papers you choose:**
 
 ```sh
-python paper_evolve.py check --workspace work/contributions/PACK_ID
-python paper_evolve.py pr --workspace work/contributions/PACK_ID
+python paper_evolve.py find "words from a title"
+python paper_evolve.py run --earlier "Earlier paper" --later "Later paper" --name "Your name"
 ```
 
-The second command exports a validated JSON into `community/submissions/` and
-writes `GIT_STEPS.md` and `PULL_REQUEST.md` in your ignored workspace. Follow the
-generated steps to commit only that submission, push to your fork and open a
-pull request. The tool itself does not push or publish anything.
+`run` prepares a workspace, has your agent read both papers and quote the
+passages that show the link, validates every quote against its source, and
+prints the Git commands for your pull request. It never commits or pushes.
 
-**Prefer your own API?** Start with `--method api` and follow
-[the API guide](community/API.md). Select your own compatible endpoint, model,
-token prices, credentials and cumulative workspace budget. This uses the same
-tasks, evidence requirements and submission format as agents.
+| You have | Use | Key needed |
+|---|---|---|
+| Claude Code or Codex | `run --agent claude` or `run --agent codex` | None |
+| An API account (OpenAI, OpenRouter, Qwen, …) | `start --method api`, then `api` | Your provider's usual one, such as `OPENAI_API_KEY` |
+| Neither, or you prefer to read yourself | `start`, fill in `submission.json`, `check`, `pr` | None |
 
-**Prefer a download?** The contribution page offers portable kits containing
-one topic pack and the same tools. Copy the exported JSON into your fork when
-ready to submit.
+The [contribution page](https://hashmathshaik.github.io/paper-evolve/contribute.html)
+builds these commands for you and offers small downloadable kits. Details:
+[clone guide](community/CLONE.md) · [API guide](community/API.md) ·
+[full-paper research](community/RESEARCH.md).
 
-**One command.** With the `claude` or `codex` command line tool signed in,
-`python paper_evolve.py run --pack PACK_ID --name "Your name" --agent claude`
-prepares the workspace, has your agent review each pair, validates the result
-and prints the Git steps.
+There are 46 topic packs with 10 source-ready tasks each, and every other pair
+in the collection is open to propose. Finding that two papers are unrelated is
+a welcome contribution too.
 
-**Your own pair.** Any two papers in the collection can be connected:
-`python paper_evolve.py run --earlier "Earlier paper" --later "Later paper"
---name "Your name"`. The contribution page builds this command for you.
+## Add papers or a whole conference
 
-**New papers and venues.** The collection itself is open: add papers, or a
-whole conference, with `python paper_evolve.py add-venue` and `add-papers`.
-See [the papers guide](community/PAPERS.md).
+The collection itself is open. Register a venue once, then add its papers:
 
-See [the clone guide](community/CLONE.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
-There are 46 organized topic packs with 10 source-ready tasks each, and every
-other pair in the collection is open to propose. Finding that two papers are
-unrelated is a welcome contribution too.
+```sh
+python paper_evolve.py add-venue --id cvpr --name CVPR --host openaccess.thecvf.com
+python paper_evolve.py add-papers --file my-papers.json --name "Your name" --tool "Your agent / model"
+```
 
-## Repository map
+New papers appear with their nearest published papers by wording and, when
+enough of those agree, a topic. See [the papers guide](community/PAPERS.md),
+which includes a ready prompt for your agent.
+
+## What makes a connection count
+
+- It names one of the five types, with what was **inherited** and what **changed**.
+- It quotes **both** papers, including the passage where the later one cites the earlier one.
+- Every quote must match its source exactly; the `check` command and pull-request CI enforce this.
+- A maintainer reads the sources before accepting. Accepted connections carry the contributor's name.
+
+The site always says where a connection came from: predicted by a model,
+checked by an AI assistant, or reviewed by a person.
+
+## Run it locally
+
+```sh
+python build_evolve.py
+python -m http.server 8765 --directory dist
+```
+
+Open `http://localhost:8765/`. The build uses only files in this repository, calls
+no model and needs no API keys.
+
+<details>
+<summary><b>Repository map</b></summary>
 
 | Path | What it holds |
 |---|---|
@@ -82,55 +144,26 @@ unrelated is a welcome contribution too.
 | `build_evolve.py`, `scripts/ui_assets.py` | Packages the site into `dist/`; run by the Pages workflow. |
 | `tests/` | Unit tests for the tools, validators and front-end logic. |
 | `paper_atlas/`, `config/`, `remote_jobs/` | The ingestion adapters, per-venue settings and GPU jobs that built the original collection and its topics. |
-| `docs/` | Decision logs, reproduction notes, review notes and screenshots. |
+| `docs/` | Decision logs, reproduction notes, review notes and figures. |
 | `legacy/` | The earlier single-page Paper Atlas and its builders, kept for reference. |
 
-## How contributions reach the map
+</details>
 
-1. Contributors investigate prepared paper pairs and submit quoted evidence.
-2. Pull-request CI checks identities, frozen fingerprints, quotes, types and
-   duplicate task versions.
-3. A maintainer separately checks the interpretation and records acceptance.
-4. Merging accepted records triggers the Pages build and updates the public graph.
+<details>
+<summary><b>Publishing and development</b></summary>
 
-Accepted connections carry the contributor's name and the reviewer's note.
-Pages serves the app and task catalog; GitHub pull requests receive the
-contributions. Open tasks refresh with each site build, and a fresh clone also
-reads committed submissions, so a look at current PRs shows what is in progress.
-
-## Run the app locally
-
-```sh
-python build_evolve.py
-python -m http.server 8765 --directory dist
-```
-
-Open `http://localhost:8765/`. The build uses committed public artifacts and
-produces `dist/`, including portable contributor kits. It does not call a model
-or require API keys. The ignored `work/` directory holds private preparation
-caches, temporary agent workspaces and local API ledgers.
-
-## Publish on GitHub Pages
-
-Use the repository's GitHub Actions Pages workflow. Push the complete project
-to the Paper Evolve repository and select GitHub Actions as the Pages source.
-The workflow tests, validates, builds and deploys `dist/`. It supplies the actual
-repository identity for Fork/PR links. Custom hosting can set
+The site deploys from `main` through the GitHub Actions Pages workflow, which
+tests, validates, builds and publishes `dist/`. It supplies the repository
+identity for the Fork and pull-request links. Custom hosting can set
 `community/project.json` to `{"repository":"OWNER/REPO"}` or use
-`PAPER_EVOLVE_REPOSITORY=OWNER/REPO` at build time. Do not put a key there.
+`PAPER_EVOLVE_REPOSITORY=OWNER/REPO` at build time.
 
-Repository links are not derived from the starter project's inherited Git remote.
-Deployment and repository administration are separate from preparing the local
-app; no workflow publishes from a contributor's local workspace automatically.
+Before proposing code changes, run `python -m unittest discover -s tests` and
+`python scripts/community_edges.py check`. [EVOLVE.md](EVOLVE.md) describes the
+app and preparation pipeline, and the [decision logs](docs/decisions/) explain
+the model, evidence and architecture choices.
 
-## Development and evidence rules
-
-Run `python -m unittest discover -s tests` and
-`python scripts/community_edges.py check` before proposing changes.
-[EVOLVE.md](EVOLVE.md) describes the app and preparation pipeline;
-[decision logs](docs/decisions/) explain model, evidence and architecture choices.
-Historical ingestion and clustering experiments remain in `paper_atlas/`,
-`remote_jobs/`, `docs/` and `legacy/`. Contributors never need to run them.
+</details>
 
 ## License
 
