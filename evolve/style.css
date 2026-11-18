@@ -64,6 +64,8 @@ main{min-width:0;min-height:0;overflow:auto;padding:25px 28px 0}#evolution{displ
 .reader-source{background:var(--accent);border:1px solid var(--accent);color:#fff}
 .reader-source:hover{background:#21645d;text-decoration:none}
 .reader-evolution{background:#fff;border:1px solid #d8e3d8;color:#47694f}
+.reader-propose{background:#fff;border:1px solid #d8e3d8;color:#47694f}
+.reader-propose:hover{background:#f2f7f0;text-decoration:none}
 .reader-section{border-top:1px solid #e5ebe3;padding-top:22px;margin-top:25px}
 #detail-content .reader-section h3{font-size:13px;letter-spacing:0;text-transform:none;color:#3e5a45;margin:0 0 14px;font-weight:500}
 .reader-section h3>span{font-size:11px;padding:2px 6px;border-radius:8px;background:#edf4e9;margin-left:3px}
@@ -181,7 +183,9 @@ nav .contribute-nav{display:flex;align-items:center;height:100%;padding:0 14px;f
 .evolution-notice-card h2{font-size:23px;font-weight:500;line-height:1.4;letter-spacing:-.4px;margin:15px 0 12px;color:#3b5740}
 .evolution-notice-card p{font-size:13px;line-height:1.8;color:#7e9074}
 .notice-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
-.notice-actions button{font-size:12px;padding:9px 12px}
+.notice-actions button,.notice-propose{font-size:12px;padding:9px 12px}
+.notice-propose{border:1px solid var(--accent);border-radius:7px;background:var(--accent);color:#fff;line-height:1.5}
+.notice-propose:hover{background:#21645d;text-decoration:none}
 #retry-evolution{background:#28756e;color:#fff;border-color:#28756e}
 @media(max-width:600px){.graph-notice{padding:16px}.evolution-notice-card{padding:8px}.evolution-notice-card h2{font-size:20px}.notice-actions{gap:6px}.notice-actions button{font-size:11px}}
 /* Filters keep a readable width instead of stretching across the page. */

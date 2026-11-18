@@ -284,7 +284,7 @@ bar.
 
 ## Task backlog
 
-`future_work.md` has scoped-out tasks with suggested approaches and open questions,
+`legacy/future_work.md` has scoped-out tasks with suggested approaches and open questions,
 roughly ordered by difficulty within each item. Good first issues are marked as such.
 If you want to take one on, comment on the corresponding issue (or open one if it
 doesn't exist yet) before starting; some of these have real architectural forks in
@@ -297,7 +297,7 @@ for where this project could grow: submission/acceptance statistics, reviewer sc
 dynamics, institution rankings, live-updated, at a similar corpus size. It does **not**
 have a semantic content map; that's this project's actual differentiator and isn't
 something later tasks should trade away in pursuit of feature parity. Tasks 6-8 in
-`future_work.md` are the direct Paper-Copilot-inspired additions (institution rankings,
+`legacy/future_work.md` are the direct Paper-Copilot-inspired additions (institution rankings,
 submission/acceptance rates, review-and-rebuttal analytics), each is scoped as its own
 significant undertaking, not a quick add-on, because each needs data this project does
 not currently collect. Read the "why this is hard" section of each before starting one.

@@ -1,7 +1,6 @@
 """Two entry points, one evidence format: contributor agents and opt-in APIs."""
 import argparse
 import json
-import re
 import subprocess
 from pathlib import Path
 import contribution_workspace as W
@@ -18,6 +17,15 @@ def main():
     propose = commands.add_parser('propose', help='Create a task for a pair of papers you choose.')
     propose.add_argument('--earlier', required=True, help='Title, source URL or ID of the earlier paper.')
     propose.add_argument('--later', required=True, help='Title, source URL or ID of the later paper.')
+    commands.add_parser('topics', help='List the topics a new paper can be filed under.')
+    venue = commands.add_parser('add-venue', help='Register a conference or journal so its papers can be added.')
+    venue.add_argument('--id', required=True, help='Short lowercase id, for example cvpr.')
+    venue.add_argument('--name', required=True, help='Display name, for example CVPR.')
+    venue.add_argument('--host', action='append', required=True, help='Official host of its paper pages; repeatable.')
+    papers = commands.add_parser('add-papers', help='Validate a list of new papers and prepare it for a pull request.')
+    papers.add_argument('--file', type=Path, required=True, help='JSON list of papers; see community/PAPERS.md.')
+    papers.add_argument('--name', required=True)
+    papers.add_argument('--tool', required=True, help='Actual agent/model version that gathered the papers, or "manual".')
     run = commands.add_parser('run', help='Let Claude Code or Codex review packs with one command; never pushes.')
     run.add_argument('--agent', choices=['claude', 'codex'], default='claude')
     run.add_argument('--name', required=True)
@@ -93,6 +101,16 @@ def main():
             for i in hits[:20]:
                 print(f"{records[i]['id']}\t{records[i]['year']}\t{records[i]['title']}")
             print(f'{len(hits)} match(es)' + ('; showing 20. Add more title words.' if len(hits) > 20 else ''))
+        elif args.command == 'topics':
+            import contribution_papers as N
+            for topic, area in sorted(N.topics().items(), key=lambda item: (item[1], item[0])):
+                print(f'{area}\t{topic}')
+        elif args.command == 'add-venue':
+            import contribution_papers as N
+            print(json.dumps(N.add_venue(args.id, args.name, args.host)))
+        elif args.command == 'add-papers':
+            import contribution_papers as N
+            print(json.dumps(N.submit(args.file, args.name, args.tool), ensure_ascii=False, indent=1))
         elif args.command == 'propose':
             import contribution_proposals as P
             made = P.propose(args.earlier, args.later)
@@ -143,5 +161,7 @@ def main():
             from contribution_api import run
             print(json.dumps(run(args.workspace, args.base_url, args.model, args.api_key_env, args.input_rate,
                                  args.output_rate, args.budget, args.max_output, args.limit)))
+    except ModuleNotFoundError:
+        ap.exit(1, 'This command needs a clone of the repository; a downloaded kit does not include it.\n')
     except (ValueError, KeyError, TypeError, OSError, subprocess.TimeoutExpired) as exc:
         ap.exit(1, f'Contribution failed: {exc}\n')

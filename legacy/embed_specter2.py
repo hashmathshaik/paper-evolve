@@ -5,7 +5,7 @@ cannot share the project venv. Run with:
 
     uv run --isolated --no-project --python 3.13 \
         --with adapters==1.3.0 --with torch --with numpy --with pyarrow \
-        python embed_specter2.py
+        python legacy/embed_specter2.py
 
 Writes into the same paper_id-keyed npz store the main pipeline reads (see embed.py).
 """

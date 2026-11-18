@@ -1,6 +1,6 @@
 """Cell-size audit for the per-venue trend chart (issue #4). Run standalone:
 
-    uv run python report_cell_sizes.py
+    uv run python legacy/report_cell_sizes.py
 
 Prints how many papers back each venue x year x category cell, so the minimum-n
 threshold can be chosen from measured numbers (003: measure first, set the bar second).

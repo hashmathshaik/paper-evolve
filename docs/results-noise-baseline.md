@@ -72,5 +72,5 @@ their instability.
 
 ## Reproduce
 
-    uv run python noise_baseline.py     # -> data/noise_baseline.json
-    uv run python vocab_coherence.py    # -> data/vocab_coherence.json
+    uv run python legacy/noise_baseline.py     # -> data/noise_baseline.json
+    uv run python legacy/vocab_coherence.py    # -> data/vocab_coherence.json

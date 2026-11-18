@@ -1,6 +1,6 @@
-import {readableText} from './text-format.js?v=f7986b19491c';
-import {renderMath} from './math.js?v=f7986b19491c';
-import {loadCorpus,venueName} from './paper-data.js?v=f7986b19491c';
+import {readableText} from './text-format.js?v=5bd862107527';
+import {renderMath} from './math.js?v=5bd862107527';
+import {loadCorpus,venueName} from './paper-data.js?v=5bd862107527';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // Collection search and the explicit topic picker share one bounded, in-panel list.
@@ -47,7 +47,7 @@ export function createDiscoverySearch({input,results,selectTopic,selectPaper,sea
    });
   }catch{
    if(current!==generation)return;
-   records=null;results.innerHTML='<div class="search-empty"><strong>Collection could not be loaded</strong><p>Check the local server and try again.</p><button class="search-retry">Retry search</button></div>';
+   records=null;results.innerHTML='<div class="search-empty"><strong>Collection could not be loaded</strong><p>Reload the page and try again.</p><button class="search-retry">Retry search</button></div>';
    results.querySelector('button').onclick=()=>search(browse);
   }
  }

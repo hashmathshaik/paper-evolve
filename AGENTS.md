@@ -25,6 +25,12 @@ contributor explicitly chooses it and supplies their own endpoint, credentials,
 rates and budget. Never inspect or reuse the maintainer's `.env` or restart the
 paused seed workers for a contribution.
 
+For adding papers or a new venue to the collection, read `community/PAPERS.md`.
+Use only official proceedings pages, copy titles and abstracts exactly, and
+prepare the submission with `python paper_evolve.py add-papers`. Do not edit
+`evolve/corpus.json` or the abstract files directly; a maintainer applies
+accepted submissions.
+
 For development of the app or contribution tooling, follow `CONTRIBUTING.md`
 and relevant `docs/decisions/` entries. The review-only file restrictions above
 apply to edge contributions, not to an explicit request to develop the system.

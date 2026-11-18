@@ -125,18 +125,17 @@ work/contributions/{pack['id']}` can export the submission and generate a PR
 description and Git steps instead. It never pushes or creates a PR itself.
 
 Copy the exported JSON into the same path in your fork of Paper Evolve and open
-a pull request. Only submit your contribution file. Keep the original task pack
-unchanged. A separate maintainer checks the sources and accepts it before it
-appears on the public graph. Validation is not scientific verification.
+a pull request with your contribution file; the original task pack stays as it
+is. A maintainer then reads the sources and accepts it onto the public graph,
+with your name on it.
 
 For API inference, read community/API.md and start with --method api in a
 different workspace. No request runs until you explicitly run the api command
 with your own key, model, current prices and budget. API results use the same
 submission format and acceptance process.
 
-Availability is a build-time snapshot. Check existing contributions before
-working on a pack. Cloud agent subscriptions remain your own; model weights do
-not run on your laptop unless you explicitly use a local model.
+Open tasks refresh with each site build; a look at existing contributions shows
+what others are working on. Your agent subscription stays your own.
 '''
         files = {name: (root / name).read_bytes() for name in PORTABLE}
         files['community/tasks/' + pack['id'] + '.json'] = (root / 'community' / pack['path']).read_bytes()

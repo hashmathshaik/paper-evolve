@@ -1,8 +1,8 @@
-import {loadCorpus,readPaper,venueName} from './paper-data.js?v=f7986b19491c';
-import {escapeHTML as esc,readableText} from './text-format.js?v=f7986b19491c';
-import {renderMath} from './math.js?v=f7986b19491c';
+import {loadCorpus,readPaper,venueName} from './paper-data.js?v=5bd862107527';
+import {escapeHTML as esc,readableText} from './text-format.js?v=5bd862107527';
+import {renderMath} from './math.js?v=5bd862107527';
 const groupLabel=name=>name==='Unclustered'?'Uncategorized research':name;
-import {createLandscapeTimeline,areaColor,AREA_ORDER,HUES,NEUTRAL} from './landscape-timeline.js?v=f7986b19491c';
+import {createLandscapeTimeline,areaColor,AREA_ORDER,HUES,NEUTRAL} from './landscape-timeline.js?v=5bd862107527';
 const scattered=new Set(['Unclustered','Specialized / Niche Topics']); // catch-all groups, not real topics
 export function createLibrary({selectPaper,openEvolution}){
  let records=null,timeline=null,partial=null,view='map',area='',topic='',page=0,selectedURL='',revision=0,openRevision=0;
@@ -100,7 +100,7 @@ export function createLibrary({selectPaper,openEvolution}){
     // The newest year is partial while some venues have not published yet.
     const venuesIn=y=>[...new Set(records.filter(p=>p.y===y).map(p=>p.v))].sort(),last=Math.max(...records.map(p=>p.y));
     if(venuesIn(last).length<venuesIn(last-1).length)partial={year:last,venues:venuesIn(last).map(venueName)}}}
-   catch{if(opening===openRevision){$('library-count').textContent='Collection unavailable';$('library-content').innerHTML='<div class="empty"><h2>Collection unavailable</h2><p>The local collection could not be loaded.</p><button id="retry-library">Retry collection</button></div>';$('retry-library').onclick=()=>open(v,selection)}return}
+   catch{if(opening===openRevision){$('library-count').textContent='Collection unavailable';$('library-content').innerHTML='<div class="empty"><h2>Collection unavailable</h2><p>The collection didn’t load. Please try again.</p><button id="retry-library">Retry collection</button></div>';$('retry-library').onclick=()=>open(v,selection)}return}
   }
   if(opening!==openRevision)return;
   if(selection){area='';topic=selection.topic||'';page=0;if(!selection.preserveFilters)for(const id of ['library-year','library-venue'])$(id).value='';$('library-search').value=selection.query||''}

@@ -53,9 +53,37 @@ tasks, evidence requirements and submission format as agents.
 one topic pack and the same tools. Copy the exported JSON into your fork when
 ready to submit.
 
+**One command.** With the `claude` or `codex` command line tool signed in,
+`python paper_evolve.py run --pack PACK_ID --name "Your name" --agent claude`
+prepares the workspace, has your agent review each pair, validates the result
+and prints the Git steps.
+
+**Your own pair.** Any two papers in the collection can be connected:
+`python paper_evolve.py run --earlier "Earlier paper" --later "Later paper"
+--name "Your name"`. The contribution page builds this command for you.
+
+**New papers and venues.** The collection itself is open: add papers, or a
+whole conference, with `python paper_evolve.py add-venue` and `add-papers`.
+See [the papers guide](community/PAPERS.md).
+
 See [the clone guide](community/CLONE.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
-There are 46 organized topic packs with 10 source-ready tasks each. Prepared
-evidence does not imply that a true edge exists; abstentions are welcome.
+There are 46 organized topic packs with 10 source-ready tasks each, and every
+other pair in the collection is open to propose. Finding that two papers are
+unrelated is a welcome contribution too.
+
+## Repository map
+
+| Path | What it holds |
+|---|---|
+| `index.html`, `contribute.html`, `evolve/` | The static site: pages, scripts, styles and the published data (`evolve/corpus.json`, `evolve/generated/`). |
+| `community/` | Everything contributors touch: task packs, submissions, accepted reviews, paper additions, the venue registry and the guides. |
+| `paper_evolve.py`, `scripts/contribut*.py`, `scripts/community_edges.py` | The contributor tool and its validators. Standard library only. |
+| `scripts/` (the rest) | Maintainer preparation: abstracts, embeddings, citation data and model-reviewed connections. Needs the private `work/` caches. |
+| `build_evolve.py`, `scripts/ui_assets.py` | Packages the site into `dist/`; run by the Pages workflow. |
+| `tests/` | Unit tests for the tools, validators and front-end logic. |
+| `paper_atlas/`, `config/`, `remote_jobs/` | The ingestion adapters, per-venue settings and GPU jobs that built the original collection and its topics. |
+| `docs/` | Decision logs, reproduction notes, review notes and screenshots. |
+| `legacy/` | The earlier single-page Paper Atlas and its builders, kept for reference. |
 
 ## How contributions reach the map
 
@@ -65,11 +93,10 @@ evidence does not imply that a true edge exists; abstentions are welcome.
 3. A maintainer separately checks the interpretation and records acceptance.
 4. Merging accepted records triggers the Pages build and updates the public graph.
 
-A submission merge alone does not accept its edges. Assistant checks and human
-reviews retain separate provenance. Pages serves the app and task catalog;
-GitHub pull requests receive the contributions. No browser upload server is
-needed. Check current PRs before choosing work; availability is a build-time
-snapshot, while a fresh clone also checks committed submissions locally.
+Accepted connections carry the contributor's name and the reviewer's note.
+Pages serves the app and task catalog; GitHub pull requests receive the
+contributions. Open tasks refresh with each site build, and a fresh clone also
+reads committed submissions, so a look at current PRs shows what is in progress.
 
 ## Run the app locally
 
@@ -102,8 +129,8 @@ Run `python -m unittest discover -s tests` and
 `python scripts/community_edges.py check` before proposing changes.
 [EVOLVE.md](EVOLVE.md) describes the app and preparation pipeline;
 [decision logs](docs/decisions/) explain model, evidence and architecture choices.
-Historical ingestion/clustering experiments remain in `paper_atlas/`, `docs/`
-and `remote_jobs/`. Contributors can use the prepared packs without running them.
+Historical ingestion and clustering experiments remain in `paper_atlas/`,
+`remote_jobs/`, `docs/` and `legacy/`. Contributors never need to run them.
 
 ## License
 

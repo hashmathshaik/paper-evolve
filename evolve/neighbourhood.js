@@ -1,10 +1,11 @@
-import {loadCorpus} from './paper-data.js?v=f7986b19491c';
+import {loadCorpus} from './paper-data.js?v=5bd862107527';
 /** Static Model predictions and Voyage similarity. References alone never imply evolution. */
 const VENUE={neurips:'NeurIPS',icml:'ICML',iclr:'ICLR',acl:'ACL',emnlp:'EMNLP',naacl:'NAACL'};
 const SHOW=.85;let corpus=null,byUrl=null,meta=null,community=null;const shards=new Map();
 async function json(url){const r=await fetch(url);if(!r.ok)throw new Error(`${url}: HTTP ${r.status}`);return r.json()}
 async function load(){if(!corpus){corpus=await loadCorpus();byUrl=new Map(corpus.map((p,i)=>[p.u,i]))}if(!meta)meta=await json('evolve/generated/edges/meta.json');if(!community)community=await json('evolve/generated/community.json')}
-async function entry(i){const k=Math.floor(i/meta.shard_size);if(!shards.has(k))shards.set(k,json(`evolve/generated/edges/${String(k).padStart(3,'0')}.json`).catch(error=>{shards.delete(k);throw error}));const raw=(await shards.get(k))[i]||{c:[],s:[]},extra=community.entries[i];if(!extra)return raw;return {...raw,c:[...raw.c.filter(row=>!extra.overrides.includes(row[0])),...extra.c],checked:(raw.checked||0)+extra.checked}}
+async function entry(i){if(i>=meta.papers)return {c:[],s:[],...community.entries[i]}; // a newly added paper has no computed neighbours yet
+ const k=Math.floor(i/meta.shard_size);if(!shards.has(k))shards.set(k,json(`evolve/generated/edges/${String(k).padStart(3,'0')}.json`).catch(error=>{shards.delete(k);throw error}));const raw=(await shards.get(k))[i]||{c:[],s:[]},extra=community.entries[i];if(!extra)return raw;return {...raw,c:[...raw.c.filter(row=>!extra.overrides.includes(row[0])),...extra.c],checked:(raw.checked||0)+extra.checked}}
 const shortName=t=>{const head=t.split(/:\s/)[0];return head.length<=36?head:t.slice(0,34).trim()+'…'};
 const primary=types=>Object.entries(types).filter(([k,p])=>['Extends','Challenges','Combines','Transfers','Revives'].includes(k)&&p>=SHOW).sort((a,b)=>b[1]-a[1]);
 export async function buildNeighbourhood(record){

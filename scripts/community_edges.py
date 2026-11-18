@@ -313,7 +313,11 @@ def main():
         approved = load_approved()
         from contribution_packs import catalog
         catalog(ROOT, write=False)
-        print(json.dumps({'task_packs': len(packs), 'validated_submissions': count, 'approved_pairs': len(approved)}))
+        summary = {'task_packs': len(packs), 'validated_submissions': count, 'approved_pairs': len(approved)}
+        if (COMMUNITY / 'venues.json').exists():  # a portable kit carries one pack and no paper registry
+            from contribution_papers import check as check_papers
+            summary['waiting_papers'] = check_papers(ROOT)
+        print(json.dumps(summary))
 
 
 if __name__ == '__main__':

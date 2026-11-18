@@ -1,8 +1,10 @@
-import {paragraphsHTML,readableText} from './text-format.js?v=f7986b19491c';
-import {renderMath} from './math.js?v=f7986b19491c';
-import {paperRecord,readPaper,venueName} from './paper-data.js?v=f7986b19491c';
+import {paragraphsHTML,readableText} from './text-format.js?v=5bd862107527';
+import {renderMath} from './math.js?v=5bd862107527';
+import {paperRecord,readPaper,venueName} from './paper-data.js?v=5bd862107527';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=value=>/^https?:\/\//i.test(value||'')?value:'';
+// Opens the Contribute page with these papers already chosen as a pair to propose.
+const proposeURL=(...records)=>{const urls=records.map(r=>safeURL(paperRecord(r).source_url));return urls.every(Boolean)?'contribute.html?'+new URLSearchParams(urls.map(u=>['pair',u])):''};
 const metadata=p=>[p.year,venueName(p.venue)].filter(Boolean).map(esc).join(' <span aria-hidden="true">·</span> ');
 const evidenceLabel=edge=>edge.model?(edge.status==='source_supported'?'Passage-supported prediction':'Abstract-based prediction'):'Example interpretation';
 const typeLabel=edge=>Object.keys(edge.types||{}).join(' · ')||edge.type;
@@ -28,7 +30,7 @@ export function createPaperReader({container,onEvolution,onSelectPaper,onConnect
    <div class="reader-meta">${metadata(p)}</div>
    <h2 id="reader-title">${esc(readableText(p.title))}</h2>
    ${p.authors?`<p class="reader-authors">${esc(Array.isArray(p.authors)?p.authors.join(', '):p.authors)}</p>`:''}
-   <div class="reader-actions"><a class="reader-source" href="${esc(safeURL(p.source_url))}" target="_blank" rel="noopener">Read paper ↗</a><button class="reader-evolution">Explore evolution →</button></div>
+   <div class="reader-actions"><a class="reader-source" href="${esc(safeURL(p.source_url))}" target="_blank" rel="noopener">Read paper ↗</a><button class="reader-evolution">Explore evolution →</button>${proposeURL(record)?`<a class="reader-propose" href="${esc(proposeURL(record))}">Propose a connection →</a>`:''}</div>
    <section class="reader-section" aria-labelledby="abstract-heading"><h3 id="abstract-heading">Abstract</h3><div class="reader-abstract" aria-busy="true"><p class="reader-loading" role="status">Loading abstract…</p></div></section>
    ${context.contributions?.length?`<section class="reader-section"><h3>Contribution in this map</h3>${context.contributions.map(text=>`<p>${esc(text)}</p>`).join('')}</section>`:''}
    <section class="reader-section"><h3>Research connections${connections.length?` <span>${connections.length}</span>`:''}</h3>
@@ -70,14 +72,15 @@ export function createPaperReader({container,onEvolution,onSelectPaper,onConnect
    <section class="reader-section"><h3>What was retained</h3><p>${esc(edge.inherited)}</p></section>
    <section class="reader-section"><h3>What changed</h3><p>${esc(edge.changed)}</p></section>
    ${edge.motivation?`<section class="reader-section"><h3>Why they are connected</h3><p>${esc(edge.motivation)}</p></section>`:''}
-   <section class="reader-section"><h3>Supporting evidence</h3>${evidence.length?evidence.map(item=>`<div class="reader-evidence">${item.passage?`<blockquote>${esc(item.passage)}</blockquote>`:'<p class="reader-empty">No supporting passage is attached to this connection.</p>'}${safeURL(item.url)?`<a href="${esc(item.url)}" target="_blank" rel="noopener">Read source ↗</a>`:''}${item.section?`<small>${esc(item.section)}</small>`:''}</div>`).join(''):'<p class="reader-empty">No supporting passage is available.</p>'}</section>
-   <details class="reader-provenance"><summary>About this connection</summary><p>${edge.communityReview?(edge.humanVerified?'Community submission reviewed by a human maintainer.':'Community submission checked by an AI assistant; not human-reviewed.'):isPrediction?'This is a model prediction, not a human-reviewed fact.':'This connection is part of the curated research example.'}</p>${edge.verification?`<p>Agreed by ${esc(edge.verification.proposal_model)} and ${esc(edge.verification.review_model)} using separate source reviews. Model agreement is not calibrated accuracy.</p>`:''}${edge.communityReview?`<p>Contributor: ${esc(edge.communityReview.contributor.name)}<br>Reviewer: ${esc(edge.communityReview.reviewer)}</p><p>${esc(edge.communityReview.note)}</p>`:''}${isPrediction?`<p>${esc(edge.model)} · ${esc(edge.basis?.replaceAll('_',' '))}<br>Self-assessed confidence: ${Number(edge.confidence).toFixed(2)}. This is not calibrated accuracy.</p>`:''}</details>
+   <section class="reader-section"><h3>Supporting evidence</h3>${evidence.length?evidence.map(item=>`<div class="reader-evidence">${item.passage?`<blockquote>${esc(item.passage)}</blockquote>`:'<p class="reader-empty">A supporting passage hasn’t been added for this one yet.</p>'}${safeURL(item.url)?`<a href="${esc(item.url)}" target="_blank" rel="noopener">Read source ↗</a>`:''}${item.section?`<small>${esc(item.section)}</small>`:''}</div>`).join(''):'<p class="reader-empty">Supporting passages haven’t been added yet.</p>'}</section>
+   ${!edge.humanVerified&&proposeURL(earlier,later)?`<div class="reader-actions"><a class="reader-propose" href="${esc(proposeURL(earlier,later))}">Review this connection yourself →</a></div>`:''}
+   <details class="reader-provenance"><summary>About this connection</summary><p>${edge.communityReview?(edge.humanVerified?'Community submission reviewed by a human maintainer.':'Community submission, checked by an AI assistant.'):isPrediction?'Predicted by a model from the papers’ text. You can review it yourself.':'This connection is part of the curated research example.'}</p>${edge.verification?`<p>Agreed by ${esc(edge.verification.proposal_model)} and ${esc(edge.verification.review_model)} in separate source reviews.</p>`:''}${edge.communityReview?`<p>Contributor: ${esc(edge.communityReview.contributor.name)}<br>Reviewer: ${esc(edge.communityReview.reviewer)}</p><p>${esc(edge.communityReview.note)}</p>`:''}${isPrediction?`<p>${esc(edge.model)} · ${esc(edge.basis?.replaceAll('_',' '))}<br>Self-assessed confidence: ${Number(edge.confidence).toFixed(2)}.</p>`:''}</details>
   </article>`;
   wirePapers([earlier,later]);renderMath(container.querySelector('.reader-endpoints'));
  }
  function showSimilarity(link,a,b){
   begin('Similar papers');
-  container.innerHTML=`<article class="connection-reader"><div class="reader-meta">Conceptual similarity</div><h2>Related ideas</h2><p>These papers discuss related ideas. Similarity does not establish influence or an evolution relationship.</p><div class="reader-endpoints">${paperButton(a,'Selected paper')}${paperButton(b,'Similar paper')}</div>${Number.isFinite(link.score)?`<p class="reader-empty">Semantic similarity: ${link.score.toFixed(2)}</p>`:''}</article>`;
+  container.innerHTML=`<article class="connection-reader"><div class="reader-meta">Conceptual similarity</div><h2>Related ideas</h2><p>These papers discuss closely related ideas.</p><div class="reader-endpoints">${paperButton(a,'Selected paper')}${paperButton(b,'Similar paper')}</div>${Number.isFinite(link.score)?`<p class="reader-empty">Semantic similarity: ${link.score.toFixed(2)}</p>`:''}${proposeURL(a,b)?`<p>If one of these builds on the other, you can show how.</p><div class="reader-actions"><a class="reader-propose" href="${esc(proposeURL(a,b))}">Contribute this connection →</a></div>`:''}</article>`;
   wirePapers([a,b]);renderMath(container.querySelector('.reader-endpoints'));
  }
  return {showPaper,showRelation,showSimilarity,cancel:()=>{generation++}};

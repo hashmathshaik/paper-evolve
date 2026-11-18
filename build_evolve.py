@@ -32,7 +32,7 @@ for name in ['index.html','contribute.html','fonts','assets','LICENSE','EVOLVE.m
         shutil.copy2(src,out/name)
 community=root/'community'
 if community.exists():
-    for name in ['tasks','bundles','REVIEW_PROMPT.md','API.md','CLONE.md','RESEARCH.md','decision.schema.json','submission-template.json','task-manifest.json']:
+    for name in ['tasks','bundles','REVIEW_PROMPT.md','API.md','CLONE.md','RESEARCH.md','PAPERS.md','venues.json','decision.schema.json','submission-template.json','task-manifest.json']:
         src=community/name
         if src.is_dir():shutil.copytree(src,out/'community'/name)
         elif src.exists():

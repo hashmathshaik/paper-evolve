@@ -1,0 +1,49 @@
+{
+  "version": "paper-evolve-venues-v1",
+  "venues": [
+    {
+      "id": "neurips",
+      "name": "NeurIPS",
+      "hosts": [
+        "papers.nips.cc",
+        "papers.neurips.cc",
+        "proceedings.neurips.cc"
+      ]
+    },
+    {
+      "id": "icml",
+      "name": "ICML",
+      "hosts": [
+        "proceedings.mlr.press"
+      ]
+    },
+    {
+      "id": "iclr",
+      "name": "ICLR",
+      "hosts": [
+        "openreview.net"
+      ]
+    },
+    {
+      "id": "acl",
+      "name": "ACL",
+      "hosts": [
+        "aclanthology.org"
+      ]
+    },
+    {
+      "id": "emnlp",
+      "name": "EMNLP",
+      "hosts": [
+        "aclanthology.org"
+      ]
+    },
+    {
+      "id": "naacl",
+      "name": "NAACL",
+      "hosts": [
+        "aclanthology.org"
+      ]
+    }
+  ]
+}

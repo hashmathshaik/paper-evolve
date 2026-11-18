@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib import request, parse, error
-from voyage_pipeline import atomic_json
+from voyage_pipeline import ROOT, atomic_json
 
 VERSION = 'paper-evolve-research-v1'
 HOSTS = {'arxiv.org', 'www.arxiv.org', 'aclanthology.org', 'openreview.net',
@@ -30,9 +30,15 @@ def normalize(value):return ' '.join(value.split())
 def compact(value):return ''.join(c.casefold() for c in value if c.isalnum())
 
 
+def allowed_hosts():
+    """Built-in paper hosts plus the official hosts of every registered venue."""
+    path = ROOT / 'community/venues.json'
+    return HOSTS | ({h for v in json.loads(path.read_text())['venues'] for h in v['hosts']} if path.exists() else set())
+
+
 def official_url(url):
     p = parse.urlsplit(url)
-    if (p.scheme != 'https' or p.hostname not in HOSTS or p.username or p.password
+    if (p.scheme != 'https' or p.hostname not in allowed_hosts() or p.username or p.password
             or p.port not in (None, 443) or p.fragment
             or set(k.lower() for k in parse.parse_qs(p.query)).intersection({'token','api_key','apikey','access_token','secret','password'})):
         raise ValueError('Use a public HTTPS paper URL on a supported official host; no credentials or custom ports.')

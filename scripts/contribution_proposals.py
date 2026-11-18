@@ -36,19 +36,23 @@ def describe(index, records, raw):
     return {'id': r['id'], 'year': r['year'], 'title': r['title'], 'url': r['source_url'], 'topic': raw[index].get('topic', '')}
 
 
-def card(index, records, root):
+def card(index, records, raw, root):
     meta = json.loads((Path(root) / 'evolve/generated/abstracts/meta.json').read_text())
     shard = Path(root) / 'evolve/generated/abstracts' / f"{index // meta['shard_size']:03d}.json"
     row = json.loads(shard.read_text())[index % meta['shard_size']]
     record = records[index]
     if row['url'] != record['source_url']:
         raise ValueError('Published abstracts are out of date for this paper.')
-    return {'title': record['title'], 'year': record['year'],
-            'venue': VENUES.get(record['source_url'].split('/')[2], ''), 'abstract': row['abstract']}
+    if raw[index].get('src') == 'community':  # contributor-added paper: its venue comes from the registry
+        from contribution_papers import registry
+        venue = registry(root)[raw[index]['v']]['name']
+    else:
+        venue = VENUES.get(record['source_url'].split('/')[2], '')
+    return {'title': record['title'], 'year': record['year'], 'venue': venue, 'abstract': row['abstract']}
 
 
 def build(a, b, records, raw, root=ROOT):
-    state = {'paper_a': card(a, records, root), 'paper_b': card(b, records, root),
+    state = {'paper_a': card(a, records, raw, root), 'paper_b': card(b, records, raw, root),
              'reference_list_contains_a': None,  # unavailable in a clone; None never means absent
              'citing_sentence': '',
              'source_evidence': {'status': 'needs_context', 'passages': [], 'documents': {}}}

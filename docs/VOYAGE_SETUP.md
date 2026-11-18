@@ -71,7 +71,7 @@ HNSW avoids computing/storing a full all-pairs similarity matrix. It is approxim
 
 ## Static delivery
 
-`python3 prepare_local.py` remains the credential-free lexical baseline + tests + static packaging command. It does not spend API credits or overwrite a matching generated Voyage artifact. GitHub Actions builds the checked-in public artifacts; it never invokes Voyage. The build excludes scripts, configs, caches, vectors, and environment files.
+`python3 legacy/prepare_local.py` remains the credential-free lexical baseline + tests + static packaging command. It does not spend API credits or overwrite a matching generated Voyage artifact. GitHub Actions builds the checked-in public artifacts; it never invokes Voyage. The build excludes scripts, configs, caches, vectors, and environment files.
 
 Documentation: https://docs.voyageai.com/reference/embeddings-api and https://docs.voyageai.com/docs/tokenization
 

@@ -2,8 +2,11 @@
 let corpusPromise=null,indexPromise=null,metaPromise=null;
 const shards=new Map();
 async function json(path){const response=await fetch(path);if(!response.ok)throw new Error(`Local file unavailable: ${response.status}`);return response.json()}
+// Display names for venue ids. The registry adds venues that contributors registered after these six.
+const venueNames={neurips:'NeurIPS',icml:'ICML',iclr:'ICLR',acl:'ACL',emnlp:'EMNLP',naacl:'NAACL',preprint:'Preprint'};
 export function loadCorpus(){
- if(!corpusPromise)corpusPromise=json('evolve/corpus.json').catch(error=>{corpusPromise=null;throw error});
+ if(!corpusPromise)corpusPromise=Promise.all([json('evolve/corpus.json'),json('community/venues.json').catch(()=>null)])
+  .then(([rows,registry])=>{for(const venue of registry?.venues||[])venueNames[venue.id]=venue.name;return rows}).catch(error=>{corpusPromise=null;throw error});
  return corpusPromise;
 }
 async function urlIndex(){
@@ -28,4 +31,4 @@ export async function readPaper(p){
  if(saved?.url!==record.source_url)throw new Error('Paper content index is out of date.');
  return {...record,abstract:saved.abstract,abstract_source_url:saved.source_url,abstract_retrieved_at:saved.retrieved_at};
 }
-export const venueName=value=>({neurips:'NeurIPS',icml:'ICML',iclr:'ICLR',acl:'ACL',emnlp:'EMNLP',naacl:'NAACL',preprint:'Preprint'}[String(value).toLowerCase()]||value);
+export const venueName=value=>venueNames[String(value).toLowerCase()]||value;
