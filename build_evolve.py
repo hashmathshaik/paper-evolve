@@ -24,11 +24,12 @@ out=root/'dist'
 if out.exists():
     shutil.rmtree(out)
 out.mkdir()
-for name in ['index.html','contribute.html','fonts','assets','LICENSE','EVOLVE.md','CONTRIBUTING.md']:
+for name in ['index.html','contribute.html','fonts','assets','LICENSE','EVOLVE.md','CONTRIBUTING.md','README.md','docs/MAINTAINING.md','docs/decisions']:
     src=root/name
     if src.is_dir():
         shutil.copytree(src,out/name)
     elif src.exists():
+        (out/name).parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(src,out/name)
 community=root/'community'
 if community.exists():

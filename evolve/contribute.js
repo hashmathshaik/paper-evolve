@@ -1,6 +1,6 @@
-import { readableText } from './text-format.js?v=388bf9ca4d5f';
-import { repositoryInfo } from './contribution-repository.js?v=388bf9ca4d5f';
-import { loadCorpus, venueName } from './paper-data.js?v=388bf9ca4d5f';
+import { readableText } from './text-format.js?v=f518fc12dba0';
+import { repositoryInfo } from './contribution-repository.js?v=f518fc12dba0';
+import { loadCorpus, venueName } from './paper-data.js?v=f518fc12dba0';
 const $ = id => document.getElementById(id),
   fmt = n => Number(n).toLocaleString();
 let catalog = null,

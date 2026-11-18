@@ -18,6 +18,28 @@ export const areaColor = name => {
   const i = AREA_ORDER.indexOf(name);
   return i >= 0 && i < HUES.length ? HUES[i] : name === 'Cross-Cutting & Specialized Research' ? '#888780' : NEUTRAL;
 };
+// Short names for labels beside and inside the chart, where the full area names do not fit.
+export const AREA_SHORT = {
+  'Natural Language Processing & LLMs': 'NLP & LLMs',
+  'Multimodal Understanding & Reasoning': 'Multimodal',
+  '3D Generation & Reconstruction': '3D generation',
+  'Generative Modeling and Inference': 'Generative modeling',
+  'Graph Neural Networks & Molecular AI': 'Graphs & molecules',
+  'Optimization & Federated Learning': 'Optimization',
+  'Online Learning and Bandits': 'Online learning',
+  'Reinforcement Learning': 'Reinforcement learning',
+  'Cross-Cutting & Specialized Research': 'Cross-cutting',
+  Unclustered: 'Uncategorized',
+};
+// White or dark ink, whichever reads better on a band's colour (WCAG contrast ratio).
+function inkOn(hex) {
+  const [r, g, b] = [1, 3, 5].map(i => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return 1.05 / (L + 0.05) >= (L + 0.05) / 0.073 ? '#fff' : '#1f2d2a'; // 0.073 = dark ink's luminance + 0.05
+}
 const node = (tag, props, ...children) => {
   const n = Object.assign(document.createElement(tag), props);
   n.append(...children);
@@ -40,6 +62,7 @@ export function createLandscapeTimeline({ onGroup }) {
     tip = plot.querySelector('.timeline-tip'),
     heading = host.querySelector('.timeline-head p'),
     note = host.querySelector('.timeline-note');
+  let entering = false;
   let state = null,
     mode = 'share',
     frame = null,
@@ -49,8 +72,10 @@ export function createLandscapeTimeline({ onGroup }) {
   function highlight(name) {
     active = name;
     svg
-      .querySelectorAll('[data-series]')
-      .forEach(path => path.classList.toggle('dim', !!name && state.series[path.dataset.series].name !== name));
+      .querySelectorAll('[data-series],[data-label]')
+      .forEach(mark =>
+        mark.classList.toggle('dim', !!name && state.series[mark.dataset.series ?? mark.dataset.label].name !== name),
+      );
     labelLayer
       .querySelectorAll('button')
       .forEach(button => button.classList.toggle('muted', !!name && button.dataset.group !== name));
@@ -60,7 +85,8 @@ export function createLandscapeTimeline({ onGroup }) {
     const { years, series, partial, sparse, selectedYear } = state,
       W = plot.clientWidth,
       H = plot.clientHeight,
-      gutter = W >= 900 ? 276 : 16,
+      wide = W >= 900,
+      gutter = wide ? 292 : W >= 620 ? 226 : W >= 520 ? 190 : 16, // room for band names: full, short, or none on a phone
       left = 46,
       top = 10,
       bottom = 28,
@@ -110,6 +136,40 @@ export function createLandscapeTimeline({ onGroup }) {
       if (solid > 0) out += `<path class="${s.folded ? 'folded' : ''}" ${shape} d="${band(k, 0, solid)}"/>`;
       if (partial) out += `<path class="partial${s.folded ? ' folded' : ''}" ${shape} d="${band(k, n - 2, n - 1)}"/>`; // lighter: the last year is still filling in
     });
+    const latest = partial ? n - 2 : n - 1, // the last complete year, which the labels quote
+      shown = (s, i) => (mode === 'share' ? percent(s.counts[i] / state.totals[i]) : s.counts[i].toLocaleString());
+    if (gutter < 100) {
+      // Phone width: name a band inside itself, across the years where it stays thick enough for a line of text.
+      const px = (k, i) => ((stack[k][i][1] - stack[k][i][0]) * (H - top - bottom)) / max,
+        mid = (k, i) => y((stack[k][i][0] + stack[k][i][1]) / 2),
+        stride = (right - left) / (n - 1),
+        placed = [];
+      series
+        .map((s, k) => ({ s, k, peak: Math.max(...years.slice(0, latest + 1).map((_, i) => px(k, i))) }))
+        .sort((a, b) => b.peak - a.peak) // thicker bands claim their space first
+        .forEach(({ s, k }) => {
+          let run = null;
+          for (let i = 0, from = -1; i <= latest + 1; i++) {
+            if (i <= latest && px(k, i) >= 18) from = from < 0 ? i : from;
+            else if (from >= 0) {
+              if (!run || i - 1 - from > run[1] - run[0]) run = [from, i - 1];
+              from = -1;
+            }
+          }
+          if (!run) return;
+          const name = s.short || s.label,
+            chars = Math.floor(((run[1] - run[0]) * stride - 10) / 6.4);
+          if (chars < (s.short ? name.length : Math.min(name.length, 12))) return; // a clipped stub reads worse than no label
+          const text = name.length > chars ? name.slice(0, chars - 1).trimEnd() + '…' : name,
+            w = text.length * 6.4,
+            cx = Math.max(left + w / 2 + 4, Math.min(x(latest) - w / 2 - 4, (x(run[0]) + x(run[1])) / 2)),
+            cy = mid(k, Math.round((run[0] + run[1]) / 2)),
+            box = [cx - w / 2, cy - 9, cx + w / 2, cy + 9];
+          if (placed.some(b => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) return;
+          placed.push(box);
+          out += `<text class="inlabel" data-label="${k}" x="${f(cx)}" y="${f(cy + 4)}" text-anchor="middle" style="fill:${inkOn(s.color)}">${text.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text>`;
+        });
+    }
     const marked = years.indexOf(selectedYear);
     if (marked >= 0)
       out += `<line class="year" x1="${f(x(marked))}" x2="${f(x(marked))}" y1="${top}" y2="${H - bottom}"/>`;
@@ -119,18 +179,29 @@ export function createLandscapeTimeline({ onGroup }) {
     if (gutter > 100) {
       const ends = series
         .map((s, k) => ({ s, at: y((stack[k][n - 1][0] + stack[k][n - 1][1]) / 2) }))
-        .filter(e => e.s.counts[n - 1])
+        .filter(e => e.s.counts[n - 1] || e.s.counts[latest])
         .sort((a, b) => a.at - b.at);
+      const named = e => (wide ? e.s.label : e.s.short || e.s.label),
+        fits = Math.floor((gutter - 86) / 6), // characters on one line, beside the dot and the value
+        room = H - bottom + 12 - (top + 8),
+        // Long names wrap onto a second line when the chart is tall enough to space the rows out.
+        row = ends.some(e => named(e).length > fits) && (ends.length - 1) * 30 <= room ? 30 : 20;
+      labelLayer.classList.toggle('two-line', row === 30);
       ends.forEach((e, i) => {
-        e.top = Math.max(e.at, i ? ends[i - 1].top + 20 : top + 8);
+        e.top = Math.max(e.at, i ? ends[i - 1].top + row : top + 8);
       });
       for (let i = ends.length - 1; i >= 0; i--)
-        ends[i].top = Math.min(ends[i].top, (i < ends.length - 1 ? ends[i + 1].top : H - bottom + 12) - 20);
+        ends[i].top = Math.min(ends[i].top, (i < ends.length - 1 ? ends[i + 1].top : H - bottom + 12) - row);
       for (const e of ends) {
         out += `<path class="leader" d="M${right + 3} ${f(e.at)}h6L${right + 18} ${f(e.top)}h6"/>`;
-        const button = node('button', { tabIndex: -1 }, node('span', { textContent: e.s.label }));
+        const button = node(
+          'button',
+          { tabIndex: -1, title: e.s.label },
+          node('span', { textContent: named(e) }),
+          node('em', { textContent: shown(e.s, latest) }),
+        );
         button.dataset.group = e.s.name;
-        button.style.cssText = `left:${right + 28}px;top:${Math.round(e.top - 10)}px;max-width:${gutter - 32}px;--area-color:${e.s.color}`;
+        button.style.cssText = `left:${right + 28}px;top:${Math.round(e.top - row / 2)}px;height:${row}px;max-width:${gutter - 32}px;--area-color:${e.s.color}`;
         if (e.s.folded) button.disabled = true;
         else button.onclick = () => onGroup(e.s.name);
         button.onpointerenter = () => highlight(e.s.name);
@@ -139,7 +210,14 @@ export function createLandscapeTimeline({ onGroup }) {
       }
     }
     svg.innerHTML = out;
-    frame = { left, right, n, x };
+    // The chart wipes in when its data or measure changes, not on a resize.
+    plot.classList.remove('entering');
+    if (entering) {
+      entering = false;
+      void plot.offsetWidth;
+      plot.classList.add('entering');
+    }
+    frame = { left, right, n, x, wide };
     highlight(active);
     tip.hidden = true;
   }
@@ -180,7 +258,7 @@ export function createLandscapeTimeline({ onGroup }) {
           { className: s.name === name ? 'on' : '' },
           key,
           node('b', { textContent: mode === 'share' ? share : count }),
-          node('span', { textContent: s.label }),
+          node('span', { textContent: frame.wide ? s.label : s.short || s.label }),
           node('em', { textContent: mode === 'share' ? count : share }),
         );
       }),
@@ -214,6 +292,7 @@ export function createLandscapeTimeline({ onGroup }) {
     button =>
       (button.onclick = () => {
         mode = button.dataset.mode;
+        entering = true;
         host.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
         render();
       }),
@@ -223,6 +302,7 @@ export function createLandscapeTimeline({ onGroup }) {
     element: host,
     highlight,
     update(next) {
+      entering = entering || !state || next.series.map(s => s.name).join() !== state.series.map(s => s.name).join();
       state = next;
       active = '';
       render();

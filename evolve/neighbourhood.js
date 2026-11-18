@@ -1,4 +1,4 @@
-import { loadCorpus } from './paper-data.js?v=388bf9ca4d5f';
+import { loadCorpus } from './paper-data.js?v=f518fc12dba0';
 /** Static Model predictions and Voyage similarity. References alone never imply evolution. */
 const VENUE = { neurips: 'NeurIPS', icml: 'ICML', iclr: 'ICLR', acl: 'ACL', emnlp: 'EMNLP', naacl: 'NAACL' };
 const SHOW = 0.85;

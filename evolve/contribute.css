@@ -18,3 +18,22 @@
 #pair-status{margin-top:14px}
 .pair-preview .pair-label+.pair-arrow{margin-top:10px}
 .grow-note{margin:18px 0 0}
+/* Motion: the same linked-dots loader as the main site, cards that rise in, and steps that light up in turn. */
+@keyframes pe-node{0%,60%,100%{background:#fff;transform:scale(1)}25%{background:var(--accent);transform:scale(1.25)}}
+@keyframes pe-rise{from{opacity:0;transform:translateY(10px)}}
+@keyframes pe-step{0%,28%,100%{color:#8da48e}8%,20%{color:var(--accent)}}
+@keyframes pe-step-bar{0%,28%,100%{transform:scaleX(0)}8%,20%{transform:scaleX(1)}}
+.pe-loader{position:relative;display:inline-flex;align-items:center;gap:13px;vertical-align:middle;margin-right:12px}
+.pe-loader::before{content:"";position:absolute;left:4px;right:4px;top:50%;border-top:1.5px solid #b9cdbd}
+.pe-loader i{position:relative;width:9px;height:9px;border:1.5px solid var(--accent);border-radius:50%;background:#fff;animation:pe-node 1.5s ease-in-out infinite}
+.pe-loader i:nth-child(2){animation-delay:.22s}.pe-loader i:nth-child(3){animation-delay:.44s}
+.what-next li{position:relative;padding-top:14px}
+.what-next li::after{content:"";position:absolute;left:0;top:0;width:100%;border-top:2px solid var(--accent);transform:scaleX(0);transform-origin:left}
+@media (prefers-reduced-motion:no-preference){
+.hero>*{animation:pe-rise .5s ease-out backwards}.hero>:nth-child(2){animation-delay:.08s}.hero>:nth-child(3){animation-delay:.16s}.hero>:nth-child(n+4){animation-delay:.24s}
+.topic-card,.paper-picked,#kit-content:not([hidden]){animation:pe-rise .3s ease-out backwards}
+.what-next li::before{animation:pe-step 9s ease-in-out infinite}.what-next li::after{animation:pe-step-bar 9s ease-in-out infinite}
+.what-next li:nth-child(2)::before,.what-next li:nth-child(2)::after{animation-delay:3s}.what-next li:nth-child(3)::before,.what-next li:nth-child(3)::after{animation-delay:6s}
+}
+@media (prefers-reduced-motion:reduce){.pe-loader i{animation:none}}
+

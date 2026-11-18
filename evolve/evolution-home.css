@@ -26,3 +26,8 @@
 .starter-loading{font-size:13px;color:var(--muted);padding:26px 0}
 .starter-loading button{font-size:12px;margin-left:8px}
 @media(max-width:600px){.evolution-intro{padding:23px 21px;margin-bottom:25px}.evolution-intro h2{font-size:26px}.evolution-intro p{font-size:13px}.evolution-start-actions button{font-size:12px;padding:9px 12px}.starter-heading{display:block}.starter-heading>span{display:block;margin-top:5px}.evolution-starter{min-height:210px}.map-heading-actions{gap:0;align-self:flex-start;margin-top:20px}#change-paper{font-size:10px;padding:7px 9px}}
+/* The landing card pairs its pitch with the animated example on wide screens. */
+.intro-figure{display:none}
+@media(min-width:1080px){.evolution-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,48%);align-items:center;gap:30px}.intro-figure{display:block;width:100%;border-radius:10px}}
+.starter-loading .pe-loader{margin-right:12px}
+

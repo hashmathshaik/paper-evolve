@@ -77,10 +77,12 @@ export function createViewport({ viewport, surface, graph, width = 1320, height 
   viewport.addEventListener(
     'wheel',
     e => {
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        manual(scale * Math.exp(-e.deltaY * 0.008), { x: e.clientX, y: e.clientY });
-      }
+      // Scrolling zooms toward the cursor. A sideways swipe or Shift + scroll still pans.
+      if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const pixels = e.deltaMode ? e.deltaY * 16 : e.deltaY, // some mice report lines, not pixels
+        rate = e.ctrlKey || e.metaKey ? 0.008 : 0.0022; // a pinch sends small deltas, a wheel notch about 100
+      manual(scale * Math.exp(-pixels * rate), { x: e.clientX, y: e.clientY });
     },
     { passive: false },
   );

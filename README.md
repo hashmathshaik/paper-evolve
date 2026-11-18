@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://hashmathshaik.github.io/paper-evolve/">
-    <img src="docs/readme/hero.svg" width="100%" alt="BERT (2019) and four later papers that build on it, with each connection labelled Extends or Transfers">
+    <img src="assets/hero.svg" width="100%" alt="BERT (2019) and four later papers that build on it, with each connection labelled Extends or Transfers">
   </a>
 </p>
 

@@ -1,6 +1,6 @@
-import { paragraphsHTML, readableText } from './text-format.js?v=388bf9ca4d5f';
-import { renderMath } from './math.js?v=388bf9ca4d5f';
-import { paperRecord, readPaper, venueName } from './paper-data.js?v=388bf9ca4d5f';
+import { paragraphsHTML, readableText } from './text-format.js?v=f518fc12dba0';
+import { renderMath } from './math.js?v=f518fc12dba0';
+import { paperRecord, readPaper, venueName } from './paper-data.js?v=f518fc12dba0';
 const esc = value =>
   String(value ?? '').replace(
     /[&<>"']/g,

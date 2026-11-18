@@ -192,7 +192,7 @@ and checks exact quotes, chronology, labels, duplicates and evidence coverage
 without a paid request or private corpus. Maintainer acceptance is separate from
 validation. An assistant check is never labeled human verified. Accepted reviews
 form a static overlay that can add, correct or withdraw a model prediction.
-See `CONTRIBUTING.md` for commands and source-review rules.
+See `docs/MAINTAINING.md` for commands and source-review rules.
 
 ## Complete abstract coverage
 

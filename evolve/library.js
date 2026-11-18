@@ -1,8 +1,15 @@
-import { loadCorpus, readPaper, venueName } from './paper-data.js?v=388bf9ca4d5f';
-import { escapeHTML as esc, readableText } from './text-format.js?v=388bf9ca4d5f';
-import { renderMath } from './math.js?v=388bf9ca4d5f';
+import { loadCorpus, readPaper, venueName } from './paper-data.js?v=f518fc12dba0';
+import { escapeHTML as esc, readableText } from './text-format.js?v=f518fc12dba0';
+import { renderMath } from './math.js?v=f518fc12dba0';
 const groupLabel = name => (name === 'Unclustered' ? 'Uncategorized research' : name);
-import { createLandscapeTimeline, areaColor, AREA_ORDER, HUES, NEUTRAL } from './landscape-timeline.js?v=388bf9ca4d5f';
+import {
+  createLandscapeTimeline,
+  areaColor,
+  AREA_ORDER,
+  AREA_SHORT,
+  HUES,
+  NEUTRAL,
+} from './landscape-timeline.js?v=f518fc12dba0';
 const scattered = new Set(['Unclustered', 'Specialized / Niche Topics']); // catch-all groups, not real topics
 export function createLibrary({ selectPaper, openEvolution }) {
   let records = null,
@@ -172,7 +179,7 @@ export function createLibrary({ selectPaper, openEvolution }) {
         partial: partial && years[years.length - 1] === partial.year ? partial : null,
         series: order
           .filter(b => counts.has(b.name))
-          .map(b => ({ ...b, label: groupLabel(b.name), counts: counts.get(b.name) })),
+          .map(b => ({ ...b, label: groupLabel(b.name), short: AREA_SHORT[b.name], counts: counts.get(b.name) })),
       });
       const chips = document.createElement('div');
       chips.className = 'area-chips';
@@ -198,7 +205,7 @@ export function createLibrary({ selectPaper, openEvolution }) {
       $('library-content').innerHTML = rows
         .map(
           (p, i) =>
-            `<article class="library-row ${p.u === selectedURL ? 'selected' : ''}" data-row="${i}"><button class="library-paper" data-record="${i}" aria-label="Read ${esc(p.t)}"><div class="library-paper-body"><div class="library-paper-meta">${esc(venueName(p.v))} <span>·</span> ${p.y}</div><h3>${esc(readableText(p.t))}</h3><p class="library-snippet" data-preview="${i}">Loading abstract…</p><div class="library-paper-topic">${esc(groupLabel(p.topic))} <span>Read abstract →</span></div></div></button><button class="paper-evolution-action" data-evolution="${i}" aria-label="Explore evolution of ${esc(p.t)}">Evolution <span aria-hidden="true">→</span></button></article>`,
+            `<article class="library-row ${p.u === selectedURL ? 'selected' : ''}" data-row="${i}"><button class="library-paper" data-record="${i}" aria-label="Read ${esc(p.t)}"><div class="library-paper-body"><div class="library-paper-meta">${esc(venueName(p.v))} <span>·</span> ${p.y}</div><h3>${esc(readableText(p.t))}</h3><p class="library-snippet pending" data-preview="${i}">Loading abstract…</p><div class="library-paper-topic">${esc(groupLabel(p.topic))} <span>Read abstract →</span></div></div></button><button class="paper-evolution-action" data-evolution="${i}" aria-label="Explore evolution of ${esc(p.t)}">Evolution <span aria-hidden="true">→</span></button></article>`,
         )
         .join('');
       function mark(i) {
@@ -242,6 +249,7 @@ export function createLibrary({ selectPaper, openEvolution }) {
             if (current !== revision) return;
             const target = $('library-content').querySelector(`[data-preview="${i}"]`);
             if (target) {
+              target.classList.remove('pending');
               target.textContent = readableText(full.abstract || 'Select to view this paper’s details.');
               renderMath(target);
             }
@@ -249,7 +257,10 @@ export function createLibrary({ selectPaper, openEvolution }) {
           .catch(() => {
             if (current === revision) {
               const target = $('library-content').querySelector(`[data-preview="${i}"]`);
-              if (target) target.textContent = 'Select to load the abstract.';
+              if (target) {
+                target.classList.remove('pending');
+                target.textContent = 'Select to load the abstract.';
+              }
             }
           }),
       );
@@ -280,7 +291,8 @@ export function createLibrary({ selectPaper, openEvolution }) {
     const opening = ++openRevision;
     view = v;
     if (!records) {
-      $('library-content').innerHTML = '<div class="empty" role="status">Loading the research collection…</div>';
+      $('library-content').innerHTML =
+        '<div class="empty" role="status"><span class="pe-loader" aria-hidden="true"><i></i><i></i><i></i></span><p>Loading the research collection…</p></div>';
       try {
         const loaded = await loadCorpus();
         if (!records) {
