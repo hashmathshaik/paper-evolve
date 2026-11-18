@@ -3,6 +3,9 @@
 External jobs must be stopped before taking this snapshot. Reserves deliberately
 include failed HTTP allowances; this is a conservative limit, not an invoice.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,json,sqlite3
 import relation_core as C
 

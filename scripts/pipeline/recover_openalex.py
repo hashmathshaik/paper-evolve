@@ -1,6 +1,9 @@
 """Recover missing ICLR abstracts with conservative OpenAlex identity checks.
 Credentials never enter request logs, cache keys, or public output.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import signal
 import argparse,base64,fcntl,gzip,json,os,re,sqlite3,time,unicodedata
 from datetime import datetime,timezone

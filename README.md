@@ -77,8 +77,8 @@ unrelated is a welcome contribution too.
 |---|---|
 | `index.html`, `contribute.html`, `evolve/` | The static site: pages, scripts, styles and the published data (`evolve/corpus.json`, `evolve/generated/`). |
 | `community/` | Everything contributors touch: task packs, submissions, accepted reviews, paper additions, the venue registry and the guides. |
-| `paper_evolve.py`, `scripts/contribut*.py`, `scripts/community_edges.py` | The contributor tool and its validators. Standard library only. |
-| `scripts/` (the rest) | Maintainer preparation: abstracts, embeddings, citation data and model-reviewed connections. Needs the private `work/` caches. |
+| `paper_evolve.py`, `scripts/` | The contributor tool, its validators and the shared modules they and the site build import. Standard library only. |
+| `scripts/pipeline/` | Maintainer preparation jobs: abstracts, embeddings, citation data and model-reviewed connections. They need the private `work/` caches. |
 | `build_evolve.py`, `scripts/ui_assets.py` | Packages the site into `dist/`; run by the Pages workflow. |
 | `tests/` | Unit tests for the tools, validators and front-end logic. |
 | `paper_atlas/`, `config/`, `remote_jobs/` | The ingestion adapters, per-venue settings and GPU jobs that built the original collection and its topics. |

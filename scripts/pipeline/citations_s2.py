@@ -5,7 +5,7 @@ title + |year diff|<=1, unique. Writes work/edges/s2.sqlite3 (paper_id -> s2_id,
 import json,sqlite3,sys,time
 from pathlib import Path
 from urllib import request,parse,error
-sys.path.insert(0,str(Path(__file__).parent))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 from voyage_pipeline import ROOT,read_records
 from recover_openalex import normalize
 

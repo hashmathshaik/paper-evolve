@@ -5,6 +5,7 @@ from io import BytesIO
 from urllib.error import HTTPError
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts/pipeline'))
 import seed_edges as S
 import test_qwen_relations as fixtures
 

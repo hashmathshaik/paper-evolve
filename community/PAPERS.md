@@ -69,5 +69,8 @@ Pull-request CI validates the file. A maintainer reviews it and runs
 `python scripts/contribution_papers.py apply`, which appends the papers to the
 published collection and moves your file to `community/papers/applied/` as the
 record of who added them. After the next site build the papers appear in
-Browse, Landscape and search. They start without connections, so they are open
-for anyone to connect with `propose` or `run --earlier … --later …`.
+Browse, Landscape and search. Each new paper is shown with the published papers
+closest to it in wording, and a paper filed without a topic takes the topic its
+nearest papers share when enough of them agree. They start without connections,
+so they are open for anyone to connect with `propose` or
+`run --earlier … --later …`.

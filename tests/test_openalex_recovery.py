@@ -1,6 +1,7 @@
 import sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts/pipeline'))
 from recover_openalex import unpack_abstract,match_record,retry_seconds
 class OpenAlexRecoveryTests(unittest.TestCase):
  def setUp(self):

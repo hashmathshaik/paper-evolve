@@ -2,6 +2,9 @@
 Run with .venv-voyage/bin/python (pyarrow). No model-generated abstracts, no paid calls.
 Each dataset revision, downloaded file hash and accepted source is recorded locally.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,fcntl,gzip,hashlib,json,sqlite3,time
 from datetime import datetime,timezone
 from pathlib import Path

@@ -1,4 +1,7 @@
 """Continuous local embedding queue. Refresh at 10k arrivals and whenever caught up."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 from collections import deque
 import argparse
 from datetime import datetime,timezone

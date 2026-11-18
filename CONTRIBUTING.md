@@ -38,6 +38,10 @@ python paper_evolve.py run --earlier "Earlier paper" --later "Later paper" --nam
 
 It never commits or pushes. Details are in [the clone guide](community/CLONE.md).
 
+Site scripts in `evolve/` are formatted with Prettier using the repository's
+`.prettierrc.json`. After editing them, run `npx prettier@3 --write "evolve/*.js"`
+(or `bunx`), then `python build_evolve.py` to refresh the asset version stamps.
+
 GitHub Pages hosts the app and task packs. GitHub pull requests receive the
 contributions. CI validates them; a maintainer separately accepts the evidence.
 Merging an acceptance rebuilds the Pages graph. No upload server is needed.
@@ -184,10 +188,10 @@ python scripts/community_edges.py export --limit 100 \
 ## Budgeted seed generation (maintainer only)
 
 ```bash
-.venv-voyage/bin/python scripts/seed_edges.py plan
-.venv-voyage/bin/python scripts/seed_edges.py pilot
-.venv-voyage/bin/python scripts/seed_edges.py run --max-candidates 30000 --workers 32 --source-workers 8
-.venv-voyage/bin/python scripts/seed_edges.py status
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py plan
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py pilot
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py run --max-candidates 30000 --workers 32 --source-workers 8
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py status
 ```
 
 These paid commands use the existing Singapore Qwen key in ignored `.env`.

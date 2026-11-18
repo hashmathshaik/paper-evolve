@@ -62,6 +62,8 @@ class AddedPapersAndVenues(unittest.TestCase):
         meta = json.loads((self.root / 'evolve/generated/abstracts/meta.json').read_text())
         self.assertEqual((meta['total'], meta['shards']), (4, 2))
         self.assertEqual(json.loads((self.root / 'evolve/generated/abstracts/001.json').read_text())[1]['url'], self.paper['url'])
+        near = json.loads((self.root / 'evolve/generated/additions.json').read_text())['entries']['3']['s']
+        self.assertIsInstance(near, list)  # three papers are too few to share rare words; the larger case is tested below
         self.assertEqual((N.check(self.root), len(list((self.root / 'community/papers/applied').glob('*.json')))), (0, 1))
         self.assertEqual(N.apply(self.root)['papers'], 0)
         # The added paper can be connected straight away, with its venue named from the registry.
@@ -89,6 +91,43 @@ class AddedPapersAndVenues(unittest.TestCase):
                 N.add_venue(identity, name, hosts, self.root)
         self.assertEqual(sorted(N.registry(self.root))[:2], ['acl', 'cvpr'])  # a rejected venue leaves the registry as it was
         self.assertEqual(self.submit({**self.paper, 'topic': 'Oracle methods'})['papers'], 1)
+
+    def test_wording_neighbours_match_a_plain_bm25_reference_and_assign_a_topic(self):
+        import math
+        import lexical_neighbours as L
+        texts = ['graph neural networks for molecules', 'molecule generation with graph diffusion', 'bandit regret bounds under delay',
+                 'regret minimisation for linear bandits', 'graph networks and molecules molecules', 'protein folding with diffusion']
+        index = L.Index()
+        for text in texts:index.add(text)
+        query = 'graph networks for molecule and molecules design'
+        # Slow reference: BM25 written out per paper, over the same query terms.
+        counts = [L.collections.Counter(L.terms(t)) for t in texts]
+        average, n = sum(sum(c.values()) for c in counts) / len(texts), len(texts)
+        idf = lambda term: math.log(1 + (n - sum(term in c for c in counts) + .5) / (sum(term in c for c in counts) + .5))
+        wanted = [t for t in set(L.terms(query)) if 0 < sum(t in c for c in counts) <= max(2, L.COMMON * n)]
+        reference = {i: sum(idf(t) * c[t] * (L.K1 + 1) / (c[t] + L.K1 * (1 - L.B + L.B * sum(c.values()) / average)) for t in wanted if t in c) for i, c in enumerate(counts)}
+        ceiling = sum(idf(t) * (L.K1 + 1) for t in wanted)
+        expected = sorted(((round(s / ceiling, 3), i) for i, s in reference.items() if s), reverse=True)[:3]
+        self.assertEqual([(score, i) for i, score in index.nearest(query, 3)], expected)
+        self.assertEqual(index.nearest(query, 1)[0][0], 4)
+        # Topic: a paper filed without one takes the topic most of its nearest papers share.
+        rows = [{'t': f'Spectral clustering of sparse graphs, part {i}', 'v': 'icml', 'y': 2020, 'u': f'https://proceedings.mlr.press/v119/p{i}.html',
+                 'mega': 'Graphs', 'topic': 'Graph clustering', 'leaf': 'Unclustered'} for i in range(8)]
+        # Words found in over a fifth of the collection are ignored, so the cluster has to be a minority of it.
+        rows += [{'t': f'Unrelated filler study {i}', 'v': 'icml', 'y': 2021, 'u': f'https://proceedings.mlr.press/v139/f{i}.html',
+                  'mega': 'Optimization', 'topic': 'Oracle methods', 'leaf': 'Unclustered'} for i in range(40)]
+        rows += json.loads((self.root / 'evolve/corpus.json').read_text())
+        (self.root / 'evolve/corpus.json').write_text(json.dumps(rows, separators=(',', ':')))
+        shard = [{'url': r['u'], 'abstract': r['t'] + (' with eigenvector methods and community detection guarantees.' if r['topic'] == 'Graph clustering' else ' about something else entirely.')} for r in rows]
+        (self.root / 'evolve/generated/abstracts/meta.json').write_text(json.dumps({'version': 1, 'total': len(rows), 'abstracts': len(rows), 'shard_size': 100, 'shards': 1}))
+        (self.root / 'evolve/generated/abstracts/000.json').write_text(json.dumps(shard))
+        (self.root / 'evolve/generated/abstracts/001.json').unlink()
+        N.add_venue('cvpr', 'CVPR', ['openaccess.thecvf.com'], self.root)
+        self.submit({**self.paper, 'title': 'Spectral clustering of sparse graphs with eigenvector guarantees',
+                     'abstract': 'We revisit spectral clustering of sparse graphs and prove community detection guarantees for eigenvector methods under weak assumptions.'})
+        N.apply(self.root)
+        added = json.loads((self.root / 'evolve/corpus.json').read_text())[-1]
+        self.assertEqual((added['topic'], added['mega']), ('Graph clustering', 'Graphs'))
 
 
 if __name__ == '__main__':

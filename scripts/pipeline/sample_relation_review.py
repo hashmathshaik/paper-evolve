@@ -1,4 +1,7 @@
 """Freeze a reproducible stratified sample for independent assistant evidence review."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import json,random,sqlite3
 from pathlib import Path
 from voyage_pipeline import ROOT,atomic_json

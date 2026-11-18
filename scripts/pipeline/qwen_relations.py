@@ -1,6 +1,9 @@
 """Jev-gated, source-backed Qwen review using the shared cumulative ledger.
 No secret enters a prompt, JSON export, or log.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,hashlib,json,os,signal,time,re,threading
 from concurrent.futures import ThreadPoolExecutor,wait,FIRST_COMPLETED
 from pathlib import Path
@@ -199,7 +202,7 @@ def main():
    if outcome=='budget_limited':budget_limited=True
    if outcome=='rate_limited':rate_limited=True
   if progress:
-   subprocess.run([sys.executable,str(C.ROOT/'scripts/export_edges.py')],cwd=C.ROOT,check=True)
+   subprocess.run([sys.executable,str(C.ROOT/'scripts/pipeline/export_edges.py')],cwd=C.ROOT,check=True)
    subprocess.run([sys.executable,str(C.ROOT/'build_evolve.py')],cwd=C.ROOT,check=True)
   report(ledger,len(pairs),counts,'budget_limited' if budget_limited else ('rate_limit_cooldown' if rate_limited else ('pilot_complete' if args.command=='pilot' else 'waiting_for_source_evidence')),args.model,args.workers)
   if budget_limited or (C.J.E/'QWEN_PAUSED').exists() or args.command=='pilot' or not args.watch:break

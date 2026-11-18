@@ -2,6 +2,7 @@ import json,sys,tempfile,unittest,threading
 from urllib.error import HTTPError
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
+sys.path.insert(0,str(Path(__file__).parents[1]/'scripts/pipeline'))
 import qwen_relations as Q
 
 class QwenProvider(unittest.TestCase):

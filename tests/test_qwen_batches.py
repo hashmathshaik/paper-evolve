@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts/pipeline'))
 import qwen_batches as B
 import test_qwen_relations as fixtures
 from project_budget import configure

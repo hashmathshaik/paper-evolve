@@ -1,4 +1,7 @@
 """Check abstract provenance and exact-text/model embedding coverage for every corpus paper."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import json,sqlite3
 from collections import Counter
 from pathlib import Path

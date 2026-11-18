@@ -96,9 +96,9 @@ page numbers and exact excerpts. Every new seed positive requires a source from
 paper A and a citation passage from paper B.
 
 ```sh
-.venv-voyage/bin/python scripts/seed_edges.py plan --scope expanded --max-candidates 0
-.venv-voyage/bin/python scripts/seed_edges.py run --scope expanded --max-candidates 0 --workers 32 --source-workers 8 --publish-every 200
-.venv-voyage/bin/python scripts/seed_edges.py status
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py plan --scope expanded --max-candidates 0
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py run --scope expanded --max-candidates 0 --workers 32 --source-workers 8 --publish-every 200
+.venv-voyage/bin/python scripts/pipeline/seed_edges.py status
 ```
 
 The durable ledger is `work/edges/relations.sqlite3`. Its **$30 cumulative edge
@@ -196,11 +196,11 @@ See `CONTRIBUTING.md` for commands and source-review rules.
 
 ## Complete abstract coverage
 
-`python3 scripts/audit_corpus.py` checks every corpus URL for a real cached abstract, retrieval provenance, and an embedding cache key matching that exact title/abstract text and configured Voyage model. Per-paper audit records remain in `work/abstracts/audit.jsonl`; a public count-only coverage report is exported to `evolve/generated/coverage.json`.
+`python3 scripts/pipeline/audit_corpus.py` checks every corpus URL for a real cached abstract, retrieval provenance, and an embedding cache key matching that exact title/abstract text and configured Voyage model. Per-paper audit records remain in `work/abstracts/audit.jsonl`; a public count-only coverage report is exported to `evolve/generated/coverage.json`.
 
-Missing OpenReview abstracts can be recovered with `.venv-voyage/bin/python scripts/recover_mirrors.py --small-only` (requires `pyarrow`). Mirrors are pinned to a dataset commit and accepted only by exact OpenReview note ID and normalized title; contradictory duplicate abstracts are rejected. Dataset file hashes and accepted matches are retained locally. `python3 scripts/recover_acl_pdf.py` handles ACL records whose official HTML/XML omit their abstract by extracting the Abstract section from the official PDF, requiring Poppler's `pdftotext`. No missing abstract is synthesized by a model.
+Missing OpenReview abstracts can be recovered with `.venv-voyage/bin/python scripts/pipeline/recover_mirrors.py --small-only` (requires `pyarrow`). Mirrors are pinned to a dataset commit and accepted only by exact OpenReview note ID and normalized title; contradictory duplicate abstracts are rejected. Dataset file hashes and accepted matches are retained locally. `python3 scripts/pipeline/recover_acl_pdf.py` handles ACL records whose official HTML/XML omit their abstract by extracting the Abstract section from the official PDF, requiring Poppler's `pdftotext`. No missing abstract is synthesized by a model.
 
-After embeddings catch up, `.venv-voyage/bin/python scripts/edges_knn.py` rebuilds nearest neighbors over the full current embedding cache and atomically replaces the neighbor file. Run the Qwen seed planner again after the neighbor file changes. Legacy Jev labels are reused for prioritization without paying to classify them again.
+After embeddings catch up, `.venv-voyage/bin/python scripts/pipeline/edges_knn.py` rebuilds nearest neighbors over the full current embedding cache and atomically replaces the neighbor file. Run the Qwen seed planner again after the neighbor file changes. Legacy Jev labels are reused for prioritization without paying to classify them again.
 
 
 ### Paper reader and public abstracts
@@ -241,7 +241,7 @@ key in `QWEN_BATCH_API_KEY` locally. The existing Singapore key is not reused.
 The worker records each request's region, uses that region's prices, and
 rejects submission/collection with mismatched regional configuration.
 
-`scripts/qwen_batches.py run --watch` uses Qwen3.7-Flash through Model Studio's
+`scripts/pipeline/qwen_batches.py run --watch` uses Qwen3.7-Flash through Model Studio's
 OpenAI-compatible Batch API in Singapore. It shares the historical project
 ledger and reserves the conservative maximum request cost before submission.
 The original $50 total cap, preparation allowances, and contingency remain in
@@ -266,7 +266,7 @@ API and pricing: [Batch API](https://www.alibabacloud.com/help/en/model-studio/b
 
 # Free-quota edge generation
 
-`scripts/free_quota_edges.py run` uses all seven text models whose remaining
+`scripts/pipeline/free_quota_edges.py run` uses all seven text models whose remaining
 allowances and Stop-on-Exhaust switches were checked in the Singapore console.
 Its local configuration is `work/edges/free-quota-models.json`; verification is
 valid for 24 hours when starting requests. It never disables Stop-on-Exhaust,

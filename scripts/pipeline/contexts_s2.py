@@ -5,7 +5,7 @@ Order: citing papers of the highest-similarity pairs first. Resumable; writes wo
 import json,sqlite3,sys,time
 from pathlib import Path
 from urllib import request,error
-sys.path.insert(0,str(Path(__file__).parent))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import edges_jev as J
 
 API='https://api.semanticscholar.org/graph/v1';UA='PaperEvolve/0.1 (citation contexts for research)'

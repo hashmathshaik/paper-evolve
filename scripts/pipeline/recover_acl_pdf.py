@@ -1,6 +1,9 @@
 """Recover missing ACL abstracts from official PDFs when HTML/XML omit them.
 Needs Poppler pdftotext. Stores exact-source provenance and retains local PDF/text.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import hashlib,json,re,sqlite3,subprocess
 from pathlib import Path
 from urllib import request

@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts/pipeline'))
 from download_collection import acl_collection,parse_acl
 class CollectionDownloadTests(unittest.TestCase):
  def test_modern_collection_not_volume(self):

@@ -6,7 +6,7 @@ Writes work/edges/s2.sqlite3: ext(paper_id, doi), oa(paper_id, oa_id, refs). Res
 import json,sqlite3,sys,time
 from pathlib import Path
 from urllib import request,parse,error
-sys.path.insert(0,str(Path(__file__).parent))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import edges_jev as J
 from recover_openalex import load_key
 from citations_s2 import batch

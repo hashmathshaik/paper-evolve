@@ -4,7 +4,7 @@ Run with .venv-voyage/bin/python (needs numpy). Writes work/edges/knn.npz.
 import sqlite3,sys,time
 from pathlib import Path
 import numpy as np
-sys.path.insert(0,str(Path(__file__).parent))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 from voyage_pipeline import ROOT,read_records
 
 K=10;BLOCK=2048;OUT=ROOT/'work/edges';OUT.mkdir(parents=True,exist_ok=True)

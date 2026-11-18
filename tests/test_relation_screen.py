@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).parents[1]/'scripts'))
+sys.path.insert(0,str(Path(__file__).parents[1]/'scripts/pipeline'))
 import relation_screen as S
 import qwen_relations as Q
 from relation_core import Ledger

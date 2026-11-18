@@ -1,4 +1,7 @@
 """Download all corpus abstracts. No paid API calls. Resume with the same command."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse
 from concurrent.futures import ThreadPoolExecutor,as_completed,wait,FIRST_COMPLETED
 from datetime import datetime,timezone

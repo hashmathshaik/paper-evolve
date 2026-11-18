@@ -9,6 +9,7 @@ import unittest
 from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts/pipeline'))
 import free_quota_edges as F
 import test_qwen_relations as fixtures
 

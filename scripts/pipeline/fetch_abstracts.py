@@ -2,6 +2,9 @@
 Pilot default: seven research papers. Use --source corpus --limit 200 for discovery.
 Missing/blocked abstracts are reported explicitly, never generated.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse
 from datetime import datetime,timezone
 from html.parser import HTMLParser

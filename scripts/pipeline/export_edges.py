@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import sys
 import numpy as np
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 from voyage_pipeline import ROOT, read_records, atomic_json
 from relation_core import TYPES, VERSION
 from relation_review_policy import load_policy,apply_policy

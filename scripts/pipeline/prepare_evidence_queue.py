@@ -1,4 +1,7 @@
 """Resume free source retrieval for Jev-gated candidates. Never calls paid models."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,fcntl,json,signal,time
 from pathlib import Path
 import relation_core as H

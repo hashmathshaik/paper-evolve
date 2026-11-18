@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts/pipeline'))
 from relation_core import Ledger
 from project_budget import configure, configure_edges
 from migrate_relation_ledger import migrate

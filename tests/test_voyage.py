@@ -69,6 +69,7 @@ class QueueAdmissionTests(unittest.TestCase):
  def test_refresh_at_ten_thousand(self):
   import sys
   sys.path.insert(0,str(ROOT/'scripts'))
+  sys.path.insert(0,str(ROOT/'scripts/pipeline'))
   from embedding_queue import should_refresh
   self.assertTrue(should_refresh(34144,24144,20000))
   self.assertFalse(should_refresh(34143,24144,20000))

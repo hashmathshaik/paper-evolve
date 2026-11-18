@@ -3,6 +3,9 @@ ICLR: bulk venue search, accept only exact normalized title + |year diff|<=1 + >
 ACL: batch lookup by Anthology ID (ACL:<id>), exact ID so no title matching needed.
 Resume-safe: only fills URLs missing from work/abstracts/cache.sqlite3.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import base64,gzip,json,re,sqlite3,time
 from datetime import datetime,timezone
 from urllib import request,parse,error

@@ -1,4 +1,7 @@
 """Own and monitor the abstract/download/embedding workers as one resumable run."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,fcntl,json,signal,sqlite3,subprocess,sys,time
 from datetime import datetime,timezone
 from pathlib import Path
@@ -6,9 +9,9 @@ from voyage_pipeline import ROOT,atomic_json
 
 WORK=ROOT/'work/pipeline'
 SERVICES={
- 'downloads':{'command':['scripts/download_collection.py'],'log':'work/full-collection/download.log','status':'work/full-collection/status.json'},
- 'openalex':{'command':['scripts/recover_openalex.py','--budget-usd','6'],'log':'work/openalex-recovery.log','status':'work/openalex/status.json'},
- 'embeddings':{'command':['scripts/embedding_queue.py','--refresh-every','10000'],'log':'work/voyage/embedding.log','status':'work/voyage/embedding-status.json'},
+ 'downloads':{'command':['scripts/pipeline/download_collection.py'],'log':'work/full-collection/download.log','status':'work/full-collection/status.json'},
+ 'openalex':{'command':['scripts/pipeline/recover_openalex.py','--budget-usd','6'],'log':'work/openalex-recovery.log','status':'work/openalex/status.json'},
+ 'embeddings':{'command':['scripts/pipeline/embedding_queue.py','--refresh-every','10000'],'log':'work/voyage/embedding.log','status':'work/voyage/embedding-status.json'},
 }
 
 def read_status(path):

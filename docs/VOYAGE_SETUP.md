@@ -9,13 +9,13 @@ The bundled 70,861-record website corpus has titles/topics/links, but **no abstr
 A new stdlib fetcher caches successful source responses and records provenance. Default scope is the current seven-paper research slice, whose source links point to arXiv:
 
 ```sh
-python3 scripts/fetch_abstracts.py --source research --write-research
+python3 scripts/pipeline/fetch_abstracts.py --source research --write-research
 ```
 
 For a 200-paper corpus pilot:
 
 ```sh
-python3 scripts/fetch_abstracts.py --source corpus --limit 200
+python3 scripts/pipeline/fetch_abstracts.py --source corpus --limit 200
 python3 scripts/voyage_pipeline.py estimate --input work/abstracts/papers.jsonl
 ```
 
@@ -77,14 +77,14 @@ Documentation: https://docs.voyageai.com/reference/embeddings-api and https://do
 
 ## Continuous embedding while abstracts download
 
-The active worker is `python3 scripts/embedding_queue.py --refresh-every 10000`.
+The active worker is `python3 scripts/pipeline/embedding_queue.py --refresh-every 10000`.
 It reads the shared abstract cache on startup, admits newly downloaded records whenever another 10,000 arrive, and checks for smaller remainders whenever its pending queue empties. The next cycle continues without manual snapshot commands. Exact text/model cache keys prevent re-embedding completed records. The local input snapshot and `work/voyage/embedding-status.json` update with each admission and completed batch.
 
 Voyage Retry-After headers are honored. The worker remains subject to provider rate limits and the conservative $14 embedding allowance, leaving up to $6 for the separate OpenAlex recovery run. Oversized abstracts are recorded for review. SIGINT/SIGTERM stop at a safe batch boundary; relaunching resumes from cached vectors. Do not run `embed_downloaded.py` alongside it; both workers share an exclusive embedding lock.
 
 ## Run all workers together
 
-From the repository root, use `python3 scripts/run_pipeline.py`. This supervises source downloads, OpenAlex ICLR recovery, and the continuous Voyage embedding queue. Check `work/pipeline/status.json` for the two progress totals, worker PIDs, phases, and retry times. Individual logs remain in their respective work directories.
+From the repository root, use `python3 scripts/pipeline/run_pipeline.py`. This supervises source downloads, OpenAlex ICLR recovery, and the continuous Voyage embedding queue. Check `work/pipeline/status.json` for the two progress totals, worker PIDs, phases, and retry times. Individual logs remain in their respective work directories.
 
 Only one supervisor and one worker of each type may hold their locks. SIGTERM/SIGINT requests a graceful shutdown; in-flight batches are saved before the worker stops. Source requests use a bounded worker queue, origin pacing, and shared SQLite WAL storage. Unexpected worker crashes restart with backoff (up to three times). Provider, budget, or invalid-input stops remain visible and are not silently bypassed. Provider throttling waits and retries automatically. The embedding worker starts with conservative request/token pacing and slows further if Voyage returns HTTP 429; this is an adaptive local limit, not a claim about the account's published quota.
 

@@ -5,6 +5,9 @@ Regular requests; no Beijing and no Batch dependency.
 Jev's existing scores rank candidates without new Jev calls. Missing sources are
 left for contributors, not converted to unsupported relationships.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse
 import fcntl
 import json

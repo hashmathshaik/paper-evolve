@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts/pipeline'))
 import qwen_grouped_edges as G
 import test_qwen_relations as fixtures
 from project_budget import configure_edges

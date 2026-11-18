@@ -4,6 +4,7 @@ import sys
 import unittest
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
+sys.path.insert(0,str(ROOT/'scripts/pipeline'))
 from fetch_abstracts import AbstractParser,source_request
 class AbstractTests(unittest.TestCase):
  def test_arxiv_markup(self):

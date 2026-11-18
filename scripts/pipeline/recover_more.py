@@ -6,6 +6,9 @@ Accept only: exact normalized title + >=1 shared author, unique candidate. Same 
 Re-reads the missing set every batch, so parallel processes skip what another source already filled.
 Every checked paper is logged in work/recover_more/<source>.done so a rerun resumes.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # shared modules live in scripts/
 import argparse,base64,gzip,json,re,sqlite3,time
 import xml.etree.ElementTree as ET
 from datetime import datetime,timezone
