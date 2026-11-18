@@ -74,7 +74,7 @@ def main():
     api.add_argument('--workspace', type=Path, required=True)
     api.add_argument('--base-url', required=True, help='OpenAI-compatible API base URL ending in /v1.')
     api.add_argument('--model', required=True)
-    api.add_argument('--api-key-env', default='PAPER_EVOLVE_API_KEY')
+    api.add_argument('--api-key-env', help="Variable holding your key. Default: your provider's usual one, such as OPENAI_API_KEY.")
     api.add_argument('--input-rate', type=float, required=True, help='Current USD price per million input tokens.')
     api.add_argument('--output-rate', type=float, required=True, help='Current USD price per million output tokens.')
     api.add_argument('--budget', type=float, required=True, help='Cumulative workspace allowance in USD, including holds.')

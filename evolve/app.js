@@ -1,15 +1,15 @@
-import { createLatestTask } from './ui-task.js?v=39205891c9e4';
-import { readableText } from './text-format.js?v=39205891c9e4';
-import { renderMath } from './math.js?v=39205891c9e4';
-import { createViewport } from './viewport.js?v=39205891c9e4';
-import { routeConnections, wireMovableCards } from './graph-layout.js?v=39205891c9e4';
-import { createEvolutionHome } from './evolution-home.js?v=39205891c9e4';
-import { evolutionHash, parseRoute, paperURL } from './evolution-route.js?v=39205891c9e4';
-import { buildNeighbourhood } from './neighbourhood.js?v=39205891c9e4';
-import { createDiscoverySearch } from './discovery-search.js?v=39205891c9e4';
-import { createPaperReader } from './paper-reader.js?v=39205891c9e4';
-import { CARD, STAGE } from './graph-layout.js?v=39205891c9e4';
-import { createWorkspace } from './workspace.js?v=39205891c9e4';
+import { createLatestTask } from './ui-task.js?v=388bf9ca4d5f';
+import { readableText } from './text-format.js?v=388bf9ca4d5f';
+import { renderMath } from './math.js?v=388bf9ca4d5f';
+import { createViewport } from './viewport.js?v=388bf9ca4d5f';
+import { routeConnections, wireMovableCards } from './graph-layout.js?v=388bf9ca4d5f';
+import { createEvolutionHome } from './evolution-home.js?v=388bf9ca4d5f';
+import { evolutionHash, parseRoute, paperURL } from './evolution-route.js?v=388bf9ca4d5f';
+import { buildNeighbourhood } from './neighbourhood.js?v=388bf9ca4d5f';
+import { createDiscoverySearch } from './discovery-search.js?v=388bf9ca4d5f';
+import { createPaperReader } from './paper-reader.js?v=388bf9ca4d5f';
+import { CARD, STAGE } from './graph-layout.js?v=388bf9ca4d5f';
+import { createWorkspace } from './workspace.js?v=388bf9ca4d5f';
 const workspace = createWorkspace();
 function engage() {
   document.body.classList.add('engaged');
@@ -479,7 +479,7 @@ function switchView(v, { writeHistory = true, cancelTask = true } = {}) {
   }
 }
 document.querySelectorAll('[data-view]').forEach(button => (button.onclick = () => switchView(button.dataset.view)));
-import { createLibrary } from './library.js?v=39205891c9e4';
+import { createLibrary } from './library.js?v=388bf9ca4d5f';
 const openLibrary = createLibrary({
   openEvolution,
   selectPaper(record) {

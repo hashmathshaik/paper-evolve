@@ -18,10 +18,23 @@ python paper_evolve.py start --pack PACK_ID --name "Your name" \
   --tool "Your API model" --method api --output work/contributions/my-api-run
 ```
 
-Set `PAPER_EVOLVE_API_KEY` in your terminal's environment using your preferred
-secret manager. Do not put it in a prompt, task file, submission, commit or web
-form. Check your provider's current USD prices per million input and output
-tokens. Supply those rates and your cumulative workspace allowance explicitly:
+The runner reads your key from the variable your provider's own tools already
+use, so if that is set in your terminal there is nothing more to do:
+
+| Endpoint | Variable |
+|---|---|
+| OpenAI | `OPENAI_API_KEY` |
+| OpenRouter | `OPENROUTER_API_KEY` |
+| Alibaba Model Studio (Qwen) | `DASHSCOPE_API_KEY` |
+| Together, Groq, DeepSeek, Mistral, Fireworks | `TOGETHER_API_KEY`, `GROQ_API_KEY`, `DEEPSEEK_API_KEY`, `MISTRAL_API_KEY`, `FIREWORKS_API_KEY` |
+| Google Gemini | `GEMINI_API_KEY` |
+| Any other endpoint | `PAPER_EVOLVE_API_KEY`, or name yours with `--api-key-env` |
+
+A key is only sent to its own provider: an OpenAI key is never offered to a
+different host. A model server on your own machine needs no key. Do not put a
+key in a prompt, task file, submission, commit or web form. Check your
+provider's current USD prices per million input and output tokens. Supply those
+rates and your cumulative workspace allowance explicitly:
 
 ```sh
 python paper_evolve.py api --workspace work/contributions/my-api-run \
@@ -31,7 +44,7 @@ python paper_evolve.py api --workspace work/contributions/my-api-run \
 ```
 
 These are placeholders, not prices or a model recommendation. You can select
-a differently named key with `--api-key-env YOUR_ENV_VARIABLE`. HTTPS is required
+a differently named variable with `--api-key-env YOUR_ENV_VARIABLE`. HTTPS is required
 except for an explicitly selected loopback endpoint. Redirects are refused.
 
 The runner reserves a conservative token allowance before each request in

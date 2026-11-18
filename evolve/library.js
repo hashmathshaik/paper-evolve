@@ -1,8 +1,8 @@
-import { loadCorpus, readPaper, venueName } from './paper-data.js?v=39205891c9e4';
-import { escapeHTML as esc, readableText } from './text-format.js?v=39205891c9e4';
-import { renderMath } from './math.js?v=39205891c9e4';
+import { loadCorpus, readPaper, venueName } from './paper-data.js?v=388bf9ca4d5f';
+import { escapeHTML as esc, readableText } from './text-format.js?v=388bf9ca4d5f';
+import { renderMath } from './math.js?v=388bf9ca4d5f';
 const groupLabel = name => (name === 'Unclustered' ? 'Uncategorized research' : name);
-import { createLandscapeTimeline, areaColor, AREA_ORDER, HUES, NEUTRAL } from './landscape-timeline.js?v=39205891c9e4';
+import { createLandscapeTimeline, areaColor, AREA_ORDER, HUES, NEUTRAL } from './landscape-timeline.js?v=388bf9ca4d5f';
 const scattered = new Set(['Unclustered', 'Specialized / Niche Topics']); // catch-all groups, not real topics
 export function createLibrary({ selectPaper, openEvolution }) {
   let records = null,

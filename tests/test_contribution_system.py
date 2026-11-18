@@ -189,6 +189,22 @@ class ContributionSystem(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'environment variable'):
                 A.run(self.workspace, 'https://api.example.org/v1', 'fixture', 'PAPER_EVOLVE_API_KEY', .1, .2, 1)
 
+    def test_provider_key_variables_are_used_only_for_their_own_host(self):
+        env = {'OPENAI_API_KEY': 'openai-key', 'OPENROUTER_API_KEY': 'router-key', 'PAPER_EVOLVE_API_KEY': 'generic-key'}
+        self.assertEqual(A.api_key('https://api.openai.com/v1', environment=env), ('openai-key', 'OPENAI_API_KEY'))
+        self.assertEqual(A.api_key('https://openrouter.ai/api/v1', environment=env), ('router-key', 'OPENROUTER_API_KEY'))
+        self.assertEqual(A.api_key('https://dashscope-intl.aliyuncs.com/compatible-mode/v1', environment={'DASHSCOPE_API_KEY': 'q'}), ('q', 'DASHSCOPE_API_KEY'))
+        # An unlisted or look-alike host never receives a provider key; only the generic variable applies.
+        self.assertEqual(A.api_key('https://api.example.org/v1', environment=env), ('generic-key', 'PAPER_EVOLVE_API_KEY'))
+        self.assertEqual(A.api_key('https://notopenai.com/v1', environment={'OPENAI_API_KEY': 'openai-key'}), ('', 'PAPER_EVOLVE_API_KEY'))
+        self.assertEqual(A.api_key('https://api.openai.com.evil.example/v1', environment={'OPENAI_API_KEY': 'openai-key'})[0], '')
+        self.assertEqual(A.api_key('https://api.openai.com/v1', environment={'PAPER_EVOLVE_API_KEY': 'generic-key'}), ('generic-key', 'PAPER_EVOLVE_API_KEY'))
+        self.assertEqual(A.api_key('https://api.openai.com/v1', 'MY_KEY', {'OPENAI_API_KEY': 'openai-key'}), ('', 'MY_KEY'))
+        self.prepare('api')
+        with patch.object(W, 'ROOT', self.root), patch.dict(A.os.environ, {}, clear=True), patch.object(A, 'send', side_effect=AssertionError('Network request sent')):
+            with self.assertRaisesRegex(ValueError, 'Set the OPENAI_API_KEY or PAPER_EVOLVE_API_KEY environment variable'):
+                A.run(self.workspace, 'https://api.openai.com/v1', 'fixture', None, .1, .2, 1)
+
     def test_real_local_http_adapter_runs_cli_then_exports_valid_api_contribution(self):
         self.prepare('api')
         captured = []

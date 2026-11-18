@@ -1,6 +1,6 @@
-import { escapeHTML as esc, readableText } from './text-format.js?v=39205891c9e4';
-import { venueName } from './paper-data.js?v=39205891c9e4';
-import { renderMath } from './math.js?v=39205891c9e4';
+import { escapeHTML as esc, readableText } from './text-format.js?v=388bf9ca4d5f';
+import { venueName } from './paper-data.js?v=388bf9ca4d5f';
+import { renderMath } from './math.js?v=388bf9ca4d5f';
 
 export function createEvolutionHome({ container, onPaper, onSearch, onBrowse }) {
   let saved = null,

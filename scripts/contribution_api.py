@@ -14,6 +14,25 @@ import contribution_workspace as W
 from voyage_pipeline import atomic_json
 
 VERSION = 'paper-evolve-contributor-api-v1'
+# The variable each provider's own tools already read, by the domain that owns it. A key is only ever
+# looked up for, and sent to, its own provider: an OpenAI key is never offered to another host.
+PROVIDER_KEYS = {'openai.com': 'OPENAI_API_KEY', 'openrouter.ai': 'OPENROUTER_API_KEY',
+                 'together.xyz': 'TOGETHER_API_KEY', 'together.ai': 'TOGETHER_API_KEY', 'groq.com': 'GROQ_API_KEY',
+                 'deepseek.com': 'DEEPSEEK_API_KEY', 'mistral.ai': 'MISTRAL_API_KEY', 'fireworks.ai': 'FIREWORKS_API_KEY',
+                 'generativelanguage.googleapis.com': 'GEMINI_API_KEY', 'aliyuncs.com': 'DASHSCOPE_API_KEY'}
+ANY_PROVIDER = 'PAPER_EVOLVE_API_KEY'  # for endpoints not listed above
+
+
+def api_key(base, chosen=None, environment=None):
+    """(key, variable names tried). Reads the process environment only, never a project .env file."""
+    environment = os.environ if environment is None else environment
+    host = parse.urlsplit(base).hostname or ''
+    usual = next((name for domain, name in PROVIDER_KEYS.items() if host == domain or host.endswith('.' + domain)), None)
+    names = [chosen] if chosen else [name for name in (usual, ANY_PROVIDER) if name]
+    for name in names:
+        if environment.get(name):
+            return environment[name], name
+    return '', ' or '.join(names)
 
 
 def claim_workspace(handle):
@@ -117,9 +136,9 @@ def run(destination, base, model, key_env, input_rate, output_rate, budget, max_
             or (not local and input_rate + output_rate <= 0)
             or not math.isfinite(budget) or budget <= 0 or not 128 <= max_output <= 16384 or not 1 <= limit <= 1000):
         raise ValueError('Provide a model, current per-million token prices, a positive cumulative budget, 128–16384 output tokens and 1–1000 tasks.')
-    key = os.environ.get(key_env, '')
-    if transport is None and not key:
-        raise ValueError('Set the selected API key environment variable. No key is read from project .env files.')
+    key, variable = api_key(base, key_env)
+    if transport is None and not key and not local:  # a model server on this machine needs no key
+        raise ValueError(f'Set the {variable} environment variable to your provider key, or name another with --api-key-env. No key is read from project .env files.')
     destination = Path(destination)
     with (destination / 'api.lock').open('a+') as lock:
         claim_workspace(lock)
