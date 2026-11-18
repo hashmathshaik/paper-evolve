@@ -11,8 +11,10 @@
 .starter-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:15px}
 .starter-heading h3{font-size:15px;font-weight:500;letter-spacing:-.2px;margin:0}
 .starter-heading>span{font-size:11px;color:var(--muted)}
-.evolution-starters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
-.evolution-starter{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:21px;min-height:230px;border-color:#dce5dd;border-radius:10px;background:white}
+.evolution-starters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media(max-width:1000px){.evolution-starters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.evolution-starters{grid-template-columns:minmax(0,1fr)}}
+.evolution-starter{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:21px;min-height:190px;border-color:#dce5dd;border-radius:10px;background:white}
 .evolution-starter:hover{background:#f5f9f4;border-color:#a4bbae}
 .starter-meta{font-size:10px;color:var(--muted)}
 .evolution-starter h4{font-size:20px;line-height:1.25;letter-spacing:-.45px;font-weight:500;margin:11px 0 10px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}

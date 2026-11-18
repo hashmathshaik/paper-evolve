@@ -1,17 +1,36 @@
-import {loadCorpus,readPaper,venueName} from './paper-data.js?v=3b080bf0551b';
-import {escapeHTML as esc,readableText} from './text-format.js?v=3b080bf0551b';
-import {renderMath} from './math.js?v=3b080bf0551b';
+import {loadCorpus,readPaper,venueName} from './paper-data.js?v=9cd0ddc0cdfa';
+import {escapeHTML as esc,readableText} from './text-format.js?v=9cd0ddc0cdfa';
+import {renderMath} from './math.js?v=9cd0ddc0cdfa';
 const groupLabel=name=>name==='Unclustered'?'Uncategorized research':name;
-const palette=['#547b62','#6b8396','#9a8461','#89799a'];
-const groupColor=name=>{let hash=2166136261;for(const c of name)hash=Math.imul(hash^c.codePointAt(0),16777619);return palette[(hash>>>16)%palette.length]};
+import {createLandscapeTimeline,areaColor,AREA_ORDER,HUES,NEUTRAL} from './landscape-timeline.js?v=9cd0ddc0cdfa';
+const scattered=new Set(['Unclustered','Specialized / Niche Topics']); // catch-all groups, not real topics
 export function createLibrary({selectPaper,openEvolution}){
- let records=null,view='map',area='',topic='',page=0,selectedURL='',revision=0,openRevision=0;
+ let records=null,timeline=null,partial=null,view='map',area='',topic='',page=0,selectedURL='',revision=0,openRevision=0;
+ const bandCache=new Map();
  const $=id=>document.getElementById(id),pageSize=20;
- function filtered(){
+ function filtered(skip=''){
   const words=$('library-search').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  return records.filter(p=>(!$('library-year').value||p.y===+$('library-year').value)&&
-   (!$('library-venue').value||p.v===$('library-venue').value)&&(!area||p.mega===area)&&(!topic||p.topic===topic)&&
+  return records.filter(p=>(skip.includes('year')||!$('library-year').value||p.y===+$('library-year').value)&&
+   (!$('library-venue').value||p.v===$('library-venue').value)&&(skip.includes('area')||((!area||p.mega===area)&&(!topic||p.topic===topic)))&&
    words.every(word=>`${p.t} ${p.topic} ${p.leaf} ${p.mega}`.toLowerCase().includes(word)));
+ }
+ function openGroup(name){if(area)topic=name;else area=name;page=0;render();document.querySelector('main').scrollTop=0}
+ // Which band each group is drawn in. Fixed by overall size, so a filter never repaints a group.
+ function bands(){
+  if(!bandCache.has(area)){
+   const of=new Map(),order=[];
+   if(!area)for(const name of [...AREA_ORDER,...new Set(records.map(p=>p.mega))])if(!of.has(name)){of.set(name,{name,color:areaColor(name)});order.push(of.get(name))}
+   if(area){
+    const size=new Map();for(const p of records)if(p.mega===area)size.set(p.topic,(size.get(p.topic)||0)+1);
+    const named=[...size].filter(([name])=>!scattered.has(name)).sort((a,b)=>b[1]-a[1]).map(([name])=>name);
+    // Past eight hues more colours stop being readable, so smaller topics share one grey band and catch-alls another.
+    const other={name:'Other topics',color:'#888780',folded:true},loose={name:named.length?'Niche and uncategorized':area,color:NEUTRAL,folded:true};
+    for(const name of size.keys()){const i=named.indexOf(name);of.set(name,i<0?loose:i<HUES.length?{name,color:HUES[i]}:other)}
+    order.push(...named.slice(0,HUES.length).map(name=>of.get(name)),other,loose);
+   }
+   bandCache.set(area,{of,order});
+  }
+  return bandCache.get(area);
  }
  function clearSearch(){ $('search').value='';$('search').dispatchEvent(new Event('input')) }
  function changePage(next){page=next;render();document.querySelector('main').scrollTop=0}
@@ -37,11 +56,18 @@ export function createLibrary({selectPaper,openEvolution}){
   $('all-areas').onclick=()=>{area='';topic='';page=0;for(const id of ['library-search','library-year','library-venue'])$(id).value='';clearSearch();render()};
   if(area)$('current-area').onclick=()=>{topic='';page=0;render()};
   if(groupView){
-   $('library-content').innerHTML=`<div class="landscape-grid">${[...groups].sort((a,b)=>b[1].length-a[1].length).map(([name,items])=>{
-    const topicCount=new Set(items.map(p=>p.topic)).size;
-    return `<button class="area-card" data-group="${esc(name)}" style="--area-color:${groupColor(name)}"><span class="area-count">${items.length.toLocaleString()} ${items.length===1?'paper':'papers'}${!area?' · '+topicCount+' '+(topicCount===1?'topic':'topics'):''}</span><h3>${esc(groupLabel(name))}</h3><span class="area-action">${area?'View papers':'View topics'} <span aria-hidden="true">→</span></span></button>`;
-   }).join('')}</div>`;
-   $('library-content').querySelectorAll('[data-group]').forEach(button=>button.onclick=()=>{if(area)topic=button.dataset.group;else area=button.dataset.group;page=0;render();document.querySelector('main').scrollTop=0});
+   // The timeline needs every year, so it ignores the Year filter and marks the chosen year instead.
+   const base=filtered('year area'),years=[...new Set(base.map(p=>p.y))].sort((a,b)=>a-b),column=new Map(years.map((y,i)=>[y,i])),totals=years.map(()=>0),counts=new Map(),{of,order}=bands();
+   for(const p of base){
+    const i=column.get(p.y);totals[i]++;if(area&&p.mega!==area)continue;
+    const name=of.get(p[area?'topic':'mega']).name;if(!counts.has(name))counts.set(name,years.map(()=>0));counts.get(name)[i]++;
+   }
+   if(!timeline)timeline=createLandscapeTimeline({onGroup:openGroup});
+   timeline.update({years,totals,selectedYear:+$('library-year').value,partial:partial&&years[years.length-1]===partial.year?partial:null,series:order.filter(b=>counts.has(b.name)).map(b=>({...b,label:groupLabel(b.name),counts:counts.get(b.name)}))});
+   const chips=document.createElement('div');chips.className='area-chips';
+   chips.innerHTML=`<p>${area?'Topics in this area · select one to list its papers':'Research areas · select one to see its topics'}</p>${[...groups].sort((a,b)=>b[1].length-a[1].length).map(([name,items])=>`<button class="area-chip" data-group="${esc(name)}" data-band="${esc(of.get(name).name)}" style="--area-color:${of.get(name).color}"><i></i><span>${esc(groupLabel(name))}</span><b>${items.length.toLocaleString()}</b></button>`).join('')}`;
+   $('library-content').replaceChildren(...(years.length>1?[timeline.element]:[]),chips);
+   chips.querySelectorAll('[data-group]').forEach(button=>{button.onclick=()=>openGroup(button.dataset.group);button.onpointerenter=button.onfocus=()=>timeline.highlight(button.dataset.band);button.onpointerleave=button.onblur=()=>timeline.highlight('')});
    $('library-pagination').innerHTML='';$('library-pagination-top').innerHTML='';
   }else{
    const rows=all.slice(page*pageSize,(page+1)*pageSize);
@@ -70,7 +96,10 @@ export function createLibrary({selectPaper,openEvolution}){
   const opening=++openRevision;view=v;
   if(!records){
    $('library-content').innerHTML='<div class="empty" role="status">Loading the research collection…</div>';
-   try{const loaded=await loadCorpus();if(!records){records=loaded;for(const y of [...new Set(records.map(p=>p.y))].sort((a,b)=>b-a))$('library-year').add(new Option(y,y));for(const venue of [...new Set(records.map(p=>p.v))].sort())$('library-venue').add(new Option(venueName(venue),venue))}}
+   try{const loaded=await loadCorpus();if(!records){records=loaded;for(const y of [...new Set(records.map(p=>p.y))].sort((a,b)=>b-a))$('library-year').add(new Option(y,y));for(const venue of [...new Set(records.map(p=>p.v))].sort())$('library-venue').add(new Option(venueName(venue),venue));
+    // The newest year is partial while some venues have not published yet.
+    const venuesIn=y=>[...new Set(records.filter(p=>p.y===y).map(p=>p.v))].sort(),last=Math.max(...records.map(p=>p.y));
+    if(venuesIn(last).length<venuesIn(last-1).length)partial={year:last,venues:venuesIn(last).map(venueName)}}}
    catch{if(opening===openRevision){$('library-count').textContent='Collection unavailable';$('library-content').innerHTML='<div class="empty"><h2>Collection unavailable</h2><p>The local collection could not be loaded.</p><button id="retry-library">Retry collection</button></div>';$('retry-library').onclick=()=>open(v,selection)}return}
   }
   if(opening!==openRevision)return;

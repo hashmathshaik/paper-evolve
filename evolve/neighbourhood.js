@@ -1,4 +1,4 @@
-import {loadCorpus} from './paper-data.js?v=3b080bf0551b';
+import {loadCorpus} from './paper-data.js?v=9cd0ddc0cdfa';
 /** Static Model predictions and Voyage similarity. References alone never imply evolution. */
 const VENUE={neurips:'NeurIPS',icml:'ICML',iclr:'ICLR',acl:'ACL',emnlp:'EMNLP',naacl:'NAACL'};
 const SHOW=.85;let corpus=null,byUrl=null,meta=null,community=null;const shards=new Map();

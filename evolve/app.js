@@ -1,15 +1,15 @@
-import {createLatestTask} from './ui-task.js?v=3b080bf0551b';
-import {readableText} from './text-format.js?v=3b080bf0551b';
-import {renderMath} from './math.js?v=3b080bf0551b';
-import {createViewport} from './viewport.js?v=3b080bf0551b';
-import {routeConnection,wireMovableCards} from './graph-layout.js?v=3b080bf0551b';
-import {createEvolutionHome} from './evolution-home.js?v=3b080bf0551b';
-import {evolutionHash,parseRoute,paperURL} from './evolution-route.js?v=3b080bf0551b';
-import {buildNeighbourhood} from './neighbourhood.js?v=3b080bf0551b';
-import {createDiscoverySearch} from './discovery-search.js?v=3b080bf0551b';
-import {createPaperReader} from './paper-reader.js?v=3b080bf0551b';
-import {CARD,STAGE} from './graph-layout.js?v=3b080bf0551b';
-import {createWorkspace} from './workspace.js?v=3b080bf0551b';
+import {createLatestTask} from './ui-task.js?v=9cd0ddc0cdfa';
+import {readableText} from './text-format.js?v=9cd0ddc0cdfa';
+import {renderMath} from './math.js?v=9cd0ddc0cdfa';
+import {createViewport} from './viewport.js?v=9cd0ddc0cdfa';
+import {routeConnections,wireMovableCards} from './graph-layout.js?v=9cd0ddc0cdfa';
+import {createEvolutionHome} from './evolution-home.js?v=9cd0ddc0cdfa';
+import {evolutionHash,parseRoute,paperURL} from './evolution-route.js?v=9cd0ddc0cdfa';
+import {buildNeighbourhood} from './neighbourhood.js?v=9cd0ddc0cdfa';
+import {createDiscoverySearch} from './discovery-search.js?v=9cd0ddc0cdfa';
+import {createPaperReader} from './paper-reader.js?v=9cd0ddc0cdfa';
+import {CARD,STAGE} from './graph-layout.js?v=9cd0ddc0cdfa';
+import {createWorkspace} from './workspace.js?v=9cd0ddc0cdfa';
 const workspace=createWorkspace();
 function engage(){document.body.classList.add('engaged');sessionStorage.setItem('paper-evolve-engaged','1')}
 if(sessionStorage.getItem('paper-evolve-engaged'))document.body.classList.add('engaged');
@@ -56,9 +56,9 @@ function render(){
  const {nodes,edges}=filtered();if(nodes.length&&!nodes.some(p=>p.id===selected)){selected=nodes[0].id;edgeSelected=null}const hi=highlighted();
  const status=$('graph-status');status.hidden=mode!=='path';
  if(mode==='path')status.textContent=pathStart===selected?'Choose a later paper to trace a path from '+paper(pathStart).name+'.':hi?.has(pathStart)&&hi?.has(selected)?'Tracing '+paper(pathStart).name+' → '+paper(selected).name:'No evolution path connects these papers. Similarity links do not form an evolution path.';
-$('counts').textContent=`${nodes.length} ${nodes.length===1?'paper':'papers'} · ${edges.length} research ${edges.length===1?'connection':'connections'}${similarity?' + similarity links':''} · ${nodes.length?[...new Set(nodes.map(p=>p.year))].sort((a,b)=>a-b).filter((y,i,a)=>i===0||i===a.length-1).join('–'):data.span||''}${data.classificationPending?' · Relationships pending; similarity available':data.computed&&!edges.length?($('evidence').value==='source_supported'?' · No passage-supported predictions available':' · No supported evolution types in '+data.classificationChecked+' completed comparisons'):''}`;const visible=new Set(nodes.map(p=>p.id));let html=(data.columns||[['2023',24],['2024 · early',344],['2024 · later',664],['2025',984]]).map(([year,x])=>`<div class="year" style="left:${x}px">${year}</div>`).join('');let lines=edges.map(e=>({...e,a:owner(e.source),b:owner(e.target)}));if(similarity){lines.push(...data.similarities.filter(e=>visible.has(e.a)&&visible.has(e.b)&&!edges.some(r=>owner(r.source)===e.a&&owner(r.target)===e.b)).map(e=>({...e,type:'Similar',status:'inferred'})))}const routes=lines.map(e=>({...e,...routeConnection(pos(paper(e.a)),pos(paper(e.b)),nodes.map(pos),{width,height})}));
-html+=`<svg class="edges" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none"><defs>`+Object.entries(colors).map(([k,v])=>`<marker id="arrow${k}" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M2,1 L8,5 L2,9" fill="none" stroke="${v}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>`).join('')+'</defs>'+routes.map(e=>`<g class="connection-line ${e.a===selected||e.b===selected?'nearby':'distant'}" data-line="${e.id}" opacity="${hi&&(!hi.has(e.a)||!hi.has(e.b))?.12:1}"><path class="edge-halo" d="${e.d}"/><path class="edge-path" d="${e.d}" stroke="${colors[e.type]}" ${e.status!=='explicit'?'stroke-dasharray="7 5"':''} ${e.type!=='Similar'?`marker-end="url(#arrow${e.type})"`:''}/><path class="edge-hit" d="${e.d}" data-edge="${e.id}"/></g>`).join('')+'</svg>';
-html+=routes.map(e=>`<button class="edge-chip ${e.a===selected||e.b===selected?'nearby':'distant'}" style="left:${e.label.x}px;top:${e.label.y}px;--edge-color:${colors[e.type]}" data-edge="${e.id}" aria-label="Inspect ${e.type}: ${esc(paper(e.a).title)} to ${esc(paper(e.b).title)}">${esc(e.types?Object.keys(e.types).join(' · '):e.type)}</button>`).join('');
+$('counts').textContent=`${nodes.length} ${nodes.length===1?'paper':'papers'} · ${edges.length} research ${edges.length===1?'connection':'connections'}${similarity?' + similarity links':''} · ${nodes.length?[...new Set(nodes.map(p=>p.year))].sort((a,b)=>a-b).filter((y,i,a)=>i===0||i===a.length-1).join('–'):data.span||''}${data.classificationPending?' · Relationships pending; similarity available':data.computed&&!edges.length?($('evidence').value==='source_supported'?' · No passage-supported predictions available':' · No supported evolution types in '+data.classificationChecked+' completed comparisons'):''}`;const visible=new Set(nodes.map(p=>p.id));let html=(data.columns||[['2023',24],['2024 · early',344],['2024 · later',664],['2025',984]]).map(([year,x])=>`<div class="year" style="left:${x}px">${year}</div>`).join('');let lines=edges.map(e=>({...e,a:owner(e.source),b:owner(e.target)}));if(similarity){lines.push(...data.similarities.filter(e=>visible.has(e.a)&&visible.has(e.b)&&!edges.some(r=>owner(r.source)===e.a&&owner(r.target)===e.b)).map(e=>({...e,type:'Similar',status:'inferred'})))}const chip=e=>e.types?Object.keys(e.types).join(' · '):e.type,routed=routeConnections(lines.map(e=>({a:pos(paper(e.a)),b:pos(paper(e.b)),text:chip(e)})),nodes.map(pos),{width,height}),routes=lines.map((e,i)=>({...e,...routed[i]}));
+html+=`<svg class="edges" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none"><defs>`+Object.entries(colors).map(([k,v])=>`<marker id="arrow${k}" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M2,1 L8,5 L2,9" fill="none" stroke="${v}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>`).join('')+'</defs>'+routes.map(e=>`<g class="connection-line ${e.a===selected||e.b===selected?'nearby':'distant'}" data-line="${e.id}" opacity="${hi&&(!hi.has(e.a)||!hi.has(e.b))?.12:1}"><path class="edge-halo" d="${e.d}"/><path class="edge-path" d="${e.d}" stroke="${colors[e.type]}" ${e.status==='explicit'||e.status==='source_supported'?'':'stroke-dasharray="7 5"'} ${e.type!=='Similar'?`marker-end="url(#arrow${e.type})"`:''}/><path class="edge-hit" d="${e.d}" data-edge="${e.id}"/></g>`).join('')+'</svg>';
+html+=routes.map(e=>`<button class="edge-chip ${e.a===selected||e.b===selected?'nearby':'distant'}" style="left:${e.label.x}px;top:${e.label.y}px;--edge-color:${colors[e.type]}" data-edge="${e.id}" aria-label="Inspect ${e.type}: ${esc(paper(e.a).title)} to ${esc(paper(e.b).title)}">${esc(chip(e))}</button>`).join('');
 html+=nodes.map(p=>{const {x,y}=pos(p);return `<button class="paper ${selected===p.id?'selected':''} ${hi&&!hi.has(p.id)?'dim':''}" style="left:${x}px;top:${y}px" data-paper="${p.id}" aria-label="${esc(readableText(p.title))}. Select to read abstract; drag to move." title="${esc(readableText(p.title))} · Select to read · Drag to move"><span class="drag-grip" aria-hidden="true">⠿</span><small>${p.year} · ${esc(p.venue||p.authors)}</small><strong>${esc(readableText(p.title))}</strong><p>${esc(contribution(p.id)[0].label)}</p><span class="branch"><span>${esc(p.branch)}</span><span>Read →</span></span></button>`}).join('');if(nodes.length&&!edges.length&&$('relation').value!=='All relationships')html+=`<div class="relationship-empty">No reviewed ${esc($('relation').value.toLowerCase())} connections in this slice yet. Similarity links are a separate discovery layer.</div>`;if(!nodes.length)html='<div class="empty">No papers match these filters.<br><button data-reset>Reset filters</button></div>';$('graph').innerHTML=html;document.querySelectorAll('#graph .paper strong').forEach(renderMath);document.querySelectorAll('[data-paper]').forEach(b=>{b.onpointerenter=()=>spotlight(b.dataset.paper);b.onpointerleave=()=>spotlight(selected);b.onclick=()=>{selectGraphPaper(b.dataset.paper)}});document.querySelectorAll('[data-edge]').forEach(b=>{const open=()=>{edgeSelected=b.dataset.edge;details();workspace.openNotes()};b.onclick=open;b.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')open()}});document.querySelector('[data-reset]')?.addEventListener('click',reset);spotlight(selected)}
 function details(){
  if(!data||evolutionLanding)return;
@@ -87,7 +87,7 @@ function switchView(v,{writeHistory=true,cancelTask=true}={}){
  if(v!=='evolution')openLibrary(v);else{render();details();if(!evolutionLanding&&!unmappedContext)requestAnimationFrame(()=>canvasViewport?.frame())}
 }
 document.querySelectorAll('[data-view]').forEach(button=>button.onclick=()=>switchView(button.dataset.view));
-import {createLibrary} from './library.js?v=3b080bf0551b';
+import {createLibrary} from './library.js?v=9cd0ddc0cdfa';
 const openLibrary=createLibrary({openEvolution,selectPaper(record){
  evolutionTask.cancel();reader.showPaper(record);workspace.openNotes();
 }});
@@ -134,7 +134,7 @@ async function openEvolution(context=null,{historyMode='push'}={}){
   activeEvolutionRecord={...activeEvolutionRecord,t:focus.title};unmappedContext=null;
   setData(ego);selected=ego.focus;reset();details();
  }else{unmappedContext={...activeEvolutionRecord,loadFailed};render();details()}
- workspace.closeMobileExplorer();requestAnimationFrame(()=>{if(!unmappedContext)canvasViewport.frame()});return true;
+ workspace.closeMobileExplorer();requestAnimationFrame(()=>{if(unmappedContext)return;canvasViewport.frame();document.querySelector('#graph .paper.selected')?.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'})});return true;
 }
 $('change-paper').onclick=()=>openEvolution();
 

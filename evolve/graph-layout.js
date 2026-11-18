@@ -1,25 +1,72 @@
 // Presentation-only layout. Moving cards never changes chronology or research records.
 export const CARD={width:244,height:228};
 export const STAGE={width:1320,height:944};
-const step=10;
-export function routeConnection(a,b,obstacles,bounds=STAGE){
- const start={x:a.x+CARD.width,y:a.y+CARD.height/2},end={x:b.x,y:b.y+CARD.height/2};
- const snap=p=>({x:Math.round(p.x/step),y:Math.round(p.y/step)});
- const s=snap({x:start.x+22,y:start.y}),t=snap({x:end.x-22,y:end.y});
- const key=p=>p.x+','+p.y;
- const blocked=(x,y)=>obstacles.some(p=>x*step>p.x-10&&x*step<p.x+CARD.width+10&&y*step>p.y-10&&y*step<p.y+CARD.height+10);
- const open=[{...s,g:0,f:0}],cost=new Map([[key(s),0]]),previous=new Map();let found=false,visits=0;
- while(open.length&&visits++<12000){let best=0;for(let i=1;i<open.length;i++)if(open[i].f<open[best].f)best=i;const cur=open.splice(best,1)[0];if(cur.g!==cost.get(key(cur)))continue;if(key(cur)===key(t)){found=true;break}
-  for(const [dx,dy] of [[1,0],[0,1],[-1,0],[0,-1]]){const n={x:cur.x+dx,y:cur.y+dy};if(n.x<1||n.x>(bounds.width-10)/step||n.y<5||n.y>(bounds.height-20)/step||blocked(n.x,n.y))continue;const g=cur.g+1;if(g>=(cost.get(key(n))??Infinity))continue;cost.set(key(n),g);previous.set(key(n),cur);open.push({...n,g,f:g+Math.abs(n.x-t.x)+Math.abs(n.y-t.y)})}
+const step=10,BEND=5,SHARED=6,BESIDE=1,CROSS=.5,FAN=7,DIRS=[[1,0],[0,1],[-1,0],[0,-1]];
+/** Orthogonal A* (state = cell + heading) on a 10px grid, routed shortest connection first.
+ A cell that already carries a line in the same direction costs SHARED extra and a cell next to
+ one costs BESIDE, so connections spread into parallel tracks instead of stacking on one corridor.
+ Labels go on the longest segment that is clear of cards and of labels placed earlier. */
+export function routeConnections(links,obstacles,bounds=STAGE){
+ const W=Math.floor((bounds.width-10)/step)+1,H=Math.floor((bounds.height-20)/step)+1,MINX=1,MINY=5;
+ const blocked=new Uint8Array(W*H),used=new Uint8Array(W*H); // used bit 1: horizontal line, bit 2: vertical line
+ for(const p of obstacles)for(let y=Math.max(0,Math.floor((p.y-10)/step)+1);y<H&&y*step<p.y+CARD.height+10;y++)for(let x=Math.max(0,Math.floor((p.x-10)/step)+1);x<W&&x*step<p.x+CARD.width+10;x++)blocked[y*W+x]=1;
+ // Leave from the side that faces the other card: right→left by default, left→right when the target
+ // sits in an earlier column, bottom→top (or top→bottom) when both share a column.
+ const ends=links.map(({a,b})=>{
+  const dx=b.x-a.x,dy=b.y-a.y;
+  if(Math.abs(dx)<CARD.width&&Math.abs(dy)>=CARD.height){const v=dy>0?1:-1;return {start:{x:a.x+CARD.width/2,y:v>0?a.y+CARD.height:a.y},end:{x:b.x+CARD.width/2,y:v>0?b.y:b.y+CARD.height},ux:0,uy:v}}
+  const h=dx+CARD.width<=0?-1:1;return {start:{x:h>0?a.x+CARD.width:a.x,y:a.y+CARD.height/2},end:{x:h>0?b.x:b.x+CARD.width,y:b.y+CARD.height/2},ux:h,uy:0};
+ });
+ const reach=({start,end})=>Math.abs(end.x-start.x)+Math.abs(end.y-start.y);
+ const order=links.map((_,i)=>i).sort((i,j)=>reach(ends[i])-reach(ends[j])),out=new Array(links.length),placed=[];
+ const g=new Float32Array(W*H*4),previous=new Int32Array(W*H*4);
+ for(const index of order){
+  const {start,end,ux,uy}=ends[index],sx=Math.round((start.x+22*ux)/step),sy=Math.round((start.y+22*uy)/step),tx=Math.round((end.x-22*ux)/step),ty=Math.round((end.y-22*uy)/step);
+  const inside=(x,y)=>x>=MINX&&x<W&&y>=MINY&&y<H&&!blocked[y*W+x];
+  let goal=-1;
+  if(inside(sx,sy)&&inside(tx,ty)){
+   g.fill(Infinity);previous.fill(-1);
+   const heap=[],push=(f,state)=>{let i=heap.length;heap.push([f,state]);while(i){const up=(i-1)>>1;if(heap[up][0]<=heap[i][0])break;[heap[up],heap[i]]=[heap[i],heap[up]];i=up}};
+   const pop=()=>{const top=heap[0],last=heap.pop();if(heap.length){heap[0]=last;let i=0;for(;;){let m=i;const l=2*i+1,r=l+1;if(l<heap.length&&heap[l][0]<heap[m][0])m=l;if(r<heap.length&&heap[r][0]<heap[m][0])m=r;if(m===i)break;[heap[m],heap[i]]=[heap[i],heap[m]];i=m}}return top};
+   const first=(sy*W+sx)*4+DIRS.findIndex(([x,y])=>x===ux&&y===uy);g[first]=0;push(0,first);let visits=0;
+   while(heap.length&&visits++<60000){
+    const [f,state]=pop(),dir=state&3,cell=state>>2,x=cell%W,y=(cell-x)/W;
+    if(f-Math.abs(x-tx)-Math.abs(y-ty)>g[state]+1e-6)continue;
+    if(x===tx&&y===ty){goal=state;break}
+    for(let d=0;d<4;d++){
+     if(d===(dir+2)%4)continue;const nx=x+DIRS[d][0],ny=y+DIRS[d][1];if(!inside(nx,ny))continue;
+     const n=ny*W+nx,along=d%2?2:1,u=used[n];let cost=1+(d===dir?0:BEND);
+     // Fanning out of one card (or into one) within the first gutter is free; long shared runs are not.
+     const fan=Math.abs(nx-sx)+Math.abs(ny-sy)<=FAN||Math.abs(nx-tx)+Math.abs(ny-ty)<=FAN;
+     if(u&along){if(!fan)cost+=SHARED}else{if(u)cost+=CROSS;const side=d%2?1:W;if(!fan&&(used[n-side]|used[n+side])&along)cost+=BESIDE}
+     const next=n*4+d,total=g[state]+cost;if(total>=g[next])continue;
+     g[next]=total;previous[next]=state;push(total+Math.abs(nx-tx)+Math.abs(ny-ty),next);
+    }
+   }
+  }
+  let points;
+  if(goal>=0){
+   const cells=[];for(let state=goal;state>=0;state=previous[state])cells.push(state>>2);cells.reverse();
+   for(let i=1;i<cells.length;i++){const bit=cells[i]-cells[i-1]===1||cells[i-1]-cells[i]===1?1:2;used[cells[i]]|=bit;used[cells[i-1]]|=bit}
+   const grid=cells.map(c=>({x:(c%W)*step,y:Math.floor(c/W)*step})),axis=uy?'x':'y',from=grid[0][axis],to=grid.at(-1)[axis];
+   if(grid.every(p=>p[axis]===from))points=[start,end];
+   else{
+    // Cards sit off-grid after dragging: keep the first and last runs in line with their card.
+    let i=0,j=grid.length-1;while(i<grid.length&&grid[i][axis]===from)i++;while(j>=i&&grid[j][axis]===to)j--;
+    grid.forEach((p,k)=>{if(k<i)p[axis]=start[axis];else if(k>j)p[axis]=end[axis]});
+    points=[start,...grid,end];
+   }
+  }else points=[start,{x:start.x+20,y:start.y},{x:start.x+20,y:bounds.height-25},{x:end.x-20,y:bounds.height-25},{x:end.x-20,y:end.y},end];
+  // Retain bends only.
+  points=points.filter((p,i,all)=>i===0||i===all.length-1||!((all[i-1].x===p.x&&p.x===all[i+1].x)||(all[i-1].y===p.y&&p.y===all[i+1].y)));
+  const segments=points.slice(1).map((q,i)=>({p:points[i],q,length:Math.hypot(q.x-points[i].x,q.y-points[i].y)})).sort((m,n)=>n.length-m.length);
+  const w=(links[index].text||'').length*5.8+20,h=22,box=c=>({l:c.x-w/2,r:c.x+w/2,t:c.y-h/2,b:c.y+h/2});
+  const clear=c=>{const k=box(c);return !placed.some(o=>k.l<o.r+4&&k.r>o.l-4&&k.t<o.b+4&&k.b>o.t-4)&&!obstacles.some(o=>k.l<o.x+CARD.width&&k.r>o.x&&k.t<o.y+CARD.height&&k.b>o.y)};
+  const options=segments.flatMap(({p,q})=>[.5,.32,.68,.18,.82].map(t=>({x:p.x+(q.x-p.x)*t,y:p.y+(q.y-p.y)*t})));
+  const label=options.find(clear)||options[0];placed.push(box(label));
+  out[index]={d:roundedPath(points),label};
  }
- let points;
- if(found){let p=t;points=[end,{x:t.x*step,y:t.y*step}];while(key(p)!==key(s)){p=previous.get(key(p));points.push({x:p.x*step,y:p.y*step})}points.push(start);points.reverse()}
- else points=[start,{x:start.x+20,y:start.y},{x:start.x+20,y:bounds.height-25},{x:end.x-20,y:bounds.height-25},{x:end.x-20,y:end.y},end];
- // Retain bends only, then place the label on the longest visible segment.
- points=points.filter((p,i,all)=>i===0||i===all.length-1||!((all[i-1].x===p.x&&p.x===all[i+1].x)||(all[i-1].y===p.y&&p.y===all[i+1].y)));
- let segment=0,length=0;for(let i=0;i<points.length-1;i++){const n=Math.hypot(points[i+1].x-points[i].x,points[i+1].y-points[i].y);if(n>length){length=n;segment=i}}
- const p=points[segment],q=points[segment+1];
- return {d:roundedPath(points),label:{x:(p.x+q.x)/2,y:(p.y+q.y)/2}};
+ return out;
 }
 export function wireMovableCards({graph,positions,position,render,onSave}){
  let drag=null,frame=0,suppressUntil=0;

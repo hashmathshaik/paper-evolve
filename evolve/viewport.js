@@ -14,8 +14,18 @@ export function createViewport({viewport,surface,graph,width=1320,height=944}){
  }
  function arrange(reset=true){
   if(!viewport.clientWidth||!viewport.clientHeight)return;
-  const next=layoutMode==='overview'?Math.min((viewport.clientWidth-30)/width,(viewport.clientHeight-55)/height,1):Math.max(.85,Math.min((viewport.clientWidth-30)/width,1));
-  zoom(next);if(reset)viewport.scrollTo({left:0,top:0});
+  if(layoutMode==='overview'){
+   // Fit the cards, not the mostly empty stage around them.
+   const b=content();zoom(Math.min((viewport.clientWidth-30)/b.w,(viewport.clientHeight-30)/b.h,1));
+   if(reset)viewport.scrollTo({left:b.x*scale+Math.max(0,(viewport.clientWidth-width*scale)/2)-Math.max(15,(viewport.clientWidth-b.w*scale)/2),top:b.y*scale-Math.max(15,(viewport.clientHeight-b.h*scale)/2)});
+   return;
+  }
+  zoom(Math.max(.85,Math.min((viewport.clientWidth-30)/width,1)));if(reset)viewport.scrollTo({left:0,top:0});
+ }
+ function content(){
+  const cards=[...graph.querySelectorAll('.paper')];if(!cards.length)return {x:0,y:0,w:width,h:height};
+  const xs=cards.map(c=>c.offsetLeft),ys=cards.map(c=>c.offsetTop),x=Math.min(...xs)-24,y=Math.min(...ys)-48;
+  return {x,y,w:Math.max(...xs)+cards[0].offsetWidth+24-x,h:Math.max(...ys)+cards[0].offsetHeight+24-y};
  }
  function fit(){layoutMode='overview';arrange()}
  function frame(){layoutMode='readable';arrange()}

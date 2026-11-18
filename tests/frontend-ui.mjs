@@ -3,6 +3,7 @@ import {createLatestTask} from '../evolve/ui-task.js';
 import {readableText,textHTML,paragraphsHTML} from '../evolve/text-format.js';
 import {evolutionHash,parseRoute} from '../evolve/evolution-route.js';
 import {repositoryInfo} from '../evolve/contribution-repository.js';
+import {routeConnections,CARD} from '../evolve/graph-layout.js';
 function equal(actual,expected){if(actual!==expected)throw new Error(`Expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`)}
 function check(value,label){if(!value)throw new Error(label)}
 equal(readableText('An \\textit{a priori} model with 10\\% gain and 4\\times speedup.'),'An a priori model with 10% gain and 4× speedup.');
@@ -56,3 +57,19 @@ equal(repositoryInfo({repository:'https://untrusted.example/key'},'http://localh
 equal(repositoryInfo({},'https://researcher.github.io/%2e%2e/contribute.html'),null);
 equal(repositoryInfo(null,'http://localhost/'),null);
 print('Contribution repository links respect explicit identity and Pages project paths.');
+
+// One focus paper fanning out to six later papers: the layout that used to stack every line on one corridor.
+const at=(col,lane)=>({x:24+col*320,y:86+lane*278}),focus=at(1,0),later=[at(2,0),at(2,1),at(3,0),at(3,1),at(4,0),at(5,0)];
+const cards=[at(0,0),focus,at(1,1),at(2,2),...later],routes=routeConnections(later.map(b=>({a:focus,b,text:'Transfers'})),cards,{width:1960,height:944});
+const corners=d=>[...d.matchAll(/(-?[\d.]+),(-?[\d.]+)/g)].map(m=>({x:+m[1],y:+m[2]}));
+const runs=new Map();
+routes.forEach((route,i)=>{
+ const points=corners(route.d),b=later[i];
+ equal(points[0].x,focus.x+CARD.width);equal(points[0].y,focus.y+CARD.height/2);
+ equal(points.at(-1).x,b.x);equal(points.at(-1).y,b.y+CARD.height/2);
+ for(const p of points)check(!cards.some(c=>p.x>c.x&&p.x<c.x+CARD.width&&p.y>c.y&&p.y<c.y+CARD.height),'A connection must route around cards');
+ // Horizontal runs longer than one gutter must not share a track with another connection.
+ for(let k=1;k<points.length;k++){const p=points[k-1],q=points[k];if(p.y===q.y&&Math.abs(q.x-p.x)>120){for(const [y,x0,x1] of runs.get(p.y)||[])check(Math.min(p.x,q.x)>=x1||Math.max(p.x,q.x)<=x0,'Long runs keep separate tracks');runs.set(p.y,[...(runs.get(p.y)||[]),[p.y,Math.min(p.x,q.x),Math.max(p.x,q.x)]])}}
+ routes.slice(0,i).forEach(other=>check(Math.abs(other.label.x-route.label.x)>=60||Math.abs(other.label.y-route.label.y)>=22,'Connection labels must not overlap'));
+});
+print('Connections route around cards on separate tracks with distinct labels.');
