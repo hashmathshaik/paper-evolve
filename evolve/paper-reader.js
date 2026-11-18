@@ -1,6 +1,6 @@
-import {paragraphsHTML,readableText} from './text-format.js?v=9cd0ddc0cdfa';
-import {renderMath} from './math.js?v=9cd0ddc0cdfa';
-import {paperRecord,readPaper,venueName} from './paper-data.js?v=9cd0ddc0cdfa';
+import {paragraphsHTML,readableText} from './text-format.js?v=f7986b19491c';
+import {renderMath} from './math.js?v=f7986b19491c';
+import {paperRecord,readPaper,venueName} from './paper-data.js?v=f7986b19491c';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=value=>/^https?:\/\//i.test(value||'')?value:'';
 const metadata=p=>[p.year,venueName(p.venue)].filter(Boolean).map(esc).join(' <span aria-hidden="true">·</span> ');

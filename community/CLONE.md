@@ -36,6 +36,55 @@ Open the cloned repository in Claude Code or Codex and give it this prompt:
 For API inference, start with `--method api --tool "Your API model"` and follow
 [API.md](API.md). The same clone, task packs and submission workflow apply.
 
+## One command with Claude Code or Codex
+
+If the `claude` or `codex` command line tool is installed and signed in, `run`
+does the steps above for you: it prepares the workspace, has the agent review
+each pair, validates the result and exports the submission.
+
+```sh
+python paper_evolve.py run --pack PACK_ID --name "Your name" --agent claude
+python paper_evolve.py run --count 3 --topic "reinforcement" --name "Your name" --agent codex
+```
+
+`--pack` can be repeated; `--count N` takes the next N packs that still have open
+tasks. Rerun the same command to resume after an interruption. The agent uses
+your own account; no API key is read. It works inside the ignored workspace and
+may only edit files there and run this tool's `fetch`, `cite` and `check`
+commands (Claude Code by an allow-list, Codex by its workspace sandbox with
+network access for paper downloads). `run` never commits, pushes or opens a
+pull request: it prints the Git commands for you to run. Add `--model NAME` to
+choose the agent's model, or `--agent-command 'tool {prompt}'` for another
+agent CLI.
+
+## Choose your own pair
+
+To propose a connection that is not in a prepared pack, pick any two papers in
+the collection. The earlier paper must come from an earlier year.
+
+```sh
+python paper_evolve.py find "words from the title"
+python paper_evolve.py propose --earlier "Earlier paper title, URL or ID" \
+  --later "Later paper title, URL or ID"
+python paper_evolve.py run --earlier "..." --later "..." --name "Your name"
+```
+
+`propose` writes a one-task pack to `community/tasks/proposal-….json`, built only
+from the public corpus record and abstracts. It has no prepared passages, so a
+positive connection needs excerpts you register from both full papers with
+`fetch` and `cite`. Commit that pack together with your submission; the `pr` and
+`run` commands stage both. Validation rebuilds the pack from the corpus and
+rejects it if any title, year, abstract or source URL was changed.
+
+To pick particular pairs from a prepared pack instead, list them and name the
+ones you want:
+
+```sh
+python paper_evolve.py list --pack PACK_ID
+python paper_evolve.py start --pack PACK_ID --task TASK_ID --name "Your name" \
+  --tool "Actual agent / model version"
+```
+
 ## Validate and prepare your pull request
 
 ```sh
@@ -50,7 +99,8 @@ It does not switch branches, commit, push, contact GitHub, or open a pull reques
 Run the generated Git steps when you are ready, then open a pull request from
 your fork to Paper Evolve using the prepared description.
 
-Only commit the submission JSON. `work/`, `.env` and API ledgers remain local.
+Only commit the submission JSON, plus the `proposal-…` pack when you proposed
+the pair yourself. `work/`, `.env` and API ledgers remain local.
 Each task has a fixed identity and initial evidence fingerprint. Additional
 research excerpts attach separately with document/page provenance; see
 [RESEARCH.md](RESEARCH.md). After updating your

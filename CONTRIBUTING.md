@@ -28,6 +28,16 @@ Git commands and PR description. It does not execute Git operations or contact
 GitHub. Follow the generated `GIT_STEPS.md` to commit only the submission, push
 to your fork, and open a pull request. See [the full clone guide](community/CLONE.md).
 
+With the `claude` or `codex` command line tool signed in, one command does the
+whole agent route, and you can propose any pair of papers yourself:
+
+```sh
+python paper_evolve.py run --pack PACK_ID --name "Your name" --agent claude
+python paper_evolve.py run --earlier "Earlier paper" --later "Later paper" --name "Your name" --agent codex
+```
+
+It never commits or pushes. Details are in [the clone guide](community/CLONE.md).
+
 GitHub Pages hosts the app and task packs. GitHub pull requests receive the
 contributions. CI validates them; a maintainer separately accepts the evidence.
 Merging an acceptance rebuilds the Pages graph. No upload server is needed.

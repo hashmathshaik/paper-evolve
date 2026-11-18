@@ -1,6 +1,6 @@
-import {readableText} from './text-format.js?v=9cd0ddc0cdfa';
-import {renderMath} from './math.js?v=9cd0ddc0cdfa';
-import {loadCorpus,venueName} from './paper-data.js?v=9cd0ddc0cdfa';
+import {readableText} from './text-format.js?v=f7986b19491c';
+import {renderMath} from './math.js?v=f7986b19491c';
+import {loadCorpus,venueName} from './paper-data.js?v=f7986b19491c';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // Collection search and the explicit topic picker share one bounded, in-panel list.

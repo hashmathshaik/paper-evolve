@@ -46,6 +46,10 @@ def resolve_pack(value, root=ROOT):
             if not target.is_relative_to((Path(root) / 'community/tasks').resolve()):
                 raise ValueError('Pack path must be inside community/tasks.')
             return target
+    # Packs added after the catalog snapshot (for example a proposed pair) are found by name.
+    direct = Path(root) / 'community/tasks' / (str(value) + '.json')
+    if re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,120}', str(value)) and direct.is_file():
+        return direct
     raise ValueError('Unknown pack. Run the list command to choose one.')
 
 
@@ -54,7 +58,7 @@ def blank_decision():
             'reason': '', 'inherited': '', 'changed': '', 'evidence': []}
 
 
-def prepare(pack_path, destination, name, tool, method='assistant', limit=10, root=ROOT):
+def prepare(pack_path, destination, name, tool, method='assistant', limit=10, root=ROOT, only=None):
     if not 1 <= limit <= 1000 or method not in {'assistant', 'api', 'local_model', 'manual'}:
         raise ValueError('Choose 1–1000 tasks and a supported contribution method.')
     if any(not isinstance(v, str) or not v.strip() or len(v) > 300 for v in (name, tool)):
@@ -72,7 +76,9 @@ def prepare(pack_path, destination, name, tool, method='assistant', limit=10, ro
                 raise ValueError('Pack differs from its published fingerprint.')
             available &= set(entry.get('available_task_ids', tasks))
     available = set(available_tasks(pack_id, pack, root, available))
-    selected = [t for t in tasks if t in available][:limit]
+    if only and not set(only) <= set(tasks):
+        raise ValueError('Unknown task ID for this pack. List its tasks with: list --pack PACK_ID')
+    selected = [t for t in tasks if t in available and (not only or t in only)][:limit]
     if not selected:
         raise ValueError('No available tasks in this pack; choose another pack.')
     destination = Path(destination)

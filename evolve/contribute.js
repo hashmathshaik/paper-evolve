@@ -1,5 +1,5 @@
-import {readableText} from './text-format.js?v=9cd0ddc0cdfa';
-import {repositoryInfo} from './contribution-repository.js?v=9cd0ddc0cdfa';
+import {readableText} from './text-format.js?v=f7986b19491c';
+import {repositoryInfo} from './contribution-repository.js?v=f7986b19491c';
 const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString();
 let catalog=null,selected=null,route='agent',access='repo',repository=null;
 function el(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node}

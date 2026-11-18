@@ -53,6 +53,8 @@ def prepare_pr(destination, output=None, root=W.ROOT):
     else:
         result = W.export(destination, target, root)
     relative = target.relative_to(root).as_posix()
+    # A proposed pair travels with the one-task pack that defines it; prepared packs are already committed.
+    files = ([original.relative_to(root).as_posix()] if pack.get('origin') == 'contributor_proposal' else []) + [relative]
     branch = 'contribute/' + identity
     title = 'Research connections: ' + workspace['pack_id']
     body = f'''## Contribution
@@ -74,13 +76,13 @@ review the sources before accepting it.
 '''
     (destination / 'PULL_REQUEST.md').write_text(body)
     commands = [f'git switch -c {shlex.quote(branch)}', 'python scripts/community_edges.py check',
-                f'git add -- {shlex.quote(relative)}', f'git commit -m {shlex.quote(title)}',
+                'git add -- ' + ' '.join(shlex.quote(f) for f in files), f'git commit -m {shlex.quote(title)}',
                 f'git push -u origin {shlex.quote(branch)}']
     where = settings['pulls_url'] or 'the Paper Evolve repository on GitHub'
     instructions = '# Submit from your repository clone\n\nRun these from the repository root. `origin` should be your fork.\n\n```sh\n' + '\n'.join(commands) + '\n```\n\n'
     instructions += f'Open {where}, create a pull request from your fork/branch, and use PULL_REQUEST.md as the description.\n\n'
-    instructions += 'Only the exported submission is staged. Workspace files stay local. A maintainer accepts the evidence separately; merging an acceptance triggers the Pages build.\n'
+    instructions += ('The proposed pair\'s task pack and the exported submission are staged.' if len(files) > 1 else 'Only the exported submission is staged.') + ' Workspace files stay local. A maintainer accepts the evidence separately; merging an acceptance triggers the Pages build.\n'
     (destination / 'GIT_STEPS.md').write_text(instructions)
-    return {**result, 'output': relative, 'branch': branch, 'title': title,
+    return {**result, 'output': relative, 'files': files, 'branch': branch, 'title': title,
             'description': str(destination / 'PULL_REQUEST.md'), 'git_steps': str(destination / 'GIT_STEPS.md'),
             'commands': commands, 'pulls_url': settings['pulls_url'], 'pushed': False, 'pull_request_created': False}

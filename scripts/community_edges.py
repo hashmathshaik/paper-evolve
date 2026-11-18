@@ -293,6 +293,10 @@ def main():
         for path in sorted((COMMUNITY / 'tasks').glob('*.json')):
             pack = read_json(path)
             task_index(pack)
+            if pack.get('origin') == 'contributor_proposal' or path.stem.startswith('proposal-'):
+                # Contributor-authored packs must match the public corpus exactly.
+                from contribution_proposals import verify
+                verify(path.stem, pack)
             packs[path.stem] = pack
         count = 0
         seen = set()

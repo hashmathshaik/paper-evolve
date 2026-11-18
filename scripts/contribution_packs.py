@@ -17,7 +17,8 @@ PORTABLE = ['paper_evolve.py', 'scripts/contribute.py', 'scripts/contribution_wo
             'scripts/contribution_api.py', 'scripts/community_edges.py', 'scripts/relation_core.py',
             'scripts/edges_jev.py', 'scripts/voyage_pipeline.py', 'community/REVIEW_PROMPT.md',
             'community/decision.schema.json', 'community/API.md', 'community/CLONE.md',
-            'scripts/contribution_repository.py', 'scripts/contribution_sources.py', 'community/RESEARCH.md']
+            'scripts/contribution_repository.py', 'scripts/contribution_sources.py', 'community/RESEARCH.md',
+            'scripts/contribution_agent.py']
 
 
 def slug(value):
@@ -92,6 +93,7 @@ def bundles(root=ROOT, output=None):
     output = Path(output) if output else root / 'community/bundles'
     output.mkdir(parents=True, exist_ok=True)
     for pack in result['packs']:
+        if pack['id'].startswith('proposal-'):continue  # one proposed pair, submitted together with its pack
         prefix = 'paper-evolve-' + pack['id']
         readme = f'''# Paper Evolve · {pack['topic']}
 

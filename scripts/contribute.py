@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import subprocess
 from pathlib import Path
 import contribution_workspace as W
 
@@ -11,6 +12,26 @@ def main():
     commands = ap.add_subparsers(dest='command', required=True)
     ls = commands.add_parser('list', help='List available topic packs.')
     ls.add_argument('--topic', default='')
+    ls.add_argument('--pack', help='Show the paper pairs inside one pack.')
+    find = commands.add_parser('find', help='Search the collection for a paper by title words, URL or ID.')
+    find.add_argument('query')
+    propose = commands.add_parser('propose', help='Create a task for a pair of papers you choose.')
+    propose.add_argument('--earlier', required=True, help='Title, source URL or ID of the earlier paper.')
+    propose.add_argument('--later', required=True, help='Title, source URL or ID of the later paper.')
+    run = commands.add_parser('run', help='Let Claude Code or Codex review packs with one command; never pushes.')
+    run.add_argument('--agent', choices=['claude', 'codex'], default='claude')
+    run.add_argument('--name', required=True)
+    run.add_argument('--pack', action='append', default=[], help='Pack ID; repeat for several.')
+    run.add_argument('--count', type=int, default=0, help='Also take the next N packs that still have open tasks.')
+    run.add_argument('--topic', default='', help='Limit --count to matching topics or areas.')
+    run.add_argument('--earlier', help='With --later: propose this pair and review it.')
+    run.add_argument('--later')
+    run.add_argument('--task', action='append', help='Review only this task ID; repeatable.')
+    run.add_argument('--limit', type=int, default=10)
+    run.add_argument('--model', help='Model name passed to the agent; otherwise its default.')
+    run.add_argument('--agent-command', help='Another agent CLI, with {prompt} and {workspace} placeholders.')
+    run.add_argument('--timeout', type=int, default=45, help='Minutes allowed per agent run.')
+    run.add_argument('--no-pr', action='store_true', help='Stop after validation; do not export submissions.')
     ls.add_argument('--json', action='store_true')
     start = commands.add_parser('start', help='Prepare a frozen pack, prompt and submission workspace.')
     start.add_argument('--pack', required=True)
@@ -18,6 +39,7 @@ def main():
     start.add_argument('--tool', required=True, help='Actual agent/model version, or the planned API model.')
     start.add_argument('--method', choices=['assistant', 'api', 'manual', 'local_model'], default='assistant')
     start.add_argument('--limit', type=int, default=10)
+    start.add_argument('--task', action='append', help='Take only this task ID; repeatable. See: list --pack PACK_ID')
     start.add_argument('--output', type=Path)
     check = commands.add_parser('check', help='Validate a completed contribution.')
     check.add_argument('--workspace', type=Path, required=True)
@@ -52,7 +74,45 @@ def main():
     api.add_argument('--limit', type=int, default=10)
     args = ap.parse_args()
     try:
-        if args.command == 'list':
+        if args.command == 'list' and args.pack:
+            import community_edges as C
+            pack = C.read_json(W.resolve_pack(args.pack))
+            entry = next((p for p in W.manifest(refresh=True)['packs'] if p['id'] == args.pack), None)
+            is_open = set(entry['available_task_ids']) if entry else set(W.available_tasks(args.pack, pack))
+            rows = [{'task': t['id'], 'open': t['id'] in is_open, 'sources': t['state'].get('source_evidence', {}).get('status', 'none'),
+                     'earlier': f"{t['state']['paper_a']['year']} {t['state']['paper_a']['title']}",
+                     'later': f"{t['state']['paper_b']['year']} {t['state']['paper_b']['title']}"} for t in pack['tasks']]
+            if args.json:print(json.dumps(rows, ensure_ascii=False))
+            else:
+                for r in rows:
+                    print(f"{r['task']}\t{'open' if r['open'] else 'taken'}\t{r['earlier']}\n\t\t-> {r['later']}")
+        elif args.command == 'find':
+            import contribution_proposals as P
+            records, raw = P.corpus()
+            hits = P.find(args.query, records, raw)
+            for i in hits[:20]:
+                print(f"{records[i]['id']}\t{records[i]['year']}\t{records[i]['title']}")
+            print(f'{len(hits)} match(es)' + ('; showing 20. Add more title words.' if len(hits) > 20 else ''))
+        elif args.command == 'propose':
+            import contribution_proposals as P
+            made = P.propose(args.earlier, args.later)
+            print(f"Created {made['path']}\n  {made['earlier']['year']} {made['earlier']['title']}\n  -> {made['later']['year']} {made['later']['title']}")
+            print(f"Review it yourself: python paper_evolve.py start --pack {made['pack']} --name \"Your name\" --tool \"Your agent / model\"")
+            print(f"Or in one command:  python paper_evolve.py run --pack {made['pack']} --name \"Your name\"")
+        elif args.command == 'run':
+            import contribution_agent as G
+            packs = list(args.pack)
+            if bool(args.earlier) != bool(args.later):raise ValueError('Give both --earlier and --later to propose a pair.')
+            if args.earlier:
+                import contribution_proposals as P
+                packs.append(P.propose(args.earlier, args.later)['pack'])
+            if args.count:packs += [p for p in G.next_packs(args.count, args.topic) if p not in packs]
+            if not packs:raise ValueError('Choose --pack, --count or an --earlier/--later pair.')
+            summary = G.run(packs, args.name, args.agent, args.model, args.limit, args.task, args.agent_command,
+                            args.timeout, prepare_pr=not args.no_pr)
+            print(json.dumps(summary, ensure_ascii=False, indent=1))
+            if any('error' in row for row in summary['packs']):ap.exit(1, 'Some packs were not completed; rerun the same command to resume.\n')
+        elif args.command == 'list':
             packs = [p for p in W.manifest(refresh=True)['packs'] if args.topic.casefold() in (p.get('topic', '') + ' ' + p.get('area', '')).casefold()]
             if args.json:print(json.dumps(packs, ensure_ascii=False))
             else:
@@ -61,7 +121,7 @@ def main():
         elif args.command == 'start':
             path = W.resolve_pack(args.pack)
             out = args.output or W.ROOT / 'work/contributions' / path.stem
-            workspace = W.prepare(path, out, args.name, args.tool, args.method, args.limit)
+            workspace = W.prepare(path, out, args.name, args.tool, args.method, args.limit, only=args.task)
             print(f"Prepared {len(workspace['selected_task_ids'])} tasks in {out}\nGive your agent {out / 'PROMPT.md'}")
             print(f'Validate: python paper_evolve.py check --workspace "{out}"')
             print(f'Prepare pull request: python paper_evolve.py pr --workspace "{out}"')
@@ -83,5 +143,5 @@ def main():
             from contribution_api import run
             print(json.dumps(run(args.workspace, args.base_url, args.model, args.api_key_env, args.input_rate,
                                  args.output_rate, args.budget, args.max_output, args.limit)))
-    except (ValueError, KeyError, TypeError, OSError) as exc:
+    except (ValueError, KeyError, TypeError, OSError, subprocess.TimeoutExpired) as exc:
         ap.exit(1, f'Contribution failed: {exc}\n')

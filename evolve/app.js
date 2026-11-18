@@ -1,15 +1,15 @@
-import {createLatestTask} from './ui-task.js?v=9cd0ddc0cdfa';
-import {readableText} from './text-format.js?v=9cd0ddc0cdfa';
-import {renderMath} from './math.js?v=9cd0ddc0cdfa';
-import {createViewport} from './viewport.js?v=9cd0ddc0cdfa';
-import {routeConnections,wireMovableCards} from './graph-layout.js?v=9cd0ddc0cdfa';
-import {createEvolutionHome} from './evolution-home.js?v=9cd0ddc0cdfa';
-import {evolutionHash,parseRoute,paperURL} from './evolution-route.js?v=9cd0ddc0cdfa';
-import {buildNeighbourhood} from './neighbourhood.js?v=9cd0ddc0cdfa';
-import {createDiscoverySearch} from './discovery-search.js?v=9cd0ddc0cdfa';
-import {createPaperReader} from './paper-reader.js?v=9cd0ddc0cdfa';
-import {CARD,STAGE} from './graph-layout.js?v=9cd0ddc0cdfa';
-import {createWorkspace} from './workspace.js?v=9cd0ddc0cdfa';
+import {createLatestTask} from './ui-task.js?v=f7986b19491c';
+import {readableText} from './text-format.js?v=f7986b19491c';
+import {renderMath} from './math.js?v=f7986b19491c';
+import {createViewport} from './viewport.js?v=f7986b19491c';
+import {routeConnections,wireMovableCards} from './graph-layout.js?v=f7986b19491c';
+import {createEvolutionHome} from './evolution-home.js?v=f7986b19491c';
+import {evolutionHash,parseRoute,paperURL} from './evolution-route.js?v=f7986b19491c';
+import {buildNeighbourhood} from './neighbourhood.js?v=f7986b19491c';
+import {createDiscoverySearch} from './discovery-search.js?v=f7986b19491c';
+import {createPaperReader} from './paper-reader.js?v=f7986b19491c';
+import {CARD,STAGE} from './graph-layout.js?v=f7986b19491c';
+import {createWorkspace} from './workspace.js?v=f7986b19491c';
 const workspace=createWorkspace();
 function engage(){document.body.classList.add('engaged');sessionStorage.setItem('paper-evolve-engaged','1')}
 if(sessionStorage.getItem('paper-evolve-engaged'))document.body.classList.add('engaged');
@@ -87,7 +87,7 @@ function switchView(v,{writeHistory=true,cancelTask=true}={}){
  if(v!=='evolution')openLibrary(v);else{render();details();if(!evolutionLanding&&!unmappedContext)requestAnimationFrame(()=>canvasViewport?.frame())}
 }
 document.querySelectorAll('[data-view]').forEach(button=>button.onclick=()=>switchView(button.dataset.view));
-import {createLibrary} from './library.js?v=9cd0ddc0cdfa';
+import {createLibrary} from './library.js?v=f7986b19491c';
 const openLibrary=createLibrary({openEvolution,selectPaper(record){
  evolutionTask.cancel();reader.showPaper(record);workspace.openNotes();
 }});
